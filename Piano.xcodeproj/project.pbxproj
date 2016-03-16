@@ -36,6 +36,8 @@
 		CD7409031C99652E00950A50 /* HXStoryBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408EF1C99652E00950A50 /* HXStoryBoardManager.m */; };
 		CD7409041C99652E00950A50 /* HXThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408F21C99652E00950A50 /* HXThemeManager.m */; };
 		CD7409051C99652E00950A50 /* HXVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408F51C99652E00950A50 /* HXVersion.m */; };
+		CD74090D1C996D4A00950A50 /* HXLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD74090C1C996D4A00950A50 /* HXLiveCell.m */; };
+		CD7409101C996D5A00950A50 /* HXReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD74090F1C996D5A00950A50 /* HXReplayCell.m */; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
@@ -109,6 +111,10 @@
 		CD7408F41C99652E00950A50 /* HXVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXVersion.h; sourceTree = "<group>"; };
 		CD7408F51C99652E00950A50 /* HXVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXVersion.m; sourceTree = "<group>"; };
 		CD7409061C9965C000950A50 /* HXXib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXXib.h; sourceTree = "<group>"; };
+		CD74090B1C996D4A00950A50 /* HXLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveCell.h; sourceTree = "<group>"; };
+		CD74090C1C996D4A00950A50 /* HXLiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveCell.m; sourceTree = "<group>"; };
+		CD74090E1C996D5A00950A50 /* HXReplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayCell.h; sourceTree = "<group>"; };
+		CD74090F1C996D5A00950A50 /* HXReplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayCell.m; sourceTree = "<group>"; };
 		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -202,6 +208,10 @@
 		CD7408A31C9950C500950A50 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CD7409071C996CF900950A50 /* Live */,
+				CD7409091C996CF900950A50 /* Replay */,
+				CD7409081C996CF900950A50 /* Publish */,
+				CD74090A1C996CF900950A50 /* Setting */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,6 +394,38 @@
 				CD7408F51C99652E00950A50 /* HXVersion.m */,
 			);
 			path = HXVersion;
+			sourceTree = "<group>";
+		};
+		CD7409071C996CF900950A50 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				CD74090B1C996D4A00950A50 /* HXLiveCell.h */,
+				CD74090C1C996D4A00950A50 /* HXLiveCell.m */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		CD7409081C996CF900950A50 /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Publish;
+			sourceTree = "<group>";
+		};
+		CD7409091C996CF900950A50 /* Replay */ = {
+			isa = PBXGroup;
+			children = (
+				CD74090E1C996D5A00950A50 /* HXReplayCell.h */,
+				CD74090F1C996D5A00950A50 /* HXReplayCell.m */,
+			);
+			path = Replay;
+			sourceTree = "<group>";
+		};
+		CD74090A1C996CF900950A50 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		CD8A9A631C9906CA00698DE9 = {
@@ -570,6 +612,7 @@
 				CD7408F71C99652E00950A50 /* UIView+FindUIViewController.m in Sources */,
 				CD7408B41C995F2E00950A50 /* HXLiveViewController.m in Sources */,
 				CD7409021C99652E00950A50 /* HXTextView.m in Sources */,
+				CD74090D1C996D4A00950A50 /* HXLiveCell.m in Sources */,
 				CD7408FD1C99652E00950A50 /* HXCaptchButton.m in Sources */,
 				CD7409001C99652E00950A50 /* HXLoadingView.m in Sources */,
 				CD7408FB1C99652E00950A50 /* HXAlertBanner.m in Sources */,
@@ -588,6 +631,7 @@
 				CD7409031C99652E00950A50 /* HXStoryBoardManager.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
+				CD7409101C996D5A00950A50 /* HXReplayCell.m in Sources */,
 				CD7408F81C99652E00950A50 /* UIView+Frame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
