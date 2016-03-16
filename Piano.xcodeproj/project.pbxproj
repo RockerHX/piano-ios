@@ -10,9 +10,9 @@
 		75246FDD53A733266B7179D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FB3A1969D15BC5CFAA3B9E /* libPods.a */; };
 		CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; };
 		CD74089B1C9946D800950A50 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD7408A61C99513800950A50 /* ZegoAVKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408A51C99513800950A50 /* ZegoAVKitManager.m */; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
-		CD8A9A771C9906CA00698DE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A761C9906CA00698DE9 /* ViewController.m */; };
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
 		CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */; };
 		CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
@@ -36,12 +36,12 @@
 		4704094A70120BB39E18C473 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C7FB3A1969D15BC5CFAA3B9E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
+		CD7408A41C99513800950A50 /* ZegoAVKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZegoAVKitManager.h; sourceTree = "<group>"; };
+		CD7408A51C99513800950A50 /* ZegoAVKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZegoAVKitManager.m; sourceTree = "<group>"; };
 		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD8A9A731C9906CA00698DE9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CD8A9A751C9906CA00698DE9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CD8A9A761C9906CA00698DE9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CD8A9A791C9906CA00698DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD8A9A7E1C9906CA00698DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +74,8 @@
 		CD74089D1C99506000950A50 /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				CD7408A41C99513800950A50 /* ZegoAVKitManager.h */,
+				CD7408A51C99513800950A50 /* ZegoAVKitManager.m */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -152,8 +154,6 @@
 				CD7408A11C9950C500950A50 /* ViewControllers */,
 				CD8A9A721C9906CA00698DE9 /* AppDelegate.h */,
 				CD8A9A731C9906CA00698DE9 /* AppDelegate.m */,
-				CD8A9A751C9906CA00698DE9 /* ViewController.h */,
-				CD8A9A761C9906CA00698DE9 /* ViewController.m */,
 				CD74089E1C99506C00950A50 /* Resource */,
 				CD8A9A6F1C9906CA00698DE9 /* Supporting Files */,
 			);
@@ -300,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD8A9A771C9906CA00698DE9 /* ViewController.m in Sources */,
+				CD7408A61C99513800950A50 /* ZegoAVKitManager.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
 			);
