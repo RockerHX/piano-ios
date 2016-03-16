@@ -86,5 +86,13 @@ ZegoShowListDelegate
     return appSign;
 }
 
+#pragma mark - ZegoShowListDelegate Methods
+- (void)onGetShowListResult:(uint32)result totalCount:(uint32)totalCount beginIndex:(uint32)beginIndex showList:(NSArray *)list {
+    ;
+}
+
+- (void)onGetReplayListResult:(uint32)result totalCount:(uint32)totalCount beginIndex:(uint32)beginIndex replayList:(NSArray *)list {
+    ;
+}
 
 @end
