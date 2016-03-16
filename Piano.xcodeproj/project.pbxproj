@@ -71,6 +71,59 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD74089D1C99506000950A50 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		CD74089E1C99506C00950A50 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CD74089F1C99508B00950A50 /* UI */,
+				CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */,
+				CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		CD74089F1C99508B00950A50 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CD8A9A781C9906CA00698DE9 /* Main.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		CD7408A01C9950C500950A50 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CD7408A11C9950C500950A50 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CD7408A21C9950C500950A50 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CD7408A31C9950C500950A50 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CD8A9A631C9906CA00698DE9 = {
 			isa = PBXGroup;
 			children = (
@@ -92,14 +145,16 @@
 		CD8A9A6E1C9906CA00698DE9 /* Piano */ = {
 			isa = PBXGroup;
 			children = (
+				CD74089D1C99506000950A50 /* Session */,
+				CD7408A01C9950C500950A50 /* Models */,
+				CD7408A31C9950C500950A50 /* Views */,
+				CD7408A21C9950C500950A50 /* ViewModels */,
+				CD7408A11C9950C500950A50 /* ViewControllers */,
 				CD8A9A721C9906CA00698DE9 /* AppDelegate.h */,
 				CD8A9A731C9906CA00698DE9 /* AppDelegate.m */,
 				CD8A9A751C9906CA00698DE9 /* ViewController.h */,
 				CD8A9A761C9906CA00698DE9 /* ViewController.m */,
-				CD8A9A781C9906CA00698DE9 /* Main.storyboard */,
-				CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */,
-				CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */,
-				CD8A9A801C9906CA00698DE9 /* Info.plist */,
+				CD74089E1C99506C00950A50 /* Resource */,
 				CD8A9A6F1C9906CA00698DE9 /* Supporting Files */,
 			);
 			path = Piano;
@@ -108,6 +163,7 @@
 		CD8A9A6F1C9906CA00698DE9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CD8A9A801C9906CA00698DE9 /* Info.plist */,
 				CD8A9A701C9906CA00698DE9 /* main.m */,
 			);
 			name = "Supporting Files";
