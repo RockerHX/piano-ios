@@ -14,6 +14,16 @@
 
 @implementation HXReplayViewController
 
+#pragma mark - Class Methods
++ (HXStoryBoardName)storyBoardName {
+    return HXStoryBoardNameReplay;
+}
+
++ (NSString *)navigationControllerIdentifier {
+    return @"HXReplayNavigationController";
+}
+
+#pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     

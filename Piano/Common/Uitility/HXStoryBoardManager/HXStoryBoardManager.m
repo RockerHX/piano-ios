@@ -24,44 +24,20 @@
 + (NSString *)storyBoardName:(HXStoryBoardName)name {
     NSString *storyBoardName = nil;
     switch (name) {
-        case HXStoryBoardNameLogin: {
-            storyBoardName = @"Login";
+        case HXStoryBoardNameLive: {
+            storyBoardName = @"Live";
             break;
         }
-        case HXStoryBoardNameDiscovery: {
-            storyBoardName = @"Discovery";
+        case HXStoryBoardNameReplay: {
+            storyBoardName = @"Replay";
             break;
         }
-        case HXStoryBoardNameFavorite: {
-            storyBoardName = @"Favorite";
-            break;
-        }
-        case HXStoryBoardNameMe: {
-            storyBoardName = @"Me";
+        case HXStoryBoardNamePublish: {
+            storyBoardName = @"Publish";
             break;
         }
         case HXStoryBoardNameSetting: {
             storyBoardName = @"Setting";
-            break;
-        }
-        case HXStoryBoardNameProfile: {
-            storyBoardName = @"Profile";
-            break;
-        }
-        case HXStoryBoardNamePlay: {
-            storyBoardName = @"Play";
-            break;
-        }
-        case HXStoryBoardNameShare: {
-            storyBoardName = @"Share";
-            break;
-        }
-        case HXStoryBoardNameMessageCenter: {
-            storyBoardName = @"MessageCenter";
-            break;
-        }
-        case HXStoryBoardNameMusicDetail: {
-            storyBoardName = @"MusicDetail";
             break;
         }
     }

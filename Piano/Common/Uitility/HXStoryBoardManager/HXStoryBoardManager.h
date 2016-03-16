@@ -8,16 +8,10 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, HXStoryBoardName) {
-    HXStoryBoardNameLogin,
-    HXStoryBoardNameDiscovery,
-    HXStoryBoardNameFavorite,
-    HXStoryBoardNameMe,
+    HXStoryBoardNameLive,
+    HXStoryBoardNameReplay,
+    HXStoryBoardNamePublish,
     HXStoryBoardNameSetting,
-    HXStoryBoardNameProfile,
-    HXStoryBoardNamePlay,
-    HXStoryBoardNameShare,
-    HXStoryBoardNameMessageCenter,
-    HXStoryBoardNameMusicDetail,
 };
 
 @interface HXStoryBoardManager : NSObject

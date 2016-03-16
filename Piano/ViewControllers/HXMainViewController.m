@@ -36,15 +36,17 @@
 }
 
 - (void)subControllersConfigure {
-//    for (UINavigationController *navigationController in self.viewControllers) {
-//        if ([navigationController.restorationIdentifier isEqualToString:[HXDiscoveryViewController navigationControllerIdentifier]]) {
-//            [navigationController setViewControllers:@[[HXDiscoveryViewController instance]]];
-//        } else if ([navigationController.restorationIdentifier isEqualToString:[HXFavoriteViewController navigationControllerIdentifier]]) {
-//            [navigationController setViewControllers:@[[HXFavoriteViewController instance]]];
-//        } else if ([navigationController.restorationIdentifier isEqualToString:[HXMeViewController navigationControllerIdentifier]]) {
-//            [navigationController setViewControllers:@[[HXMeViewController instance]]];
-//        }
-//    }
+    for (UINavigationController *navigationController in self.viewControllers) {
+        if ([navigationController.restorationIdentifier isEqualToString:[HXLiveViewController navigationControllerIdentifier]]) {
+            [navigationController setViewControllers:@[[HXLiveViewController instance]]];
+        } else if ([navigationController.restorationIdentifier isEqualToString:[HXReplayViewController navigationControllerIdentifier]]) {
+            [navigationController setViewControllers:@[[HXReplayViewController instance]]];
+        } else if ([navigationController.restorationIdentifier isEqualToString:[HXPublishViewController navigationControllerIdentifier]]) {
+            [navigationController setViewControllers:@[[HXPublishViewController instance]]];
+        } else if ([navigationController.restorationIdentifier isEqualToString:[HXSettingViewController navigationControllerIdentifier]]) {
+            [navigationController setViewControllers:@[[HXSettingViewController instance]]];
+        }
+    }
 }
 
 @end

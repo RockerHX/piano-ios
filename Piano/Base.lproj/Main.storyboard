@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-69" y="-61"/>
         </scene>
-        <!--回放-->
+        <!--HXReplayNavigationController-->
         <scene sceneID="sKL-WK-6gi">
             <objects>
-                <navigationController id="bog-OB-ePC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXReplayNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bog-OB-ePC" userLabel="HXReplayNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="回放" id="r0G-Kq-Yjs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="K99-z6-38I">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -39,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="-282" y="777"/>
         </scene>
-        <!--发布-->
+        <!--HXPublishNavigationController-->
         <scene sceneID="HF3-Pp-52M">
             <objects>
-                <navigationController id="VPc-X6-5AQ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXPublishNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VPc-X6-5AQ" userLabel="HXPublishNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="发布" id="7g9-Ri-8wK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g52-yd-bP5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="148" y="777"/>
         </scene>
-        <!--设置-->
+        <!--HXSettingNavigationController-->
         <scene sceneID="X9j-Bd-Urt">
             <objects>
-                <navigationController id="txc-rK-VJg" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXSettingNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txc-rK-VJg" userLabel="HXSettingNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="设置" id="IAM-oX-QbD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yOb-7h-7qE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="574" y="777"/>
         </scene>
-        <!--直播-->
+        <!--HXLiveNavigationController-->
         <scene sceneID="pIV-8O-zAG">
             <objects>
-                <navigationController id="Yy6-7Q-Aey" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXLiveNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXLiveNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="直播" id="NkN-4J-GVv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rlr-1H-sSR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

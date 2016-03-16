@@ -14,6 +14,16 @@
 
 @implementation HXPublishViewController
 
+#pragma mark - Class Methods
++ (HXStoryBoardName)storyBoardName {
+    return HXStoryBoardNamePublish;
+}
+
++ (NSString *)navigationControllerIdentifier {
+    return @"HXPublishNavigationController";
+}
+
+#pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     

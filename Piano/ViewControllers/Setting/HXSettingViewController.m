@@ -14,6 +14,16 @@
 
 @implementation HXSettingViewController
 
+#pragma mark - Class Methods
++ (HXStoryBoardName)storyBoardName {
+    return HXStoryBoardNameSetting;
+}
+
++ (NSString *)navigationControllerIdentifier {
+    return @"HXSettingNavigationController";
+}
+
+#pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     

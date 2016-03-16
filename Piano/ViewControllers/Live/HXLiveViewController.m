@@ -14,6 +14,16 @@
 
 @implementation HXLiveViewController
 
+#pragma mark - Class Methods
++ (HXStoryBoardName)storyBoardName {
+    return HXStoryBoardNameLive;
+}
+
++ (NSString *)navigationControllerIdentifier {
+    return @"HXLiveNavigationController";
+}
+
+#pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
