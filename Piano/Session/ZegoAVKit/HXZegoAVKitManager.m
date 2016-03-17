@@ -16,12 +16,12 @@ ZegoShowListDelegate
 
 @implementation HXZegoAVKitManager
 
-#pragma mark - Class Methods
+#pragma mark - Singleton Methods
 + (instancetype)manager {
     static HXZegoAVKitManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [HXZegoAVKitManager new];
+        manager = [[HXZegoAVKitManager alloc] init];
     });
     return manager;
 }
