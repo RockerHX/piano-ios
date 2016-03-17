@@ -44,6 +44,7 @@ ZegoShowListDelegate
 #pragma mark - Configure Methods
 - (void)initConfigure {
     _zegoAVApi = [ZegoAVApi new];
+    [_zegoAVApi initSDK:1 appSignature:[self zegoAppSignFromServer]];
 }
 
 #pragma mark - Public Methods

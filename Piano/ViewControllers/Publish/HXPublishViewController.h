@@ -10,4 +10,6 @@
 
 @interface HXPublishViewController : UIViewController
 
+- (IBAction)switchHandle:(UISwitch *)sender;
+
 @end
