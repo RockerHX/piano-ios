@@ -1,36 +1,33 @@
 //
-//  ZegoAVKitManager.m
+//  HXZegoAVKitManager.m
 //  Piano
 //
 //  Created by miaios on 16/3/16.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "ZegoAVKitManager.h"
-#import <ZegoAVKit/ZegoAVApi.h>
+#import "HXZegoAVKitManager.h"
 
 
-@interface ZegoAVKitManager () <
+@interface HXZegoAVKitManager () <
 ZegoShowListDelegate
 >
 @end
 
-@implementation ZegoAVKitManager {
-    ZegoAVApi *_zegoAVApi;
-}
+@implementation HXZegoAVKitManager
 
 #pragma mark - Class Methods
-+ (instancetype)share {
-    static ZegoAVKitManager *manager = nil;
++ (instancetype)manager {
+    static HXZegoAVKitManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [ZegoAVKitManager new];
+        manager = [HXZegoAVKitManager new];
     });
     return manager;
 }
 
 + (instancetype)shareWithAppID:(NSString *)appID signKey:(NSData *)signKey {
-    ZegoAVKitManager *manager = [self share];
+    HXZegoAVKitManager *manager = [self manager];
     [manager setAppID:appID signKey:signKey];
     return manager;
 }
@@ -63,11 +60,11 @@ ZegoShowListDelegate
     _url = url;
 }
 
-- (void)fetchShowList:(void(^)(ZegoAVKitManager *manager, BOOL success))completed failure:(void(^)(ZegoAVKitManager *manager, NSString *message))failure {
+- (void)fetchShowList:(void(^)(HXZegoAVKitManager *manager, BOOL success))completed failure:(void(^)(HXZegoAVKitManager *manager, NSString *message))failure {
     ;
 }
 
-- (void)fetchReplayList:(void(^)(ZegoAVKitManager *manager, BOOL success))completed failure:(void(^)(ZegoAVKitManager *manager, NSString *message))failure {
+- (void)fetchReplayList:(void(^)(HXZegoAVKitManager *manager, BOOL success))completed failure:(void(^)(HXZegoAVKitManager *manager, NSString *message))failure {
     ;
 }
 

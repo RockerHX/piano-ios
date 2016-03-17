@@ -10,7 +10,7 @@
 		75246FDD53A733266B7179D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FB3A1969D15BC5CFAA3B9E /* libPods.a */; };
 		CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; };
 		CD74089B1C9946D800950A50 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CD7408AA1C99570900950A50 /* ZegoAVKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408A91C99570900950A50 /* ZegoAVKitManager.m */; };
+		CD7408AA1C99570900950A50 /* HXZegoAVKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408A91C99570900950A50 /* HXZegoAVKitManager.m */; };
 		CD7408AD1C995E8700950A50 /* HXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408AC1C995E8700950A50 /* HXMainViewController.m */; };
 		CD7408B41C995F2E00950A50 /* HXLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408B31C995F2E00950A50 /* HXLiveViewController.m */; };
 		CD7408B71C995F3900950A50 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408B61C995F3900950A50 /* HXReplayViewController.m */; };
@@ -63,8 +63,8 @@
 		4704094A70120BB39E18C473 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C7FB3A1969D15BC5CFAA3B9E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
-		CD7408A81C99570900950A50 /* ZegoAVKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZegoAVKitManager.h; sourceTree = "<group>"; };
-		CD7408A91C99570900950A50 /* ZegoAVKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZegoAVKitManager.m; sourceTree = "<group>"; };
+		CD7408A81C99570900950A50 /* HXZegoAVKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXZegoAVKitManager.h; sourceTree = "<group>"; };
+		CD7408A91C99570900950A50 /* HXZegoAVKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXZegoAVKitManager.m; sourceTree = "<group>"; };
 		CD7408AB1C995E8700950A50 /* HXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMainViewController.h; sourceTree = "<group>"; };
 		CD7408AC1C995E8700950A50 /* HXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMainViewController.m; sourceTree = "<group>"; };
 		CD7408B21C995F2E00950A50 /* HXLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveViewController.h; sourceTree = "<group>"; };
@@ -219,8 +219,8 @@
 		CD7408A71C99570900950A50 /* ZegoAVKit */ = {
 			isa = PBXGroup;
 			children = (
-				CD7408A81C99570900950A50 /* ZegoAVKitManager.h */,
-				CD7408A91C99570900950A50 /* ZegoAVKitManager.m */,
+				CD7408A81C99570900950A50 /* HXZegoAVKitManager.h */,
+				CD7408A91C99570900950A50 /* HXZegoAVKitManager.m */,
 			);
 			path = ZegoAVKit;
 			sourceTree = "<group>";
@@ -623,7 +623,7 @@
 				CD7408F61C99652E00950A50 /* NSObject+LoginAction.m in Sources */,
 				CD7409041C99652E00950A50 /* HXThemeManager.m in Sources */,
 				CD7408B71C995F3900950A50 /* HXReplayViewController.m in Sources */,
-				CD7408AA1C99570900950A50 /* ZegoAVKitManager.m in Sources */,
+				CD7408AA1C99570900950A50 /* HXZegoAVKitManager.m in Sources */,
 				CD7408AD1C995E8700950A50 /* HXMainViewController.m in Sources */,
 				CD7408F91C99652E00950A50 /* UIViewController+HXClass.m in Sources */,
 				CD7409051C99652E00950A50 /* HXVersion.m in Sources */,
