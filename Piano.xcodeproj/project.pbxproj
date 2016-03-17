@@ -38,6 +38,8 @@
 		CD7409051C99652E00950A50 /* HXVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7408F51C99652E00950A50 /* HXVersion.m */; };
 		CD74090D1C996D4A00950A50 /* HXLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD74090C1C996D4A00950A50 /* HXLiveCell.m */; };
 		CD7409101C996D5A00950A50 /* HXReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD74090F1C996D5A00950A50 /* HXReplayCell.m */; };
+		CD7500761C9A5A220067BC55 /* HXSettingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500751C9A5A220067BC55 /* HXSettingSession.m */; };
+		CD75007A1C9A90AE0067BC55 /* HXPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500791C9A90AE0067BC55 /* HXPathManager.m */; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
@@ -115,6 +117,10 @@
 		CD74090C1C996D4A00950A50 /* HXLiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveCell.m; sourceTree = "<group>"; };
 		CD74090E1C996D5A00950A50 /* HXReplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayCell.h; sourceTree = "<group>"; };
 		CD74090F1C996D5A00950A50 /* HXReplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayCell.m; sourceTree = "<group>"; };
+		CD7500741C9A5A220067BC55 /* HXSettingSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXSettingSession.h; sourceTree = "<group>"; };
+		CD7500751C9A5A220067BC55 /* HXSettingSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSettingSession.m; sourceTree = "<group>"; };
+		CD7500781C9A90AE0067BC55 /* HXPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPathManager.h; sourceTree = "<group>"; };
+		CD7500791C9A90AE0067BC55 /* HXPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPathManager.m; sourceTree = "<group>"; };
 		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -151,6 +157,8 @@
 		CD74089D1C99506000950A50 /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				CD7500771C9A90A20067BC55 /* Path */,
+				CD7500731C9A5A140067BC55 /* Setting */,
 				CD7408A71C99570900950A50 /* ZegoAVKit */,
 			);
 			path = Session;
@@ -428,6 +436,24 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		CD7500731C9A5A140067BC55 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				CD7500741C9A5A220067BC55 /* HXSettingSession.h */,
+				CD7500751C9A5A220067BC55 /* HXSettingSession.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		CD7500771C9A90A20067BC55 /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				CD7500781C9A90AE0067BC55 /* HXPathManager.h */,
+				CD7500791C9A90AE0067BC55 /* HXPathManager.m */,
+			);
+			path = Path;
+			sourceTree = "<group>";
+		};
 		CD8A9A631C9906CA00698DE9 = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +637,7 @@
 			files = (
 				CD7408F71C99652E00950A50 /* UIView+FindUIViewController.m in Sources */,
 				CD7408B41C995F2E00950A50 /* HXLiveViewController.m in Sources */,
+				CD75007A1C9A90AE0067BC55 /* HXPathManager.m in Sources */,
 				CD7409021C99652E00950A50 /* HXTextView.m in Sources */,
 				CD74090D1C996D4A00950A50 /* HXLiveCell.m in Sources */,
 				CD7408FD1C99652E00950A50 /* HXCaptchButton.m in Sources */,
@@ -619,6 +646,7 @@
 				CD7408FE1C99652E00950A50 /* HXLabel.m in Sources */,
 				CD7408FA1C99652E00950A50 /* HXAppConstants.m in Sources */,
 				CD7408FF1C99652E00950A50 /* HXActivityIndicator.m in Sources */,
+				CD7500761C9A5A220067BC55 /* HXSettingSession.m in Sources */,
 				CD7408C91C99612E00950A50 /* HXSettingViewController.m in Sources */,
 				CD7408F61C99652E00950A50 /* NSObject+LoginAction.m in Sources */,
 				CD7409041C99652E00950A50 /* HXThemeManager.m in Sources */,

@@ -10,4 +10,17 @@
 
 @interface HXSettingViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *accountAvAtar;
+
+@property (weak, nonatomic) IBOutlet UIPickerView *liveQualityPicker;
+
+@property (weak, nonatomic) IBOutlet  UILabel *resolutionLabel;
+@property (weak, nonatomic) IBOutlet  UILabel *fpsLabel;
+@property (weak, nonatomic) IBOutlet  UILabel *bitrateLabel;
+@property (weak, nonatomic) IBOutlet UISlider *resolutionSlider;
+@property (weak, nonatomic) IBOutlet UISlider *fpsSlider;
+@property (weak, nonatomic) IBOutlet UISlider *bitrateSlider;
+
 @end
