@@ -24,8 +24,8 @@
 + (NSString *)storyBoardName:(HXStoryBoardName)name {
     NSString *storyBoardName = nil;
     switch (name) {
-        case HXStoryBoardNameLive: {
-            storyBoardName = @"Live";
+        case HXStoryBoardNameOnline: {
+            storyBoardName = @"Online";
             break;
         }
         case HXStoryBoardNameReplay: {
@@ -38,6 +38,10 @@
         }
         case HXStoryBoardNameSetting: {
             storyBoardName = @"Setting";
+            break;
+        }
+        case HXStoryBoardNameLive: {
+            storyBoardName = @"Live";
             break;
         }
     }

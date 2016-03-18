@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="jRP-NR-xww">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
@@ -67,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="574" y="777"/>
         </scene>
-        <!--HXLiveNavigationController-->
+        <!--HXOnlineNavigationController-->
         <scene sceneID="pIV-8O-zAG">
             <objects>
-                <navigationController storyboardIdentifier="HXLiveNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXLiveNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXOnlineNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXOnlineNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="直播" id="NkN-4J-GVv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rlr-1H-sSR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

@@ -49,6 +49,7 @@
 		CD75007A1C9A90AE0067BC55 /* HXPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500791C9A90AE0067BC55 /* HXPathManager.m */; };
 		CD7500811C9BA5C60067BC55 /* HXOnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500801C9BA5C60067BC55 /* HXOnlineViewController.m */; };
 		CD7500851C9BA6000067BC55 /* HXOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500841C9BA6000067BC55 /* HXOnlineCell.m */; };
+		CD7500881C9BA6680067BC55 /* HXLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500871C9BA6680067BC55 /* HXLiveViewController.m */; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
@@ -149,6 +150,8 @@
 		CD7500801C9BA5C60067BC55 /* HXOnlineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineViewController.m; sourceTree = "<group>"; };
 		CD7500831C9BA6000067BC55 /* HXOnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineCell.h; sourceTree = "<group>"; };
 		CD7500841C9BA6000067BC55 /* HXOnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineCell.m; sourceTree = "<group>"; };
+		CD7500861C9BA6680067BC55 /* HXLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveViewController.h; sourceTree = "<group>"; };
+		CD7500871C9BA6680067BC55 /* HXLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveViewController.m; sourceTree = "<group>"; };
 		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -573,6 +576,8 @@
 		CD75007D1C9BA5C60067BC55 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				CD7500861C9BA6680067BC55 /* HXLiveViewController.h */,
+				CD7500871C9BA6680067BC55 /* HXLiveViewController.m */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -806,6 +811,7 @@
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
+				CD7500881C9BA6680067BC55 /* HXLiveViewController.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
 				395D670B1C9AB16B00ED0454 /* FileLog.m in Sources */,
 				395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */,

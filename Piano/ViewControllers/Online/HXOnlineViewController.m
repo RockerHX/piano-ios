@@ -16,11 +16,11 @@
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameLive;
+    return HXStoryBoardNameOnline;
 }
 
 + (NSString *)navigationControllerIdentifier {
-    return @"HXLiveNavigationController";
+    return @"HXOnlineNavigationController";
 }
 
 #pragma mark - View Controller Life Cycle
