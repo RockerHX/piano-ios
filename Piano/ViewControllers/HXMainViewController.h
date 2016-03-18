@@ -11,6 +11,6 @@
 
 @interface HXMainViewController : UITabBarController
 
-- (void)showLiveWithModel:(HXLiveModel *)model;
+- (void)showLiveWithModel:(HXLiveModel *)model type:(HXLiveType)type;
 
 @end

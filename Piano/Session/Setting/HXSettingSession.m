@@ -38,6 +38,10 @@ MJCodingImplementation
         HXSettingSession *session = [self unArchive];
         if (session) {
             self = session;
+        } else {
+            if ([self isCustomConfigure]) {
+                _configPreset = ZegoAVConfigPreset_Generic;
+            }
         }
     }
     return self;

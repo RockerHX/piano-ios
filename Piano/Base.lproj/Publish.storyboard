@@ -18,16 +18,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YGs-R6-6Ig">
-                                <rect key="frame" x="136" y="517" width="51" height="31"/>
+                                <rect key="frame" x="20" y="517" width="51" height="31"/>
                                 <connections>
-                                    <action selector="switchHandle:" destination="QvR-su-Ips" eventType="valueChanged" id="4Rr-KI-OEF"/>
+                                    <action selector="previewSwitchChanged:" destination="QvR-su-Ips" eventType="valueChanged" id="6LS-8k-scO"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mg6-GG-r4d">
+                                <rect key="frame" x="251" y="517" width="51" height="31"/>
+                                <connections>
+                                    <action selector="liveSwitchChanged:" destination="QvR-su-Ips" eventType="valueChanged" id="A5t-tz-zfp"/>
                                 </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9qb-xO-isS" firstAttribute="top" secondItem="YGs-R6-6Ig" secondAttribute="bottom" constant="20" id="3MK-vd-LuL"/>
-                            <constraint firstItem="YGs-R6-6Ig" firstAttribute="centerX" secondItem="QNL-Xj-bqZ" secondAttribute="centerX" id="5Sg-hP-ljg"/>
+                            <constraint firstAttribute="trailing" secondItem="mg6-GG-r4d" secondAttribute="trailing" constant="20" id="4Lb-h2-aau"/>
+                            <constraint firstItem="9qb-xO-isS" firstAttribute="top" secondItem="mg6-GG-r4d" secondAttribute="bottom" constant="20" id="jC9-0N-FVa"/>
+                            <constraint firstItem="YGs-R6-6Ig" firstAttribute="leading" secondItem="QNL-Xj-bqZ" secondAttribute="leading" constant="20" id="lSZ-u3-8X2"/>
                         </constraints>
                     </view>
                 </viewController>

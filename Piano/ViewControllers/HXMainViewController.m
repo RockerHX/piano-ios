@@ -67,10 +67,11 @@
 }
 
 #pragma mark - Public Methods
-- (void)showLiveWithModel:(HXLiveModel *)model {
+- (void)showLiveWithModel:(HXLiveModel *)model type:(HXLiveType)type {
     if (model) {
         HXLiveViewController *liveViewController = [HXLiveViewController instance];
         liveViewController.model = model;
+        liveViewController.type = type;
         [self presentViewController:liveViewController animated:YES completion:nil];
     }
 }

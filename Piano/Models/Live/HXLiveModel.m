@@ -28,6 +28,15 @@
 }
 
 #pragma mark - Public Methods
+- (instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName {
+    self = [self init];
+    if (self) {
+        _userID = userID;
+        _userName = userName;
+    }
+    return self;
+}
+
 - (instancetype)initWithOnlineModel:(HXOnlineModel *)model {
     self = [self init];
     if (self) {

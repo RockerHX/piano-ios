@@ -9,6 +9,7 @@
 #import "HXPublishViewController.h"
 #import <ZegoAVKit/ZegoAVConfig.h>
 #import "HXZegoAVKitManager.h"
+#import "HXMainViewController.h"
 
 @interface HXPublishViewController ()
 
@@ -32,12 +33,20 @@
 }
 
 #pragma mark - Event Response
-- (IBAction)switchHandle:(UISwitch *)sender {
+- (IBAction)previewSwitchChanged:(UISwitch *)sender {
     if (sender.on) {
         [self startPreview];
     } else {
         [self stopPreview];
     }
+}
+
+- (IBAction)liveSwitchChanged:(UISwitch *)sender {
+    if (sender.on) {
+        [self stopPreview];
+        [self startLive];
+    }
+    sender.on = NO;
 }
 
 #pragma mark - Private Methods
@@ -58,6 +67,11 @@
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     [zegoAVApi setLocalView:nil];
     [zegoAVApi stopPreview];
+}
+
+- (void)startLive {
+    HXLiveModel *model = [HXLiveModel new];
+    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypePublish];
 }
 
 @end

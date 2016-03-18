@@ -91,8 +91,7 @@ ZegoVideoDelegate
         [zegoAVConfig setVideoResolution:(int)resolution];
         [zegoAVConfig setVideoFPS:(int)fps];
         [zegoAVConfig setVideoBitrate:(int)bitrate];
-    }
-    else{
+    } else {
         zegoAVConfig = [ZegoAVConfig defaultZegoAVConfig:session.configPreset];
     }
     [zegoAVApi setAVConfig:zegoAVConfig];
@@ -126,9 +125,12 @@ ZegoVideoDelegate
         return;
     }
     
-//    ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
-//    [zegoApi setLocalView:_liveView];
-//    [zegoApi startPreview];
+    if (_type == HXLiveTypePublish) {
+        ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
+        [zegoApi setLocalView:_liveView];
+        [zegoApi startPreview];
+        [zegoApi startPublishInChatRoom:_model.userName];
+    }
     NSLog(@"直播中!");
 }
 

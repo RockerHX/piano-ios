@@ -99,7 +99,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_onlineList[indexPath.row]];
-    [(HXMainViewController *)self.tabBarController showLiveWithModel:model];
+    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypeLive];
 }
 
 @end

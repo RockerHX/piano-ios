@@ -31,6 +31,7 @@
 @property(nonatomic, assign) NSInteger  roomToken;
 @property(nonatomic, assign) NSInteger  streamID;
 
+- (instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName;
 - (instancetype)initWithOnlineModel:(HXOnlineModel *)model;
 
 @end
