@@ -12,6 +12,8 @@
 
 @interface HXLiveViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *liveView;
+
 @property(nonatomic, strong) HXLiveModel *model;
 
 - (IBAction)exitButtonPressed;

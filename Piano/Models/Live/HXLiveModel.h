@@ -16,8 +16,6 @@
 
 @property(nonatomic, strong) NSString *roomType;
 @property(nonatomic, strong) NSString *roomTitle;
-@property(nonatomic, strong) NSString *roomNumber;
-@property(nonatomic, strong) NSString *roomToken;
 @property(nonatomic, strong) NSString *createTime;
 @property(nonatomic, strong) NSString *endTime;
 @property(nonatomic, strong) NSString *userName;
@@ -28,6 +26,10 @@
 @property(nonatomic, strong) NSString *publisherPic;
 @property(nonatomic, strong) NSString *replayPath;
 @property(nonatomic, strong) NSString *coverPath;
+
+@property(nonatomic, assign) NSInteger  roomNumber;
+@property(nonatomic, assign) NSInteger  roomToken;
+@property(nonatomic, assign) NSInteger  streamID;
 
 - (instancetype)initWithOnlineModel:(HXOnlineModel *)model;
 

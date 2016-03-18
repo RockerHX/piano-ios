@@ -54,21 +54,11 @@ ZegoVideoDelegate
 - (void)loadConfigure {
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     
-//    NSString *path = _replayPath;
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    parameters[ZegoMovieParameterScalingMode] = @(ZegoMovieScalingModeAspectFill);
-//    _moviePlayer = [ZegoMoviePlayer movieControllerWithContentPath:path
-//                                                       presentView:self.view
-//                                                          autoplay:YES
-//                                                        parameters:parameters];
-//    
-//    [_moviePlayer setDelegate:self callBackQueue:dispatch_get_main_queue()];
-    
-//    [zegoAVApi setRemoteView:RemoteViewIndex_First view:firstRemoteView];
+    [zegoAVApi setRemoteView:RemoteViewIndex_First view:_liveView];
 //    [zegoAVApi setRemoteView:RemoteViewIndex_Second view:secondRemoteView];
     
 //    [zegoAVApi setLocalViewMode:ZegoVideoViewModeScaleAspectFit];
-//    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleAspectFit];
+    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleAspectFit];
 //    [zegoAVApi setRemoteViewMode:RemoteViewIndex_Second mode:ZegoVideoViewModeScaleAspectFit];
     
     //设置回调代理
@@ -77,11 +67,11 @@ ZegoVideoDelegate
     
     //进入聊天室
     ZegoUser * user = [ZegoUser new];
-    user.userID = _userID;
-    user.userName = _userName;
+    user.userID = _model.userID;
+    user.userName = _model.userName;
     
-    UInt32 roomToken = [_roomToken intValue];
-    UInt32 roomNum = [_roomNumber intValue];
+    UInt32 roomToken = (UInt32)_model.roomToken;
+    UInt32 roomNum = (UInt32)_model.roomNumber;
     
     [zegoAVApi getInChatRoom:user zegoToken:roomToken zegoId:roomNum];
     
@@ -106,13 +96,6 @@ ZegoVideoDelegate
         zegoAVConfig = [ZegoAVConfig defaultZegoAVConfig:session.configPreset];
     }
     [zegoAVApi setAVConfig:zegoAVConfig];
-    
-//    if ([_roomType isEqualToString:LIVEROOM_TYPE_PUBLISH]) {
-//        
-//        _publisherID = _userID;
-//        _publisherName = _userName;
-//        _publisherPic = _userPic;
-//    }
 }
 
 - (void)viewConfigure {
@@ -130,18 +113,7 @@ ZegoVideoDelegate
 }
 
 - (void)leaveRoom {
-//    if ([_roomType isEqualToString:LIVEROOM_TYPE_PLAYBACK]) {
-//        
-//        [_moviePlayer pause];
-//        [_moviePlayer setDelegate:nil callBackQueue:nil];
-//        _moviePlayer = nil;
-//        
-//    } else {
-//        
-//        [getZegoAV_ShareInstance() leaveChatRoom];
-//        releaseZegoAV_ShareInstance();
-//        _playing = NO;
-//    }
+    [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -154,13 +126,9 @@ ZegoVideoDelegate
         return;
     }
     
-    ZegoUser * user = [ZegoUser new];
-    user.userID = _userID;
-    user.userName = _userName;
-    
-    ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
-    [zegoApi setLocalView:self.view];
-    [zegoApi startPreview];
+//    ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
+//    [zegoApi setLocalView:_liveView];
+//    [zegoApi startPreview];
     NSLog(@"直播中!");
 }
 
@@ -174,6 +142,8 @@ ZegoVideoDelegate
 }
 
 - (void)onPlayListUpdate:(PlayListUpdateFlag)flag playList:(NSArray*)list {
+    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
+    
     if (flag == PlayListUpdateFlag_Error || list.count <= 0) {
         NSLog(@"直播出错");
         NSLog(@"无法拉取到直播信息！请退出重进！");
@@ -182,7 +152,7 @@ ZegoVideoDelegate
     
     if (flag == PlayListUpdateFlag_Remove) {
         NSDictionary * dictStream = list[0];
-        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_userID]) {
+        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_model.userID]) {
             return;     //是自己停止直播的消息，应该在停止时处理过相关逻辑，这里不再处理
         }
     } else {
@@ -192,9 +162,13 @@ ZegoVideoDelegate
         
         for (NSUInteger i = 0; i < list.count; i++) {
             NSDictionary *dictStream = list[i];
-            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:self.userID]) {
+            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_model.userID]) {
                 continue;     //是自己发布直播的消息，应该在发布时处理过相关逻辑，这里不再处理
             }
+            
+            //有新流加入，找到一个空闲的view来播放，如果已经有两路播放，则停止比较老的流，播放新流
+            NSInteger newStreamID = [[dictStream objectForKey:STREAM_ID] longLongValue];
+            [zegoAVApi startPlayInChatRoom:RemoteViewIndex_First streamID:newStreamID];
         }
     }
 }
@@ -242,7 +216,7 @@ ZegoVideoDelegate
 }
 
 - (void)onTakeRemoteViewSnapshot:(CGImageRef)img {
-    
+    ;
 }
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {

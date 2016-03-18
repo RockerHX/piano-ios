@@ -19,7 +19,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQZ-Xf-9bT">
                                 <rect key="frame" x="20" y="28" width="46" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="CCV-75-xhr"/>
                                     <constraint firstAttribute="height" constant="30" id="lCZ-MP-uIf"/>
@@ -31,13 +31,24 @@
                                     <action selector="exitButtonPressed" destination="WOu-0g-ttu" eventType="touchUpInside" id="Pcg-aj-dwn"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YT-2O-86i">
+                                <rect key="frame" x="20" y="78" width="280" height="470"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.79698275862068968" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Kkv-aV-51j" firstAttribute="top" secondItem="6YT-2O-86i" secondAttribute="bottom" constant="20" id="7qU-jA-NWh"/>
+                            <constraint firstAttribute="trailing" secondItem="6YT-2O-86i" secondAttribute="trailing" constant="20" id="EG1-bW-UBw"/>
                             <constraint firstItem="kQZ-Xf-9bT" firstAttribute="top" secondItem="TxK-G6-lcL" secondAttribute="bottom" constant="8" id="Q1f-fA-aTf"/>
+                            <constraint firstItem="6YT-2O-86i" firstAttribute="top" secondItem="kQZ-Xf-9bT" secondAttribute="bottom" constant="20" id="g2S-Pf-Nx2"/>
                             <constraint firstItem="kQZ-Xf-9bT" firstAttribute="leading" secondItem="mIU-5a-eKh" secondAttribute="leading" constant="20" id="jkz-5b-G4E"/>
+                            <constraint firstItem="6YT-2O-86i" firstAttribute="leading" secondItem="mIU-5a-eKh" secondAttribute="leading" constant="20" id="ujO-lq-6Fe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="liveView" destination="6YT-2O-86i" id="kRM-Vn-jeq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhP-Fd-w2F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

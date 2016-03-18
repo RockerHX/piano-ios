@@ -13,13 +13,14 @@
 
 @property (nonatomic, strong)  NSString *ID;
 @property (nonatomic, strong)  NSString *uID;
-@property (nonatomic, strong)  NSString *streamID;
-@property (nonatomic, strong)  NSString *zegoID;
-@property (nonatomic, strong)  NSString *zegoToken;
 @property (nonatomic, strong)  NSString *title;
 @property (nonatomic, strong)  NSString *nickName;
 @property (nonatomic, strong)  NSString *hlsUrl;
 @property (nonatomic, strong)  NSString *rtmpUrl;
+
+@property (nonatomic, assign) NSInteger  zegoID;
+@property (nonatomic, assign) NSInteger  zegoToken;
+@property (nonatomic, assign) NSInteger  streamID;
 
 @property (nonatomic, assign) NSInteger  status;
 @property (nonatomic, assign) NSInteger  onlineCount;
