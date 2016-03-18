@@ -45,10 +45,13 @@
     ZegoAVConfig *zegoAVConfig = [ZegoAVConfig defaultZegoAVConfig:ZegoAVConfigPreset_Generic];
     
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-    SetConfigReturnType config = [zegoAVApi setAVConfig:zegoAVConfig];
-    bool localView = [zegoAVApi setLocalView:self.view];
+//    SetConfigReturnType config = [zegoAVApi setAVConfig:zegoAVConfig];
+//    bool localView = [zegoAVApi setLocalView:self.view];
+//    bool startPreview = [zegoAVApi startPreview];
     
-    bool startPreview = [zegoAVApi startPreview];
+    [zegoAVApi setAVConfig:zegoAVConfig];
+    [zegoAVApi setLocalView:self.view];
+    [zegoAVApi startPreview];
 }
 
 - (void)stopPreview {
