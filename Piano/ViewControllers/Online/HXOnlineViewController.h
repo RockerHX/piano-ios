@@ -8,6 +8,9 @@
 
 #import "UIViewController+HXClass.h"
 
+
 @interface HXOnlineViewController : UITableViewController
+
+- (void)startFetchOnlineList;
 
 @end

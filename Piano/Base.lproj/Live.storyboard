@@ -8,7 +8,7 @@
         <!--HXLiveViewController-->
         <scene sceneID="ge0-fx-9BD">
             <objects>
-                <viewController storyboardIdentifier="HXLiveViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WOu-0g-ttu" userLabel="HXLiveViewController" customClass="HXLiveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXLiveViewController" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WOu-0g-ttu" userLabel="HXLiveViewController" customClass="HXLiveViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TxK-G6-lcL"/>
                         <viewControllerLayoutGuide type="bottom" id="Kkv-aV-51j"/>
@@ -27,6 +27,9 @@
                                 <state key="normal" title="退出">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="exitButtonPressed" destination="WOu-0g-ttu" eventType="touchUpInside" id="Pcg-aj-dwn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.79698275862068968" colorSpace="calibratedWhite"/>

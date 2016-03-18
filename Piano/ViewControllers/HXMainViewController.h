@@ -6,8 +6,11 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HXLiveViewController.h"
+
 
 @interface HXMainViewController : UITabBarController
+
+- (void)showLiveWithModel:(HXLiveModel *)model;
 
 @end

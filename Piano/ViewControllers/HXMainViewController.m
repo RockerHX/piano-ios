@@ -11,6 +11,9 @@
 #import "HXReplayViewController.h"
 #import "HXPublishViewController.h"
 #import "HXSettingViewController.h"
+#import "MiaAPIHelper.h"
+#import "WebSocketMgr.h"
+
 
 @interface HXMainViewController ()
 
@@ -26,9 +29,23 @@
     [self viewConfigure];
 }
 
+- (void)dealloc {
+    // Socket
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:WebSocketMgrNotificationDidOpen object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:WebSocketMgrNotificationDidFailWithError object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:WebSocketMgrNotificationDidAutoReconnectFailed object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:WebSocketMgrNotificationDidCloseWithCode object:nil];
+}
+
 #pragma mark - Config Methods
 - (void)loadConfigure {
-    ;
+    [[WebSocketMgr standard] watchNetworkStatus];
+    
+    // Socket
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidOpen:) name:WebSocketMgrNotificationDidOpen object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidFailWithError:) name:WebSocketMgrNotificationDidFailWithError object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidAutoReconnectFailed:) name:WebSocketMgrNotificationDidAutoReconnectFailed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidCloseWithCode:) name:WebSocketMgrNotificationDidCloseWithCode object:nil];
 }
 
 - (void)viewConfigure {
@@ -47,6 +64,34 @@
             [navigationController setViewControllers:@[[HXSettingViewController instance]]];
         }
     }
+}
+
+#pragma mark - Public Methods
+- (void)showLiveWithModel:(HXLiveModel *)model {
+    if (model) {
+        HXLiveViewController *liveViewController = [HXLiveViewController instance];
+        liveViewController.model = model;
+        [self presentViewController:liveViewController animated:YES completion:nil];
+    }
+}
+
+#pragma mark - Socket
+- (void)notificationWebSocketDidOpen:(NSNotification *)notification {
+    UINavigationController *onlineNavigationController = self.viewControllers.firstObject;
+    HXOnlineViewController *onlineViewController = onlineNavigationController.viewControllers.firstObject;
+    [onlineViewController startFetchOnlineList];
+}
+
+- (void)notificationWebSocketDidFailWithError:(NSNotification *)notification {
+    NSLog(@"notificationWebSocketDidFailWithError");
+}
+
+- (void)notificationWebSocketDidAutoReconnectFailed:(NSNotification *)notification {
+    NSLog(@"notificationWebSocketDidAutoReconnectFailed");
+}
+
+- (void)notificationWebSocketDidCloseWithCode:(NSNotification *)notification {
+    NSLog(@"Connection Closed! (see logs)");
 }
 
 @end

@@ -7,17 +7,21 @@
 //
 
 #import "HXOnlineCell.h"
+#import "UIImageView+WebCache.h"
+
 
 @implementation HXOnlineCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+#pragma mark - Public Methods
+- (void)displayCellWithModel:(HXOnlineModel *)model {
+//    [_publisherAvatar sd_setImageWithURL:[NSURL URLWithString:model.]];
+//    [_previewCover sd_setImageWithURL:[NSURL URLWithString:model.]];
+    
+    _publisherNameLabel.text = model.nickName;
+//    _publishInfoLabel.text = model.;
+    _titleLabel.text = model.title;
+    _favoriteCountLabel.text = @(model.viewCount).stringValue;
+    _attendeCountLabel.text = @(model.onlineCount).stringValue;
 }
 
 @end

@@ -51,6 +51,8 @@
 		CD7500851C9BA6000067BC55 /* HXOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500841C9BA6000067BC55 /* HXOnlineCell.m */; };
 		CD7500881C9BA6680067BC55 /* HXLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500871C9BA6680067BC55 /* HXLiveViewController.m */; };
 		CD75008F1C9BAF5B0067BC55 /* Online.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD75008D1C9BAF5B0067BC55 /* Online.storyboard */; };
+		CD7500931C9BF2CC0067BC55 /* HXOnlineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500921C9BF2CC0067BC55 /* HXOnlineModel.m */; };
+		CD7500971C9BF65D0067BC55 /* HXLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500961C9BF65D0067BC55 /* HXLiveModel.m */; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
@@ -154,6 +156,10 @@
 		CD7500861C9BA6680067BC55 /* HXLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveViewController.h; sourceTree = "<group>"; };
 		CD7500871C9BA6680067BC55 /* HXLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveViewController.m; sourceTree = "<group>"; };
 		CD75008E1C9BAF5B0067BC55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Online.storyboard; sourceTree = "<group>"; };
+		CD7500911C9BF2CC0067BC55 /* HXOnlineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineModel.h; sourceTree = "<group>"; };
+		CD7500921C9BF2CC0067BC55 /* HXOnlineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineModel.m; sourceTree = "<group>"; };
+		CD7500951C9BF65D0067BC55 /* HXLiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveModel.h; sourceTree = "<group>"; };
+		CD7500961C9BF65D0067BC55 /* HXLiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveModel.m; sourceTree = "<group>"; };
 		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -328,6 +334,8 @@
 		CD7408A01C9950C500950A50 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CD7500901C9BF2B60067BC55 /* Online */,
+				CD7500941C9BF6510067BC55 /* Live */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -603,6 +611,24 @@
 			path = Online;
 			sourceTree = "<group>";
 		};
+		CD7500901C9BF2B60067BC55 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				CD7500911C9BF2CC0067BC55 /* HXOnlineModel.h */,
+				CD7500921C9BF2CC0067BC55 /* HXOnlineModel.m */,
+			);
+			path = Online;
+			sourceTree = "<group>";
+		};
+		CD7500941C9BF6510067BC55 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				CD7500951C9BF65D0067BC55 /* HXLiveModel.h */,
+				CD7500961C9BF65D0067BC55 /* HXLiveModel.m */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
 		CD8A9A631C9906CA00698DE9 = {
 			isa = PBXGroup;
 			children = (
@@ -806,8 +832,10 @@
 				CD7408F91C99652E00950A50 /* UIViewController+HXClass.m in Sources */,
 				CD7409051C99652E00950A50 /* HXVersion.m in Sources */,
 				CD7408C61C99612500950A50 /* HXPublishViewController.m in Sources */,
+				CD7500971C9BF65D0067BC55 /* HXLiveModel.m in Sources */,
 				CD7500811C9BA5C60067BC55 /* HXOnlineViewController.m in Sources */,
 				CD7409031C99652E00950A50 /* HXStoryBoardManager.m in Sources */,
+				CD7500931C9BF2CC0067BC55 /* HXOnlineModel.m in Sources */,
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
 				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
 				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,

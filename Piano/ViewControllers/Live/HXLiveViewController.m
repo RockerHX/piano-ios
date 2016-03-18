@@ -11,11 +11,13 @@
 #import <ZegoAVKit/ZegoMoviePlayer.h>
 #import "HXSettingSession.h"
 
+
 @interface HXLiveViewController () <
 ZegoChatDelegate,
 ZegoVideoDelegate
 >
 @end
+
 
 @implementation HXLiveViewController
 
