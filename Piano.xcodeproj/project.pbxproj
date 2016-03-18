@@ -795,7 +795,6 @@
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
 				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
 				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,
-				CD8A9A771C9906CA00698DE9 /* ViewController.m in Sources */,
 				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
