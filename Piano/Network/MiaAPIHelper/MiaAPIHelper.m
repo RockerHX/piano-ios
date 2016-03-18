@@ -57,5 +57,14 @@ NSString *const UnknowErrorPrompt       = @"未知错误，请联系Mia客服";
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)getRoomListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+				   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Room_GetList
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
 
 @end

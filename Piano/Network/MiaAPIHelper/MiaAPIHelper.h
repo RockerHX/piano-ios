@@ -22,5 +22,7 @@ FOUNDATION_EXPORT NSString *const UnknowErrorPrompt;        // 未知错误提�
 + (void)sendUUIDWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 					 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)getRoomListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 @end

@@ -141,7 +141,7 @@ const static NSTimeInterval kAutoReconnectTimeout_Loop				= 30.0;
 #ifdef DEBUG
 	static NSString * const kMIAAPIUrl = @"wss://ws-piano-test.miamusic.com:443";
 #else
-	static NSString * const kMIAAPIUrl = @"ws://ws.miamusic.com:80";
+	static NSString * const kMIAAPIUrl = @"wss://ws-piano-test.miamusic.com:443";
 #endif
 
 	_webSocket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:kMIAAPIUrl]]];
