@@ -79,6 +79,21 @@ MJCodingImplementation
     [self archive];
 }
 
+- (void)updateCustomResolution:(NSInteger)resolution {
+    _customResolution = resolution;
+    [self archive];
+}
+
+- (void)updateCustomFPS:(NSInteger)fps {
+    _customFPS = fps;
+    [self archive];
+}
+
+- (void)updateCustomBitrate:(NSInteger)bitrate {
+    _customBitrate = bitrate;
+    [self archive];
+}
+
 - (void)updateCustomParametersWithResolution:(NSInteger)resolution fps:(NSInteger)fps bitrate:(NSInteger)bitrate {
     _customResolution = resolution;
     _customFPS = fps;

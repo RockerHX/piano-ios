@@ -23,4 +23,8 @@
 @property (weak, nonatomic) IBOutlet UISlider *fpsSlider;
 @property (weak, nonatomic) IBOutlet UISlider *bitrateSlider;
 
+- (IBAction)resolutionSliderChanged:(UISlider *)sender;
+- (IBAction)fpsSliderChanged:(UISlider *)sender;
+- (IBAction)bitrateSliderChanged:(UISlider *)sender;
+
 @end

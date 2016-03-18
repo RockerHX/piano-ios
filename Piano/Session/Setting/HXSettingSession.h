@@ -22,10 +22,15 @@
 + (instancetype)share;
 
 - (void)updateConfigPreset:(ZegoAVConfigPreset)preset;
+
 - (void)updateResolution:(ZegoAVConfigVideoResolution)resolution;
 - (void)updateFPS:(ZegoAVConfigVideoFps)fps;
 - (void)updateBitrate:(ZegoAVConfigVideoBitrate)bitrate;
 - (void)updateParametersWithResolution:(ZegoAVConfigVideoResolution)resolution fps:(ZegoAVConfigVideoFps)fps bitrate:(ZegoAVConfigVideoBitrate)bitrate;
+
+- (void)updateCustomResolution:(NSInteger)resolution;
+- (void)updateCustomFPS:(NSInteger)fps;
+- (void)updateCustomBitrate:(NSInteger)bitrate;
 - (void)updateCustomParametersWithResolution:(NSInteger)resolution fps:(NSInteger)fps bitrate:(NSInteger)bitrate;
 
 - (BOOL)isCustomConfigure;

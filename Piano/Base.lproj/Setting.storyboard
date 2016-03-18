@@ -111,6 +111,9 @@
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="bcx-4N-5Ma">
                                         <rect key="frame" x="6" y="82" width="308" height="31"/>
+                                        <connections>
+                                            <action selector="fpsSliderChanged:" destination="Oub-kD-VFG" eventType="valueChanged" id="FgV-ox-RHD"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帧率" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akJ-l1-EeX">
                                         <rect key="frame" x="8" y="64" width="30" height="18"/>
@@ -138,6 +141,9 @@
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="C8h-sX-NMG">
                                         <rect key="frame" x="6" y="26" width="308" height="31"/>
+                                        <connections>
+                                            <action selector="resolutionSliderChanged:" destination="Oub-kD-VFG" eventType="valueChanged" id="6hG-80-Fpm"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs2-lI-Jgo">
                                         <rect key="frame" x="73" y="64" width="16" height="18"/>
@@ -153,6 +159,9 @@
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="614400" minValue="0.0" maxValue="2048000" translatesAutoresizingMaskIntoConstraints="NO" id="ymZ-KF-zKD">
                                         <rect key="frame" x="6" y="138" width="308" height="31"/>
+                                        <connections>
+                                            <action selector="bitrateSliderChanged:" destination="Oub-kD-VFG" eventType="valueChanged" id="QST-66-uPU"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -72,7 +72,37 @@ UIPickerViewDelegate
         //自定义参数时，列表项为最后一项
         rowSelected = _qualities.count - 1;
     }
-    [_liveQualityPicker selectRow:rowSelected inComponent:0 animated:YES];
+    [self pickerViewSelectRowWithRow:rowSelected];
+}
+
+#pragma mark - Event Response
+- (IBAction)resolutionSliderChanged:(UISlider *)sender {
+    ZegoAVConfig *zegoAVConfig= [ZegoAVConfig defaultZegoAVConfig:ZegoAVConfigPreset_Verylow];
+    [zegoAVConfig setVideoResolution:(int)sender.value];
+    
+    CGSize szResolution = [zegoAVConfig getVideoResolution];
+    
+    _resolutionLabel.text = [NSString stringWithFormat:@"%@ x %@", @(szResolution.width), @(szResolution.height)];
+    
+    [self pickerViewSelectRowWithRow:(_qualities.count - 1)];
+    
+    [[HXSettingSession share] updateCustomResolution:@(sender.value).integerValue];
+}
+
+- (IBAction)fpsSliderChanged:(UISlider *)sender {
+    _fpsLabel.text = [NSString stringWithFormat:@"%@", @(sender.value).stringValue];
+    
+    [self pickerViewSelectRowWithRow:(_qualities.count - 1)];
+    
+    [[HXSettingSession share] updateCustomFPS:@(sender.value).integerValue];
+}
+
+- (IBAction)bitrateSliderChanged:(UISlider *)sender {
+    _bitrateLabel.text = [NSString stringWithFormat:@"%@", @(sender.value).stringValue];
+    
+    [self pickerViewSelectRowWithRow:(_qualities.count - 1)];
+    
+    [[HXSettingSession share] updateCustomBitrate:@(sender.value).integerValue];
 }
 
 #pragma mark - Private Methods
@@ -80,9 +110,9 @@ UIPickerViewDelegate
     NSInteger resolution, fps, bitrate;
     CGSize resolutionSize;
     
-    if ([[HXSettingSession share] isCustomConfigure]) {
+    HXSettingSession *session = [HXSettingSession share];
+    if ([session isCustomConfigure]) {
         //自定义各种参数
-        HXSettingSession *session = [HXSettingSession share];
         resolution = session.customResolution;
         fps = session.customFPS;
         bitrate = session.customBitrate;
@@ -141,6 +171,10 @@ UIPickerViewDelegate
     [session updateParametersWithResolution:(ZegoAVConfigVideoResolution)resolution fps:(ZegoAVConfigVideoFps)fps bitrate:(ZegoAVConfigVideoBitrate)bitrate];
 }
 
+- (void)pickerViewSelectRowWithRow:(NSInteger)row {
+    [_liveQualityPicker selectRow:row inComponent:0 animated:YES];
+}
+
 #pragma mark - UIPickerViewDataSource Methods
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
@@ -160,12 +194,12 @@ UIPickerViewDelegate
     ZegoAVConfigPreset configPreset = (ZegoAVConfigPreset)row;
     if (row < (_qualities.count - 1)) {
         [session updateConfigPreset:configPreset];
-        [self updateLiveQualityDetails:configPreset];
     } else {
         //自定义
         configPreset = -1;
         [session updateConfigPreset:configPreset];
     }
+    [self updateLiveQualityDetails:configPreset];
 }
 
 @end
