@@ -1,14 +1,14 @@
 //
-//  HXLiveCell.m
+//  HXOnlineCell.m
 //  Piano
 //
 //  Created by miaios on 16/3/16.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveCell.h"
+#import "HXOnlineCell.h"
 
-@implementation HXLiveCell
+@implementation HXOnlineCell
 
 - (void)awakeFromNib {
     // Initialization code

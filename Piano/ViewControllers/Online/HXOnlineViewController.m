@@ -1,18 +1,18 @@
 //
-//  HXLiveViewController.m
+//  HXOnlineViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/16.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveViewController.h"
+#import "HXOnlineViewController.h"
 
-@interface HXLiveViewController ()
+@interface HXOnlineViewController ()
 
 @end
 
-@implementation HXLiveViewController
+@implementation HXOnlineViewController
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {

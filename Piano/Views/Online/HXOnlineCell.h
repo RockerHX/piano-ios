@@ -1,5 +1,5 @@
 //
-//  HXLiveCell.h
+//  HXOnlineCell.h
 //  Piano
 //
 //  Created by miaios on 16/3/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HXLiveCell : UITableViewCell
+@interface HXOnlineCell : UITableViewCell
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "HXMainViewController.h"
-#import "HXLiveViewController.h"
+#import "HXOnlineViewController.h"
 #import "HXReplayViewController.h"
 #import "HXPublishViewController.h"
 #import "HXSettingViewController.h"
@@ -37,8 +37,8 @@
 
 - (void)subControllersConfigure {
     for (UINavigationController *navigationController in self.viewControllers) {
-        if ([navigationController.restorationIdentifier isEqualToString:[HXLiveViewController navigationControllerIdentifier]]) {
-            [navigationController setViewControllers:@[[HXLiveViewController instance]]];
+        if ([navigationController.restorationIdentifier isEqualToString:[HXOnlineViewController navigationControllerIdentifier]]) {
+            [navigationController setViewControllers:@[[HXOnlineViewController instance]]];
         } else if ([navigationController.restorationIdentifier isEqualToString:[HXReplayViewController navigationControllerIdentifier]]) {
             [navigationController setViewControllers:@[[HXReplayViewController instance]]];
         } else if ([navigationController.restorationIdentifier isEqualToString:[HXPublishViewController navigationControllerIdentifier]]) {

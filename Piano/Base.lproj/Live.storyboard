@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--HXLiveViewController-->
+        <!--HXOnlineViewController-->
         <scene sceneID="DIc-RY-xT4">
             <objects>
-                <tableViewController storyboardIdentifier="HXLiveViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="liV-kk-lYn" userLabel="HXLiveViewController" customClass="HXLiveViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HXOnlineViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="liV-kk-lYn" userLabel="HXOnlineViewController" customClass="HXOnlineViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pyD-9n-izh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HXLiveCell" id="ul9-Ti-g9X" userLabel="HXLiveCell" customClass="HXLiveCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HXOnlineCell" id="ul9-Ti-g9X" userLabel="HXOnlineCell" customClass="HXOnlineCell">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ul9-Ti-g9X" id="Lz4-Pb-iB1">

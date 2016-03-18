@@ -1,5 +1,5 @@
 //
-//  HXLiveViewController.h
+//  HXOnlineViewController.h
 //  Piano
 //
 //  Created by miaios on 16/3/16.
@@ -8,6 +8,6 @@
 
 #import "UIViewController+HXClass.h"
 
-@interface HXLiveViewController : UITableViewController
+@interface HXOnlineViewController : UITableViewController
 
 @end
