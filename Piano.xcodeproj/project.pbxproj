@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66F81C9AB0E800ED0454 /* MiaAPIHelper.m */; };
+		395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FC1C9AB0E800ED0454 /* MiaRequestItem.m */; };
+		395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FE1C9AB0E800ED0454 /* WebSocketMgr.m */; };
+		395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67061C9AB15000ED0454 /* NSTimer+BlockSupport.m */; };
+		395D670B1C9AB16B00ED0454 /* FileLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D670A1C9AB16B00ED0454 /* FileLog.m */; };
+		395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D670E1C9AB19D00ED0454 /* PathHelper.m */; };
+		395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67121C9AB1B700ED0454 /* NSString+IsNull.m */; };
+		395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67161C9AB1C500ED0454 /* NSString+MD5.m */; };
+		395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
 		75246FDD53A733266B7179D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FB3A1969D15BC5CFAA3B9E /* libPods.a */; };
 		CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; };
 		CD74089B1C9946D800950A50 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -62,6 +71,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		395D66F71C9AB0E800ED0454 /* MiaAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiaAPIHelper.h; sourceTree = "<group>"; };
+		395D66F81C9AB0E800ED0454 /* MiaAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiaAPIHelper.m; sourceTree = "<group>"; };
+		395D66F91C9AB0E800ED0454 /* MiaAPIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiaAPIMacro.h; sourceTree = "<group>"; };
+		395D66FB1C9AB0E800ED0454 /* MiaRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiaRequestItem.h; sourceTree = "<group>"; };
+		395D66FC1C9AB0E800ED0454 /* MiaRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiaRequestItem.m; sourceTree = "<group>"; };
+		395D66FD1C9AB0E800ED0454 /* WebSocketMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketMgr.h; sourceTree = "<group>"; };
+		395D66FE1C9AB0E800ED0454 /* WebSocketMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketMgr.m; sourceTree = "<group>"; };
+		395D67051C9AB15000ED0454 /* NSTimer+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+BlockSupport.h"; sourceTree = "<group>"; };
+		395D67061C9AB15000ED0454 /* NSTimer+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+BlockSupport.m"; sourceTree = "<group>"; };
+		395D67091C9AB16B00ED0454 /* FileLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileLog.h; sourceTree = "<group>"; };
+		395D670A1C9AB16B00ED0454 /* FileLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileLog.m; sourceTree = "<group>"; };
+		395D670D1C9AB19D00ED0454 /* PathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathHelper.h; sourceTree = "<group>"; };
+		395D670E1C9AB19D00ED0454 /* PathHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathHelper.m; sourceTree = "<group>"; };
+		395D67111C9AB1B700ED0454 /* NSString+IsNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IsNull.h"; sourceTree = "<group>"; };
+		395D67121C9AB1B700ED0454 /* NSString+IsNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IsNull.m"; sourceTree = "<group>"; };
+		395D67151C9AB1C500ED0454 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		395D67161C9AB1C500ED0454 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		395D67191C9AB1D700ED0454 /* UserDefaultsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtils.h; sourceTree = "<group>"; };
+		395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtils.m; sourceTree = "<group>"; };
 		4704094A70120BB39E18C473 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C7FB3A1969D15BC5CFAA3B9E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
@@ -145,6 +173,111 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		395D66F51C9AB0E800ED0454 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				395D66F61C9AB0E800ED0454 /* MiaAPIHelper */,
+				395D66FA1C9AB0E800ED0454 /* WebSocketMgr */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		395D66F61C9AB0E800ED0454 /* MiaAPIHelper */ = {
+			isa = PBXGroup;
+			children = (
+				395D66F71C9AB0E800ED0454 /* MiaAPIHelper.h */,
+				395D66F81C9AB0E800ED0454 /* MiaAPIHelper.m */,
+				395D66F91C9AB0E800ED0454 /* MiaAPIMacro.h */,
+			);
+			path = MiaAPIHelper;
+			sourceTree = "<group>";
+		};
+		395D66FA1C9AB0E800ED0454 /* WebSocketMgr */ = {
+			isa = PBXGroup;
+			children = (
+				395D66FB1C9AB0E800ED0454 /* MiaRequestItem.h */,
+				395D66FC1C9AB0E800ED0454 /* MiaRequestItem.m */,
+				395D66FD1C9AB0E800ED0454 /* WebSocketMgr.h */,
+				395D66FE1C9AB0E800ED0454 /* WebSocketMgr.m */,
+			);
+			path = WebSocketMgr;
+			sourceTree = "<group>";
+		};
+		395D67021C9AB15000ED0454 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				395D67181C9AB1D700ED0454 /* UserDefaultsUtils */,
+				395D670C1C9AB19D00ED0454 /* PathHelper */,
+				395D67081C9AB16B00ED0454 /* FileLog */,
+				395D67031C9AB15000ED0454 /* Categories */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		395D67031C9AB15000ED0454 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				395D67141C9AB1C500ED0454 /* NSString+MD5 */,
+				395D67101C9AB1B700ED0454 /* NSString+IsNull */,
+				395D67041C9AB15000ED0454 /* NSTimer+BlockSupport */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		395D67041C9AB15000ED0454 /* NSTimer+BlockSupport */ = {
+			isa = PBXGroup;
+			children = (
+				395D67051C9AB15000ED0454 /* NSTimer+BlockSupport.h */,
+				395D67061C9AB15000ED0454 /* NSTimer+BlockSupport.m */,
+			);
+			path = "NSTimer+BlockSupport";
+			sourceTree = "<group>";
+		};
+		395D67081C9AB16B00ED0454 /* FileLog */ = {
+			isa = PBXGroup;
+			children = (
+				395D67091C9AB16B00ED0454 /* FileLog.h */,
+				395D670A1C9AB16B00ED0454 /* FileLog.m */,
+			);
+			path = FileLog;
+			sourceTree = "<group>";
+		};
+		395D670C1C9AB19D00ED0454 /* PathHelper */ = {
+			isa = PBXGroup;
+			children = (
+				395D670D1C9AB19D00ED0454 /* PathHelper.h */,
+				395D670E1C9AB19D00ED0454 /* PathHelper.m */,
+			);
+			path = PathHelper;
+			sourceTree = "<group>";
+		};
+		395D67101C9AB1B700ED0454 /* NSString+IsNull */ = {
+			isa = PBXGroup;
+			children = (
+				395D67111C9AB1B700ED0454 /* NSString+IsNull.h */,
+				395D67121C9AB1B700ED0454 /* NSString+IsNull.m */,
+			);
+			path = "NSString+IsNull";
+			sourceTree = "<group>";
+		};
+		395D67141C9AB1C500ED0454 /* NSString+MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				395D67151C9AB1C500ED0454 /* NSString+MD5.h */,
+				395D67161C9AB1C500ED0454 /* NSString+MD5.m */,
+			);
+			path = "NSString+MD5";
+			sourceTree = "<group>";
+		};
+		395D67181C9AB1D700ED0454 /* UserDefaultsUtils */ = {
+			isa = PBXGroup;
+			children = (
+				395D67191C9AB1D700ED0454 /* UserDefaultsUtils.h */,
+				395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */,
+			);
+			path = UserDefaultsUtils;
+			sourceTree = "<group>";
+		};
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +609,8 @@
 			isa = PBXGroup;
 			children = (
 				CD7408CA1C99652E00950A50 /* Common */,
+				395D67021C9AB15000ED0454 /* Utils */,
+				395D66F51C9AB0E800ED0454 /* Network */,
 				CD74089D1C99506000950A50 /* Session */,
 				CD7408A01C9950C500950A50 /* Models */,
 				CD7408A31C9950C500950A50 /* Views */,
@@ -657,7 +792,17 @@
 				CD7409051C99652E00950A50 /* HXVersion.m in Sources */,
 				CD7408C61C99612500950A50 /* HXPublishViewController.m in Sources */,
 				CD7409031C99652E00950A50 /* HXStoryBoardManager.m in Sources */,
+				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
+				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
+				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,
+				CD8A9A771C9906CA00698DE9 /* ViewController.m in Sources */,
+				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
+				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
+				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
+				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
+				395D670B1C9AB16B00ED0454 /* FileLog.m in Sources */,
+				395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */,
 				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
 				CD7409101C996D5A00950A50 /* HXReplayCell.m in Sources */,
 				CD7408F81C99652E00950A50 /* UIView+Frame.m in Sources */,
