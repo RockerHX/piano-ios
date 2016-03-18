@@ -7,6 +7,7 @@
 //
 
 #import "HXOnlineViewController.h"
+#import "HXOnlineCell.h"
 
 @interface HXOnlineViewController ()
 
@@ -27,21 +28,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadConfigure];
+    [self viewConfigure];
 }
 
-#pragma mark - Table view data source
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    ;
+}
+
+- (void)viewConfigure {
+    ;
+}
+
+#pragma mark - Table View Data Source Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 0;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    HXOnlineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineCell class]) forIndexPath:indexPath];
     return cell;
 }
-*/
+
+#pragma mark - Table View Delegate Methods
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
+//    [cell dis];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ;
+}
 
 @end

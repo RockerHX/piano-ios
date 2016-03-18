@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--HXOnlineViewController-->
-        <scene sceneID="DIc-RY-xT4">
+        <!--HXLiveViewController-->
+        <scene sceneID="ge0-fx-9BD">
             <objects>
-                <tableViewController storyboardIdentifier="HXOnlineViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="liV-kk-lYn" userLabel="HXOnlineViewController" customClass="HXOnlineViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pyD-9n-izh">
+                <viewController storyboardIdentifier="HXLiveViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WOu-0g-ttu" userLabel="HXLiveViewController" customClass="HXLiveViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TxK-G6-lcL"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kkv-aV-51j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mIU-5a-eKh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HXOnlineCell" id="ul9-Ti-g9X" userLabel="HXOnlineCell" customClass="HXOnlineCell">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ul9-Ti-g9X" id="Lz4-Pb-iB1">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="liV-kk-lYn" id="N9m-ev-Vgy"/>
-                            <outlet property="delegate" destination="liV-kk-lYn" id="Net-O4-5jm"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ie-EV-iCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQZ-Xf-9bT">
+                                <rect key="frame" x="20" y="28" width="46" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="CCV-75-xhr"/>
+                                    <constraint firstAttribute="height" constant="30" id="lCZ-MP-uIf"/>
+                                </constraints>
+                                <state key="normal" title="退出">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.79698275862068968" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kQZ-Xf-9bT" firstAttribute="top" secondItem="TxK-G6-lcL" secondAttribute="bottom" constant="8" id="Q1f-fA-aTf"/>
+                            <constraint firstItem="kQZ-Xf-9bT" firstAttribute="leading" secondItem="mIU-5a-eKh" secondAttribute="leading" constant="20" id="jkz-5b-G4E"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nhP-Fd-w2F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="109" y="380"/>
+            <point key="canvasLocation" x="80" y="320"/>
         </scene>
     </scenes>
 </document>

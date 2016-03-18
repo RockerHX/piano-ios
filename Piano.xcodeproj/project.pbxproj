@@ -50,6 +50,7 @@
 		CD7500811C9BA5C60067BC55 /* HXOnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500801C9BA5C60067BC55 /* HXOnlineViewController.m */; };
 		CD7500851C9BA6000067BC55 /* HXOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500841C9BA6000067BC55 /* HXOnlineCell.m */; };
 		CD7500881C9BA6680067BC55 /* HXLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7500871C9BA6680067BC55 /* HXLiveViewController.m */; };
+		CD75008F1C9BAF5B0067BC55 /* Online.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD75008D1C9BAF5B0067BC55 /* Online.storyboard */; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
@@ -152,6 +153,7 @@
 		CD7500841C9BA6000067BC55 /* HXOnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineCell.m; sourceTree = "<group>"; };
 		CD7500861C9BA6680067BC55 /* HXLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveViewController.h; sourceTree = "<group>"; };
 		CD7500871C9BA6680067BC55 /* HXLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveViewController.m; sourceTree = "<group>"; };
+		CD75008E1C9BAF5B0067BC55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Online.storyboard; sourceTree = "<group>"; };
 		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -314,10 +316,11 @@
 			isa = PBXGroup;
 			children = (
 				CD8A9A781C9906CA00698DE9 /* Main.storyboard */,
-				CD7408B81C995FE400950A50 /* Live.storyboard */,
+				CD75008D1C9BAF5B0067BC55 /* Online.storyboard */,
 				CD7408BB1C995FEF00950A50 /* Replay.storyboard */,
 				CD7408BE1C995FFB00950A50 /* Publish.storyboard */,
 				CD7408C11C99600600950A50 /* Setting.storyboard */,
+				CD7408B81C995FE400950A50 /* Live.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				CD7408C01C995FFC00950A50 /* Publish.storyboard in Resources */,
 				CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */,
 				CD7408BA1C995FE400950A50 /* Live.storyboard in Resources */,
+				CD75008F1C9BAF5B0067BC55 /* Online.storyboard in Resources */,
 				CD7409011C99652E00950A50 /* HXLoadingView.xib in Resources */,
 				CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */,
 			);
@@ -855,6 +859,14 @@
 				CD7408C21C99600600950A50 /* Base */,
 			);
 			name = Setting.storyboard;
+			sourceTree = "<group>";
+		};
+		CD75008D1C9BAF5B0067BC55 /* Online.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD75008E1C9BAF5B0067BC55 /* Base */,
+			);
+			name = Online.storyboard;
 			sourceTree = "<group>";
 		};
 		CD8A9A781C9906CA00698DE9 /* Main.storyboard */ = {
