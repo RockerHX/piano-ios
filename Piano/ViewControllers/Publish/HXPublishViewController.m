@@ -41,6 +41,10 @@
     }
 }
 
+- (IBAction)frontCameraSwitchChanged:(UISwitch *)sender {
+    [[HXZegoAVKitManager manager].zegoAVApi setFrontCam:sender.on];
+}
+
 - (IBAction)liveSwitchChanged:(UISwitch *)sender {
     if (sender.on) {
         [self stopPreview];

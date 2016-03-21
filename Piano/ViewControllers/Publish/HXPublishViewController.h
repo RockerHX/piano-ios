@@ -11,6 +11,7 @@
 @interface HXPublishViewController : UIViewController
 
 - (IBAction)previewSwitchChanged:(UISwitch *)sender;
+- (IBAction)frontCameraSwitchChanged:(UISwitch *)sender;
 - (IBAction)liveSwitchChanged:(UISwitch *)sender;
 
 @end
