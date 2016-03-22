@@ -8,7 +8,6 @@
 
 #import "HXMainViewController.h"
 #import "HXOnlineViewController.h"
-#import "HXReplayViewController.h"
 #import "HXPublishViewController.h"
 #import "HXSettingViewController.h"
 #import "MiaAPIHelper.h"
@@ -56,8 +55,6 @@
     for (UINavigationController *navigationController in self.viewControllers) {
         if ([navigationController.restorationIdentifier isEqualToString:[HXOnlineViewController navigationControllerIdentifier]]) {
             [navigationController setViewControllers:@[[HXOnlineViewController instance]]];
-        } else if ([navigationController.restorationIdentifier isEqualToString:[HXReplayViewController navigationControllerIdentifier]]) {
-            [navigationController setViewControllers:@[[HXReplayViewController instance]]];
         } else if ([navigationController.restorationIdentifier isEqualToString:[HXPublishViewController navigationControllerIdentifier]]) {
             [navigationController setViewControllers:@[[HXPublishViewController instance]]];
         } else if ([navigationController.restorationIdentifier isEqualToString:[HXSettingViewController navigationControllerIdentifier]]) {

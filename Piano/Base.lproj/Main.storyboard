@@ -16,7 +16,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="Yy6-7Q-Aey" kind="relationship" relationship="viewControllers" id="5id-0v-9Bn"/>
-                        <segue destination="bog-OB-ePC" kind="relationship" relationship="viewControllers" id="EAk-EP-KeU"/>
                         <segue destination="VPc-X6-5AQ" kind="relationship" relationship="viewControllers" id="ewj-eU-KoR"/>
                         <segue destination="txc-rK-VJg" kind="relationship" relationship="viewControllers" id="jvY-qh-zEz"/>
                     </connections>
@@ -24,20 +23,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AY4-M9-jZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-69" y="-61"/>
-        </scene>
-        <!--HXReplayNavigationController-->
-        <scene sceneID="sKL-WK-6gi">
-            <objects>
-                <navigationController storyboardIdentifier="HXReplayNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bog-OB-ePC" userLabel="HXReplayNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="回放" id="r0G-Kq-Yjs"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K99-z6-38I">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mam-8D-naC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-282" y="777"/>
         </scene>
         <!--HXPublishNavigationController-->
         <scene sceneID="HF3-Pp-52M">
@@ -51,7 +36,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4OR-di-Okz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="148" y="777"/>
+            <point key="canvasLocation" x="-69" y="772"/>
         </scene>
         <!--HXSettingNavigationController-->
         <scene sceneID="X9j-Bd-Urt">
@@ -65,7 +50,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lF6-Vz-Hoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="574" y="777"/>
+            <point key="canvasLocation" x="334" y="772"/>
         </scene>
         <!--HXOnlineNavigationController-->
         <scene sceneID="pIV-8O-zAG">
@@ -79,7 +64,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMk-t7-HFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724" y="777"/>
+            <point key="canvasLocation" x="-477" y="772"/>
         </scene>
     </scenes>
 </document>
