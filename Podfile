@@ -1,5 +1,4 @@
-platform :ios, '8.0'
-use_frameworks!
+platform :ios, '7.0'
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
