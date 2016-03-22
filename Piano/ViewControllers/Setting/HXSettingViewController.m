@@ -9,11 +9,13 @@
 #import "HXSettingViewController.h"
 #import "HXSettingSession.h"
 
+
 @interface HXSettingViewController () <
 UIPickerViewDataSource,
 UIPickerViewDelegate
 >
 @end
+
 
 @implementation HXSettingViewController {
     NSArray *_qualities;

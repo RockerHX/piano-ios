@@ -8,6 +8,7 @@
 
 #import "UIViewController+HXClass.h"
 
+
 @interface HXSettingViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;

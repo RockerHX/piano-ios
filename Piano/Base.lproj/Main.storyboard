@@ -38,11 +38,11 @@
             </objects>
             <point key="canvasLocation" x="-69" y="772"/>
         </scene>
-        <!--HXSettingNavigationController-->
+        <!--HXMeNavigationController-->
         <scene sceneID="X9j-Bd-Urt">
             <objects>
-                <navigationController storyboardIdentifier="HXSettingNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txc-rK-VJg" userLabel="HXSettingNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" id="IAM-oX-QbD"/>
+                <navigationController storyboardIdentifier="HXMeNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txc-rK-VJg" userLabel="HXMeNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" id="IAM-oX-QbD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yOb-7h-7qE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

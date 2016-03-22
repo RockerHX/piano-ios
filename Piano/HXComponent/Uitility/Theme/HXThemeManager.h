@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, HXThemeStyle) {
@@ -16,6 +17,7 @@ typedef NS_ENUM(NSUInteger, HXThemeStyle) {
     HXThemeStyleGraphical,
     HXThemeStyleBlack
 };
+
 
 @interface HXThemeManager : NSObject
 

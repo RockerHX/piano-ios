@@ -8,6 +8,7 @@
 
 #import "UIViewController+HXClass.h"
 
+
 @interface HXPublishViewController : UIViewController
 
 - (IBAction)previewSwitchChanged:(UISwitch *)sender;

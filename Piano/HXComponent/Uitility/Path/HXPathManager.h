@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 typedef NS_ENUM(NSUInteger, HXPathDirectory) {
     HXPathDirectoryHome,
     HXPathDirectoryDocument,
@@ -15,6 +16,7 @@ typedef NS_ENUM(NSUInteger, HXPathDirectory) {
     HXPathDirectoryCache,
     HXPathDirectoryTemp,
 };
+
 
 @interface HXPathManager : NSObject
 

@@ -7,13 +7,16 @@
 
 #import <UIKit/UIKit.h>
 
+
 typedef NS_ENUM(NSUInteger, HXStoryBoardName) {
     HXStoryBoardNameOnline,
-    HXStoryBoardNameReplay,
     HXStoryBoardNamePublish,
+    HXStoryBoardNameMe,
+    HXStoryBoardNameProfile,
     HXStoryBoardNameSetting,
     HXStoryBoardNameLive,
 };
+
 
 @interface HXStoryBoardManager : NSObject
 

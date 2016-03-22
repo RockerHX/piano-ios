@@ -8,7 +8,9 @@
 
 #import "HXPathManager.h"
 
+
 @implementation HXPathManager
+
 
 #pragma mark - Singleton Methods
 + (instancetype)manager {

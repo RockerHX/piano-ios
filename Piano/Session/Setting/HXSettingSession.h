@@ -8,6 +8,7 @@
 
 #import <ZegoAVKit/ZegoAVConfig.h>
 
+
 @interface HXSettingSession : NSObject
 
 @property (nonatomic, assign, readonly)          ZegoAVConfigPreset  configPreset;

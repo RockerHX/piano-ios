@@ -9,16 +9,19 @@
 #import "HXMainViewController.h"
 #import "HXOnlineViewController.h"
 #import "HXPublishViewController.h"
-#import "HXSettingViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
+#import "HXMeViewController.h"
 
 
-@interface HXMainViewController ()
-
+@interface HXMainViewController () <
+UITabBarControllerDelegate
+>
 @end
 
-@implementation HXMainViewController
+@implementation HXMainViewController {
+    
+}
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
@@ -57,8 +60,8 @@
             [navigationController setViewControllers:@[[HXOnlineViewController instance]]];
         } else if ([navigationController.restorationIdentifier isEqualToString:[HXPublishViewController navigationControllerIdentifier]]) {
             [navigationController setViewControllers:@[[HXPublishViewController instance]]];
-        } else if ([navigationController.restorationIdentifier isEqualToString:[HXSettingViewController navigationControllerIdentifier]]) {
-            [navigationController setViewControllers:@[[HXSettingViewController instance]]];
+        } else if ([navigationController.restorationIdentifier isEqualToString:[HXMeViewController navigationControllerIdentifier]]) {
+            [navigationController setViewControllers:@[[HXMeViewController instance]]];
         }
     }
 }
@@ -90,6 +93,11 @@
 
 - (void)notificationWebSocketDidCloseWithCode:(NSNotification *)notification {
     NSLog(@"Connection Closed! (see logs)");
+}
+
+#pragma mark - UITabBarControllerDelegate Methods
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    return YES;
 }
 
 @end

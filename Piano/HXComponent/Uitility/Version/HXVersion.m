@@ -7,6 +7,7 @@
 
 #import "HXVersion.h"
 
+
 @implementation HXVersion
 
 #pragma mark - Public Methods
@@ -22,64 +23,64 @@
     return [[UIDevice currentDevice].systemVersion floatValue];
 }
 
-+ (SCSystemVersion)systemVersion {
++ (HXSystemVersion)systemVersion {
     CGFloat version = [self currentSystemVersion];
     if (version >= 10.0f) {
-        return SCSystemVersionTooNew;
+        return HXSystemVersionTooNew;
     } else if (version >= 9.0f && version < 10.0f) {
-        return SCSystemVersionIOS9;
+        return HXSystemVersionIOS9;
     } else if (version >= 8.0f && version < 9.0f) {
-        return SCSystemVersionIOS8;
+        return HXSystemVersionIOS8;
     } else if (version >= 7.0f && version < 8.0f) {
-        return SCSystemVersionIOS7;
+        return HXSystemVersionIOS7;
     } else if (version >= 6.0f && version < 7.0f) {
-        return SCSystemVersionIOS6;
+        return HXSystemVersionIOS6;
     } else if (version >= 5.0f && version < 6.0f) {
-        return SCSystemVersionIOS5;
+        return HXSystemVersionIOS5;
     } else if (version >= 4.0f && version < 5.0f) {
-        return SCSystemVersionIOS4;
+        return HXSystemVersionIOS4;
     } else {
-        return SCSystemVersionTooOld;
+        return HXSystemVersionTooOld;
     }
 }
 
-+ (SCDeviceType)deviceType {
++ (HXDeviceType)deviceType {
     NSString *type = [UIDevice currentDevice].model;
     if ([type isEqualToString:@"iPhone"]) {
-        return SCDeviceTypeIPhone;
+        return HXDeviceTypeIPhone;
     } else if ([type isEqualToString:@"iPhone Simulator"]) {
-        return SCDeviceTypeIPhoneSimulator;
+        return HXDeviceTypeIPhoneSimulator;
     } else if ([type isEqualToString:@"iPad"]) {
-        return SCDeviceTypeIPad;
+        return HXDeviceTypeIPad;
     } else if ([type isEqualToString:@"iPad Simulator"]) {
-        return SCDeviceTypeIPadSimulator;
+        return HXDeviceTypeIPadSimulator;
     }
-    return SCDeviceTypeUnknow;
+    return HXDeviceTypeUnknow;
 }
 
-+ (SCDeviceModelType)currentModel {
++ (HXDeviceModelType)currentModel {
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
-    SCDeviceType deviceType = [self deviceType];
-    if ((deviceType == SCDeviceTypeIPhone) || (deviceType == SCDeviceTypeIPhoneSimulator)) {
+    HXDeviceType deviceType = [self deviceType];
+    if ((deviceType == HXDeviceTypeIPhone) || (deviceType == HXDeviceTypeIPhoneSimulator)) {
         if (fabs(screenHeight - 480.0f) < __DBL_EPSILON__) {
-            return SCDeviceModelTypeIphone4_4S;
+            return HXDeviceModelTypeIphone4_4S;
         } else if (fabs(screenHeight - 568.0f) < __DBL_EPSILON__) {
-            return SCDeviceModelTypeIphone5_5S;
+            return HXDeviceModelTypeIphone5_5S;
         } else if (fabs(screenHeight - 667.0f) < __DBL_EPSILON__) {
-            return SCDeviceModelTypeIphone6;
+            return HXDeviceModelTypeIphone6;
         } else if (fabs(screenHeight - 736.0f) < __DBL_EPSILON__) {
-            return SCDeviceModelTypeIphone6Plus;
+            return HXDeviceModelTypeIphone6Plus;
         } else {
-            return SCDeviceModelTypeUnknow;
+            return HXDeviceModelTypeUnknow;
         }
     }
-    return SCDeviceModelTypeIPad;
+    return HXDeviceModelTypeIPad;
 }
 
 + (BOOL)isIPhone5SPrior {
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
-    SCDeviceType deviceType = [self deviceType];
-    if ((deviceType == SCDeviceTypeIPhone) || (deviceType == SCDeviceTypeIPhoneSimulator)) {
+    HXDeviceType deviceType = [self deviceType];
+    if ((deviceType == HXDeviceTypeIPhone) || (deviceType == HXDeviceTypeIPhoneSimulator)) {
         if ((fabs(screenHeight - 480.0f) < __DBL_EPSILON__) || (fabs(screenHeight - 568.0f) < __DBL_EPSILON__)) return YES;
     }
     return NO;

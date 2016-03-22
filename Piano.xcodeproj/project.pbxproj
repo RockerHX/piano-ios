@@ -55,6 +55,10 @@
 		CDED8F2D1CA13BB4003867B8 /* HXStoryBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F181CA13BB4003867B8 /* HXStoryBoardManager.m */; };
 		CDED8F2E1CA13BB4003867B8 /* HXThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F1B1CA13BB4003867B8 /* HXThemeManager.m */; };
 		CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F1E1CA13BB4003867B8 /* HXVersion.m */; };
+		CDED8F321CA13EFD003867B8 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F301CA13EFD003867B8 /* Profile.storyboard */; };
+		CDED8F361CA14D4E003867B8 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F341CA14D4E003867B8 /* Me.storyboard */; };
+		CDED8F3A1CA14E74003867B8 /* HXMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F391CA14E74003867B8 /* HXMeViewController.m */; };
+		CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -160,6 +164,12 @@
 		CDED8F1B1CA13BB4003867B8 /* HXThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXThemeManager.m; sourceTree = "<group>"; };
 		CDED8F1D1CA13BB4003867B8 /* HXVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXVersion.h; sourceTree = "<group>"; };
 		CDED8F1E1CA13BB4003867B8 /* HXVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXVersion.m; sourceTree = "<group>"; };
+		CDED8F311CA13EFD003867B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		CDED8F351CA14D4E003867B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Me.storyboard; sourceTree = "<group>"; };
+		CDED8F381CA14E74003867B8 /* HXMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeViewController.h; sourceTree = "<group>"; };
+		CDED8F391CA14E74003867B8 /* HXMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeViewController.m; sourceTree = "<group>"; };
+		CDED8F3B1CA14F26003867B8 /* HXProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileViewController.h; sourceTree = "<group>"; };
+		CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileViewController.m; sourceTree = "<group>"; };
 		F16C66128D5E0919759ABA18 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -410,6 +420,8 @@
 				CD8A9A781C9906CA00698DE9 /* Main.storyboard */,
 				CD2E72E91CA11E75003CDB77 /* Online.storyboard */,
 				CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */,
+				CDED8F341CA14D4E003867B8 /* Me.storyboard */,
+				CDED8F301CA13EFD003867B8 /* Profile.storyboard */,
 				CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */,
 				CD2E72E71CA11E75003CDB77 /* Live.storyboard */,
 			);
@@ -428,10 +440,12 @@
 		CD7408A11C9950C500950A50 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD2E72771CA11DE0003CDB77 /* Live */,
-				CD2E727D1CA11DE0003CDB77 /* Publish */,
-				CD2E72831CA11DE0003CDB77 /* Setting */,
 				CD2E727A1CA11DE0003CDB77 /* Online */,
+				CD2E727D1CA11DE0003CDB77 /* Publish */,
+				CDED8F371CA14DBE003867B8 /* Me */,
+				CDED8F331CA13F32003867B8 /* Profile */,
+				CD2E72831CA11DE0003CDB77 /* Setting */,
+				CD2E72771CA11DE0003CDB77 /* Live */,
 				CD2E72751CA11DE0003CDB77 /* HXMainViewController.h */,
 				CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */,
 			);
@@ -646,6 +660,24 @@
 			path = Version;
 			sourceTree = "<group>";
 		};
+		CDED8F331CA13F32003867B8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CDED8F3B1CA14F26003867B8 /* HXProfileViewController.h */,
+				CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CDED8F371CA14DBE003867B8 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				CDED8F381CA14E74003867B8 /* HXMeViewController.h */,
+				CDED8F391CA14E74003867B8 /* HXMeViewController.m */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		D9458606FE035ECA691A213A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -718,6 +750,7 @@
 			files = (
 				CD2E72F31CA11E75003CDB77 /* Publish.storyboard in Resources */,
 				CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */,
+				CDED8F321CA13EFD003867B8 /* Profile.storyboard in Resources */,
 				CD2E72F21CA11E75003CDB77 /* Online.storyboard in Resources */,
 				CD2E72F11CA11E75003CDB77 /* Live.storyboard in Resources */,
 				CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */,
@@ -725,6 +758,7 @@
 				CDED8F2A1CA13BB4003867B8 /* HXLoadingView.xib in Resources */,
 				CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */,
 				CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */,
+				CDED8F361CA14D4E003867B8 /* Me.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,10 +841,12 @@
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */,
+				CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				CD2E729D1CA11E02003CDB77 /* HXOnlineModel.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
 				395D670B1C9AB16B00ED0454 /* FileLog.m in Sources */,
+				CDED8F3A1CA14E74003867B8 /* HXMeViewController.m in Sources */,
 				CD2E72941CA11DF8003CDB77 /* HXOnlineCell.m in Sources */,
 				395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */,
 				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
@@ -871,6 +907,22 @@
 				CD8A9A7E1C9906CA00698DE9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CDED8F301CA13EFD003867B8 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDED8F311CA13EFD003867B8 /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		CDED8F341CA14D4E003867B8 /* Me.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDED8F351CA14D4E003867B8 /* Base */,
+			);
+			name = Me.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -982,7 +1034,7 @@
 			baseConfigurationReference = 4704094A70120BB39E18C473 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

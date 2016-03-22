@@ -11,9 +11,10 @@
 #import "HXZegoAVKitManager.h"
 #import "HXMainViewController.h"
 
-@interface HXPublishViewController ()
 
+@interface HXPublishViewController ()
 @end
+
 
 @implementation HXPublishViewController
 

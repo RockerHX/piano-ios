@@ -7,6 +7,7 @@
 
 #import "HXStoryBoardManager.h"
 
+
 @implementation HXStoryBoardManager
 
 + (__kindof UIViewController *)navigaitonControllerWithIdentifier:(NSString *)identifier storyBoardName:(HXStoryBoardName)name {
@@ -28,12 +29,16 @@
             storyBoardName = @"Online";
             break;
         }
-        case HXStoryBoardNameReplay: {
-            storyBoardName = @"Replay";
-            break;
-        }
         case HXStoryBoardNamePublish: {
             storyBoardName = @"Publish";
+            break;
+        }
+        case HXStoryBoardNameMe: {
+            storyBoardName = @"Me";
+            break;
+        }
+        case HXStoryBoardNameProfile: {
+            storyBoardName = @"Profile";
             break;
         }
         case HXStoryBoardNameSetting: {

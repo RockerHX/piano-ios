@@ -14,7 +14,6 @@
 
 
 @interface HXOnlineViewController ()
-
 @end
 
 
