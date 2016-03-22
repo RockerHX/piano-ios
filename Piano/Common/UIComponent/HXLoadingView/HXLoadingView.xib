@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXLoadingView">
+            <connections>
+                <outlet property="activityIndicatorView" destination="k88-eR-Rxv" id="uzH-6b-fse"/>
+                <outlet property="errorView" destination="hed-i4-d68" id="amS-ng-oZm"/>
+                <outlet property="loadingView" destination="P2X-f4-KOM" id="TYG-4V-LdS"/>
+                <outlet property="noContentView" destination="Ljn-40-1aD" id="vIJ-HX-yNh"/>
+                <outlet property="refreshButton" destination="sBL-Eu-rkc" id="bJn-Cf-zp2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5OJ-2T-5fS">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="374"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ljn-40-1aD" userLabel="No Content View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="374"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sorry, there are no shots around you yet. Go out and take some! \o/" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="213" translatesAutoresizingMaskIntoConstraints="NO" id="G4T-V7-be1" userLabel="No content Label">
+                            <rect key="frame" x="54" y="159" width="213" height="61"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="213" id="BxY-wK-xWQ"/>
+                                <constraint firstAttribute="height" constant="61" id="ORr-0X-A19"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e54-m4-Mly">
+                            <rect key="frame" x="135" y="109" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="GX8-T7-bLr"/>
+                                <constraint firstAttribute="height" constant="50" id="c1D-Zp-Uct"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="G4T-V7-be1" secondAttribute="centerX" id="EqK-LY-K3O"/>
+                        <constraint firstAttribute="centerY" secondItem="G4T-V7-be1" secondAttribute="centerY" constant="-2.5" id="J1j-LC-QWN"/>
+                        <constraint firstAttribute="centerY" secondItem="e54-m4-Mly" secondAttribute="centerY" constant="53" id="VlG-79-AOD"/>
+                        <constraint firstAttribute="centerX" secondItem="e54-m4-Mly" secondAttribute="centerX" id="fQZ-ph-s9b"/>
+                    </constraints>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hed-i4-d68" userLabel="ErrorView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="374"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBL-Eu-rkc" userLabel="RefreshButton">
+                            <rect key="frame" x="135" y="136" width="50" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="ii4-Kw-7MP"/>
+                                <constraint firstAttribute="height" constant="48" id="zsp-iM-vIB"/>
+                            </constraints>
+                            <state key="normal" image="RefreshButton">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="retryButtonPressed" destination="-1" eventType="touchUpInside" id="tbL-bZ-6aY"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Retry!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g24-b1-DEx" userLabel="Error Label">
+                            <rect key="frame" x="121" y="196" width="78" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="bOP-i4-F40"/>
+                                <constraint firstAttribute="width" constant="78" id="kfU-J8-1OI"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="g24-b1-DEx" secondAttribute="centerX" id="CMQ-rq-qOC"/>
+                        <constraint firstItem="g24-b1-DEx" firstAttribute="top" secondItem="sBL-Eu-rkc" secondAttribute="bottom" constant="12" id="NPv-L2-9Gh"/>
+                        <constraint firstAttribute="centerY" secondItem="sBL-Eu-rkc" secondAttribute="centerY" constant="27" id="rQB-jC-7Uy"/>
+                        <constraint firstAttribute="centerX" secondItem="sBL-Eu-rkc" secondAttribute="centerX" id="uqO-fR-tgZ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2X-f4-KOM" userLabel="LoadingView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="374"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k88-eR-Rxv" customClass="HXActivityIndicator">
+                            <rect key="frame" x="132" y="132" width="56" height="56"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="56" id="YkA-ct-Pkc"/>
+                                <constraint firstAttribute="height" constant="56" id="tNM-t3-8aw"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="k88-eR-Rxv" secondAttribute="centerX" id="3Wh-yM-vOd"/>
+                        <constraint firstAttribute="centerY" secondItem="k88-eR-Rxv" secondAttribute="centerY" constant="27" id="gc2-QN-utd"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="P2X-f4-KOM" secondAttribute="bottom" id="CWz-BY-eYa"/>
+                <constraint firstAttribute="bottom" secondItem="hed-i4-d68" secondAttribute="bottom" id="F1o-MA-btL"/>
+                <constraint firstItem="P2X-f4-KOM" firstAttribute="top" secondItem="5OJ-2T-5fS" secondAttribute="top" id="MRH-4h-YDF"/>
+                <constraint firstAttribute="trailing" secondItem="hed-i4-d68" secondAttribute="trailing" id="Q4a-jv-CNd"/>
+                <constraint firstAttribute="bottom" secondItem="Ljn-40-1aD" secondAttribute="bottom" id="cEu-Lk-YNE"/>
+                <constraint firstItem="Ljn-40-1aD" firstAttribute="top" secondItem="5OJ-2T-5fS" secondAttribute="top" id="f0f-eb-dWk"/>
+                <constraint firstItem="hed-i4-d68" firstAttribute="top" secondItem="5OJ-2T-5fS" secondAttribute="top" id="j5l-32-TsC"/>
+                <constraint firstAttribute="trailing" secondItem="Ljn-40-1aD" secondAttribute="trailing" id="nSf-rq-ECJ"/>
+                <constraint firstItem="hed-i4-d68" firstAttribute="leading" secondItem="5OJ-2T-5fS" secondAttribute="leading" id="pJK-9B-aI7"/>
+                <constraint firstItem="P2X-f4-KOM" firstAttribute="leading" secondItem="5OJ-2T-5fS" secondAttribute="leading" id="sF7-TN-QT7"/>
+                <constraint firstAttribute="trailing" secondItem="P2X-f4-KOM" secondAttribute="trailing" id="uL3-5U-trc"/>
+                <constraint firstItem="Ljn-40-1aD" firstAttribute="leading" secondItem="5OJ-2T-5fS" secondAttribute="leading" id="yPD-KF-Kku"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="396" y="369"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="RefreshButton" width="25" height="25"/>
+    </resources>
+</document>

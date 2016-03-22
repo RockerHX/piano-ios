@@ -1,4 +1,5 @@
 platform :ios, '8.0'
+use_frameworks!
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
@@ -12,6 +13,7 @@ pod 'SDWebImage'
 #pod 'FreeStreamer'
 
 # Utility
+pod 'ReactiveCocoa'
 pod 'Masonry'
 pod 'MJExtension'
 pod 'DateTools'

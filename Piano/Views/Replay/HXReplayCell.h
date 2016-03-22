@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  HXReplayCell.h
 //  Piano
 //
 //  Created by miaios on 16/3/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface HXReplayCell : UITableViewCell
 
 @end
-

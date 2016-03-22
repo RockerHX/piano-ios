@@ -1,27 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="jRP-NR-xww">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--HXMainViewController-->
+        <scene sceneID="u2g-sX-y4Z">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tabBarController storyboardIdentifier="HXMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jRP-NR-xww" userLabel="HXMainViewController" customClass="HXMainViewController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="8f6-wg-Qnu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Yy6-7Q-Aey" kind="relationship" relationship="viewControllers" id="5id-0v-9Bn"/>
+                        <segue destination="bog-OB-ePC" kind="relationship" relationship="viewControllers" id="EAk-EP-KeU"/>
+                        <segue destination="VPc-X6-5AQ" kind="relationship" relationship="viewControllers" id="ewj-eU-KoR"/>
+                        <segue destination="txc-rK-VJg" kind="relationship" relationship="viewControllers" id="jvY-qh-zEz"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AY4-M9-jZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="265.60000000000002" y="453.92666666666668"/>
+            <point key="canvasLocation" x="-69" y="-61"/>
+        </scene>
+        <!--HXReplayNavigationController-->
+        <scene sceneID="sKL-WK-6gi">
+            <objects>
+                <navigationController storyboardIdentifier="HXReplayNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bog-OB-ePC" userLabel="HXReplayNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="回放" id="r0G-Kq-Yjs"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K99-z6-38I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mam-8D-naC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-282" y="777"/>
+        </scene>
+        <!--HXPublishNavigationController-->
+        <scene sceneID="HF3-Pp-52M">
+            <objects>
+                <navigationController storyboardIdentifier="HXPublishNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VPc-X6-5AQ" userLabel="HXPublishNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="发布" id="7g9-Ri-8wK"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g52-yd-bP5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4OR-di-Okz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="148" y="777"/>
+        </scene>
+        <!--HXSettingNavigationController-->
+        <scene sceneID="X9j-Bd-Urt">
+            <objects>
+                <navigationController storyboardIdentifier="HXSettingNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txc-rK-VJg" userLabel="HXSettingNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="设置" id="IAM-oX-QbD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yOb-7h-7qE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lF6-Vz-Hoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="574" y="777"/>
+        </scene>
+        <!--HXOnlineNavigationController-->
+        <scene sceneID="pIV-8O-zAG">
+            <objects>
+                <navigationController storyboardIdentifier="HXOnlineNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXOnlineNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="直播" id="NkN-4J-GVv"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rlr-1H-sSR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pMk-t7-HFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-724" y="777"/>
         </scene>
     </scenes>
 </document>

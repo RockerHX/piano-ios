@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		339E291053A9C06FDB42A327 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709B5E36375810FAF818C879 /* Pods.framework */; };
 		395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66F81C9AB0E800ED0454 /* MiaAPIHelper.m */; };
 		395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FC1C9AB0E800ED0454 /* MiaRequestItem.m */; };
 		395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FE1C9AB0E800ED0454 /* WebSocketMgr.m */; };
@@ -16,12 +17,44 @@
 		395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67121C9AB1B700ED0454 /* NSString+IsNull.m */; };
 		395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67161C9AB1C500ED0454 /* NSString+MD5.m */; };
 		395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
-		75246FDD53A733266B7179D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FB3A1969D15BC5CFAA3B9E /* libPods.a */; };
 		CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; };
+		CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */; };
+		CD2E72871CA11DE0003CDB77 /* HXLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72791CA11DE0003CDB77 /* HXLiveViewController.m */; };
+		CD2E72881CA11DE0003CDB77 /* HXOnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E727C1CA11DE0003CDB77 /* HXOnlineViewController.m */; };
+		CD2E72891CA11DE0003CDB77 /* HXPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E727F1CA11DE0003CDB77 /* HXPublishViewController.m */; };
+		CD2E728A1CA11DE0003CDB77 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72821CA11DE0003CDB77 /* HXReplayViewController.m */; };
+		CD2E728B1CA11DE0003CDB77 /* HXSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */; };
+		CD2E72941CA11DF8003CDB77 /* HXOnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E728E1CA11DF8003CDB77 /* HXOnlineCell.m */; };
+		CD2E72951CA11DF8003CDB77 /* HXReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72921CA11DF8003CDB77 /* HXReplayCell.m */; };
+		CD2E729C1CA11E02003CDB77 /* HXLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72981CA11E02003CDB77 /* HXLiveModel.m */; };
+		CD2E729D1CA11E02003CDB77 /* HXOnlineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E729B1CA11E02003CDB77 /* HXOnlineModel.m */; };
+		CD2E72A71CA11E13003CDB77 /* HXPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72A01CA11E13003CDB77 /* HXPathManager.m */; };
+		CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72A31CA11E13003CDB77 /* HXSettingSession.m */; };
+		CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72A61CA11E13003CDB77 /* HXZegoAVKitManager.m */; };
+		CD2E72D71CA11E37003CDB77 /* NSObject+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72AD1CA11E37003CDB77 /* NSObject+LoginAction.m */; };
+		CD2E72D81CA11E37003CDB77 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72AF1CA11E37003CDB77 /* UIView+FindUIViewController.m */; };
+		CD2E72D91CA11E37003CDB77 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72B11CA11E37003CDB77 /* UIView+Frame.m */; };
+		CD2E72DA1CA11E37003CDB77 /* UIViewController+HXClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72B31CA11E37003CDB77 /* UIViewController+HXClass.m */; };
+		CD2E72DB1CA11E37003CDB77 /* HXAppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72B61CA11E37003CDB77 /* HXAppConstants.m */; };
+		CD2E72DC1CA11E37003CDB77 /* HXAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72BB1CA11E37003CDB77 /* HXAlertBanner.m */; };
+		CD2E72DD1CA11E37003CDB77 /* HXAlertBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72BC1CA11E37003CDB77 /* HXAlertBanner.xib */; };
+		CD2E72DE1CA11E37003CDB77 /* HXCaptchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72BF1CA11E37003CDB77 /* HXCaptchButton.m */; };
+		CD2E72DF1CA11E37003CDB77 /* HXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72C21CA11E37003CDB77 /* HXLabel.m */; };
+		CD2E72E01CA11E37003CDB77 /* HXActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72C51CA11E37003CDB77 /* HXActivityIndicator.m */; };
+		CD2E72E11CA11E37003CDB77 /* HXLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72C71CA11E37003CDB77 /* HXLoadingView.m */; };
+		CD2E72E21CA11E37003CDB77 /* HXLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72C81CA11E37003CDB77 /* HXLoadingView.xib */; };
+		CD2E72E31CA11E37003CDB77 /* HXTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72CB1CA11E37003CDB77 /* HXTextView.m */; };
+		CD2E72E41CA11E37003CDB77 /* HXStoryBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72D01CA11E37003CDB77 /* HXStoryBoardManager.m */; };
+		CD2E72E51CA11E37003CDB77 /* HXThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72D31CA11E37003CDB77 /* HXThemeManager.m */; };
+		CD2E72E61CA11E37003CDB77 /* HXVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72D61CA11E37003CDB77 /* HXVersion.m */; };
+		CD2E72F11CA11E75003CDB77 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72E71CA11E75003CDB77 /* Live.storyboard */; };
+		CD2E72F21CA11E75003CDB77 /* Online.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72E91CA11E75003CDB77 /* Online.storyboard */; };
+		CD2E72F31CA11E75003CDB77 /* Publish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */; };
+		CD2E72F41CA11E75003CDB77 /* Replay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72ED1CA11E75003CDB77 /* Replay.storyboard */; };
+		CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */; };
 		CD74089B1C9946D800950A50 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
-		CD8A9A771C9906CA00698DE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A761C9906CA00698DE9 /* ViewController.m */; };
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
 		CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */; };
 		CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
@@ -62,14 +95,75 @@
 		395D67191C9AB1D700ED0454 /* UserDefaultsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtils.h; sourceTree = "<group>"; };
 		395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtils.m; sourceTree = "<group>"; };
 		4704094A70120BB39E18C473 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		C7FB3A1969D15BC5CFAA3B9E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		709B5E36375810FAF818C879 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
+		CD2E72751CA11DE0003CDB77 /* HXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMainViewController.h; sourceTree = "<group>"; };
+		CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMainViewController.m; sourceTree = "<group>"; };
+		CD2E72781CA11DE0003CDB77 /* HXLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveViewController.h; sourceTree = "<group>"; };
+		CD2E72791CA11DE0003CDB77 /* HXLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveViewController.m; sourceTree = "<group>"; };
+		CD2E727B1CA11DE0003CDB77 /* HXOnlineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineViewController.h; sourceTree = "<group>"; };
+		CD2E727C1CA11DE0003CDB77 /* HXOnlineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineViewController.m; sourceTree = "<group>"; };
+		CD2E727E1CA11DE0003CDB77 /* HXPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPublishViewController.h; sourceTree = "<group>"; };
+		CD2E727F1CA11DE0003CDB77 /* HXPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPublishViewController.m; sourceTree = "<group>"; };
+		CD2E72811CA11DE0003CDB77 /* HXReplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewController.h; sourceTree = "<group>"; };
+		CD2E72821CA11DE0003CDB77 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
+		CD2E72841CA11DE0003CDB77 /* HXSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXSettingViewController.h; sourceTree = "<group>"; };
+		CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSettingViewController.m; sourceTree = "<group>"; };
+		CD2E728D1CA11DF8003CDB77 /* HXOnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineCell.h; sourceTree = "<group>"; };
+		CD2E728E1CA11DF8003CDB77 /* HXOnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineCell.m; sourceTree = "<group>"; };
+		CD2E72911CA11DF8003CDB77 /* HXReplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayCell.h; sourceTree = "<group>"; };
+		CD2E72921CA11DF8003CDB77 /* HXReplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayCell.m; sourceTree = "<group>"; };
+		CD2E72971CA11E02003CDB77 /* HXLiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveModel.h; sourceTree = "<group>"; };
+		CD2E72981CA11E02003CDB77 /* HXLiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveModel.m; sourceTree = "<group>"; };
+		CD2E729A1CA11E02003CDB77 /* HXOnlineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineModel.h; sourceTree = "<group>"; };
+		CD2E729B1CA11E02003CDB77 /* HXOnlineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineModel.m; sourceTree = "<group>"; };
+		CD2E729F1CA11E13003CDB77 /* HXPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPathManager.h; sourceTree = "<group>"; };
+		CD2E72A01CA11E13003CDB77 /* HXPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPathManager.m; sourceTree = "<group>"; };
+		CD2E72A21CA11E13003CDB77 /* HXSettingSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXSettingSession.h; sourceTree = "<group>"; };
+		CD2E72A31CA11E13003CDB77 /* HXSettingSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSettingSession.m; sourceTree = "<group>"; };
+		CD2E72A51CA11E13003CDB77 /* HXZegoAVKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXZegoAVKitManager.h; sourceTree = "<group>"; };
+		CD2E72A61CA11E13003CDB77 /* HXZegoAVKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXZegoAVKitManager.m; sourceTree = "<group>"; };
+		CD2E72AC1CA11E37003CDB77 /* NSObject+LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LoginAction.h"; sourceTree = "<group>"; };
+		CD2E72AD1CA11E37003CDB77 /* NSObject+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LoginAction.m"; sourceTree = "<group>"; };
+		CD2E72AE1CA11E37003CDB77 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
+		CD2E72AF1CA11E37003CDB77 /* UIView+FindUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindUIViewController.m"; sourceTree = "<group>"; };
+		CD2E72B01CA11E37003CDB77 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		CD2E72B11CA11E37003CDB77 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		CD2E72B21CA11E37003CDB77 /* UIViewController+HXClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HXClass.h"; sourceTree = "<group>"; };
+		CD2E72B31CA11E37003CDB77 /* UIViewController+HXClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HXClass.m"; sourceTree = "<group>"; };
+		CD2E72B51CA11E37003CDB77 /* HXAppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAppConstants.h; sourceTree = "<group>"; };
+		CD2E72B61CA11E37003CDB77 /* HXAppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAppConstants.m; sourceTree = "<group>"; };
+		CD2E72B71CA11E37003CDB77 /* UIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
+		CD2E72BA1CA11E37003CDB77 /* HXAlertBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlertBanner.h; sourceTree = "<group>"; };
+		CD2E72BB1CA11E37003CDB77 /* HXAlertBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlertBanner.m; sourceTree = "<group>"; };
+		CD2E72BC1CA11E37003CDB77 /* HXAlertBanner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXAlertBanner.xib; sourceTree = "<group>"; };
+		CD2E72BE1CA11E37003CDB77 /* HXCaptchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCaptchButton.h; sourceTree = "<group>"; };
+		CD2E72BF1CA11E37003CDB77 /* HXCaptchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCaptchButton.m; sourceTree = "<group>"; };
+		CD2E72C11CA11E37003CDB77 /* HXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLabel.h; sourceTree = "<group>"; };
+		CD2E72C21CA11E37003CDB77 /* HXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLabel.m; sourceTree = "<group>"; };
+		CD2E72C41CA11E37003CDB77 /* HXActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXActivityIndicator.h; sourceTree = "<group>"; };
+		CD2E72C51CA11E37003CDB77 /* HXActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXActivityIndicator.m; sourceTree = "<group>"; };
+		CD2E72C61CA11E37003CDB77 /* HXLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLoadingView.h; sourceTree = "<group>"; };
+		CD2E72C71CA11E37003CDB77 /* HXLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLoadingView.m; sourceTree = "<group>"; };
+		CD2E72C81CA11E37003CDB77 /* HXLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLoadingView.xib; sourceTree = "<group>"; };
+		CD2E72CA1CA11E37003CDB77 /* HXTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXTextView.h; sourceTree = "<group>"; };
+		CD2E72CB1CA11E37003CDB77 /* HXTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXTextView.m; sourceTree = "<group>"; };
+		CD2E72CC1CA11E37003CDB77 /* HXXib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXXib.h; sourceTree = "<group>"; };
+		CD2E72CF1CA11E37003CDB77 /* HXStoryBoardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXStoryBoardManager.h; sourceTree = "<group>"; };
+		CD2E72D01CA11E37003CDB77 /* HXStoryBoardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXStoryBoardManager.m; sourceTree = "<group>"; };
+		CD2E72D21CA11E37003CDB77 /* HXThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXThemeManager.h; sourceTree = "<group>"; };
+		CD2E72D31CA11E37003CDB77 /* HXThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXThemeManager.m; sourceTree = "<group>"; };
+		CD2E72D51CA11E37003CDB77 /* HXVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXVersion.h; sourceTree = "<group>"; };
+		CD2E72D61CA11E37003CDB77 /* HXVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXVersion.m; sourceTree = "<group>"; };
+		CD2E72E81CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Live.storyboard; sourceTree = "<group>"; };
+		CD2E72EA1CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Online.storyboard; sourceTree = "<group>"; };
+		CD2E72EC1CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Publish.storyboard; sourceTree = "<group>"; };
+		CD2E72EE1CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Replay.storyboard; sourceTree = "<group>"; };
+		CD2E72F01CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setting.storyboard; sourceTree = "<group>"; };
 		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD8A9A731C9906CA00698DE9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CD8A9A751C9906CA00698DE9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CD8A9A761C9906CA00698DE9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CD8A9A791C9906CA00698DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD8A9A7E1C9906CA00698DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,8 +176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75246FDD53A733266B7179D8 /* libPods.a in Frameworks */,
 				CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */,
+				339E291053A9C06FDB42A327 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,14 +293,274 @@
 			isa = PBXGroup;
 			children = (
 				CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */,
-				C7FB3A1969D15BC5CFAA3B9E /* libPods.a */,
+				709B5E36375810FAF818C879 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD2E72771CA11DE0003CDB77 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72781CA11DE0003CDB77 /* HXLiveViewController.h */,
+				CD2E72791CA11DE0003CDB77 /* HXLiveViewController.m */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		CD2E727A1CA11DE0003CDB77 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E727B1CA11DE0003CDB77 /* HXOnlineViewController.h */,
+				CD2E727C1CA11DE0003CDB77 /* HXOnlineViewController.m */,
+			);
+			path = Online;
+			sourceTree = "<group>";
+		};
+		CD2E727D1CA11DE0003CDB77 /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E727E1CA11DE0003CDB77 /* HXPublishViewController.h */,
+				CD2E727F1CA11DE0003CDB77 /* HXPublishViewController.m */,
+			);
+			path = Publish;
+			sourceTree = "<group>";
+		};
+		CD2E72801CA11DE0003CDB77 /* Replay */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72811CA11DE0003CDB77 /* HXReplayViewController.h */,
+				CD2E72821CA11DE0003CDB77 /* HXReplayViewController.m */,
+			);
+			path = Replay;
+			sourceTree = "<group>";
+		};
+		CD2E72831CA11DE0003CDB77 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72841CA11DE0003CDB77 /* HXSettingViewController.h */,
+				CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		CD2E728C1CA11DF8003CDB77 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E728D1CA11DF8003CDB77 /* HXOnlineCell.h */,
+				CD2E728E1CA11DF8003CDB77 /* HXOnlineCell.m */,
+			);
+			path = Online;
+			sourceTree = "<group>";
+		};
+		CD2E728F1CA11DF8003CDB77 /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Publish;
+			sourceTree = "<group>";
+		};
+		CD2E72901CA11DF8003CDB77 /* Replay */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72911CA11DF8003CDB77 /* HXReplayCell.h */,
+				CD2E72921CA11DF8003CDB77 /* HXReplayCell.m */,
+			);
+			path = Replay;
+			sourceTree = "<group>";
+		};
+		CD2E72931CA11DF8003CDB77 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		CD2E72961CA11E02003CDB77 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72971CA11E02003CDB77 /* HXLiveModel.h */,
+				CD2E72981CA11E02003CDB77 /* HXLiveModel.m */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		CD2E72991CA11E02003CDB77 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E729A1CA11E02003CDB77 /* HXOnlineModel.h */,
+				CD2E729B1CA11E02003CDB77 /* HXOnlineModel.m */,
+			);
+			path = Online;
+			sourceTree = "<group>";
+		};
+		CD2E729E1CA11E13003CDB77 /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E729F1CA11E13003CDB77 /* HXPathManager.h */,
+				CD2E72A01CA11E13003CDB77 /* HXPathManager.m */,
+			);
+			path = Path;
+			sourceTree = "<group>";
+		};
+		CD2E72A11CA11E13003CDB77 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72A21CA11E13003CDB77 /* HXSettingSession.h */,
+				CD2E72A31CA11E13003CDB77 /* HXSettingSession.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		CD2E72A41CA11E13003CDB77 /* ZegoAVKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72A51CA11E13003CDB77 /* HXZegoAVKitManager.h */,
+				CD2E72A61CA11E13003CDB77 /* HXZegoAVKitManager.m */,
+			);
+			path = ZegoAVKit;
+			sourceTree = "<group>";
+		};
+		CD2E72AA1CA11E37003CDB77 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72AB1CA11E37003CDB77 /* Category */,
+				CD2E72B41CA11E37003CDB77 /* Macros */,
+				CD2E72B81CA11E37003CDB77 /* UIComponent */,
+				CD2E72CD1CA11E37003CDB77 /* Uitility */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CD2E72AB1CA11E37003CDB77 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72AC1CA11E37003CDB77 /* NSObject+LoginAction.h */,
+				CD2E72AD1CA11E37003CDB77 /* NSObject+LoginAction.m */,
+				CD2E72AE1CA11E37003CDB77 /* UIView+FindUIViewController.h */,
+				CD2E72AF1CA11E37003CDB77 /* UIView+FindUIViewController.m */,
+				CD2E72B01CA11E37003CDB77 /* UIView+Frame.h */,
+				CD2E72B11CA11E37003CDB77 /* UIView+Frame.m */,
+				CD2E72B21CA11E37003CDB77 /* UIViewController+HXClass.h */,
+				CD2E72B31CA11E37003CDB77 /* UIViewController+HXClass.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		CD2E72B41CA11E37003CDB77 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72B51CA11E37003CDB77 /* HXAppConstants.h */,
+				CD2E72B61CA11E37003CDB77 /* HXAppConstants.m */,
+				CD2E72B71CA11E37003CDB77 /* UIConstants.h */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		CD2E72B81CA11E37003CDB77 /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72B91CA11E37003CDB77 /* HXAlertBanner */,
+				CD2E72BD1CA11E37003CDB77 /* HXCaptchButton */,
+				CD2E72C01CA11E37003CDB77 /* HXLabel */,
+				CD2E72C31CA11E37003CDB77 /* HXLoadingView */,
+				CD2E72C91CA11E37003CDB77 /* HXTextView */,
+				CD2E72CC1CA11E37003CDB77 /* HXXib.h */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
+		CD2E72B91CA11E37003CDB77 /* HXAlertBanner */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72BA1CA11E37003CDB77 /* HXAlertBanner.h */,
+				CD2E72BB1CA11E37003CDB77 /* HXAlertBanner.m */,
+				CD2E72BC1CA11E37003CDB77 /* HXAlertBanner.xib */,
+			);
+			path = HXAlertBanner;
+			sourceTree = "<group>";
+		};
+		CD2E72BD1CA11E37003CDB77 /* HXCaptchButton */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72BE1CA11E37003CDB77 /* HXCaptchButton.h */,
+				CD2E72BF1CA11E37003CDB77 /* HXCaptchButton.m */,
+			);
+			path = HXCaptchButton;
+			sourceTree = "<group>";
+		};
+		CD2E72C01CA11E37003CDB77 /* HXLabel */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72C11CA11E37003CDB77 /* HXLabel.h */,
+				CD2E72C21CA11E37003CDB77 /* HXLabel.m */,
+			);
+			path = HXLabel;
+			sourceTree = "<group>";
+		};
+		CD2E72C31CA11E37003CDB77 /* HXLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72C41CA11E37003CDB77 /* HXActivityIndicator.h */,
+				CD2E72C51CA11E37003CDB77 /* HXActivityIndicator.m */,
+				CD2E72C61CA11E37003CDB77 /* HXLoadingView.h */,
+				CD2E72C71CA11E37003CDB77 /* HXLoadingView.m */,
+				CD2E72C81CA11E37003CDB77 /* HXLoadingView.xib */,
+			);
+			path = HXLoadingView;
+			sourceTree = "<group>";
+		};
+		CD2E72C91CA11E37003CDB77 /* HXTextView */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72CA1CA11E37003CDB77 /* HXTextView.h */,
+				CD2E72CB1CA11E37003CDB77 /* HXTextView.m */,
+			);
+			path = HXTextView;
+			sourceTree = "<group>";
+		};
+		CD2E72CD1CA11E37003CDB77 /* Uitility */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72CE1CA11E37003CDB77 /* HXStoryBoardManager */,
+				CD2E72D11CA11E37003CDB77 /* HXThemeManager */,
+				CD2E72D41CA11E37003CDB77 /* HXVersion */,
+			);
+			path = Uitility;
+			sourceTree = "<group>";
+		};
+		CD2E72CE1CA11E37003CDB77 /* HXStoryBoardManager */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72CF1CA11E37003CDB77 /* HXStoryBoardManager.h */,
+				CD2E72D01CA11E37003CDB77 /* HXStoryBoardManager.m */,
+			);
+			path = HXStoryBoardManager;
+			sourceTree = "<group>";
+		};
+		CD2E72D11CA11E37003CDB77 /* HXThemeManager */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72D21CA11E37003CDB77 /* HXThemeManager.h */,
+				CD2E72D31CA11E37003CDB77 /* HXThemeManager.m */,
+			);
+			path = HXThemeManager;
+			sourceTree = "<group>";
+		};
+		CD2E72D41CA11E37003CDB77 /* HXVersion */ = {
+			isa = PBXGroup;
+			children = (
+				CD2E72D51CA11E37003CDB77 /* HXVersion.h */,
+				CD2E72D61CA11E37003CDB77 /* HXVersion.m */,
+			);
+			path = HXVersion;
 			sourceTree = "<group>";
 		};
 		CD74089D1C99506000950A50 /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				CD2E729E1CA11E13003CDB77 /* Path */,
+				CD2E72A11CA11E13003CDB77 /* Setting */,
+				CD2E72A41CA11E13003CDB77 /* ZegoAVKit */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -224,6 +578,11 @@
 		CD74089F1C99508B00950A50 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CD2E72E71CA11E75003CDB77 /* Live.storyboard */,
+				CD2E72E91CA11E75003CDB77 /* Online.storyboard */,
+				CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */,
+				CD2E72ED1CA11E75003CDB77 /* Replay.storyboard */,
+				CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */,
 				CD8A9A781C9906CA00698DE9 /* Main.storyboard */,
 			);
 			name = UI;
@@ -232,6 +591,8 @@
 		CD7408A01C9950C500950A50 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CD2E72961CA11E02003CDB77 /* Live */,
+				CD2E72991CA11E02003CDB77 /* Online */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +600,13 @@
 		CD7408A11C9950C500950A50 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CD2E72771CA11DE0003CDB77 /* Live */,
+				CD2E727A1CA11DE0003CDB77 /* Online */,
+				CD2E727D1CA11DE0003CDB77 /* Publish */,
+				CD2E72801CA11DE0003CDB77 /* Replay */,
+				CD2E72831CA11DE0003CDB77 /* Setting */,
+				CD2E72751CA11DE0003CDB77 /* HXMainViewController.h */,
+				CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,6 +621,10 @@
 		CD7408A31C9950C500950A50 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CD2E728C1CA11DF8003CDB77 /* Online */,
+				CD2E728F1CA11DF8003CDB77 /* Publish */,
+				CD2E72901CA11DF8003CDB77 /* Replay */,
+				CD2E72931CA11DF8003CDB77 /* Setting */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -278,6 +650,7 @@
 		CD8A9A6E1C9906CA00698DE9 /* Piano */ = {
 			isa = PBXGroup;
 			children = (
+				CD2E72AA1CA11E37003CDB77 /* Common */,
 				395D67021C9AB15000ED0454 /* Utils */,
 				395D66F51C9AB0E800ED0454 /* Network */,
 				CD74089D1C99506000950A50 /* Session */,
@@ -287,8 +660,6 @@
 				CD7408A11C9950C500950A50 /* ViewControllers */,
 				CD8A9A721C9906CA00698DE9 /* AppDelegate.h */,
 				CD8A9A731C9906CA00698DE9 /* AppDelegate.m */,
-				CD8A9A751C9906CA00698DE9 /* ViewController.h */,
-				CD8A9A761C9906CA00698DE9 /* ViewController.m */,
 				CD74089E1C99506C00950A50 /* Resource */,
 				CD8A9A6F1C9906CA00698DE9 /* Supporting Files */,
 			);
@@ -348,7 +719,6 @@
 				TargetAttributes = {
 					CD8A9A6B1C9906CA00698DE9 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = PQE2NCR38L;
 					};
 				};
 			};
@@ -375,8 +745,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD2E72F31CA11E75003CDB77 /* Publish.storyboard in Resources */,
+				CD2E72DD1CA11E37003CDB77 /* HXAlertBanner.xib in Resources */,
 				CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */,
+				CD2E72F21CA11E75003CDB77 /* Online.storyboard in Resources */,
+				CD2E72F41CA11E75003CDB77 /* Replay.storyboard in Resources */,
+				CD2E72F11CA11E75003CDB77 /* Live.storyboard in Resources */,
 				CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */,
+				CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */,
+				CD2E72E21CA11E37003CDB77 /* HXLoadingView.xib in Resources */,
 				CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,24 +813,90 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD2E72E61CA11E37003CDB77 /* HXVersion.m in Sources */,
+				CD2E72A71CA11E13003CDB77 /* HXPathManager.m in Sources */,
+				CD2E728B1CA11DE0003CDB77 /* HXSettingViewController.m in Sources */,
+				CD2E729C1CA11E02003CDB77 /* HXLiveModel.m in Sources */,
+				CD2E72DA1CA11E37003CDB77 /* UIViewController+HXClass.m in Sources */,
+				CD2E72E31CA11E37003CDB77 /* HXTextView.m in Sources */,
+				CD2E72DF1CA11E37003CDB77 /* HXLabel.m in Sources */,
+				CD2E72E11CA11E37003CDB77 /* HXLoadingView.m in Sources */,
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
+				CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */,
 				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
+				CD2E72E01CA11E37003CDB77 /* HXActivityIndicator.m in Sources */,
+				CD2E72891CA11DE0003CDB77 /* HXPublishViewController.m in Sources */,
+				CD2E72DB1CA11E37003CDB77 /* HXAppConstants.m in Sources */,
+				CD2E72881CA11DE0003CDB77 /* HXOnlineViewController.m in Sources */,
+				CD2E72DC1CA11E37003CDB77 /* HXAlertBanner.m in Sources */,
 				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,
-				CD8A9A771C9906CA00698DE9 /* ViewController.m in Sources */,
 				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
+				CD2E72D81CA11E37003CDB77 /* UIView+FindUIViewController.m in Sources */,
+				CD2E72871CA11DE0003CDB77 /* HXLiveViewController.m in Sources */,
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
+				CD2E72951CA11DF8003CDB77 /* HXReplayCell.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
+				CD2E729D1CA11E02003CDB77 /* HXOnlineModel.m in Sources */,
+				CD2E72E51CA11E37003CDB77 /* HXThemeManager.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
 				395D670B1C9AB16B00ED0454 /* FileLog.m in Sources */,
+				CD2E72941CA11DF8003CDB77 /* HXOnlineCell.m in Sources */,
 				395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */,
+				CD2E72D91CA11E37003CDB77 /* UIView+Frame.m in Sources */,
 				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
+				CD2E72DE1CA11E37003CDB77 /* HXCaptchButton.m in Sources */,
+				CD2E728A1CA11DE0003CDB77 /* HXReplayViewController.m in Sources */,
+				CD2E72E41CA11E37003CDB77 /* HXStoryBoardManager.m in Sources */,
+				CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */,
+				CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */,
+				CD2E72D71CA11E37003CDB77 /* NSObject+LoginAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		CD2E72E71CA11E75003CDB77 /* Live.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2E72E81CA11E75003CDB77 /* Base */,
+			);
+			name = Live.storyboard;
+			sourceTree = "<group>";
+		};
+		CD2E72E91CA11E75003CDB77 /* Online.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2E72EA1CA11E75003CDB77 /* Base */,
+			);
+			name = Online.storyboard;
+			sourceTree = "<group>";
+		};
+		CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2E72EC1CA11E75003CDB77 /* Base */,
+			);
+			name = Publish.storyboard;
+			sourceTree = "<group>";
+		};
+		CD2E72ED1CA11E75003CDB77 /* Replay.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2E72EE1CA11E75003CDB77 /* Base */,
+			);
+			name = Replay.storyboard;
+			sourceTree = "<group>";
+		};
+		CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2E72F01CA11E75003CDB77 /* Base */,
+			);
+			name = Setting.storyboard;
+			sourceTree = "<group>";
+		};
 		CD8A9A781C9906CA00698DE9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -570,7 +1013,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5f85b4e2-33ca-4dc2-93ff-4b277c26464e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -580,7 +1023,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -591,7 +1034,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5f85b4e2-33ca-4dc2-93ff-4b277c26464e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
