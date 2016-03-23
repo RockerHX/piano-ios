@@ -59,6 +59,8 @@
 		CDED8F361CA14D4E003867B8 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F341CA14D4E003867B8 /* Me.storyboard */; };
 		CDED8F3A1CA14E74003867B8 /* HXMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F391CA14E74003867B8 /* HXMeViewController.m */; };
 		CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */; };
+		CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F401CA15181003867B8 /* HXUserSession.m */; };
+		CDED8F451CA22F32003867B8 /* HXOnlineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F441CA22F32003867B8 /* HXOnlineViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -170,6 +172,10 @@
 		CDED8F391CA14E74003867B8 /* HXMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeViewController.m; sourceTree = "<group>"; };
 		CDED8F3B1CA14F26003867B8 /* HXProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileViewController.h; sourceTree = "<group>"; };
 		CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileViewController.m; sourceTree = "<group>"; };
+		CDED8F3F1CA15181003867B8 /* HXUserSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXUserSession.h; sourceTree = "<group>"; };
+		CDED8F401CA15181003867B8 /* HXUserSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXUserSession.m; sourceTree = "<group>"; };
+		CDED8F431CA22F32003867B8 /* HXOnlineViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineViewModel.h; sourceTree = "<group>"; };
+		CDED8F441CA22F32003867B8 /* HXOnlineViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineViewModel.m; sourceTree = "<group>"; };
 		F16C66128D5E0919759ABA18 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -398,6 +404,7 @@
 		CD74089D1C99506000950A50 /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				CDED8F3E1CA15176003867B8 /* User */,
 				CD2E72A11CA11E13003CDB77 /* Setting */,
 				CD2E72A41CA11E13003CDB77 /* ZegoAVKit */,
 			);
@@ -455,6 +462,7 @@
 		CD7408A21C9950C500950A50 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CDED8F421CA22F22003867B8 /* Online */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -678,6 +686,24 @@
 			path = Me;
 			sourceTree = "<group>";
 		};
+		CDED8F3E1CA15176003867B8 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				CDED8F3F1CA15181003867B8 /* HXUserSession.h */,
+				CDED8F401CA15181003867B8 /* HXUserSession.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		CDED8F421CA22F22003867B8 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				CDED8F431CA22F32003867B8 /* HXOnlineViewModel.h */,
+				CDED8F441CA22F32003867B8 /* HXOnlineViewModel.m */,
+			);
+			path = Online;
+			sourceTree = "<group>";
+		};
 		D9458606FE035ECA691A213A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,9 +846,11 @@
 				CD2E728B1CA11DE0003CDB77 /* HXSettingViewController.m in Sources */,
 				CD2E729C1CA11E02003CDB77 /* HXLiveModel.m in Sources */,
 				CDED8F2D1CA13BB4003867B8 /* HXStoryBoardManager.m in Sources */,
+				CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */,
 				CDED8F221CA13BB4003867B8 /* UIViewController+HXClass.m in Sources */,
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
 				CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */,
+				CDED8F451CA22F32003867B8 /* HXOnlineViewModel.m in Sources */,
 				CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */,
 				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
 				CDED8F271CA13BB4003867B8 /* HXLabel.m in Sources */,

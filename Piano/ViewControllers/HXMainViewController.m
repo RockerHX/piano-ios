@@ -12,6 +12,7 @@
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
 #import "HXMeViewController.h"
+#import "ReactiveCocoa.h"
 
 
 @interface HXMainViewController () <
@@ -29,6 +30,8 @@ UITabBarControllerDelegate
     
     [self loadConfigure];
     [self viewConfigure];
+    
+    
 }
 
 - (void)dealloc {

@@ -8,9 +8,8 @@
 
 #import "HXOnlineViewController.h"
 #import "MJRefresh.h"
-#import "MiaAPIHelper.h"
-#import "HXOnlineCell.h"
 #import "HXMainViewController.h"
+#import "HXOnlineViewModel.h"
 
 
 @interface HXOnlineViewController ()
@@ -18,7 +17,7 @@
 
 
 @implementation HXOnlineViewController {
-    NSArray *_onlineList;
+    HXOnlineViewModel *_viewModel;
 }
 
 #pragma mark - Class Methods
@@ -40,11 +39,11 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchOnlineList)];
+    _viewModel = [[HXOnlineViewModel alloc] init];
 }
 
 - (void)viewConfigure {
-    ;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchOnlineList)];
 }
 
 #pragma mark - Public Methods
@@ -52,35 +51,26 @@
     [self.tableView.mj_header beginRefreshing];
 }
 
-#pragma mark - Private Methods
 - (void)fetchOnlineList {
-    [MiaAPIHelper getRoomListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        if (success) {
-            NSArray *roomList = userInfo[@"v"][@"data"];
-            [self fetchedListData:roomList];
-        } else {
-            NSLog(@"getRoomList failed");
-        }
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        NSLog(@"getRoomList timeout");
+    @weakify(self)
+    RACSignal *requestSiganl = [_viewModel.requestCommand execute:nil];
+    [requestSiganl subscribeError:^(NSError *error) {
+        ;
+    } completed:^{
+        @strongify(self)
+        [self endLoad];
     }];
 }
 
-- (void)fetchedListData:(NSArray *)list {
-    NSMutableArray *onlieList = @[].mutableCopy;
-    for (NSDictionary *data in list) {
-        HXOnlineModel *model = [HXOnlineModel mj_objectWithKeyValues:data];
-        [onlieList addObject:model];
-    }
-    _onlineList = [onlieList copy];
-    
+#pragma mark - Private Methods
+- (void)endLoad {
     [self.tableView.mj_header endRefreshing];
     [self.tableView reloadData];
 }
 
 #pragma mark - Table View Data Source Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _onlineList.count;
+    return _viewModel.onlineList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,13 +81,13 @@
 #pragma mark - Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
-    [onlineCell displayCellWithModel:_onlineList[indexPath.row]];
+    [onlineCell displayCellWithModel:_viewModel.onlineList[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_onlineList[indexPath.row]];
+    HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_viewModel.onlineList[indexPath.row]];
     [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypeLive];
 }
 
