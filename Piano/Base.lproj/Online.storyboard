@@ -7,9 +7,41 @@
     </dependencies>
     <scenes>
         <!--HXOnlineViewController-->
+        <scene sceneID="1UM-Qw-NSQ">
+            <objects>
+                <viewController storyboardIdentifier="HXOnlineViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BJe-Xw-kLe" userLabel="HXOnlineViewController" customClass="HXOnlineViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rIF-dM-Kxz"/>
+                        <viewControllerLayoutGuide type="bottom" id="z12-ZM-Pah"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oqm-VT-FUG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hh5-8g-hkj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="fRv-sf-web" kind="embed" id="6qP-UE-9Ag"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hh5-8g-hkj" firstAttribute="leading" secondItem="Oqm-VT-FUG" secondAttribute="leading" id="2XM-5m-yt3"/>
+                            <constraint firstItem="hh5-8g-hkj" firstAttribute="top" secondItem="Oqm-VT-FUG" secondAttribute="top" id="AgX-me-yf8"/>
+                            <constraint firstItem="z12-ZM-Pah" firstAttribute="top" secondItem="hh5-8g-hkj" secondAttribute="bottom" id="aw0-jI-1Fr"/>
+                            <constraint firstAttribute="trailing" secondItem="hh5-8g-hkj" secondAttribute="trailing" id="caY-dp-MQN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rcV-Ek-ob8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-335" y="329"/>
+        </scene>
+        <!--HXOnlineContainerViewController-->
         <scene sceneID="dDD-OW-tuE">
             <objects>
-                <tableViewController storyboardIdentifier="HXOnlineViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fRv-sf-web" userLabel="HXOnlineViewController" customClass="HXOnlineViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HXOnlineContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fRv-sf-web" userLabel="HXOnlineContainerViewController" customClass="HXOnlineContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="440" sectionHeaderHeight="28" sectionFooterHeight="28" id="5kk-HB-VYC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

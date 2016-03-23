@@ -49,8 +49,8 @@
 #pragma mark - Share SDK
     NSArray *activePlatforms = @[@(SSDKPlatformTypeWechat),
                                  @(SSDKPlatformTypeSMS)/*,
-                                                        @(SSDKPlatformTypeMail),
-                                                        @(SSDKPlatformTypeSinaWeibo)*/];
+                                 @(SSDKPlatformTypeMail),
+                                 @(SSDKPlatformTypeSinaWeibo)*/];
     [ShareSDK registerApp:ShareSDKKEY activePlatforms:activePlatforms onImport:^(SSDKPlatformType platformType) {
         switch (platformType) {
             case SSDKPlatformTypeWechat: {

@@ -83,7 +83,7 @@ UITabBarControllerDelegate
 - (void)notificationWebSocketDidOpen:(NSNotification *)notification {
     UINavigationController *onlineNavigationController = self.viewControllers.firstObject;
     HXOnlineViewController *onlineViewController = onlineNavigationController.viewControllers.firstObject;
-    [onlineViewController startFetchOnlineList];
+    [onlineViewController startFetchList];
 }
 
 - (void)notificationWebSocketDidFailWithError:(NSNotification *)notification {
