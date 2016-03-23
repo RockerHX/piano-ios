@@ -12,6 +12,7 @@ typedef NS_ENUM(NSUInteger, HXStoryBoardName) {
     HXStoryBoardNameOnline,
     HXStoryBoardNamePublish,
     HXStoryBoardNameMe,
+    HXStoryBoardNameLogin,
     HXStoryBoardNameProfile,
     HXStoryBoardNameSetting,
     HXStoryBoardNameLive,

@@ -9,14 +9,17 @@
 #import "HXMainViewController.h"
 #import "HXOnlineViewController.h"
 #import "HXPublishViewController.h"
+#import "HXMeViewController.h"
+#import "HXLoginViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
-#import "HXMeViewController.h"
 #import "ReactiveCocoa.h"
+#import "HXUserSession.h"
 
 
 @interface HXMainViewController () <
-UITabBarControllerDelegate
+UITabBarControllerDelegate,
+HXLoginViewControllerDelegate
 >
 @end
 
@@ -44,6 +47,7 @@ UITabBarControllerDelegate
 
 #pragma mark - Config Methods
 - (void)loadConfigure {
+    self.delegate = self;
     [[WebSocketMgr standard] watchNetworkStatus];
     
     // Socket
@@ -79,6 +83,43 @@ UITabBarControllerDelegate
     }
 }
 
+#pragma mark - Private Methods
+- (void)showLoginSence {
+    UINavigationController *loginNavigationController = [HXLoginViewController navigationControllerInstance];
+    HXLoginViewController *loginViewController = loginNavigationController.viewControllers.firstObject;
+    loginViewController.delegate = self;
+    
+    __weak __typeof__(self)weakSelf = self;
+    [self transitionAnimationWithDuration:0.3f type:kCATransitionMoveIn subtype:kCATransitionFromRight transiteCode:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [strongSelf presentViewController:loginNavigationController animated:NO completion:nil];
+    }];
+}
+
+- (void)transitionAnimationWithDuration:(CFTimeInterval)duration type:(NSString *)type subtype:(NSString *)subtype transiteCode:(void(^)(void))transiteCode {
+    if (transiteCode) {
+        [CATransaction begin];
+        
+        CATransition *transition = [CATransition animation];
+        transition.duration = duration;
+        transition.type = type;
+        transition.subtype = subtype;
+        transition.fillMode = kCAFillModeForwards;
+        
+        [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:kCATransition];
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [CATransaction setCompletionBlock: ^ {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(transition.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^ {
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            });
+        }];
+        
+        transiteCode();
+        
+        [CATransaction commit];
+    }
+}
+
 #pragma mark - Socket
 - (void)notificationWebSocketDidOpen:(NSNotification *)notification {
     UINavigationController *onlineNavigationController = self.viewControllers.firstObject;
@@ -100,7 +141,39 @@ UITabBarControllerDelegate
 
 #pragma mark - UITabBarControllerDelegate Methods
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if (![[self.viewControllers firstObject] isEqual:viewController]) {
+        switch ([HXUserSession session].state) {
+            case HXUserStateLogout: {
+                [self showLoginSence];
+                return NO;
+                break;
+            }
+            case HXUserStateLogin: {
+                return YES;
+                break;
+            }
+        }
+    }
     return YES;
+}
+
+#pragma mark - HXLoginViewControllerDelegate Methods
+- (void)loginViewController:(HXLoginViewController *)loginViewController takeAction:(HXLoginViewControllerAction)action {
+    switch (action) {
+        case HXLoginViewControllerActionDismiss: {
+            break;
+        }
+        case HXLoginViewControllerActionLoginSuccess: {
+//            HXDiscoveryViewController *discoveryViewController = [((UINavigationController *)[self.viewControllers firstObject]).viewControllers firstObject];
+//            [discoveryViewController refreshShareItem];
+//            [self updateNotificationBadge];
+            break;
+        }
+    }
+    
+    [self transitionAnimationWithDuration:0.3f type:kCATransitionReveal subtype:kCATransitionFromLeft transiteCode:^{
+        [loginViewController dismissViewControllerAnimated:NO completion:nil];
+    }];
 }
 
 @end
