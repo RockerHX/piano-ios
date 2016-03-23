@@ -24,7 +24,7 @@ HXLoginViewControllerDelegate
 @end
 
 @implementation HXMainViewController {
-    
+    UINavigationController *_publishNavigationController;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -65,12 +65,14 @@ HXLoginViewControllerDelegate
     for (UINavigationController *navigationController in self.viewControllers) {
         if ([navigationController.restorationIdentifier isEqualToString:[HXOnlineViewController navigationControllerIdentifier]]) {
             [navigationController setViewControllers:@[[HXOnlineViewController instance]]];
-        } else if ([navigationController.restorationIdentifier isEqualToString:[HXPublishViewController navigationControllerIdentifier]]) {
-            [navigationController setViewControllers:@[[HXPublishViewController instance]]];
         } else if ([navigationController.restorationIdentifier isEqualToString:[HXMeViewController navigationControllerIdentifier]]) {
             [navigationController setViewControllers:@[[HXMeViewController instance]]];
         }
     }
+    
+    NSArray *viewControllers = self.viewControllers;
+    _publishNavigationController = viewControllers[1];
+    self.viewControllers = @[[viewControllers firstObject], [viewControllers lastObject]];
 }
 
 #pragma mark - Public Methods
@@ -141,20 +143,24 @@ HXLoginViewControllerDelegate
 
 #pragma mark - UITabBarControllerDelegate Methods
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    if (![[self.viewControllers firstObject] isEqual:viewController]) {
-        switch ([HXUserSession session].state) {
-            case HXUserStateLogout: {
-                [self showLoginSence];
-                return NO;
-                break;
-            }
-            case HXUserStateLogin: {
+    if ([[self.viewControllers firstObject] isEqual:viewController]) {
+        return YES;
+    }
+    
+    switch ([HXUserSession session].state) {
+        case HXUserStateLogout: {
+            [self showLoginSence];
+            return NO;
+            break;
+        }
+        case HXUserStateLogin: {
+            if ([[self.viewControllers lastObject] isEqual:viewController]) {
                 return YES;
-                break;
+            } else {
+                return NO;
             }
         }
     }
-    return YES;
 }
 
 #pragma mark - HXLoginViewControllerDelegate Methods
