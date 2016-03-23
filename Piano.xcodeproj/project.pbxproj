@@ -23,6 +23,14 @@
 		CD2949B91CA282AC00CA3C3F /* HXOnlineReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949B81CA282AC00CA3C3F /* HXOnlineReplayCell.m */; };
 		CD2949BC1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949BB1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m */; };
 		CD2949BF1CA2832000CA3C3F /* HXOnlineVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949BE1CA2832000CA3C3F /* HXOnlineVideoCell.m */; };
+		CD2949D41CA28A3500CA3C3F /* UIButton+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C31CA28A3500CA3C3F /* UIButton+HXIBnspectable.m */; };
+		CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m */; };
+		CD2949D61CA28A3500CA3C3F /* UIView+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C71CA28A3500CA3C3F /* UIView+HXIBnspectable.m */; };
+		CD2949D71CA28A3500CA3C3F /* HXIBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CA1CA28A3500CA3C3F /* HXIBButton.m */; };
+		CD2949D81CA28A3500CA3C3F /* HXIBImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CC1CA28A3500CA3C3F /* HXIBImageView.m */; };
+		CD2949D91CA28A3500CA3C3F /* HXIBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CE1CA28A3500CA3C3F /* HXIBLabel.m */; };
+		CD2949DA1CA28A3500CA3C3F /* HXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949D01CA28A3500CA3C3F /* HXIBView.m */; };
+		CD2949DB1CA28A3500CA3C3F /* HXIBnsepectableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949D31CA28A3500CA3C3F /* HXIBnsepectableManager.m */; };
 		CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */; };
 		CD2E72871CA11DE0003CDB77 /* HXLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72791CA11DE0003CDB77 /* HXLiveViewController.m */; };
 		CD2E72881CA11DE0003CDB77 /* HXOnlineContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E727C1CA11DE0003CDB77 /* HXOnlineContainerViewController.m */; };
@@ -115,6 +123,22 @@
 		CD2949BB1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineAlbumsCell.m; sourceTree = "<group>"; };
 		CD2949BD1CA2832000CA3C3F /* HXOnlineVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineVideoCell.h; sourceTree = "<group>"; };
 		CD2949BE1CA2832000CA3C3F /* HXOnlineVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineVideoCell.m; sourceTree = "<group>"; };
+		CD2949C21CA28A3500CA3C3F /* UIButton+HXIBnspectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+HXIBnspectable.h"; sourceTree = "<group>"; };
+		CD2949C31CA28A3500CA3C3F /* UIButton+HXIBnspectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+HXIBnspectable.m"; sourceTree = "<group>"; };
+		CD2949C41CA28A3500CA3C3F /* UILabel+HXIBnsepectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HXIBnsepectable.h"; sourceTree = "<group>"; };
+		CD2949C51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+HXIBnsepectable.m"; sourceTree = "<group>"; };
+		CD2949C61CA28A3500CA3C3F /* UIView+HXIBnspectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXIBnspectable.h"; sourceTree = "<group>"; };
+		CD2949C71CA28A3500CA3C3F /* UIView+HXIBnspectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXIBnspectable.m"; sourceTree = "<group>"; };
+		CD2949C91CA28A3500CA3C3F /* HXIBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXIBButton.h; sourceTree = "<group>"; };
+		CD2949CA1CA28A3500CA3C3F /* HXIBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXIBButton.m; sourceTree = "<group>"; };
+		CD2949CB1CA28A3500CA3C3F /* HXIBImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXIBImageView.h; sourceTree = "<group>"; };
+		CD2949CC1CA28A3500CA3C3F /* HXIBImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXIBImageView.m; sourceTree = "<group>"; };
+		CD2949CD1CA28A3500CA3C3F /* HXIBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXIBLabel.h; sourceTree = "<group>"; };
+		CD2949CE1CA28A3500CA3C3F /* HXIBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXIBLabel.m; sourceTree = "<group>"; };
+		CD2949CF1CA28A3500CA3C3F /* HXIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXIBView.h; sourceTree = "<group>"; };
+		CD2949D01CA28A3500CA3C3F /* HXIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXIBView.m; sourceTree = "<group>"; };
+		CD2949D21CA28A3500CA3C3F /* HXIBnsepectableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXIBnsepectableManager.h; sourceTree = "<group>"; };
+		CD2949D31CA28A3500CA3C3F /* HXIBnsepectableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXIBnsepectableManager.m; sourceTree = "<group>"; };
 		CD2E72751CA11DE0003CDB77 /* HXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMainViewController.h; sourceTree = "<group>"; };
 		CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMainViewController.m; sourceTree = "<group>"; };
 		CD2E72781CA11DE0003CDB77 /* HXLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveViewController.h; sourceTree = "<group>"; };
@@ -319,6 +343,53 @@
 				B1BFCF29A3BF4A6DA2007B29 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD2949C01CA28A3500CA3C3F /* HXIBKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD2949C11CA28A3500CA3C3F /* Category */,
+				CD2949C81CA28A3500CA3C3F /* UIKit */,
+				CD2949D11CA28A3500CA3C3F /* Utility */,
+			);
+			path = HXIBKit;
+			sourceTree = "<group>";
+		};
+		CD2949C11CA28A3500CA3C3F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CD2949C21CA28A3500CA3C3F /* UIButton+HXIBnspectable.h */,
+				CD2949C31CA28A3500CA3C3F /* UIButton+HXIBnspectable.m */,
+				CD2949C41CA28A3500CA3C3F /* UILabel+HXIBnsepectable.h */,
+				CD2949C51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m */,
+				CD2949C61CA28A3500CA3C3F /* UIView+HXIBnspectable.h */,
+				CD2949C71CA28A3500CA3C3F /* UIView+HXIBnspectable.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		CD2949C81CA28A3500CA3C3F /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD2949C91CA28A3500CA3C3F /* HXIBButton.h */,
+				CD2949CA1CA28A3500CA3C3F /* HXIBButton.m */,
+				CD2949CB1CA28A3500CA3C3F /* HXIBImageView.h */,
+				CD2949CC1CA28A3500CA3C3F /* HXIBImageView.m */,
+				CD2949CD1CA28A3500CA3C3F /* HXIBLabel.h */,
+				CD2949CE1CA28A3500CA3C3F /* HXIBLabel.m */,
+				CD2949CF1CA28A3500CA3C3F /* HXIBView.h */,
+				CD2949D01CA28A3500CA3C3F /* HXIBView.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		CD2949D11CA28A3500CA3C3F /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CD2949D21CA28A3500CA3C3F /* HXIBnsepectableManager.h */,
+				CD2949D31CA28A3500CA3C3F /* HXIBnsepectableManager.m */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		CD2E72771CA11DE0003CDB77 /* Live */ = {
@@ -553,6 +624,7 @@
 			children = (
 				CDED8EF01CA13BB4003867B8 /* Category */,
 				CDED8EF91CA13BB4003867B8 /* Macros */,
+				CD2949C01CA28A3500CA3C3F /* HXIBKit */,
 				CDED8EFD1CA13BB4003867B8 /* UIKit */,
 				CDED8F121CA13BB4003867B8 /* Uitility */,
 			);
@@ -870,9 +942,14 @@
 			files = (
 				CD2E728B1CA11DE0003CDB77 /* HXSettingViewController.m in Sources */,
 				CD2E729C1CA11E02003CDB77 /* HXLiveModel.m in Sources */,
+				CD2949D61CA28A3500CA3C3F /* UIView+HXIBnspectable.m in Sources */,
 				CDED8F2D1CA13BB4003867B8 /* HXStoryBoardManager.m in Sources */,
 				CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */,
+				CD2949D81CA28A3500CA3C3F /* HXIBImageView.m in Sources */,
 				CDED8F221CA13BB4003867B8 /* UIViewController+HXClass.m in Sources */,
+				CD2949DA1CA28A3500CA3C3F /* HXIBView.m in Sources */,
+				CD2949D71CA28A3500CA3C3F /* HXIBButton.m in Sources */,
+				CD2949D41CA28A3500CA3C3F /* UIButton+HXIBnspectable.m in Sources */,
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
 				CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */,
 				CD2949B61CA2827F00CA3C3F /* HXOnlineNormalCell.m in Sources */,
@@ -888,6 +965,7 @@
 				CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */,
 				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,
 				CD2949B31CA27FDD00CA3C3F /* HXOnlineViewController.m in Sources */,
+				CD2949D91CA28A3500CA3C3F /* HXIBLabel.m in Sources */,
 				CDED8F2B1CA13BB4003867B8 /* HXTextView.m in Sources */,
 				CD2949BF1CA2832000CA3C3F /* HXOnlineVideoCell.m in Sources */,
 				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
@@ -896,12 +974,14 @@
 				CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */,
 				CD2E72871CA11DE0003CDB77 /* HXLiveViewController.m in Sources */,
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
+				CD2949DB1CA28A3500CA3C3F /* HXIBnsepectableManager.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */,
 				CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				CD2E729D1CA11E02003CDB77 /* HXOnlineModel.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
+				CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */,
 				395D670B1C9AB16B00ED0454 /* FileLog.m in Sources */,
 				CDED8F3A1CA14E74003867B8 /* HXMeViewController.m in Sources */,
 				CD2E72941CA11DF8003CDB77 /* HXOnlineCell.m in Sources */,
