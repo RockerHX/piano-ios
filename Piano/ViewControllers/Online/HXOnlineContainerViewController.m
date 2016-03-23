@@ -61,7 +61,8 @@
 
 #pragma mark - Table View Data Source Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _viewModel.onlineList.count;
+//    return _viewModel.onlineList.count;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -70,16 +71,18 @@
 }
 
 #pragma mark - Table View Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return _viewModel.cellHeight;
+}
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
-    [onlineCell displayCellWithModel:_viewModel.onlineList[indexPath.row]];
+//    HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
+//    [onlineCell displayCellWithModel:_viewModel.onlineList[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_viewModel.onlineList[indexPath.row]];
-    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypeLive];
+//    HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_viewModel.onlineList[indexPath.row]];
+//    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypeLive];
 }
 
 @end

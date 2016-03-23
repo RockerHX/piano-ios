@@ -8,6 +8,7 @@
 
 #import "HXOnlineViewModel.h"
 #import "MiaAPIHelper.h"
+#import "UIConstants.h"
 
 
 @implementation HXOnlineViewModel
@@ -36,6 +37,11 @@
         }];
         return signal;
     }];
+}
+
+#pragma mark - Property
+- (CGFloat)cellHeight {
+    return SCREEN_WIDTH - 60.0f + 70.0f;
 }
 
 #pragma mark - Private Methods
