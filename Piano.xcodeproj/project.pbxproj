@@ -19,6 +19,10 @@
 		395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
 		CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; };
 		CD2949B31CA27FDD00CA3C3F /* HXOnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949B21CA27FDD00CA3C3F /* HXOnlineViewController.m */; };
+		CD2949B61CA2827F00CA3C3F /* HXOnlineNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949B51CA2827F00CA3C3F /* HXOnlineNormalCell.m */; };
+		CD2949B91CA282AC00CA3C3F /* HXOnlineReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949B81CA282AC00CA3C3F /* HXOnlineReplayCell.m */; };
+		CD2949BC1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949BB1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m */; };
+		CD2949BF1CA2832000CA3C3F /* HXOnlineVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949BE1CA2832000CA3C3F /* HXOnlineVideoCell.m */; };
 		CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */; };
 		CD2E72871CA11DE0003CDB77 /* HXLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72791CA11DE0003CDB77 /* HXLiveViewController.m */; };
 		CD2E72881CA11DE0003CDB77 /* HXOnlineContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E727C1CA11DE0003CDB77 /* HXOnlineContainerViewController.m */; };
@@ -103,6 +107,14 @@
 		CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
 		CD2949B11CA27FDD00CA3C3F /* HXOnlineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineViewController.h; sourceTree = "<group>"; };
 		CD2949B21CA27FDD00CA3C3F /* HXOnlineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineViewController.m; sourceTree = "<group>"; };
+		CD2949B41CA2827F00CA3C3F /* HXOnlineNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineNormalCell.h; sourceTree = "<group>"; };
+		CD2949B51CA2827F00CA3C3F /* HXOnlineNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineNormalCell.m; sourceTree = "<group>"; };
+		CD2949B71CA282AC00CA3C3F /* HXOnlineReplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineReplayCell.h; sourceTree = "<group>"; };
+		CD2949B81CA282AC00CA3C3F /* HXOnlineReplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineReplayCell.m; sourceTree = "<group>"; };
+		CD2949BA1CA2830C00CA3C3F /* HXOnlineAlbumsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineAlbumsCell.h; sourceTree = "<group>"; };
+		CD2949BB1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineAlbumsCell.m; sourceTree = "<group>"; };
+		CD2949BD1CA2832000CA3C3F /* HXOnlineVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineVideoCell.h; sourceTree = "<group>"; };
+		CD2949BE1CA2832000CA3C3F /* HXOnlineVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineVideoCell.m; sourceTree = "<group>"; };
 		CD2E72751CA11DE0003CDB77 /* HXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMainViewController.h; sourceTree = "<group>"; };
 		CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMainViewController.m; sourceTree = "<group>"; };
 		CD2E72781CA11DE0003CDB77 /* HXLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveViewController.h; sourceTree = "<group>"; };
@@ -352,6 +364,14 @@
 			children = (
 				CD2E728D1CA11DF8003CDB77 /* HXOnlineCell.h */,
 				CD2E728E1CA11DF8003CDB77 /* HXOnlineCell.m */,
+				CD2949B41CA2827F00CA3C3F /* HXOnlineNormalCell.h */,
+				CD2949B51CA2827F00CA3C3F /* HXOnlineNormalCell.m */,
+				CD2949B71CA282AC00CA3C3F /* HXOnlineReplayCell.h */,
+				CD2949B81CA282AC00CA3C3F /* HXOnlineReplayCell.m */,
+				CD2949BA1CA2830C00CA3C3F /* HXOnlineAlbumsCell.h */,
+				CD2949BB1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m */,
+				CD2949BD1CA2832000CA3C3F /* HXOnlineVideoCell.h */,
+				CD2949BE1CA2832000CA3C3F /* HXOnlineVideoCell.m */,
 			);
 			path = Online;
 			sourceTree = "<group>";
@@ -855,18 +875,21 @@
 				CDED8F221CA13BB4003867B8 /* UIViewController+HXClass.m in Sources */,
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
 				CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */,
+				CD2949B61CA2827F00CA3C3F /* HXOnlineNormalCell.m in Sources */,
 				CDED8F451CA22F32003867B8 /* HXOnlineViewModel.m in Sources */,
 				CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */,
 				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
 				CDED8F271CA13BB4003867B8 /* HXLabel.m in Sources */,
 				CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */,
 				CD2E72891CA11DE0003CDB77 /* HXPublishViewController.m in Sources */,
+				CD2949B91CA282AC00CA3C3F /* HXOnlineReplayCell.m in Sources */,
 				CD2E72881CA11DE0003CDB77 /* HXOnlineContainerViewController.m in Sources */,
 				CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */,
 				CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */,
 				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,
 				CD2949B31CA27FDD00CA3C3F /* HXOnlineViewController.m in Sources */,
 				CDED8F2B1CA13BB4003867B8 /* HXTextView.m in Sources */,
+				CD2949BF1CA2832000CA3C3F /* HXOnlineVideoCell.m in Sources */,
 				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
 				CDED8F231CA13BB4003867B8 /* HXAppConstants.m in Sources */,
 				CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */,
@@ -886,6 +909,7 @@
 				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
 				CDED8F2E1CA13BB4003867B8 /* HXThemeManager.m in Sources */,
 				CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */,
+				CD2949BC1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m in Sources */,
 				CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */,
 				CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */,
 				CDED8F281CA13BB4003867B8 /* HXActivityIndicator.m in Sources */,
