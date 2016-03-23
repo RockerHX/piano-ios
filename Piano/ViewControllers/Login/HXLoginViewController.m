@@ -7,6 +7,7 @@
 //
 
 #import "HXLoginViewController.h"
+#import "HXLoginViewModel.h"
 #import "HXUserSession.h"
 #import "HXAlertBanner.h"
 
@@ -21,6 +22,8 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
 @implementation HXLoginViewController {
     BOOL _shouldHideNavigationBar;
     HXLoginAction _loginAction;
+    
+    HXLoginViewModel *_viewModel;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -62,7 +65,10 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _loginAction = HXLoginActionCancel;
+    _viewModel = [HXLoginViewModel new];
+    
+    RAC(_viewModel.account, mobile) = _mobileTextField.rac_textSignal;
+    RAC(_viewModel.account, password) = _passWordTextField.rac_textSignal;
 }
 
 - (void)viewConfigure {

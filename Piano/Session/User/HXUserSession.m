@@ -36,13 +36,18 @@ typedef void(^FailureBlock)(NSString *);
     return session;
 }
 
-#pragma mark - Init Methods
+#pragma mark - Initialize Methods
 - (instancetype)init {
     self = [super init];
     if (self) {
-        ;
+        [self initConfigure];
     }
     return self;
+}
+
+#pragma mark - Configure Methods
+- (void)initConfigure {
+    _user = [self unArchiveUser];
 }
 
 #pragma mark - Property
@@ -71,11 +76,6 @@ typedef void(^FailureBlock)(NSString *);
 
 - (NSString *)uid {
     return _user.uid;
-}
-
-#pragma mark - Configure Methods
-- (void)initConfigure {
-    _user = [self unArchiveUser];
 }
 
 #pragma mark - Public Methods

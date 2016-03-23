@@ -8,7 +8,7 @@
 
 #import <ShareSDK/ShareSDK.h>
 #import "HXUserModel.h"
-#import "HXAccountModel.h"
+#import "ReactiveCocoa.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -36,7 +36,6 @@ typedef NS_ENUM(BOOL, HXUserState) {
 
 @property (nonatomic, strong, readonly)       NSString *uid;
 @property (nonatomic, strong, readonly)    HXUserModel *user;
-@property (nonatomic, strong, readonly) HXAccountModel *account;
 
 + (instancetype)session;
 
