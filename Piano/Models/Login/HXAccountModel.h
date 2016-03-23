@@ -6,11 +6,14 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <ShareSDK/ShareSDK.h>
+
 
 @interface HXAccountModel : NSObject
 
-@property (nonatomic, copy) NSString *mobile;
-@property (nonatomic, copy) NSString *password;
+@property (nonatomic, strong) SSDKUser *sdkUser;
+
+@property (nonatomic, copy)   NSString *mobile;
+@property (nonatomic, copy)   NSString *password;
 
 @end

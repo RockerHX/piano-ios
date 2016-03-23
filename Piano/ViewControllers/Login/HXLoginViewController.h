@@ -8,13 +8,15 @@
 
 #import "UIViewController+HXClass.h"
 
+
 typedef NS_ENUM(NSUInteger, HXLoginViewControllerAction) {
     HXLoginViewControllerActionDismiss,
     HXLoginViewControllerActionLoginSuccess,
 };
 
-@class HXLoginView;
+
 @class HXLoginViewController;
+
 
 @protocol HXLoginViewControllerDelegate <NSObject>
 
@@ -22,6 +24,7 @@ typedef NS_ENUM(NSUInteger, HXLoginViewControllerAction) {
 - (void)loginViewController:(HXLoginViewController *)loginViewController takeAction:(HXLoginViewControllerAction)action;
 
 @end
+
 
 @interface HXLoginViewController : UIViewController <UITextFieldDelegate>
 

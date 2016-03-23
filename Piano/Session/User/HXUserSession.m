@@ -79,20 +79,6 @@ typedef void(^FailureBlock)(NSString *);
 }
 
 #pragma mark - Public Methods
-- (void)loginWithSDKUser:(SSDKUser *)user success:(nullable void(^)(HXUserSession *, NSString *))success failure:(nullable void(^)(NSString *))failure {
-    _successBlock = success;
-    _failureBlock = failure;
-    
-    [self startWeiXinLoginRequestWithUser:user];
-}
-
-- (void)loginWithMobile:(NSString *)mobile password:(NSString *)password success:(nullable void(^)(HXUserSession *, NSString *))success failure:(nullable void(^)(NSString *))failure {
-    _successBlock = success;
-    _failureBlock = failure;
-    
-    [self startLoginRequestWithMobile:mobile password:password];
-}
-
 - (void)updateUser:(nonnull HXUserModel *)user {
     _user = user;
     [self archiveUser:user];
@@ -129,49 +115,6 @@ typedef void(^FailureBlock)(NSString *);
 - (HXUserModel *)unArchiveUser {
     NSString *path = [[HXPathManager manager] storePathWithRelativePath:UserDataRelativePath fileName:UserDataFileName];
     return [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-}
-
-- (void)startWeiXinLoginRequestWithUser:(SSDKUser *)user {
-//    NSDictionary *credential = user.credential.rawData;
-//    NSString *openID = credential[@"openid"];
-//    NSString *unionID = credential[@"unionid"];
-//    NSString *token = user.credential.token;
-//    NSString *nickName = user.nickname;
-//    NSString *avatar = user.icon;
-//    NSString *sex = ((user.gender == SSDKGenderUnknown) ? @"0" : @(user.gender + 1).stringValue);
-//    
-//    [MiaAPIHelper thirdLoginWithOpenID:openID
-//                               unionID:unionID
-//                                 token:token
-//                              nickName:nickName
-//                                   sex:sex
-//                                  type:@"WEIXIN"
-//                                avatar:avatar
-//                         completeBlock:
-//     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//         if (success) {
-//             [self requestSuccessHandleData:userInfo[MiaAPIKey_Values]];
-//         } else {
-//             [self handelError:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-//         }
-//     } timeoutBlock:^(MiaRequestItem *requestItem) {
-//         [self requestTimeOut];
-//     }];
-}
-
-- (void)startLoginRequestWithMobile:(NSString *)mobile password:(NSString *)password {
-//    [MiaAPIHelper loginWithPhoneNum:mobile
-//                       passwordHash:[NSString md5HexDigest:password]
-//                      completeBlock:
-//     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//         if (success) {
-//             [self requestSuccessHandleData:userInfo[MiaAPIKey_Values]];
-//         } else {
-//             [self handelError:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-//         }
-//     } timeoutBlock:^(MiaRequestItem *requestItem) {
-//         [self requestTimeOut];
-//     }];
 }
 
 - (void)requestSuccessHandleData:(NSDictionary *)data {

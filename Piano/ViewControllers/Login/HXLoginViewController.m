@@ -11,17 +11,20 @@
 #import "HXUserSession.h"
 #import "HXAlertBanner.h"
 
+
 typedef NS_ENUM(BOOL, HXLoginAction) {
-    HXLoginActionCancel = NO,
-    HXLoginActionLogin = YES
+    HXLoginActionCancel,
+    HXLoginActionLogin,
 };
 
+
 @interface HXLoginViewController ()
+@property (nonatomic, assign) HXLoginAction  loginAction;
 @end
+
 
 @implementation HXLoginViewController {
     BOOL _shouldHideNavigationBar;
-    HXLoginAction _loginAction;
     
     HXLoginViewModel *_viewModel;
 }
@@ -69,6 +72,19 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
     
     RAC(_viewModel.account, mobile) = _mobileTextField.rac_textSignal;
     RAC(_viewModel.account, password) = _passWordTextField.rac_textSignal;
+    RAC(_loginButton, enabled) = [RACSignal combineLatest:@[RACObserve(self, loginAction) , _viewModel.enableLoginSignal] reduce:^id(NSNumber *action, NSNumber *enabled) {
+        HXLoginAction loginAction = action.boolValue;
+        switch (loginAction) {
+            case HXLoginActionCancel: {
+                return @(YES);
+                break;
+            }
+            case HXLoginActionLogin: {
+                return @(enabled.boolValue);
+                break;
+            }
+        }
+    }];
 }
 
 - (void)viewConfigure {
@@ -96,45 +112,16 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
 - (IBAction)weixinButtonPressed {
     _shouldHideNavigationBar = YES;
     
-    __weak __typeof__(self)weakSelf = self;
-    [ShareSDK getUserInfo:SSDKPlatformTypeWechat onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
-        __strong __typeof__(self)strongSelf = weakSelf;
-        switch (state) {
-            case SSDKResponseStateBegin: {
-                break;
-            }
-            case SSDKResponseStateSuccess: {
-                [strongSelf startWeiXinLoginRequestWithUser:user];
-                break;
-            }
-            case SSDKResponseStateFail: {
-                [HXAlertBanner showWithMessage:error.description tap:nil];
-                break;
-            }
-            case SSDKResponseStateCancel: {
-                [HXAlertBanner showWithMessage:@"用户取消" tap:nil];
-                break;
-            }
-        }
-    }];
+    [self startWeiXinLoginRequest];
 }
 
 - (IBAction)loginButtonPressed {
     [self.view endEditing:YES];
     _shouldHideNavigationBar = YES;
     
-    NSString *mobile = _mobileTextField.text;
-    NSString *password = _passWordTextField.text;
-    
     switch (_loginAction) {
         case HXLoginActionLogin: {
-            if ([self checkPhoneNumber]) {
-                if (!password.length) {
-                    [self showToastWithMessage:@"请输入登录密码"];
-                } else {
-                    [self startLoginRequestWithMobile:mobile password:password];
-                }
-            }
+            [self startNormalLoginRequest];
             break;
         }
         case HXLoginActionCancel: {
@@ -170,7 +157,7 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
 }
 
 - (void)hiddenOperationWithAction:(HXLoginAction)action {
-    _loginAction = action;
+    self.loginAction = action;
     
     CGFloat alpha = action ? 0.0f : 1.0f;
     _logoView.alpha = alpha;
@@ -179,10 +166,9 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
 }
 
 - (void)hiddenAnimationCompletedWithAction:(HXLoginAction)action {
-    _loginAction = action;
-    
     BOOL hidden = action;
     CGFloat alpha = action ? 1.0f : 0.0f;
+    
     _logoView.hidden = hidden;
     _logoView.alpha = alpha;
     
@@ -234,31 +220,35 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
     } completion:nil];
 }
 
-- (BOOL)checkPhoneNumber {
-    NSString *str = _mobileTextField.text;
-    if (str.length == 11
-        && [str rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]].location != NSNotFound) {
-        return YES;
-    }
-    [HXAlertBanner showWithMessage:@"手机号码不符合规范，请重新输入" tap:nil];
-    return NO;
-}
-
-- (void)startWeiXinLoginRequestWithUser:(SSDKUser *)user {
+- (void)startWeiXinLoginRequest {
     [self showHUD];
-    [[HXUserSession session] loginWithSDKUser:user success:^(HXUserSession *session, NSString *prompt) {
+    
+    @weakify(self)
+    RACSignal *weixinLoginSignal = [_viewModel.weixinLoginCommand execute:nil];
+    [weixinLoginSignal subscribeNext:^(NSString *prompt) {
+        @strongify(self)
         [self loginSuccessHandleWithPrompt:prompt];
-    } failure:^(NSString *prompt) {
-        [self loginFailureHanleWithPrompt:prompt];
+    } error:^(NSError *error) {
+        @strongify(self)
+        [self loginFailureHanleWithPrompt:error.domain];
+    } completed:^{
+        ;
     }];
 }
 
-- (void)startLoginRequestWithMobile:(NSString *)mobile password:(NSString *)password {
+- (void)startNormalLoginRequest {
     [self showHUD];
-    [[HXUserSession session] loginWithMobile:mobile password:password success:^(HXUserSession *session, NSString *prompt) {
+    
+    @weakify(self)
+    RACSignal *weixinLoginSignal = [_viewModel.normalLoginCommand execute:nil];
+    [weixinLoginSignal subscribeNext:^(NSString *prompt) {
+        @strongify(self)
         [self loginSuccessHandleWithPrompt:prompt];
-    } failure:^(NSString *prompt) {
-        [self loginFailureHanleWithPrompt:prompt];
+    } error:^(NSError *error) {
+        @strongify(self)
+        [self loginFailureHanleWithPrompt:error.domain];
+    } completed:^{
+        ;
     }];
 }
 

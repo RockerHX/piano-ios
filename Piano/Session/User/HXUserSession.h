@@ -6,7 +6,6 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <ShareSDK/ShareSDK.h>
 #import "HXUserModel.h"
 #import "ReactiveCocoa.h"
 
@@ -38,15 +37,6 @@ typedef NS_ENUM(BOOL, HXUserState) {
 @property (nonatomic, strong, readonly)    HXUserModel *user;
 
 + (instancetype)session;
-
-- (void)loginWithSDKUser:(SSDKUser *)user
-                 success:(nullable void(^)(HXUserSession *session, NSString *prompt))success
-                 failure:(nullable void(^)(NSString *prompt))failure;
-
-- (void)loginWithMobile:(NSString *)mobile
-               password:(NSString *)password
-                success:(nullable void(^)(HXUserSession *session, NSString *prompt))success
-                failure:(nullable void(^)(NSString *prompt))failure;
 
 - (void)updateUser:(HXUserModel *)user;
 - (void)sysnc;

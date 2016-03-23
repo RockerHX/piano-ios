@@ -14,4 +14,8 @@
 
 @property (nonatomic, strong, readonly) HXAccountModel *account;
 
+@property (nonatomic, strong, readonly)  RACSignal *enableLoginSignal;
+@property (nonatomic, strong, readonly) RACCommand *normalLoginCommand;
+@property (nonatomic, strong, readonly) RACCommand *weixinLoginCommand;
+
 @end

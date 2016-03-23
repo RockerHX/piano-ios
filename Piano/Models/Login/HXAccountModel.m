@@ -8,6 +8,7 @@
 
 #import "HXAccountModel.h"
 
+
 @implementation HXAccountModel
 
 @end
