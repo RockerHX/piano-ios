@@ -99,12 +99,17 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tn0-ly-kk6">
                                             <rect key="frame" x="30" y="70" width="260" height="260"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JoV-2O-ERE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JoV-2O-ERE" customClass="HXIBImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="JoV-2O-ERE" firstAttribute="top" secondItem="Tn0-ly-kk6" secondAttribute="top" id="Qa5-wd-inL"/>
                                                 <constraint firstAttribute="bottom" secondItem="JoV-2O-ERE" secondAttribute="bottom" id="a6r-kG-CPj"/>
@@ -125,6 +130,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="previewCover" destination="JoV-2O-ERE" id="S22-HR-n8E"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

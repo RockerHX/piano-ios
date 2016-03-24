@@ -125,7 +125,6 @@ UIPickerViewDelegate
         resolutionSize = [zegoAVConfig getVideoResolution];
     } else {
         ZegoAVConfig *zegoAVConfig= [ZegoAVConfig defaultZegoAVConfig:preset];
-        resolution = 0;
         resolutionSize = [zegoAVConfig getVideoResolution];
         switch ((NSInteger)resolutionSize.width) {
             case 320:
