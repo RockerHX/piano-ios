@@ -75,8 +75,8 @@
 }
 
 - (void)startLive {
-    HXLiveModel *model = [HXLiveModel new];
-    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypePublish];
+//    HXLiveModel *model = [HXLiveModel new];
+//    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypePublish];
 }
 
 @end

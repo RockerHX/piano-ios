@@ -11,6 +11,7 @@
 #import "HXPublishViewController.h"
 #import "HXMeViewController.h"
 #import "HXLoginViewController.h"
+#import "HXWatchLiveViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
 #import "ReactiveCocoa.h"
@@ -78,10 +79,24 @@ HXLoginViewControllerDelegate
 #pragma mark - Public Methods
 - (void)showLiveWithModel:(HXLiveModel *)model type:(HXLiveType)type {
     if (model) {
-        HXLiveViewController *liveViewController = [HXLiveViewController instance];
-        liveViewController.model = model;
-        liveViewController.type = type;
-        [self presentViewController:liveViewController animated:YES completion:nil];
+        UINavigationController *modalNavigationController = nil;
+        switch (type) {
+            case HXLiveTypeWatchLive: {
+                modalNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+                HXWatchLiveViewController *watchLiveViewController = [modalNavigationController.viewControllers firstObject];
+                watchLiveViewController.model = model;
+                break;
+            }
+            case HXLiveTypeReplay: {
+                ;
+                break;
+            }
+            case HXLiveTypeLive: {
+                ;
+                break;
+            }
+        }
+        [self presentViewController:modalNavigationController animated:YES completion:nil];
     }
 }
 

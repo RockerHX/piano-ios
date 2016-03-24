@@ -6,7 +6,17 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveViewController.h"
+#import <UIKit/UIKit.h>
+
+
+typedef NS_ENUM(NSUInteger, HXLiveType) {
+    HXLiveTypeWatchLive,
+    HXLiveTypeReplay,
+    HXLiveTypeLive,
+};
+
+
+@class HXLiveModel;
 
 
 @interface HXMainViewController : UITabBarController

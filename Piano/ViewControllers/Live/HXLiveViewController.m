@@ -10,6 +10,7 @@
 #import "HXZegoAVKitManager.h"
 #import <ZegoAVKit/ZegoMoviePlayer.h>
 #import "HXSettingSession.h"
+#import "HXLiveModel.h"
 
 
 @interface HXLiveViewController () <
@@ -125,12 +126,12 @@ ZegoVideoDelegate
         return;
     }
     
-    if (_type == HXLiveTypePublish) {
-        ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
-        [zegoApi setLocalView:_liveView];
-        [zegoApi startPreview];
-        [zegoApi startPublishInChatRoom:_model.userName];
-    }
+//    if (_type == HXLiveTypePublish) {
+//        ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
+//        [zegoApi setLocalView:_liveView];
+//        [zegoApi startPreview];
+//        [zegoApi startPublishInChatRoom:_model.userName];
+//    }
     NSLog(@"直播中!");
 }
 

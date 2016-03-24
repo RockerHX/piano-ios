@@ -8,7 +8,6 @@
 
 #import "HXOnlineContainerViewController.h"
 #import "MJRefresh.h"
-#import "HXMainViewController.h"
 #import "HXOnlineViewModel.h"
 
 
@@ -82,7 +81,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_viewModel.onlineList[indexPath.row]];
-//    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypeLive];
+    HXLiveModel *model = [HXLiveModel new];
+    if (_delegate && [_delegate respondsToSelector:@selector(container:showLiveByLiveModel:)]) {
+        [_delegate container:self showLiveByLiveModel:model];
+    }
 }
 
 @end

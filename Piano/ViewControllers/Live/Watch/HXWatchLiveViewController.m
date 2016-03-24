@@ -7,9 +7,14 @@
 //
 
 #import "HXWatchLiveViewController.h"
+#import "HXLiveAnchorView.h"
+#import "HXWatchLiveBottomBar.h"
 
 
-@interface HXWatchLiveViewController ()
+@interface HXWatchLiveViewController () <
+HXLiveAnchorViewDelegate,
+HXWatchLiveBottomBarDelegate
+>
 @end
 
 
@@ -20,7 +25,23 @@
     return HXStoryBoardNameLive;
 }
 
++ (NSString *)navigationControllerIdentifier {
+    return @"HXWatchLiveNavigationController";
+}
+
 #pragma mark - View Controller Life Cycle
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -34,7 +55,28 @@
 }
 
 - (void)viewConfigure {
-    
+    ;
 }
+
+#pragma mark - Event Response
+- (IBAction)closeButtonPressed {
+    [self dismiss];
+}
+
+#pragma mark - Private Methods
+- (void)dismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - HXLiveAnchorViewDelegate Methods
+- (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
+    ;
+}
+
+#pragma mark - HXWatchLiveBottomBarDelegate Methods
+- (void)bottomBar:(HXWatchLiveBottomBar *)bar takeAction:(HXWatchLiveBottomBarAction)action {
+    ;
+}
+
 
 @end

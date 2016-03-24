@@ -8,9 +8,12 @@
 
 #import "HXOnlineViewController.h"
 #import "HXOnlineContainerViewController.h"
+#import "HXMainViewController.h"
 
 
-@interface HXOnlineViewController ()
+@interface HXOnlineViewController () <
+HXOnlineContainerViewControllerDelegate
+>
 @end
 
 
@@ -30,6 +33,7 @@
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _containerViewController = segue.destinationViewController;
+    _containerViewController.delegate = self;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -52,6 +56,11 @@
 #pragma mark - Public Methods
 - (void)startFetchList {
     [_containerViewController startFetchOnlineList];
+}
+
+#pragma mark - HXOnlineContainerViewControllerDelegate Methods
+- (void)container:(HXOnlineContainerViewController *)container showLiveByLiveModel:(HXLiveModel *)model {
+    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypeWatchLive];
 }
 
 @end

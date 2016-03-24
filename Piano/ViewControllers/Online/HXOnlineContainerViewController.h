@@ -7,9 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXLiveModel.h"
+
+
+@class HXOnlineContainerViewController;
+
+
+@protocol HXOnlineContainerViewControllerDelegate <NSObject>
+
+@required
+- (void)container:(HXOnlineContainerViewController *)container showLiveByLiveModel:(HXLiveModel *)model;
+
+@end
 
 
 @interface HXOnlineContainerViewController : UITableViewController
+
+@property (weak, nonatomic) IBOutlet id  <HXOnlineContainerViewControllerDelegate>delegate;
 
 - (void)startFetchOnlineList;
 

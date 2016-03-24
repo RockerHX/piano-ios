@@ -1,17 +1,17 @@
 //
-//  HXPanGestureNavgaitionController.m
+//  HXNavigationController.m
 //  mia
 //
 //  Created by miaios on 15/11/2.
 //  Copyright © 2015年 Mia Music. All rights reserved.
 //
 
-#import "HXPanGestureNavgaitionController.h"
+#import "HXNavigationController.h"
 
-@interface HXPanGestureNavgaitionController () <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
+@interface HXNavigationController () <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 @end
 
-@implementation HXPanGestureNavgaitionController
+@implementation HXNavigationController
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {

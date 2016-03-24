@@ -7,14 +7,9 @@
 //
 
 #import "UIViewController+HXClass.h"
-#import "HXLiveModel.h"
 
 
-typedef NS_ENUM(NSUInteger, HXLiveType) {
-    HXLiveTypeLive,
-    HXLiveTypeReplay,
-    HXLiveTypePublish,
-};
+@class HXLiveModel;
 
 
 @interface HXLiveViewController : UIViewController
@@ -22,7 +17,6 @@ typedef NS_ENUM(NSUInteger, HXLiveType) {
 @property (weak, nonatomic) IBOutlet UIView *liveView;
 
 @property (nonatomic, strong) HXLiveModel *model;
-@property (nonatomic, assign)  HXLiveType  type;
 
 - (IBAction)exitButtonPressed;
 

@@ -1,5 +1,5 @@
 //
-//  HXPanGestureNavgaitionController.h
+//  HXNavigationController.h
 //  mia
 //
 //  Created by miaios on 15/11/2.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HXPanGestureNavgaitionController : UINavigationController
+@interface HXNavigationController : UINavigationController
 
 @end
