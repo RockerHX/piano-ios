@@ -61,6 +61,10 @@
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
 		CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */; };
 		CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
+		CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
+		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
+		CDAA8DAE1CA3C9140048C526 /* HXWatchLiveContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DAD1CA3C9140048C526 /* HXWatchLiveContainerViewController.m */; };
+		CDAA8DB51CA3CAF40048C526 /* HXWatchLiveCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DB41CA3CAF40048C526 /* HXWatchLiveCommentCell.m */; };
 		CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */; };
 		CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF41CA13BB4003867B8 /* UIView+FindUIViewController.m */; };
 		CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF61CA13BB4003867B8 /* UIView+Frame.m */; };
@@ -200,6 +204,14 @@
 		CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD8A9A7E1C9906CA00698DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD8A9A801C9906CA00698DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewController.h; sourceTree = "<group>"; };
+		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
+		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
+		CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewController.m; sourceTree = "<group>"; };
+		CDAA8DAC1CA3C9140048C526 /* HXWatchLiveContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveContainerViewController.h; sourceTree = "<group>"; };
+		CDAA8DAD1CA3C9140048C526 /* HXWatchLiveContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveContainerViewController.m; sourceTree = "<group>"; };
+		CDAA8DB31CA3CAF40048C526 /* HXWatchLiveCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveCommentCell.h; sourceTree = "<group>"; };
+		CDAA8DB41CA3CAF40048C526 /* HXWatchLiveCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveCommentCell.m; sourceTree = "<group>"; };
 		CDED8EF11CA13BB4003867B8 /* NSObject+LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LoginAction.h"; sourceTree = "<group>"; };
 		CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LoginAction.m"; sourceTree = "<group>"; };
 		CDED8EF31CA13BB4003867B8 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
@@ -493,6 +505,8 @@
 		CD2E72771CA11DE0003CDB77 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				CDAA8DA71CA3C7DA0048C526 /* Watch */,
+				CDAA8DA41CA3C7DA0048C526 /* Replay */,
 				CD2E72781CA11DE0003CDB77 /* HXLiveViewController.h */,
 				CD2E72791CA11DE0003CDB77 /* HXLiveViewController.m */,
 			);
@@ -672,6 +686,7 @@
 				CD2E728C1CA11DF8003CDB77 /* Online */,
 				CD2E728F1CA11DF8003CDB77 /* Publish */,
 				CD2E72931CA11DF8003CDB77 /* Setting */,
+				CDAA8DB11CA3CA8A0048C526 /* Live */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -720,6 +735,43 @@
 				CD8A9A701C9906CA00698DE9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CDAA8DA41CA3C7DA0048C526 /* Replay */ = {
+			isa = PBXGroup;
+			children = (
+				CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */,
+				CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */,
+			);
+			path = Replay;
+			sourceTree = "<group>";
+		};
+		CDAA8DA71CA3C7DA0048C526 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */,
+				CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */,
+				CDAA8DAC1CA3C9140048C526 /* HXWatchLiveContainerViewController.h */,
+				CDAA8DAD1CA3C9140048C526 /* HXWatchLiveContainerViewController.m */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
+		CDAA8DB11CA3CA8A0048C526 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				CDAA8DB21CA3CAA10048C526 /* Watch */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		CDAA8DB21CA3CAA10048C526 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				CDAA8DB31CA3CAF40048C526 /* HXWatchLiveCommentCell.h */,
+				CDAA8DB41CA3CAF40048C526 /* HXWatchLiveCommentCell.m */,
+			);
+			path = Watch;
 			sourceTree = "<group>";
 		};
 		CDED8EEF1CA13BB4003867B8 /* HXComponent */ = {
@@ -1070,9 +1122,11 @@
 				CD2E72881CA11DE0003CDB77 /* HXOnlineContainerViewController.m in Sources */,
 				CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */,
 				CD2949F91CA2919B00CA3C3F /* HXRegisterContainerViewController.m in Sources */,
+				CDAA8DB51CA3CAF40048C526 /* HXWatchLiveCommentCell.m in Sources */,
 				CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */,
 				CD2949E41CA28D8400CA3C3F /* HXUserModel.m in Sources */,
 				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,
+				CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */,
 				CD2949FF1CA292ED00CA3C3F /* HXPanGestureNavgaitionController.m in Sources */,
 				CD2949B31CA27FDD00CA3C3F /* HXOnlineViewController.m in Sources */,
 				CD2949D91CA28A3500CA3C3F /* HXIBLabel.m in Sources */,
@@ -1080,6 +1134,7 @@
 				CD2949BF1CA2832000CA3C3F /* HXOnlineVideoCell.m in Sources */,
 				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
 				CDED8F231CA13BB4003867B8 /* HXAppConstants.m in Sources */,
+				CDAA8DAE1CA3C9140048C526 /* HXWatchLiveContainerViewController.m in Sources */,
 				CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */,
 				CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */,
 				CD2E72871CA11DE0003CDB77 /* HXLiveViewController.m in Sources */,
@@ -1088,6 +1143,7 @@
 				CD2949FB1CA2919B00CA3C3F /* HXUserTermsViewController.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */,
+				CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */,
 				CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */,
 				CD2949F81CA2919B00CA3C3F /* HXLoginViewController.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
