@@ -7,18 +7,22 @@
 //
 
 #import "HXWatchLiveViewController.h"
+#import "HXWatchLiveContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 
 
 @interface HXWatchLiveViewController () <
+HXWatchLiveContainerViewControllerDelegate,
 HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate
 >
 @end
 
 
-@implementation HXWatchLiveViewController
+@implementation HXWatchLiveViewController {
+    HXWatchLiveContainerViewController *_containerViewController;
+}
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
@@ -27,6 +31,12 @@ HXWatchLiveBottomBarDelegate
 
 + (NSString *)navigationControllerIdentifier {
     return @"HXWatchLiveNavigationController";
+}
+
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    _containerViewController = segue.destinationViewController;
+    _containerViewController.delegate = self;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -68,6 +78,11 @@ HXWatchLiveBottomBarDelegate
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - HXWatchLiveContainerViewControllerDelegate Methods
+- (void)container:(HXWatchLiveContainerViewController *)container shouldShowWatcher:(id)watcher {
+    ;
+}
+
 #pragma mark - HXLiveAnchorViewDelegate Methods
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
     ;
@@ -77,6 +92,5 @@ HXWatchLiveBottomBarDelegate
 - (void)bottomBar:(HXWatchLiveBottomBar *)bar takeAction:(HXWatchLiveBottomBarAction)action {
     ;
 }
-
 
 @end

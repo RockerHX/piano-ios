@@ -9,9 +9,12 @@
 #import "HXWatchLiveContainerViewController.h"
 #import "HXWatchLiveCommentCell.h"
 
-@interface HXWatchLiveContainerViewController ()
 
+@interface HXWatchLiveContainerViewController () <
+HXWatchLiveCommentCellDelegate
+>
 @end
+
 
 @implementation HXWatchLiveContainerViewController
 
@@ -33,6 +36,14 @@
 #pragma mark - Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     ;
+}
+
+#pragma mark - HXWatchLiveCommentCellDelegate Methods
+- (void)commentCellShouldShowCommenter:(HXWatchLiveCommentCell *)cell {
+//    NSInteger row = [self.tableView indexPathForCell:cell].row;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:shouldShowWatcher:)]) {
+        [_delegate container:self shouldShowWatcher:nil];
+    }
 }
 
 @end

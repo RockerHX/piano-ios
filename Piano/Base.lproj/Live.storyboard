@@ -197,7 +197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HXWatchLiveCommentCell" id="2Ft-6T-LRO" userLabel="HXWatchLiveCommentCell" customClass="HXWatchLiveCommentCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXWatchLiveCommentCell" id="2Ft-6T-LRO" userLabel="HXWatchLiveCommentCell" customClass="HXWatchLiveCommentCell">
                                 <rect key="frame" x="0.0" y="28" width="300" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Ft-6T-LRO" id="0d4-yf-761">
@@ -263,6 +263,7 @@
                                 <connections>
                                     <outlet property="avatar" destination="a8y-o1-sCy" id="S0z-bm-jFO"/>
                                     <outlet property="contentLabel" destination="9n5-wC-pRa" id="0wP-Ms-qFT"/>
+                                    <outlet property="delegate" destination="Nwe-Qp-XuQ" id="pMb-ng-Z6q"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
