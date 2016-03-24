@@ -27,4 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet     UILabel *contentLabel;
 
+- (void)displayWithCommenter:(id)commenter;
+
 @end

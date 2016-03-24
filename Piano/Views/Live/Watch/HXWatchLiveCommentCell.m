@@ -34,6 +34,14 @@
     if (_delegate && [_delegate respondsToSelector:@selector(commentCellShouldShowCommenter:)]) {
         [_delegate commentCellShouldShowCommenter:self];
     }
+    [self displayWithCommenter:nil];
+}
+
+#pragma mark - Public Methods
+- (void)displayWithCommenter:(id)commenter {
+    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:_contentLabel.text];
+    [content addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[_contentLabel.text rangeOfString:@"评论用户:"]];
+    _contentLabel.attributedText = content;
 }
 
 @end
