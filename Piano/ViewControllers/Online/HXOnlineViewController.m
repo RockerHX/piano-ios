@@ -11,6 +11,7 @@
 #import "HXWatchLiveViewController.h"
 #import "HXReplayViewController.h"
 #import "HXRecordLiveViewController.h"
+#import "HXPlayViewController.h"
 
 
 @interface HXOnlineViewController () <
@@ -53,6 +54,13 @@ HXOnlineContainerViewControllerDelegate
 
 - (void)viewConfigure {
     ;
+}
+
+#pragma mark - Event Response
+- (IBAction)musicButtonPressed {
+    UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
+//    HXPlayViewController *playViewController = [playNavigationController.viewControllers firstObject];
+    [self presentViewController:playNavigationController animated:YES completion:nil];
 }
 
 #pragma mark - Public Methods

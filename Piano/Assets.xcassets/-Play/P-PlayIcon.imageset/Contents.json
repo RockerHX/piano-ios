@@ -6,20 +6,17 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "CM-MuisIcon-Black@2x.png",
+      "filename" : "P-PlayIcon@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "CM-MuisIcon-Black@3x.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "P-PlayIcon@3x.png"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "original"
   }
 }

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--HXPlayNavigationController-->
+        <scene sceneID="M5O-Dt-w0n">
+            <objects>
+                <navigationController storyboardIdentifier="HXPlayNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Go-qd-9PF" userLabel="HXPlayNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JAz-Ms-g4h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="grR-Jb-QG7" kind="relationship" relationship="rootViewController" id="UR6-l6-oOj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lMj-37-aya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="344" y="90"/>
+        </scene>
+        <!--HXPlayViewController-->
+        <scene sceneID="NVp-NM-yFp">
+            <objects>
+                <viewController storyboardIdentifier="HXPlayViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="grR-Jb-QG7" userLabel="HXPlayViewController" customClass="HXPlayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DHx-pc-gm2"/>
+                        <viewControllerLayoutGuide type="bottom" id="9HS-wu-fWe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kt3-6L-6rJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pcc-0D-j7q" userLabel="Cover Background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3V-fs-5VI" userLabel="Blure View" customClass="FXBlurView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QV-6m-qMn" userLabel="Mask View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="P-MaskBG-Top" translatesAutoresizingMaskIntoConstraints="NO" id="T40-CS-g8y">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="T40-CS-g8y" secondAttribute="height" multiplier="3:2" id="nmN-aX-jlr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="P-MaskBG-Bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ShB-E8-7qB">
+                                        <rect key="frame" x="0.0" y="355" width="320" height="213"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ShB-E8-7qB" secondAttribute="height" multiplier="3:2" id="VsS-za-Jy5"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="T40-CS-g8y" firstAttribute="leading" secondItem="9QV-6m-qMn" secondAttribute="leading" id="Igy-4r-f0K"/>
+                                    <constraint firstAttribute="trailing" secondItem="ShB-E8-7qB" secondAttribute="trailing" id="NLe-Yw-u9A"/>
+                                    <constraint firstItem="T40-CS-g8y" firstAttribute="top" secondItem="9QV-6m-qMn" secondAttribute="top" id="aIO-6w-8LA"/>
+                                    <constraint firstItem="ShB-E8-7qB" firstAttribute="leading" secondItem="9QV-6m-qMn" secondAttribute="leading" id="b2X-j7-WmH"/>
+                                    <constraint firstAttribute="trailing" secondItem="T40-CS-g8y" secondAttribute="trailing" id="cAy-Xj-Tez"/>
+                                    <constraint firstAttribute="bottom" secondItem="ShB-E8-7qB" secondAttribute="bottom" id="kDO-I4-IGM"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZ7-fY-d6k" userLabel="Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="doZ-wp-Dcx" userLabel="Top Bar" customClass="HXPlayTopBar">
+                                        <rect key="frame" x="0.0" y="24" width="320" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="wsX-OK-Zhu"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="delegate" destination="grR-Jb-QG7" id="wa3-ka-ocP"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojs-3e-kaP" userLabel="Music Info View" customClass="HXPlaySummaryView">
+                                        <rect key="frame" x="30" y="64" width="260" height="344"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="grR-Jb-QG7" id="Sfg-Ka-6IP"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Viw-8t-TVr" userLabel="Bottom Bar" customClass="HXPlayBottomBar">
+                                        <rect key="frame" x="0.0" y="408" width="320" height="160"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="P5X-fR-4gJ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="delegate" destination="grR-Jb-QG7" id="2Gb-DT-V8j"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="doZ-wp-Dcx" firstAttribute="top" secondItem="XZ7-fY-d6k" secondAttribute="top" constant="24" id="4Ec-Ci-kzA"/>
+                                    <constraint firstAttribute="trailing" secondItem="ojs-3e-kaP" secondAttribute="trailing" constant="30" id="4Zh-Lk-1dM"/>
+                                    <constraint firstItem="ojs-3e-kaP" firstAttribute="top" secondItem="XZ7-fY-d6k" secondAttribute="top" constant="64" id="HBd-Xp-FCI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Viw-8t-TVr" secondAttribute="trailing" id="Hcx-ao-9lY"/>
+                                    <constraint firstItem="Viw-8t-TVr" firstAttribute="leading" secondItem="XZ7-fY-d6k" secondAttribute="leading" id="ZPB-tJ-je7"/>
+                                    <constraint firstItem="Viw-8t-TVr" firstAttribute="top" secondItem="ojs-3e-kaP" secondAttribute="bottom" id="a7e-OF-b7z"/>
+                                    <constraint firstAttribute="bottom" secondItem="Viw-8t-TVr" secondAttribute="bottom" id="dIy-Yp-wHv"/>
+                                    <constraint firstItem="doZ-wp-Dcx" firstAttribute="leading" secondItem="XZ7-fY-d6k" secondAttribute="leading" id="j04-59-ddK"/>
+                                    <constraint firstAttribute="trailing" secondItem="doZ-wp-Dcx" secondAttribute="trailing" id="rNb-1V-ARo"/>
+                                    <constraint firstItem="ojs-3e-kaP" firstAttribute="leading" secondItem="XZ7-fY-d6k" secondAttribute="leading" constant="30" id="rpf-Fj-T4o"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pcc-0D-j7q" firstAttribute="top" secondItem="kt3-6L-6rJ" secondAttribute="top" id="6SD-6B-3fS"/>
+                            <constraint firstAttribute="bottom" secondItem="XZ7-fY-d6k" secondAttribute="bottom" id="MB7-DE-zME"/>
+                            <constraint firstItem="XZ7-fY-d6k" firstAttribute="leading" secondItem="kt3-6L-6rJ" secondAttribute="leading" id="MOG-DY-gvP"/>
+                            <constraint firstAttribute="trailing" secondItem="9QV-6m-qMn" secondAttribute="trailing" id="PV0-0M-5TO"/>
+                            <constraint firstAttribute="bottom" secondItem="r3V-fs-5VI" secondAttribute="bottom" id="TDD-SW-OYc"/>
+                            <constraint firstItem="9QV-6m-qMn" firstAttribute="leading" secondItem="kt3-6L-6rJ" secondAttribute="leading" id="VF3-ci-tz2"/>
+                            <constraint firstItem="r3V-fs-5VI" firstAttribute="leading" secondItem="kt3-6L-6rJ" secondAttribute="leading" id="VuO-n4-Bbt"/>
+                            <constraint firstAttribute="trailing" secondItem="r3V-fs-5VI" secondAttribute="trailing" id="XYA-vE-bng"/>
+                            <constraint firstAttribute="trailing" secondItem="pcc-0D-j7q" secondAttribute="trailing" id="XqP-eN-YQM"/>
+                            <constraint firstAttribute="bottom" secondItem="9QV-6m-qMn" secondAttribute="bottom" id="YeF-bW-GTv"/>
+                            <constraint firstItem="9QV-6m-qMn" firstAttribute="top" secondItem="kt3-6L-6rJ" secondAttribute="top" id="Zet-Ri-GVG"/>
+                            <constraint firstItem="r3V-fs-5VI" firstAttribute="top" secondItem="kt3-6L-6rJ" secondAttribute="top" id="daS-Rc-u2i"/>
+                            <constraint firstAttribute="trailing" secondItem="XZ7-fY-d6k" secondAttribute="trailing" id="mAJ-qq-Xvs"/>
+                            <constraint firstAttribute="bottom" secondItem="pcc-0D-j7q" secondAttribute="bottom" id="rI1-F0-Llp"/>
+                            <constraint firstItem="XZ7-fY-d6k" firstAttribute="top" secondItem="kt3-6L-6rJ" secondAttribute="top" id="ruC-FT-xF0"/>
+                            <constraint firstItem="pcc-0D-j7q" firstAttribute="leading" secondItem="kt3-6L-6rJ" secondAttribute="leading" id="zPt-VX-LY8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="N5A-gd-fND"/>
+                    <connections>
+                        <outlet property="bottomBar" destination="Viw-8t-TVr" id="wma-dg-PDg"/>
+                        <outlet property="coverBG" destination="pcc-0D-j7q" id="fXj-AC-unM"/>
+                        <outlet property="summaryView" destination="ojs-3e-kaP" id="uIj-7Y-Oa2"/>
+                        <outlet property="topBar" destination="doZ-wp-Dcx" id="ccf-Kh-y91"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BK8-ZL-Qzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="765" y="90"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="P-MaskBG-Bottom" width="375" height="250"/>
+        <image name="P-MaskBG-Top" width="375" height="250"/>
+    </resources>
+</document>

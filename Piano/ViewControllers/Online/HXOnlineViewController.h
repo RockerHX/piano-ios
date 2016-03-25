@@ -11,6 +11,8 @@
 
 @interface HXOnlineViewController : UIViewController
 
+- (IBAction)musicButtonPressed;
+
 - (void)startFetchList;
 
 @end

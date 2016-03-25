@@ -34,6 +34,13 @@
                             <constraint firstAttribute="trailing" secondItem="hh5-8g-hkj" secondAttribute="trailing" id="caY-dp-MQN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="tJb-s9-jJj">
+                        <barButtonItem key="rightBarButtonItem" image="CM-MuisIcon-Black" id="Xgh-Gq-f2p">
+                            <connections>
+                                <action selector="musicButtonPressed" destination="BJe-Xw-kLe" id="ji6-kA-oMy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcV-Ek-ob8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,4 +153,7 @@
             <point key="canvasLocation" x="73" y="329"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CM-MuisIcon-Black" width="26" height="26"/>
+    </resources>
 </document>
