@@ -41,7 +41,7 @@
 
 #pragma mark - Property
 - (CGFloat)cellHeight {
-    return SCREEN_WIDTH - 60.0f + 70.0f;
+    return SCREEN_WIDTH - 60.0f + 64.0f;
 }
 
 #pragma mark - Private Methods

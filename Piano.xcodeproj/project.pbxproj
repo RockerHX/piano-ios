@@ -25,7 +25,6 @@
 		CD2949B31CA27FDD00CA3C3F /* HXOnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949B21CA27FDD00CA3C3F /* HXOnlineViewController.m */; };
 		CD2949B61CA2827F00CA3C3F /* HXOnlineNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949B51CA2827F00CA3C3F /* HXOnlineNormalCell.m */; };
 		CD2949B91CA282AC00CA3C3F /* HXOnlineReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949B81CA282AC00CA3C3F /* HXOnlineReplayCell.m */; };
-		CD2949BC1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949BB1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m */; };
 		CD2949BF1CA2832000CA3C3F /* HXOnlineVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949BE1CA2832000CA3C3F /* HXOnlineVideoCell.m */; };
 		CD2949D41CA28A3500CA3C3F /* UIButton+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C31CA28A3500CA3C3F /* UIButton+HXIBnspectable.m */; };
 		CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m */; };
@@ -157,8 +156,6 @@
 		CD2949B51CA2827F00CA3C3F /* HXOnlineNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineNormalCell.m; sourceTree = "<group>"; };
 		CD2949B71CA282AC00CA3C3F /* HXOnlineReplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineReplayCell.h; sourceTree = "<group>"; };
 		CD2949B81CA282AC00CA3C3F /* HXOnlineReplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineReplayCell.m; sourceTree = "<group>"; };
-		CD2949BA1CA2830C00CA3C3F /* HXOnlineAlbumsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineAlbumsCell.h; sourceTree = "<group>"; };
-		CD2949BB1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineAlbumsCell.m; sourceTree = "<group>"; };
 		CD2949BD1CA2832000CA3C3F /* HXOnlineVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineVideoCell.h; sourceTree = "<group>"; };
 		CD2949BE1CA2832000CA3C3F /* HXOnlineVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineVideoCell.m; sourceTree = "<group>"; };
 		CD2949C21CA28A3500CA3C3F /* UIButton+HXIBnspectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+HXIBnspectable.h"; sourceTree = "<group>"; };
@@ -616,8 +613,6 @@
 				CD2949B51CA2827F00CA3C3F /* HXOnlineNormalCell.m */,
 				CD2949B71CA282AC00CA3C3F /* HXOnlineReplayCell.h */,
 				CD2949B81CA282AC00CA3C3F /* HXOnlineReplayCell.m */,
-				CD2949BA1CA2830C00CA3C3F /* HXOnlineAlbumsCell.h */,
-				CD2949BB1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m */,
 				CD2949BD1CA2832000CA3C3F /* HXOnlineVideoCell.h */,
 				CD2949BE1CA2832000CA3C3F /* HXOnlineVideoCell.m */,
 			);
@@ -1368,7 +1363,6 @@
 				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
 				CDED8F2E1CA13BB4003867B8 /* HXThemeManager.m in Sources */,
 				CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */,
-				CD2949BC1CA2830C00CA3C3F /* HXOnlineAlbumsCell.m in Sources */,
 				CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */,
 				CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */,
 				CDED8F281CA13BB4003867B8 /* HXActivityIndicator.m in Sources */,

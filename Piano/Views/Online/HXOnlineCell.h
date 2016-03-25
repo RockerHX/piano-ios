@@ -12,13 +12,11 @@
 
 @interface HXOnlineCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *publisherAvatar;
-@property (weak, nonatomic) IBOutlet UIImageView *previewCover;
-@property (weak, nonatomic) IBOutlet     UILabel *publisherNameLabel;
-@property (weak, nonatomic) IBOutlet     UILabel *publishInfoLabel;
-@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet     UILabel *favoriteCountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UIImageView *cover;
+@property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *attendeCountLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
 
 - (void)displayCellWithModel:(HXOnlineModel *)model;
 

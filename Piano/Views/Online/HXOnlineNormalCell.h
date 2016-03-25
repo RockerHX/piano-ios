@@ -11,4 +11,11 @@
 
 @interface HXOnlineNormalCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UIImageView *cover;
+@property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *tagLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *watchCountLabel;
+
 @end
