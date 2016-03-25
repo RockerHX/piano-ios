@@ -10,6 +10,7 @@
 #import "HXWatchLiveContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
+#import "HXWatcherBoard.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -80,7 +81,9 @@ HXWatchLiveBottomBarDelegate
 
 #pragma mark - HXWatchLiveContainerViewControllerDelegate Methods
 - (void)container:(HXWatchLiveContainerViewController *)container shouldShowWatcher:(id)watcher {
-    ;
+    [HXWatcherBoard showWithWatcher:watcher closed:^{
+        ;
+    }];
 }
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
