@@ -59,7 +59,6 @@
     
     //First dot is the one that moves straight up and down
     _firstDot = [CALayer layer];
-    [_firstDot setMasksToBounds:YES];
     [_firstDot setBackgroundColor:[self.color CGColor]];
     [_firstDot setCornerRadius:_dotRadius];
     [_firstDot setBounds:CGRectMake(0.0f, 0.0f, _dotRadius*2, _dotRadius*2)];
@@ -67,7 +66,6 @@
     
     //Second dot is the one that moves straight left and right
     _secondDot = [CALayer layer];
-    [_secondDot setMasksToBounds:YES];
     [_secondDot setBackgroundColor:[self.color CGColor]];
     [_secondDot setCornerRadius:_dotRadius];
     [_secondDot setBounds:CGRectMake(0.0f, 0.0f, _dotRadius*2, _dotRadius*2)];
@@ -75,7 +73,6 @@
     
     //Third dot is the one that moves around all four positions clockwise
     _thirdDot = [CALayer layer];
-    [_thirdDot setMasksToBounds:YES];
     [_thirdDot setBackgroundColor:[self.color CGColor]];
     [_thirdDot setCornerRadius:_dotRadius];
     [_thirdDot setBounds:CGRectMake(0.0f, 0.0f, _dotRadius*2, _dotRadius*2)];

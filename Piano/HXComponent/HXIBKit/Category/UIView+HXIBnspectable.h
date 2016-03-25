@@ -10,7 +10,6 @@
 @interface UIView (HXIBnspectable)
 
 // Basic
-@property (assign, nonatomic) IBInspectable      BOOL  masksToBounds;
 @property (assign, nonatomic) IBInspectable   CGFloat  cornerRadius;
 @property (assign, nonatomic) IBInspectable  NSString *hexRGBColor;
 
