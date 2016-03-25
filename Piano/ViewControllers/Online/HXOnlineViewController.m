@@ -10,6 +10,7 @@
 #import "HXOnlineContainerViewController.h"
 #import "HXWatchLiveViewController.h"
 #import "HXReplayViewController.h"
+#import "HXRecordLiveViewController.h"
 
 
 @interface HXOnlineViewController () <
@@ -76,8 +77,10 @@ HXOnlineContainerViewControllerDelegate
                 replayViewController.model = model;
                 break;
             }
-            case HXLiveTypeLive: {
-                ;
+            case HXLiveTypeRecordLive: {
+                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
+                recordLiveViewController.model = model;
                 break;
             }
         }

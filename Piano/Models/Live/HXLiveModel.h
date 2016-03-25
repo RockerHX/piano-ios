@@ -11,7 +11,7 @@
 typedef NS_ENUM(NSUInteger, HXLiveType) {
     HXLiveTypeWatchLive,
     HXLiveTypeReplay,
-    HXLiveTypeLive,
+    HXLiveTypeRecordLive,
 };
 
 

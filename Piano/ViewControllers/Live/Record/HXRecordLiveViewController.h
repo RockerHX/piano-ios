@@ -1,5 +1,5 @@
 //
-//  HXLiveViewController.h
+//  HXRecordLiveViewController.h
 //  Piano
 //
 //  Created by miaios on 16/3/18.
@@ -12,12 +12,12 @@
 @class HXLiveModel;
 
 
-@interface HXLiveViewController : UIViewController
+@interface HXRecordLiveViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *liveView;
 
 @property (nonatomic, strong) HXLiveModel *model;
 
-- (IBAction)exitButtonPressed;
+- (IBAction)closeButtonPressed;
 
 @end

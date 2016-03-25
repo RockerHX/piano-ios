@@ -1,26 +1,26 @@
 //
-//  HXLiveViewController.m
+//  HXRecordLiveViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/18.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveViewController.h"
+#import "HXRecordLiveViewController.h"
 #import "HXZegoAVKitManager.h"
 #import <ZegoAVKit/ZegoMoviePlayer.h>
 #import "HXSettingSession.h"
 #import "HXLiveModel.h"
 
 
-@interface HXLiveViewController () <
+@interface HXRecordLiveViewController () <
 ZegoChatDelegate,
 ZegoVideoDelegate
 >
 @end
 
 
-@implementation HXLiveViewController
+@implementation HXRecordLiveViewController
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
@@ -28,27 +28,29 @@ ZegoVideoDelegate
 }
 
 + (NSString *)navigationControllerIdentifier {
-    return @"HXLiveNavigationController";
+    return @"HXRecordLiveNavigationController";
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    [self screenShouldSteady:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self shouldSteady:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    [self screenShouldSteady:NO];
+    [self shouldSteady:NO];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self loadConfigure];
-    [self viewConfigure];
+//    [self loadConfigure];
+//    [self viewConfigure];
 }
 
 #pragma mark - Configure Methods
@@ -103,18 +105,22 @@ ZegoVideoDelegate
 }
 
 #pragma mark - Event Response
-- (IBAction)exitButtonPressed {
-    [self leaveRoom];
+- (IBAction)closeButtonPressed {
+    [self dismiss];
 }
 
 #pragma mark - Private Methods
-- (void)screenShouldSteady:(BOOL)steady {
+- (void)shouldSteady:(BOOL)steady {
     [[UIApplication sharedApplication] setIdleTimerDisabled:steady];
+}
+
+- (void)dismiss {
+    [self leaveRoom];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)leaveRoom {
     [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - ZegoChatDelegate
