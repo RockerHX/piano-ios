@@ -1,5 +1,5 @@
 //
-//  HXWatchLiveCommentCell.h
+//  HXWatcherCell.h
 //  Piano
 //
 //  Created by miaios on 16/3/24.
@@ -9,20 +9,20 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 
 
-@class HXWatchLiveCommentCell;
+@class HXWatcherCell;
 
 
-@protocol HXWatchLiveCommentCellDelegate <NSObject>
+@protocol HXWatcherCellDelegate <NSObject>
 
 @required
-- (void)commentCellShouldShowCommenter:(HXWatchLiveCommentCell *)cell;
+- (void)commentCellShouldShowCommenter:(HXWatcherCell *)cell;
 
 @end
 
 
-@interface HXWatchLiveCommentCell : UITableViewCell
+@interface HXWatcherCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet id  <HXWatchLiveCommentCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id  <HXWatcherCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet     UILabel *contentLabel;

@@ -61,6 +61,10 @@
 		CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */; };
 		CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */; };
 		CD6581651CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */; };
+		CD6C19411CA4E4AE00849B39 /* HXWatcherContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19401CA4E4AE00849B39 /* HXWatcherContainerViewController.m */; };
+		CD6C19461CA4E78000849B39 /* HXWatcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19451CA4E78000849B39 /* HXWatcherCell.m */; };
+		CD6C194B1CA4E7AD00849B39 /* HXReplayBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19491CA4E7AD00849B39 /* HXReplayBottomBar.m */; };
+		CD6C194C1CA4E7AD00849B39 /* HXReplayBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C194A1CA4E7AD00849B39 /* HXReplayBottomBar.xib */; };
 		CD74089B1C9946D800950A50 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
@@ -69,8 +73,6 @@
 		CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
 		CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
 		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
-		CDAA8DAE1CA3C9140048C526 /* HXWatchLiveContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DAD1CA3C9140048C526 /* HXWatchLiveContainerViewController.m */; };
-		CDAA8DB51CA3CAF40048C526 /* HXWatchLiveCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DB41CA3CAF40048C526 /* HXWatchLiveCommentCell.m */; };
 		CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */; };
 		CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF41CA13BB4003867B8 /* UIView+FindUIViewController.m */; };
 		CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF61CA13BB4003867B8 /* UIView+Frame.m */; };
@@ -211,6 +213,13 @@
 		CD6581611CA3E99B00E2EF19 /* HXWatchLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveBottomBar.h; sourceTree = "<group>"; };
 		CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveBottomBar.m; sourceTree = "<group>"; };
 		CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatchLiveBottomBar.xib; sourceTree = "<group>"; };
+		CD6C193F1CA4E4AE00849B39 /* HXWatcherContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherContainerViewController.h; sourceTree = "<group>"; };
+		CD6C19401CA4E4AE00849B39 /* HXWatcherContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherContainerViewController.m; sourceTree = "<group>"; };
+		CD6C19441CA4E78000849B39 /* HXWatcherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherCell.h; sourceTree = "<group>"; };
+		CD6C19451CA4E78000849B39 /* HXWatcherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherCell.m; sourceTree = "<group>"; };
+		CD6C19481CA4E7AD00849B39 /* HXReplayBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayBottomBar.h; sourceTree = "<group>"; };
+		CD6C19491CA4E7AD00849B39 /* HXReplayBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayBottomBar.m; sourceTree = "<group>"; };
+		CD6C194A1CA4E7AD00849B39 /* HXReplayBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXReplayBottomBar.xib; sourceTree = "<group>"; };
 		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -223,10 +232,6 @@
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
 		CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewController.m; sourceTree = "<group>"; };
-		CDAA8DAC1CA3C9140048C526 /* HXWatchLiveContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveContainerViewController.h; sourceTree = "<group>"; };
-		CDAA8DAD1CA3C9140048C526 /* HXWatchLiveContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveContainerViewController.m; sourceTree = "<group>"; };
-		CDAA8DB31CA3CAF40048C526 /* HXWatchLiveCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveCommentCell.h; sourceTree = "<group>"; };
-		CDAA8DB41CA3CAF40048C526 /* HXWatchLiveCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveCommentCell.m; sourceTree = "<group>"; };
 		CDED8EF11CA13BB4003867B8 /* NSObject+LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LoginAction.h"; sourceTree = "<group>"; };
 		CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LoginAction.m"; sourceTree = "<group>"; };
 		CDED8EF31CA13BB4003867B8 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
@@ -540,6 +545,7 @@
 		CD2E72771CA11DE0003CDB77 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				CD6C193E1CA4E4AE00849B39 /* Common */,
 				CDAA8DA71CA3C7DA0048C526 /* Watch */,
 				CDAA8DA41CA3C7DA0048C526 /* Replay */,
 				CD2E72781CA11DE0003CDB77 /* HXLiveViewController.h */,
@@ -649,6 +655,8 @@
 			children = (
 				CD22A4B01CA3FEB300B3F368 /* LiveAnchorView */,
 				CD19794F1CA4E1A900303D27 /* WatcherBoard */,
+				CD6C19441CA4E78000849B39 /* HXWatcherCell.h */,
+				CD6C19451CA4E78000849B39 /* HXWatcherCell.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -659,6 +667,33 @@
 				CD6581611CA3E99B00E2EF19 /* HXWatchLiveBottomBar.h */,
 				CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */,
 				CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */,
+			);
+			path = BottomBar;
+			sourceTree = "<group>";
+		};
+		CD6C193E1CA4E4AE00849B39 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CD6C193F1CA4E4AE00849B39 /* HXWatcherContainerViewController.h */,
+				CD6C19401CA4E4AE00849B39 /* HXWatcherContainerViewController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CD6C19431CA4E73400849B39 /* Replay */ = {
+			isa = PBXGroup;
+			children = (
+				CD6C19471CA4E7AD00849B39 /* BottomBar */,
+			);
+			path = Replay;
+			sourceTree = "<group>";
+		};
+		CD6C19471CA4E7AD00849B39 /* BottomBar */ = {
+			isa = PBXGroup;
+			children = (
+				CD6C19481CA4E7AD00849B39 /* HXReplayBottomBar.h */,
+				CD6C19491CA4E7AD00849B39 /* HXReplayBottomBar.m */,
+				CD6C194A1CA4E7AD00849B39 /* HXReplayBottomBar.xib */,
 			);
 			path = BottomBar;
 			sourceTree = "<group>";
@@ -805,8 +840,6 @@
 			children = (
 				CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */,
 				CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */,
-				CDAA8DAC1CA3C9140048C526 /* HXWatchLiveContainerViewController.h */,
-				CDAA8DAD1CA3C9140048C526 /* HXWatchLiveContainerViewController.m */,
 			);
 			path = Watch;
 			sourceTree = "<group>";
@@ -816,6 +849,7 @@
 			children = (
 				CD65815F1CA3E97200E2EF19 /* Common */,
 				CDAA8DB21CA3CAA10048C526 /* Watch */,
+				CD6C19431CA4E73400849B39 /* Replay */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -824,8 +858,6 @@
 			isa = PBXGroup;
 			children = (
 				CD6581601CA3E99B00E2EF19 /* BottomBar */,
-				CDAA8DB31CA3CAF40048C526 /* HXWatchLiveCommentCell.h */,
-				CDAA8DB41CA3CAF40048C526 /* HXWatchLiveCommentCell.m */,
 			);
 			path = Watch;
 			sourceTree = "<group>";
@@ -1096,6 +1128,7 @@
 				CDED8F2A1CA13BB4003867B8 /* HXLoadingView.xib in Resources */,
 				CD2949EA1CA290CB00CA3C3F /* Login.storyboard in Resources */,
 				CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */,
+				CD6C194C1CA4E7AD00849B39 /* HXReplayBottomBar.xib in Resources */,
 				CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */,
 				CDED8F361CA14D4E003867B8 /* Me.storyboard in Resources */,
 			);
@@ -1172,6 +1205,7 @@
 				CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */,
 				CD2949F71CA2919B00CA3C3F /* HXForgotPWViewController.m in Sources */,
 				CD2949B61CA2827F00CA3C3F /* HXOnlineNormalCell.m in Sources */,
+				CD6C19411CA4E4AE00849B39 /* HXWatcherContainerViewController.m in Sources */,
 				CDED8F451CA22F32003867B8 /* HXOnlineViewModel.m in Sources */,
 				CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */,
 				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
@@ -1183,7 +1217,6 @@
 				CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */,
 				CD2949F91CA2919B00CA3C3F /* HXRegisterContainerViewController.m in Sources */,
 				CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */,
-				CDAA8DB51CA3CAF40048C526 /* HXWatchLiveCommentCell.m in Sources */,
 				CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */,
 				CD2949E41CA28D8400CA3C3F /* HXUserModel.m in Sources */,
 				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,
@@ -1193,13 +1226,14 @@
 				CD2949D91CA28A3500CA3C3F /* HXIBLabel.m in Sources */,
 				CDED8F2B1CA13BB4003867B8 /* HXTextView.m in Sources */,
 				CD2949BF1CA2832000CA3C3F /* HXOnlineVideoCell.m in Sources */,
+				CD6C194B1CA4E7AD00849B39 /* HXReplayBottomBar.m in Sources */,
 				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
 				CDED8F231CA13BB4003867B8 /* HXAppConstants.m in Sources */,
-				CDAA8DAE1CA3C9140048C526 /* HXWatchLiveContainerViewController.m in Sources */,
 				CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */,
 				CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */,
 				CD2E72871CA11DE0003CDB77 /* HXLiveViewController.m in Sources */,
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
+				CD6C19461CA4E78000849B39 /* HXWatcherCell.m in Sources */,
 				CD2949DB1CA28A3500CA3C3F /* HXIBnsepectableManager.m in Sources */,
 				CD2949FB1CA2919B00CA3C3F /* HXUserTermsViewController.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,

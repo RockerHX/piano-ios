@@ -9,6 +9,15 @@
 #import "UIViewController+HXClass.h"
 
 
+@class HXLiveModel;
+
+
 @interface HXReplayViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIView *liveView;
+
+@property (nonatomic, strong) HXLiveModel *model;
+
+- (IBAction)closeButtonPressed;
 
 @end

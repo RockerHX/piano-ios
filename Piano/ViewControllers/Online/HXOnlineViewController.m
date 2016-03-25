@@ -8,7 +8,8 @@
 
 #import "HXOnlineViewController.h"
 #import "HXOnlineContainerViewController.h"
-#import "HXMainViewController.h"
+#import "HXWatchLiveViewController.h"
+#import "HXReplayViewController.h"
 
 
 @interface HXOnlineViewController () <
@@ -60,7 +61,28 @@ HXOnlineContainerViewControllerDelegate
 
 #pragma mark - HXOnlineContainerViewControllerDelegate Methods
 - (void)container:(HXOnlineContainerViewController *)container showLiveByLiveModel:(HXLiveModel *)model {
-    [(HXMainViewController *)self.tabBarController showLiveWithModel:model type:HXLiveTypeWatchLive];
+    if (model) {
+        UINavigationController *modalNavigationController = nil;
+        switch (model.type) {
+            case HXLiveTypeWatchLive: {
+                modalNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+                HXWatchLiveViewController *watchLiveViewController = [modalNavigationController.viewControllers firstObject];
+                watchLiveViewController.model = model;
+                break;
+            }
+            case HXLiveTypeReplay: {
+                modalNavigationController = [HXReplayViewController navigationControllerInstance];
+                HXReplayViewController *replayViewController = [modalNavigationController.viewControllers firstObject];
+                replayViewController.model = model;
+                break;
+            }
+            case HXLiveTypeLive: {
+                ;
+                break;
+            }
+        }
+        [self presentViewController:modalNavigationController animated:YES completion:nil];
+    }
 }
 
 @end

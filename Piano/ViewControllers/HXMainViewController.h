@@ -9,18 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-typedef NS_ENUM(NSUInteger, HXLiveType) {
-    HXLiveTypeWatchLive,
-    HXLiveTypeReplay,
-    HXLiveTypeLive,
-};
-
-
-@class HXLiveModel;
-
-
 @interface HXMainViewController : UITabBarController
-
-- (void)showLiveWithModel:(HXLiveModel *)model type:(HXLiveType)type;
 
 @end

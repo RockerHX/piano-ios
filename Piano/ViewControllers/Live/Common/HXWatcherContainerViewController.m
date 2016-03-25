@@ -1,22 +1,22 @@
 //
-//  HXWatchLiveContainerViewController.m
+//  HXWatcherContainerViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/24.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXWatchLiveContainerViewController.h"
-#import "HXWatchLiveCommentCell.h"
+#import "HXWatcherContainerViewController.h"
+#import "HXWatcherCell.h"
 
 
-@interface HXWatchLiveContainerViewController () <
-HXWatchLiveCommentCellDelegate
+@interface HXWatcherContainerViewController () <
+HXWatcherCellDelegate
 >
 @end
 
 
-@implementation HXWatchLiveContainerViewController
+@implementation HXWatcherContainerViewController
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
@@ -29,7 +29,7 @@ HXWatchLiveCommentCellDelegate
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXWatchLiveCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXWatchLiveCommentCell class]) forIndexPath:indexPath];
+    HXWatcherCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXWatcherCell class]) forIndexPath:indexPath];
     return cell;
 }
 
@@ -38,8 +38,8 @@ HXWatchLiveCommentCellDelegate
     ;
 }
 
-#pragma mark - HXWatchLiveCommentCellDelegate Methods
-- (void)commentCellShouldShowCommenter:(HXWatchLiveCommentCell *)cell {
+#pragma mark - HXWatcherCellDelegate Methods
+- (void)commentCellShouldShowCommenter:(HXWatcherCell *)cell {
 //    NSInteger row = [self.tableView indexPathForCell:cell].row;
     if (_delegate && [_delegate respondsToSelector:@selector(container:shouldShowWatcher:)]) {
         [_delegate container:self shouldShowWatcher:nil];

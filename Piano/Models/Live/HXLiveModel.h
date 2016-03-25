@@ -8,6 +8,12 @@
 
 #import "MJExtension.h"
 
+typedef NS_ENUM(NSUInteger, HXLiveType) {
+    HXLiveTypeWatchLive,
+    HXLiveTypeReplay,
+    HXLiveTypeLive,
+};
+
 
 @class HXOnlineModel;
 
@@ -30,6 +36,8 @@
 @property(nonatomic, assign) NSInteger  roomNumber;
 @property(nonatomic, assign) NSInteger  roomToken;
 @property(nonatomic, assign) NSInteger  streamID;
+
+@property(nonatomic, assign) HXLiveType  type;
 
 - (instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName;
 - (instancetype)initWithOnlineModel:(HXOnlineModel *)model;

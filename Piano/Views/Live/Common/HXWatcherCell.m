@@ -1,16 +1,16 @@
 //
-//  HXWatchLiveCommentCell.m
+//  HXWatcherCell.m
 //  Piano
 //
 //  Created by miaios on 16/3/24.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXWatchLiveCommentCell.h"
+#import "HXWatcherCell.h"
 #import "UIConstants.h"
 
 
-@implementation HXWatchLiveCommentCell
+@implementation HXWatcherCell
 
 #pragma mark - Load Methods
 - (void)awakeFromNib {

@@ -7,32 +7,93 @@
 //
 
 #import "HXReplayViewController.h"
+#import "HXWatcherContainerViewController.h"
+#import "HXLiveAnchorView.h"
+#import "HXReplayBottomBar.h"
+#import "HXWatcherBoard.h"
 
 
-@interface HXReplayViewController ()
+@interface HXReplayViewController () <
+HXWatcherContainerViewControllerDelegate,
+HXLiveAnchorViewDelegate,
+HXReplayBottomBarDelegate
+>
 @end
 
 
-@implementation HXReplayViewController
+@implementation HXReplayViewController {
+    HXWatcherContainerViewController *_containerViewController;
+}
+
+#pragma mark - Class Methods
++ (HXStoryBoardName)storyBoardName {
+    return HXStoryBoardNameLive;
+}
+
++ (NSString *)navigationControllerIdentifier {
+    return @"HXReplayNavigationController";
+}
+
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    _containerViewController = segue.destinationViewController;
+    _containerViewController.delegate = self;
+}
+
+#pragma mark - View Controller Life Cycle
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self loadConfigure];
+    [self viewConfigure];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    ;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewConfigure {
+    ;
 }
-*/
+
+#pragma mark - Event Response
+- (IBAction)closeButtonPressed {
+    [self dismiss];
+}
+
+#pragma mark - Private Methods
+- (void)dismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - HXWatcherContainerViewControllerDelegate Methods
+- (void)container:(HXWatcherContainerViewController *)container shouldShowWatcher:(id)watcher {
+    [HXWatcherBoard showWithWatcher:watcher closed:^{
+        ;
+    }];
+}
+
+#pragma mark - HXLiveAnchorViewDelegate Methods
+- (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
+    ;
+}
+
+#pragma mark - HXReplayBottomBarDelegate Methods
+- (void)bottomBar:(HXReplayBottomBar *)bar takeAction:(HXReplayBottomBarAction)action {
+    ;
+}
 
 @end

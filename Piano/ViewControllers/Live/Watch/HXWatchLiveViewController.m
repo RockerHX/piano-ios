@@ -7,14 +7,14 @@
 //
 
 #import "HXWatchLiveViewController.h"
-#import "HXWatchLiveContainerViewController.h"
+#import "HXWatcherContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
 
 
 @interface HXWatchLiveViewController () <
-HXWatchLiveContainerViewControllerDelegate,
+HXWatcherContainerViewControllerDelegate,
 HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate
 >
@@ -22,7 +22,7 @@ HXWatchLiveBottomBarDelegate
 
 
 @implementation HXWatchLiveViewController {
-    HXWatchLiveContainerViewController *_containerViewController;
+    HXWatcherContainerViewController *_containerViewController;
 }
 
 #pragma mark - Class Methods
@@ -79,8 +79,8 @@ HXWatchLiveBottomBarDelegate
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - HXWatchLiveContainerViewControllerDelegate Methods
-- (void)container:(HXWatchLiveContainerViewController *)container shouldShowWatcher:(id)watcher {
+#pragma mark - HXWatcherContainerViewControllerDelegate Methods
+- (void)container:(HXWatcherContainerViewController *)container shouldShowWatcher:(id)watcher {
     [HXWatcherBoard showWithWatcher:watcher closed:^{
         ;
     }];
