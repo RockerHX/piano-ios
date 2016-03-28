@@ -34,10 +34,10 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 			   completeBlock:(MiaRequestCompleteBlock)completeBlock
 				timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
-+ (void)loginWithPhoneNum:(NSString *)phoneNumber
-			 passwordHash:(NSString *)passwordHash
-			completeBlock:(MiaRequestCompleteBlock)completeBlock
-			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
++ (void)loginWithMobile:(NSString *)mobile
+           passwordHash:(NSString *)passwordHash
+          completeBlock:(MiaRequestCompleteBlock)completeBlock
+           timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)loginWithSession:(NSString *)uID
 				   token:(NSString *)token

@@ -221,12 +221,11 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
 }
 
 - (void)startWeiXinLoginRequest {
-    [self showHUD];
-    
     @weakify(self)
     RACSignal *weixinLoginSignal = [_viewModel.weixinLoginCommand execute:nil];
     [weixinLoginSignal subscribeNext:^(NSString *prompt) {
         @strongify(self)
+        [self showHUD];
         [self loginSuccessHandleWithPrompt:prompt];
     } error:^(NSError *error) {
         @strongify(self)
@@ -262,8 +261,8 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
 }
 
 - (void)loginFailureHanleWithPrompt:(NSString *)prompt {
-    [self showBannerWithPrompt:prompt];
     [self hiddenHUD];
+    [self showBannerWithPrompt:prompt];
 }
 
 @end

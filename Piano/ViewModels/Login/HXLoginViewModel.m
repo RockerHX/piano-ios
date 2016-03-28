@@ -8,6 +8,7 @@
 
 #import "HXLoginViewModel.h"
 #import "MiaAPIHelper.h"
+#import "NSString+MD5.h"
 
 
 @implementation HXLoginViewModel
@@ -80,49 +81,50 @@
 }
 
 - (void)startWeiXinLoginRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-//    NSDictionary *credential = user.credential.rawData;
-//    NSString *openID = credential[@"openid"];
-//    NSString *unionID = credential[@"unionid"];
-//    NSString *token = user.credential.token;
-//    NSString *nickName = user.nickname;
-//    NSString *avatar = user.icon;
-//    NSString *sex = ((user.gender == SSDKGenderUnknown) ? @"0" : @(user.gender + 1).stringValue);
-//
-//    [MiaAPIHelper thirdLoginWithOpenID:openID
-//                               unionID:unionID
-//                                 token:token
-//                              nickName:nickName
-//                                   sex:sex
-//                                  type:@"WEIXIN"
-//                                avatar:avatar
-//                         completeBlock:
-//     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//         if (success) {
-//             [subscriber sendNext:userInfo[MiaAPIKey_Values]];
-//             [subscriber sendCompleted];
-//         } else {
-//             [subscriber sendError:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-//         }
-//     } timeoutBlock:^(MiaRequestItem *requestItem) {
-//         [subscriber sendError:TimtOutPrompt];
-//     }];
+    SSDKUser *user = _account.sdkUser;
+    NSDictionary *credential = user.credential.rawData;
+    NSString *openID = credential[@"openid"];
+    NSString *unionID = credential[@"unionid"];
+    NSString *token = user.credential.token;
+    NSString *nickName = user.nickname;
+    NSString *avatar = user.icon;
+    NSString *sex = ((user.gender == SSDKGenderUnknown) ? @"0" : @(user.gender + 1).stringValue);
+
+    [MiaAPIHelper thirdLoginWithOpenID:openID
+                               unionID:unionID
+                                 token:token
+                              nickName:nickName
+                                   sex:sex
+                                  type:@"WEIXIN"
+                                avatar:avatar
+                         completeBlock:
+     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+         if (success) {
+             [subscriber sendNext:userInfo[MiaAPIKey_Values]];
+             [subscriber sendCompleted];
+         } else {
+             [subscriber sendError:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
+         }
+     } timeoutBlock:^(MiaRequestItem *requestItem) {
+         [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:0 userInfo:nil]];
+     }];
 }
 
 - (void)startNormalLoginRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     if ([self checkMobile:_account.mobile]) {
-//        [MiaAPIHelper loginWithPhoneNum:mobile
-//                           passwordHash:[NSString md5HexDigest:password]
-//                          completeBlock:
-//         ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//             if (success) {
-//                 [subscriber sendNext:userInfo[MiaAPIKey_Values]];
-//                 [subscriber sendCompleted];
-//             } else {
-//                 [subscriber sendError:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-//             }
-//         } timeoutBlock:^(MiaRequestItem *requestItem) {
-//             [subscriber sendError:TimtOutPrompt];
-//         }];
+        [MiaAPIHelper loginWithMobile:_account.mobile
+                           passwordHash:[NSString md5HexDigest:_account.password]
+                          completeBlock:
+         ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+             if (success) {
+                 [subscriber sendNext:userInfo[MiaAPIKey_Values]];
+                 [subscriber sendCompleted];
+             } else {
+                 [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:0 userInfo:nil]];
+             }
+         } timeoutBlock:^(MiaRequestItem *requestItem) {
+             [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:0 userInfo:nil]];
+         }];
     } else {
         [subscriber sendError:[NSError errorWithDomain:MobileErrorPrompt code:0 userInfo:nil]];
     }

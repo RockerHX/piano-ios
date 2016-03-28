@@ -143,36 +143,33 @@ HXLoginViewControllerDelegate
 }
 
 - (void)autoLogin {
-#warning @andy
-/*
-	HXUserSession *userSession = [HXUserSession share];
-	switch (userSession.userState) {
-		case HXUserStateLogout: {
-			return;
-			break;
-		}
-		case HXUserStateLogin: {
-			[MiaAPIHelper loginWithSession:userSession.user.uid
-									 token:userSession.user.token
-							 completeBlock:
-			 ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-				 if (success) {
-					 NSDictionary *data = userInfo[MiaAPIKey_Values];
-					 HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
-					 [userSession updateUser:user];
-
-					 [self updateNotificationBadge];
-				 } else {
-					 [[FileLog standard] log:@"autoLogin failed, logout"];
-					 [userSession logout];
-				 }
-			 } timeoutBlock:^(MiaRequestItem *requestItem) {
-				 NSLog(@"audo login timeout!");
-			 }];
-			break;
-		}
-	}
-*/
+//	HXUserSession *userSession = [HXUserSession session];
+//    switch (userSession.state) {
+//        case HXUserStateLogout: {
+//            return;
+//            break;
+//        }
+//        case HXUserStateLogin: {
+//            [MiaAPIHelper loginWithSession:userSession.user.uid
+//                                     token:userSession.user.token
+//                             completeBlock:
+//             ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+//                 if (success) {
+//                     NSDictionary *data = userInfo[MiaAPIKey_Values];
+//                     HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
+//                     [userSession updateUser:user];
+//                     
+//                     [self updateNotificationBadge];
+//                 } else {
+//                     [[FileLog standard] log:@"autoLogin failed, logout"];
+//                     [userSession logout];
+//                 }
+//             } timeoutBlock:^(MiaRequestItem *requestItem) {
+//                 NSLog(@"audo login timeout!");
+//             }];
+//            break;
+//        }
+//    }
 }
 
 - (void)autoReconnect {

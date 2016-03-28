@@ -605,11 +605,11 @@
 		CD2949EB1CA2919B00CA3C3F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CD2949F01CA2919B00CA3C3F /* Register */,
 				CD2949EE1CA2919B00CA3C3F /* HXLoginViewController.h */,
 				CD2949EF1CA2919B00CA3C3F /* HXLoginViewController.m */,
 				CD2949EC1CA2919B00CA3C3F /* HXForgotPWViewController.h */,
 				CD2949ED1CA2919B00CA3C3F /* HXForgotPWViewController.m */,
-				CD2949F01CA2919B00CA3C3F /* Register */,
 			);
 			path = Login;
 			sourceTree = "<group>";

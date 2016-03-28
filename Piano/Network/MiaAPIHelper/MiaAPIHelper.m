@@ -84,12 +84,12 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)loginWithPhoneNum:(NSString *)phoneNumber
-			 passwordHash:(NSString *)passwordHash
-			completeBlock:(MiaRequestCompleteBlock)completeBlock
-			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
++ (void)loginWithMobile:(NSString *)mobile
+           passwordHash:(NSString *)passwordHash
+          completeBlock:(MiaRequestCompleteBlock)completeBlock
+           timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
-	[dictValues setValue:phoneNumber forKey:MiaAPIKey_PhoneNumber];
+	[dictValues setValue:mobile forKey:MiaAPIKey_PhoneNumber];
 	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_Dev];
 	[dictValues setValue:MiaAPIDefaultIMEI forKey:MiaAPIKey_IMEI];
 	[dictValues setValue:passwordHash forKey:MiaAPIKey_Pwd];
