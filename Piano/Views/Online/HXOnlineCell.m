@@ -17,10 +17,10 @@
 //    [_publisherAvatar sd_setImageWithURL:[NSURL URLWithString:model.]];
 //    [_previewCover sd_setImageWithURL:[NSURL URLWithString:model.]];
     
-    _publisherNameLabel.text = model.nickName;
+//    _publisherNameLabel.text = model.nickName;
 //    _publishInfoLabel.text = model.;
     _titleLabel.text = model.title;
-    _favoriteCountLabel.text = @(model.viewCount).stringValue;
+//    _favoriteCountLabel.text = @(model.viewCount).stringValue;
     _attendeCountLabel.text = @(model.onlineCount).stringValue;
 }
 
