@@ -79,6 +79,11 @@ typedef void(^FailureBlock)(NSString *);
 }
 
 #pragma mark - Public Methods
+- (void)updateUserWithData:(NSDictionary *)data {
+    HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
+    [self updateUser:user];
+}
+
 - (void)updateUser:(nonnull HXUserModel *)user {
     _user = user;
     [self archiveUser:user];

@@ -38,6 +38,7 @@ typedef NS_ENUM(BOOL, HXUserState) {
 
 + (instancetype)session;
 
+- (void)updateUserWithData:(NSDictionary *)data;
 - (void)updateUser:(HXUserModel *)user;
 - (void)sysnc;
 - (void)clearNotify;

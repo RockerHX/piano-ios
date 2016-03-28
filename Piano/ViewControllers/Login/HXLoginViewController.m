@@ -223,10 +223,10 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
 - (void)startWeiXinLoginRequest {
     @weakify(self)
     RACSignal *weixinLoginSignal = [_viewModel.weixinLoginCommand execute:nil];
-    [weixinLoginSignal subscribeNext:^(NSString *prompt) {
+    [weixinLoginSignal subscribeNext:^(NSDictionary *data) {
         @strongify(self)
         [self showHUD];
-        [self loginSuccessHandleWithPrompt:prompt];
+        [self loginSuccessHandleWithData:data];
     } error:^(NSError *error) {
         @strongify(self)
         [self loginFailureHanleWithPrompt:error.domain];
@@ -240,9 +240,9 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
     
     @weakify(self)
     RACSignal *weixinLoginSignal = [_viewModel.normalLoginCommand execute:nil];
-    [weixinLoginSignal subscribeNext:^(NSString *prompt) {
+    [weixinLoginSignal subscribeNext:^(NSDictionary *data) {
         @strongify(self)
-        [self loginSuccessHandleWithPrompt:prompt];
+        [self loginSuccessHandleWithData:data];
     } error:^(NSError *error) {
         @strongify(self)
         [self loginFailureHanleWithPrompt:error.domain];
@@ -251,9 +251,10 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
     }];
 }
 
-- (void)loginSuccessHandleWithPrompt:(NSString *)prompt {
+- (void)loginSuccessHandleWithData:(NSDictionary *)data {
     [self hiddenHUD];
-    [self showBannerWithPrompt:prompt];
+    
+    [[HXUserSession session] updateUserWithData:data];
     
     if (_delegate && [_delegate respondsToSelector:@selector(loginViewController:takeAction:)]) {
         [_delegate loginViewController:self takeAction:HXLoginViewControllerActionLoginSuccess];
