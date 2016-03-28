@@ -7,9 +7,12 @@
 //
 
 #import "HXMeViewController.h"
+#import "HXMeNavigationBar.h"
 
 
-@interface HXMeViewController ()
+@interface HXMeViewController () <
+HXMeNavigationBarDelegate
+>
 @end
 
 
@@ -25,6 +28,18 @@
 }
 
 #pragma mark - View Controller Life Cycle
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    
+//    [self.navigationController setNavigationBarHidden:_shouldHideNavigationBar animated:YES];
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -38,6 +53,11 @@
 }
 
 - (void)viewConfigure {
+    ;
+}
+
+#pragma mark - HXMeNavigationBarDelegate Methods
+- (void)navigationBar:(HXMeNavigationBar *)bar action:(HXMeNavigationBarAction)action {
     ;
 }
 

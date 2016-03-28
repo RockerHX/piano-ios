@@ -8,6 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef NS_ENUM(NSUInteger, HXMeNavigationBarAction) {
+    HXMeNavigationBarActionSetting,
+};
+
+
+@class HXMeNavigationBar;
+
+
+@protocol HXMeNavigationBarDelegate <NSObject>
+
+@required
+- (void)navigationBar:(HXMeNavigationBar *)bar action:(HXMeNavigationBarAction)action;
+
+@end
+
+
 @interface HXMeNavigationBar : UIView
+
+@property (weak, nonatomic) IBOutlet id  <HXMeNavigationBarDelegate>delegate;
+
+- (IBAction)settingButtonPressed;
 
 @end
