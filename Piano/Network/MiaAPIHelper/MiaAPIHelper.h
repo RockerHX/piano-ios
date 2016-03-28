@@ -24,6 +24,60 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)sendUUIDWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 					 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)thirdLoginWithOpenID:(NSString *)openID
+					 unionID:(NSString *)unionID
+					   token:(NSString *)token
+					nickName:(NSString *)nickName
+						 sex:(NSString *)sex
+						type:(NSString *)type
+					  avatar:(NSString *)avatar
+			   completeBlock:(MiaRequestCompleteBlock)completeBlock
+				timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)loginWithPhoneNum:(NSString *)phoneNumber
+			 passwordHash:(NSString *)passwordHash
+			completeBlock:(MiaRequestCompleteBlock)completeBlock
+			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)loginWithSession:(NSString *)uID
+				   token:(NSString *)token
+		   completeBlock:(MiaRequestCompleteBlock)completeBlock
+			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)logoutWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+				   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)getVerificationCodeWithType:(long)type
+						phoneNumber:(NSString *)phoneNumber
+					  completeBlock:(MiaRequestCompleteBlock)completeBlock
+					   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)registerWithPhoneNum:(NSString *)phoneNumber
+					   scode:(NSString *)scode
+					nickName:(NSString *)nickName
+				passwordHash:(NSString *)passwordHash
+			   completeBlock:(MiaRequestCompleteBlock)completeBlock
+				timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)resetPasswordWithPhoneNum:(NSString *)phoneNumber
+					 passwordHash:(NSString *)passwordHash
+							scode:(NSString *)scode
+					completeBlock:(MiaRequestCompleteBlock)completeBlock
+					 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)changePasswordWithOldPasswordHash:(NSString *)oldPasswordHash
+						  newPasswordHash:(NSString *)newPasswordHash
+							completeBlock:(MiaRequestCompleteBlock)completeBlock
+							 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)changeNickName:(NSString *)nick
+		 completeBlock:(MiaRequestCompleteBlock)completeBlock
+		  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)changeGender:(long)gender
+	   completeBlock:(MiaRequestCompleteBlock)completeBlock
+		timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 + (void)getRoomListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
