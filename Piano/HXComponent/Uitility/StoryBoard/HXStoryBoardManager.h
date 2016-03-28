@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, HXStoryBoardName) {
     HXStoryBoardNameSetting,
     HXStoryBoardNameLive,
     HXStoryBoardNamePlay,
+    HXStoryBoardNameAlbums,
 };
 
 

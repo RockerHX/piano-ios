@@ -57,6 +57,10 @@
             storyBoardName = @"Play";
             break;
         }
+        case HXStoryBoardNameAlbums: {
+            storyBoardName = @"Albums";
+            break;
+        }
     }
     return storyBoardName;
 }
