@@ -80,43 +80,43 @@ static NSString *CaptchApi = @"/user/pauth";
 }
 
 - (void)sendCaptchaRequesetWithMobile:(NSString *)mobile {
-//    [MiaAPIHelper getVerificationCodeWithType:0
-//                                  phoneNumber:mobile
-//                                completeBlock:
-//     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//         if (success) {
-//             [self showBannerWithPrompt:@"验证码已经发送"];
-//         } else {
-//             NSString *error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
-//             [self showBannerWithPrompt:error];
-//             [_captchaButton stop];
-//         }
-//     } timeoutBlock:^(MiaRequestItem *requestItem) {
-//         [self showBannerWithPrompt:TimtOutPrompt];
-//         [_captchaButton stop];
-//     }];
+    [MiaAPIHelper getVerificationCodeWithType:0
+                                  phoneNumber:mobile
+                                completeBlock:
+     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+         if (success) {
+             [self showBannerWithPrompt:@"验证码已经发送"];
+         } else {
+             NSString *error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
+             [self showBannerWithPrompt:error];
+             [_captchaButton stop];
+         }
+     } timeoutBlock:^(MiaRequestItem *requestItem) {
+         [self showBannerWithPrompt:TimtOutPrompt];
+         [_captchaButton stop];
+     }];
 }
 
 - (void)startRegisterRequestWithMobile:(NSString *)mobile captcha:(NSString *)captcha nickName:(NSString *)nickName password:(NSString *)password {
-//    [self showHUD];
-//    [MiaAPIHelper registerWithPhoneNum:mobile
-//                                 scode:captcha
-//                              nickName:nickName
-//                          passwordHash:[NSString md5HexDigest:password]
-//                         completeBlock:
-//     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//         if (success) {
-//             [self registerSuccess];
-//         } else {
-//             NSString *error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
-//             [self showBannerWithPrompt:error];
-//         }
-//         
-//         [self hiddenHUD];
-//     } timeoutBlock:^(MiaRequestItem *requestItem) {
-//         [self showBannerWithPrompt:TimtOutPrompt];
-//         [self hiddenHUD];
-//     }];
+    [self showHUD];
+    [MiaAPIHelper registerWithPhoneNum:mobile
+                                 scode:captcha
+                              nickName:nickName
+                          passwordHash:[NSString md5HexDigest:password]
+                         completeBlock:
+     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+         if (success) {
+             [self registerSuccess];
+         } else {
+             NSString *error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
+             [self showBannerWithPrompt:error];
+         }
+         
+         [self hiddenHUD];
+     } timeoutBlock:^(MiaRequestItem *requestItem) {
+         [self showBannerWithPrompt:TimtOutPrompt];
+         [self hiddenHUD];
+     }];
 }
 
 - (void)registerSuccessWithData:(NSDictionary *)data {

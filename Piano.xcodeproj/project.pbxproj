@@ -617,10 +617,10 @@
 		CD2949F01CA2919B00CA3C3F /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				CD2949F11CA2919B00CA3C3F /* HXRegisterContainerViewController.h */,
-				CD2949F21CA2919B00CA3C3F /* HXRegisterContainerViewController.m */,
 				CD2949F31CA2919B00CA3C3F /* HXRegisterViewController.h */,
 				CD2949F41CA2919B00CA3C3F /* HXRegisterViewController.m */,
+				CD2949F11CA2919B00CA3C3F /* HXRegisterContainerViewController.h */,
+				CD2949F21CA2919B00CA3C3F /* HXRegisterContainerViewController.m */,
 				CD2949F51CA2919B00CA3C3F /* HXUserTermsViewController.h */,
 				CD2949F61CA2919B00CA3C3F /* HXUserTermsViewController.m */,
 			);
