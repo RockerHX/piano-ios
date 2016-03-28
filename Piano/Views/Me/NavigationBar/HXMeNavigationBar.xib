@@ -11,10 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIx-dA-Awg">
-                    <rect key="frame" x="8" y="9" width="25" height="25"/>
-                    <state key="normal" image="C-BackIcon-Gray"/>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAU-PN-3Zu">
                     <rect key="frame" x="282" y="7" width="30" height="30"/>
                     <state key="normal" title="设置"/>
@@ -32,17 +28,12 @@
                 <constraint firstAttribute="trailing" secondItem="Q0p-of-8bA" secondAttribute="trailing" id="CCw-HK-1Td"/>
                 <constraint firstItem="MAU-PN-3Zu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="GHP-7m-f7t"/>
                 <constraint firstAttribute="trailing" secondItem="MAU-PN-3Zu" secondAttribute="trailing" constant="8" id="dkr-7u-meM"/>
-                <constraint firstItem="wIx-dA-Awg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="e2F-FI-v6T"/>
                 <constraint firstAttribute="bottom" secondItem="Q0p-of-8bA" secondAttribute="bottom" id="lY7-2m-2sb"/>
                 <constraint firstItem="Q0p-of-8bA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="p6n-5F-mXL"/>
-                <constraint firstItem="wIx-dA-Awg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yh9-Em-zxr"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="284" y="322"/>
         </view>
     </objects>
-    <resources>
-        <image name="C-BackIcon-Gray" width="25" height="25"/>
-    </resources>
 </document>

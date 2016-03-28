@@ -14,4 +14,11 @@
 
 HXXibImplementation
 
+#pragma mark - Event Reponse
+- (IBAction)settingButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(navigationBar:action:)]) {
+        [_delegate navigationBar:self action:HXMeNavigationBarActionSetting];
+    }
+}
+
 @end
