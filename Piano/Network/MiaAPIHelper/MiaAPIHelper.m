@@ -45,7 +45,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	return timestamp;
 }
 
-+ (void)sendUUIDWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
++ (void)guestLoginWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 					 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSString *currentUUID = [self getUUID];
 
@@ -58,6 +58,170 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 														timeoutBlock:timeoutBlock];
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
+
++ (void)thirdLoginWithOpenID:(NSString *)openID
+					 unionID:(NSString *)unionID
+					   token:(NSString *)token
+					nickName:(NSString *)nickName
+						 sex:(NSString *)sex
+						type:(NSString *)type
+					  avatar:(NSString *)avatar
+			   completeBlock:(MiaRequestCompleteBlock)completeBlock
+				timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = @{}.mutableCopy;
+	[dictValues setValue:openID forKey:MiaAPIKey_OpenID];
+	[dictValues setValue:unionID forKey:MiaAPIKey_UnionID];
+	[dictValues setValue:token forKey:MiaAPIKey_Token];
+	[dictValues setValue:nickName forKey:MiaAPIKey_NickName];
+	[dictValues setValue:sex forKey:MiaAPIKey_Sex];
+	[dictValues setValue:type forKey:MiaAPIKey_From];
+	[dictValues setValue:avatar forKey:MiaAPIKey_HeadImageURL];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostThirdLogin
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)loginWithPhoneNum:(NSString *)phoneNumber
+			 passwordHash:(NSString *)passwordHash
+			completeBlock:(MiaRequestCompleteBlock)completeBlock
+			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:phoneNumber forKey:MiaAPIKey_PhoneNumber];
+	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_Dev];
+	[dictValues setValue:MiaAPIDefaultIMEI forKey:MiaAPIKey_IMEI];
+	[dictValues setValue:passwordHash forKey:MiaAPIKey_Pwd];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostLogin
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)loginWithSession:(NSString *)uID
+				   token:(NSString *)token
+		   completeBlock:(MiaRequestCompleteBlock)completeBlock
+			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:uID forKey:MiaAPIKey_UID];
+	[dictValues setValue:token forKey:MiaAPIKey_Token];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostSession
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)logoutWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+				   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostLogout
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)getVerificationCodeWithType:(long)type
+						phoneNumber:(NSString *)phoneNumber
+					  completeBlock:(MiaRequestCompleteBlock)completeBlock
+					   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:[NSNumber numberWithLong:type] forKey:MiaAPIKey_Type];
+	[dictValues setValue:phoneNumber forKey:MiaAPIKey_PhoneNumber];
+	[dictValues setValue:MiaAPIDefaultIMEI forKey:MiaAPIKey_IMEI];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostPauth
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)registerWithPhoneNum:(NSString *)phoneNumber
+					   scode:(NSString *)scode
+					nickName:(NSString *)nickName
+				passwordHash:(NSString *)passwordHash
+			   completeBlock:(MiaRequestCompleteBlock)completeBlock
+				timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:phoneNumber forKey:MiaAPIKey_PhoneNumber];
+	[dictValues setValue:scode forKey:MiaAPIKey_SCode];
+	[dictValues setValue:nickName forKey:MiaAPIKey_Nick];
+	[dictValues setValue:passwordHash forKey:MiaAPIKey_Password];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostRegister
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)resetPasswordWithPhoneNum:(NSString *)phoneNumber
+					 passwordHash:(NSString *)passwordHash
+							scode:(NSString *)scode
+					completeBlock:(MiaRequestCompleteBlock)completeBlock
+					 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:phoneNumber forKey:MiaAPIKey_PhoneNumber];
+	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_Type];
+	[dictValues setValue:scode forKey:MiaAPIKey_OldPwd];
+	[dictValues setValue:passwordHash forKey:MiaAPIKey_NewPwd];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostChangePwd
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)changePasswordWithOldPasswordHash:(NSString *)oldPasswordHash
+						  newPasswordHash:(NSString *)newPasswordHash
+							completeBlock:(MiaRequestCompleteBlock)completeBlock
+							 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:[NSNumber numberWithLong:0] forKey:MiaAPIKey_Type];
+	[dictValues setValue:oldPasswordHash forKey:MiaAPIKey_OldPwd];
+	[dictValues setValue:newPasswordHash forKey:MiaAPIKey_NewPwd];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostChangePwd
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)changeNickName:(NSString *)nick
+		 completeBlock:(MiaRequestCompleteBlock)completeBlock
+		  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:nick forKey:MiaAPIKey_Nick];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostCnick
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)changeGender:(long)gender
+	   completeBlock:(MiaRequestCompleteBlock)completeBlock
+		timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:[NSNumber numberWithLong:gender] forKey:MiaAPIKey_Gender];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostGender
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
+#pragma mark - Live
 
 + (void)getRoomListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 				   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {

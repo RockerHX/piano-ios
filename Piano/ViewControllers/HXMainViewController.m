@@ -114,9 +114,20 @@ HXLoginViewControllerDelegate
 
 #pragma mark - Socket
 - (void)notificationWebSocketDidOpen:(NSNotification *)notification {
-    UINavigationController *onlineNavigationController = self.viewControllers.firstObject;
-    HXOnlineViewController *onlineViewController = onlineNavigationController.viewControllers.firstObject;
-    [onlineViewController startFetchList];
+	[MiaAPIHelper guestLoginWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+		if (success) {
+//			[self checkUpdate];
+			[self autoLogin];
+
+			UINavigationController *onlineNavigationController = self.viewControllers.firstObject;
+			HXOnlineViewController *onlineViewController = onlineNavigationController.viewControllers.firstObject;
+			[onlineViewController startFetchList];
+		} else {
+			[self autoReconnect];
+		}
+	} timeoutBlock:^(MiaRequestItem *requestItem) {
+		[self autoReconnect];
+	}];
 }
 
 - (void)notificationWebSocketDidFailWithError:(NSNotification *)notification {
@@ -129,6 +140,43 @@ HXLoginViewControllerDelegate
 
 - (void)notificationWebSocketDidCloseWithCode:(NSNotification *)notification {
     NSLog(@"Connection Closed! (see logs)");
+}
+
+- (void)autoLogin {
+#warning @andy
+/*
+	HXUserSession *userSession = [HXUserSession share];
+	switch (userSession.userState) {
+		case HXUserStateLogout: {
+			return;
+			break;
+		}
+		case HXUserStateLogin: {
+			[MiaAPIHelper loginWithSession:userSession.user.uid
+									 token:userSession.user.token
+							 completeBlock:
+			 ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+				 if (success) {
+					 NSDictionary *data = userInfo[MiaAPIKey_Values];
+					 HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
+					 [userSession updateUser:user];
+
+					 [self updateNotificationBadge];
+				 } else {
+					 [[FileLog standard] log:@"autoLogin failed, logout"];
+					 [userSession logout];
+				 }
+			 } timeoutBlock:^(MiaRequestItem *requestItem) {
+				 NSLog(@"audo login timeout!");
+			 }];
+			break;
+		}
+	}
+*/
+}
+
+- (void)autoReconnect {
+	[[WebSocketMgr standard] reconnect];
 }
 
 #pragma mark - UITabBarControllerDelegate Methods
