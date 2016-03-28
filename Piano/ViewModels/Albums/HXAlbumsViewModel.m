@@ -7,21 +7,36 @@
 //
 
 #import "HXAlbumsViewModel.h"
+#import "UIConstants.h"
 
 
 @implementation HXAlbumsViewModel
 
+#pragma mark - Initialize Methods
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        ;
+    }
+    return self;
+}
+
+#pragma mark - Configure Methods
+- (void)initConfigure {
+    _songStartIndex = 1;
+}
+
 #pragma mark - Property
 - (CGFloat)controlHeight {
-    return 0.0f;
+    return SCREEN_WIDTH - 10.0f - 15.0f + 61.0f;
 }
 
 - (CGFloat)songHeight {
-    return 0.0f;
+    return 50.0f;
 }
 
 - (CGFloat)promptHeight {
-    return 0.0f;
+    return 50.0f;
 }
 
 - (NSInteger)rows {

@@ -22,6 +22,9 @@ typedef NS_ENUM(NSUInteger, HXAlbumsCellRowType) {
 @property (nonatomic, assign, readonly)   CGFloat  controlHeight;
 @property (nonatomic, assign, readonly)   CGFloat  songHeight;
 @property (nonatomic, assign, readonly)   CGFloat  promptHeight;
+
+@property (nonatomic, assign, readonly) NSInteger  songStartIndex;
+@property (nonatomic, assign, readonly) NSInteger  commentStartIndex;
 @property (nonatomic, assign, readonly) NSInteger  rows;
 
 @property (nonatomic, strong, readonly)   NSArray *rowTypes;

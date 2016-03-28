@@ -57,6 +57,14 @@
 		CD2E72F21CA11E75003CDB77 /* Online.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72E91CA11E75003CDB77 /* Online.storyboard */; };
 		CD2E72F31CA11E75003CDB77 /* Publish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */; };
 		CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */; };
+		CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */; };
+		CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */; };
+		CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */; };
+		CD5DD8B01CA912790077A17B /* HXAlbumsSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AC1CA912790077A17B /* HXAlbumsSongCell.m */; };
+		CD5DD8B31CA912A10077A17B /* HXAlbumsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8B21CA912A10077A17B /* HXAlbumsNavigationBar.m */; };
+		CD5DD8B61CA912B10077A17B /* HXAlbumsCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8B51CA912B10077A17B /* HXAlbumsCommentView.m */; };
+		CD5DD8B81CA912D20077A17B /* HXAlbumsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5DD8B71CA912D20077A17B /* HXAlbumsNavigationBar.xib */; };
+		CD5DD8BA1CA912E60077A17B /* HXAlbumsCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5DD8B91CA912E60077A17B /* HXAlbumsCommentView.xib */; };
 		CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */; };
 		CD6581651CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */; };
 		CD6C19411CA4E4AE00849B39 /* HXWatcherContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19401CA4E4AE00849B39 /* HXWatcherContainerViewController.m */; };
@@ -105,10 +113,6 @@
 		CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */; };
 		CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F401CA15181003867B8 /* HXUserSession.m */; };
 		CDED8F451CA22F32003867B8 /* HXOnlineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F441CA22F32003867B8 /* HXOnlineViewModel.m */; };
-		CDF300FB1CA8D0F000C19C32 /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF300FA1CA8D0F000C19C32 /* HXAlbumsCommentCell.m */; };
-		CDF300FE1CA8D1CA00C19C32 /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF300FD1CA8D1CA00C19C32 /* HXAlbumsCommentCountCell.m */; };
-		CDF301011CA8D49400C19C32 /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301001CA8D49400C19C32 /* HXAlbumsControlCell.m */; };
-		CDF301041CA8D4A900C19C32 /* HXAlbumsSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301031CA8D4A900C19C32 /* HXAlbumsSongCell.m */; };
 		CDF301071CA8D4ED00C19C32 /* HXAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301061CA8D4ED00C19C32 /* HXAlbumsViewController.m */; };
 		CDF3010A1CA8D50E00C19C32 /* HXAlbumsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301091CA8D50E00C19C32 /* HXAlbumsContainerViewController.m */; };
 		CDF3010D1CA8D74700C19C32 /* HXAlbumsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF3010C1CA8D74700C19C32 /* HXAlbumsViewModel.m */; };
@@ -223,6 +227,20 @@
 		CD2E72EA1CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Online.storyboard; sourceTree = "<group>"; };
 		CD2E72EC1CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Publish.storyboard; sourceTree = "<group>"; };
 		CD2E72F01CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setting.storyboard; sourceTree = "<group>"; };
+		CD5DD8A51CA912790077A17B /* HXAlbumsCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCell.h; sourceTree = "<group>"; };
+		CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentCell.m; sourceTree = "<group>"; };
+		CD5DD8A71CA912790077A17B /* HXAlbumsCommentCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCountCell.h; sourceTree = "<group>"; };
+		CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentCountCell.m; sourceTree = "<group>"; };
+		CD5DD8A91CA912790077A17B /* HXAlbumsControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsControlCell.h; sourceTree = "<group>"; };
+		CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsControlCell.m; sourceTree = "<group>"; };
+		CD5DD8AB1CA912790077A17B /* HXAlbumsSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsSongCell.h; sourceTree = "<group>"; };
+		CD5DD8AC1CA912790077A17B /* HXAlbumsSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsSongCell.m; sourceTree = "<group>"; };
+		CD5DD8B11CA912A10077A17B /* HXAlbumsNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsNavigationBar.h; sourceTree = "<group>"; };
+		CD5DD8B21CA912A10077A17B /* HXAlbumsNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsNavigationBar.m; sourceTree = "<group>"; };
+		CD5DD8B41CA912B10077A17B /* HXAlbumsCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentView.h; sourceTree = "<group>"; };
+		CD5DD8B51CA912B10077A17B /* HXAlbumsCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentView.m; sourceTree = "<group>"; };
+		CD5DD8B71CA912D20077A17B /* HXAlbumsNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXAlbumsNavigationBar.xib; sourceTree = "<group>"; };
+		CD5DD8B91CA912E60077A17B /* HXAlbumsCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXAlbumsCommentView.xib; sourceTree = "<group>"; };
 		CD6581611CA3E99B00E2EF19 /* HXWatchLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveBottomBar.h; sourceTree = "<group>"; };
 		CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveBottomBar.m; sourceTree = "<group>"; };
 		CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatchLiveBottomBar.xib; sourceTree = "<group>"; };
@@ -306,14 +324,6 @@
 		CDED8F401CA15181003867B8 /* HXUserSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXUserSession.m; sourceTree = "<group>"; };
 		CDED8F431CA22F32003867B8 /* HXOnlineViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXOnlineViewModel.h; sourceTree = "<group>"; };
 		CDED8F441CA22F32003867B8 /* HXOnlineViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXOnlineViewModel.m; sourceTree = "<group>"; };
-		CDF300F91CA8D0F000C19C32 /* HXAlbumsCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCell.h; sourceTree = "<group>"; };
-		CDF300FA1CA8D0F000C19C32 /* HXAlbumsCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentCell.m; sourceTree = "<group>"; };
-		CDF300FC1CA8D1CA00C19C32 /* HXAlbumsCommentCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCountCell.h; sourceTree = "<group>"; };
-		CDF300FD1CA8D1CA00C19C32 /* HXAlbumsCommentCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentCountCell.m; sourceTree = "<group>"; };
-		CDF300FF1CA8D49400C19C32 /* HXAlbumsControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsControlCell.h; sourceTree = "<group>"; };
-		CDF301001CA8D49400C19C32 /* HXAlbumsControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsControlCell.m; sourceTree = "<group>"; };
-		CDF301021CA8D4A900C19C32 /* HXAlbumsSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsSongCell.h; sourceTree = "<group>"; };
-		CDF301031CA8D4A900C19C32 /* HXAlbumsSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsSongCell.m; sourceTree = "<group>"; };
 		CDF301051CA8D4ED00C19C32 /* HXAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsViewController.h; sourceTree = "<group>"; };
 		CDF301061CA8D4ED00C19C32 /* HXAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsViewController.m; sourceTree = "<group>"; };
 		CDF301081CA8D50E00C19C32 /* HXAlbumsContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsContainerViewController.h; sourceTree = "<group>"; };
@@ -690,6 +700,21 @@
 				CD2E72A61CA11E13003CDB77 /* HXZegoAVKitManager.m */,
 			);
 			path = ZegoAVKit;
+			sourceTree = "<group>";
+		};
+		CD5DD8A41CA912790077A17B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CD5DD8A91CA912790077A17B /* HXAlbumsControlCell.h */,
+				CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */,
+				CD5DD8AB1CA912790077A17B /* HXAlbumsSongCell.h */,
+				CD5DD8AC1CA912790077A17B /* HXAlbumsSongCell.m */,
+				CD5DD8A71CA912790077A17B /* HXAlbumsCommentCountCell.h */,
+				CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */,
+				CD5DD8A51CA912790077A17B /* HXAlbumsCommentCell.h */,
+				CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		CD65815F1CA3E97200E2EF19 /* Common */ = {
@@ -1185,14 +1210,13 @@
 		CDF300F71CA8D0B900C19C32 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				CDF300FF1CA8D49400C19C32 /* HXAlbumsControlCell.h */,
-				CDF301001CA8D49400C19C32 /* HXAlbumsControlCell.m */,
-				CDF301021CA8D4A900C19C32 /* HXAlbumsSongCell.h */,
-				CDF301031CA8D4A900C19C32 /* HXAlbumsSongCell.m */,
-				CDF300FC1CA8D1CA00C19C32 /* HXAlbumsCommentCountCell.h */,
-				CDF300FD1CA8D1CA00C19C32 /* HXAlbumsCommentCountCell.m */,
-				CDF300F91CA8D0F000C19C32 /* HXAlbumsCommentCell.h */,
-				CDF300FA1CA8D0F000C19C32 /* HXAlbumsCommentCell.m */,
+				CD5DD8A41CA912790077A17B /* Cells */,
+				CD5DD8B11CA912A10077A17B /* HXAlbumsNavigationBar.h */,
+				CD5DD8B21CA912A10077A17B /* HXAlbumsNavigationBar.m */,
+				CD5DD8B71CA912D20077A17B /* HXAlbumsNavigationBar.xib */,
+				CD5DD8B41CA912B10077A17B /* HXAlbumsCommentView.h */,
+				CD5DD8B51CA912B10077A17B /* HXAlbumsCommentView.m */,
+				CD5DD8B91CA912E60077A17B /* HXAlbumsCommentView.xib */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -1278,6 +1302,7 @@
 			files = (
 				CD2E72F31CA11E75003CDB77 /* Publish.storyboard in Resources */,
 				CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */,
+				CD5DD8BA1CA912E60077A17B /* HXAlbumsCommentView.xib in Resources */,
 				CD6C198A1CA519A900849B39 /* HXPlayBottomBar.xib in Resources */,
 				CDED8F321CA13EFD003867B8 /* Profile.storyboard in Resources */,
 				CD6581651CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib in Resources */,
@@ -1286,6 +1311,7 @@
 				CD22A4B51CA3FEB300B3F368 /* HXLiveAnchorView.xib in Resources */,
 				CDF9504C1CA558E300BDB586 /* Albums.storyboard in Resources */,
 				CD2E72F11CA11E75003CDB77 /* Live.storyboard in Resources */,
+				CD5DD8B81CA912D20077A17B /* HXAlbumsNavigationBar.xib in Resources */,
 				CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */,
 				CDED8F251CA13BB4003867B8 /* HXAlertBanner.xib in Resources */,
 				CD6C198C1CA519A900849B39 /* HXPlaySummaryView.xib in Resources */,
@@ -1357,11 +1383,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD2E728B1CA11DE0003CDB77 /* HXSettingViewController.m in Sources */,
-				CDF301011CA8D49400C19C32 /* HXAlbumsControlCell.m in Sources */,
 				CD2E729C1CA11E02003CDB77 /* HXLiveModel.m in Sources */,
 				CD2949D61CA28A3500CA3C3F /* UIView+HXIBnspectable.m in Sources */,
 				CDED8F2D1CA13BB4003867B8 /* HXStoryBoardManager.m in Sources */,
 				CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */,
+				CD5DD8B31CA912A10077A17B /* HXAlbumsNavigationBar.m in Sources */,
 				CD2949D81CA28A3500CA3C3F /* HXIBImageView.m in Sources */,
 				CD2949FA1CA2919B00CA3C3F /* HXRegisterViewController.m in Sources */,
 				CD22A4B41CA3FEB300B3F368 /* HXLiveAnchorView.m in Sources */,
@@ -1373,8 +1399,10 @@
 				CD2949D41CA28A3500CA3C3F /* UIButton+HXIBnspectable.m in Sources */,
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
 				CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */,
+				CD5DD8B01CA912790077A17B /* HXAlbumsSongCell.m in Sources */,
 				CD2949F71CA2919B00CA3C3F /* HXForgotPWViewController.m in Sources */,
 				CDF301071CA8D4ED00C19C32 /* HXAlbumsViewController.m in Sources */,
+				CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */,
 				CD2949B61CA2827F00CA3C3F /* HXOnlineNormalCell.m in Sources */,
 				CD6C19411CA4E4AE00849B39 /* HXWatcherContainerViewController.m in Sources */,
 				CD6C195E1CA5193B00849B39 /* HXPlayViewController.m in Sources */,
@@ -1384,12 +1412,13 @@
 				CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */,
 				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
 				CDED8F271CA13BB4003867B8 /* HXLabel.m in Sources */,
+				CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */,
+				CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */,
 				CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */,
 				CD2E72891CA11DE0003CDB77 /* HXPublishViewController.m in Sources */,
 				CD2949B91CA282AC00CA3C3F /* HXOnlineReplayCell.m in Sources */,
 				CD2E72881CA11DE0003CDB77 /* HXOnlineContainerViewController.m in Sources */,
 				CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */,
-				CDF300FE1CA8D1CA00C19C32 /* HXAlbumsCommentCountCell.m in Sources */,
 				CD2949F91CA2919B00CA3C3F /* HXRegisterContainerViewController.m in Sources */,
 				CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */,
 				CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */,
@@ -1410,6 +1439,7 @@
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
 				CD6C19461CA4E78000849B39 /* HXWatcherCell.m in Sources */,
 				CD2949DB1CA28A3500CA3C3F /* HXIBnsepectableManager.m in Sources */,
+				CD5DD8B61CA912B10077A17B /* HXAlbumsCommentView.m in Sources */,
 				CD2949FB1CA2919B00CA3C3F /* HXUserTermsViewController.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */,
@@ -1419,8 +1449,6 @@
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				CD2E729D1CA11E02003CDB77 /* HXOnlineModel.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
-				CDF301041CA8D4A900C19C32 /* HXAlbumsSongCell.m in Sources */,
-				CDF300FB1CA8D0F000C19C32 /* HXAlbumsCommentCell.m in Sources */,
 				CD6C19891CA519A900849B39 /* HXPlayBottomBar.m in Sources */,
 				CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */,
 				CD294A031CA294B900CA3C3F /* HXLoginViewModel.m in Sources */,

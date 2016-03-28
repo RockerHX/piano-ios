@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXAlbumsNavigationBar"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPN-E6-EK8" userLabel="Back Icon">
+                    <rect key="frame" x="8" y="10" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="XPN-E6-EK8" secondAttribute="height" multiplier="1:1" id="6kS-LZ-Y7b"/>
+                        <constraint firstAttribute="width" constant="25" id="X5Z-Q5-T9c"/>
+                    </constraints>
+                    <state key="normal" image="C-BackIcon-Gray"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-DW-Qh9" userLabel="Label Container">
+                    <rect key="frame" x="43" y="7" width="237" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="表演者" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuC-cl-x4J" userLabel="Singer Name Label">
+                            <rect key="frame" x="0.0" y="16" width="237" height="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专辑名称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSj-7V-Ckg" userLabel="Albums Name Label">
+                            <rect key="frame" x="0.0" y="0.0" width="237" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="GuC-cl-x4J" secondAttribute="trailing" id="SVh-8i-VXd"/>
+                        <constraint firstAttribute="trailing" secondItem="tSj-7V-Ckg" secondAttribute="trailing" id="cGm-4a-O4j"/>
+                        <constraint firstItem="tSj-7V-Ckg" firstAttribute="top" secondItem="2eP-DW-Qh9" secondAttribute="top" id="fVg-tk-ZkB"/>
+                        <constraint firstAttribute="bottom" secondItem="GuC-cl-x4J" secondAttribute="bottom" id="frO-F0-3oh"/>
+                        <constraint firstItem="tSj-7V-Ckg" firstAttribute="leading" secondItem="2eP-DW-Qh9" secondAttribute="leading" id="qHy-rW-IRu"/>
+                        <constraint firstItem="GuC-cl-x4J" firstAttribute="leading" secondItem="2eP-DW-Qh9" secondAttribute="leading" id="qIf-fF-EBw"/>
+                        <constraint firstItem="GuC-cl-x4J" firstAttribute="top" secondItem="tSj-7V-Ckg" secondAttribute="bottom" id="urK-Wu-QKZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="2eP-DW-Qh9" firstAttribute="leading" secondItem="XPN-E6-EK8" secondAttribute="trailing" constant="10" id="A8Q-cY-DMC"/>
+                <constraint firstItem="2eP-DW-Qh9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="I4W-a5-Rz3"/>
+                <constraint firstItem="XPN-E6-EK8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="KT6-Kk-wPl"/>
+                <constraint firstItem="XPN-E6-EK8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fzK-98-SWl"/>
+                <constraint firstAttribute="trailing" secondItem="2eP-DW-Qh9" secondAttribute="trailing" constant="40" id="ipJ-d4-umP"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="228" y="375"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="C-BackIcon-Gray" width="25" height="25"/>
+    </resources>
+</document>
