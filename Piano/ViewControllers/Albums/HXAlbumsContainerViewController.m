@@ -46,22 +46,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [UITableViewCell new];
-    HXAlbumsCellRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     
     switch (rowType) {
-        case HXAlbumsCellRowTypeControl: {
+        case HXAlbumsRowTypeControl: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXAlbumsControlCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXAlbumsCellRowTypeSong: {
+        case HXAlbumsRowTypeSong: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXAlbumsSongCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXAlbumsCellRowTypeCommentCount: {
+        case HXAlbumsRowTypeCommentCount: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXAlbumsCommentCountCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXAlbumsCellRowTypeComment: {
+        case HXAlbumsRowTypeComment: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXAlbumsCommentCell class]) forIndexPath:indexPath];
             break;
         }
@@ -72,22 +72,22 @@
 #pragma mark - Table View Delegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 0.0f;
-    HXAlbumsCellRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     
     switch (rowType) {
-        case HXAlbumsCellRowTypeControl: {
+        case HXAlbumsRowTypeControl: {
             height = _viewModel.controlHeight;
             break;
         }
-        case HXAlbumsCellRowTypeSong: {
+        case HXAlbumsRowTypeSong: {
             height = _viewModel.songHeight;
             break;
         }
-        case HXAlbumsCellRowTypeCommentCount: {
+        case HXAlbumsRowTypeCommentCount: {
             height = _viewModel.promptHeight;
             break;
         }
-        case HXAlbumsCellRowTypeComment: {
+        case HXAlbumsRowTypeComment: {
             height = [tableView fd_heightForCellWithIdentifier:NSStringFromClass([HXAlbumsCommentCell class]) cacheByIndexPath:indexPath configuration:^(HXAlbumsCommentCell *cell) {
                 ;
             }];
@@ -98,22 +98,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXAlbumsCellRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     
     switch (rowType) {
-        case HXAlbumsCellRowTypeControl: {
+        case HXAlbumsRowTypeControl: {
             ;
             break;
         }
-        case HXAlbumsCellRowTypeSong: {
+        case HXAlbumsRowTypeSong: {
             ;
             break;
         }
-        case HXAlbumsCellRowTypeCommentCount: {
+        case HXAlbumsRowTypeCommentCount: {
             ;
             break;
         }
-        case HXAlbumsCellRowTypeComment: {
+        case HXAlbumsRowTypeComment: {
             ;
             break;
         }

@@ -9,11 +9,11 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 
 
-typedef NS_ENUM(NSUInteger, HXAlbumsCellRowType) {
-    HXAlbumsCellRowTypeControl,
-    HXAlbumsCellRowTypeSong,
-    HXAlbumsCellRowTypeCommentCount,
-    HXAlbumsCellRowTypeComment,
+typedef NS_ENUM(NSUInteger, HXAlbumsRowType) {
+    HXAlbumsRowTypeControl,
+    HXAlbumsRowTypeSong,
+    HXAlbumsRowTypeCommentCount,
+    HXAlbumsRowTypeComment,
 };
 
 
