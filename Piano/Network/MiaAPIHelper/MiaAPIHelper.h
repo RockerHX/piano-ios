@@ -21,7 +21,7 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 @interface MiaAPIHelper : NSObject
 
 + (id)getUUID;
-+ (void)sendUUIDWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
++ (void)guestLoginWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 					 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)thirdLoginWithOpenID:(NSString *)openID

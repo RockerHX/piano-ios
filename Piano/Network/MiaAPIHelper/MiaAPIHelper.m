@@ -45,7 +45,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	return timestamp;
 }
 
-+ (void)sendUUIDWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
++ (void)guestLoginWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 					 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSString *currentUUID = [self getUUID];
 
