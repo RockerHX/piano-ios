@@ -144,15 +144,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXWatcherCell" id="2Ft-6T-LRO" userLabel="HXWatcherCell" customClass="HXWatcherCell">
-                                <rect key="frame" x="0.0" y="28" width="240" height="40"/>
+                                <rect key="frame" x="0.0" y="28" width="300" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Ft-6T-LRO" id="0d4-yf-761">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8y-o1-sCy" customClass="HXIBImageView">
@@ -496,6 +496,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HeX-r3-laS"/>
+        <segue reference="O5M-18-fAC"/>
     </inferredMetricsTieBreakers>
 </document>

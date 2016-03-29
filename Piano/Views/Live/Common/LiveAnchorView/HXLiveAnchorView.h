@@ -29,11 +29,11 @@ typedef NS_ENUM(NSUInteger, HXLiveAnchorViewAction) {
 
 @property (weak, nonatomic) IBOutlet id  <HXLiveAnchorViewDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet UIButton *anchorAvatar;
-@property (weak, nonatomic) IBOutlet  UILabel *anchorNickNameLabel;
-@property (weak, nonatomic) IBOutlet  UILabel *watcherCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *avatar;
+@property (weak, nonatomic) IBOutlet  UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet  UILabel *countLabel;
 
-- (IBAction)anchorAvatarPressed;
+- (IBAction)avatarButtonPressed;
 - (IBAction)attentionButtonPressed;
 
 @end

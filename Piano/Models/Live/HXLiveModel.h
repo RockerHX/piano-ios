@@ -6,30 +6,24 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXOnlineModel.h"
+#import "MJExtension.h"
+
 
 @interface HXLiveModel : NSObject
 
-@property(nonatomic, strong) NSString *roomType;
-@property(nonatomic, strong) NSString *roomTitle;
-@property(nonatomic, strong) NSString *createTime;
-@property(nonatomic, strong) NSString *endTime;
-@property(nonatomic, strong) NSString *userName;
-@property(nonatomic, strong) NSString *userID;
-@property(nonatomic, strong) NSString *userPic;
-@property(nonatomic, strong) NSString *publisherName;
-@property(nonatomic, strong) NSString *publisherID;
-@property(nonatomic, strong) NSString *publisherPic;
-@property(nonatomic, strong) NSString *replayPath;
-@property(nonatomic, strong) NSString *coverPath;
+@property(nonatomic, strong) NSString *uID;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *nickName;
+@property(nonatomic, strong) NSString *avatarUrl;
 
-@property(nonatomic, assign) NSInteger  roomNumber;
-@property(nonatomic, assign) NSInteger  roomToken;
-@property(nonatomic, assign) NSInteger  streamID;
+@property(nonatomic, strong) NSString *hlsUrl;
+@property(nonatomic, strong) NSString *rtmpUrl;
 
-@property(nonatomic, assign) HXOnlineType  type;
+@property (nonatomic, assign) NSInteger  zegoID;
+@property (nonatomic, assign) NSInteger  zegoToken;
+@property (nonatomic, assign) NSInteger  streamID;
 
-- (instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName;
-- (instancetype)initWithOnlineModel:(HXOnlineModel *)model;
+@property (nonatomic, assign) NSInteger  onlineCount;
+@property (nonatomic, assign) NSInteger  viewCount;
 
 @end

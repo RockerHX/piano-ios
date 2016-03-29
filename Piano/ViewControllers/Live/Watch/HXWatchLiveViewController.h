@@ -9,14 +9,15 @@
 #import "UIViewController+HXClass.h"
 
 
-@class HXLiveModel;
+@class HXLiveAnchorView;
 
 
 @interface HXWatchLiveViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *liveView;
+@property (weak, nonatomic) IBOutlet           UIView *liveView;
+@property (weak, nonatomic) IBOutlet HXLiveAnchorView *anchorView;
 
-@property (nonatomic, strong) HXLiveModel *model;
+@property (nonatomic, strong) NSString *roomID;
 
 - (IBAction)closeButtonPressed;
 

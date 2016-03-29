@@ -71,6 +71,7 @@
 		CD2E72F21CA11E75003CDB77 /* Online.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72E91CA11E75003CDB77 /* Online.storyboard */; };
 		CD2E72F31CA11E75003CDB77 /* Publish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */; };
 		CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */; };
+		CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */; };
 		CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */; };
 		CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */; };
 		CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */; };
@@ -263,6 +264,8 @@
 		CD2E72EA1CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Online.storyboard; sourceTree = "<group>"; };
 		CD2E72EC1CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Publish.storyboard; sourceTree = "<group>"; };
 		CD2E72F01CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setting.storyboard; sourceTree = "<group>"; };
+		CD3199831CAA6182006C845F /* HXWatchLiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewModel.h; sourceTree = "<group>"; };
+		CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewModel.m; sourceTree = "<group>"; };
 		CD5DD8A51CA912790077A17B /* HXAlbumsCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCell.h; sourceTree = "<group>"; };
 		CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentCell.m; sourceTree = "<group>"; };
 		CD5DD8A71CA912790077A17B /* HXAlbumsCommentCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCountCell.h; sourceTree = "<group>"; };
@@ -802,6 +805,23 @@
 			path = ZegoAVKit;
 			sourceTree = "<group>";
 		};
+		CD3199811CAA6173006C845F /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				CD3199821CAA6173006C845F /* Watch */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		CD3199821CAA6173006C845F /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				CD3199831CAA6182006C845F /* HXWatchLiveViewModel.h */,
+				CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
 		CD5CDF861CA919F700D2162C /* Me */ = {
 			isa = PBXGroup;
 			children = (
@@ -1022,6 +1042,7 @@
 				CDED8F421CA22F22003867B8 /* Online */,
 				CD2367931CA9211F002C8233 /* Me */,
 				CD294A001CA294AA00CA3C3F /* Login */,
+				CD3199811CAA6173006C845F /* Live */,
 				CDF300F81CA8D0C600C19C32 /* Albums */,
 			);
 			path = ViewModels;
@@ -1532,6 +1553,7 @@
 				CD23678B1CA91CFB002C8233 /* HXAlbumsNavigationBar.m in Sources */,
 				CD2949B91CA282AC00CA3C3F /* HXOnlineReplayCell.m in Sources */,
 				CD2E72881CA11DE0003CDB77 /* HXOnlineContainerViewController.m in Sources */,
+				CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */,
 				CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */,
 				CD2949F91CA2919B00CA3C3F /* HXRegisterContainerViewController.m in Sources */,
 				CD2367AC1CA93D19002C8233 /* HXMeAttentionCell.m in Sources */,

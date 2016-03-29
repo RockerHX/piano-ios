@@ -8,9 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXLiveAnchorView">
             <connections>
-                <outlet property="anchorAvatar" destination="Iuj-VO-Lk7" id="N3w-8H-vVt"/>
-                <outlet property="anchorNickNameLabel" destination="s7d-ZL-oRp" id="jiK-C0-r0V"/>
-                <outlet property="watcherCountLabel" destination="dcQ-qJ-VZU" id="b4a-8b-vXJ"/>
+                <outlet property="avatar" destination="Iuj-VO-Lk7" id="ZR5-65-EZt"/>
+                <outlet property="countLabel" destination="dcQ-qJ-VZU" id="71q-Gv-zaG"/>
+                <outlet property="nickNameLabel" destination="s7d-ZL-oRp" id="oAn-aN-aIF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -31,7 +31,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="anchorAvatarPressed" destination="-1" eventType="touchUpInside" id="bpt-3Z-EWY"/>
+                        <action selector="avatarButtonPressed" destination="-1" eventType="touchUpInside" id="9yO-kx-98M"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkY-KR-sXU">

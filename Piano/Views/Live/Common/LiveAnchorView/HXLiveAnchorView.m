@@ -15,7 +15,7 @@
 HXXibImplementation
 
 #pragma mark - Event Response
-- (IBAction)anchorAvatarPressed {
+- (IBAction)avatarButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(anchorView:takeAction:)]) {
         [_delegate anchorView:self takeAction:HXLiveAnchorViewActionShowAnchor];
     }
