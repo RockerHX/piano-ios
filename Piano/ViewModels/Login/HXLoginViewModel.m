@@ -73,7 +73,7 @@
                 break;
             }
             case SSDKResponseStateCancel: {
-                [subscriber sendError:[NSError errorWithDomain:@"用户取消" code:0 userInfo:nil]];
+                [subscriber sendError:[NSError errorWithDomain:@"用户取消" code:-1 userInfo:nil]];
                 break;
             }
         }
@@ -103,10 +103,10 @@
              [subscriber sendNext:userInfo[MiaAPIKey_Values]];
              [subscriber sendCompleted];
          } else {
-             [subscriber sendError:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
+             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
          }
      } timeoutBlock:^(MiaRequestItem *requestItem) {
-         [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:0 userInfo:nil]];
+         [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
      }];
 }
 
@@ -120,13 +120,13 @@
                  [subscriber sendNext:userInfo[MiaAPIKey_Values]];
                  [subscriber sendCompleted];
              } else {
-                 [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:0 userInfo:nil]];
+                 [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
              }
          } timeoutBlock:^(MiaRequestItem *requestItem) {
-             [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:0 userInfo:nil]];
+             [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
          }];
     } else {
-        [subscriber sendError:[NSError errorWithDomain:MobileErrorPrompt code:0 userInfo:nil]];
+        [subscriber sendError:[NSError errorWithDomain:MobileErrorPrompt code:-1 userInfo:nil]];
     }
 }
 
