@@ -22,9 +22,13 @@ NSString * const WebSocketMgrNotificationKey_Values					= @"values";
 NSString * const WebSocketMgrNotificationDidOpen			 		= @"WebSocketMgrNotificationDidOpen";
 NSString * const WebSocketMgrNotificationDidFailWithError			= @"WebSocketMgrNotificationDidFailWithError";
 NSString * const WebSocketMgrNotificationDidAutoReconnectFailed		= @"WebSocketMgrNotificationDidAutoReconnectFailed";
-NSString * const WebSocketMgrNotificationPushUnread					= @"WebSocketMgrNotificationPushUnread";
 NSString * const WebSocketMgrNotificationDidCloseWithCode			= @"WebSocketMgrNotificationDidCloseWithCode";
 NSString * const WebSocketMgrNotificationDidReceivePong				= @"WebSocketMgrNotificationDidReceivePong";
+
+NSString * const WebSocketMgrNotificationPushUnread					= @"WebSocketMgrNotificationPushUnread";
+NSString * const WebSocketMgrNotificationPushRoomEnter				= @"WebSocketMgrNotificationPushRoomEnter";
+NSString * const WebSocketMgrNotificationPushRoomComment			= @"WebSocketMgrNotificationPushRoomComment";
+
 
 NSString * const NetworkNotificationKey_Status						= @"status";
 NSString * const NetworkNotificationReachabilityStatusChange		= @"NetworkNotificationReachabilityStatusChange";
@@ -333,8 +337,15 @@ const static NSTimeInterval kAutoReconnectTimeout_Loop				= 30.0;
 	NSString *command = userInfo[MiaAPIKey_ServerCommand];
 //	NSLog(@"#WebSocketWithBlock# E-N-D %@, %ld", command, timestamp);
 
-	if ([command isEqualToString:MiaAPICommand_User_PushNoti]) {
+	// Notification
+	if ([command isEqualToString:MiaAPICommand_Push_UserNoti]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushUnread object:self userInfo:userInfo];
+		return;
+	} else if ([command isEqualToString:MiaAPICommand_Push_RoomEnter]) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomEnter object:self userInfo:userInfo];
+		return;
+	} else if ([command isEqualToString:MiaAPICommand_Push_RoomComment]) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomComment object:self userInfo:userInfo];
 		return;
 	}
 

@@ -60,8 +60,9 @@ static NSString * const MiaAPICommand_User_PostGender		= @"User.Post.Gender";
 static NSString * const MiaAPIKey_Gender					= @"gender";
 
 // Notification
-static NSString * const MiaAPICommand_User_PushNoti			= @"User.Push.Noti";
-static NSString * const MiaAPICommand_Rooms_PushComment		= @"Rooms.Push.Comment";
+static NSString * const MiaAPICommand_Push_UserNoti			= @"User.Push.Noti";
+static NSString * const MiaAPICommand_Push_RoomEnter		= @"Rooms.Push.Enter";
+static NSString * const MiaAPICommand_Push_RoomComment		= @"Rooms.Push.Comment";
 
 // Home
 static NSString * const MiaAPICommand_Room_GetList			= @"Live.Room.Get.Lists";
