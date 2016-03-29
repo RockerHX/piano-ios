@@ -19,6 +19,7 @@ static NSString * const MiaAPIKey_Values					= @"v";
 static NSString * const MiaAPIKey_Return					= @"ret";
 static NSString * const MiaAPIKey_Error						= @"err";
 
+// User
 static NSString * const MiaAPICommand_User_PostGuest		= @"User.Post.Guest";
 static NSString * const MiaAPIKey_GUID						= @"guid";
 
@@ -46,7 +47,7 @@ static NSString * const MiaAPIKey_Pwd						= @"pwd";
 static NSString * const MiaAPIKey_Dev						= @"dev";
 
 static NSString * const MiaAPICommand_User_PostSession		= @"User.Post.Session";
-static NSString * const MiaAPIKey_UID						= @"uid";
+static NSString * const MiaAPIKey_UID						= @"uID";
 
 static NSString * const MiaAPICommand_User_PostLogout		= @"User.Post.Logout";
 
@@ -58,18 +59,21 @@ static NSString * const MiaAPICommand_User_PostCnick		= @"User.Post.Cnick";
 static NSString * const MiaAPICommand_User_PostGender		= @"User.Post.Gender";
 static NSString * const MiaAPIKey_Gender					= @"gender";
 
+// Notification
 static NSString * const MiaAPICommand_User_PushNoti			= @"User.Push.Noti";
 static NSString * const MiaAPICommand_Rooms_PushComment		= @"Rooms.Push.Comment";
 
+// Home
 static NSString * const MiaAPICommand_Room_GetList			= @"Live.Room.Get.Lists";
 static NSString * const MiaAPICommand_Channel_GetHome		= @"Channel.Get.Home";
 
-
+// Live
 static NSString * const MiaAPICommand_Live_EnterRoom		= @"Live.Room.Post.Enter";
 static NSString * const MiaAPICommand_Live_LeaveRoom		= @"Live.Room.Post.Leave";
 static NSString * const MiaAPICommand_Live_CommentRoom		= @"Live.Room.Post.Comment";
 static NSString * const MiaAPIKey_RoomID					= @"roomID";
 static NSString * const MiaAPIKey_Content					= @"content";
 
-
+// Musician
+static NSString * const MiaAPICommand_Musician_GetProfile	= @"Musician.Get.Profile";
 

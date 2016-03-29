@@ -222,17 +222,6 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 }
 
 #pragma mark - Live
-
-+ (void)getRoomListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
-				   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
-	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
-	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Room_GetList
-															   parameters:dictValues
-															completeBlock:completeBlock
-															 timeoutBlock:timeoutBlock];
-	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
-}
-
 + (void)getHomeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
@@ -243,7 +232,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)EnterRoom:(NSString *)roomID
++ (void)enterRoom:(NSString *)roomID
 		 completeBlock:(MiaRequestCompleteBlock)completeBlock
 		  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
@@ -256,7 +245,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)LeaveRoom:(NSString *)roomID
++ (void)leaveRoom:(NSString *)roomID
 	completeBlock:(MiaRequestCompleteBlock)completeBlock
 	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
@@ -283,4 +272,20 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 															 timeoutBlock:timeoutBlock];
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
+
+#pragma mark - profile
++ (void)getProfileWithUID:(NSString *)uID
+	completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:uID forKey:MiaAPIKey_UID];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Musician_GetProfile
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
+
 @end
