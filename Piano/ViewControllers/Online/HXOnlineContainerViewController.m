@@ -66,7 +66,22 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXOnlineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineCell class]) forIndexPath:indexPath];
+    UITableViewCell *cell = nil;
+    switch (_viewModel.onlineList[indexPath.row].type) {
+        case HXOnlineTypeLive: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineCell class]) forIndexPath:indexPath];
+            break;
+        }
+        case HXOnlineTypeReplay: {
+            break;
+        }
+        case HXOnlineTypeNewEntry: {
+            break;
+        }
+        case HXOnlineTypeVideo: {
+            break;
+        }
+    }
     return cell;
 }
 
@@ -76,14 +91,27 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
-    [onlineCell displayCellWithModel:_viewModel.onlineList[indexPath.row]];
+    HXOnlineModel *model = _viewModel.onlineList[indexPath.row];
+    switch (model.type) {
+        case HXOnlineTypeLive: {
+            HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
+            [onlineCell displayCellWithModel:model];
+            break;
+        }
+        case HXOnlineTypeReplay: {
+            break;
+        }
+        case HXOnlineTypeNewEntry: {
+            break;
+        }
+        case HXOnlineTypeVideo: {
+            break;
+        }
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_viewModel.onlineList[indexPath.row]];
-    HXLiveModel *model = [HXLiveModel new];
-    model.type = (HXLiveType)indexPath.row;
+    HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_viewModel.onlineList[indexPath.row]];
     if (_delegate && [_delegate respondsToSelector:@selector(container:showLiveByLiveModel:)]) {
         [_delegate container:self showLiveByLiveModel:model];
     }

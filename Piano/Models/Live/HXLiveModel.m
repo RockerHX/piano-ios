@@ -40,7 +40,10 @@
 - (instancetype)initWithOnlineModel:(HXOnlineModel *)model {
     self = [self init];
     if (self) {
-        ;
+        _type = model.type;
+        _roomNumber = [model.ID integerValue];
+//        _roomToken = model.zegoToken;
+//        _streamID = model.streamID;
     }
     return self;
 }

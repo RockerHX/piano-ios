@@ -6,17 +6,7 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "MJExtension.h"
-
-typedef NS_ENUM(NSUInteger, HXLiveType) {
-    HXLiveTypeWatchLive,
-    HXLiveTypeReplay,
-    HXLiveTypeRecordLive,
-};
-
-
-@class HXOnlineModel;
-
+#import "HXOnlineModel.h"
 
 @interface HXLiveModel : NSObject
 
@@ -37,7 +27,7 @@ typedef NS_ENUM(NSUInteger, HXLiveType) {
 @property(nonatomic, assign) NSInteger  roomToken;
 @property(nonatomic, assign) NSInteger  streamID;
 
-@property(nonatomic, assign) HXLiveType  type;
+@property(nonatomic, assign) HXOnlineType  type;
 
 - (instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName;
 - (instancetype)initWithOnlineModel:(HXOnlineModel *)model;

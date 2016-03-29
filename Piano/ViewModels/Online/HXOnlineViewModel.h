@@ -8,6 +8,7 @@
 
 #import "ReactiveCocoa.h"
 #import "HXOnlineCell.h"
+#import "HXOnlineModel.h"
 
 
 @interface HXOnlineViewModel : NSObject
@@ -16,6 +17,6 @@
 
 @property (nonatomic, strong, readonly) RACCommand *requestCommand;
 
-@property (nonatomic, strong, readonly) NSArray *onlineList;
+@property (nonatomic, strong, readonly) NSArray<HXOnlineModel *> *onlineList;
 
 @end

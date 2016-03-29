@@ -73,22 +73,28 @@ HXOnlineContainerViewControllerDelegate
     if (model) {
         UINavigationController *modalNavigationController = nil;
         switch (model.type) {
-            case HXLiveTypeWatchLive: {
+            case HXOnlineTypeLive: {
                 modalNavigationController = [HXWatchLiveViewController navigationControllerInstance];
                 HXWatchLiveViewController *watchLiveViewController = [modalNavigationController.viewControllers firstObject];
                 watchLiveViewController.model = model;
                 break;
             }
-            case HXLiveTypeReplay: {
-                modalNavigationController = [HXReplayViewController navigationControllerInstance];
-                HXReplayViewController *replayViewController = [modalNavigationController.viewControllers firstObject];
-                replayViewController.model = model;
+            case HXOnlineTypeReplay: {
+//                modalNavigationController = [HXReplayViewController navigationControllerInstance];
+//                HXReplayViewController *replayViewController = [modalNavigationController.viewControllers firstObject];
+//                replayViewController.model = model;
                 break;
             }
-            case HXLiveTypeRecordLive: {
-                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
-                recordLiveViewController.model = model;
+            case HXOnlineTypeNewEntry: {
+//                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+//                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
+//                recordLiveViewController.model = model;
+                break;
+            }
+            case HXOnlineTypeVideo: {
+//                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+//                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
+//                recordLiveViewController.model = model;
                 break;
             }
         }

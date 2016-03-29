@@ -45,7 +45,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [UITableViewCell new];
+    UITableViewCell *cell = nil;
     HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     
     switch (rowType) {
