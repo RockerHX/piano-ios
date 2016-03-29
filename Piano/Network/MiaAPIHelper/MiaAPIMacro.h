@@ -62,6 +62,7 @@ static NSString * const MiaAPIKey_Gender					= @"gender";
 // Notification
 static NSString * const MiaAPICommand_Push_UserNoti			= @"User.Push.Noti";
 static NSString * const MiaAPICommand_Push_RoomEnter		= @"Rooms.Push.Enter";
+static NSString * const MiaAPICommand_Push_RoomClose		= @"Rooms.Push.Close";
 static NSString * const MiaAPICommand_Push_RoomComment		= @"Rooms.Push.Comment";
 
 // Home

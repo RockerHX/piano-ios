@@ -22,6 +22,7 @@ extern NSString * const WebSocketMgrNotificationDidReceivePong;
 
 extern NSString * const WebSocketMgrNotificationPushUnread;
 extern NSString * const WebSocketMgrNotificationPushRoomEnter;
+extern NSString * const WebSocketMgrNotificationPushRoomClose;
 extern NSString * const WebSocketMgrNotificationPushRoomComment;
 
 extern NSString * const NetworkNotificationKey_Status;
