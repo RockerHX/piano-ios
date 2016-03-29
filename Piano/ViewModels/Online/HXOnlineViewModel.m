@@ -46,7 +46,7 @@
 
 #pragma mark - Private Methods
 - (void)fetchOnlineListWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper getRoomListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper getHomeListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             [self parseDatas:userInfo[@"v"][@"data"]];
             [subscriber sendCompleted];
@@ -61,6 +61,7 @@
 }
 
 - (void)parseDatas:(NSArray *)datas {
+#warning @andy
     NSMutableArray *onlieList = @[].mutableCopy;
     for (NSDictionary *data in datas) {
         HXOnlineModel *model = [HXOnlineModel mj_objectWithKeyValues:data];

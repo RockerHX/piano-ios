@@ -81,4 +81,20 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)getRoomListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)getHomeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)EnterRoom:(NSString *)roomID
+	completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)LeaveRoom:(NSString *)roomID
+	completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)commentRoom:(NSString *)roomID
+			content:(NSString *)content
+	  completeBlock:(MiaRequestCompleteBlock)completeBlock
+	   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end

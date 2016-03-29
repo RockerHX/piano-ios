@@ -59,5 +59,17 @@ static NSString * const MiaAPICommand_User_PostGender		= @"User.Post.Gender";
 static NSString * const MiaAPIKey_Gender					= @"gender";
 
 static NSString * const MiaAPICommand_User_PushNoti			= @"User.Push.Noti";
+static NSString * const MiaAPICommand_Rooms_PushComment		= @"Rooms.Push.Comment";
 
 static NSString * const MiaAPICommand_Room_GetList			= @"Live.Room.Get.Lists";
+static NSString * const MiaAPICommand_Channel_GetHome		= @"Channel.Get.Home";
+
+
+static NSString * const MiaAPICommand_Live_EnterRoom		= @"Live.Room.Post.Enter";
+static NSString * const MiaAPICommand_Live_LeaveRoom		= @"Live.Room.Post.Leave";
+static NSString * const MiaAPICommand_Live_CommentRoom		= @"Live.Room.Post.Comment";
+static NSString * const MiaAPIKey_RoomID					= @"roomID";
+static NSString * const MiaAPIKey_Content					= @"content";
+
+
+
