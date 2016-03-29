@@ -43,8 +43,17 @@
 //}
 
 #pragma mark - Basic
+- (void)setMasksToBounds:(BOOL)bounds {
+    self.layer.masksToBounds = bounds;
+}
+
+- (BOOL)masksToBounds {
+    return self.layer.masksToBounds;
+}
+
 - (void)setCornerRadius:(CGFloat)cornerRadius {
     self.layer.cornerRadius = cornerRadius;
+    self.layer.masksToBounds = cornerRadius > 0;
 }
 
 - (CGFloat)cornerRadius {
