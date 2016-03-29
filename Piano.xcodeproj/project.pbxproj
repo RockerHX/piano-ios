@@ -19,7 +19,6 @@
 		395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
 		CD1979531CA4E1A900303D27 /* HXWatcherBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1979511CA4E1A900303D27 /* HXWatcherBoard.m */; };
 		CD1979541CA4E1A900303D27 /* HXWatcherBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1979521CA4E1A900303D27 /* HXWatcherBoard.xib */; };
-		CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; };
 		CD1B84171CAA90C200B9B1E8 /* HXAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B84161CAA90C200B9B1E8 /* HXAttentionModel.m */; };
 		CD22A4B41CA3FEB300B3F368 /* HXLiveAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD22A4B21CA3FEB300B3F368 /* HXLiveAnchorView.m */; };
 		CD22A4B51CA3FEB300B3F368 /* HXLiveAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD22A4B31CA3FEB300B3F368 /* HXLiveAnchorView.xib */; };
@@ -73,6 +72,8 @@
 		CD2E72F31CA11E75003CDB77 /* Publish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */; };
 		CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */; };
 		CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */; };
+		CD4492E61CAAA504005F36B3 /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; };
+		CD4492E71CAAA504005F36B3 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */; };
 		CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */; };
 		CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */; };
@@ -94,7 +95,6 @@
 		CD6C198C1CA519A900849B39 /* HXPlaySummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19811CA519A900849B39 /* HXPlaySummaryView.xib */; };
 		CD6C198E1CA519A900849B39 /* HXPlayTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19871CA519A900849B39 /* HXPlayTopBar.m */; };
 		CD6C198F1CA519A900849B39 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
-		CD74089B1C9946D800950A50 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD7D9C521CAA5B8B006E5BA5 /* HXOnlineNewEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7D9C511CAA5B8B006E5BA5 /* HXOnlineNewEntryCell.m */; };
 		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
 		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
@@ -139,7 +139,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD74089B1C9946D800950A50 /* ZegoAVKit.framework in Embed Frameworks */,
+				CD4492E71CAAA504005F36B3 /* ZegoAVKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,7 +171,6 @@
 		CD1979501CA4E1A900303D27 /* HXWatcherBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherBoard.h; sourceTree = "<group>"; };
 		CD1979511CA4E1A900303D27 /* HXWatcherBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherBoard.m; sourceTree = "<group>"; };
 		CD1979521CA4E1A900303D27 /* HXWatcherBoard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatcherBoard.xib; sourceTree = "<group>"; };
-		CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
 		CD1B84151CAA90C200B9B1E8 /* HXAttentionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAttentionModel.h; sourceTree = "<group>"; };
 		CD1B84161CAA90C200B9B1E8 /* HXAttentionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAttentionModel.m; sourceTree = "<group>"; };
 		CD22A4B11CA3FEB300B3F368 /* HXLiveAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveAnchorView.h; sourceTree = "<group>"; };
@@ -269,6 +268,7 @@
 		CD2E72F01CA11E75003CDB77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setting.storyboard; sourceTree = "<group>"; };
 		CD3199831CAA6182006C845F /* HXWatchLiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewModel.h; sourceTree = "<group>"; };
 		CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewModel.m; sourceTree = "<group>"; };
+		CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
 		CD5DD8A51CA912790077A17B /* HXAlbumsCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCell.h; sourceTree = "<group>"; };
 		CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentCell.m; sourceTree = "<group>"; };
 		CD5DD8A71CA912790077A17B /* HXAlbumsCommentCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCountCell.h; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */,
+				CD4492E61CAAA504005F36B3 /* ZegoAVKit.framework in Frameworks */,
 				124CB626904D3CA3E11516EC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,7 +493,7 @@
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */,
+				CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */,
 				B1BFCF29A3BF4A6DA2007B29 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -1404,7 +1404,7 @@
 		CD8A9A641C9906CA00698DE9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
 					CD8A9A6B1C9906CA00698DE9 = {

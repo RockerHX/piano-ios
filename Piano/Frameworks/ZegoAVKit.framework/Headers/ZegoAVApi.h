@@ -19,6 +19,8 @@
 
 @interface ZegoAVApi : NSObject
 
++ (void)setLogLevel:(int)logLevel;
+
 /// \brief 初始化SDK
 /// \param appID Zego派发的数字ID，各个开发者的唯一标识
 /// \param appSignature Zego派发的签名,用来校验对应appID的合法性
@@ -227,7 +229,7 @@
 - (bool) stopPublishInChatRoom;
 
 /// \brief 获取主播流信息
-/// \return 直播流信息，key 包含 kZegoPublishStreamIDKey/kZegoPublishStreamURLKey
+/// \return 直播流信息，key 包含 kZegoPublishStreamIDKey/kZegoPublishStreamURLKey/kZegoPublishStreamAliasKey
 - (NSDictionary *)currentPublishInfo;
 
 /// \brief 观看直播
@@ -264,10 +266,22 @@
 /// \return true：成功；false:失败
 - (bool) enableTorch:(bool) bEnable;
 
-/// \brief 开关扬声器
+/// \brief 主播方开启美颜功能
+/// \param bEnable true 打开，false 关闭
+/// \return true: 成功；false: 失败
+- (bool)enableBeautifying:(bool)bEnable;
+
+- (bool)setFilter:(ZegoFilter)filter;
+
+/// \brief （声音输出）静音开关
 /// \param bEnable true打开，false关闭
 /// \return true：成功；false:失败
 - (bool) enableSpeaker:(bool) bEnable;
+
+/// \brief 手机内置扬声器开关
+/// \param bEnable true打开，false关闭
+/// \return true：成功；false:失败
+- (bool)setBuiltInSpeakerOn:(bool)bOn;
 
 /// 设置连接到测试服务器，开发者无需关心
 - (bool) setTestServer:(NSString*)ip port:(int)port url:(NSString*)url;
@@ -277,3 +291,4 @@
 
 extern const NSString *kZegoPublishStreamIDKey;     ///< 主播流ID，uint64
 extern const NSString *kZegoPublishStreamURLKey;    ///< 主播流观看 url，NSString
+extern const NSString *kZegoPublishStreamAliasKey;  ///< 主播流别名，NSString
