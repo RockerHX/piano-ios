@@ -243,7 +243,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)EnterRoom:(NSString *)roomID
++ (void)enterRoom:(NSString *)roomID
 		 completeBlock:(MiaRequestCompleteBlock)completeBlock
 		  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
@@ -256,7 +256,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)LeaveRoom:(NSString *)roomID
++ (void)leaveRoom:(NSString *)roomID
 	completeBlock:(MiaRequestCompleteBlock)completeBlock
 	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];

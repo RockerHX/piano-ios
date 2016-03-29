@@ -84,11 +84,11 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)getHomeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
-+ (void)EnterRoom:(NSString *)roomID
++ (void)enterRoom:(NSString *)roomID
 	completeBlock:(MiaRequestCompleteBlock)completeBlock
 	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
-+ (void)LeaveRoom:(NSString *)roomID
++ (void)leaveRoom:(NSString *)roomID
 	completeBlock:(MiaRequestCompleteBlock)completeBlock
 	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
