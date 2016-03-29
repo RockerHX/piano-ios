@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UIViewController+HXClass.h"
 #import "HXLiveModel.h"
 
 

@@ -9,24 +9,32 @@
 #import "MJExtension.h"
 
 
+typedef NS_ENUM(NSUInteger, HXOnlineType) {
+    HXOnlineTypeLive,
+    HXOnlineTypeReplay,
+    HXOnlineTypeNewEntry,
+    HXOnlineTypeVideo,
+};
+
+
 @interface HXOnlineModel : NSObject
 
-@property (nonatomic, strong)  NSString *ID;
+@property (nonatomic, assign, readonly) HXOnlineType  type;
+@property (nonatomic, strong, readonly)     NSString *ID;
+
 @property (nonatomic, strong)  NSString *uID;
 @property (nonatomic, strong)  NSString *title;
 @property (nonatomic, strong)  NSString *nickName;
-@property (nonatomic, strong)  NSString *hlsUrl;
-@property (nonatomic, strong)  NSString *rtmpUrl;
+@property (nonatomic, strong)  NSString *avatarUrl;
+@property (nonatomic, strong)  NSString *coverUrl;
 
-@property (nonatomic, assign) NSInteger  zegoID;
-@property (nonatomic, assign) NSInteger  zegoToken;
-@property (nonatomic, assign) NSInteger  streamID;
-
-@property (nonatomic, assign) NSInteger  status;
 @property (nonatomic, assign) NSInteger  onlineCount;
 @property (nonatomic, assign) NSInteger  viewCount;
-@property (nonatomic, assign) NSInteger  createTime;
-@property (nonatomic, assign) NSInteger  addTime;
-@property (nonatomic, assign) NSInteger  closeTime;
+
+@property (nonatomic, assign) NSInteger  itemID;
+@property (nonatomic, assign) NSInteger  itemType;
+@property (nonatomic, assign) NSInteger  live;
+@property (nonatomic, assign) NSInteger  liveDate;
+@property (nonatomic, strong)  NSString *roomID;
 
 @end

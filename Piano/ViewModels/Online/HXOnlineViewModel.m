@@ -61,7 +61,6 @@
 }
 
 - (void)parseDatas:(NSArray *)datas {
-#warning @andy
     NSMutableArray *onlieList = @[].mutableCopy;
     for (NSDictionary *data in datas) {
         HXOnlineModel *model = [HXOnlineModel mj_objectWithKeyValues:data];

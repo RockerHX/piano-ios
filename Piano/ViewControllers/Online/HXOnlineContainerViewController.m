@@ -9,6 +9,7 @@
 #import "HXOnlineContainerViewController.h"
 #import "MJRefresh.h"
 #import "HXOnlineViewModel.h"
+#import "HXAlertBanner.h"
 
 
 @interface HXOnlineContainerViewController ()
@@ -45,7 +46,8 @@
     @weakify(self)
     RACSignal *requestSiganl = [_viewModel.requestCommand execute:nil];
     [requestSiganl subscribeError:^(NSError *error) {
-        ;
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
     } completed:^{
         @strongify(self)
         [self endLoad];
@@ -60,8 +62,7 @@
 
 #pragma mark - Table View Data Source Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return _viewModel.onlineList.count;
-    return 5;
+    return _viewModel.onlineList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,8 +76,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
-//    [onlineCell displayCellWithModel:_viewModel.onlineList[indexPath.row]];
+    HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
+    [onlineCell displayCellWithModel:_viewModel.onlineList[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

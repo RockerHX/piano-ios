@@ -14,14 +14,12 @@
 
 #pragma mark - Public Methods
 - (void)displayCellWithModel:(HXOnlineModel *)model {
-//    [_publisherAvatar sd_setImageWithURL:[NSURL URLWithString:model.]];
-//    [_previewCover sd_setImageWithURL:[NSURL URLWithString:model.]];
-
-//    _publisherNameLabel.text = model.nickName;
-////    _publishInfoLabel.text = model.;
-//    _titleLabel.text = model.title;
-//    _favoriteCountLabel.text = @(model.viewCount).stringValue;
-//    _attendeCountLabel.text = @(model.onlineCount).stringValue;
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
+    _nickNameLabel.text = model.nickName;
+    _attendeCountLabel.text = @(model.onlineCount).stringValue;
+    
+    _titleLabel.text = model.title;
+    [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
 }
 
 @end

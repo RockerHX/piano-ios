@@ -12,10 +12,34 @@
 @implementation HXOnlineModel
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{@"ID": @"id",
-       @"nickName": @"nick",
-    @"onlineCount": @"onlineCnt",
-      @"viewCount": @"viewCnt"};
+    return @{@"nickName": @"nick",
+            @"avatarUrl": @"userpic",
+          @"onlineCount": @"onlineCnt",
+            @"viewCount": @"viewCnt"};
+}
+
+- (void)mj_keyValuesDidFinishConvertingToObject {
+    if (_live) {
+        _ID = _roomID;
+        _type = HXOnlineTypeLive;
+        return;
+    }
+    
+    _ID = @(_itemID).stringValue;
+    switch (_itemType) {
+        case 1: {
+            _type = HXOnlineTypeReplay;
+            break;
+        }
+        case 2: {
+            _type = HXOnlineTypeNewEntry;
+            break;
+        }
+        case 3: {
+            _type = HXOnlineTypeVideo;
+            break;
+        }
+    }
 }
 
 @end
