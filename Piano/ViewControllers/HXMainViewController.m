@@ -122,6 +122,20 @@ HXLoginViewControllerDelegate
 			UINavigationController *onlineNavigationController = self.viewControllers.firstObject;
 			HXOnlineViewController *onlineViewController = onlineNavigationController.viewControllers.firstObject;
 			[onlineViewController startFetchList];
+
+#warning @andy
+//			[MiaAPIHelper getProfileWithUID:@"154" completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+//				NSLog(@"getProfile");
+//			} timeoutBlock:^(MiaRequestItem *requestItem) {
+//				NSLog(@"");
+//			}];
+
+//			[MiaAPIHelper getAlbumWithID:@"1" completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+//				NSLog(@"getAlbumWithID");
+//			} timeoutBlock:^(MiaRequestItem *requestItem) {
+//				NSLog(@"");
+//			}];
+
 		} else {
 			[self autoReconnect];
 		}

@@ -78,9 +78,6 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 	   completeBlock:(MiaRequestCompleteBlock)completeBlock
 		timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
-+ (void)getRoomListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
-						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
-
 + (void)getHomeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
@@ -96,5 +93,13 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 			content:(NSString *)content
 	  completeBlock:(MiaRequestCompleteBlock)completeBlock
 	   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)getProfileWithUID:(NSString *)uID
+			completeBlock:(MiaRequestCompleteBlock)completeBlock
+			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)getAlbumWithID:(NSString *)albumID
+			completeBlock:(MiaRequestCompleteBlock)completeBlock
+			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 @end
