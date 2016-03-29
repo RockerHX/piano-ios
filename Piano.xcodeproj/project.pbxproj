@@ -20,6 +20,7 @@
 		CD1979531CA4E1A900303D27 /* HXWatcherBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1979511CA4E1A900303D27 /* HXWatcherBoard.m */; };
 		CD1979541CA4E1A900303D27 /* HXWatcherBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1979521CA4E1A900303D27 /* HXWatcherBoard.xib */; };
 		CD19F8D51C9937160087DE1E /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */; };
+		CD1B84171CAA90C200B9B1E8 /* HXAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B84161CAA90C200B9B1E8 /* HXAttentionModel.m */; };
 		CD22A4B41CA3FEB300B3F368 /* HXLiveAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD22A4B21CA3FEB300B3F368 /* HXLiveAnchorView.m */; };
 		CD22A4B51CA3FEB300B3F368 /* HXLiveAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD22A4B31CA3FEB300B3F368 /* HXLiveAnchorView.xib */; };
 		CD2367801CA91A3B002C8233 /* HXMeNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD23677F1CA91A3B002C8233 /* HXMeNavigationBar.xib */; };
@@ -171,6 +172,8 @@
 		CD1979511CA4E1A900303D27 /* HXWatcherBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherBoard.m; sourceTree = "<group>"; };
 		CD1979521CA4E1A900303D27 /* HXWatcherBoard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatcherBoard.xib; sourceTree = "<group>"; };
 		CD19F8D41C9937160087DE1E /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
+		CD1B84151CAA90C200B9B1E8 /* HXAttentionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAttentionModel.h; sourceTree = "<group>"; };
+		CD1B84161CAA90C200B9B1E8 /* HXAttentionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAttentionModel.m; sourceTree = "<group>"; };
 		CD22A4B11CA3FEB300B3F368 /* HXLiveAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveAnchorView.h; sourceTree = "<group>"; };
 		CD22A4B21CA3FEB300B3F368 /* HXLiveAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveAnchorView.m; sourceTree = "<group>"; };
 		CD22A4B31CA3FEB300B3F368 /* HXLiveAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLiveAnchorView.xib; sourceTree = "<group>"; };
@@ -642,6 +645,8 @@
 			children = (
 				CD2949E21CA28D8400CA3C3F /* HXUserModel.h */,
 				CD2949E31CA28D8400CA3C3F /* HXUserModel.m */,
+				CD1B84151CAA90C200B9B1E8 /* HXAttentionModel.h */,
+				CD1B84161CAA90C200B9B1E8 /* HXAttentionModel.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1580,6 +1585,7 @@
 				CD2949DB1CA28A3500CA3C3F /* HXIBnsepectableManager.m in Sources */,
 				CD2949FB1CA2919B00CA3C3F /* HXUserTermsViewController.m in Sources */,
 				CD7D9C521CAA5B8B006E5BA5 /* HXOnlineNewEntryCell.m in Sources */,
+				CD1B84171CAA90C200B9B1E8 /* HXAttentionModel.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */,
 				CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */,
