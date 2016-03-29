@@ -9,6 +9,10 @@
 #import "HXOnlineContainerViewController.h"
 #import "MJRefresh.h"
 #import "HXOnlineViewModel.h"
+#import "HXOnlineCell.h"
+#import "HXOnlineReplayCell.h"
+#import "HXOnlineNewEntryCell.h"
+#import "HXOnlineVideoCell.h"
 #import "HXAlertBanner.h"
 
 
@@ -73,12 +77,15 @@
             break;
         }
         case HXOnlineTypeReplay: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineReplayCell class]) forIndexPath:indexPath];
             break;
         }
         case HXOnlineTypeNewEntry: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineNewEntryCell class]) forIndexPath:indexPath];
             break;
         }
         case HXOnlineTypeVideo: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineVideoCell class]) forIndexPath:indexPath];
             break;
         }
     }

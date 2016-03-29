@@ -28,15 +28,15 @@
     _ID = @(_itemID).stringValue;
     switch (_itemType) {
         case 1: {
-            _type = HXOnlineTypeReplay;
-            break;
-        }
-        case 2: {
             _type = HXOnlineTypeNewEntry;
             break;
         }
-        case 3: {
+        case 2: {
             _type = HXOnlineTypeVideo;
+            break;
+        }
+        case 3: {
+            _type = HXOnlineTypeReplay;
             break;
         }
     }

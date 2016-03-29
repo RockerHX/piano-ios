@@ -7,7 +7,6 @@
 //
 
 #import "ReactiveCocoa.h"
-#import "HXOnlineCell.h"
 #import "HXOnlineModel.h"
 
 
