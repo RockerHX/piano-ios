@@ -77,3 +77,6 @@ static NSString * const MiaAPIKey_Content					= @"content";
 // Musician
 static NSString * const MiaAPICommand_Musician_GetProfile	= @"Musician.Get.Profile";
 
+static NSString * const MiaAPICommand_Musician_GetAlbum		= @"Musician.Get.Album";
+static NSString * const MiaAPIKey_AlbumID					= @"albumID";
+
