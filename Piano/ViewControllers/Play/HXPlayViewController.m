@@ -80,12 +80,12 @@ HXPlayBottomBarDelegate
 }
 
 - (void)viewConfigure {
-    [self displayPlayView];
+    [self updatePlayView];
 }
 
 #pragma mark - Notification Methods
 - (void)notificationPlayerEvent:(NSNotification *)notification {
-    [self displayPlayView];
+    [self updatePlayView];
 }
 
 - (void)notificationEmptyList {
@@ -102,7 +102,7 @@ HXPlayBottomBarDelegate
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)displayPlayView {
+- (void)updatePlayView {
 //    [_coverBG sd_setImageWithURL:[NSURL URLWithString:_musicMgr.currentItem.music.purl] placeholderImage:nil];
     
     [self updateTopBar];
@@ -116,7 +116,7 @@ HXPlayBottomBarDelegate
 }
 
 - (void)updateSummaryView {
-//    [_summaryView displayWithMusic:_musicMgr.currentItem.music];
+//    [_summaryView updateWithMusic:_musicMgr.currentItem.music];
 }
 
 - (void)updateBottomBar {
@@ -188,12 +188,12 @@ HXPlayBottomBarDelegate
 
 - (void)previous {
 //    [_musicMgr playPrevios];
-    [self displayPlayView];
+    [self updatePlayView];
 }
 
 - (void)next {
 //    [_musicMgr playNext];
-    [self displayPlayView];
+    [self updatePlayView];
 }
 
 - (void)takeFavoriteAction {
@@ -217,7 +217,7 @@ HXPlayBottomBarDelegate
 //                     }
 //                     
 //                     [HXAlertBanner showWithMessage:(favorite ? @"收藏成功" : @"取消收藏成功") tap:nil];
-//                     [self displayPlayView];
+//                     [self updatePlayView];
 //                     // 收藏操作成功后同步下收藏列表并检查下载
 //                     [[FavoriteMgr standard] syncFavoriteList];
 //                 } else {
@@ -258,7 +258,7 @@ HXPlayBottomBarDelegate
 //                         [item parseInfectUsersFromJsonArray:infectArray];
 //                         item.isInfected = isInfected;
 //                     }
-//                     [self displayPlayView];
+//                     [self updatePlayView];
 //                     [HXAlertBanner showWithMessage:@"妙推成功！" tap:nil];
 //                 } else {
 //                     NSString *error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];

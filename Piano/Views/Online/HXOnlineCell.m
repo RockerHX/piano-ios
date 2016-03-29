@@ -13,7 +13,7 @@
 @implementation HXOnlineCell
 
 #pragma mark - Public Methods
-- (void)displayCellWithModel:(HXOnlineModel *)model {
+- (void)updateCellWithModel:(HXOnlineModel *)model {
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
     _nickNameLabel.text = model.nickName;
     _attendeCountLabel.text = @(model.onlineCount).stringValue;

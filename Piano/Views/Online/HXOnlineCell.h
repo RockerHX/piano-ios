@@ -18,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *cover;
 @property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
 
-- (void)displayCellWithModel:(HXOnlineModel *)model;
+- (void)updateCellWithModel:(HXOnlineModel *)model;
 
 @end

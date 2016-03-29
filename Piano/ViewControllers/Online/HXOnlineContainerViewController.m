@@ -95,7 +95,7 @@
     switch (model.type) {
         case HXOnlineTypeLive: {
             HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
-            [onlineCell displayCellWithModel:model];
+            [onlineCell updateCellWithModel:model];
             break;
         }
         case HXOnlineTypeReplay: {

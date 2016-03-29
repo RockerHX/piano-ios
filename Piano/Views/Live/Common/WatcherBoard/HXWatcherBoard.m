@@ -70,7 +70,7 @@ typedef void(^BLOCK)(void);
     HXWatcherBoard *board = [HXWatcherBoard show];
     board.gagButton.hidden = YES;
     board->_closedBlock = closed;
-    [board displayWithWatcher:watcher];
+    [board updateWithWatcher:watcher];
     return board;
 }
 
@@ -79,7 +79,7 @@ typedef void(^BLOCK)(void);
     board.signatureLabel.hidden = YES;
     board->_gagedBlock = gaged;
     board->_closedBlock = closed;
-    [board displayWithWatcher:watcher];
+    [board updateWithWatcher:watcher];
     return board;
 }
 
@@ -91,7 +91,7 @@ typedef void(^BLOCK)(void);
     [mainWindow addSubview:self];
 }
 
-- (void)displayWithWatcher:(id)watcher {
+- (void)updateWithWatcher:(id)watcher {
     ;
 }
 
