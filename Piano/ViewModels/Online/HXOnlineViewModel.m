@@ -48,19 +48,19 @@
 - (void)fetchOnlineListWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper getHomeListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            [self parseDatas:userInfo[@"v"][@"data"]];
+            [self parseData:userInfo[@"v"][@"data"]];
             [subscriber sendCompleted];
         } else {
             NSLog(@"getRoomList failed");
-            [subscriber sendError:nil];
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
         }
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         NSLog(@"getRoomList timeout");
-        [subscriber sendError:nil];
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
     }];
 }
 
-- (void)parseDatas:(NSArray *)datas {
+- (void)parseData:(NSArray *)datas {
     NSMutableArray *onlieList = @[].mutableCopy;
     for (NSDictionary *data in datas) {
         HXOnlineModel *model = [HXOnlineModel mj_objectWithKeyValues:data];

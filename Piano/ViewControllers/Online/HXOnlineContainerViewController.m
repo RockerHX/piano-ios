@@ -111,9 +111,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXLiveModel *model = [[HXLiveModel alloc] initWithOnlineModel:_viewModel.onlineList[indexPath.row]];
-    if (_delegate && [_delegate respondsToSelector:@selector(container:showLiveByLiveModel:)]) {
-        [_delegate container:self showLiveByLiveModel:model];
+    if (_delegate && [_delegate respondsToSelector:@selector(container:showLiveByModel:)]) {
+        [_delegate container:self showLiveByModel:_viewModel.onlineList[indexPath.row]];
     }
 }
 

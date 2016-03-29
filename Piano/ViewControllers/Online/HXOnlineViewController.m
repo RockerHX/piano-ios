@@ -69,14 +69,14 @@ HXOnlineContainerViewControllerDelegate
 }
 
 #pragma mark - HXOnlineContainerViewControllerDelegate Methods
-- (void)container:(HXOnlineContainerViewController *)container showLiveByLiveModel:(HXLiveModel *)model {
+- (void)container:(HXOnlineContainerViewController *)container showLiveByModel:(HXOnlineModel *)model {
     if (model) {
         UINavigationController *modalNavigationController = nil;
         switch (model.type) {
             case HXOnlineTypeLive: {
                 modalNavigationController = [HXWatchLiveViewController navigationControllerInstance];
                 HXWatchLiveViewController *watchLiveViewController = [modalNavigationController.viewControllers firstObject];
-                watchLiveViewController.model = model;
+                watchLiveViewController.roomID = model.ID;
                 break;
             }
             case HXOnlineTypeReplay: {

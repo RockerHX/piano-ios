@@ -7,7 +7,7 @@
 //
 
 #import "UIViewController+HXClass.h"
-#import "HXLiveModel.h"
+#import "HXOnlineModel.h"
 
 
 @class HXOnlineContainerViewController;
@@ -16,7 +16,7 @@
 @protocol HXOnlineContainerViewControllerDelegate <NSObject>
 
 @required
-- (void)container:(HXOnlineContainerViewController *)container showLiveByLiveModel:(HXLiveModel *)model;
+- (void)container:(HXOnlineContainerViewController *)container showLiveByModel:(HXOnlineModel *)model;
 
 @end
 
