@@ -271,8 +271,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="尤克里里弹唱 你最想听的首歌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEP-Yb-b5R">
-                                                    <rect key="frame" x="15" y="223" width="44" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="尤克里里弹唱 你最想听的首歌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEP-Yb-b5R">
+                                                    <rect key="frame" x="15" y="223" width="170" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -337,6 +337,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="JVz-KL-CQX" secondAttribute="bottom" constant="15" id="Tat-Dr-Itu"/>
                                                 <constraint firstItem="BEP-Yb-b5R" firstAttribute="top" secondItem="UZw-3M-Pcb" secondAttribute="bottom" constant="8" id="cg7-vJ-bXE"/>
                                                 <constraint firstItem="BEP-Yb-b5R" firstAttribute="leading" secondItem="3kj-Ls-DoD" secondAttribute="leading" constant="15" id="eLb-gw-0T0"/>
+                                                <constraint firstItem="JVz-KL-CQX" firstAttribute="leading" secondItem="BEP-Yb-b5R" secondAttribute="trailing" constant="15" id="fH8-se-mTq"/>
                                                 <constraint firstAttribute="trailing" secondItem="JVz-KL-CQX" secondAttribute="trailing" constant="15" id="tqH-6U-nBv"/>
                                                 <constraint firstAttribute="trailing" secondItem="5cm-16-1Ih" secondAttribute="trailing" id="tvF-93-CYx"/>
                                                 <constraint firstAttribute="width" secondItem="3kj-Ls-DoD" secondAttribute="height" multiplier="1:1" id="wt3-bD-Jok"/>
