@@ -34,6 +34,7 @@ typedef NS_ENUM(BOOL, HXUserState) {
 @property (nonatomic, assign, readonly) HXUserState  state;
 
 @property (nonatomic, strong, readonly)       NSString *uid;
+@property (nonatomic, strong, readonly)       NSString *token;
 @property (nonatomic, strong, readonly)    HXUserModel *user;
 
 + (instancetype)session;

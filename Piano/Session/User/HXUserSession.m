@@ -71,11 +71,15 @@ typedef void(^FailureBlock)(NSString *);
 }
 
 - (HXUserState)state {
-    return (_user.uid && _user.token);
+    return (_user.uID && _user.token);
 }
 
 - (NSString *)uid {
-    return _user.uid;
+    return _user.uID;
+}
+
+- (NSString *)token {
+    return _user.token;
 }
 
 #pragma mark - Public Methods

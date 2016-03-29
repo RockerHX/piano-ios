@@ -22,7 +22,7 @@ MJCodingImplementation
 }
 
 - (void)mj_objectDidFinishConvertingToKeyValues {
-    _uid = [NSString stringWithFormat:@"%@", _uid];
+    _uID = [NSString stringWithFormat:@"%@", _uID];
 }
 
 @end
