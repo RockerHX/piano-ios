@@ -75,7 +75,11 @@ typedef void(^FailureBlock)(NSString *);
 }
 
 - (NSString *)uid {
-    return _user.uid;
+	if (self.state == HXUserStateLogout) {
+		return self.guestUID;
+	} else {
+		return _user.uid;
+	}
 }
 
 #pragma mark - Public Methods
