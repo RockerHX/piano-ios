@@ -37,6 +37,8 @@ typedef NS_ENUM(BOOL, HXUserState) {
 @property (nonatomic, strong, readonly)       NSString *token;
 @property (nonatomic, strong, readonly)    HXUserModel *user;
 
+@property (nonatomic, strong)       		NSString *guestUID;
+
 + (instancetype)session;
 
 - (void)updateUserWithData:(NSDictionary *)data;
