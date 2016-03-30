@@ -16,11 +16,13 @@
 @property (nonatomic, assign, readonly)        ZegoAVConfigVideoFps  fps;
 @property (nonatomic, assign, readonly)    ZegoAVConfigVideoBitrate  bitrate;
 
-@property (nonatomic, assign, readonly) NSInteger  customResolution;
-@property (nonatomic, assign, readonly) NSInteger  customFPS;
-@property (nonatomic, assign, readonly) NSInteger  customBitrate;
+@property (nonatomic, assign, readonly)    NSInteger  customResolution;
+@property (nonatomic, assign, readonly)    NSInteger  customFPS;
+@property (nonatomic, assign, readonly)    NSInteger  customBitrate;
 
-+ (instancetype)share;
+@property (nonatomic, strong, readonly) ZegoAVConfig *configure;
+
++ (instancetype)session;
 
 - (void)updateConfigPreset:(ZegoAVConfigPreset)preset;
 

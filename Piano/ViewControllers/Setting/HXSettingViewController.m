@@ -49,7 +49,7 @@ UIPickerViewDelegate
 }
 
 - (void)loadDefaultConfigure {
-    HXSettingSession *session = [HXSettingSession share];
+    HXSettingSession *session = [HXSettingSession session];
 //    if ([ud objectForKey:@"accountID"] == nil){
 //        [self generateAcount];
 //        [self presetLiveQuality];
@@ -88,7 +88,7 @@ UIPickerViewDelegate
     
     [self pickerViewSelectRowWithRow:(_qualities.count - 1)];
     
-    [[HXSettingSession share] updateCustomResolution:@(sender.value).integerValue];
+    [[HXSettingSession session] updateCustomResolution:@(sender.value).integerValue];
 }
 
 - (IBAction)fpsSliderChanged:(UISlider *)sender {
@@ -96,7 +96,7 @@ UIPickerViewDelegate
     
     [self pickerViewSelectRowWithRow:(_qualities.count - 1)];
     
-    [[HXSettingSession share] updateCustomFPS:@(sender.value).integerValue];
+    [[HXSettingSession session] updateCustomFPS:@(sender.value).integerValue];
 }
 
 - (IBAction)bitrateSliderChanged:(UISlider *)sender {
@@ -104,7 +104,7 @@ UIPickerViewDelegate
     
     [self pickerViewSelectRowWithRow:(_qualities.count - 1)];
     
-    [[HXSettingSession share] updateCustomBitrate:@(sender.value).integerValue];
+    [[HXSettingSession session] updateCustomBitrate:@(sender.value).integerValue];
 }
 
 #pragma mark - Private Methods
@@ -112,7 +112,7 @@ UIPickerViewDelegate
     NSInteger resolution, fps, bitrate;
     CGSize resolutionSize;
     
-    HXSettingSession *session = [HXSettingSession share];
+    HXSettingSession *session = [HXSettingSession session];
     if ([session isCustomConfigure]) {
         //自定义各种参数
         resolution = session.customResolution;
@@ -168,7 +168,7 @@ UIPickerViewDelegate
 }
 
 - (void)updateParametersWithResolution:(NSInteger)resolution fps:(NSInteger)fps bitrate:(NSInteger)bitrate {
-    HXSettingSession *session = [HXSettingSession share];
+    HXSettingSession *session = [HXSettingSession session];
     [session updateParametersWithResolution:(ZegoAVConfigVideoResolution)resolution fps:(ZegoAVConfigVideoFps)fps bitrate:(ZegoAVConfigVideoBitrate)bitrate];
 }
 
@@ -191,7 +191,7 @@ UIPickerViewDelegate
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    HXSettingSession *session = [HXSettingSession share];
+    HXSettingSession *session = [HXSettingSession session];
     ZegoAVConfigPreset configPreset = (ZegoAVConfigPreset)row;
     if (row < (_qualities.count - 1)) {
         [session updateConfigPreset:configPreset];

@@ -87,16 +87,11 @@ HXWatchLiveBottomBarDelegate
         [self showBannerWithPrompt:error.domain];
     } completed:^{
         @strongify(self)
-        [self roomConfigure];
-        [self updateAnchorView];
+        [self fetchDataFinfished];
     }];
 }
 
 - (void)viewConfigure {
-    ;
-}
-
-- (void)roomConfigure {
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     
     [zegoAVApi setRemoteView:RemoteViewIndex_First view:_liveView];
@@ -105,36 +100,6 @@ HXWatchLiveBottomBarDelegate
     //设置回调代理
     [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
     [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
-    
-    HXLiveModel *model = _viewModel.model;
-    //进入聊天室
-    ZegoUser *user = [ZegoUser new];
-    user.userID = [HXUserSession session].uid;
-    user.userName = [HXUserSession session].nickName;
-    
-    UInt32 roomToken = (UInt32)model.zegoToken;
-    UInt32 roomNum = (UInt32)model.zegoID;
-    [zegoAVApi getInChatRoom:user zegoToken:roomToken zegoId:roomNum];
-    
-    //设置视频参数
-    HXSettingSession *session = [HXSettingSession share];
-    
-    ZegoAVConfig *zegoAVConfig;
-    if ([session isCustomConfigure]) {
-        //用户自定义过各种参数
-        NSInteger resolution = session.customResolution;
-        NSInteger fps = session.customFPS;
-        NSInteger bitrate = session.customBitrate;
-        
-        zegoAVConfig = [ZegoAVConfig new];
-        
-        [zegoAVConfig setVideoResolution:(int)resolution];
-        [zegoAVConfig setVideoFPS:(int)fps];
-        [zegoAVConfig setVideoBitrate:(int)bitrate];
-    } else {
-        zegoAVConfig = [ZegoAVConfig defaultZegoAVConfig:session.configPreset];
-    }
-    [zegoAVApi setAVConfig:zegoAVConfig];
 }
 
 #pragma mark - Event Response
@@ -153,7 +118,28 @@ HXWatchLiveBottomBarDelegate
 }
 
 - (void)leaveRoom {
+    [_viewModel.enterRoomCommand execute:nil];
     [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
+}
+
+- (void)fetchDataFinfished {
+    [self roomConfigure];
+    [self updateAnchorView];
+}
+
+- (void)roomConfigure {
+    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
+    
+    HXLiveModel *model = _viewModel.model;
+    //进入聊天室
+    ZegoUser *user = [ZegoUser new];
+    user.userID = [HXUserSession session].uid;
+    user.userName = [HXUserSession session].nickName;
+    
+    UInt32 roomToken = (UInt32)model.zegoToken;
+    UInt32 roomNum = (UInt32)model.zegoID;
+    [zegoAVApi getInChatRoom:user zegoToken:roomToken zegoId:roomNum];
+    [zegoAVApi setAVConfig:[HXSettingSession session].configure];
 }
 
 - (void)updateAnchorView {
@@ -244,7 +230,7 @@ HXWatchLiveBottomBarDelegate
     }
 }
 
-- (void)onVideoSizeChanged:(long long)streamID width:(uint32)width height:(uint32)height{
+- (void)onVideoSizeChanged:(long long)streamID width:(uint32)width height:(uint32)height {
     NSLog(@"%@ onVideoSizeChanged width: %u height:%u", self, width, height);
 }
 
@@ -252,17 +238,11 @@ HXWatchLiveBottomBarDelegate
     NSLog(@"观看直播的人数:%@", @(userCount));
 }
 
-- (void)onSetPublishExtraDataResult:(uint32)errCode zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId dataKey:(NSString*)strDataKey {
-    ;
-}
+- (void)onSetPublishExtraDataResult:(uint32)errCode zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId dataKey:(NSString*)strDataKey {}
 
-- (void)onTakeRemoteViewSnapshot:(CGImageRef)img {
-    ;
-}
+- (void)onTakeRemoteViewSnapshot:(CGImageRef)img {}
 
-- (void)onTakeLocalViewSnapshot:(CGImageRef)img {
-    ;
-}
+- (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
 #pragma mark - HXWatcherContainerViewControllerDelegate Methods
 - (void)container:(HXWatcherContainerViewController *)container shouldShowWatcher:(id)watcher {

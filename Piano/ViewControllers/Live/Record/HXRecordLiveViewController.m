@@ -78,27 +78,7 @@ ZegoVideoDelegate
     UInt32 roomNum = (UInt32)_model.zegoID;
     
     [zegoAVApi getInChatRoom:user zegoToken:roomToken zegoId:roomNum];
-    
-    
-    //设置视频参数
-    HXSettingSession *session = [HXSettingSession share];
-    
-    ZegoAVConfig *zegoAVConfig;
-    if ([session isCustomConfigure]) {
-        //用户自定义过各种参数
-        NSInteger resolution = session.customResolution;
-        NSInteger fps = session.customFPS;
-        NSInteger bitrate = session.customBitrate;
-        
-        zegoAVConfig = [ZegoAVConfig new];
-        
-        [zegoAVConfig setVideoResolution:(int)resolution];
-        [zegoAVConfig setVideoFPS:(int)fps];
-        [zegoAVConfig setVideoBitrate:(int)bitrate];
-    } else {
-        zegoAVConfig = [ZegoAVConfig defaultZegoAVConfig:session.configPreset];
-    }
-    [zegoAVApi setAVConfig:zegoAVConfig];
+    [zegoAVApi setAVConfig:[HXSettingSession session].configure];
 }
 
 - (void)viewConfigure {
