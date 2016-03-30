@@ -16,6 +16,7 @@
 #import "HXWatchLiveViewModel.h"
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
+#import "HXUserSession.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -46,6 +47,11 @@ HXWatchLiveBottomBarDelegate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _containerViewController = segue.destinationViewController;
     _containerViewController.delegate = self;
+}
+
+#pragma mark - Status Bar
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -94,7 +100,7 @@ HXWatchLiveBottomBarDelegate
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     
     [zegoAVApi setRemoteView:RemoteViewIndex_First view:_liveView];
-    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleAspectFit];
+    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleToFill];
     
     //设置回调代理
     [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
@@ -102,9 +108,9 @@ HXWatchLiveBottomBarDelegate
     
     HXLiveModel *model = _viewModel.model;
     //进入聊天室
-    ZegoUser * user = [ZegoUser new];
-    user.userID = model.uID;
-    user.userName = model.nickName;
+    ZegoUser *user = [ZegoUser new];
+    user.userID = [HXUserSession session].uid;
+    user.userName = [HXUserSession session].nickName;
     
     UInt32 roomToken = (UInt32)model.zegoToken;
     UInt32 roomNum = (UInt32)model.zegoID;
@@ -187,7 +193,7 @@ HXWatchLiveBottomBarDelegate
     
     if (flag == PlayListUpdateFlag_Remove) {
         NSDictionary * dictStream = list[0];
-        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_viewModel.model.uID]) {
+        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:[HXUserSession session].uid]) {
             return;     //是自己停止直播的消息，应该在停止时处理过相关逻辑，这里不再处理
         }
     } else {
@@ -197,10 +203,10 @@ HXWatchLiveBottomBarDelegate
         
         for (NSUInteger i = 0; i < list.count; i++) {
             NSDictionary *dictStream = list[i];
-            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_viewModel.model.uID]) {
+            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:[HXUserSession session].uid]) {
                 continue;     //是自己发布直播的消息，应该在发布时处理过相关逻辑，这里不再处理
             }
-
+            
             //有新流加入，找到一个空闲的view来播放，如果已经有两路播放，则停止比较老的流，播放新流
             NSInteger newStreamID = [[dictStream objectForKey:STREAM_ID] longLongValue];
             [zegoAVApi startPlayInChatRoom:RemoteViewIndex_First streamID:newStreamID];
