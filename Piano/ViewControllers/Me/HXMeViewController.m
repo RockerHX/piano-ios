@@ -8,19 +8,19 @@
 
 #import "HXMeViewController.h"
 #import "HXMeNavigationBar.h"
-#import "HXMeViewModel.h"
+#import "HXMeContainerViewController.h"
 
 
 @interface HXMeViewController () <
 HXMeNavigationBarDelegate
 >
-
-@property (nonatomic, strong) HXMeViewModel *viewModel;
-
 @end
 
 
-@implementation HXMeViewController
+@implementation HXMeViewController {
+    HXMeContainerViewController *_containerViewController;
+    HXMeViewModel *_viewModel;
+}
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
@@ -29,6 +29,11 @@ HXMeNavigationBarDelegate
 
 + (NSString *)navigationControllerIdentifier {
     return @"HXMeNavigationController";
+}
+
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    _containerViewController = segue.destinationViewController;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -53,7 +58,7 @@ HXMeNavigationBarDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _viewModel = [HXMeViewModel new];
+    _containerViewController.viewModel = self.viewModel;
 }
 
 - (void)viewConfigure {

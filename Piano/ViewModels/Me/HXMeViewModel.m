@@ -24,6 +24,18 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
+    [self setupRowTypes];
+    
+    [self fetchDataCommandConfigure];
+}
+
+- (void)setupRowTypes {
+    _rowTypes = @[@(HXMeRowTypeHeader),
+                  @(HXMeRowTypeRecharge),
+                  @(HXMeRowTypePurchaseHistory)];
+}
+
+- (void)fetchDataCommandConfigure {
     @weakify(self)
     _fetchCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self)
@@ -35,6 +47,18 @@
 }
 
 #pragma mark - Property
+- (CGFloat)headerHeight {
+    return 176.0f;
+}
+
+- (CGFloat)normalHeight {
+    return 56.0f;
+}
+
+- (CGFloat)attentionHeight {
+    return 115.0f;
+}
+
 - (NSInteger)rows {
     return _rowTypes.count;
 }
