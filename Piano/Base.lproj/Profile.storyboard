@@ -30,7 +30,7 @@
                                 </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUz-mm-551">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="1504"/>
                                 <connections>
                                     <segue destination="KQG-qX-dcY" kind="embed" id="s8A-xt-znU"/>
                                 </connections>
@@ -42,7 +42,7 @@
                             <constraint firstItem="sox-dQ-4hf" firstAttribute="leading" secondItem="KL3-w3-WeS" secondAttribute="leading" id="FfE-ZC-scL"/>
                             <constraint firstAttribute="trailing" secondItem="sox-dQ-4hf" secondAttribute="trailing" id="HCH-Pt-BQp"/>
                             <constraint firstItem="JUz-mm-551" firstAttribute="leading" secondItem="KL3-w3-WeS" secondAttribute="leading" id="X1O-ss-II4"/>
-                            <constraint firstAttribute="bottom" secondItem="JUz-mm-551" secondAttribute="bottom" id="c3T-de-UTj"/>
+                            <constraint firstAttribute="bottom" secondItem="JUz-mm-551" secondAttribute="bottom" constant="-1000" id="c3T-de-UTj"/>
                             <constraint firstItem="JUz-mm-551" firstAttribute="top" secondItem="sox-dQ-4hf" secondAttribute="bottom" id="nMo-Ek-bd0"/>
                             <constraint firstItem="sox-dQ-4hf" firstAttribute="top" secondItem="j0z-V2-X2w" secondAttribute="bottom" id="xHK-9t-ImF"/>
                         </constraints>
@@ -57,7 +57,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXProfileContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KQG-qX-dcY" userLabel="HXProfileContainerViewController" customClass="HXProfileContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="112" sectionHeaderHeight="28" sectionFooterHeight="28" id="eUv-AY-3NP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -349,38 +349,20 @@
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-7k-w6H" userLabel="Live Prompt Container">
                                                                         <rect key="frame" x="0.0" y="94" width="90" height="31"/>
-                                                                        <subviews>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbb-Ot-Du8" customClass="HXIBView">
-                                                                                <rect key="frame" x="14" y="0.0" width="62" height="18"/>
-                                                                                <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="18" id="czC-Or-o0K"/>
-                                                                                    <constraint firstAttribute="width" constant="62" id="v37-hR-Hye"/>
-                                                                                </constraints>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                        <real key="value" value="9"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                </userDefinedRuntimeAttributes>
-                                                                            </view>
-                                                                        </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="Dbb-Ot-Du8" firstAttribute="centerX" secondItem="Zja-7k-w6H" secondAttribute="centerX" id="FLg-vO-tWg"/>
-                                                                            <constraint firstItem="Dbb-Ot-Du8" firstAttribute="top" secondItem="Zja-7k-w6H" secondAttribute="top" id="pw3-wR-5ij"/>
-                                                                        </constraints>
                                                                     </view>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="wmZ-0C-oCf" secondAttribute="trailing" id="1Jh-cw-qum"/>
                                                                 <constraint firstItem="Zja-7k-w6H" firstAttribute="leading" secondItem="pK3-Fd-73B" secondAttribute="leading" id="FKD-xw-90Q"/>
+                                                                <constraint firstItem="wmZ-0C-oCf" firstAttribute="leading" secondItem="pK3-Fd-73B" secondAttribute="leading" id="HG6-xd-yur"/>
                                                                 <constraint firstItem="Zja-7k-w6H" firstAttribute="top" secondItem="kVU-gc-lZ6" secondAttribute="bottom" id="JBs-Rn-sUe"/>
                                                                 <constraint firstItem="kVU-gc-lZ6" firstAttribute="leading" secondItem="pK3-Fd-73B" secondAttribute="leading" id="MxW-4M-niD"/>
                                                                 <constraint firstAttribute="trailing" secondItem="kVU-gc-lZ6" secondAttribute="trailing" id="Ol1-J5-OiU"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Zja-7k-w6H" secondAttribute="trailing" id="TMi-TJ-1Wu"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Zja-7k-w6H" secondAttribute="bottom" id="bui-7J-5pt"/>
-                                                                <constraint firstItem="wmZ-0C-oCf" firstAttribute="centerX" secondItem="pK3-Fd-73B" secondAttribute="centerX" id="mfc-ph-CEW"/>
                                                                 <constraint firstItem="wmZ-0C-oCf" firstAttribute="top" secondItem="pK3-Fd-73B" secondAttribute="top" id="sdl-2c-paR"/>
                                                                 <constraint firstItem="kVU-gc-lZ6" firstAttribute="top" secondItem="wmZ-0C-oCf" secondAttribute="bottom" id="vxd-C4-fOG"/>
                                                             </constraints>
