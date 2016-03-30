@@ -8,11 +8,15 @@
 
 #import "HXMeViewController.h"
 #import "HXMeNavigationBar.h"
+#import "HXMeViewModel.h"
 
 
 @interface HXMeViewController () <
 HXMeNavigationBarDelegate
 >
+
+@property (nonatomic, strong) HXMeViewModel *viewModel;
+
 @end
 
 
@@ -49,11 +53,32 @@ HXMeNavigationBarDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    _viewModel = [HXMeViewModel new];
 }
 
 - (void)viewConfigure {
-    ;
+    [self showHUD];
+}
+
+#pragma mark - Property
+- (HXMeViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [HXMeViewModel new];
+    }
+    return _viewModel;
+}
+
+#pragma mark - Public Methods
+- (void)refresh {
+    @weakify(self)
+    RACSignal *fetchSignal = [self.viewModel.fetchCommand execute:nil];
+    [fetchSignal subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+        @strongify(self)
+        [self hiddenHUD];
+    }];
 }
 
 #pragma mark - HXMeNavigationBarDelegate Methods
