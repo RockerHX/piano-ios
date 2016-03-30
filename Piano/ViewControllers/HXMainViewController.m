@@ -116,6 +116,10 @@ HXLoginViewControllerDelegate
 - (void)notificationWebSocketDidOpen:(NSNotification *)notification {
 	[MiaAPIHelper guestLoginWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 		if (success) {
+			HXUserSession *userSession = [HXUserSession session];
+			NSDictionary *data = userInfo[MiaAPIKey_Values];
+			userSession.guestUID = data[@"uID"];
+
 //			[self checkUpdate];
 			[self autoLogin];
 
