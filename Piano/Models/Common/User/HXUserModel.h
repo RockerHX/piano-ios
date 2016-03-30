@@ -7,7 +7,7 @@
 //
 
 #import "MJExtension.h"
-
+#import "HXGuestModel.h"
 
 @interface HXUserModel : NSObject
 
@@ -18,6 +18,6 @@
 @property (nonatomic, strong)  NSString *nickName;
 @property (nonatomic, strong)  NSString *avatar;
 @property (nonatomic, strong)  NSString *notifyAvatar;
-@property (nonatomic, strong)  NSString *type;
+@property (nonatomic, assign)  HXUserRole role;
 
 @end

@@ -8,11 +8,16 @@
 
 #import "MJExtension.h"
 
+typedef NS_ENUM(NSInteger, HXUserRole) {
+	HXUserRoleGuest = 0,
+	HXUserRoleNormal = 1,
+	HXUserRoleAnchor = 2,
+};
 
 @interface HXGuestModel : NSObject
 
 @property (nonatomic, strong)  NSString *uID;
 @property (nonatomic, strong)  NSString *nickName;
-@property (nonatomic, strong)  NSString *type;
+@property (nonatomic, assign)  HXUserRole role;
 
 @end

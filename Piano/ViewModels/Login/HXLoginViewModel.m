@@ -100,7 +100,7 @@
                          completeBlock:
      ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
          if (success) {
-             [subscriber sendNext:userInfo[MiaAPIKey_Values]];
+             [subscriber sendNext:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
              [subscriber sendCompleted];
          } else {
              [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
@@ -117,7 +117,7 @@
                           completeBlock:
          ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
              if (success) {
-                 [subscriber sendNext:userInfo[MiaAPIKey_Values]];
+                 [subscriber sendNext:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                  [subscriber sendCompleted];
              } else {
                  [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
