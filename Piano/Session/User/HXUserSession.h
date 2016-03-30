@@ -17,7 +17,7 @@ FOUNDATION_EXPORT NSString *const kClearNotifyNotifacation;
 
 
 typedef NS_ENUM(NSUInteger, HXRole) {
-    HXRoleUser,
+    HXRoleNormalUser,
     HXRoleAnchor,
 };
 
@@ -37,7 +37,7 @@ typedef NS_ENUM(BOOL, HXUserState) {
 @property (nonatomic, strong, readonly)       NSString *token;
 @property (nonatomic, strong, readonly)    HXUserModel *user;
 
-@property (nonatomic, strong)       		NSString *guestUID;
+@property (nonatomic, strong)       		  NSString *guestUID;
 
 + (instancetype)session;
 
