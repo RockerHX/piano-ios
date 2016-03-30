@@ -77,7 +77,7 @@ typedef void(^FailureBlock)(NSString *);
 - (NSString *)uid {
     switch (self.state) {
         case HXUserStateLogout: {
-            return self.guestUID;
+            return _guest.uID;
             break;
         }
         case HXUserStateLogin: {
@@ -85,6 +85,13 @@ typedef void(^FailureBlock)(NSString *);
             break;
         }
     }
+}
+- (NSString *)nickName {
+	if (self.state == HXUserStateLogout) {
+		return _guest.nickName;
+	} else {
+		return _user.nickName;
+	}
 }
 
 - (NSString *)token {
@@ -100,6 +107,10 @@ typedef void(^FailureBlock)(NSString *);
 - (void)updateUser:(nonnull HXUserModel *)user {
     _user = user;
     [self archiveUser:user];
+}
+
+- (void)updateGuest:(HXGuestModel *)user {
+	_guest = user;
 }
 
 - (void)sysnc {
