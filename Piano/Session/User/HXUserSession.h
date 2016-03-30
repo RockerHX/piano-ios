@@ -7,6 +7,7 @@
 //
 
 #import "HXUserModel.h"
+#import "HXGuestModel.h"
 #import "ReactiveCocoa.h"
 
 
@@ -34,15 +35,16 @@ typedef NS_ENUM(BOOL, HXUserState) {
 @property (nonatomic, assign, readonly) HXUserState  state;
 
 @property (nonatomic, strong, readonly)       NSString *uid;
+@property (nonatomic, strong, readonly)		NSString *nickName;
 @property (nonatomic, strong, readonly)       NSString *token;
 @property (nonatomic, strong, readonly)    HXUserModel *user;
-
-@property (nonatomic, strong)       		NSString *guestUID;
+@property (nonatomic, strong, readonly)    HXGuestModel *guest;
 
 + (instancetype)session;
 
 - (void)updateUserWithData:(NSDictionary *)data;
 - (void)updateUser:(HXUserModel *)user;
+- (void)updateGuest:(HXGuestModel *)user;
 - (void)sysnc;
 - (void)clearNotify;
 

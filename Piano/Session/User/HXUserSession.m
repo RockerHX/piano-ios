@@ -76,9 +76,16 @@ typedef void(^FailureBlock)(NSString *);
 
 - (NSString *)uid {
 	if (self.state == HXUserStateLogout) {
-		return self.guestUID;
+		return _guest.uID;
 	} else {
 		return _user.uID;
+	}
+}
+- (NSString *)nickName {
+	if (self.state == HXUserStateLogout) {
+		return _guest.nickName;
+	} else {
+		return _user.nickName;
 	}
 }
 
@@ -95,6 +102,10 @@ typedef void(^FailureBlock)(NSString *);
 - (void)updateUser:(nonnull HXUserModel *)user {
     _user = user;
     [self archiveUser:user];
+}
+
+- (void)updateGuest:(HXGuestModel *)user {
+	_guest = user;
 }
 
 - (void)sysnc {

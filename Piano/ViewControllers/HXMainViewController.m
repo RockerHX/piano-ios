@@ -118,7 +118,8 @@ HXLoginViewControllerDelegate
 		if (success) {
 			HXUserSession *userSession = [HXUserSession session];
 			NSDictionary *data = userInfo[MiaAPIKey_Values];
-			userSession.guestUID = data[@"uID"];
+			HXGuestModel *user = [HXGuestModel mj_objectWithKeyValues:data];
+			[userSession updateGuest:user];
 
 //			[self checkUpdate];
 			[self autoLogin];
