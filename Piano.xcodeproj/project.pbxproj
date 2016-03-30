@@ -104,6 +104,7 @@
 		CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
 		CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
 		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
+		CDB811611CABBFAF00BFC3B9 /* HXLiveEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB811601CABBFAF00BFC3B9 /* HXLiveEndViewController.m */; };
 		CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */; };
 		CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF41CA13BB4003867B8 /* UIView+FindUIViewController.m */; };
 		CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF61CA13BB4003867B8 /* UIView+Frame.m */; };
@@ -321,6 +322,8 @@
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
 		CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewController.m; sourceTree = "<group>"; };
+		CDB8115F1CABBFAF00BFC3B9 /* HXLiveEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveEndViewController.h; sourceTree = "<group>"; };
+		CDB811601CABBFAF00BFC3B9 /* HXLiveEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveEndViewController.m; sourceTree = "<group>"; };
 		CDED8EF11CA13BB4003867B8 /* NSObject+LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LoginAction.h"; sourceTree = "<group>"; };
 		CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LoginAction.m"; sourceTree = "<group>"; };
 		CDED8EF31CA13BB4003867B8 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
@@ -882,6 +885,8 @@
 			children = (
 				CD6C193F1CA4E4AE00849B39 /* HXWatcherContainerViewController.h */,
 				CD6C19401CA4E4AE00849B39 /* HXWatcherContainerViewController.m */,
+				CDB8115F1CABBFAF00BFC3B9 /* HXLiveEndViewController.h */,
+				CDB811601CABBFAF00BFC3B9 /* HXLiveEndViewController.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1601,6 +1606,7 @@
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				CD2E729D1CA11E02003CDB77 /* HXOnlineModel.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
+				CDB811611CABBFAF00BFC3B9 /* HXLiveEndViewController.m in Sources */,
 				CD6C19891CA519A900849B39 /* HXPlayBottomBar.m in Sources */,
 				CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */,
 				CD23678F1CA91D2C002C8233 /* HXMeNavigationBar.m in Sources */,
