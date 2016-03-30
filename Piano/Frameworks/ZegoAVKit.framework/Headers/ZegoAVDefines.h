@@ -43,4 +43,21 @@ typedef enum
 }RemoteViewIndex;
 
 
+typedef enum : NSUInteger {
+    ZEGO_FILTER_NONE        = 0,    ///< 不使用滤镜
+    ZEGO_FILTER_LOMO        = 1,    ///< 简洁
+    ZEGO_FILTER_BLACKWHITE  = 2,    ///< 黑白
+    ZEGO_FILTER_OLDSTYLE    = 3,    ///< 老化
+    ZEGO_FILTER_GOTHIC      = 4,    ///< 哥特
+    ZEGO_FILTER_SHARPCOLOR  = 5,    ///< 锐色
+    ZEGO_FILTER_FADE        = 6,    ///< 淡雅
+    ZEGO_FILTER_WINE        = 7,    ///< 酒红
+    ZEGO_FILTER_LIME        = 8,    ///< 青柠
+    ZEGO_FILTER_ROMANTIC    = 9,    ///< 浪漫
+    ZEGO_FILTER_HALO        = 10,   ///< 光晕
+    ZEGO_FILTER_BLUE        = 11,   ///< 蓝调
+    ZEGO_FILTER_ILLUSION    = 12,   ///< 梦幻
+    ZEGO_FILTER_DARK        = 13    ///< 夜色
+} ZegoFilter;
+
 #endif /* ZegoAVApiDefines_h */

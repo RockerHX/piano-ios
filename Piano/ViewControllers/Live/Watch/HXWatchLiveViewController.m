@@ -186,24 +186,24 @@ HXWatchLiveBottomBarDelegate
     }
     
     if (flag == PlayListUpdateFlag_Remove) {
-//        NSDictionary * dictStream = list[0];
-//        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_model.userID]) {
-//            return;     //是自己停止直播的消息，应该在停止时处理过相关逻辑，这里不再处理
-//        }
+        NSDictionary * dictStream = list[0];
+        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_viewModel.model.uID]) {
+            return;     //是自己停止直播的消息，应该在停止时处理过相关逻辑，这里不再处理
+        }
     } else {
         if (flag == PlayListUpdateFlag_UpdateAll) {
 //            [[HXZegoAVKitManager manager].zegoAVApi stopPlayInChatRoom:streamID];
         }
         
         for (NSUInteger i = 0; i < list.count; i++) {
-//            NSDictionary *dictStream = list[i];
-//            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_model.userID]) {
-//                continue;     //是自己发布直播的消息，应该在发布时处理过相关逻辑，这里不再处理
-//            }
+            NSDictionary *dictStream = list[i];
+            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_viewModel.model.uID]) {
+                continue;     //是自己发布直播的消息，应该在发布时处理过相关逻辑，这里不再处理
+            }
 
-//有新流加入，找到一个空闲的view来播放，如果已经有两路播放，则停止比较老的流，播放新流
-//            NSInteger newStreamID = [[dictStream objectForKey:STREAM_ID] longLongValue];
-//            [zegoAVApi startPlayInChatRoom:RemoteViewIndex_First streamID:newStreamID];
+            //有新流加入，找到一个空闲的view来播放，如果已经有两路播放，则停止比较老的流，播放新流
+            NSInteger newStreamID = [[dictStream objectForKey:STREAM_ID] longLongValue];
+            [zegoAVApi startPlayInChatRoom:RemoteViewIndex_First streamID:newStreamID];
         }
     }
 }

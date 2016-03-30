@@ -128,12 +128,6 @@ HXLoginViewControllerDelegate
 			[onlineViewController startFetchList];
 
 #warning @andy
-//			[MiaAPIHelper getProfileWithUID:@"154" completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//				NSLog(@"getProfile");
-//			} timeoutBlock:^(MiaRequestItem *requestItem) {
-//				NSLog(@"");
-//			}];
-
 //			[MiaAPIHelper getAlbumWithID:@"1" completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 //				NSLog(@"getAlbumWithID");
 //			} timeoutBlock:^(MiaRequestItem *requestItem) {
@@ -168,8 +162,8 @@ HXLoginViewControllerDelegate
             break;
         }
         case HXUserStateLogin: {
-            [MiaAPIHelper loginWithSession:userSession.user.uid
-                                     token:userSession.user.token
+            [MiaAPIHelper loginWithSession:userSession.uid
+                                     token:userSession.token
                              completeBlock:
              ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                  if (success) {

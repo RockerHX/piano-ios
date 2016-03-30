@@ -6,20 +6,24 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ReactiveCocoa.h"
+#import "HXAttentionModel.h"
 
 
 typedef NS_ENUM(NSUInteger, HXMeRowType) {
     HXMeRowTypeHeader,
-//    HXMeRowType,
-//    HXMeRowType,
+    HXMeRowTypeRecharge,
+    HXMeRowTypePurchaseHistory,
 };
 
 
 @interface HXMeViewModel : NSObject
 
-@property (nonatomic, assign, readonly) NSInteger  rows;
+@property (nonatomic, strong, readonly) RACCommand *fetchCommand;
 
+@property (nonatomic, assign, readonly) NSInteger  rows;
 @property (nonatomic, strong, readonly)   NSArray *rowTypes;
+
+@property (nonatomic, strong, readonly) NSArray<HXAttentionModel *> *attentions;
 
 @end
