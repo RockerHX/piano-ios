@@ -9,7 +9,7 @@
 #import "HXWatchLiveViewController.h"
 #import "HXZegoAVKitManager.h"
 #import <ZegoAVKit/ZegoMoviePlayer.h>
-#import "HXWatcherContainerViewController.h"
+#import "HXCommentContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
@@ -22,7 +22,7 @@
 @interface HXWatchLiveViewController () <
 ZegoChatDelegate,
 ZegoVideoDelegate,
-HXWatcherContainerViewControllerDelegate,
+HXCommentContainerViewControllerDelegate,
 HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate
 >
@@ -30,7 +30,7 @@ HXWatchLiveBottomBarDelegate
 
 
 @implementation HXWatchLiveViewController {
-    HXWatcherContainerViewController *_containerViewController;
+    HXCommentContainerViewController *_containerViewController;
     HXWatchLiveViewModel *_viewModel;
 }
 
@@ -79,16 +79,7 @@ HXWatchLiveBottomBarDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
-    
-    @weakify(self)
-    RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
-    [enterRoomSiganl subscribeError:^(NSError *error) {
-        @strongify(self)
-        [self showBannerWithPrompt:error.domain];
-    } completed:^{
-        @strongify(self)
-        [self fetchDataFinfished];
-    }];
+    [self signalLink];
 }
 
 - (void)viewConfigure {
@@ -100,6 +91,28 @@ HXWatchLiveBottomBarDelegate
     //设置回调代理
     [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
     [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
+}
+
+- (void)signalLink {
+    @weakify(self)
+    [_viewModel.enterSignal subscribeNext:^(id x) {
+        @strongify(self)
+    }];
+    [_viewModel.exitSignal subscribeNext:^(id x) {
+        @strongify(self)
+    }];
+    [_viewModel.commentSignal subscribeNext:^(id x) {
+        @strongify(self)
+    }];
+    
+    RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
+    [enterRoomSiganl subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+        @strongify(self)
+        [self fetchDataFinfished];
+    }];
 }
 
 #pragma mark - Event Response
@@ -244,8 +257,8 @@ HXWatchLiveBottomBarDelegate
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
-#pragma mark - HXWatcherContainerViewControllerDelegate Methods
-- (void)container:(HXWatcherContainerViewController *)container shouldShowWatcher:(id)watcher {
+#pragma mark - HXCommentContainerViewControllerDelegate Methods
+- (void)container:(HXCommentContainerViewController *)container shouldShowWatcher:(id)watcher {
     [HXWatcherBoard showWithWatcher:watcher closed:^{
         ;
     }];

@@ -8,9 +8,13 @@
 
 #import "HXWatchLiveViewModel.h"
 #import "MiaAPIHelper.h"
+#import "WebSocketMgr.h"
 
 
-@implementation HXWatchLiveViewModel
+@implementation HXWatchLiveViewModel {
+    NSMutableArray *_watchers;
+    NSMutableArray *_comments;
+}
 
 #pragma mark - Initialize Methods
 - (instancetype)initWithRoomID:(NSString *)roomID {
@@ -24,8 +28,18 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
+    _watchers = @[].mutableCopy;
+    _comments = @[].mutableCopy;
+    
+    [self notificationSignalConfigure];
     [self enterRoomCommandConfigure];
     [self leaveRoomCommandConfigure];
+}
+
+- (void)notificationSignalConfigure {
+    _enterSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomEnter object:nil];
+    _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
+    _commentSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomComment object:nil];
 }
 
 - (void)enterRoomCommandConfigure {
@@ -63,6 +77,15 @@
 
 - (NSString *)viewCount {
     return @(_model.viewCount).stringValue;
+}
+
+#pragma mark - Public Methods
+- (NSArray *)addWatcher:(NSDictionary *)data {
+    return [_watchers copy];
+}
+
+- (NSArray *)addComment:(NSDictionary *)data {
+    return [_comments copy];
 }
 
 #pragma mark - Private Methods

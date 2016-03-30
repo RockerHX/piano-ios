@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -139,16 +138,16 @@
             </objects>
             <point key="canvasLocation" x="-422" y="334"/>
         </scene>
-        <!--HXWatcherContainerViewController-->
+        <!--HXCommentContainerViewController-->
         <scene sceneID="C9C-2x-864">
             <objects>
-                <tableViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HXCommentContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXCommentContainerViewController" customClass="HXCommentContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXWatcherCell" id="2Ft-6T-LRO" userLabel="HXWatcherCell" customClass="HXWatcherCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXLiveCommentCell" id="2Ft-6T-LRO" userLabel="HXLiveCommentCell" customClass="HXLiveCommentCell">
                                 <rect key="frame" x="0.0" y="28" width="300" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Ft-6T-LRO" id="0d4-yf-761">

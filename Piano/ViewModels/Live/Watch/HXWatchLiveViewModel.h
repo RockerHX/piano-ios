@@ -16,6 +16,10 @@
 
 @property (nonatomic, strong, readonly)    NSString *roomID;
 
+@property (nonatomic, strong, readonly) RACSignal *enterSignal;
+@property (nonatomic, strong, readonly) RACSignal *exitSignal;
+@property (nonatomic, strong, readonly) RACSignal *commentSignal;
+
 @property (nonatomic, strong, readonly) RACCommand *enterRoomCommand;
 @property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
 
@@ -23,6 +27,12 @@
 @property (nonatomic, strong, readonly) NSString *anchorNickName;
 @property (nonatomic, strong, readonly) NSString *viewCount;
 
+@property (nonatomic, strong, readonly)  NSArray *watchers;
+@property (nonatomic, strong, readonly)  NSArray *comments;
+
+
 - (instancetype)initWithRoomID:(NSString *)roomID;
+- (NSArray *)addWatcher:(NSDictionary *)data;
+- (NSArray *)addComment:(NSDictionary *)data;
 
 @end
