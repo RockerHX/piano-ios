@@ -80,10 +80,10 @@ HXReplayBottomBarDelegate
 }
 
 #pragma mark - HXCommentContainerViewControllerDelegate Methods
-- (void)container:(HXCommentContainerViewController *)container shouldShowWatcher:(id)watcher {
-    [HXWatcherBoard showWithWatcher:watcher closed:^{
-        ;
-    }];
+- (void)commentContainer:(HXCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+//    [HXWatcherBoard showWithWatcher:watcher closed:^{
+//        ;
+//    }];
 }
 
 #pragma mark - HXLiveAnchorViewDelegate Methods

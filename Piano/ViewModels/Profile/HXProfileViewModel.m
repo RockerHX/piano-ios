@@ -73,7 +73,7 @@
 
 #pragma mark - Private Methods
 - (void)fetchProfileRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper getProfileWithUID:_uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper getMusicianProfileWithUID:_uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             [self parseAttentionData:userInfo[MiaAPIKey_Values]];
             [subscriber sendCompleted];

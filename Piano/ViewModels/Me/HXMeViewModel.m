@@ -65,7 +65,7 @@
 
 #pragma mark - Private Methods
 - (void)fetchProfileRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper getProfileWithUID:[HXUserSession session].uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper getUserProfileWithUID:[HXUserSession session].uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             [self parseAttentionData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             [subscriber sendCompleted];
