@@ -17,6 +17,7 @@ static NSString * const MiaAPIKey_Version					= @"r";
 static NSString * const MiaAPIKey_Timestamp					= @"s";
 static NSString * const MiaAPIKey_Values					= @"v";
 static NSString * const MiaAPIKey_Return					= @"ret";
+static NSString * const MiaAPIKey_Data						= @"data";
 static NSString * const MiaAPIKey_Error						= @"err";
 
 // User

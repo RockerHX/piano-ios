@@ -14,8 +14,7 @@
 MJCodingImplementation
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{@"nickName": @"nick",
-                 @"type": @"utype"};
+    return @{@"nickName": @"nick"};
 }
 
 - (void)mj_objectDidFinishConvertingToKeyValues {

@@ -248,10 +248,10 @@ HXPlayBottomBarDelegate
 //                                    completeBlock:
 //             ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 //                 if (success) {
-//                     int isInfected = [userInfo[MiaAPIKey_Values][@"data"][@"isInfected"] intValue];
-//                     int infectTotal = [userInfo[MiaAPIKey_Values][@"data"][@"infectTotal"] intValue];
-//                     NSArray *infectArray = userInfo[MiaAPIKey_Values][@"data"][@"infectList"];
-//                     NSString *spID = [userInfo[MiaAPIKey_Values][@"data"][@"spID"] stringValue];
+//                     int isInfected = [userInfo[MiaAPIKey_Values][MiaAPIKey_Data][@"isInfected"] intValue];
+//                     int infectTotal = [userInfo[MiaAPIKey_Values][MiaAPIKey_Data][@"infectTotal"] intValue];
+//                     NSArray *infectArray = userInfo[MiaAPIKey_Values][MiaAPIKey_Data][@"infectList"];
+//                     NSString *spID = [userInfo[MiaAPIKey_Values][MiaAPIKey_Data][@"spID"] stringValue];
 //                     
 //                     if ([spID isEqualToString:item.spID]) {
 //                         item.infectTotal = infectTotal;

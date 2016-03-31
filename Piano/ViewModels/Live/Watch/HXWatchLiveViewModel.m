@@ -44,13 +44,13 @@ static NSUInteger WatcherMAX = 20;
     @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomEnter object:nil] subscribeNext:^(NSNotification *notification) {
         @strongify(self)
-        NSDictionary *data = notification.userInfo[@"v"][@"data"];
+        NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addWatcher:data];
     }];
     [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomComment object:nil] subscribeNext:^(NSNotification *notification) {
         @strongify(self)
-        NSDictionary *data = notification.userInfo[@"v"][@"data"];
+        NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addComment:data];
     }];
 }
@@ -125,7 +125,7 @@ static NSUInteger WatcherMAX = 20;
 - (void)enterRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper enterRoom:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            [self parseData:userInfo[@"v"][@"data"]];
+            [self parseData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             [subscriber sendCompleted];
         } else {
             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];

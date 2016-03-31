@@ -48,7 +48,7 @@
 - (void)fetchOnlineListWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper getHomeListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            [self parseData:userInfo[@"v"][@"data"]];
+            [self parseData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             [subscriber sendCompleted];
         } else {
             NSLog(@"getRoomList failed");
