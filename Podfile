@@ -9,7 +9,7 @@ pod 'SocketRocket'
 pod 'SDWebImage'
 
 # Audio
-#pod 'FreeStreamer'
+pod 'FreeStreamer'
 
 # Utility
 pod 'ReactiveCocoa'
