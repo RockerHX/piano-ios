@@ -1,22 +1,24 @@
 //
-//  HXMeViewModel.m
+//  HXProfileViewModel.m
 //  Piano
 //
-//  Created by miaios on 16/3/28.
+//  Created by miaios on 16/3/30.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXMeViewModel.h"
+#import "HXProfileViewModel.h"
 #import "MiaAPIHelper.h"
-#import "HXUserSession.h"
 
 
-@implementation HXMeViewModel
+@implementation HXProfileViewModel {
+    NSMutableArray *_rowTypes;
+}
 
 #pragma mark - Initialize Methods
-- (instancetype)init {
+- (instancetype)initWithUID:(NSString *)UID {
     self = [super init];
     if (self) {
+        _uid = UID;
         [self initConfigure];
     }
     return self;
@@ -30,9 +32,7 @@
 }
 
 - (void)setupRowTypes {
-    _rowTypes = @[@(HXMeRowTypeHeader),
-                  @(HXMeRowTypeRecharge),
-                  @(HXMeRowTypePurchaseHistory)];
+    _rowTypes = @[@(HXProfileRowTypeHeader)].mutableCopy;
 }
 
 - (void)fetchDataCommandConfigure {
@@ -51,11 +51,19 @@
     return 176.0f;
 }
 
-- (CGFloat)normalHeight {
+- (CGFloat)livingHeight {
     return 56.0f;
 }
 
-- (CGFloat)attentionHeight {
+- (CGFloat)albumHeight {
+    return 115.0f;
+}
+
+- (CGFloat)vedioHeight {
+    return 115.0f;
+}
+
+- (CGFloat)replayHeight {
     return 115.0f;
 }
 
@@ -65,7 +73,7 @@
 
 #pragma mark - Private Methods
 - (void)fetchProfileRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper getProfileWithUID:[HXUserSession session].uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper getProfileWithUID:_uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             [self parseAttentionData:userInfo[MiaAPIKey_Values]];
             [subscriber sendCompleted];

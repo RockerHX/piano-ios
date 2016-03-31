@@ -8,6 +8,7 @@
 
 #import "HXMeViewController.h"
 #import "HXMeNavigationBar.h"
+#import "HXMeContainerViewController.h"
 
 
 @interface HXMeViewController () <
@@ -16,7 +17,10 @@ HXMeNavigationBarDelegate
 @end
 
 
-@implementation HXMeViewController
+@implementation HXMeViewController {
+    HXMeContainerViewController *_containerViewController;
+    HXMeViewModel *_viewModel;
+}
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
@@ -25,6 +29,11 @@ HXMeNavigationBarDelegate
 
 + (NSString *)navigationControllerIdentifier {
     return @"HXMeNavigationController";
+}
+
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    _containerViewController = segue.destinationViewController;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -49,11 +58,32 @@ HXMeNavigationBarDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    _containerViewController.viewModel = self.viewModel;
 }
 
 - (void)viewConfigure {
-    ;
+    [self showHUD];
+}
+
+#pragma mark - Property
+- (HXMeViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [HXMeViewModel new];
+    }
+    return _viewModel;
+}
+
+#pragma mark - Public Methods
+- (void)refresh {
+    @weakify(self)
+    RACSignal *fetchSignal = [self.viewModel.fetchCommand execute:nil];
+    [fetchSignal subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+        @strongify(self)
+        [self hiddenHUD];
+    }];
 }
 
 #pragma mark - HXMeNavigationBarDelegate Methods

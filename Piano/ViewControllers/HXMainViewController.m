@@ -172,6 +172,7 @@ HXLoginViewControllerDelegate
                      HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
                      [userSession updateUser:user];
                      
+                     [self fetchProfileData];
 //                     [self updateNotificationBadge];
                  } else {
                      [[FileLog standard] log:@"autoLogin failed, logout"];
@@ -187,6 +188,11 @@ HXLoginViewControllerDelegate
 
 - (void)autoReconnect {
 	[[WebSocketMgr standard] reconnect];
+}
+
+- (void)fetchProfileData {
+    HXMeViewController *meViewController = [((UINavigationController *)[self.viewControllers lastObject]).viewControllers firstObject];
+    [meViewController refresh];
 }
 
 #pragma mark - UITabBarControllerDelegate Methods
@@ -218,9 +224,7 @@ HXLoginViewControllerDelegate
             break;
         }
         case HXLoginViewControllerActionLoginSuccess: {
-//            HXDiscoveryViewController *discoveryViewController = [((UINavigationController *)[self.viewControllers firstObject]).viewControllers firstObject];
-//            [discoveryViewController refreshShareItem];
-//            [self updateNotificationBadge];
+            [self fetchProfileData];
             break;
         }
     }

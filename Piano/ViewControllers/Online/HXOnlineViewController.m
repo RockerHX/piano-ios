@@ -12,6 +12,7 @@
 #import "HXReplayViewController.h"
 #import "HXRecordLiveViewController.h"
 #import "HXPlayViewController.h"
+#import "HXUserSession.h"
 
 
 @interface HXOnlineViewController () <
@@ -70,6 +71,10 @@ HXOnlineContainerViewControllerDelegate
 
 #pragma mark - HXOnlineContainerViewControllerDelegate Methods
 - (void)container:(HXOnlineContainerViewController *)container showLiveByModel:(HXOnlineModel *)model {
+    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
+        return;
+    }
+    
     if (model) {
         UINavigationController *modalNavigationController = nil;
         switch (model.type) {

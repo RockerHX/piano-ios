@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -139,16 +138,16 @@
             </objects>
             <point key="canvasLocation" x="-422" y="334"/>
         </scene>
-        <!--HXWatcherContainerViewController-->
+        <!--HXCommentContainerViewController-->
         <scene sceneID="C9C-2x-864">
             <objects>
-                <tableViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HXCommentContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXCommentContainerViewController" customClass="HXCommentContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXWatcherCell" id="2Ft-6T-LRO" userLabel="HXWatcherCell" customClass="HXWatcherCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXLiveCommentCell" id="2Ft-6T-LRO" userLabel="HXLiveCommentCell" customClass="HXLiveCommentCell">
                                 <rect key="frame" x="0.0" y="28" width="300" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Ft-6T-LRO" id="0d4-yf-761">
@@ -227,6 +226,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTK-9J-fJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="396" y="904"/>
+        </scene>
+        <!--HXLiveEndViewController-->
+        <scene sceneID="nHT-AS-1LA">
+            <objects>
+                <viewController storyboardIdentifier="HXLiveEndViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BL6-gn-Sp7" userLabel="HXLiveEndViewController" customClass="HXLiveEndViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9aO-lT-024"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qk3-5W-EVf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eO8-dx-DHz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZu-W2-dr5" userLabel="BlurView" customClass="FXBlurView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbR-8c-MP4" userLabel="Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zry-WZ-1Kc">
+                                        <rect key="frame" x="40" y="188" width="240" height="128"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="直播结束" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrz-jO-6uL">
+                                                <rect key="frame" x="73" y="53" width="68" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tI-B0-tJP">
+                                        <rect key="frame" x="130" y="431" width="60" height="30"/>
+                                        <state key="normal" title="退出房间"/>
+                                        <connections>
+                                            <action selector="exitRoomButtonPressed" destination="BL6-gn-Sp7" eventType="touchUpInside" id="0se-5D-KdZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HZu-W2-dr5" firstAttribute="top" secondItem="eO8-dx-DHz" secondAttribute="top" id="37E-uD-WUN"/>
+                            <constraint firstAttribute="trailing" secondItem="HZu-W2-dr5" secondAttribute="trailing" id="5hf-CZ-qM9"/>
+                            <constraint firstItem="HZu-W2-dr5" firstAttribute="leading" secondItem="eO8-dx-DHz" secondAttribute="leading" id="BKT-ym-PUQ"/>
+                            <constraint firstItem="nbR-8c-MP4" firstAttribute="leading" secondItem="eO8-dx-DHz" secondAttribute="leading" id="CVD-nB-Mi0"/>
+                            <constraint firstAttribute="trailing" secondItem="nbR-8c-MP4" secondAttribute="trailing" id="LlW-xn-g3r"/>
+                            <constraint firstItem="nbR-8c-MP4" firstAttribute="top" secondItem="eO8-dx-DHz" secondAttribute="top" id="OEI-eR-adg"/>
+                            <constraint firstAttribute="bottom" secondItem="nbR-8c-MP4" secondAttribute="bottom" id="SzR-fl-QfE"/>
+                            <constraint firstAttribute="bottom" secondItem="HZu-W2-dr5" secondAttribute="bottom" id="dIu-hk-fg6"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VwH-3g-9xi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5" y="1108"/>
         </scene>
         <!--HXReplayNavigationController-->
         <scene sceneID="bxV-qL-g0V">

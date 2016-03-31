@@ -11,6 +11,7 @@
 #import <ZegoAVKit/ZegoMoviePlayer.h>
 #import "HXSettingSession.h"
 #import "HXLiveModel.h"
+#import "HXUserSession.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -70,34 +71,14 @@ ZegoVideoDelegate
     
     //进入聊天室
     ZegoUser * user = [ZegoUser new];
-//    user.userID = _model.userID;
-//    user.userName = _model.userName;
+    user.userID = [HXUserSession session].uid;
+    user.userName = [HXUserSession session].nickName;
     
     UInt32 roomToken = (UInt32)_model.zegoToken;
     UInt32 roomNum = (UInt32)_model.zegoID;
     
     [zegoAVApi getInChatRoom:user zegoToken:roomToken zegoId:roomNum];
-    
-    
-    //设置视频参数
-    HXSettingSession *session = [HXSettingSession share];
-    
-    ZegoAVConfig *zegoAVConfig;
-    if ([session isCustomConfigure]) {
-        //用户自定义过各种参数
-        NSInteger resolution = session.customResolution;
-        NSInteger fps = session.customFPS;
-        NSInteger bitrate = session.customBitrate;
-        
-        zegoAVConfig = [ZegoAVConfig new];
-        
-        [zegoAVConfig setVideoResolution:(int)resolution];
-        [zegoAVConfig setVideoFPS:(int)fps];
-        [zegoAVConfig setVideoBitrate:(int)bitrate];
-    } else {
-        zegoAVConfig = [ZegoAVConfig defaultZegoAVConfig:session.configPreset];
-    }
-    [zegoAVApi setAVConfig:zegoAVConfig];
+    [zegoAVApi setAVConfig:[HXSettingSession session].configure];
 }
 
 - (void)viewConfigure {
@@ -160,24 +141,24 @@ ZegoVideoDelegate
     }
     
     if (flag == PlayListUpdateFlag_Remove) {
-//        NSDictionary * dictStream = list[0];
-//        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_model.userID]) {
-//            return;     //是自己停止直播的消息，应该在停止时处理过相关逻辑，这里不再处理
-//        }
+        NSDictionary * dictStream = list[0];
+        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:[HXUserSession session].uid]) {
+            return;     //是自己停止直播的消息，应该在停止时处理过相关逻辑，这里不再处理
+        }
     } else {
         if (flag == PlayListUpdateFlag_UpdateAll) {
 //            [[HXZegoAVKitManager manager].zegoAVApi stopPlayInChatRoom:streamID];
         }
         
         for (NSUInteger i = 0; i < list.count; i++) {
-//            NSDictionary *dictStream = list[i];
-//            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_model.userID]) {
-//                continue;     //是自己发布直播的消息，应该在发布时处理过相关逻辑，这里不再处理
-//            }
+            NSDictionary *dictStream = list[i];
+            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:[HXUserSession session].uid]) {
+                continue;     //是自己发布直播的消息，应该在发布时处理过相关逻辑，这里不再处理
+            }
             
             //有新流加入，找到一个空闲的view来播放，如果已经有两路播放，则停止比较老的流，播放新流
-//            NSInteger newStreamID = [[dictStream objectForKey:STREAM_ID] longLongValue];
-//            [zegoAVApi startPlayInChatRoom:RemoteViewIndex_First streamID:newStreamID];
+            NSInteger newStreamID = [[dictStream objectForKey:STREAM_ID] longLongValue];
+            [zegoAVApi startPlayInChatRoom:RemoteViewIndex_First streamID:newStreamID];
         }
     }
 }

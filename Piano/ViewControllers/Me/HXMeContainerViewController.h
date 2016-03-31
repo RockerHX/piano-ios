@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXMeViewModel.h"
 
 
 @interface HXMeContainerViewController : UITableViewController
+
+@property (nonatomic, strong) HXMeViewModel *viewModel;
 
 @end

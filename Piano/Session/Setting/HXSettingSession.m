@@ -15,12 +15,14 @@ static NSString *SettingRelativePath = @"/Setting/";
 static NSString *SettingFileName = @"Setting.data";
 
 
-@implementation HXSettingSession
+@implementation HXSettingSession {
+    ZegoAVConfig *_configure;
+}
 
 MJCodingImplementation
 
 #pragma mark - Singleton Methods
-+ (instancetype)share {
++ (instancetype)session {
     static HXSettingSession *session = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -50,6 +52,19 @@ MJCodingImplementation
 #pragma mark - Configure Methods
 - (void)initConfigure {
     _configPreset = -1;
+    _configure = [ZegoAVConfig new];
+}
+
+#pragma mark - Property
+- (ZegoAVConfig *)configure {
+    if ([self isCustomConfigure]) {
+        [_configure setVideoResolution:(int)_customResolution];
+        [_configure setVideoFPS:(int)_customFPS];
+        [_configure setVideoBitrate:(int)_customBitrate];
+    } else {
+        _configure = [ZegoAVConfig defaultZegoAVConfig:_configPreset];
+    }
+    return _configure;
 }
 
 #pragma mark - Public Methods

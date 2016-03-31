@@ -9,19 +9,20 @@
 #import "HXWatchLiveViewController.h"
 #import "HXZegoAVKitManager.h"
 #import <ZegoAVKit/ZegoMoviePlayer.h>
-#import "HXWatcherContainerViewController.h"
+#import "HXCommentContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
 #import "HXWatchLiveViewModel.h"
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
+#import "HXUserSession.h"
 
 
 @interface HXWatchLiveViewController () <
 ZegoChatDelegate,
 ZegoVideoDelegate,
-HXWatcherContainerViewControllerDelegate,
+HXCommentContainerViewControllerDelegate,
 HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate
 >
@@ -29,7 +30,7 @@ HXWatchLiveBottomBarDelegate
 
 
 @implementation HXWatchLiveViewController {
-    HXWatcherContainerViewController *_containerViewController;
+    HXCommentContainerViewController *_containerViewController;
     HXWatchLiveViewModel *_viewModel;
 }
 
@@ -46,6 +47,11 @@ HXWatchLiveBottomBarDelegate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _containerViewController = segue.destinationViewController;
     _containerViewController.delegate = self;
+}
+
+#pragma mark - Status Bar
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -73,62 +79,40 @@ HXWatchLiveBottomBarDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
+    [self signalLink];
+}
+
+- (void)viewConfigure {
+    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     
+    [zegoAVApi setRemoteView:RemoteViewIndex_First view:_liveView];
+    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleToFill];
+    
+    //设置回调代理
+    [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
+    [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
+}
+
+- (void)signalLink {
     @weakify(self)
+    [_viewModel.enterSignal subscribeNext:^(id x) {
+        @strongify(self)
+    }];
+    [_viewModel.exitSignal subscribeNext:^(id x) {
+        @strongify(self)
+    }];
+    [_viewModel.commentSignal subscribeNext:^(id x) {
+        @strongify(self)
+    }];
+    
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
         @strongify(self)
         [self showBannerWithPrompt:error.domain];
     } completed:^{
         @strongify(self)
-        [self roomConfigure];
-        [self updateAnchorView];
+        [self fetchDataFinfished];
     }];
-}
-
-- (void)viewConfigure {
-    ;
-}
-
-- (void)roomConfigure {
-    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-    
-    [zegoAVApi setRemoteView:RemoteViewIndex_First view:_liveView];
-    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleAspectFit];
-    
-    //设置回调代理
-    [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
-    [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
-    
-    HXLiveModel *model = _viewModel.model;
-    //进入聊天室
-    ZegoUser * user = [ZegoUser new];
-    user.userID = model.uID;
-    user.userName = model.nickName;
-    
-    UInt32 roomToken = (UInt32)model.zegoToken;
-    UInt32 roomNum = (UInt32)model.zegoID;
-    [zegoAVApi getInChatRoom:user zegoToken:roomToken zegoId:roomNum];
-    
-    //设置视频参数
-    HXSettingSession *session = [HXSettingSession share];
-    
-    ZegoAVConfig *zegoAVConfig;
-    if ([session isCustomConfigure]) {
-        //用户自定义过各种参数
-        NSInteger resolution = session.customResolution;
-        NSInteger fps = session.customFPS;
-        NSInteger bitrate = session.customBitrate;
-        
-        zegoAVConfig = [ZegoAVConfig new];
-        
-        [zegoAVConfig setVideoResolution:(int)resolution];
-        [zegoAVConfig setVideoFPS:(int)fps];
-        [zegoAVConfig setVideoBitrate:(int)bitrate];
-    } else {
-        zegoAVConfig = [ZegoAVConfig defaultZegoAVConfig:session.configPreset];
-    }
-    [zegoAVApi setAVConfig:zegoAVConfig];
 }
 
 #pragma mark - Event Response
@@ -147,7 +131,28 @@ HXWatchLiveBottomBarDelegate
 }
 
 - (void)leaveRoom {
+    [_viewModel.enterRoomCommand execute:nil];
     [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
+}
+
+- (void)fetchDataFinfished {
+    [self roomConfigure];
+    [self updateAnchorView];
+}
+
+- (void)roomConfigure {
+    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
+    
+    HXLiveModel *model = _viewModel.model;
+    //进入聊天室
+    ZegoUser *user = [ZegoUser new];
+    user.userID = [HXUserSession session].uid;
+    user.userName = [HXUserSession session].nickName;
+    
+    UInt32 roomToken = (UInt32)model.zegoToken;
+    UInt32 roomNum = (UInt32)model.zegoID;
+    [zegoAVApi getInChatRoom:user zegoToken:roomToken zegoId:roomNum];
+    [zegoAVApi setAVConfig:[HXSettingSession session].configure];
 }
 
 - (void)updateAnchorView {
@@ -187,7 +192,7 @@ HXWatchLiveBottomBarDelegate
     
     if (flag == PlayListUpdateFlag_Remove) {
         NSDictionary * dictStream = list[0];
-        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_viewModel.model.uID]) {
+        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:[HXUserSession session].uid]) {
             return;     //是自己停止直播的消息，应该在停止时处理过相关逻辑，这里不再处理
         }
     } else {
@@ -197,10 +202,10 @@ HXWatchLiveBottomBarDelegate
         
         for (NSUInteger i = 0; i < list.count; i++) {
             NSDictionary *dictStream = list[i];
-            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:_viewModel.model.uID]) {
+            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:[HXUserSession session].uid]) {
                 continue;     //是自己发布直播的消息，应该在发布时处理过相关逻辑，这里不再处理
             }
-
+            
             //有新流加入，找到一个空闲的view来播放，如果已经有两路播放，则停止比较老的流，播放新流
             NSInteger newStreamID = [[dictStream objectForKey:STREAM_ID] longLongValue];
             [zegoAVApi startPlayInChatRoom:RemoteViewIndex_First streamID:newStreamID];
@@ -238,7 +243,7 @@ HXWatchLiveBottomBarDelegate
     }
 }
 
-- (void)onVideoSizeChanged:(long long)streamID width:(uint32)width height:(uint32)height{
+- (void)onVideoSizeChanged:(long long)streamID width:(uint32)width height:(uint32)height {
     NSLog(@"%@ onVideoSizeChanged width: %u height:%u", self, width, height);
 }
 
@@ -246,20 +251,14 @@ HXWatchLiveBottomBarDelegate
     NSLog(@"观看直播的人数:%@", @(userCount));
 }
 
-- (void)onSetPublishExtraDataResult:(uint32)errCode zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId dataKey:(NSString*)strDataKey {
-    ;
-}
+- (void)onSetPublishExtraDataResult:(uint32)errCode zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId dataKey:(NSString*)strDataKey {}
 
-- (void)onTakeRemoteViewSnapshot:(CGImageRef)img {
-    ;
-}
+- (void)onTakeRemoteViewSnapshot:(CGImageRef)img {}
 
-- (void)onTakeLocalViewSnapshot:(CGImageRef)img {
-    ;
-}
+- (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
-#pragma mark - HXWatcherContainerViewControllerDelegate Methods
-- (void)container:(HXWatcherContainerViewController *)container shouldShowWatcher:(id)watcher {
+#pragma mark - HXCommentContainerViewControllerDelegate Methods
+- (void)container:(HXCommentContainerViewController *)container shouldShowWatcher:(id)watcher {
     [HXWatcherBoard showWithWatcher:watcher closed:^{
         ;
     }];

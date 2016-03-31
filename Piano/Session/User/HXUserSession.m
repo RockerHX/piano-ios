@@ -59,7 +59,7 @@ typedef void(^FailureBlock)(NSString *);
     HXRole role;
     switch (self.state) {
         case HXUserStateLogout: {
-            role = HXRoleUser;
+            role = HXRoleNormalUser;
             break;
         }
         case HXUserStateLogin: {
@@ -75,11 +75,16 @@ typedef void(^FailureBlock)(NSString *);
 }
 
 - (NSString *)uid {
-	if (self.state == HXUserStateLogout) {
-		return _guest.uID;
-	} else {
-		return _user.uID;
-	}
+    switch (self.state) {
+        case HXUserStateLogout: {
+            return _guest.uID;
+            break;
+        }
+        case HXUserStateLogin: {
+            return _user.uID;
+            break;
+        }
+    }
 }
 - (NSString *)nickName {
 	if (self.state == HXUserStateLogout) {

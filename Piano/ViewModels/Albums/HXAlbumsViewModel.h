@@ -25,8 +25,8 @@ typedef NS_ENUM(NSUInteger, HXAlbumsRowType) {
 
 @property (nonatomic, assign, readonly) NSInteger  songStartIndex;
 @property (nonatomic, assign, readonly) NSInteger  commentStartIndex;
-@property (nonatomic, assign, readonly) NSInteger  rows;
 
+@property (nonatomic, assign, readonly) NSInteger  rows;
 @property (nonatomic, strong, readonly)   NSArray *rowTypes;
 
 @end
