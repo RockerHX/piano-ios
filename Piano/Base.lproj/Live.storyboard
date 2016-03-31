@@ -132,6 +132,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="IP5-Bf-JY6"/>
                     <connections>
+                        <outlet property="anchorView" destination="ZgH-JT-Lsv" id="5mr-sh-6D8"/>
                         <outlet property="liveView" destination="Weh-Ip-WpZ" id="PSn-R3-edP"/>
                     </connections>
                 </viewController>
