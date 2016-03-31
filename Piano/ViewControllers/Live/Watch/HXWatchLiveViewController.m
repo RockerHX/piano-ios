@@ -17,6 +17,7 @@
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
+#import "HXCommentViewController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -101,8 +102,9 @@ HXWatchLiveBottomBarDelegate
     [_viewModel.exitSignal subscribeNext:^(id x) {
         @strongify(self)
     }];
-    [_viewModel.commentSignal subscribeNext:^(id x) {
+    [_viewModel.commentSignal subscribeNext:^(NSArray *comments) {
         @strongify(self)
+        self->_containerViewController.comments = comments;
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
@@ -131,7 +133,7 @@ HXWatchLiveBottomBarDelegate
 }
 
 - (void)leaveRoom {
-    [_viewModel.enterRoomCommand execute:nil];
+    [_viewModel.leaveRoomCommand execute:nil];
     [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
 }
 
@@ -271,7 +273,19 @@ HXWatchLiveBottomBarDelegate
 
 #pragma mark - HXWatchLiveBottomBarDelegate Methods
 - (void)bottomBar:(HXWatchLiveBottomBar *)bar takeAction:(HXWatchLiveBottomBarAction)action {
-    ;
+    switch (action) {
+        case HXWatchLiveBottomBarActionComment: {
+            HXCommentViewController *commentViewController = [HXCommentViewController instance];
+            commentViewController.roomID = _roomID;
+            [self addChildViewController:commentViewController];
+            [self.view addSubview:commentViewController.view];
+            break;
+        }
+        case HXWatchLiveBottomBarActionForwarding: {
+            ;
+            break;
+        }
+    }
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "HXLiveCommentCell.h"
 #import "UIConstants.h"
+#import "UIImageView+WebCache.h"
 
 
 @implementation HXLiveCommentCell
@@ -34,13 +35,16 @@
     if (_delegate && [_delegate respondsToSelector:@selector(commentCellShouldShowCommenter:)]) {
         [_delegate commentCellShouldShowCommenter:self];
     }
-    [self updateWithCommenter:nil];
 }
 
 #pragma mark - Public Methods
-- (void)updateWithCommenter:(id)commenter {
-    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:_contentLabel.text];
-    [content addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[_contentLabel.text rangeOfString:@"评论用户:"]];
+- (void)updateWithComment:(HXCommentModel *)comment {
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:comment.avatarUrl]];
+    
+    NSString *nickName = [comment.nickName stringByAppendingString:@":"];
+    _contentLabel.text = [nickName stringByAppendingString:comment.content];
+    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:_contentLabel.attributedText];
+    [content addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[_contentLabel.text rangeOfString:nickName]];
     _contentLabel.attributedText = content;
 }
 

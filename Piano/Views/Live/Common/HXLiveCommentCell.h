@@ -7,6 +7,7 @@
 //
 
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "HXCommentModel.h"
 
 
 @class HXLiveCommentCell;
@@ -27,6 +28,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet     UILabel *contentLabel;
 
-- (void)updateWithCommenter:(id)commenter;
+- (void)updateWithComment:(HXCommentModel *)comment;
 
 @end

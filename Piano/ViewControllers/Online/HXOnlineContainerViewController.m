@@ -52,6 +52,7 @@
     [requestSiganl subscribeError:^(NSError *error) {
         @strongify(self)
         [self showBannerWithPrompt:error.domain];
+        [self endLoad];
     } completed:^{
         @strongify(self)
         [self endLoad];

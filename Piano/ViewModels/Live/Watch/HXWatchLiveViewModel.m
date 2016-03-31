@@ -11,9 +11,12 @@
 #import "WebSocketMgr.h"
 
 
+static NSUInteger WatcherMAX = 20;
+
+
 @implementation HXWatchLiveViewModel {
-    NSMutableArray *_watchers;
-    NSMutableArray *_comments;
+    NSMutableArray *_watchersContainer;
+    NSMutableArray *_commentsContainer;
 }
 
 #pragma mark - Initialize Methods
@@ -28,18 +31,34 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
-    _watchers = @[].mutableCopy;
-    _comments = @[].mutableCopy;
+    _watchers = @[];
+    _comments = @[];
     
-    [self notificationSignalConfigure];
+    [self notificationConfigure];
+    [self signalLink];
     [self enterRoomCommandConfigure];
     [self leaveRoomCommandConfigure];
 }
 
-- (void)notificationSignalConfigure {
-    _enterSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomEnter object:nil];
+- (void)notificationConfigure {
+    @weakify(self)
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomEnter object:nil] subscribeNext:^(NSNotification *notification) {
+        @strongify(self)
+        NSDictionary *data = notification.userInfo[@"v"][@"data"];
+        [self addWatcher:data];
+    }];
+    [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomComment object:nil] subscribeNext:^(NSNotification *notification) {
+        @strongify(self)
+        NSDictionary *data = notification.userInfo[@"v"][@"data"];
+        [self addComment:data];
+    }];
+}
+
+- (void)signalLink {
+    _enterSignal = RACObserve(self, watchers);
     _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
-    _commentSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomComment object:nil];
+    _commentSignal = RACObserve(self, comments);
 }
 
 - (void)enterRoomCommandConfigure {
@@ -81,11 +100,25 @@
 
 #pragma mark - Public Methods
 - (NSArray *)addWatcher:(NSDictionary *)data {
-    return [_watchers copy];
+    NSMutableArray *watchers = _watchers.mutableCopy;
+    if (watchers.count >= WatcherMAX) {
+        [watchers removeLastObject];
+    }
+    
+    HXWatcherModel *model = [HXWatcherModel mj_objectWithKeyValues:data];
+    [watchers insertObject:model atIndex:0];
+    
+    self.watchers = [watchers copy];
+    return _watchers;
 }
 
 - (NSArray *)addComment:(NSDictionary *)data {
-    return [_comments copy];
+    NSMutableArray *comments = _comments.mutableCopy;
+    HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:data];
+    [comments addObject:model];
+    
+    self.comments = [comments copy];
+    return _comments;
 }
 
 #pragma mark - Private Methods
@@ -105,7 +138,6 @@
 - (void)leaveRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper leaveRoom:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-//            [self parseData:userInfo[@"v"][@"data"]];
             [subscriber sendCompleted];
         } else {
             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];

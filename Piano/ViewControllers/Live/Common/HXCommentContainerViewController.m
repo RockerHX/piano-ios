@@ -33,9 +33,20 @@ HXLiveCommentCellDelegate
 - (void)viewConfigure {
     ;
 }
+
+#pragma mark - Property
+- (void)setComments:(NSArray *)comments {
+    _comments = comments;
+    
+    if (comments.count) {
+        [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(comments.count - 1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+}
+
 #pragma mark - Table View Data Source Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _comments.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -45,7 +56,8 @@ HXLiveCommentCellDelegate
 
 #pragma mark - Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    ;
+    HXLiveCommentCell *commentCell = (HXLiveCommentCell *)cell;
+    [commentCell updateWithComment:_comments[indexPath.row]];
 }
 
 #pragma mark - HXLiveCommentCellDelegate Methods

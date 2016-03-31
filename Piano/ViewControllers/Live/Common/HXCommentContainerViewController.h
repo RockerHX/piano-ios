@@ -24,4 +24,6 @@
 
 @property (weak, nonatomic) IBOutlet id  <HXCommentContainerViewControllerDelegate>delegate;
 
+@property (nonatomic, strong) NSArray *comments;
+
 @end
