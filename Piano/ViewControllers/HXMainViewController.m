@@ -168,7 +168,7 @@ HXLoginViewControllerDelegate
                              completeBlock:
              ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                  if (success) {
-                     NSDictionary *data = userInfo[MiaAPIKey_Values];
+                     NSDictionary *data = userInfo[MiaAPIKey_Values][@"data"];
                      [userSession updateUserWithData:data];
                      
                      [self fetchProfileData];
