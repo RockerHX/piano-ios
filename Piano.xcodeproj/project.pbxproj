@@ -90,6 +90,11 @@
 		CD5F215E1CAD2E8B0067A1DA /* HXLiveAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5F215B1CAD2E8B0067A1DA /* HXLiveAnchorView.xib */; };
 		CD5F21661CAD2F6A0067A1DA /* HXWatcherContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21651CAD2F6A0067A1DA /* HXWatcherContainerViewController.m */; };
 		CD5F21691CAD34710067A1DA /* HXWatcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21681CAD34710067A1DA /* HXWatcherCell.m */; };
+		CD5F21721CAD4C3F0067A1DA /* HXProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21711CAD4C3F0067A1DA /* HXProfileModel.m */; };
+		CD5F21751CAD4C560067A1DA /* HXAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21741CAD4C560067A1DA /* HXAlbumModel.m */; };
+		CD5F21791CAD4C930067A1DA /* HXAnchorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21781CAD4C930067A1DA /* HXAnchorModel.m */; };
+		CD5F217D1CAD4E3B0067A1DA /* HXVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F217C1CAD4E3B0067A1DA /* HXVideoModel.m */; };
+		CD5F21811CAD4EE50067A1DA /* HXReplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21801CAD4EE50067A1DA /* HXReplayModel.m */; };
 		CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */; };
 		CD6581651CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */; };
 		CD6C19411CA4E4AE00849B39 /* HXCommentContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19401CA4E4AE00849B39 /* HXCommentContainerViewController.m */; };
@@ -317,6 +322,16 @@
 		CD5F21651CAD2F6A0067A1DA /* HXWatcherContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherContainerViewController.m; sourceTree = "<group>"; };
 		CD5F21671CAD34710067A1DA /* HXWatcherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherCell.h; sourceTree = "<group>"; };
 		CD5F21681CAD34710067A1DA /* HXWatcherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherCell.m; sourceTree = "<group>"; };
+		CD5F21701CAD4C3F0067A1DA /* HXProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileModel.h; sourceTree = "<group>"; };
+		CD5F21711CAD4C3F0067A1DA /* HXProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileModel.m; sourceTree = "<group>"; };
+		CD5F21731CAD4C560067A1DA /* HXAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumModel.h; sourceTree = "<group>"; };
+		CD5F21741CAD4C560067A1DA /* HXAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumModel.m; sourceTree = "<group>"; };
+		CD5F21771CAD4C930067A1DA /* HXAnchorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAnchorModel.h; sourceTree = "<group>"; };
+		CD5F21781CAD4C930067A1DA /* HXAnchorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAnchorModel.m; sourceTree = "<group>"; };
+		CD5F217B1CAD4E3B0067A1DA /* HXVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXVideoModel.h; sourceTree = "<group>"; };
+		CD5F217C1CAD4E3B0067A1DA /* HXVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXVideoModel.m; sourceTree = "<group>"; };
+		CD5F217F1CAD4EE50067A1DA /* HXReplayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayModel.h; sourceTree = "<group>"; };
+		CD5F21801CAD4EE50067A1DA /* HXReplayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayModel.m; sourceTree = "<group>"; };
 		CD6581611CA3E99B00E2EF19 /* HXWatchLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveBottomBar.h; sourceTree = "<group>"; };
 		CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveBottomBar.m; sourceTree = "<group>"; };
 		CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatchLiveBottomBar.xib; sourceTree = "<group>"; };
@@ -714,6 +729,11 @@
 		CD2949DC1CA28B2200CA3C3F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CD5F217E1CAD4EDA0067A1DA /* Replay */,
+				CD5F217A1CAD4E300067A1DA /* Video */,
+				CD5F21761CAD4C840067A1DA /* Anchor */,
+				CD5F216E1CAD4C3F0067A1DA /* Album */,
+				CD5F216F1CAD4C3F0067A1DA /* Profile */,
 				398451DC1CAD02A9009018C6 /* MusicItem */,
 				CD2949E11CA28D8400CA3C3F /* User */,
 			);
@@ -955,6 +975,51 @@
 				CD5F215B1CAD2E8B0067A1DA /* HXLiveAnchorView.xib */,
 			);
 			path = AnchorView;
+			sourceTree = "<group>";
+		};
+		CD5F216E1CAD4C3F0067A1DA /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				CD5F21731CAD4C560067A1DA /* HXAlbumModel.h */,
+				CD5F21741CAD4C560067A1DA /* HXAlbumModel.m */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		CD5F216F1CAD4C3F0067A1DA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CD5F21701CAD4C3F0067A1DA /* HXProfileModel.h */,
+				CD5F21711CAD4C3F0067A1DA /* HXProfileModel.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CD5F21761CAD4C840067A1DA /* Anchor */ = {
+			isa = PBXGroup;
+			children = (
+				CD5F21771CAD4C930067A1DA /* HXAnchorModel.h */,
+				CD5F21781CAD4C930067A1DA /* HXAnchorModel.m */,
+			);
+			path = Anchor;
+			sourceTree = "<group>";
+		};
+		CD5F217A1CAD4E300067A1DA /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				CD5F217B1CAD4E3B0067A1DA /* HXVideoModel.h */,
+				CD5F217C1CAD4E3B0067A1DA /* HXVideoModel.m */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		CD5F217E1CAD4EDA0067A1DA /* Replay */ = {
+			isa = PBXGroup;
+			children = (
+				CD5F217F1CAD4EE50067A1DA /* HXReplayModel.h */,
+				CD5F21801CAD4EE50067A1DA /* HXReplayModel.m */,
+			);
+			path = Replay;
 			sourceTree = "<group>";
 		};
 		CD65815F1CA3E97200E2EF19 /* Common */ = {
@@ -1698,10 +1763,12 @@
 				CD23678B1CA91CFB002C8233 /* HXAlbumsNavigationBar.m in Sources */,
 				CD2949B91CA282AC00CA3C3F /* HXOnlineReplayCell.m in Sources */,
 				CD2E72881CA11DE0003CDB77 /* HXOnlineContainerViewController.m in Sources */,
+				CD5F217D1CAD4E3B0067A1DA /* HXVideoModel.m in Sources */,
 				CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */,
 				CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */,
 				CD2949F91CA2919B00CA3C3F /* HXRegisterContainerViewController.m in Sources */,
 				398451ED1CAD0543009018C6 /* SongPreloader.m in Sources */,
+				CD5F21721CAD4C3F0067A1DA /* HXProfileModel.m in Sources */,
 				CD2367AC1CA93D19002C8233 /* HXMeAttentionCell.m in Sources */,
 				CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */,
 				CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */,
@@ -1741,6 +1808,8 @@
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				CD2E729D1CA11E02003CDB77 /* HXOnlineModel.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
+				CD5F21811CAD4EE50067A1DA /* HXReplayModel.m in Sources */,
+				CD5F21751CAD4C560067A1DA /* HXAlbumModel.m in Sources */,
 				CDB811611CABBFAF00BFC3B9 /* HXLiveEndViewController.m in Sources */,
 				CD6C19891CA519A900849B39 /* HXPlayBottomBar.m in Sources */,
 				CDE2FC871CABF3F000476968 /* HXWatcherModel.m in Sources */,
@@ -1759,6 +1828,7 @@
 				CDED8F2E1CA13BB4003867B8 /* HXThemeManager.m in Sources */,
 				CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */,
 				CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */,
+				CD5F21791CAD4C930067A1DA /* HXAnchorModel.m in Sources */,
 				CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */,
 				CDED8F281CA13BB4003867B8 /* HXActivityIndicator.m in Sources */,
 				CD294A071CA294EA00CA3C3F /* HXAccountModel.m in Sources */,

@@ -67,7 +67,7 @@
 - (void)fetchProfileRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper getProfileWithUID:[HXUserSession session].uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            [self parseAttentionData:userInfo[MiaAPIKey_Values]];
+            [self parseAttentionData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             [subscriber sendCompleted];
         } else {
             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
