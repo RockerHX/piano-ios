@@ -60,6 +60,8 @@ static NSString * const MiaAPICommand_User_PostCnick		= @"User.Post.Cnick";
 static NSString * const MiaAPICommand_User_PostGender		= @"User.Post.Gender";
 static NSString * const MiaAPIKey_Gender					= @"gender";
 
+static NSString * const MiaAPICommand_User_GetProfile		= @"User.Get.Profile";
+
 // Notification
 static NSString * const MiaAPICommand_Push_UserNoti			= @"User.Push.Noti";
 static NSString * const MiaAPICommand_Push_RoomEnter		= @"Rooms.Push.Enter";
