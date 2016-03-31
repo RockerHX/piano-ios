@@ -221,6 +221,29 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)getUploadAvatarAuthWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+								timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_GetUpload
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)uploadFinish:(NSString *)fileID
+			completeBlock:(MiaRequestCompleteBlock)completeBlock
+			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:fileID forKey:MiaAPIKey_fileID];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostUploadfinish
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 #pragma mark - Live
 + (void)getHomeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
