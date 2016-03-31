@@ -31,7 +31,7 @@ typedef void(^FailureBlock)(NSString *);
     static HXUserSession *session = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        session = [[HXUserSession alloc] init];
+        session = [HXUserSession new];
     });
     return session;
 }
