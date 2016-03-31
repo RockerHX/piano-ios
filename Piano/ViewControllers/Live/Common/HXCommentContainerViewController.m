@@ -28,6 +28,7 @@ HXLiveCommentCellDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    ;
 }
 
 - (void)viewConfigure {
@@ -55,6 +56,12 @@ HXLiveCommentCellDelegate
 }
 
 #pragma mark - Table View Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [tableView fd_heightForCellWithIdentifier:NSStringFromClass([HXLiveCommentCell class]) cacheByIndexPath:indexPath configuration:^(HXLiveCommentCell *cell) {
+        [cell updateWithComment:_comments[indexPath.row]];
+    }];
+}
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     HXLiveCommentCell *commentCell = (HXLiveCommentCell *)cell;
     [commentCell updateWithComment:_comments[indexPath.row]];
@@ -62,9 +69,9 @@ HXLiveCommentCellDelegate
 
 #pragma mark - HXLiveCommentCellDelegate Methods
 - (void)commentCellShouldShowCommenter:(HXLiveCommentCell *)cell {
-//    NSInteger row = [self.tableView indexPathForCell:cell].row;
-    if (_delegate && [_delegate respondsToSelector:@selector(container:shouldShowWatcher:)]) {
-        [_delegate container:self shouldShowWatcher:nil];
+    NSInteger row = [self.tableView indexPathForCell:cell].row;
+    if (_delegate && [_delegate respondsToSelector:@selector(commentContainer:shouldShowComment:)]) {
+        [_delegate commentContainer:self shouldShowComment:_comments[row]];
     }
 }
 

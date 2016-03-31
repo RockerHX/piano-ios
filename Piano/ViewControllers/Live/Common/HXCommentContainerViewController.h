@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 
 
+@class HXCommentModel;
 @class HXCommentContainerViewController;
 
 
 @protocol HXCommentContainerViewControllerDelegate <NSObject>
 
 @required
-- (void)container:(HXCommentContainerViewController *)container shouldShowWatcher:(id)watcher;
+- (void)commentContainer:(HXCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment;
 
 @end
 
