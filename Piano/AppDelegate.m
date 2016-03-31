@@ -19,6 +19,10 @@
 #import "WXApi.h"
 //#import "WeiboSDK.h"
 
+// MusicMgr
+#import "UserSetting.h"
+#import "MusicMgr.h"
+
 
 @interface AppDelegate ()
 @end
@@ -28,8 +32,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
+
+	//启用远程控制事件接收
+	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+	// 默认用户配置
+	[UserSetting registerUserDefaults];
+
 #pragma mark - UMeng Analytics SDK
     // 设置版本号
     [MobClick setAppVersion:[[HXVersion appVersion] stringByAppendingFormat:@"(%@)", [HXVersion appBuildVersion]]];
@@ -102,11 +110,25 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+	// 切换回前台主动取消被打断状态
+	[MusicMgr standard].isInterruption = NO;
+
+	// 设置后台播放模式
+	AVAudioSession *audioSession=[AVAudioSession sharedInstance];
+	[audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+	[audioSession setActive:YES error:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - 远程控制事件
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+	NSDictionary *userInfo = [NSDictionary dictionaryWithObject:event forKey:MusicMgrNotificationKey_RemoteControlEvent];
+	[[NSNotificationCenter defaultCenter] postNotificationName:MusicMgrNotificationRemoteControlEvent object:self userInfo:userInfo];
 }
 
 @end
