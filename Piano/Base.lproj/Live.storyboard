@@ -53,19 +53,20 @@
                                                     <outlet property="delegate" destination="k8B-Y3-ojo" id="RuJ-l4-WwL"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zym-Ph-cTt" userLabel="Watcher Container">
-                                                <rect key="frame" x="165" y="4" width="99" height="32"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1M-qP-dBa">
+                                                <rect key="frame" x="165" y="4" width="97" height="32"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="nvJ-TC-ybn"/>
+                                                    <constraint firstAttribute="height" constant="32" id="BPG-jR-6CA"/>
                                                 </constraints>
-                                            </view>
+                                                <connections>
+                                                    <segue destination="TN2-Ac-bQc" kind="embed" identifier="HXWatcherContainerViewController" id="goc-yr-hau"/>
+                                                </connections>
+                                            </containerView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="Z1M-qP-dBa" firstAttribute="leading" secondItem="ZgH-JT-Lsv" secondAttribute="trailing" constant="12" id="DeG-PI-2Ie"/>
                                             <constraint firstItem="ZgH-JT-Lsv" firstAttribute="leading" secondItem="WGF-DP-Xhn" secondAttribute="leading" id="El7-fq-o9K"/>
-                                            <constraint firstItem="Zym-Ph-cTt" firstAttribute="leading" secondItem="ZgH-JT-Lsv" secondAttribute="trailing" constant="12" id="MQH-pi-dE4"/>
-                                            <constraint firstItem="Zym-Ph-cTt" firstAttribute="centerY" secondItem="WGF-DP-Xhn" secondAttribute="centerY" id="W1N-Wh-6wh"/>
                                             <constraint firstItem="ZgH-JT-Lsv" firstAttribute="top" secondItem="WGF-DP-Xhn" secondAttribute="top" id="aL8-Cv-sge"/>
                                             <constraint firstAttribute="bottom" secondItem="ZgH-JT-Lsv" secondAttribute="bottom" id="f9Q-RE-Mli"/>
                                             <constraint firstAttribute="height" constant="40" id="iux-rb-bDk"/>
@@ -77,7 +78,7 @@
                                             <constraint firstAttribute="height" constant="160" id="Yeh-A1-kdq"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" id="O5M-18-fAC"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXCommentContainerViewController" id="O5M-18-fAC"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5m6-An-NpA" userLabel="Bottom Bar" customClass="HXWatchLiveBottomBar">
@@ -117,7 +118,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="R38-Wu-TSw" firstAttribute="leading" secondItem="Zym-Ph-cTt" secondAttribute="trailing" constant="6" id="Fja-c2-61q"/>
                             <constraint firstItem="R38-Wu-TSw" firstAttribute="centerY" secondItem="ZgH-JT-Lsv" secondAttribute="centerY" id="IsN-ag-wU7"/>
                             <constraint firstItem="Weh-Ip-WpZ" firstAttribute="top" secondItem="43w-fr-l6Q" secondAttribute="top" id="Oxb-ql-frS"/>
                             <constraint firstItem="VvH-Rw-RfM" firstAttribute="top" secondItem="HZd-BB-htj" secondAttribute="bottom" id="VFN-ku-RoB"/>
@@ -125,6 +125,8 @@
                             <constraint firstItem="VvH-Rw-RfM" firstAttribute="leading" secondItem="43w-fr-l6Q" secondAttribute="leading" id="Zhc-LI-ErS"/>
                             <constraint firstAttribute="trailing" secondItem="VvH-Rw-RfM" secondAttribute="trailing" id="amT-og-shl"/>
                             <constraint firstAttribute="trailing" secondItem="Weh-Ip-WpZ" secondAttribute="trailing" id="inf-cH-Rtp"/>
+                            <constraint firstItem="R38-Wu-TSw" firstAttribute="leading" secondItem="Z1M-qP-dBa" secondAttribute="trailing" constant="8" id="jG8-1Y-maI"/>
+                            <constraint firstItem="Z1M-qP-dBa" firstAttribute="centerY" secondItem="R38-Wu-TSw" secondAttribute="centerY" id="oXc-LV-U6y"/>
                             <constraint firstAttribute="bottom" secondItem="VvH-Rw-RfM" secondAttribute="bottom" id="oa3-DB-pWm"/>
                             <constraint firstAttribute="bottom" secondItem="Weh-Ip-WpZ" secondAttribute="bottom" id="uHO-22-XqT"/>
                             <constraint firstItem="Weh-Ip-WpZ" firstAttribute="leading" secondItem="43w-fr-l6Q" secondAttribute="leading" id="zIs-bR-7AV"/>
@@ -145,15 +147,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXCommentContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXCommentContainerViewController" customClass="HXCommentContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="160"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXLiveCommentCell" id="2Ft-6T-LRO" userLabel="HXLiveCommentCell" customClass="HXLiveCommentCell">
-                                <rect key="frame" x="0.0" y="28" width="300" height="40"/>
+                                <rect key="frame" x="0.0" y="28" width="240" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Ft-6T-LRO" id="0d4-yf-761">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8y-o1-sCy" customClass="HXIBImageView">
@@ -176,13 +178,14 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0p-VM-AFR" userLabel="Content Container">
-                                            <rect key="frame" x="35" y="10" width="265" height="30"/>
+                                            <rect key="frame" x="35" y="10" width="205" height="30"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FIQ-FP-rIy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="205" height="30"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评论用户:你个煞笔" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="221" translatesAutoresizingMaskIntoConstraints="NO" id="9n5-wC-pRa">
-                                                    <rect key="frame" x="24" y="6" width="221" height="18"/>
+                                                    <rect key="frame" x="24" y="6" width="161" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -346,6 +349,61 @@
             </objects>
             <point key="canvasLocation" x="5" y="1108"/>
         </scene>
+        <!--HXWatcherContainerViewController-->
+        <scene sceneID="mz6-cH-gQw">
+            <objects>
+                <collectionViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TN2-Ac-bQc" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Qdb-8T-INH">
+                        <rect key="frame" x="0.0" y="0.0" width="97" height="32"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="gth-QB-cJf">
+                            <size key="itemSize" width="32" height="32"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXWatcherCell" id="Z77-I7-DYw" userLabel="HXWatcherCell" customClass="HXWatcherCell">
+                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rtC-yJ-2FN" customClass="HXIBImageView">
+                                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                            <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="16"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rtC-yJ-2FN" secondAttribute="trailing" id="KzU-vG-WWc"/>
+                                    <constraint firstItem="rtC-yJ-2FN" firstAttribute="top" secondItem="Z77-I7-DYw" secondAttribute="top" id="ekL-fh-sU2"/>
+                                    <constraint firstItem="rtC-yJ-2FN" firstAttribute="leading" secondItem="Z77-I7-DYw" secondAttribute="leading" id="p6I-SR-KET"/>
+                                    <constraint firstAttribute="bottom" secondItem="rtC-yJ-2FN" secondAttribute="bottom" id="zPX-zu-t3V"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="avatar" destination="rtC-yJ-2FN" id="FL7-dg-80G"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="TN2-Ac-bQc" id="mKN-Pe-Ymu"/>
+                            <outlet property="delegate" destination="TN2-Ac-bQc" id="x20-Ef-rFY"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uCj-Fw-lhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="396.5" y="-97"/>
+        </scene>
         <!--HXReplayNavigationController-->
         <scene sceneID="bxV-qL-g0V">
             <objects>
@@ -417,7 +475,7 @@
                                             <constraint firstAttribute="height" constant="160" id="5Nw-lI-oYO"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" id="xaJ-1k-tkf"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXCommentContainerViewController" id="xaJ-1k-tkf"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-Sr-nxg" userLabel="Bottom Bar" customClass="HXReplayBottomBar">
@@ -559,7 +617,7 @@
                                             <constraint firstAttribute="height" constant="160" id="ghU-RT-gfi"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" id="HeX-r3-laS"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXCommentContainerViewController" id="HeX-r3-laS"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -614,6 +672,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="O5M-18-fAC"/>
+        <segue reference="HeX-r3-laS"/>
     </inferredMetricsTieBreakers>
 </document>

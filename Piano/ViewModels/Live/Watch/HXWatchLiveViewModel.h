@@ -34,7 +34,7 @@
 
 
 - (instancetype)initWithRoomID:(NSString *)roomID;
-- (NSArray *)addWatcher:(NSDictionary *)data;
-- (NSArray *)addComment:(NSDictionary *)data;
+- (void)addWatcher:(NSDictionary *)data;
+- (void)addComment:(NSDictionary *)data;
 
 @end

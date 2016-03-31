@@ -99,26 +99,29 @@ static NSUInteger WatcherMAX = 20;
 }
 
 #pragma mark - Public Methods
-- (NSArray *)addWatcher:(NSDictionary *)data {
+- (void)addWatcher:(NSDictionary *)data {
     NSMutableArray *watchers = _watchers.mutableCopy;
     if (watchers.count >= WatcherMAX) {
         [watchers removeLastObject];
     }
     
     HXWatcherModel *model = [HXWatcherModel mj_objectWithKeyValues:data];
-    [watchers insertObject:model atIndex:0];
+    for (HXWatcherModel *watcher in _watchers) {
+        if ([model.uID isEqualToString:watcher.uID]) {
+            return;
+        }
+    }
     
+    [watchers insertObject:model atIndex:0];
     self.watchers = [watchers copy];
-    return _watchers;
 }
 
-- (NSArray *)addComment:(NSDictionary *)data {
+- (void)addComment:(NSDictionary *)data {
     NSMutableArray *comments = _comments.mutableCopy;
     HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:data];
     [comments addObject:model];
     
     self.comments = [comments copy];
-    return _comments;
 }
 
 #pragma mark - Private Methods
@@ -149,6 +152,11 @@ static NSUInteger WatcherMAX = 20;
 
 - (void)parseData:(NSDictionary *)data {
     _model = [HXLiveModel mj_objectWithKeyValues:data];
+    
+    NSArray *onlineList = data[@"online"];
+    for (NSDictionary *watcher in onlineList) {
+        [self addWatcher:watcher];
+    }
 }
 
 @end

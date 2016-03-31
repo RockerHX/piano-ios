@@ -8,7 +8,7 @@
 
 #import "HXWatchLiveViewController.h"
 #import "HXZegoAVKitManager.h"
-#import <ZegoAVKit/ZegoMoviePlayer.h>
+#import "HXWatcherContainerViewController.h"
 #import "HXCommentContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
@@ -23,6 +23,7 @@
 @interface HXWatchLiveViewController () <
 ZegoChatDelegate,
 ZegoVideoDelegate,
+HXWatcherContainerViewControllerDelegate,
 HXCommentContainerViewControllerDelegate,
 HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate
@@ -31,7 +32,8 @@ HXWatchLiveBottomBarDelegate
 
 
 @implementation HXWatchLiveViewController {
-    HXCommentContainerViewController *_containerViewController;
+    HXWatcherContainerViewController *_watcherContianer;
+    HXCommentContainerViewController *_commentContainer;
     HXWatchLiveViewModel *_viewModel;
 }
 
@@ -46,8 +48,15 @@ HXWatchLiveBottomBarDelegate
 
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    _containerViewController = segue.destinationViewController;
-    _containerViewController.delegate = self;
+    NSString *identifier = segue.identifier;
+    if ([identifier isEqualToString:NSStringFromClass([HXWatcherContainerViewController class])]) {
+        _watcherContianer = segue.destinationViewController;
+        _watcherContianer.delegate = self;
+        ;
+    } else if ([identifier isEqualToString:NSStringFromClass([HXCommentContainerViewController class])]) {
+        _commentContainer = segue.destinationViewController;
+        _commentContainer.delegate = self;
+    }
 }
 
 #pragma mark - Status Bar
@@ -96,15 +105,16 @@ HXWatchLiveBottomBarDelegate
 
 - (void)signalLink {
     @weakify(self)
-    [_viewModel.enterSignal subscribeNext:^(id x) {
+    [_viewModel.enterSignal subscribeNext:^(NSArray *watchers) {
         @strongify(self)
+        self->_watcherContianer.watchers = watchers;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
-        @strongify(self)
+        ;
     }];
     [_viewModel.commentSignal subscribeNext:^(NSArray *comments) {
         @strongify(self)
-        self->_containerViewController.comments = comments;
+        self->_commentContainer.comments = comments;
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
@@ -163,7 +173,7 @@ HXWatchLiveBottomBarDelegate
     _anchorView.countLabel.text = _viewModel.viewCount;
 }
 
-#pragma mark - ZegoChatDelegate
+#pragma mark - ZegoChatDelegate Methods
 - (void)onGetInChatRoomResult:(uint32)result zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId {
     if (result == 0) {
         NSLog(@"进入聊天室成功，开始启动直播...");
@@ -215,7 +225,7 @@ HXWatchLiveBottomBarDelegate
     }
 }
 
-#pragma mark - ZegoVideoDelegate
+#pragma mark - ZegoVideoDelegate Methods
 - (void)onPublishSucc:(uint32)zegoToken zegoId:(uint32)zegoId title:(NSString *)title {
     NSLog(@"启动直播成功，直播进行中...");
 }
@@ -259,11 +269,17 @@ HXWatchLiveBottomBarDelegate
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
+#pragma mark - HXWatcherContainerViewControllerDelegate Methods
+- (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
+    ;
+}
+
 #pragma mark - HXCommentContainerViewControllerDelegate Methods
-- (void)container:(HXCommentContainerViewController *)container shouldShowWatcher:(id)watcher {
-    [HXWatcherBoard showWithWatcher:watcher closed:^{
-        ;
-    }];
+- (void)commentContainer:(HXCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+    ;
+//    [HXWatcherBoard showWithWatcher:watcher closed:^{
+//        ;
+//    }];
 }
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
