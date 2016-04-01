@@ -27,8 +27,12 @@ typedef NS_ENUM(NSUInteger, HXMeNavigationBarAction) {
 
 @interface HXMeNavigationBar : UIView
 
-@property (weak, nonatomic) IBOutlet id  <HXMeNavigationBarDelegate>delegate;
+@property (weak, nonatomic) IBOutlet     id  <HXMeNavigationBarDelegate>delegate;
+
+@property (weak, nonatomic) IBOutlet UIView *bottomLine;
 
 - (IBAction)settingButtonPressed;
+
+- (void)showBottomLine:(BOOL)show;
 
 @end

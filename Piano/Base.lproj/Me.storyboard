@@ -47,6 +47,9 @@
                             <constraint firstAttribute="trailing" secondItem="Qxt-8u-WJt" secondAttribute="trailing" id="olO-74-Mkn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="lOJ-Ay-Sgc" id="xkV-3c-6Z5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsT-BS-MZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

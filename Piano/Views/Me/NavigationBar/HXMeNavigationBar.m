@@ -21,4 +21,11 @@ HXXibImplementation
     }
 }
 
+#pragma mark - Public Methods
+- (void)showBottomLine:(BOOL)show {
+    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        _bottomLine.alpha = (show ? 1.0 : 0.0f);
+    } completion:nil];
+}
+
 @end

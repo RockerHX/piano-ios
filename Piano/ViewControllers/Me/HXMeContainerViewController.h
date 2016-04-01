@@ -10,7 +10,20 @@
 #import "HXMeViewModel.h"
 
 
+@class HXMeContainerViewController;
+
+
+@protocol HXMeContainerViewControllerDelegate <NSObject>
+
+@required
+- (void)container:(HXMeContainerViewController *)container scrollOffset:(CGFloat)offset;
+
+@end
+
+
 @interface HXMeContainerViewController : UITableViewController
+
+@property (weak, nonatomic) IBOutlet id  <HXMeContainerViewControllerDelegate>delegate;
 
 @property (nonatomic, strong) HXMeViewModel *viewModel;
 

@@ -12,7 +12,8 @@
 
 
 @interface HXMeViewController () <
-HXMeNavigationBarDelegate
+HXMeNavigationBarDelegate,
+HXMeContainerViewControllerDelegate
 >
 @end
 
@@ -34,6 +35,7 @@ HXMeNavigationBarDelegate
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _containerViewController = segue.destinationViewController;
+    _containerViewController.delegate = self;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -95,6 +97,11 @@ HXMeNavigationBarDelegate
             break;
         }
     }
+}
+
+#pragma mark - HXMeContainerViewControllerDelegate Methods
+- (void)container:(HXMeContainerViewController *)container scrollOffset:(CGFloat)offset {
+    [_navigationBar showBottomLine:((offset > 0) ? YES : NO)];
 }
 
 @end
