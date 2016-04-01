@@ -91,8 +91,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个性签名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yio-Pu-KZk" userLabel="Sign Label">
-                                            <rect key="frame" x="30" y="144" width="260" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <rect key="frame" x="30" y="146" width="260" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -136,7 +136,7 @@
                                         <constraint firstItem="Yio-Pu-KZk" firstAttribute="trailing" secondItem="TbO-yS-D7G" secondAttribute="trailing" id="f2K-Op-GGL"/>
                                         <constraint firstItem="TbO-yS-D7G" firstAttribute="top" secondItem="41t-Ft-TIu" secondAttribute="bottom" constant="16" id="hdS-6b-Lw3"/>
                                         <constraint firstAttribute="bottom" secondItem="wjK-vg-4T9" secondAttribute="bottom" id="kJ9-5M-KUu"/>
-                                        <constraint firstItem="Yio-Pu-KZk" firstAttribute="top" secondItem="TbO-yS-D7G" secondAttribute="bottom" constant="4" id="qiH-Ux-vG0"/>
+                                        <constraint firstItem="Yio-Pu-KZk" firstAttribute="top" secondItem="TbO-yS-D7G" secondAttribute="bottom" constant="6" id="qiH-Ux-vG0"/>
                                         <constraint firstAttribute="trailing" secondItem="wjK-vg-4T9" secondAttribute="trailing" id="rDs-77-t1p"/>
                                     </constraints>
                                 </tableViewCellContentView>
