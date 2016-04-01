@@ -29,6 +29,17 @@ typedef NS_ENUM(NSUInteger, HXProfileRowType) {
 @property (nonatomic, assign, readonly)   CGFloat  videoHeight;
 @property (nonatomic, assign, readonly)   CGFloat  replayHeight;
 
+@property (nonatomic, assign, readonly)   CGFloat  albumItemSpace;
+@property (nonatomic, assign, readonly)   CGFloat  videoItemSpcae;
+@property (nonatomic, assign, readonly)   CGFloat  replayItemSpace;
+
+@property (nonatomic, assign, readonly)   CGFloat  albumItemWidth;
+@property (nonatomic, assign, readonly)   CGFloat  videoItemWidth;
+@property (nonatomic, assign, readonly)   CGFloat  replayItemWidth;
+@property (nonatomic, assign, readonly)   CGFloat  albumItemHeight;
+@property (nonatomic, assign, readonly)   CGFloat  videoItemHeight;
+@property (nonatomic, assign, readonly)   CGFloat  replayItemHeight;
+
 @property (nonatomic, assign, readonly) NSInteger  rows;
 @property (nonatomic, strong, readonly)   NSArray *rowTypes;
 

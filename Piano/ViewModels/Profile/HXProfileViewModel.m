@@ -11,6 +11,12 @@
 #import "UIConstants.h"
 
 
+static CGFloat LeftRightSpace = 30.0f;
+static CGFloat AlbumBottomSpace = 50.0f;
+static CGFloat VideoBottomSpace = 50.0f;
+static CGFloat ReplayBottomSpace = 60.0f;
+
+
 @implementation HXProfileViewModel {
     NSMutableArray *_rowTypes;
 }
@@ -27,8 +33,20 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
-    [self setupRowTypes];
+    _albumItemSpace = 22.0f;
+    _videoItemSpcae = 10.0f;
+    _replayItemSpace = 10.0f;
     
+    _albumItemWidth = (((SCREEN_WIDTH - LeftRightSpace) - _albumItemSpace*2) / 3);
+    _videoItemWidth = (((SCREEN_WIDTH - LeftRightSpace) - _videoItemSpcae) / 2);
+    _replayItemWidth = (((SCREEN_WIDTH - LeftRightSpace) - _replayItemSpace) / 2);
+    
+    _albumItemHeight = _albumItemWidth + AlbumBottomSpace;
+    _videoItemHeight = (_videoItemWidth * (95.0f/168.0f)) + VideoBottomSpace;
+    _replayItemHeight = _replayItemWidth + ReplayBottomSpace;
+    
+    
+    [self setupRowTypes];
     [self fetchDataCommandConfigure];
 }
 
@@ -57,15 +75,15 @@
 }
 
 - (CGFloat)albumHeight {
-    return 115.0f;
+    return 40.0f + (_albumItemHeight * ((_model.albums.count / 3) + 1));
 }
 
 - (CGFloat)videoHeight {
-    return 115.0f;
+    return 40.0f + (_videoItemHeight * ((_model.videos.count / 2) + 1));
 }
 
 - (CGFloat)replayHeight {
-    return 115.0f;
+    return 40.0f + (_replayItemHeight * ((_model.replays.count / 2) + 1));
 }
 
 - (NSInteger)rows {

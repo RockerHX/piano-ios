@@ -7,23 +7,24 @@
 //
 
 #import "HXProfileVideoContainerCell.h"
+#import "HXProfileViewModel.h"
 #import "HXProfileVideoCell.h"
 
 
 @implementation HXProfileVideoContainerCell {
-    NSArray *_videos;
+    HXProfileViewModel *_viewModel;
 }
 
 #pragma mark - Public Methods
-- (void)updateCellWithVideos:(NSArray *)videos {
-    _videos = videos;
+- (void)updateCellWithViewModel:(HXProfileViewModel *)viewModel {
+    _viewModel = viewModel;
     
     [self.collectionView reloadData];
 }
 
 #pragma mark - Collection View Data Source Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _videos.count;
+    return _viewModel.model.videos.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -32,14 +33,18 @@
 }
 
 #pragma mark - Collection View Delegate Methods
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(_viewModel.videoItemWidth, _viewModel.videoItemHeight);
+}
+
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     HXProfileVideoCell *videoCell = (HXProfileVideoCell *)cell;
-    [videoCell updateCellWithVideo:_videos[indexPath.row]];
+    [videoCell updateCellWithVideo:_viewModel.model.videos[indexPath.row]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_delegate && [_delegate respondsToSelector:@selector(videoCell:selectedVideo:)]) {
-        [_delegate videoCell:self selectedVideo:_videos[indexPath.row]];
+        [_delegate videoCell:self selectedVideo:_viewModel.model.videos[indexPath.row]];
     }
 }
 

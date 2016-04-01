@@ -10,6 +10,7 @@
 
 
 @class HXVideoModel;
+@class HXProfileViewModel;
 @class HXProfileVideoContainerCell;
 
 
@@ -21,12 +22,16 @@
 @end
 
 
-@interface HXProfileVideoContainerCell : UITableViewCell <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HXProfileVideoContainerCell : UITableViewCell <
+UICollectionViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout
+>
 
 @property (weak, nonatomic) IBOutlet id  <HXProfileVideoContainerCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-- (void)updateCellWithVideos:(NSArray *)videos;
+- (void)updateCellWithViewModel:(HXProfileViewModel *)viewModel;
 
 @end

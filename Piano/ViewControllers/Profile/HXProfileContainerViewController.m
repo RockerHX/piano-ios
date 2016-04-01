@@ -112,26 +112,28 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    HXProfileModel *model = _viewModel.model;
+    
     HXProfileRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
         case HXProfileRowTypeHeader: {
-            [(HXProfileHeaderCell *)cell updateCellWithProfileModel:_viewModel.model];
+            [(HXProfileHeaderCell *)cell updateCellWithProfileModel:model];
             break;
         }
         case HXProfileRowTypeLiving: {
-            [(HXProfileLiveCell *)cell updateCellWithProfileModel:_viewModel.model];
+            [(HXProfileLiveCell *)cell updateCellWithProfileModel:model];
             break;
         }
         case HXProfileRowTypeAlbumContainer: {
-//            [(HXProfileAlbumContainerCell *)cell updateCellWithProfileModel:_viewModel.model];
+            [(HXProfileAlbumContainerCell *)cell updateCellWithViewModel:_viewModel];
             break;
         }
         case HXProfileRowTypeVideoContainer: {
-//            [(HXProfileVideoContainerCell *)cell updateCellWithProfileModel:_viewModel.model];
+            [(HXProfileVideoContainerCell *)cell updateCellWithViewModel:_viewModel];
             break;
         }
         case HXProfileRowTypeReplayContainer: {
-//            [(HXProfileReplayContainerCell *)cell updateCellWithProfileModel:_viewModel.model];
+            [(HXProfileReplayContainerCell *)cell updateCellWithViewModel:_viewModel];
             break;
         }
     }

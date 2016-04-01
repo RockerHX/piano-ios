@@ -10,6 +10,7 @@
 
 
 @class HXReplayModel;
+@class HXProfileViewModel;
 @class HXProfileReplayContainerCell;
 
 
@@ -21,12 +22,16 @@
 @end
 
 
-@interface HXProfileReplayContainerCell : UITableViewCell <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HXProfileReplayContainerCell : UITableViewCell <
+UICollectionViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout
+>
 
 @property (weak, nonatomic) IBOutlet id  <HXProfileReplayContainerCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-- (void)updateCellWithReplays:(NSArray *)replays;
+- (void)updateCellWithViewModel:(HXProfileViewModel *)viewModel;
 
 @end

@@ -10,6 +10,7 @@
 
 
 @class HXAlbumModel;
+@class HXProfileViewModel;
 @class HXProfileAlbumContainerCell;
 
 
@@ -21,12 +22,16 @@
 @end
 
 
-@interface HXProfileAlbumContainerCell : UITableViewCell <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HXProfileAlbumContainerCell : UITableViewCell <
+UICollectionViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout
+>
 
 @property (weak, nonatomic) IBOutlet id  <HXProfileAlbumContainerCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-- (void)updateCellWithAlbums:(NSArray *)albums;
+- (void)updateCellWithViewModel:(HXProfileViewModel *)viewModel;
 
 @end

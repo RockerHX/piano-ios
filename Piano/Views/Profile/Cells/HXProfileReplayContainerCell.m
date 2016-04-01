@@ -7,23 +7,24 @@
 //
 
 #import "HXProfileReplayContainerCell.h"
+#import "HXProfileViewModel.h"
 #import "HXProfileReplayCell.h"
 
 
 @implementation HXProfileReplayContainerCell {
-    NSArray *_replays;
+    HXProfileViewModel *_viewModel;
 }
 
 #pragma mark - Public Methods
-- (void)updateCellWithReplays:(NSArray *)replays {
-    _replays = replays;
+- (void)updateCellWithViewModel:(HXProfileViewModel *)viewModel {
+    _viewModel = viewModel;
     
     [self.collectionView reloadData];
 }
 
 #pragma mark - Collection View Data Source Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _replays.count;
+    return _viewModel.model.replays.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -32,14 +33,18 @@
 }
 
 #pragma mark - Collection View Delegate Methods
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(_viewModel.replayItemWidth, _viewModel.replayItemHeight);
+}
+
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     HXProfileReplayCell *replayCell = (HXProfileReplayCell *)cell;
-    [replayCell updateCellWithReplay:_replays[indexPath.row]];
+    [replayCell updateCellWithReplay:_viewModel.model.replays[indexPath.row]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_delegate && [_delegate respondsToSelector:@selector(replayCell:selectedReplay:)]) {
-        [_delegate replayCell:self selectedReplay:_replays[indexPath.row]];
+        [_delegate replayCell:self selectedReplay:_viewModel.model.replays[indexPath.row]];
     }
 }
 

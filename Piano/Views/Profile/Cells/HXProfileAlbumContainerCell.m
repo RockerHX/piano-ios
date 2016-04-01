@@ -7,23 +7,24 @@
 //
 
 #import "HXProfileAlbumContainerCell.h"
+#import "HXProfileViewModel.h"
 #import "HXProfileAlbumCell.h"
 
 
 @implementation HXProfileAlbumContainerCell {
-    NSArray *_albums;
+    HXProfileViewModel *_viewModel;
 }
 
 #pragma mark - Public Methods
-- (void)updateCellWithAlbums:(NSArray *)albums {
-    _albums = albums;
+- (void)updateCellWithViewModel:(HXProfileViewModel *)viewModel {
+    _viewModel = viewModel;
     
     [self.collectionView reloadData];
 }
 
 #pragma mark - Collection View Data Source Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _albums.count;
+    return _viewModel.model.albums.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -32,14 +33,18 @@
 }
 
 #pragma mark - Collection View Delegate Methods
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(_viewModel.albumItemWidth, _viewModel.albumItemHeight);
+}
+
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     HXProfileAlbumCell *albumCell = (HXProfileAlbumCell *)cell;
-    [albumCell updateCellWithAlbum:_albums[indexPath.row]];
+    [albumCell updateCellWithAlbum:_viewModel.model.albums[indexPath.row]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_delegate && [_delegate respondsToSelector:@selector(albumCell:selectedAlbum:)]) {
-        [_delegate albumCell:self selectedAlbum:_albums[indexPath.row]];
+        [_delegate albumCell:self selectedAlbum:_viewModel.model.albums[indexPath.row]];
     }
 }
 
