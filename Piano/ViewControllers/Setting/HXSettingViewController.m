@@ -94,27 +94,13 @@ GenderPickerViewDelegate
 }
 
 - (void)loadAvatar {
-#warning Eden
-//    [MiaAPIHelper getUserInfoWithUID:[HXUserSession session].uid completeBlock:
-//     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//         if (success) {
-//             NSString *avatarUrl = userInfo[MiaAPIKey_Values][@"info"][0][@"uimg"];
-//             NSString *nickName = userInfo[MiaAPIKey_Values][@"info"][0][@"nick"];
-//             long gender = [userInfo[MiaAPIKey_Values][@"info"][0][@"gender"] intValue];
-//             
-//             [_nickNameTextField setText:nickName];
-//             _lastNickName = nickName;
-//             
-//             NSString *avatarUrlWithTime = [NSString stringWithFormat:@"%@?t=%ld", avatarUrl, (long)[[NSDate date] timeIntervalSince1970]];
-//             [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrlWithTime]
-//                                 placeholderImage:[UIImage imageNamed:@"C-AvatarDefaultIcon"]];
-//             [self updateGenderLabel:gender];
-//         } else {
-//             NSLog(@"getUserInfoWithUID failed");
-//         }
-//     } timeoutBlock:^(MiaRequestItem *requestItem) {
-//         NSLog(@"getUserInfoWithUID timeout");
-//     }];
+	NSString *nickName = [HXUserSession session].user.nickName;
+	[_nickNameTextField setText:nickName];
+	 _lastNickName = nickName;
+
+	[_avatarImageView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl]
+						placeholderImage:[UIImage imageNamed:@"C-AvatarDefaultIcon"]];
+//	[self updateGenderLabel:gender];
 }
 
 - (void)loadNickName {
@@ -327,34 +313,35 @@ GenderPickerViewDelegate
 }
 
 - (void)logoutTouchAction {
-#warning Eden
-//    MBProgressHUD *aMBProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"退出登录中..."];
-//    [MiaAPIHelper logoutWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//        if (success) {
-//            [MiaAPIHelper sendUUIDWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//                if (success) {
-//                    NSLog(@"logout then sendUUID success");
-//                } else {
-//                    NSLog(@"logout then sendUUID failed:%@", userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
-//                }
-//            } timeoutBlock:^(MiaRequestItem *requestItem) {
-//                NSLog(@"logout then sendUUID timeout");
-//            }];
-//            
-//            [[HXUserSession session] logout];
-//            [HXAlertBanner showWithMessage:@"退出登录成功" tap:nil];
-//            [self shouldLogout];
-//            [self.navigationController popViewControllerAnimated:NO];
-//        } else {
-//            id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
-//            [HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
-//        }
-//        
-//        [aMBProgressHUD removeFromSuperview];
-//    } timeoutBlock:^(MiaRequestItem *requestItem) {
-//        [aMBProgressHUD removeFromSuperview];
-//        [HXAlertBanner showWithMessage:@"退出登录失败，网络请求超时" tap:nil];
-//    }];
+    MBProgressHUD *aMBProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"退出登录中..."];
+    [MiaAPIHelper logoutWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            [MiaAPIHelper guestLoginWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                if (success) {
+                    NSLog(@"logout then sendUUID success");
+                } else {
+                    NSLog(@"logout then sendUUID failed:%@", userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
+                }
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                NSLog(@"logout then sendUUID timeout");
+            }];
+            
+            [[HXUserSession session] logout];
+            [HXAlertBanner showWithMessage:@"退出登录成功" tap:nil];
+            [self shouldLogout];
+			
+#warning @andy 退出登录后应该跳回首页
+            [self.navigationController popViewControllerAnimated:NO];
+        } else {
+            id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
+            [HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
+        }
+        
+        [aMBProgressHUD removeFromSuperview];
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [aMBProgressHUD removeFromSuperview];
+        [HXAlertBanner showWithMessage:@"退出登录失败，网络请求超时" tap:nil];
+    }];
 }
 
 #pragma mark - Table View Delegate Methods
