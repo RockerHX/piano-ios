@@ -80,6 +80,7 @@
 		CD4492E61CAAA504005F36B3 /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; };
 		CD4492E71CAAA504005F36B3 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD45673A1CAE13B800837DFF /* HXMeMyStationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */; };
+		CD546D011CAE9A63009FB2FD /* FormatTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */; };
 		CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */; };
 		CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */; };
 		CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */; };
@@ -323,6 +324,8 @@
 		CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
 		CD4567381CAE13B800837DFF /* HXMeMyStationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeMyStationCell.h; sourceTree = "<group>"; };
 		CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeMyStationCell.m; sourceTree = "<group>"; };
+		CD546CFF1CAE9A63009FB2FD /* FormatTimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormatTimeHelper.h; sourceTree = "<group>"; };
+		CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormatTimeHelper.m; sourceTree = "<group>"; };
 		CD5DD8A51CA912790077A17B /* HXAlbumsCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCell.h; sourceTree = "<group>"; };
 		CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentCell.m; sourceTree = "<group>"; };
 		CD5DD8A71CA912790077A17B /* HXAlbumsCommentCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCountCell.h; sourceTree = "<group>"; };
@@ -541,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				395D67181C9AB1D700ED0454 /* UserDefaultsUtils */,
+				CD546CFE1CAE9A63009FB2FD /* FormatTimeHelper */,
 				CD91677C1CAE5399000A12DC /* CacheHelper */,
 				395D670C1C9AB19D00ED0454 /* PathHelper */,
 				395D67081C9AB16B00ED0454 /* FileLog */,
@@ -1005,6 +1009,15 @@
 				CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */,
 			);
 			path = Watch;
+			sourceTree = "<group>";
+		};
+		CD546CFE1CAE9A63009FB2FD /* FormatTimeHelper */ = {
+			isa = PBXGroup;
+			children = (
+				CD546CFF1CAE9A63009FB2FD /* FormatTimeHelper.h */,
+				CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */,
+			);
+			path = FormatTimeHelper;
 			sourceTree = "<group>";
 		};
 		CD5CDF861CA919F700D2162C /* Me */ = {
@@ -2044,6 +2057,7 @@
 				CD858D991CAE6B14007441E9 /* HXProfileVideoContainerCell.m in Sources */,
 				CD5F21791CAD4C930067A1DA /* HXAnchorModel.m in Sources */,
 				CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */,
+				CD546D011CAE9A63009FB2FD /* FormatTimeHelper.m in Sources */,
 				CDED8F281CA13BB4003867B8 /* HXActivityIndicator.m in Sources */,
 				CD294A071CA294EA00CA3C3F /* HXAccountModel.m in Sources */,
 			);

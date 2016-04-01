@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *cover;
 @property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *timeLabel;
 
 - (void)updateCellWithReplay:(HXReplayModel *)replay;
 

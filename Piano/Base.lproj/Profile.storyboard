@@ -503,6 +503,10 @@
                                                         <constraint firstItem="89k-db-ViQ" firstAttribute="top" secondItem="pK3-Fd-73B" secondAttribute="top" id="yrR-KU-xJ7"/>
                                                         <constraint firstAttribute="trailing" secondItem="89k-db-ViQ" secondAttribute="trailing" id="yuv-om-Hhi"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outlet property="cover" destination="89k-db-ViQ" id="I2u-b5-gdm"/>
+                                                        <outlet property="titleLabel" destination="3Ym-4d-1vy" id="ba5-Lb-2x4"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                             <connections>
@@ -600,6 +604,10 @@
                                                         <constraint firstItem="bJX-wp-iNZ" firstAttribute="top" secondItem="uZT-zO-8iC" secondAttribute="bottom" constant="10" id="hEM-i3-Dhd"/>
                                                         <constraint firstItem="bJX-wp-iNZ" firstAttribute="leading" secondItem="7aW-tg-1eI" secondAttribute="leading" id="hW5-Qx-2fg"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outlet property="cover" destination="uZT-zO-8iC" id="Vqh-bO-Fsh"/>
+                                                        <outlet property="titleLabel" destination="bJX-wp-iNZ" id="lQB-ij-fv0"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                             <connections>
@@ -680,16 +688,16 @@
                                                                     <constraint firstAttribute="width" secondItem="Xf9-Vd-LXk" secondAttribute="height" multiplier="1:1" id="yen-RN-1ft"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刚刚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="632-Yh-4tZ" userLabel="Time Prompt Label">
-                                                                <rect key="frame" x="0.0" y="199" width="170" height="15"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谈谈民谣说说爱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgb-Yg-TnN" userLabel="Replay Title Label">
                                                                 <rect key="frame" x="0.0" y="180" width="170" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刚刚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="632-Yh-4tZ" userLabel="Time Prompt Label">
+                                                                <rect key="frame" x="0.0" y="199" width="170" height="15"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -706,6 +714,11 @@
                                                         <constraint firstItem="632-Yh-4tZ" firstAttribute="leading" secondItem="iEy-M7-PZx" secondAttribute="leading" id="tv8-zb-SO8"/>
                                                         <constraint firstAttribute="trailing" secondItem="632-Yh-4tZ" secondAttribute="trailing" id="wIs-rU-ZTg"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outlet property="cover" destination="Xf9-Vd-LXk" id="pCy-4R-2Qo"/>
+                                                        <outlet property="timeLabel" destination="632-Yh-4tZ" id="97Q-Mo-a3Q"/>
+                                                        <outlet property="titleLabel" destination="zgb-Yg-TnN" id="LOg-Tg-uZO"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                             <connections>

@@ -7,13 +7,19 @@
 //
 
 #import "HXReplayModel.h"
+#import "FormatTimeHelper.h"
 
 
 @implementation HXReplayModel
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"nickName": @"nick",
-            @"viewCount": @"viewCnt"};
+            @"viewCount": @"viewCnt",
+           @"createDate": @"createTIme"};
+}
+
+- (void)mj_keyValuesDidFinishConvertingToObject {
+    _formatTime = [FormatTimeHelper formatTimeWith:_createDate];
 }
 
 @end
