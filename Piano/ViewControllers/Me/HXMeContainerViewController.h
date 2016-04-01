@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) HXMeViewModel *viewModel;
 
+- (void)refresh;
+
 @end

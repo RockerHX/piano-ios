@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXProfileModel.h"
 
 
 @interface HXMeHeaderCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *summaryLabel;
+
+- (void)updateCellWithProfileModel:(HXProfileModel *)model;
 
 @end

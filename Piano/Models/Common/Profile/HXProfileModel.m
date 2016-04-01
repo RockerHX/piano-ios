@@ -14,6 +14,7 @@
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"nickName": @"nick",
             @"avatarUrl": @"userpic",
+              @"summary": @"bio",
             @"fansCount": @"fansCnt",
           @"followCount": @"followCnt",
         @"liveViewCount": @"liveViewCnt",

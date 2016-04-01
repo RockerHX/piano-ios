@@ -10,6 +10,7 @@
 #import "HXMeHeaderCell.h"
 #import "HXMeRechargeCell.h"
 #import "HXMePurchaseHistoryCell.h"
+#import "HXMeMyStationCell.h"
 #import "HXMeAttentionPromptCell.h"
 #import "HXMeAttentionContainerCell.h"
 
@@ -37,10 +38,8 @@
     ;
 }
 
-#pragma mark - Property
-- (void)setViewModel:(HXMeViewModel *)viewModel {
-    _viewModel = viewModel;
-    
+#pragma mark - Public Methods
+- (void)refresh {
     [self.tableView reloadData];
 }
 
@@ -52,7 +51,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
-    
     switch (rowType) {
         case HXMeRowTypeHeader: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeHeaderCell class]) forIndexPath:indexPath];
@@ -64,6 +62,10 @@
         }
         case HXMeRowTypePurchaseHistory: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMePurchaseHistoryCell class]) forIndexPath:indexPath];
+            break;
+        }
+        case HXMeRowTypeMyStation: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeMyStationCell class]) forIndexPath:indexPath];
             break;
         }
         case HXMeRowTypeAttentionPrompt: {
@@ -89,6 +91,7 @@
         }
         case HXMeRowTypeRecharge:
         case HXMeRowTypePurchaseHistory:
+        case HXMeRowTypeMyStation:
         case HXMeRowTypeAttentionPrompt: {
             height = _viewModel.normalHeight;
             break;
@@ -102,11 +105,50 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    switch (rowType) {
+        case HXMeRowTypeHeader: {
+            HXMeHeaderCell *headerCell = (HXMeHeaderCell *)cell;
+            [headerCell updateCellWithProfileModel:_viewModel.model];
+            break;
+        }
+        case HXMeRowTypeAttentionPrompt: {
+            HXMeAttentionPromptCell *attentionPromptCell = (HXMeAttentionPromptCell *)cell;
+            [attentionPromptCell updateCellWithCount:_viewModel.model.attentions.count];
+            break;
+        }
+        case HXMeRowTypeAttentions: {
+            HXMeAttentionContainerCell *attentionContainerCell = (HXMeAttentionContainerCell *)cell;
+            [attentionContainerCell updateCellWithAttentions:_viewModel.model.attentions];
+            break;
+        }
+        default: {
+            break;
+        }
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    switch (rowType) {
+        case HXMeRowTypeRecharge: {
+            ;
+            break;
+        }
+        case HXMeRowTypePurchaseHistory: {
+            ;
+            break;
+        }
+        case HXMeRowTypeMyStation: {
+            ;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
 }
 
 @end

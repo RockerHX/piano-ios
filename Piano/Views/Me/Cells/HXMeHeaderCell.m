@@ -7,19 +7,16 @@
 //
 
 #import "HXMeHeaderCell.h"
+#import "UIImageView+WebCache.h"
 
 
 @implementation HXMeHeaderCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+#pragma mark - Public Methods
+- (void)updateCellWithProfileModel:(HXProfileModel *)model {
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
+    _nickNameLabel.text = model.nickName;
+    _summaryLabel.text = model.summary;
 }
 
 @end

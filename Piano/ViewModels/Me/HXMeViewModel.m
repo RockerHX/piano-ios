@@ -32,7 +32,8 @@
 - (void)setupRowTypes {
     _rowTypes = @[@(HXMeRowTypeHeader),
                   @(HXMeRowTypeRecharge),
-                  @(HXMeRowTypePurchaseHistory)];
+                  @(HXMeRowTypePurchaseHistory),
+                  @(HXMeRowTypeMyStation)];
 }
 
 - (void)fetchDataCommandConfigure {
@@ -48,7 +49,7 @@
 
 #pragma mark - Property
 - (CGFloat)headerHeight {
-    return 176.0f;
+    return 200.0f;
 }
 
 - (CGFloat)normalHeight {
@@ -56,7 +57,7 @@
 }
 
 - (CGFloat)attentionHeight {
-    return 115.0f;
+    return 125.0f;
 }
 
 - (NSInteger)rows {
@@ -78,8 +79,23 @@
 }
 
 - (void)parseAttentionData:(NSDictionary *)data {
-    HXProfileModel *model = [HXProfileModel mj_objectWithKeyValues:data];
-    ;
+    _model = [HXProfileModel mj_objectWithKeyValues:data];
+    [self resetRowType];
+}
+
+- (void)resetRowType {
+    if (_model.attentions.count) {
+        NSMutableArray *rowTypes = [_rowTypes mutableCopy];
+        for (NSInteger index = 4; index < _rowTypes.count; index++) {
+            HXMeRowType rowType = [_rowTypes[index] integerValue];
+            if ((rowType == HXMeRowTypeAttentionPrompt) || (rowType == HXMeRowTypeAttentions)) {
+                return;
+            }
+        }
+        [rowTypes insertObject:@(HXMeRowTypeAttentionPrompt) atIndex:4];
+        [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:5];
+        _rowTypes = [rowTypes copy];
+    }
 }
 
 @end

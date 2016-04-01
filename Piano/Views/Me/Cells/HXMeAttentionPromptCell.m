@@ -11,15 +11,9 @@
 
 @implementation HXMeAttentionPromptCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+#pragma mark - Public Methods
+- (void)updateCellWithCount:(NSInteger)count {
+    _countLabel.text = @(count).stringValue;
 }
 
 @end

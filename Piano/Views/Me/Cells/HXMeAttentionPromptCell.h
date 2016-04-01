@@ -11,4 +11,8 @@
 
 @interface HXMeAttentionPromptCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+
+- (void)updateCellWithCount:(NSInteger)count;
+
 @end

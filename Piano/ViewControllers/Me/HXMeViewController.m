@@ -83,12 +83,18 @@ HXMeNavigationBarDelegate
     } completed:^{
         @strongify(self)
         [self hiddenHUD];
+        [self->_containerViewController refresh];
     }];
 }
 
 #pragma mark - HXMeNavigationBarDelegate Methods
 - (void)navigationBar:(HXMeNavigationBar *)bar action:(HXMeNavigationBarAction)action {
-    ;
+    switch (action) {
+        case HXMeNavigationBarActionSetting: {
+            ;
+            break;
+        }
+    }
 }
 
 @end

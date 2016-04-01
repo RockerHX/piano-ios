@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, HXMeRowType) {
     HXMeRowTypeHeader,
     HXMeRowTypeRecharge,
     HXMeRowTypePurchaseHistory,
+    HXMeRowTypeMyStation,
     HXMeRowTypeAttentionPrompt,
     HXMeRowTypeAttentions,
 };
@@ -29,5 +30,7 @@ typedef NS_ENUM(NSUInteger, HXMeRowType) {
 
 @property (nonatomic, assign, readonly) NSInteger  rows;
 @property (nonatomic, strong, readonly)   NSArray *rowTypes;
+
+@property (nonatomic, strong, readonly) HXProfileModel *model;
 
 @end

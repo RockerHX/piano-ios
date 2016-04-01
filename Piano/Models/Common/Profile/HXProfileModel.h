@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, HXProfileGender) {
 @property (nonatomic, strong)        NSString *uID;
 @property (nonatomic, strong)        NSString *nickName;
 @property (nonatomic, strong)        NSString *avatarUrl;
+@property (nonatomic, strong)        NSString *summary;
 
 @property (nonatomic, assign)       NSInteger  fansCount;
 @property (nonatomic, assign)       NSInteger  followCount;
