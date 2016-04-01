@@ -8,6 +8,7 @@
 
 #import "HXProfileViewModel.h"
 #import "MiaAPIHelper.h"
+#import "UIConstants.h"
 
 
 @implementation HXProfileViewModel {
@@ -48,18 +49,18 @@
 
 #pragma mark - Property
 - (CGFloat)headerHeight {
-    return 176.0f;
+    return 240.0f;
 }
 
 - (CGFloat)livingHeight {
-    return 56.0f;
+    return 130.0f;
 }
 
 - (CGFloat)albumHeight {
     return 115.0f;
 }
 
-- (CGFloat)vedioHeight {
+- (CGFloat)videoHeight {
     return 115.0f;
 }
 
@@ -75,7 +76,7 @@
 - (void)fetchProfileRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper getMusicianProfileWithUID:_uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            [self parseAttentionData:userInfo[MiaAPIKey_Values]];
+            [self parseAttentionData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             [subscriber sendCompleted];
         } else {
             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
@@ -86,7 +87,25 @@
 }
 
 - (void)parseAttentionData:(NSDictionary *)data {
-    ;
+    _model = [HXProfileModel mj_objectWithKeyValues:data];
+    [self resetRowType];
+}
+
+- (void)resetRowType {
+    NSMutableArray *rowTypes = [_rowTypes mutableCopy];
+    if (_model.liveRoomID && _model.live) {
+        [rowTypes addObject:@(HXProfileRowTypeLiving)];
+    }
+    if (_model.albums.count) {
+        [rowTypes addObject:@(HXProfileRowTypeAlbumContainer)];
+    }
+    if (_model.videos.count) {
+        [rowTypes addObject:@(HXProfileRowTypeVideoContainer)];
+    }
+    if (_model.replays.count) {
+        [rowTypes addObject:@(HXProfileRowTypeReplayContainer)];
+    }
+    _rowTypes = [rowTypes copy];
 }
 
 @end

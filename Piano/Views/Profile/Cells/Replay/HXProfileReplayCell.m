@@ -8,6 +8,12 @@
 
 #import "HXProfileReplayCell.h"
 
+
 @implementation HXProfileReplayCell
+
+#pragma mark - Public Methods
+- (void)updateCellWithReplay:(HXReplayModel *)replay {
+    ;
+}
 
 @end

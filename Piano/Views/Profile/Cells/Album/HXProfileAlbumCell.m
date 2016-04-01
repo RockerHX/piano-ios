@@ -8,6 +8,12 @@
 
 #import "HXProfileAlbumCell.h"
 
+
 @implementation HXProfileAlbumCell
+
+#pragma mark - Public Methods
+- (void)updateCellWithAlbum:(HXAlbumModel *)album {
+    ;
+}
 
 @end

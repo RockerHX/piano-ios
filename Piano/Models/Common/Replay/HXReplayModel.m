@@ -11,4 +11,9 @@
 
 @implementation HXReplayModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"nickName": @"nick",
+            @"viewCount": @"viewCnt"};
+}
+
 @end

@@ -16,4 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet HXProfileNavigationBar *navigationBar;
 
+@property (nonatomic, strong) NSString *uid;
+
 @end

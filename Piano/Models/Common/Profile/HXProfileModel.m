@@ -12,18 +12,19 @@
 @implementation HXProfileModel
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{@"nickName": @"nick",
-            @"avatarUrl": @"userpic",
-              @"summary": @"bio",
-            @"fansCount": @"fansCnt",
-          @"followCount": @"followCnt",
-        @"liveViewCount": @"liveViewCnt",
-      @"liveOnlineCount": @"liveOnlineCnt",
-         @"liveCoverUrl": @"liveRoomCoverUrl",
-           @"attentions": @"followList",
-               @"albums": @"musicAlbum",
-               @"videos": @"video",
-              @"replays": @"replay"};
+    return @{@"uid": @"uID",
+        @"nickName": @"nick",
+       @"avatarUrl": @"userpic",
+         @"summary": @"bio",
+       @"fansCount": @"fansCnt",
+     @"followCount": @"followCnt",
+   @"liveViewCount": @"liveViewCnt",
+ @"liveOnlineCount": @"liveOnlineCnt",
+    @"liveCoverUrl": @"liveRoomCoverUrl",
+      @"attentions": @"followList",
+          @"albums": @"musicAlbum",
+          @"videos": @"video",
+         @"replays": @"replay"};
 }
 
 + (NSDictionary *)mj_objectClassInArray {

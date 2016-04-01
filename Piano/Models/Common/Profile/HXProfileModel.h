@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, HXProfileGender) {
 @property (nonatomic, assign)            BOOL  follow;
 @property (nonatomic, assign) HXProfileGender  gender;
 
-@property (nonatomic, strong)        NSString *uID;
+@property (nonatomic, strong)        NSString *uid;
 @property (nonatomic, strong)        NSString *nickName;
 @property (nonatomic, strong)        NSString *avatarUrl;
 @property (nonatomic, strong)        NSString *summary;
@@ -32,6 +32,7 @@ typedef NS_ENUM(NSUInteger, HXProfileGender) {
 @property (nonatomic, assign)       NSInteger  fansCount;
 @property (nonatomic, assign)       NSInteger  followCount;
 
+@property (nonatomic, assign)            BOOL  live;
 @property (nonatomic, assign)       NSInteger  liveViewCount;
 @property (nonatomic, assign)       NSInteger  liveOnlineCount;
 @property (nonatomic, strong)        NSString *liveRoomID;

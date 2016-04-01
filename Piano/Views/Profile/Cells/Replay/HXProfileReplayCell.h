@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXReplayModel.h"
+
 
 @interface HXProfileReplayCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *cover;
+@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
+
+- (void)updateCellWithReplay:(HXReplayModel *)replay;
 
 @end

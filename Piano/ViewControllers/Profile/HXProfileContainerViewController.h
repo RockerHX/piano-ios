@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXProfileViewModel.h"
 
 
 @class HXProfileContainerViewController;
@@ -22,5 +23,9 @@
 @interface HXProfileContainerViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet id  <HXProfileContainerViewControllerDelegate>delegate;
+
+@property (nonatomic, strong) HXProfileViewModel *viewModel;
+
+- (void)refresh;
 
 @end

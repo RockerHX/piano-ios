@@ -116,7 +116,6 @@
 		CD7D9C521CAA5B8B006E5BA5 /* HXOnlineNewEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7D9C511CAA5B8B006E5BA5 /* HXOnlineNewEntryCell.m */; };
 		CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */; };
 		CD858D901CAE68CA007441E9 /* HXProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */; };
-		CD858D931CAE6945007441E9 /* HXProfileSeparatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D921CAE6945007441E9 /* HXProfileSeparatorCell.m */; };
 		CD858D961CAE69AD007441E9 /* HXProfileAlbumContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */; };
 		CD858D991CAE6B14007441E9 /* HXProfileVideoContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D981CAE6B14007441E9 /* HXProfileVideoContainerCell.m */; };
 		CD858D9C1CAE6B24007441E9 /* HXProfileReplayContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D9B1CAE6B24007441E9 /* HXProfileReplayContainerCell.m */; };
@@ -388,8 +387,6 @@
 		CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileHeaderCell.m; sourceTree = "<group>"; };
 		CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileLiveCell.h; sourceTree = "<group>"; };
 		CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileLiveCell.m; sourceTree = "<group>"; };
-		CD858D911CAE6945007441E9 /* HXProfileSeparatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileSeparatorCell.h; sourceTree = "<group>"; };
-		CD858D921CAE6945007441E9 /* HXProfileSeparatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileSeparatorCell.m; sourceTree = "<group>"; };
 		CD858D941CAE69AD007441E9 /* HXProfileAlbumContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileAlbumContainerCell.h; sourceTree = "<group>"; };
 		CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileAlbumContainerCell.m; sourceTree = "<group>"; };
 		CD858D971CAE6B14007441E9 /* HXProfileVideoContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileVideoContainerCell.h; sourceTree = "<group>"; };
@@ -1336,8 +1333,6 @@
 				CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */,
 				CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */,
 				CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */,
-				CD858D911CAE6945007441E9 /* HXProfileSeparatorCell.h */,
-				CD858D921CAE6945007441E9 /* HXProfileSeparatorCell.m */,
 				CD858D941CAE69AD007441E9 /* HXProfileAlbumContainerCell.h */,
 				CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */,
 				CD858D971CAE6B14007441E9 /* HXProfileVideoContainerCell.h */,
@@ -1932,7 +1927,6 @@
 				CD2949DA1CA28A3500CA3C3F /* HXIBView.m in Sources */,
 				CD2949D71CA28A3500CA3C3F /* HXIBButton.m in Sources */,
 				CD6C19521CA4EE8700849B39 /* HXRecordBottomBar.m in Sources */,
-				CD858D931CAE6945007441E9 /* HXProfileSeparatorCell.m in Sources */,
 				CD2949D41CA28A3500CA3C3F /* UIButton+HXIBnspectable.m in Sources */,
 				CD5F21531CAD1D850067A1DA /* HXCommentViewModel.m in Sources */,
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,

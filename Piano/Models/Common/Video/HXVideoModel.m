@@ -11,4 +11,8 @@
 
 @implementation HXVideoModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"viewCount": @"viewCnt"};
+}
+
 @end

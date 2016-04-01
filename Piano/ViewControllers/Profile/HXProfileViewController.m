@@ -20,6 +20,7 @@ HXProfileContainerViewControllerDelegate
 
 @implementation HXProfileViewController {
     HXProfileContainerViewController *_containerViewController;
+    HXProfileViewModel *_viewModel;
 }
 
 #pragma mark - Class Methods
@@ -55,7 +56,20 @@ HXProfileContainerViewControllerDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    [self showHUD];
+    _viewModel = [[HXProfileViewModel alloc] initWithUID:_uid];
+    _containerViewController.viewModel = _viewModel;
+    
+    @weakify(self)
+    RACSignal *fetchSignal = [_viewModel.fetchCommand execute:nil];
+    [fetchSignal subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+        @strongify(self)
+        [self hiddenHUD];
+        [self->_containerViewController refresh];
+    }];
 }
 
 - (void)viewConfigure {

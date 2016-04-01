@@ -9,6 +9,24 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HXProfileAlbumContainerCell : UITableViewCell
+@class HXAlbumModel;
+@class HXProfileAlbumContainerCell;
+
+
+@protocol HXProfileAlbumContainerCellDelegate <NSObject>
+
+@required
+- (void)albumCell:(HXProfileAlbumContainerCell *)cell selectedAlbum:(HXAlbumModel *)album;
+
+@end
+
+
+@interface HXProfileAlbumContainerCell : UITableViewCell <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (weak, nonatomic) IBOutlet id  <HXProfileAlbumContainerCellDelegate>delegate;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+- (void)updateCellWithAlbums:(NSArray *)albums;
 
 @end

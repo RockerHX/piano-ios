@@ -8,6 +8,12 @@
 
 #import "HXProfileVideoCell.h"
 
+
 @implementation HXProfileVideoCell
+
+#pragma mark - Public Methods
+- (void)updateCellWithVideo:(HXVideoModel *)video {
+    ;
+}
 
 @end

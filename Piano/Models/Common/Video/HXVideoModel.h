@@ -11,4 +11,10 @@
 
 @interface HXVideoModel : NSObject
 
+@property (nonatomic, assign) NSInteger  viewCount;
+
+@property (nonatomic, strong)  NSString *title;
+@property (nonatomic, strong)  NSString *videoUrl;
+@property (nonatomic, strong)  NSString *coverUrl;
+
 @end

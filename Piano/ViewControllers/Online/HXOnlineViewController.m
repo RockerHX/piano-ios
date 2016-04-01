@@ -110,6 +110,7 @@ HXOnlineContainerViewControllerDelegate
 
 - (void)container:(HXOnlineContainerViewController *)container showAnchorByModel:(HXOnlineModel *)model {
     HXProfileViewController *profileViewController = [HXProfileViewController instance];
+    profileViewController.uid = model.uID;
     [self.navigationController pushViewController:profileViewController animated:YES];
 }
 

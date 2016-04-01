@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXAlbumModel.h"
+
 
 @interface HXProfileAlbumCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *cover;
+@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
+
+- (void)updateCellWithAlbum:(HXAlbumModel *)album;
 
 @end

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXVideoModel.h"
+
 
 @interface HXProfileVideoCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *cover;
+@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
+
+- (void)updateCellWithVideo:(HXVideoModel *)video;
 
 @end
