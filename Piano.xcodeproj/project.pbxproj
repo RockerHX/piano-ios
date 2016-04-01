@@ -119,6 +119,15 @@
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
 		CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */; };
 		CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
+		CD9167671CAE524C000A12DC /* ChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167641CAE524C000A12DC /* ChangePwdViewController.m */; };
+		CD9167681CAE524C000A12DC /* HXFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167661CAE524C000A12DC /* HXFeedBackViewController.m */; };
+		CD91676B1CAE528D000A12DC /* GenderPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91676A1CAE528D000A12DC /* GenderPickerView.m */; };
+		CD9167721CAE52E7000A12DC /* MIALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91676E1CAE52E7000A12DC /* MIALabel.m */; };
+		CD9167731CAE52E7000A12DC /* MIAButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167711CAE52E7000A12DC /* MIAButton.m */; };
+		CD9167771CAE5304000A12DC /* MBProgressHUDHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167761CAE5304000A12DC /* MBProgressHUDHelp.m */; };
+		CD91677B1CAE534B000A12DC /* UIImage+ColorToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91677A1CAE534B000A12DC /* UIImage+ColorToImage.m */; };
+		CD91677F1CAE5399000A12DC /* CacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91677E1CAE5399000A12DC /* CacheHelper.m */; };
+		CD9167831CAE5437000A12DC /* UIImage+Extrude.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167821CAE5437000A12DC /* UIImage+Extrude.m */; };
 		CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
 		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
 		CDB811611CABBFAF00BFC3B9 /* HXLiveEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB811601CABBFAF00BFC3B9 /* HXLiveEndViewController.m */; };
@@ -372,6 +381,24 @@
 		CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD8A9A7E1C9906CA00698DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD8A9A801C9906CA00698DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD9167631CAE524C000A12DC /* ChangePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePwdViewController.h; sourceTree = "<group>"; };
+		CD9167641CAE524C000A12DC /* ChangePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePwdViewController.m; sourceTree = "<group>"; };
+		CD9167651CAE524C000A12DC /* HXFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXFeedBackViewController.h; sourceTree = "<group>"; };
+		CD9167661CAE524C000A12DC /* HXFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXFeedBackViewController.m; sourceTree = "<group>"; };
+		CD9167691CAE528D000A12DC /* GenderPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderPickerView.h; sourceTree = "<group>"; };
+		CD91676A1CAE528D000A12DC /* GenderPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderPickerView.m; sourceTree = "<group>"; };
+		CD91676D1CAE52E7000A12DC /* MIALabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIALabel.h; sourceTree = "<group>"; };
+		CD91676E1CAE52E7000A12DC /* MIALabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIALabel.m; sourceTree = "<group>"; };
+		CD9167701CAE52E7000A12DC /* MIAButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAButton.h; sourceTree = "<group>"; };
+		CD9167711CAE52E7000A12DC /* MIAButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAButton.m; sourceTree = "<group>"; };
+		CD9167751CAE5304000A12DC /* MBProgressHUDHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUDHelp.h; sourceTree = "<group>"; };
+		CD9167761CAE5304000A12DC /* MBProgressHUDHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUDHelp.m; sourceTree = "<group>"; };
+		CD9167791CAE534B000A12DC /* UIImage+ColorToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorToImage.h"; sourceTree = "<group>"; };
+		CD91677A1CAE534B000A12DC /* UIImage+ColorToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorToImage.m"; sourceTree = "<group>"; };
+		CD91677D1CAE5399000A12DC /* CacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheHelper.h; sourceTree = "<group>"; };
+		CD91677E1CAE5399000A12DC /* CacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheHelper.m; sourceTree = "<group>"; };
+		CD9167811CAE5437000A12DC /* UIImage+Extrude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extrude.h"; sourceTree = "<group>"; };
+		CD9167821CAE5437000A12DC /* UIImage+Extrude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extrude.m"; sourceTree = "<group>"; };
 		CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewController.h; sourceTree = "<group>"; };
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
@@ -485,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				395D67181C9AB1D700ED0454 /* UserDefaultsUtils */,
+				CD91677C1CAE5399000A12DC /* CacheHelper */,
 				395D670C1C9AB19D00ED0454 /* PathHelper */,
 				395D67081C9AB16B00ED0454 /* FileLog */,
 				395D67031C9AB15000ED0454 /* Categories */,
@@ -495,6 +523,8 @@
 		395D67031C9AB15000ED0454 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CD9167801CAE5437000A12DC /* UIImage+Extrude */,
+				CD9167781CAE534B000A12DC /* UIImage+ColorToImage */,
 				398451E01CAD0300009018C6 /* NSObject+BlockSupport */,
 				395D67141C9AB1C500ED0454 /* NSString+MD5 */,
 				395D67101C9AB1B700ED0454 /* NSString+IsNull */,
@@ -846,6 +876,10 @@
 			children = (
 				CD2E72841CA11DE0003CDB77 /* HXSettingViewController.h */,
 				CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */,
+				CD9167631CAE524C000A12DC /* ChangePwdViewController.h */,
+				CD9167641CAE524C000A12DC /* ChangePwdViewController.m */,
+				CD9167651CAE524C000A12DC /* HXFeedBackViewController.h */,
+				CD9167661CAE524C000A12DC /* HXFeedBackViewController.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -877,6 +911,11 @@
 		CD2E72931CA11DF8003CDB77 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				CD9167741CAE5304000A12DC /* MBProgressHUDHelp */,
+				CD91676C1CAE52E7000A12DC /* MIALabel */,
+				CD91676F1CAE52E7000A12DC /* MIAUIButton */,
+				CD9167691CAE528D000A12DC /* GenderPickerView.h */,
+				CD91676A1CAE528D000A12DC /* GenderPickerView.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1298,6 +1337,60 @@
 				CD8A9A701C9906CA00698DE9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD91676C1CAE52E7000A12DC /* MIALabel */ = {
+			isa = PBXGroup;
+			children = (
+				CD91676D1CAE52E7000A12DC /* MIALabel.h */,
+				CD91676E1CAE52E7000A12DC /* MIALabel.m */,
+			);
+			path = MIALabel;
+			sourceTree = "<group>";
+		};
+		CD91676F1CAE52E7000A12DC /* MIAUIButton */ = {
+			isa = PBXGroup;
+			children = (
+				CD9167701CAE52E7000A12DC /* MIAButton.h */,
+				CD9167711CAE52E7000A12DC /* MIAButton.m */,
+			);
+			path = MIAUIButton;
+			sourceTree = "<group>";
+		};
+		CD9167741CAE5304000A12DC /* MBProgressHUDHelp */ = {
+			isa = PBXGroup;
+			children = (
+				CD9167751CAE5304000A12DC /* MBProgressHUDHelp.h */,
+				CD9167761CAE5304000A12DC /* MBProgressHUDHelp.m */,
+			);
+			path = MBProgressHUDHelp;
+			sourceTree = "<group>";
+		};
+		CD9167781CAE534B000A12DC /* UIImage+ColorToImage */ = {
+			isa = PBXGroup;
+			children = (
+				CD9167791CAE534B000A12DC /* UIImage+ColorToImage.h */,
+				CD91677A1CAE534B000A12DC /* UIImage+ColorToImage.m */,
+			);
+			path = "UIImage+ColorToImage";
+			sourceTree = "<group>";
+		};
+		CD91677C1CAE5399000A12DC /* CacheHelper */ = {
+			isa = PBXGroup;
+			children = (
+				CD91677D1CAE5399000A12DC /* CacheHelper.h */,
+				CD91677E1CAE5399000A12DC /* CacheHelper.m */,
+			);
+			path = CacheHelper;
+			sourceTree = "<group>";
+		};
+		CD9167801CAE5437000A12DC /* UIImage+Extrude */ = {
+			isa = PBXGroup;
+			children = (
+				CD9167811CAE5437000A12DC /* UIImage+Extrude.h */,
+				CD9167821CAE5437000A12DC /* UIImage+Extrude.m */,
+			);
+			path = "UIImage+Extrude";
 			sourceTree = "<group>";
 		};
 		CDAA8DA41CA3C7DA0048C526 /* Replay */ = {
@@ -1754,6 +1847,8 @@
 				CDF3010A1CA8D50E00C19C32 /* HXAlbumsContainerViewController.m in Sources */,
 				CD5F214F1CAD10B80067A1DA /* HXCommentViewController.m in Sources */,
 				CDF3010D1CA8D74700C19C32 /* HXAlbumsViewModel.m in Sources */,
+				CD9167771CAE5304000A12DC /* MBProgressHUDHelp.m in Sources */,
+				CD91677B1CAE534B000A12DC /* UIImage+ColorToImage.m in Sources */,
 				CDED8F451CA22F32003867B8 /* HXOnlineViewModel.m in Sources */,
 				CD2367891CA91CFB002C8233 /* HXAlbumsCommentView.m in Sources */,
 				CD45673A1CAE13B800837DFF /* HXMeMyStationCell.m in Sources */,
@@ -1764,10 +1859,13 @@
 				CD5F21661CAD2F6A0067A1DA /* HXWatcherContainerViewController.m in Sources */,
 				398A6D111CAB77D6001A68B1 /* HXGuestModel.m in Sources */,
 				CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */,
+				CD91676B1CAE528D000A12DC /* GenderPickerView.m in Sources */,
 				CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */,
 				CD2E72891CA11DE0003CDB77 /* HXPublishViewController.m in Sources */,
 				CD23678B1CA91CFB002C8233 /* HXAlbumsNavigationBar.m in Sources */,
+				CD9167671CAE524C000A12DC /* ChangePwdViewController.m in Sources */,
 				CD2949B91CA282AC00CA3C3F /* HXOnlineReplayCell.m in Sources */,
+				CD9167831CAE5437000A12DC /* UIImage+Extrude.m in Sources */,
 				CD2E72881CA11DE0003CDB77 /* HXOnlineContainerViewController.m in Sources */,
 				CD5F217D1CAD4E3B0067A1DA /* HXVideoModel.m in Sources */,
 				CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */,
@@ -1799,6 +1897,7 @@
 				CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */,
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
 				CD2367991CA937EB002C8233 /* HXMeHeaderCell.m in Sources */,
+				CD9167681CAE524C000A12DC /* HXFeedBackViewController.m in Sources */,
 				CD6C19461CA4E78000849B39 /* HXLiveCommentCell.m in Sources */,
 				CD2949DB1CA28A3500CA3C3F /* HXIBnsepectableManager.m in Sources */,
 				CDE2FC801CABD3D200476968 /* HXProfileContainerViewController.m in Sources */,
@@ -1807,13 +1906,16 @@
 				CD1B84171CAA90C200B9B1E8 /* HXAttentionModel.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
 				CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */,
+				CD9167731CAE52E7000A12DC /* MIAButton.m in Sources */,
 				CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */,
 				CD2367921CA91DF9002C8233 /* HXMeContainerViewController.m in Sources */,
 				CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */,
 				CD2949F81CA2919B00CA3C3F /* HXLoginViewController.m in Sources */,
+				CD9167721CAE52E7000A12DC /* MIALabel.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				CD2E729D1CA11E02003CDB77 /* HXOnlineModel.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
+				CD91677F1CAE5399000A12DC /* CacheHelper.m in Sources */,
 				CD5F21811CAD4EE50067A1DA /* HXReplayModel.m in Sources */,
 				CD5F21751CAD4C560067A1DA /* HXAlbumModel.m in Sources */,
 				CDB811611CABBFAF00BFC3B9 /* HXLiveEndViewController.m in Sources */,

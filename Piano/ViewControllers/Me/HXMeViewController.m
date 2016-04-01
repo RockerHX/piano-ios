@@ -9,6 +9,7 @@
 #import "HXMeViewController.h"
 #import "HXMeNavigationBar.h"
 #import "HXMeContainerViewController.h"
+#import "HXSettingViewController.h"
 
 
 @interface HXMeViewController () <
@@ -21,6 +22,8 @@ HXMeContainerViewControllerDelegate
 @implementation HXMeViewController {
     HXMeContainerViewController *_containerViewController;
     HXMeViewModel *_viewModel;
+    
+    BOOL _shouldHideNavigationBar;
 }
 
 #pragma mark - Class Methods
@@ -45,11 +48,11 @@ HXMeContainerViewControllerDelegate
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//    
-//    [self.navigationController setNavigationBarHidden:_shouldHideNavigationBar animated:YES];
-//}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:_shouldHideNavigationBar animated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,7 +96,9 @@ HXMeContainerViewControllerDelegate
 - (void)navigationBar:(HXMeNavigationBar *)bar action:(HXMeNavigationBarAction)action {
     switch (action) {
         case HXMeNavigationBarActionSetting: {
-            ;
+            _shouldHideNavigationBar = NO;
+            HXSettingViewController *settingViewController = [HXSettingViewController instance];
+            [self.navigationController pushViewController:settingViewController animated:YES];
             break;
         }
     }
