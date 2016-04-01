@@ -244,6 +244,26 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)feedbackWithNote:(NSString *)note
+				 contact:(NSString *)contact
+		   completeBlock:(MiaRequestCompleteBlock)completeBlock
+			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:note forKey:MiaAPIKey_Note];
+	if (![NSString isNull:contact]) {
+		[dictValues setValue:contact forKey:MiaAPIKey_Contact];
+	}
+
+	[dictValues setValue:[UIDevice currentDevice].systemName forKey:MiaAPIKey_Platform];
+	[dictValues setValue:[UIDevice currentDevice].systemVersion forKey:MiaAPIKey_OSVersion];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_Feedback
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 #pragma mark - Live
 + (void)getHomeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {

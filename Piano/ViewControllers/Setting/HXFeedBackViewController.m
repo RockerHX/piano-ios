@@ -92,22 +92,21 @@ static NSString *FeedContentPrompt = @"欢迎您提出宝贵的意见或建议�
 	}
 
 	[self showMBProgressHUD];
-#warning Eden
-//	[MiaAPIHelper feedbackWithNote:content
-//						   contact:contact completeBlock:
-//	 ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//		 if (success) {
-//			 [HXAlertBanner showWithMessage:@"反馈成功" tap:nil];
-//			 [self.navigationController popViewControllerAnimated:YES];
-//		 } else {
-//			 [HXAlertBanner showWithMessage:@"反馈失败，请稍后重试" tap:nil];
-//		 }
-//
-//		 [self removeMBProgressHUD];
-//	 } timeoutBlock:^(MiaRequestItem *requestItem) {
-//		 [HXAlertBanner showWithMessage:@"反馈超时，请稍后重试" tap:nil];
-//		 [self removeMBProgressHUD];
-//	}];
+	[MiaAPIHelper feedbackWithNote:content
+						   contact:contact completeBlock:
+	 ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+		 if (success) {
+			 [HXAlertBanner showWithMessage:@"反馈成功" tap:nil];
+			 [self.navigationController popViewControllerAnimated:YES];
+		 } else {
+			 [HXAlertBanner showWithMessage:@"反馈失败，请稍后重试" tap:nil];
+		 }
+
+		 [self removeMBProgressHUD];
+	 } timeoutBlock:^(MiaRequestItem *requestItem) {
+		 [HXAlertBanner showWithMessage:@"反馈超时，请稍后重试" tap:nil];
+		 [self removeMBProgressHUD];
+	}];
 }
 
 #pragma mark - UITextViewDelegate Methods

@@ -85,6 +85,11 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 	   completeBlock:(MiaRequestCompleteBlock)completeBlock
 		timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)feedbackWithNote:(NSString *)note
+				 contact:(NSString *)contact
+		   completeBlock:(MiaRequestCompleteBlock)completeBlock
+			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 + (void)getHomeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
