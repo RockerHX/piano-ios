@@ -231,7 +231,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)uploadFinish:(NSString *)fileID
++ (void)uploadFinishWithFileID:(NSString *)fileID
 			completeBlock:(MiaRequestCompleteBlock)completeBlock
 			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];

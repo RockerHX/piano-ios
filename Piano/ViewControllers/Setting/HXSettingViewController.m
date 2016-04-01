@@ -100,7 +100,8 @@ GenderPickerViewDelegate
 
 	[_avatarImageView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl]
 						placeholderImage:[UIImage imageNamed:@"C-AvatarDefaultIcon"]];
-//	[self updateGenderLabel:gender];
+	// TODO 小莫那边目前没有返回，所以无法设置
+	//	[self updateGenderLabel:gender];
 }
 
 - (void)loadNickName {
@@ -131,7 +132,12 @@ GenderPickerViewDelegate
 }
 
 #pragma mark - Private Methods
-- (void)uploadAvatarWithUrl:(NSString *)url auth:(NSString *)auth contentType:(NSString *)contentType filename:(NSString *)filename image:(UIImage *)image {
+- (void)uploadAvatarWithUrl:(NSString *)url
+					   auth:(NSString *)auth
+				contentType:(NSString *)contentType
+				   filename:(NSString *)filename
+					 fileID:(NSString *)fileID
+					  image:(UIImage *)image {
     // 压缩图片，放线程中进行
     dispatch_queue_t queue = dispatch_queue_create("RequestUploadPhoto", NULL);
     dispatch_async(queue, ^(){
@@ -155,13 +161,13 @@ GenderPickerViewDelegate
           ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
               BOOL success = (!error && [data length] == 0);
               dispatch_async(dispatch_get_main_queue(), ^{
-                  [self updateAvatarWith:squareImage success:success url:url];
+                  [self updateAvatarWith:squareImage success:success url:url fileID:fileID];
               });
           }] resume];
     });
 }
 
-- (void)updateAvatarWith:(UIImage *)avatarImage success:(BOOL)success url:(NSString *)url {
+- (void)updateAvatarWith:(UIImage *)avatarImage success:(BOOL)success url:(NSString *)url fileID:(NSString *)fileID {
     if (_uploadAvatarProgressHUD) {
         [_uploadAvatarProgressHUD removeFromSuperview];
         _uploadAvatarProgressHUD = nil;
@@ -169,18 +175,17 @@ GenderPickerViewDelegate
     if (!success) {
         return;
     }
-    
-#warning Eden
-//    [MiaAPIHelper notifyAfterUploadPicWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//        if (success) {
-//            NSLog(@"notify after upload pic success");
-//        } else {
-//            NSLog(@"notify after upload pic failed:%@", userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
-//        }
-//    } timeoutBlock:^(MiaRequestItem *requestItem) {
-//        NSLog(@"notify after upload pic timeout");
-//    }];
-    
+
+	[MiaAPIHelper uploadFinishWithFileID:fileID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+		if (success) {
+			NSLog(@"notify after upload pic success");
+		} else {
+			NSLog(@"notify after upload pic failed:%@", userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
+		}
+	} timeoutBlock:^(MiaRequestItem *requestItem) {
+		NSLog(@"notify after upload pic timeout");
+	}];
+
     [_avatarImageView setImage:avatarImage];
     [HXUserSession session].user.avatarUrl = url;
     [[HXUserSession session] sysnc];
@@ -436,12 +441,18 @@ static CGFloat SectionSpace = 16.0f;
     _uploadAvatarProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"头像上传中..."];
     [MiaAPIHelper getUploadAvatarAuthWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            NSString *uploadUrl = userInfo[MiaAPIKey_Values][@"info"][@"url"];
-            NSString *auth = userInfo[MiaAPIKey_Values][@"info"][@"auth"];
-            NSString *contentType = userInfo[MiaAPIKey_Values][@"info"][@"ctype"];
-            NSString *filename = userInfo[MiaAPIKey_Values][@"info"][@"fname"];
+            NSString *uploadUrl = userInfo[MiaAPIKey_Values][@"data"][@"url"];
+            NSString *auth = userInfo[MiaAPIKey_Values][@"data"][@"auth"];
+            NSString *contentType = userInfo[MiaAPIKey_Values][@"data"][@"ctype"];
+            NSString *filename = userInfo[MiaAPIKey_Values][@"data"][@"fname"];
+			NSString *fileID = [NSString stringWithFormat:@"%@", userInfo[MiaAPIKey_Values][@"data"][@"fileID"]];
             
-            [self uploadAvatarWithUrl:uploadUrl auth:auth contentType:contentType filename:filename image:_uploadingImage];
+            [self uploadAvatarWithUrl:uploadUrl
+								 auth:auth
+						  contentType:contentType
+							 filename:filename
+							   fileID:fileID
+								image:_uploadingImage];
         } else {
             id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
             [HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
