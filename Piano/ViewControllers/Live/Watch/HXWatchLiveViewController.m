@@ -87,7 +87,7 @@ HXWatchLiveBottomBarDelegate
 }
 
 #pragma mark - Configure Methods
-- (void)loadConfigure {
+- (void)loadConfigure {    
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
     [self signalLink];
 }

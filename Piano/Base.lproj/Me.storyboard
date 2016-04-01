@@ -30,7 +30,7 @@
                                 </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxt-8u-WJt">
-                                <rect key="frame" x="0.0" y="64" width="320" height="604"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <connections>
                                     <segue destination="SJM-b9-tbN" kind="embed" id="hs3-dq-g91"/>
                                 </connections>
@@ -39,7 +39,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Qxt-8u-WJt" firstAttribute="top" secondItem="lOJ-Ay-Sgc" secondAttribute="bottom" id="E3x-9w-xEA"/>
-                            <constraint firstAttribute="bottom" secondItem="Qxt-8u-WJt" secondAttribute="bottom" constant="-100" id="P7d-YQ-R0y"/>
+                            <constraint firstAttribute="bottom" secondItem="Qxt-8u-WJt" secondAttribute="bottom" id="P7d-YQ-R0y"/>
                             <constraint firstItem="Qxt-8u-WJt" firstAttribute="leading" secondItem="BnH-It-PrX" secondAttribute="leading" id="SgC-3Q-0OC"/>
                             <constraint firstItem="lOJ-Ay-Sgc" firstAttribute="leading" secondItem="BnH-It-PrX" secondAttribute="leading" id="hBP-zf-Kma"/>
                             <constraint firstItem="lOJ-Ay-Sgc" firstAttribute="top" secondItem="55o-70-yVc" secondAttribute="bottom" id="jPB-m4-3Bw"/>
@@ -57,7 +57,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXMeContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SJM-b9-tbN" userLabel="HXMeContainerViewController" customClass="HXMeContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="112" sectionHeaderHeight="28" sectionFooterHeight="28" id="gBe-IR-jxw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="604"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -451,6 +451,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="b7s-Ir-MGA" id="IlY-i5-lBu"/>
+                                    <outlet property="delegate" destination="SJM-b9-tbN" id="MXD-gy-JvD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
