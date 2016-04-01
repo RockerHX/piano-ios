@@ -64,6 +64,11 @@ static NSString * const MiaAPICommand_User_GetUpload		= @"User.Get.Upload";
 static NSString * const MiaAPICommand_User_PostUploadfinish	= @"User.Post.Uploadfinish";
 static NSString * const MiaAPIKey_fileID					= @"fileID";
 
+static NSString * const MiaAPICommand_User_Feedback			= @"User.Post.Feedback";
+static NSString * const MiaAPIKey_Note						= @"note";
+static NSString * const MiaAPIKey_Contact					= @"contact";
+static NSString * const MiaAPIKey_Platform					= @"platform";
+static NSString * const MiaAPIKey_OSVersion					= @"osversion";
 
 static NSString * const MiaAPICommand_User_GetProfile		= @"User.Get.Profile";
 
