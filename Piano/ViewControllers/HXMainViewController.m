@@ -33,8 +33,6 @@ HXLoginViewControllerDelegate
     
     [self loadConfigure];
     [self viewConfigure];
-    
-    
 }
 
 - (void)dealloc {
@@ -58,6 +56,7 @@ HXLoginViewControllerDelegate
 }
 
 - (void)viewConfigure {
+    self.view.backgroundColor = [UIColor whiteColor];
     [self subControllersConfigure];
 }
 

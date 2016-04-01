@@ -27,7 +27,7 @@
         <!--HXPublishNavigationController-->
         <scene sceneID="HF3-Pp-52M">
             <objects>
-                <navigationController storyboardIdentifier="HXPublishNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VPc-X6-5AQ" userLabel="HXPublishNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXPublishNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VPc-X6-5AQ" userLabel="HXPublishNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="发布" id="7g9-Ri-8wK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g52-yd-bP5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -41,7 +41,7 @@
         <!--HXMeNavigationController-->
         <scene sceneID="X9j-Bd-Urt">
             <objects>
-                <navigationController storyboardIdentifier="HXMeNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txc-rK-VJg" userLabel="HXMeNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXMeNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txc-rK-VJg" userLabel="HXMeNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" id="IAM-oX-QbD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yOb-7h-7qE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -55,7 +55,7 @@
         <!--HXOnlineNavigationController-->
         <scene sceneID="pIV-8O-zAG">
             <objects>
-                <navigationController storyboardIdentifier="HXOnlineNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXOnlineNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXOnlineNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXOnlineNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="直播" id="NkN-4J-GVv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rlr-1H-sSR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
