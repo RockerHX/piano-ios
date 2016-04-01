@@ -253,7 +253,7 @@
                                     <outlet property="summaryLabel" destination="HHM-Zg-3Fl" id="gDx-1B-d2q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HXProfileLiveCell" rowHeight="130" id="gO7-kH-zkk" userLabel="HXProfileLiveCell" customClass="HXProfileLiveCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXProfileLiveCell" rowHeight="130" id="gO7-kH-zkk" userLabel="HXProfileLiveCell" customClass="HXProfileLiveCell">
                                 <rect key="frame" x="0.0" y="268" width="320" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gO7-kH-zkk" id="f7x-LX-1m4">
@@ -527,6 +527,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="GiV-M9-aRj" id="BZ8-sH-rvg"/>
+                                    <outlet property="delegate" destination="KQG-qX-dcY" id="lDb-zu-1AU"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXProfileVideoContainerCell" rowHeight="185" id="OUC-oO-gUV" userLabel="HXProfileVideoContainerCell" customClass="HXProfileVideoContainerCell">
@@ -628,6 +629,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="VkA-xf-qDm" id="4Si-3W-S0i"/>
+                                    <outlet property="delegate" destination="KQG-qX-dcY" id="9g6-E9-fRk"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXProfileReplayContainerCell" rowHeight="270" id="3Ie-gR-3LW" userLabel="HXProfileReplayContainerCell" customClass="HXProfileReplayContainerCell">
@@ -739,6 +741,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="collectionView" destination="yv6-m7-ynk" id="ux3-Ap-eNm"/>
+                                    <outlet property="delegate" destination="KQG-qX-dcY" id="JPk-PC-hQ7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

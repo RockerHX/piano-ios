@@ -14,7 +14,11 @@
 #import "HXProfileReplayContainerCell.h"
 
 
-@interface HXProfileContainerViewController ()
+@interface HXProfileContainerViewController () <
+HXProfileAlbumContainerCellDelegate,
+HXProfileVideoContainerCellDelegate,
+HXProfileReplayContainerCellDelegate
+>
 @end
 
 
@@ -140,7 +144,31 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    HXProfileRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    switch (rowType) {
+        case HXProfileRowTypeLiving: {
+            ;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
+#pragma mark - HXProfileAlbumContainerCellDelegate Methods
+- (void)albumCell:(HXProfileAlbumContainerCell *)cell selectedAlbum:(HXAlbumModel *)album {
+    ;
+}
+
+#pragma mark - HXProfileVideoContainerCellDelegate Methods
+- (void)videoCell:(HXProfileVideoContainerCell *)cell selectedVideo:(HXVideoModel *)video {
+    ;
+}
+
+#pragma mark - HXProfileReplayContainerCellDelegate Methods
+- (void)replayCell:(HXProfileReplayContainerCell *)cell selectedReplay:(HXReplayModel *)replay {
+    ;
 }
 
 @end
