@@ -16,7 +16,7 @@ MJCodingImplementation
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"nickName": @"nick",
                  @"role": @"role",
-               @"avatar": @"userpic",
+            @"avatarUrl": @"userpic",
           @"notifyCount": @"notifyCnt",
          @"notifyAvatar": @"notifyUserpic"};
 }

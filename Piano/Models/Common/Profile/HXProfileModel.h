@@ -9,6 +9,7 @@
 #import "HXAlbumModel.h"
 #import "HXVideoModel.h"
 #import "HXReplayModel.h"
+#import "HXAttentionModel.h"
 
 
 typedef NS_ENUM(NSUInteger, HXProfileGender) {
@@ -36,8 +37,10 @@ typedef NS_ENUM(NSUInteger, HXProfileGender) {
 @property (nonatomic, strong)        NSString *liveTitle;
 @property (nonatomic, strong)        NSString *liveCoverUrl;
 
-@property (nonatomic, strong)  NSArray<HXAlbumModel *> *albums;
-@property (nonatomic, strong)  NSArray<HXVideoModel *> *videos;
-@property (nonatomic, strong) NSArray<HXReplayModel *> *replays;
+
+@property (nonatomic, strong) NSArray<HXAttentionModel *> *attentions;
+@property (nonatomic, strong)     NSArray<HXAlbumModel *> *albums;
+@property (nonatomic, strong)     NSArray<HXVideoModel *> *videos;
+@property (nonatomic, strong)    NSArray<HXReplayModel *> *replays;
 
 @end

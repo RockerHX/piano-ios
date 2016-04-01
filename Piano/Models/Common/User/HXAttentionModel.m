@@ -11,4 +11,9 @@
 
 @implementation HXAttentionModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"nickName": @"nick",
+            @"avatarUrl": @"userpic"};
+}
+
 @end

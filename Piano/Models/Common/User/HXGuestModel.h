@@ -16,8 +16,8 @@ typedef NS_ENUM(NSInteger, HXUserRole) {
 
 @interface HXGuestModel : NSObject
 
-@property (nonatomic, strong)  NSString *uID;
-@property (nonatomic, strong)  NSString *nickName;
-@property (nonatomic, assign)  HXUserRole role;
+@property (nonatomic, assign) HXUserRole  role;
+@property (nonatomic, strong)   NSString *uID;
+@property (nonatomic, strong)   NSString *nickName;
 
 @end

@@ -19,15 +19,17 @@
         @"liveViewCount": @"liveViewCnt",
       @"liveOnlineCount": @"liveOnlineCnt",
          @"liveCoverUrl": @"liveRoomCoverUrl",
+           @"attentions": @"followList",
                @"albums": @"musicAlbum",
                @"videos": @"video",
               @"replays": @"replay"};
 }
 
 + (NSDictionary *)mj_objectClassInArray {
-    return @{@"albums": @"HXAlbumModel",
-             @"videos": @"HXVideoModel",
-            @"replays": @"HXReplayModel"};
+    return @{@"attentions": @"HXAttentionModel",
+                 @"albums": @"HXAlbumModel",
+                 @"videos": @"HXVideoModel",
+                @"replays": @"HXReplayModel"};
 }
 
 @end

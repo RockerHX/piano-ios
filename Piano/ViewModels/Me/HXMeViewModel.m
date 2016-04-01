@@ -78,6 +78,7 @@
 }
 
 - (void)parseAttentionData:(NSDictionary *)data {
+    HXProfileModel *model = [HXProfileModel mj_objectWithKeyValues:data];
     ;
 }
 

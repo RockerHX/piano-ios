@@ -11,4 +11,9 @@
 
 @interface HXAttentionModel : NSObject
 
+@property (nonatomic, assign)     BOOL  live;
+@property (nonatomic, strong) NSString *uID;
+@property (nonatomic, strong) NSString *nickName;
+@property (nonatomic, strong) NSString *avatarUrl;
+
 @end

@@ -13,11 +13,11 @@
 
 @property (nonatomic, assign) NSInteger  notifyCount;
 
-@property (nonatomic, strong)  NSString *uID;
-@property (nonatomic, strong)  NSString *token;
-@property (nonatomic, strong)  NSString *nickName;
-@property (nonatomic, strong)  NSString *avatar;
-@property (nonatomic, strong)  NSString *notifyAvatar;
-@property (nonatomic, assign)  HXUserRole role;
+@property (nonatomic, assign) HXUserRole  role;
+@property (nonatomic, strong)   NSString *uID;
+@property (nonatomic, strong)   NSString *token;
+@property (nonatomic, strong)   NSString *nickName;
+@property (nonatomic, strong)   NSString *avatarUrl;
+@property (nonatomic, strong)   NSString *notifyAvatar;
 
 @end

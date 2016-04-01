@@ -7,7 +7,7 @@
 //
 
 #import "ReactiveCocoa.h"
-#import "HXAttentionModel.h"
+#import "HXProfileModel.h"
 
 
 typedef NS_ENUM(NSUInteger, HXMeRowType) {
@@ -29,7 +29,5 @@ typedef NS_ENUM(NSUInteger, HXMeRowType) {
 
 @property (nonatomic, assign, readonly) NSInteger  rows;
 @property (nonatomic, strong, readonly)   NSArray *rowTypes;
-
-@property (nonatomic, strong, readonly) NSArray<HXAttentionModel *> *attentions;
 
 @end
