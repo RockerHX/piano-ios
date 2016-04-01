@@ -10,7 +10,7 @@
         <!--HXProfileViewController-->
         <scene sceneID="m1J-pi-6IW">
             <objects>
-                <viewController storyboardIdentifier="HXProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XGn-z5-i1I" userLabel="HXProfileViewController" customClass="HXProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXProfileViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XGn-z5-i1I" userLabel="HXProfileViewController" customClass="HXProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j0z-V2-X2w"/>
                         <viewControllerLayoutGuide type="bottom" id="Rw2-va-mzu"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sox-dQ-4hf" customClass="HXMeNavigationBar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sox-dQ-4hf" customClass="HXProfileNavigationBar">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -47,6 +47,9 @@
                             <constraint firstItem="sox-dQ-4hf" firstAttribute="top" secondItem="j0z-V2-X2w" secondAttribute="bottom" id="xHK-9t-ImF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="sox-dQ-4hf" id="MAw-yi-RFs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRR-WD-O6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

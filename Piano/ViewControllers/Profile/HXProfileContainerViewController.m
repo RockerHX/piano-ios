@@ -38,7 +38,14 @@
 //    
 //    [self.tableView reloadData];
 //}
-//
+
+#pragma mark - Scroll View Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (_delegate && [_delegate respondsToSelector:@selector(container:scrollOffset:)]) {
+        [_delegate container:self scrollOffset:scrollView.contentOffset.y];
+    }
+}
+
 //#pragma mark - Table View Data Source Methods
 //- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //    return _viewModel.rows;

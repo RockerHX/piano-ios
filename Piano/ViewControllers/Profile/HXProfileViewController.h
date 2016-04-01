@@ -9,6 +9,11 @@
 #import "UIViewController+HXClass.h"
 
 
+@class HXProfileNavigationBar;
+
+
 @interface HXProfileViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet HXProfileNavigationBar *navigationBar;
 
 @end

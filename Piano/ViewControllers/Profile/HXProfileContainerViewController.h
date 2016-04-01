@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class HXProfileContainerViewController;
+
+
+@protocol HXProfileContainerViewControllerDelegate <NSObject>
+
+@required
+- (void)container:(HXProfileContainerViewController *)container scrollOffset:(CGFloat)offset;
+
+@end
+
 @interface HXProfileContainerViewController : UITableViewController
+
+@property (weak, nonatomic) IBOutlet id  <HXProfileContainerViewControllerDelegate>delegate;
 
 @end
