@@ -199,9 +199,11 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="anchorContainer" destination="wnu-3L-U80" id="9hu-Uc-FWv"/>
                                     <outlet property="attendeCountLabel" destination="wsy-DZ-DOA" id="pYk-Ua-aPG"/>
                                     <outlet property="avatar" destination="7Vy-Yy-Kv7" id="6UB-WR-ycw"/>
                                     <outlet property="cover" destination="JoV-2O-ERE" id="fHu-MA-Sss"/>
+                                    <outlet property="delegate" destination="fRv-sf-web" id="coc-0v-Dx5"/>
                                     <outlet property="nickNameLabel" destination="vyd-jc-ZIN" id="h0L-KR-raX"/>
                                     <outlet property="titleLabel" destination="urc-Wt-G6V" id="8do-1I-vbz"/>
                                 </connections>

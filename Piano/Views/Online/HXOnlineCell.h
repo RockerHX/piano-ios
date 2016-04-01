@@ -10,8 +10,22 @@
 #import "HXOnlineModel.h"
 
 
+@class HXOnlineCell;
+
+
+@protocol HXOnlineCellDelegate <NSObject>
+
+@required
+- (void)onlineCellAnchorContainerTaped:(HXOnlineCell *)cell;
+
+@end
+
+
 @interface HXOnlineCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet          id  <HXOnlineCellDelegate>delegate;
+
+@property (weak, nonatomic) IBOutlet      UIView *anchorContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *attendeCountLabel;

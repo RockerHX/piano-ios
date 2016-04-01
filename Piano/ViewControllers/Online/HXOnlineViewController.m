@@ -13,6 +13,7 @@
 #import "HXRecordLiveViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
+#import "HXProfileViewController.h"
 
 
 @interface HXOnlineViewController () <
@@ -105,6 +106,11 @@ HXOnlineContainerViewControllerDelegate
         }
         [self presentViewController:modalNavigationController animated:YES completion:nil];
     }
+}
+
+- (void)container:(HXOnlineContainerViewController *)container showAnchorByModel:(HXOnlineModel *)model {
+    HXProfileViewController *profileViewController = [HXProfileViewController instance];
+    [self.navigationController pushViewController:profileViewController animated:YES];
 }
 
 @end

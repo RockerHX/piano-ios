@@ -17,6 +17,7 @@
 
 @required
 - (void)container:(HXOnlineContainerViewController *)container showLiveByModel:(HXOnlineModel *)model;
+- (void)container:(HXOnlineContainerViewController *)container showAnchorByModel:(HXOnlineModel *)model;
 
 @end
 

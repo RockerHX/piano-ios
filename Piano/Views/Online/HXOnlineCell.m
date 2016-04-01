@@ -12,6 +12,18 @@
 
 @implementation HXOnlineCell
 
+#pragma mark - Load Methods
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self loadConfigure];
+}
+
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    [_anchorContainer addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)]];
+}
+
 #pragma mark - Public Methods
 - (void)updateCellWithModel:(HXOnlineModel *)model {
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
@@ -20,6 +32,13 @@
     
     _titleLabel.text = model.title;
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
+}
+
+#pragma mark - Event Reponse
+- (void)tapGesture {
+    if (_delegate && [_delegate respondsToSelector:@selector(onlineCellAnchorContainerTaped:)]) {
+        [_delegate onlineCellAnchorContainerTaped:self];
+    }
 }
 
 @end

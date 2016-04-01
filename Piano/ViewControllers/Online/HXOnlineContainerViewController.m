@@ -16,7 +16,9 @@
 #import "HXAlertBanner.h"
 
 
-@interface HXOnlineContainerViewController ()
+@interface HXOnlineContainerViewController () <
+HXOnlineCellDelegate
+>
 @end
 
 
@@ -121,6 +123,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_delegate && [_delegate respondsToSelector:@selector(container:showLiveByModel:)]) {
         [_delegate container:self showLiveByModel:_viewModel.onlineList[indexPath.row]];
+    }
+}
+
+#pragma mark - HXOnlineCellDelegate Methods
+- (void)onlineCellAnchorContainerTaped:(HXOnlineCell *)cell {
+    NSInteger row = [self.tableView indexPathForCell:cell].row;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
+        [_delegate container:self showAnchorByModel:_viewModel.onlineList[row]];
     }
 }
 
