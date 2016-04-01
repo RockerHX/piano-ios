@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class HXProfileModel;
+
 
 @interface HXProfileLiveCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *cover;
+@property (weak, nonatomic) IBOutlet     UILabel *viewCountLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
+
+- (void)updateCellWithProfileModel:(HXProfileModel *)model;
 
 @end

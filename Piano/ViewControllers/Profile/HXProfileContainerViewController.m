@@ -57,7 +57,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     HXProfileRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
-    
     switch (rowType) {
         case HXProfileRowTypeHeader: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXProfileHeaderCell class]) forIndexPath:indexPath];
@@ -113,7 +112,29 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXProfileRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    switch (rowType) {
+        case HXProfileRowTypeHeader: {
+            [(HXProfileHeaderCell *)cell updateCellWithProfileModel:_viewModel.model];
+            break;
+        }
+        case HXProfileRowTypeLiving: {
+            [(HXProfileLiveCell *)cell updateCellWithProfileModel:_viewModel.model];
+            break;
+        }
+        case HXProfileRowTypeAlbumContainer: {
+//            [(HXProfileAlbumContainerCell *)cell updateCellWithProfileModel:_viewModel.model];
+            break;
+        }
+        case HXProfileRowTypeVideoContainer: {
+//            [(HXProfileVideoContainerCell *)cell updateCellWithProfileModel:_viewModel.model];
+            break;
+        }
+        case HXProfileRowTypeReplayContainer: {
+//            [(HXProfileReplayContainerCell *)cell updateCellWithProfileModel:_viewModel.model];
+            break;
+        }
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

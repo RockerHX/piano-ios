@@ -244,6 +244,14 @@
                                         <constraint firstAttribute="trailing" secondItem="YRB-HU-l89" secondAttribute="trailing" constant="30" id="wdJ-o9-Lio"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="attentionButton" destination="f3h-hN-uNb" id="7a9-lh-VVQ"/>
+                                    <outlet property="avatar" destination="r3w-if-5SK" id="OJj-X1-YJ8"/>
+                                    <outlet property="fansCountLabel" destination="jh2-MV-vvn" id="Ahj-Ek-HSk"/>
+                                    <outlet property="followCountLabel" destination="zdB-n0-XFA" id="6Jy-lj-X7i"/>
+                                    <outlet property="nickNameLabel" destination="YRB-HU-l89" id="yf8-Bf-eGc"/>
+                                    <outlet property="summaryLabel" destination="HHM-Zg-3Fl" id="gDx-1B-d2q"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HXProfileLiveCell" rowHeight="130" id="gO7-kH-zkk" userLabel="HXProfileLiveCell" customClass="HXProfileLiveCell">
                                 <rect key="frame" x="0.0" y="268" width="320" height="130"/>
@@ -303,8 +311,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uff-Ve-7X3" userLabel="Content Container">
                                             <rect key="frame" x="10" y="36" width="300" height="88"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="nNp-bL-XpQ">
-                                                    <rect key="frame" x="280" y="34" width="20" height="20"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="nNp-bL-XpQ">
+                                                    <rect key="frame" x="272" y="34" width="28" height="20"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hfg-Gy-I8R" customClass="HXIBImageView">
                                                     <rect key="frame" x="0.0" y="11" width="66" height="66"/>
@@ -318,17 +326,56 @@
                                                             <color key="value" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
+                                                            <real key="value" value="0.5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RyB-4f-OcA" userLabel="Title Container">
+                                                    <rect key="frame" x="81" y="20" width="176" height="48"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Aaron" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mG-ky-xS5" userLabel="Anchor Nick Name Label">
+                                                            <rect key="frame" x="0.0" y="0.0" width="43" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主题：哈皮天气，唱唱歌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2e-BK-trU" userLabel="Title Label">
+                                                            <rect key="frame" x="0.0" y="28" width="176" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在直播：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWd-43-q8g">
+                                                            <rect key="frame" x="43" y="0.0" width="133" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="zWd-43-q8g" firstAttribute="leading" secondItem="2mG-ky-xS5" secondAttribute="trailing" id="6L2-W0-gHY"/>
+                                                        <constraint firstItem="w2e-BK-trU" firstAttribute="top" secondItem="2mG-ky-xS5" secondAttribute="bottom" constant="8" id="GBv-2G-3XL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="w2e-BK-trU" secondAttribute="bottom" id="PjU-j4-aTb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="w2e-BK-trU" secondAttribute="trailing" id="Rh7-Am-YmG"/>
+                                                        <constraint firstItem="2mG-ky-xS5" firstAttribute="top" secondItem="RyB-4f-OcA" secondAttribute="top" id="WEO-h8-UOk"/>
+                                                        <constraint firstItem="w2e-BK-trU" firstAttribute="top" secondItem="zWd-43-q8g" secondAttribute="bottom" constant="8" id="bfE-6G-ds3"/>
+                                                        <constraint firstItem="zWd-43-q8g" firstAttribute="top" secondItem="RyB-4f-OcA" secondAttribute="top" id="cGd-za-4Q1"/>
+                                                        <constraint firstItem="w2e-BK-trU" firstAttribute="leading" secondItem="RyB-4f-OcA" secondAttribute="leading" id="nNL-3u-w8u"/>
+                                                        <constraint firstItem="2mG-ky-xS5" firstAttribute="leading" secondItem="RyB-4f-OcA" secondAttribute="leading" id="rbt-fB-dm5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zWd-43-q8g" secondAttribute="trailing" id="ygg-mk-zeX"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="hfg-Gy-I8R" firstAttribute="centerY" secondItem="uff-Ve-7X3" secondAttribute="centerY" id="1cs-Mn-Z7G"/>
+                                                <constraint firstItem="nNp-bL-XpQ" firstAttribute="leading" secondItem="RyB-4f-OcA" secondAttribute="trailing" constant="15" id="RwF-Vi-aWH"/>
                                                 <constraint firstAttribute="trailing" secondItem="nNp-bL-XpQ" secondAttribute="trailing" id="VWm-bg-eoK"/>
+                                                <constraint firstItem="RyB-4f-OcA" firstAttribute="leading" secondItem="hfg-Gy-I8R" secondAttribute="trailing" constant="15" id="W3G-2i-XRL"/>
                                                 <constraint firstItem="hfg-Gy-I8R" firstAttribute="leading" secondItem="uff-Ve-7X3" secondAttribute="leading" id="WM5-7r-jc4"/>
                                                 <constraint firstItem="nNp-bL-XpQ" firstAttribute="centerY" secondItem="uff-Ve-7X3" secondAttribute="centerY" id="WWO-TG-ahS"/>
+                                                <constraint firstItem="RyB-4f-OcA" firstAttribute="centerY" secondItem="hfg-Gy-I8R" secondAttribute="centerY" id="u8O-iK-EsJ"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnL-fE-D8B" userLabel="Line Container">
@@ -374,6 +421,12 @@
                                         <constraint firstAttribute="trailing" secondItem="pnL-fE-D8B" secondAttribute="trailing" id="qgP-we-gPV"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cover" destination="hfg-Gy-I8R" id="Z05-67-W58"/>
+                                    <outlet property="nickNameLabel" destination="2mG-ky-xS5" id="MNQ-KT-JbV"/>
+                                    <outlet property="titleLabel" destination="w2e-BK-trU" id="jq4-G4-ldW"/>
+                                    <outlet property="viewCountLabel" destination="V2M-18-t0H" id="9I5-Dp-NY1"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXProfileAlbumContainerCell" rowHeight="175" id="xar-Na-qYM" userLabel="HXProfileAlbumContainerCell" customClass="HXProfileAlbumContainerCell">
                                 <rect key="frame" x="0.0" y="398" width="320" height="175"/>
