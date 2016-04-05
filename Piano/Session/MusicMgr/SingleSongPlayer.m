@@ -15,7 +15,7 @@
 #import "WebSocketMgr.h"
 #import "NSObject+BlockSupport.h"
 #import "NSString+IsNull.h"
-#import "MusicItem.h"
+#import "HXSongModel.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
 #import "FileLog.h"
@@ -99,27 +99,27 @@
 
 - (NSString *)currentUrl {
 	if (_tryingPlay) {
-		return _currentItem.murl;
+		return _currentItem.mp3Url;
 	} else {
 		return _audioStream.url.absoluteString;
 	}
 }
 
-- (void)playWithMusicItem:(MusicItem *)item {
-	[[FileLog standard] log:@"playWithMusicItem %@, %@", item.name, item.murl];
+- (void)playWithItem:(HXSongModel *)item {
+	[[FileLog standard] log:@"playWithItem %@, %@", item.title, item.mp3Url];
 
-	if ([self isPlayingWithUrl:item.murl]) {
+	if ([self isPlayingWithUrl:item.mp3Url]) {
 		// 同一个模块再次播放同一首歌，什么都不做
 		NSLog(@"play the same song in the same model, play will be ignored.");
 				return;
 	}
 
-	if (![UserSetting isAllowedToPlayNowWithURL:item.murl]) {
-		[self checkBeforePlayWithMusicItem:item];
+	if (![UserSetting isAllowedToPlayNowWithURL:item.mp3Url]) {
+		[self checkBeforePlayWithItem:item];
 		return;
 	}
 
-	[self playWithoutCheckWithUrl:item.murl title:item.name artist:item.singerName cover:item.purl];
+	[self playWithoutCheckWithUrl:item.mp3Url title:item.title artist:item.nick cover:item.coverUrl];
 	_currentItem = item;
 }
 
@@ -141,9 +141,9 @@
 		return NO;
 	}
 
-//	NSLog(@"isPlayingWithUrl\n===%@\n+++%@\n---%@", url, _audioStream.url.absoluteString, _currentItem.murl);
+//	NSLog(@"isPlayingWithUrl\n===%@\n+++%@\n---%@", url, _audioStream.url.absoluteString, _currentItem.mp3Url);
 	if (_tryingPlay) {
-		return [_currentItem.murl isEqualToString:url];
+		return [_currentItem.mp3Url isEqualToString:url];
 	} else {
 		return [_audioStream.url.absoluteString isEqualToString:url];
 	}
@@ -275,10 +275,10 @@
 	} afterDelay:0.5f];
 }
 
-- (void)checkBeforePlayWithMusicItem:(MusicItem *)item {
+- (void)checkBeforePlayWithItem:(HXSongModel *)item {
 	[[MusicMgr standard] checkIsAllowToPlayWith3GOnceTimeWithBlock:^(BOOL isAllowed) {
 		if (isAllowed) {
-			[self playWithoutCheckWithUrl:item.murl title:item.name artist:item.singerName cover:item.purl];
+			[self playWithoutCheckWithUrl:item.mp3Url title:item.title artist:item.nick cover:item.coverUrl];
 		}
 	}];
 }

@@ -11,6 +11,7 @@
 #import "HXAlbumsSongCell.h"
 #import "HXAlbumsCommentCountCell.h"
 #import "HXAlbumsCommentCell.h"
+#import "MusicMgr.h"
 
 
 @interface HXAlbumsContainerViewController () <
@@ -157,6 +158,8 @@ HXAlbumsControlCellDelegate
     switch (action) {
         case HXAlbumsControlCellActionPlay: {
 #warning Eden
+			[[MusicMgr standard] setPlayList:_viewModel.songs hostObject:self];
+			[[MusicMgr standard] playCurrent];
             break;
         }
         case HXAlbumsControlCellActionPrevious: {

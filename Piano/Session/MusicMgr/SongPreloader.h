@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MusicItem;
+@class HXSongModel;
 @class SongPreloader;
 
 @protocol SongPreloaderDelegate <NSObject>
@@ -21,9 +21,9 @@
 @interface SongPreloader : NSObject
 
 @property (nonatomic, weak) id <SongPreloaderDelegate> delegate;
-@property (strong, nonatomic) MusicItem * currentItem;
+@property (strong, nonatomic) HXSongModel * currentItem;
 
-- (void)preloadWithMusicItem:(MusicItem *)item;
+- (void)preloadWithItem:(HXSongModel *)item;
 - (void)stop;
 
 @end

@@ -17,7 +17,6 @@
 		395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67121C9AB1B700ED0454 /* NSString+IsNull.m */; };
 		395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67161C9AB1C500ED0454 /* NSString+MD5.m */; };
 		395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
-		398451DF1CAD02A9009018C6 /* MusicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451DE1CAD02A9009018C6 /* MusicItem.m */; };
 		398451E31CAD0300009018C6 /* NSObject+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */; };
 		398451EB1CAD0543009018C6 /* MusicMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E61CAD0543009018C6 /* MusicMgr.m */; };
 		398451EC1CAD0543009018C6 /* SingleSongPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E81CAD0543009018C6 /* SingleSongPlayer.m */; };
@@ -209,8 +208,6 @@
 		395D67161C9AB1C500ED0454 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		395D67191C9AB1D700ED0454 /* UserDefaultsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtils.h; sourceTree = "<group>"; };
 		395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtils.m; sourceTree = "<group>"; };
-		398451DD1CAD02A9009018C6 /* MusicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicItem.h; sourceTree = "<group>"; };
-		398451DE1CAD02A9009018C6 /* MusicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicItem.m; sourceTree = "<group>"; };
 		398451E11CAD0300009018C6 /* NSObject+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BlockSupport.h"; sourceTree = "<group>"; };
 		398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BlockSupport.m"; sourceTree = "<group>"; };
 		398451E51CAD0543009018C6 /* MusicMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicMgr.h; sourceTree = "<group>"; };
@@ -623,15 +620,6 @@
 			path = UserDefaultsUtils;
 			sourceTree = "<group>";
 		};
-		398451DC1CAD02A9009018C6 /* MusicItem */ = {
-			isa = PBXGroup;
-			children = (
-				398451DD1CAD02A9009018C6 /* MusicItem.h */,
-				398451DE1CAD02A9009018C6 /* MusicItem.m */,
-			);
-			path = MusicItem;
-			sourceTree = "<group>";
-		};
 		398451E01CAD0300009018C6 /* NSObject+BlockSupport */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,7 +795,6 @@
 				CD5F21761CAD4C840067A1DA /* Anchor */,
 				CD5F216E1CAD4C3F0067A1DA /* Album */,
 				CD5F216F1CAD4C3F0067A1DA /* Profile */,
-				398451DC1CAD02A9009018C6 /* MusicItem */,
 				CD2949E11CA28D8400CA3C3F /* User */,
 			);
 			path = Common;
@@ -1969,7 +1956,6 @@
 				CD23679C1CA93B2F002C8233 /* HXMeRechargeCell.m in Sources */,
 				CD2367961CA9212B002C8233 /* HXMeViewModel.m in Sources */,
 				CD5DD8B01CA912790077A17B /* HXAlbumsSongCell.m in Sources */,
-				398451DF1CAD02A9009018C6 /* MusicItem.m in Sources */,
 				CD2949F71CA2919B00CA3C3F /* HXForgotPWViewController.m in Sources */,
 				CDF301071CA8D4ED00C19C32 /* HXAlbumsViewController.m in Sources */,
 				CD858D9C1CAE6B24007441E9 /* HXProfileReplayContainerCell.m in Sources */,

@@ -92,7 +92,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 }
 
 #pragma mark - Getter and Setter
-- (MusicItem *)currentItem {
+- (HXSongModel *)currentItem {
 	if (_playList.count <= 0) {
 		return nil;
 	}
@@ -127,7 +127,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 }
 
 - (void)setPlayList:(NSArray *)playList hostObject:(id)hostObject {
-	MusicItem *lastItem = self.currentItem;
+	HXSongModel *lastItem = self.currentItem;
 	_playList = [[NSArray alloc] initWithArray:playList];
 
 	if (![self isCurrentHostObject:hostObject]) {
@@ -153,7 +153,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 	[self saveChanges];
 }
 
-- (void)setPlayListWithItem:(MusicItem *)item hostObject:(id)hostObject {
+- (void)setPlayListWithItem:(HXSongModel *)item hostObject:(id)hostObject {
 	NSArray *playList = [[NSArray alloc] initWithObjects:item, nil];
 	[self setPlayList:playList hostObject:hostObject];
 }
@@ -168,14 +168,14 @@ const NSInteger kInvalidateCurrentIndex = -1;
 		return;
 	}
 
-	MusicItem *item = _playList[index];
+	HXSongModel *item = _playList[index];
 	if (item) {
-		[_player playWithMusicItem:item];
+		[_player playWithItem:item];
 		_currentIndex = index;
 	}
 }
 
-- (void)playWithItem:(MusicItem *)item {
+- (void)playWithItem:(HXSongModel *)item {
 	NSUInteger count = [_playList count];
 
 	if (count <= 0) {
@@ -183,10 +183,10 @@ const NSInteger kInvalidateCurrentIndex = -1;
 	}
 
 	for (int i = 0 ; i < count; i++) {
-		MusicItem *it = [_playList objectAtIndex:i];
+		HXSongModel *it = [_playList objectAtIndex:i];
 		if ([it.mid isEqualToString:item.mid]) {
 			[_preloader stop];
-			[_player playWithMusicItem:item];
+			[_player playWithItem:item];
 			_currentIndex = i;
 
 			return;
@@ -196,7 +196,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 }
 
 - (void)playCurrent {
-	[_player playWithMusicItem:self.currentItem];
+	[_player playWithItem:self.currentItem];
 }
 
 - (void)playPrevios {
@@ -205,7 +205,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 	}
 
 	NSInteger prevIndex = [self getPrevIndex];
-	[_player playWithMusicItem:_playList[prevIndex]];
+	[_player playWithItem:_playList[prevIndex]];
 	_currentIndex = prevIndex;
 }
 
@@ -215,7 +215,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 	}
 
 	NSInteger nextIndex = [self getNextIndex];
-	[_player playWithMusicItem:_playList[nextIndex]];
+	[_player playWithItem:_playList[nextIndex]];
 	_currentIndex = nextIndex;
 }
 
@@ -344,10 +344,10 @@ const NSInteger kInvalidateCurrentIndex = -1;
 	}
 }
 
-- (NSInteger)getCurrentIndexWithItem:(MusicItem *)item {
+- (NSInteger)getCurrentIndexWithItem:(HXSongModel *)item {
 	NSInteger currentIndex = -1;
 	for (int i = 0 ; i < _playList.count; i++) {
-		MusicItem *it = [_playList objectAtIndex:i];
+		HXSongModel *it = [_playList objectAtIndex:i];
 		if ([it.mid isEqualToString:item.mid]) {
 			currentIndex = i;
 			return currentIndex;
@@ -460,7 +460,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 		return;
 	}
 
-	if ([UserSetting isAllowedToPlayNowWithURL:_player.currentItem.murl]) {
+	if ([UserSetting isAllowedToPlayNowWithURL:_player.currentItem.mp3Url]) {
 		return;
 	}
 
@@ -521,8 +521,8 @@ const NSInteger kInvalidateCurrentIndex = -1;
 	[self bs_performBlock:^{
 		NSLog(@"delayPreloader");
 		if (_playList.count > 0) {
-			MusicItem *nextItem = _playList[[self getNextIndex]];
-			[_preloader preloadWithMusicItem:nextItem];
+			HXSongModel *nextItem = _playList[[self getNextIndex]];
+			[_preloader preloadWithItem:nextItem];
 		}
 	} afterDelay:30.0f];
 }
@@ -537,7 +537,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 
 #pragma mark - SongPreloaderDelegate
 - (BOOL)songPreloaderIsPlayerLoadedThisUrl:(NSString *)url {
-	return [_player.currentItem.murl isEqualToString:url];
+	return [_player.currentItem.mp3Url isEqualToString:url];
 }
 
 @end

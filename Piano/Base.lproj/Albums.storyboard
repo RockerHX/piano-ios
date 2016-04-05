@@ -210,6 +210,7 @@
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="cover" destination="uBI-3e-ebX" id="wdo-FD-Vs5"/>
+                                    <outlet property="delegate" destination="dl0-fw-bkU" id="MCA-tT-9gi"/>
                                     <outlet property="endTimeLabel" destination="dXO-q3-CCA" id="2ib-5M-F9N"/>
                                     <outlet property="playButton" destination="xeX-rZ-d67" id="2kg-Ve-6VU"/>
                                     <outlet property="slider" destination="gJe-Bj-lnm" id="cPy-NF-4xz"/>
