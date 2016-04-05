@@ -13,6 +13,23 @@
 
 @implementation HXAlbumsControlCell
 
+#pragma mark - Load Methods
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self loadConfigure];
+    [self viewConfigure];
+}
+
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    ;
+}
+
+- (void)viewConfigure {
+    [_slider setThumbImage:[UIImage imageNamed:@"AD-SliderThumbIcon"] forState:UIControlStateNormal];
+}
+
 #pragma mark - Event Response
 - (IBAction)playButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(controlCell:takeAction:)]) {
