@@ -12,6 +12,8 @@
 @interface HXAlbumModel : NSObject
 
 @property (nonatomic, strong) NSString *ID;
+@property (nonatomic, strong) NSString *uID;
+@property (nonatomic, strong) NSString *nickName;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *summary;
 @property (nonatomic, strong) NSString *coverUrl;

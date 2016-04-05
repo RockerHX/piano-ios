@@ -12,8 +12,9 @@
 @implementation HXCommentModel
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{@"nickName": @"nick",
-            @"avatarUrl": @"userpic"};
+    return @{@"ID": @"id",
+       @"nickName": @"nick",
+      @"avatarUrl": @"userpic"};
 }
 
 @end

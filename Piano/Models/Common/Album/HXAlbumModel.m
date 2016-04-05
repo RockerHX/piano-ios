@@ -12,7 +12,8 @@
 @implementation HXAlbumModel
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{@"ID": @"id"};
+    return @{@"ID": @"id",
+       @"nickName": @"nick"};
 }
 
 @end

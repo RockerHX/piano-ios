@@ -8,6 +8,9 @@
 
 #import "ReactiveCocoa.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "HXAlbumModel.h"
+#import "HXSongModel.h"
+#import "HXCommentModel.h"
 
 
 typedef NS_ENUM(NSUInteger, HXAlbumsRowType) {
@@ -32,6 +35,10 @@ typedef NS_ENUM(NSUInteger, HXAlbumsRowType) {
 
 @property (nonatomic, assign, readonly)  NSInteger  rows;
 @property (nonatomic, strong, readonly)    NSArray *rowTypes;
+
+@property (nonatomic, strong, readonly)              HXAlbumModel *model;
+@property (nonatomic, strong, readonly)    NSArray<HXSongModel *> *songs;
+@property (nonatomic, strong, readonly) NSArray<HXCommentModel *> *comments;
 
 - (instancetype)initWithAlbumID:(NSString *)albumID;
 

@@ -8,7 +8,6 @@
 
 #import "HXAlbumsViewController.h"
 #import "HXAlbumsContainerViewController.h"
-#import "HXAlbumsViewModel.h"
 #import "HXAlbumsNavigationBar.h"
 
 
@@ -49,17 +48,21 @@ HXAlbumsNavigationBarDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    [self showHUD];
+    
     _viewModel = [[HXAlbumsViewModel alloc] initWithAlbumID:_albumID];
+    _containerViewController.viewModel = _viewModel;
     
     @weakify(self)
     RACSignal *fetchSignal = [_viewModel.fetchCommand execute:nil];
     [fetchSignal subscribeError:^(NSError *error) {
         @strongify(self)
+        [self hiddenHUD];
         [self showBannerWithPrompt:error.domain];
     } completed:^{
         @strongify(self)
         [self hiddenHUD];
-//        [self->_containerViewController refresh];
+        [self->_containerViewController refresh];
     }];
 }
 

@@ -67,6 +67,7 @@ HXProfileContainerViewControllerDelegate
     RACSignal *fetchSignal = [_viewModel.fetchCommand execute:nil];
     [fetchSignal subscribeError:^(NSError *error) {
         @strongify(self)
+        [self hiddenHUD];
         [self showBannerWithPrompt:error.domain];
     } completed:^{
         @strongify(self)
@@ -97,7 +98,8 @@ HXProfileContainerViewControllerDelegate
 - (void)container:(HXProfileContainerViewController *)container selectedAlbum:(HXAlbumModel *)album {
     _shouldHiddenNavigationBar = YES;
     HXAlbumsViewController *albumsViewController = [HXAlbumsViewController instance];
-    albumsViewController.albumID = album.ID;
+//    albumsViewController.albumID = album.ID;
+    albumsViewController.albumID = @"1";
     [self.navigationController pushViewController:albumsViewController animated:YES];
 }
 

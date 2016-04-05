@@ -11,16 +11,13 @@
 #import "HXAlbumsSongCell.h"
 #import "HXAlbumsCommentCountCell.h"
 #import "HXAlbumsCommentCell.h"
-#import "HXAlbumsViewModel.h"
 
 
 @interface HXAlbumsContainerViewController ()
 @end
 
 
-@implementation HXAlbumsContainerViewController {
-    HXAlbumsViewModel *_viewModel;
-}
+@implementation HXAlbumsContainerViewController
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
@@ -32,11 +29,16 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _viewModel = [HXAlbumsViewModel new];
+    ;
 }
 
 - (void)viewConfigure {
     ;
+}
+
+#pragma mark - Public Methods
+- (void)refresh {
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table View Data Source Methods
@@ -88,9 +90,10 @@
             break;
         }
         case HXAlbumsRowTypeComment: {
-            height = [tableView fd_heightForCellWithIdentifier:NSStringFromClass([HXAlbumsCommentCell class]) cacheByIndexPath:indexPath configuration:^(HXAlbumsCommentCell *cell) {
-                ;
-            }];
+            height = 70.0f;
+//            height = [tableView fd_heightForCellWithIdentifier:NSStringFromClass([HXAlbumsCommentCell class]) cacheByIndexPath:indexPath configuration:^(HXAlbumsCommentCell *cell) {
+//                ;
+//            }];
             break;
         }
     }

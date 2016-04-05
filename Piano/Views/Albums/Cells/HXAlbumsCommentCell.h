@@ -10,4 +10,9 @@
 
 @interface HXAlbumsCommentCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *dateLabel;
+
 @end
