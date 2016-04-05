@@ -107,23 +107,35 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOS-yh-Fhz" userLabel="Control Container">
                                                     <rect key="frame" x="15" y="285" width="270" height="60"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-rZ-d67">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeX-rZ-d67">
                                                             <rect key="frame" x="0.0" y="15" width="30" height="30"/>
-                                                            <state key="normal" title="Play"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="8Ug-tM-5ts"/>
+                                                                <constraint firstAttribute="width" secondItem="xeX-rZ-d67" secondAttribute="height" multiplier="1:1" id="mF2-fq-H4N"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Play" image="AD-PlayIcon-L"/>
                                                             <connections>
                                                                 <action selector="playButtonPressed" destination="cMa-ZH-xn2" eventType="touchUpInside" id="WV1-EM-Y6t"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmA-ZP-FDF">
-                                                            <rect key="frame" x="208" y="15" width="30" height="30"/>
-                                                            <state key="normal" title="Pre"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmA-ZP-FDF">
+                                                            <rect key="frame" x="210" y="15" width="30" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="QrE-RJ-LzB"/>
+                                                                <constraint firstAttribute="width" secondItem="OmA-ZP-FDF" secondAttribute="height" multiplier="1:1" id="btf-Bx-yAW"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Pre" image="AD-PreviousIcon-U"/>
                                                             <connections>
                                                                 <action selector="previousButtonPressed" destination="cMa-ZH-xn2" eventType="touchUpInside" id="Q7C-pD-qDT"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID4-O3-yDn">
-                                                            <rect key="frame" x="238" y="15" width="32" height="30"/>
-                                                            <state key="normal" title="Next"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID4-O3-yDn">
+                                                            <rect key="frame" x="240" y="15" width="30" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="Xxs-z3-IBB"/>
+                                                                <constraint firstAttribute="width" secondItem="ID4-O3-yDn" secondAttribute="height" multiplier="1:1" id="i6K-nC-em5"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Next" image="AD-NextIcon-U"/>
                                                             <connections>
                                                                 <action selector="nextButtonPressed" destination="cMa-ZH-xn2" eventType="touchUpInside" id="CMN-4j-4Yc"/>
                                                             </connections>
@@ -138,7 +150,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXO-q3-CCA">
-                                                            <rect key="frame" x="168" y="23" width="32" height="14"/>
+                                                            <rect key="frame" x="170" y="23" width="32" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="t37-tx-C6h"/>
                                                             </constraints>
@@ -147,7 +159,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gJe-Bj-lnm">
-                                                            <rect key="frame" x="76" y="15" width="86" height="31"/>
+                                                            <rect key="frame" x="76" y="15" width="88" height="31"/>
                                                         </slider>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -372,4 +384,9 @@
             <point key="canvasLocation" x="234" y="376"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AD-NextIcon-U" width="30" height="30"/>
+        <image name="AD-PlayIcon-L" width="30" height="30"/>
+        <image name="AD-PreviousIcon-U" width="30" height="30"/>
+    </resources>
 </document>
