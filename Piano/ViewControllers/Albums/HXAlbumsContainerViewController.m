@@ -13,7 +13,9 @@
 #import "HXAlbumsCommentCell.h"
 
 
-@interface HXAlbumsContainerViewController ()
+@interface HXAlbumsContainerViewController () <
+HXAlbumsControlCellDelegate
+>
 @end
 
 
@@ -41,6 +43,11 @@
 #pragma mark - Public Methods
 - (void)refresh {
     [self.tableView reloadData];
+}
+
+#pragma mark - Private Methods
+- (void)updateControlCell {
+//    _controlCell.starTimeLabel.text = [NSString stringWithFormat:@"%02d:%@02d", ];
 }
 
 #pragma mark - Table View Data Source Methods
@@ -140,6 +147,24 @@
             break;
         }
         default: {
+            break;
+        }
+    }
+}
+
+#pragma mark - HXAlbumsControlCellDelegate Methods
+- (void)controlCell:(HXAlbumsControlCell *)cell takeAction:(HXAlbumsControlCellAction)action {
+    switch (action) {
+        case HXAlbumsControlCellActionPlay: {
+#warning Eden
+            break;
+        }
+        case HXAlbumsControlCellActionPrevious: {
+            ;
+            break;
+        }
+        case HXAlbumsControlCellActionNext: {
+            ;
             break;
         }
     }
