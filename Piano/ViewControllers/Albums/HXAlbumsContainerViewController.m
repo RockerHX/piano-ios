@@ -17,7 +17,9 @@
 @end
 
 
-@implementation HXAlbumsContainerViewController
+@implementation HXAlbumsContainerViewController {
+    HXAlbumsControlCell *_controlCell;
+}
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
@@ -53,6 +55,7 @@
     switch (rowType) {
         case HXAlbumsRowTypeControl: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXAlbumsControlCell class]) forIndexPath:indexPath];
+            _controlCell = (HXAlbumsControlCell *)cell;
             break;
         }
         case HXAlbumsRowTypeSong: {
@@ -105,19 +108,20 @@
     
     switch (rowType) {
         case HXAlbumsRowTypeControl: {
-//            [(HXAlbumsControlCell *)cell ];
+            [(HXAlbumsControlCell *)cell updateCellWithAlbum:_viewModel.model];
             break;
         }
         case HXAlbumsRowTypeSong: {
-//            [(HXAlbumsSongCell *)cell ];
+            NSInteger index = indexPath.row - _viewModel.songStartIndex;
+            [(HXAlbumsSongCell *)cell updateCellWithSong:_viewModel.songs[index] index:index];
             break;
         }
         case HXAlbumsRowTypeCommentCount: {
-//            [(HXAlbumsCommentCountCell *)cell ];
+            ((HXAlbumsCommentCountCell *)cell).countLabel.text = @(_viewModel.comments.count).stringValue;
             break;
         }
         case HXAlbumsRowTypeComment: {
-//            [(HXAlbumsCommentCell *)cell ];
+            [(HXAlbumsCommentCell *)cell updateCellWithComment:_viewModel.comments[indexPath.row - _viewModel.commentStartIndex]];
             break;
         }
     }

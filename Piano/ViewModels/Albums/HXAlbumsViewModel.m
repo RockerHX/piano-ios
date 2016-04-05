@@ -90,10 +90,9 @@
             [rowTypes addObject:@(HXAlbumsRowTypeSong)];
         }];
     }
-    _commentStartIndex = rowTypes.count;
-    
     if (_comments.count) {
         [rowTypes addObject:@(HXAlbumsRowTypeCommentCount)];
+        _commentStartIndex = rowTypes.count;
         [_comments enumerateObjectsUsingBlock:^(HXCommentModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [rowTypes addObject:@(HXAlbumsRowTypeComment)];
         }];

@@ -7,6 +7,7 @@
 //
 
 #import "HXCommentModel.h"
+#import "FormatTimeHelper.h"
 
 
 @implementation HXCommentModel
@@ -14,7 +15,12 @@
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"ID": @"id",
        @"nickName": @"nick",
-      @"avatarUrl": @"userpic"};
+      @"avatarUrl": @"userpic",
+     @"createDate": @"addtime"};
+}
+
+- (void)mj_keyValuesDidFinishConvertingToObject {
+    _date = [FormatTimeHelper formatTimeWith:_createDate];
 }
 
 @end

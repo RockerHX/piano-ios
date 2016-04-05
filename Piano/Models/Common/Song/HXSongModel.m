@@ -15,4 +15,10 @@
     return @{@"ID": @"id"};
 }
 
+- (void)mj_keyValuesDidFinishConvertingToObject {
+    NSInteger second = _duration / 1000;
+    NSInteger minute = second / 60;
+    _durationPrompt = [NSString stringWithFormat:@"%02zd:%02zd", minute, (second % 60)];
+}
+
 @end

@@ -7,18 +7,16 @@
 //
 
 #import "HXAlbumsSongCell.h"
+#import "HXSongModel.h"
+
 
 @implementation HXAlbumsSongCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+#pragma mark - Public Methods
+- (void)updateCellWithSong:(HXSongModel *)song index:(NSInteger)index {
+    _indexLabel.text = @(index).stringValue;
+    _nameLabel.text = song.title;
+    _durationLabel.text = song.durationPrompt;
 }
 
 @end

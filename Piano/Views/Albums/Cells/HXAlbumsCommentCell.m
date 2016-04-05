@@ -7,18 +7,18 @@
 //
 
 #import "HXAlbumsCommentCell.h"
+#import "HXCommentModel.h"
+#import "UIImageView+WebCache.h"
+
 
 @implementation HXAlbumsCommentCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+#pragma mark - Public Methods
+- (void)updateCellWithComment:(HXCommentModel *)comment {
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:comment.avatarUrl]];
+    _nickNameLabel.text = comment.nickName;
+    _contentLabel.text = comment.content;
+    _dateLabel.text = comment.date;
 }
 
 @end

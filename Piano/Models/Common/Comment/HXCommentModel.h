@@ -11,10 +11,14 @@
 
 @interface HXCommentModel : NSObject
 
-@property(nonatomic, strong) NSString *ID;
-@property(nonatomic, strong) NSString *uID;
-@property(nonatomic, strong) NSString *nickName;
-@property(nonatomic, strong) NSString *avatarUrl;
-@property(nonatomic, strong) NSString *content;
+@property(nonatomic, strong)  NSString *ID;
+@property(nonatomic, strong)  NSString *uID;
+@property(nonatomic, strong)  NSString *nickName;
+@property(nonatomic, strong)  NSString *avatarUrl;
+@property(nonatomic, strong)  NSString *content;
+
+@property(nonatomic, assign) NSInteger  createDate;
+
+@property(nonatomic, strong)  NSString *date;
 
 @end

@@ -7,18 +7,35 @@
 //
 
 #import "HXAlbumsControlCell.h"
+#import "UIImageView+WebCache.h"
+#import "HXAlbumModel.h"
+
 
 @implementation HXAlbumsControlCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+#pragma mark - Event Response
+- (IBAction)playButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(controlCell:takeAction:)]) {
+        [_delegate controlCell:self takeAction:HXAlbumsControlCellActionPlay];
+    }
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (IBAction)previousButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(controlCell:takeAction:)]) {
+        [_delegate controlCell:self takeAction:HXAlbumsControlCellActionPrevious];
+    }
+}
 
-    // Configure the view for the selected state
+- (IBAction)nextButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(controlCell:takeAction:)]) {
+        [_delegate controlCell:self takeAction:HXAlbumsControlCellActionNext];
+    }
+}
+
+#pragma mark - Public Methods
+- (void)updateCellWithAlbum:(HXAlbumModel *)model {
+    [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
+    
 }
 
 @end
