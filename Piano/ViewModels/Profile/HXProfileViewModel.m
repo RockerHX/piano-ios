@@ -45,6 +45,8 @@ static CGFloat ReplayBottomSpace = 60.0f;
     _videoItemHeight = (_videoItemWidth * (95.0f/168.0f)) + VideoBottomSpace;
     _replayItemHeight = _replayItemWidth + ReplayBottomSpace;
     
+    _headerHeight = 240.0f;
+    _livingHeight = 130.0f;
     
     [self setupRowTypes];
     [self fetchDataCommandConfigure];
@@ -65,31 +67,6 @@ static CGFloat ReplayBottomSpace = 60.0f;
     }];
 }
 
-#pragma mark - Property
-- (CGFloat)headerHeight {
-    return 240.0f;
-}
-
-- (CGFloat)livingHeight {
-    return 130.0f;
-}
-
-- (CGFloat)albumHeight {
-    return 40.0f + (_albumItemHeight * ((_model.albums.count / 3) + 1));
-}
-
-- (CGFloat)videoHeight {
-    return 40.0f + (_videoItemHeight * ((_model.videos.count / 2) + 1));
-}
-
-- (CGFloat)replayHeight {
-    return 40.0f + (_replayItemHeight * ((_model.replays.count / 2) + 1));
-}
-
-- (NSInteger)rows {
-    return _rowTypes.count;
-}
-
 #pragma mark - Private Methods
 - (void)fetchProfileRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper getMusicianProfileWithUID:_uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
@@ -107,6 +84,7 @@ static CGFloat ReplayBottomSpace = 60.0f;
 - (void)parseAttentionData:(NSDictionary *)data {
     _model = [HXProfileModel mj_objectWithKeyValues:data];
     [self resetRowType];
+    [self resizeHeight];
 }
 
 - (void)resetRowType {
@@ -124,6 +102,18 @@ static CGFloat ReplayBottomSpace = 60.0f;
         [rowTypes addObject:@(HXProfileRowTypeReplayContainer)];
     }
     _rowTypes = [rowTypes copy];
+    _rows = rowTypes.count;
+}
+
+- (void)resizeHeight {
+    NSInteger replayCount = _model.replays.count;
+    _replayHeight = 40.0f + (_replayItemHeight * ((replayCount / 2) + (replayCount % 2)));
+    
+    NSInteger albumCount = _model.albums.count;
+    _albumHeight = 40.0f + (_albumItemHeight * ((albumCount / 3) + ((albumCount % 3) ? 1 : 0)));
+    
+    NSInteger videoCount = _model.videos.count;
+    _videoHeight = 40.0f + (_videoItemHeight * ((videoCount / 2) + (videoCount % 2)));
 }
 
 @end

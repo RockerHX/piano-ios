@@ -24,8 +24,11 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
-    [self setupRowTypes];
+    _headerHeight = 200.0f;
+    _normalHeight = 56.0f;
+    _attentionHeight = 125.0f;
     
+    [self setupRowTypes];
     [self fetchDataCommandConfigure];
 }
 
@@ -45,23 +48,6 @@
             return nil;
         }];
     }];
-}
-
-#pragma mark - Property
-- (CGFloat)headerHeight {
-    return 200.0f;
-}
-
-- (CGFloat)normalHeight {
-    return 56.0f;
-}
-
-- (CGFloat)attentionHeight {
-    return 125.0f;
-}
-
-- (NSInteger)rows {
-    return _rowTypes.count;
 }
 
 #pragma mark - Private Methods
@@ -96,6 +82,7 @@
         [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:5];
         _rowTypes = [rowTypes copy];
     }
+    _rows = _rowTypes.count;
 }
 
 @end
