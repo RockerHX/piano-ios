@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXMeNavigationBar">
@@ -15,9 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAU-PN-3Zu">
-                    <rect key="frame" x="282" y="7" width="30" height="30"/>
-                    <state key="normal" title="设置"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAU-PN-3Zu">
+                    <rect key="frame" x="280" y="2" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="uhN-7l-Z6H"/>
+                        <constraint firstAttribute="width" secondItem="MAU-PN-3Zu" secondAttribute="height" multiplier="1:1" id="yXI-zR-XDX"/>
+                    </constraints>
+                    <state key="normal" image="P-SettingIcon"/>
                     <connections>
                         <action selector="settingButtonPressed" destination="-1" eventType="touchUpInside" id="mFT-aG-J0i"/>
                     </connections>
@@ -34,7 +39,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Q0p-of-8bA" secondAttribute="trailing" id="CCw-HK-1Td"/>
                 <constraint firstItem="MAU-PN-3Zu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="GHP-7m-f7t"/>
-                <constraint firstAttribute="trailing" secondItem="MAU-PN-3Zu" secondAttribute="trailing" constant="8" id="dkr-7u-meM"/>
+                <constraint firstAttribute="trailing" secondItem="MAU-PN-3Zu" secondAttribute="trailing" id="dkr-7u-meM"/>
                 <constraint firstAttribute="bottom" secondItem="Q0p-of-8bA" secondAttribute="bottom" id="lY7-2m-2sb"/>
                 <constraint firstItem="Q0p-of-8bA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="p6n-5F-mXL"/>
             </constraints>
@@ -43,4 +48,7 @@
             <point key="canvasLocation" x="284" y="322"/>
         </view>
     </objects>
+    <resources>
+        <image name="P-SettingIcon" width="20" height="20"/>
+    </resources>
 </document>
