@@ -94,9 +94,9 @@
         }
         case HXAlbumsRowTypeComment: {
             height = 70.0f;
-//            height = [tableView fd_heightForCellWithIdentifier:NSStringFromClass([HXAlbumsCommentCell class]) cacheByIndexPath:indexPath configuration:^(HXAlbumsCommentCell *cell) {
-//                ;
-//            }];
+            height = [tableView fd_heightForCellWithIdentifier:NSStringFromClass([HXAlbumsCommentCell class]) cacheByIndexPath:indexPath configuration:^(HXAlbumsCommentCell *cell) {
+                [(HXAlbumsCommentCell *)cell updateCellWithComment:_viewModel.comments[indexPath.row - _viewModel.commentStartIndex]];
+            }];
             break;
         }
     }
