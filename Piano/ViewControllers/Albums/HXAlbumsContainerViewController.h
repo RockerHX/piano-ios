@@ -10,9 +10,14 @@
 #import "HXAlbumsViewModel.h"
 
 
+@class HXAlbumsContainerViewController;
+
+
 @protocol HXAlbumsContainerViewControllerDelegate <NSObject>
 
 @required
+- (void)container:(HXAlbumsContainerViewController *)container selectedSong:(HXSongModel *)song;
+- (void)container:(HXAlbumsContainerViewController *)container selectedComment:(HXCommentModel *)comment;
 
 @end
 

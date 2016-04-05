@@ -7,13 +7,13 @@
 //
 
 #import "HXAlbumsViewController.h"
-#import "HXAlbumsContainerViewController.h"
 #import "HXAlbumsNavigationBar.h"
+#import "HXAlbumsContainerViewController.h"
 
 
 @interface HXAlbumsViewController () <
-HXAlbumsContainerViewControllerDelegate,
-HXAlbumsNavigationBarDelegate
+HXAlbumsNavigationBarDelegate,
+HXAlbumsContainerViewControllerDelegate
 >
 @end
 
@@ -70,8 +70,6 @@ HXAlbumsNavigationBarDelegate
     ;
 }
 
-#pragma mark - HXAlbumsContainerViewControllerDelegate Methods
-
 #pragma mark - HXAlbumsNavigationBarDelegate Methods
 - (void)navigationBar:(HXAlbumsNavigationBar *)bar takeAction:(HXAlbumsNavigationBarAction)action {
     switch (action) {
@@ -80,6 +78,15 @@ HXAlbumsNavigationBarDelegate
             break;
         }
     }
+}
+
+#pragma mark - HXAlbumsContainerViewControllerDelegate Methods
+- (void)container:(HXAlbumsContainerViewController *)container selectedSong:(HXSongModel *)song {
+    ;
+}
+
+- (void)container:(HXAlbumsContainerViewController *)container selectedComment:(HXCommentModel *)comment {
+    ;
 }
 
 @end

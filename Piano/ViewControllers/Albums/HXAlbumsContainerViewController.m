@@ -124,4 +124,25 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    switch (rowType) {
+        case HXAlbumsRowTypeSong: {
+            if (_delegate && [_delegate respondsToSelector:@selector(container:selectedSong:)]) {
+                [_delegate container:self selectedSong:_viewModel.songs[indexPath.row - _viewModel.songStartIndex]];
+            }
+            break;
+        }
+        case HXAlbumsRowTypeComment: {
+            if (_delegate && [_delegate respondsToSelector:@selector(container:selectedComment:)]) {
+                [_delegate container:self selectedComment:_viewModel.comments[indexPath.row - _viewModel.commentStartIndex]];
+            }
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
 @end
