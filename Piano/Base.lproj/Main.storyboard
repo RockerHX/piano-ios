@@ -28,7 +28,7 @@
         <scene sceneID="HF3-Pp-52M">
             <objects>
                 <navigationController storyboardIdentifier="HXPublishNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VPc-X6-5AQ" userLabel="HXPublishNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发布" id="7g9-Ri-8wK"/>
+                    <tabBarItem key="tabBarItem" title="" image="T-LiveIcon" id="7g9-Ri-8wK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g52-yd-bP5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -70,6 +70,7 @@
     <resources>
         <image name="T-DiscoveryIcon-S" width="35" height="35"/>
         <image name="T-DiscoveryIcon-US" width="35" height="35"/>
+        <image name="T-LiveIcon" width="41" height="41"/>
         <image name="T-MeIcon-S" width="35" height="35"/>
         <image name="T-MeIcon-US" width="35" height="35"/>
     </resources>

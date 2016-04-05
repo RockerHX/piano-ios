@@ -72,7 +72,7 @@
                                             <rect key="frame" x="30" y="20" width="260" height="34"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnu-3L-U80" userLabel="Anchor Summary Container" customClass="HXIBView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="143" height="34"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="34"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Vy-Yy-Kv7" userLabel="Avatar" customClass="HXIBImageView">
                                                             <rect key="frame" x="2" y="2" width="30" height="30"/>
@@ -93,9 +93,8 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-dT-fIg" userLabel="Prompt Icon">
-                                                            <rect key="frame" x="96" y="0.0" width="47" height="34"/>
-                                                            <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D-LiveIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-dT-fIg" userLabel="Prompt Icon">
+                                                            <rect key="frame" x="96" y="-1" width="50" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="XcD-dT-fIg" secondAttribute="height" multiplier="47:34" id="coe-xL-WT0"/>
                                                             </constraints>
@@ -103,14 +102,14 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="XcD-dT-fIg" firstAttribute="top" secondItem="wnu-3L-U80" secondAttribute="top" id="6zE-zW-g0a"/>
-                                                        <constraint firstAttribute="bottom" secondItem="XcD-dT-fIg" secondAttribute="bottom" id="BEr-JX-Iig"/>
+                                                        <constraint firstItem="XcD-dT-fIg" firstAttribute="top" secondItem="wnu-3L-U80" secondAttribute="top" constant="-1" id="6zE-zW-g0a"/>
+                                                        <constraint firstAttribute="bottom" secondItem="XcD-dT-fIg" secondAttribute="bottom" constant="-1" id="BEr-JX-Iig"/>
                                                         <constraint firstItem="vyd-jc-ZIN" firstAttribute="centerY" secondItem="wnu-3L-U80" secondAttribute="centerY" id="IaZ-SS-glq"/>
                                                         <constraint firstItem="vyd-jc-ZIN" firstAttribute="leading" secondItem="7Vy-Yy-Kv7" secondAttribute="trailing" constant="4" id="K8M-Hg-nho"/>
                                                         <constraint firstItem="7Vy-Yy-Kv7" firstAttribute="leading" secondItem="wnu-3L-U80" secondAttribute="leading" constant="2" id="NKT-6P-qYc"/>
                                                         <constraint firstItem="XcD-dT-fIg" firstAttribute="leading" secondItem="vyd-jc-ZIN" secondAttribute="trailing" constant="4" id="chd-8M-yJr"/>
                                                         <constraint firstItem="7Vy-Yy-Kv7" firstAttribute="centerY" secondItem="wnu-3L-U80" secondAttribute="centerY" id="prH-ND-ic3"/>
-                                                        <constraint firstAttribute="trailing" secondItem="XcD-dT-fIg" secondAttribute="trailing" id="x91-rg-BM7"/>
+                                                        <constraint firstAttribute="trailing" secondItem="XcD-dT-fIg" secondAttribute="trailing" constant="-1" id="x91-rg-BM7"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -380,5 +379,6 @@
     </scenes>
     <resources>
         <image name="CM-MuisIcon-Gray" width="26" height="26"/>
+        <image name="D-LiveIcon" width="47" height="34"/>
     </resources>
 </document>
