@@ -51,7 +51,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
-    
     switch (rowType) {
         case HXAlbumsRowTypeControl: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXAlbumsControlCell class]) forIndexPath:indexPath];
@@ -78,7 +77,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 0.0f;
     HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
-    
     switch (rowType) {
         case HXAlbumsRowTypeControl: {
             height = _viewModel.controlHeight;
@@ -105,7 +103,6 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
-    
     switch (rowType) {
         case HXAlbumsRowTypeControl: {
             [(HXAlbumsControlCell *)cell updateCellWithAlbum:_viewModel.model];
