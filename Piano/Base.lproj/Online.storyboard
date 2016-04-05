@@ -36,7 +36,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tJb-s9-jJj">
-                        <barButtonItem key="rightBarButtonItem" image="CM-MuisIcon-Black" id="Xgh-Gq-f2p">
+                        <barButtonItem key="rightBarButtonItem" image="CM-MuisIcon-Gray" id="Xgh-Gq-f2p">
                             <connections>
                                 <action selector="musicButtonPressed" destination="BJe-Xw-kLe" id="ji6-kA-oMy"/>
                             </connections>
@@ -379,6 +379,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CM-MuisIcon-Black" width="26" height="26"/>
+        <image name="CM-MuisIcon-Gray" width="26" height="26"/>
     </resources>
 </document>
