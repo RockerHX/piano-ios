@@ -9,6 +9,7 @@
 #import "HXProfileViewController.h"
 #import "HXProfileNavigationBar.h"
 #import "HXProfileContainerViewController.h"
+#import "HXAlbumsViewController.h"
 
 
 @interface HXProfileViewController () <
@@ -21,6 +22,8 @@ HXProfileContainerViewControllerDelegate
 @implementation HXProfileViewController {
     HXProfileContainerViewController *_containerViewController;
     HXProfileViewModel *_viewModel;
+    
+    BOOL _shouldHiddenNavigationBar;
 }
 
 #pragma mark - Class Methods
@@ -44,7 +47,7 @@ HXProfileContainerViewControllerDelegate
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:_shouldHiddenNavigationBar animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -89,6 +92,21 @@ HXProfileContainerViewControllerDelegate
 #pragma mark - HXProfileContainerViewControllerDelegate Methods
 - (void)container:(HXProfileContainerViewController *)container scrollOffset:(CGFloat)offset {
     [_navigationBar showBottomLine:((offset > 0) ? YES : NO)];
+}
+
+- (void)container:(HXProfileContainerViewController *)container selectedAlbum:(HXAlbumModel *)album {
+    _shouldHiddenNavigationBar = YES;
+    HXAlbumsViewController *albumsViewController = [HXAlbumsViewController instance];
+    albumsViewController.albumID = album.ID;
+    [self.navigationController pushViewController:albumsViewController animated:YES];
+}
+
+- (void)container:(HXProfileContainerViewController *)container selectedVideo:(HXVideoModel *)video {
+    
+}
+
+- (void)container:(HXProfileContainerViewController *)container selectedReplay:(HXReplayModel *)replay {
+    
 }
 
 @end

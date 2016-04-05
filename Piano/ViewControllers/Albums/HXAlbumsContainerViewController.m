@@ -102,19 +102,19 @@
     
     switch (rowType) {
         case HXAlbumsRowTypeControl: {
-            ;
+//            [(HXAlbumsControlCell *)cell ];
             break;
         }
         case HXAlbumsRowTypeSong: {
-            ;
+//            [(HXAlbumsSongCell *)cell ];
             break;
         }
         case HXAlbumsRowTypeCommentCount: {
-            ;
+//            [(HXAlbumsCommentCountCell *)cell ];
             break;
         }
         case HXAlbumsRowTypeComment: {
-            ;
+//            [(HXAlbumsCommentCell *)cell ];
             break;
         }
     }

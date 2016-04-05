@@ -158,17 +158,23 @@ HXProfileReplayContainerCellDelegate
 
 #pragma mark - HXProfileAlbumContainerCellDelegate Methods
 - (void)albumCell:(HXProfileAlbumContainerCell *)cell selectedAlbum:(HXAlbumModel *)album {
-    ;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:selectedAlbum:)]) {
+        [_delegate container:self selectedAlbum:album];
+    }
 }
 
 #pragma mark - HXProfileVideoContainerCellDelegate Methods
 - (void)videoCell:(HXProfileVideoContainerCell *)cell selectedVideo:(HXVideoModel *)video {
-    ;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:selectedVideo:)]) {
+        [_delegate container:self selectedVideo:video];
+    }
 }
 
 #pragma mark - HXProfileReplayContainerCellDelegate Methods
 - (void)replayCell:(HXProfileReplayContainerCell *)cell selectedReplay:(HXReplayModel *)replay {
-    ;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:selectedReplay:)]) {
+        [_delegate container:self selectedReplay:replay];
+    }
 }
 
 @end

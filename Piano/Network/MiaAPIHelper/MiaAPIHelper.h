@@ -115,7 +115,7 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 					 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)getAlbumWithID:(NSString *)albumID
-			completeBlock:(MiaRequestCompleteBlock)completeBlock
-			 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+         completeBlock:(MiaRequestCompleteBlock)completeBlock
+          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 @end

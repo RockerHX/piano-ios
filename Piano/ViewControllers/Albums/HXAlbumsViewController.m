@@ -8,16 +8,20 @@
 
 #import "HXAlbumsViewController.h"
 #import "HXAlbumsContainerViewController.h"
+#import "HXAlbumsViewModel.h"
+#import "HXAlbumsNavigationBar.h"
 
 
 @interface HXAlbumsViewController () <
-HXAlbumsContainerViewControllerDelegate
+HXAlbumsContainerViewControllerDelegate,
+HXAlbumsNavigationBarDelegate
 >
 @end
 
 
 @implementation HXAlbumsViewController {
     HXAlbumsContainerViewController *_containerViewController;
+    HXAlbumsViewModel *_viewModel;
 }
 
 #pragma mark - Class Methods
@@ -45,7 +49,18 @@ HXAlbumsContainerViewControllerDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    _viewModel = [[HXAlbumsViewModel alloc] initWithAlbumID:_albumID];
+    
+    @weakify(self)
+    RACSignal *fetchSignal = [_viewModel.fetchCommand execute:nil];
+    [fetchSignal subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+        @strongify(self)
+        [self hiddenHUD];
+//        [self->_containerViewController refresh];
+    }];
 }
 
 - (void)viewConfigure {
@@ -53,5 +68,15 @@ HXAlbumsContainerViewControllerDelegate
 }
 
 #pragma mark - HXAlbumsContainerViewControllerDelegate Methods
+
+#pragma mark - HXAlbumsNavigationBarDelegate Methods
+- (void)navigationBar:(HXAlbumsNavigationBar *)bar takeAction:(HXAlbumsNavigationBarAction)action {
+    switch (action) {
+        case HXAlbumsNavigationBarActionBack: {
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+        }
+    }
+}
 
 @end

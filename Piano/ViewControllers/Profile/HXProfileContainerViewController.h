@@ -17,6 +17,9 @@
 
 @required
 - (void)container:(HXProfileContainerViewController *)container scrollOffset:(CGFloat)offset;
+- (void)container:(HXProfileContainerViewController *)container selectedAlbum:(HXAlbumModel *)album;
+- (void)container:(HXProfileContainerViewController *)container selectedVideo:(HXVideoModel *)video;
+- (void)container:(HXProfileContainerViewController *)container selectedReplay:(HXReplayModel *)replay;
 
 @end
 

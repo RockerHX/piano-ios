@@ -14,4 +14,11 @@
 
 HXXibImplementation
 
+#pragma mark - Event Response
+- (IBAction)backButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(navigationBar:takeAction:)]) {
+        [_delegate navigationBar:self takeAction:HXAlbumsNavigationBarActionBack];
+    }
+}
+
 @end

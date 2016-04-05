@@ -26,9 +26,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Zv1-7A-UhD"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="gFL-s1-ewn" id="Y3X-TU-Gsi"/>
+                                </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Qp-JW-wpF">
-                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="954"/>
                                 <connections>
                                     <segue destination="dl0-fw-bkU" kind="embed" id="vjg-AJ-Uj1"/>
                                 </connections>
@@ -47,7 +50,7 @@
                             <constraint firstAttribute="trailing" secondItem="p57-vL-5nm" secondAttribute="trailing" id="R2d-Eh-0VJ"/>
                             <constraint firstItem="Ddh-ce-ghH" firstAttribute="leading" secondItem="HFx-47-ko6" secondAttribute="leading" id="Wc4-nL-dRU"/>
                             <constraint firstAttribute="bottom" secondItem="p57-vL-5nm" secondAttribute="bottom" id="b5q-dP-y8Z"/>
-                            <constraint firstItem="p57-vL-5nm" firstAttribute="top" secondItem="0Qp-JW-wpF" secondAttribute="bottom" id="lEV-Ab-D7X"/>
+                            <constraint firstItem="p57-vL-5nm" firstAttribute="top" secondItem="0Qp-JW-wpF" secondAttribute="bottom" constant="-500" id="lEV-Ab-D7X"/>
                             <constraint firstItem="Ddh-ce-ghH" firstAttribute="top" secondItem="0xM-J0-Q3y" secondAttribute="bottom" id="lcc-Br-Z6p"/>
                             <constraint firstAttribute="trailing" secondItem="Ddh-ce-ghH" secondAttribute="trailing" id="pPA-1k-w7o"/>
                             <constraint firstItem="0Qp-JW-wpF" firstAttribute="leading" secondItem="HFx-47-ko6" secondAttribute="leading" id="r4h-eT-ngu"/>
@@ -55,6 +58,9 @@
                             <constraint firstAttribute="trailing" secondItem="0Qp-JW-wpF" secondAttribute="trailing" id="wle-jt-fnf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="Ddh-ce-ghH" id="fZX-o6-ajH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSC-N8-3bQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -65,9 +71,9 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXAlbumsContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dl0-fw-bkU" userLabel="HXAlbumsContainerViewController" customClass="HXAlbumsContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Me1-y0-ecw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="454"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="954"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXAlbumsControlCell" rowHeight="356" id="cMa-ZH-xn2" userLabel="HXAlbumsControlCell" customClass="HXAlbumsControlCell">
                                 <rect key="frame" x="0.0" y="28" width="320" height="356"/>

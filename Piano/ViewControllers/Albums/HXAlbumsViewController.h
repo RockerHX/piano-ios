@@ -9,6 +9,13 @@
 #import "UIViewController+HXClass.h"
 
 
+@class HXAlbumsNavigationBar;
+
+
 @interface HXAlbumsViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet HXAlbumsNavigationBar *navigationBar;
+
+@property (nonatomic, strong) NSString *albumID;
 
 @end
