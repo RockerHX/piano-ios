@@ -16,6 +16,7 @@
 #import "ReactiveCocoa.h"
 #import "HXUserSession.h"
 #import "FileLog.h"
+#import "UIView+Frame.h"
 
 @interface HXMainViewController () <
 UITabBarControllerDelegate,
@@ -28,6 +29,13 @@ HXLoginViewControllerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self tabBarItemConfigure];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -72,6 +80,12 @@ HXLoginViewControllerDelegate
     NSArray *viewControllers = self.viewControllers;
     _publishNavigationController = viewControllers[1];
     self.viewControllers = @[[viewControllers firstObject], [viewControllers lastObject]];
+}
+
+- (void)tabBarItemConfigure {
+    for (UITabBarItem *item in self.tabBar.items) {
+        item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    }
 }
 
 #pragma mark - Private Methods
