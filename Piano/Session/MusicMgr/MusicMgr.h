@@ -12,7 +12,7 @@
 
 extern NSString * const MusicMgrNotificationKey_RemoteControlEvent;
 extern NSString * const MusicMgrNotificationKey_PlayerEvent;
-extern NSString * const MusicMgrNotificationKey_sID;
+extern NSString * const MusicMgrNotificationKey_MusicID;
 
 extern NSString * const MusicMgrNotificationRemoteControlEvent;
 extern NSString * const MusicMgrNotificationPlayerEvent;
