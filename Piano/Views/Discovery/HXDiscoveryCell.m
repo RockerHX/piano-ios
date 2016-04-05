@@ -1,16 +1,16 @@
 //
-//  HXOnlineCell.m
+//  HXDiscoveryCell.m
 //  Piano
 //
 //  Created by miaios on 16/3/16.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXOnlineCell.h"
+#import "HXDiscoveryCell.h"
 #import "UIImageView+WebCache.h"
 
 
-@implementation HXOnlineCell
+@implementation HXDiscoveryCell
 
 #pragma mark - Load Methods
 - (void)awakeFromNib {
@@ -25,7 +25,7 @@
 }
 
 #pragma mark - Public Methods
-- (void)updateCellWithModel:(HXOnlineModel *)model {
+- (void)updateCellWithModel:(HXDiscoveryModel *)model {
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
     _nickNameLabel.text = model.nickName;
     _attendeCountLabel.text = @(model.onlineCount).stringValue;
@@ -36,8 +36,8 @@
 
 #pragma mark - Event Reponse
 - (void)tapGesture {
-    if (_delegate && [_delegate respondsToSelector:@selector(onlineCellAnchorContainerTaped:)]) {
-        [_delegate onlineCellAnchorContainerTaped:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(discoveryCellAnchorContainerTaped:)]) {
+        [_delegate discoveryCellAnchorContainerTaped:self];
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  HXOnlineViewController.h
+//  HXDiscoveryViewController.h
 //  Piano
 //
 //  Created by miaios on 16/3/23.
@@ -9,7 +9,7 @@
 #import "UIViewController+HXClass.h"
 
 
-@interface HXOnlineViewController : UIViewController
+@interface HXDiscoveryViewController : UIViewController
 
 - (IBAction)musicButtonPressed;
 

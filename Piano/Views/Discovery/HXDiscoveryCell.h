@@ -1,5 +1,5 @@
 //
-//  HXOnlineCell.h
+//  HXDiscoveryCell.h
 //  Piano
 //
 //  Created by miaios on 16/3/16.
@@ -7,23 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HXOnlineModel.h"
+#import "HXDiscoveryModel.h"
 
 
-@class HXOnlineCell;
+@class HXDiscoveryCell;
 
 
-@protocol HXOnlineCellDelegate <NSObject>
+@protocol HXDiscoveryCellDelegate <NSObject>
 
 @required
-- (void)onlineCellAnchorContainerTaped:(HXOnlineCell *)cell;
+- (void)discoveryCellAnchorContainerTaped:(HXDiscoveryCell *)cell;
 
 @end
 
 
-@interface HXOnlineCell : UITableViewCell
+@interface HXDiscoveryCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet          id  <HXOnlineCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet          id  <HXDiscoveryCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet      UIView *anchorContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
@@ -32,6 +32,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *cover;
 @property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
 
-- (void)updateCellWithModel:(HXOnlineModel *)model;
+- (void)updateCellWithModel:(HXDiscoveryModel *)model;
 
 @end

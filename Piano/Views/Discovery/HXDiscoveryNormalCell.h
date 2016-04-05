@@ -1,5 +1,5 @@
 //
-//  HXOnlineNormalCell.h
+//  HXDiscoveryNormalCell.h
 //  Piano
 //
 //  Created by miaios on 16/3/23.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HXOnlineNormalCell : UITableViewCell
+@interface HXDiscoveryNormalCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIImageView *cover;

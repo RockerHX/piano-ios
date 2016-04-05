@@ -9,7 +9,7 @@
 
 
 typedef NS_ENUM(NSUInteger, HXStoryBoardName) {
-    HXStoryBoardNameOnline,
+    HXStoryBoardNameDiscovery,
     HXStoryBoardNamePublish,
     HXStoryBoardNameMe,
     HXStoryBoardNameLogin,

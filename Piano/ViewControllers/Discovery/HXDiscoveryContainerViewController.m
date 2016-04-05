@@ -1,29 +1,29 @@
 //
-//  HXOnlineContainerViewController.m
+//  HXDiscoveryContainerViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/16.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXOnlineContainerViewController.h"
+#import "HXDiscoveryContainerViewController.h"
 #import "MJRefresh.h"
-#import "HXOnlineViewModel.h"
-#import "HXOnlineCell.h"
-#import "HXOnlineReplayCell.h"
-#import "HXOnlineNewEntryCell.h"
-#import "HXOnlineVideoCell.h"
+#import "HXDiscoveryViewModel.h"
+#import "HXDiscoveryCell.h"
+#import "HXDiscoveryReplayCell.h"
+#import "HXDiscoveryNewEntryCell.h"
+#import "HXDiscoveryVideoCell.h"
 #import "HXAlertBanner.h"
 
 
-@interface HXOnlineContainerViewController () <
-HXOnlineCellDelegate
+@interface HXDiscoveryContainerViewController () <
+HXDiscoveryCellDelegate
 >
 @end
 
 
-@implementation HXOnlineContainerViewController {
-    HXOnlineViewModel *_viewModel;
+@implementation HXDiscoveryContainerViewController {
+    HXDiscoveryViewModel *_viewModel;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -36,19 +36,19 @@ HXOnlineCellDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _viewModel = [[HXOnlineViewModel alloc] init];
+    _viewModel = [[HXDiscoveryViewModel alloc] init];
 }
 
 - (void)viewConfigure {
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchOnlineList)];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchDiscoveryList)];
 }
 
 #pragma mark - Public Methods
-- (void)startFetchOnlineList {
+- (void)startFetchDiscoveryList {
     [self.tableView.mj_header beginRefreshing];
 }
 
-- (void)fetchOnlineList {
+- (void)fetchDiscoveryList {
     @weakify(self)
     RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
     [requestSiganl subscribeError:^(NSError *error) {
@@ -69,26 +69,26 @@ HXOnlineCellDelegate
 
 #pragma mark - Table View Data Source Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _viewModel.onlineList.count;
+    return _viewModel.discoveryList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
-    switch (_viewModel.onlineList[indexPath.row].type) {
-        case HXOnlineTypeLive: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineCell class]) forIndexPath:indexPath];
+    switch (_viewModel.discoveryList[indexPath.row].type) {
+        case HXDiscoveryTypeLive: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXOnlineTypeReplay: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineReplayCell class]) forIndexPath:indexPath];
+        case HXDiscoveryTypeReplay: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryReplayCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXOnlineTypeNewEntry: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineNewEntryCell class]) forIndexPath:indexPath];
+        case HXDiscoveryTypeNewEntry: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryNewEntryCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXOnlineTypeVideo: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXOnlineVideoCell class]) forIndexPath:indexPath];
+        case HXDiscoveryTypeVideo: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryVideoCell class]) forIndexPath:indexPath];
             break;
         }
     }
@@ -101,19 +101,19 @@ HXOnlineCellDelegate
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXOnlineModel *model = _viewModel.onlineList[indexPath.row];
+    HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
     switch (model.type) {
-        case HXOnlineTypeLive: {
-            [(HXOnlineCell *)cell updateCellWithModel:model];
+        case HXDiscoveryTypeLive: {
+            [(HXDiscoveryCell *)cell updateCellWithModel:model];
             break;
         }
-        case HXOnlineTypeReplay: {
+        case HXDiscoveryTypeReplay: {
             break;
         }
-        case HXOnlineTypeNewEntry: {
+        case HXDiscoveryTypeNewEntry: {
             break;
         }
-        case HXOnlineTypeVideo: {
+        case HXDiscoveryTypeVideo: {
             break;
         }
     }
@@ -121,15 +121,15 @@ HXOnlineCellDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_delegate && [_delegate respondsToSelector:@selector(container:showLiveByModel:)]) {
-        [_delegate container:self showLiveByModel:_viewModel.onlineList[indexPath.row]];
+        [_delegate container:self showLiveByModel:_viewModel.discoveryList[indexPath.row]];
     }
 }
 
-#pragma mark - HXOnlineCellDelegate Methods
-- (void)onlineCellAnchorContainerTaped:(HXOnlineCell *)cell {
+#pragma mark - HXDiscoveryCellDelegate Methods
+- (void)discoveryCellAnchorContainerTaped:(HXDiscoveryCell *)cell {
     NSInteger row = [self.tableView indexPathForCell:cell].row;
     if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
-        [_delegate container:self showAnchorByModel:_viewModel.onlineList[row]];
+        [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];
     }
 }
 

@@ -1,17 +1,17 @@
 //
-//  HXOnlineViewModel.m
+//  HXDiscoveryViewModel.m
 //  Piano
 //
 //  Created by miaios on 16/3/23.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXOnlineViewModel.h"
+#import "HXDiscoveryViewModel.h"
 #import "MiaAPIHelper.h"
 #import "UIConstants.h"
 
 
-@implementation HXOnlineViewModel
+@implementation HXDiscoveryViewModel
 
 #pragma mark - Initialize Methods
 - (instancetype)init {
@@ -32,7 +32,7 @@
     _fetchCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self)
-            [self fetchOnlineListWithSubscriber:subscriber];
+            [self fetchDiscoveryListWithSubscriber:subscriber];
             return nil;
         }];
         return signal;
@@ -45,7 +45,7 @@
 }
 
 #pragma mark - Private Methods
-- (void)fetchOnlineListWithSubscriber:(id<RACSubscriber>)subscriber {
+- (void)fetchDiscoveryListWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper getHomeListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             [self parseData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
@@ -61,12 +61,12 @@
 }
 
 - (void)parseData:(NSArray *)datas {
-    NSMutableArray *onlieList = @[].mutableCopy;
+    NSMutableArray *discoveryList = @[].mutableCopy;
     for (NSDictionary *data in datas) {
-        HXOnlineModel *model = [HXOnlineModel mj_objectWithKeyValues:data];
-        [onlieList addObject:model];
+        HXDiscoveryModel *model = [HXDiscoveryModel mj_objectWithKeyValues:data];
+        [discoveryList addObject:model];
     }
-    _onlineList = onlieList.copy;
+    _discoveryList = discoveryList.copy;
 }
 
 @end

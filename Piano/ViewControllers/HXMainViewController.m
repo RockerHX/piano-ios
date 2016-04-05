@@ -7,7 +7,7 @@
 //
 
 #import "HXMainViewController.h"
-#import "HXOnlineViewController.h"
+#import "HXDiscoveryViewController.h"
 #import "HXPublishViewController.h"
 #import "HXMeViewController.h"
 #import "HXLoginViewController.h"
@@ -70,8 +70,8 @@ HXLoginViewControllerDelegate
 
 - (void)subControllersConfigure {
     for (UINavigationController *navigationController in self.viewControllers) {
-        if ([navigationController.restorationIdentifier isEqualToString:[HXOnlineViewController navigationControllerIdentifier]]) {
-            [navigationController setViewControllers:@[[HXOnlineViewController instance]]];
+        if ([navigationController.restorationIdentifier isEqualToString:[HXDiscoveryViewController navigationControllerIdentifier]]) {
+            [navigationController setViewControllers:@[[HXDiscoveryViewController instance]]];
         } else if ([navigationController.restorationIdentifier isEqualToString:[HXMeViewController navigationControllerIdentifier]]) {
             [navigationController setViewControllers:@[[HXMeViewController instance]]];
         }
@@ -137,9 +137,9 @@ HXLoginViewControllerDelegate
 //			[self checkUpdate];
 			[self autoLogin];
 
-			UINavigationController *onlineNavigationController = self.viewControllers.firstObject;
-			HXOnlineViewController *onlineViewController = onlineNavigationController.viewControllers.firstObject;
-			[onlineViewController startFetchList];
+			UINavigationController *discoveryNavigationController = self.viewControllers.firstObject;
+			HXDiscoveryViewController *discoveryViewController = discoveryNavigationController.viewControllers.firstObject;
+			[discoveryViewController startFetchList];
 
 #warning @andy
 //			[MiaAPIHelper getAlbumWithID:@"1" completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {

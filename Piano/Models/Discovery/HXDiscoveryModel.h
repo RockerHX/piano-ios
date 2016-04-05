@@ -1,5 +1,5 @@
 //
-//  HXOnlineModel.h
+//  HXDiscoveryModel.h
 //  Piano
 //
 //  Created by miaios on 16/3/18.
@@ -9,18 +9,18 @@
 #import "MJExtension.h"
 
 
-typedef NS_ENUM(NSUInteger, HXOnlineType) {
-    HXOnlineTypeLive,
-    HXOnlineTypeReplay,
-    HXOnlineTypeNewEntry,
-    HXOnlineTypeVideo,
+typedef NS_ENUM(NSUInteger, HXDiscoveryType) {
+    HXDiscoveryTypeLive,
+    HXDiscoveryTypeReplay,
+    HXDiscoveryTypeNewEntry,
+    HXDiscoveryTypeVideo,
 };
 
 
-@interface HXOnlineModel : NSObject
+@interface HXDiscoveryModel : NSObject
 
-@property (nonatomic, assign, readonly) HXOnlineType  type;
-@property (nonatomic, strong, readonly)     NSString *ID;
+@property (nonatomic, assign, readonly) HXDiscoveryType  type;
+@property (nonatomic, strong, readonly)        NSString *ID;
 
 @property (nonatomic, strong)  NSString *uID;
 @property (nonatomic, strong)  NSString *title;

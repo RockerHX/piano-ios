@@ -1,14 +1,14 @@
 //
-//  HXOnlineReplayCell.m
+//  HXDiscoveryVideoCell.m
 //  Piano
 //
 //  Created by miaios on 16/3/23.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXOnlineReplayCell.h"
+#import "HXDiscoveryVideoCell.h"
 
-@implementation HXOnlineReplayCell
+@implementation HXDiscoveryVideoCell
 
 /*
 // Only override drawRect: if you perform custom drawing.

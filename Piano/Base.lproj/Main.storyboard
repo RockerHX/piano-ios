@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="334" y="772"/>
         </scene>
-        <!--HXOnlineNavigationController-->
+        <!--HXDiscoveryNavigationController-->
         <scene sceneID="pIV-8O-zAG">
             <objects>
-                <navigationController storyboardIdentifier="HXOnlineNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXOnlineNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HXDiscoveryNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXDiscoveryNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="T-DiscoveryIcon-US" selectedImage="T-DiscoveryIcon-S" id="NkN-4J-GVv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rlr-1H-sSR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -68,9 +68,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="T-DiscoveryIcon-S" width="35" height="30"/>
+        <image name="T-DiscoveryIcon-S" width="35" height="35"/>
         <image name="T-DiscoveryIcon-US" width="35" height="35"/>
-        <image name="T-MeIcon-S" width="30" height="30"/>
-        <image name="T-MeIcon-US" width="30" height="30"/>
+        <image name="T-MeIcon-S" width="35" height="35"/>
+        <image name="T-MeIcon-US" width="35" height="35"/>
     </resources>
 </document>

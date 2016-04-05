@@ -7,10 +7,10 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--HXOnlineViewController-->
+        <!--HXDiscoveryViewController-->
         <scene sceneID="1UM-Qw-NSQ">
             <objects>
-                <viewController storyboardIdentifier="HXOnlineViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BJe-Xw-kLe" userLabel="HXOnlineViewController" customClass="HXOnlineViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXDiscoveryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BJe-Xw-kLe" userLabel="HXDiscoveryViewController" customClass="HXDiscoveryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rIF-dM-Kxz"/>
                         <viewControllerLayoutGuide type="bottom" id="z12-ZM-Pah"/>
@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="-335" y="329"/>
         </scene>
-        <!--HXOnlineContainerViewController-->
+        <!--HXDiscoveryContainerViewController-->
         <scene sceneID="dDD-OW-tuE">
             <objects>
-                <tableViewController storyboardIdentifier="HXOnlineContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fRv-sf-web" userLabel="HXOnlineContainerViewController" customClass="HXOnlineContainerViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HXDiscoveryContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fRv-sf-web" userLabel="HXDiscoveryContainerViewController" customClass="HXDiscoveryContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="324" sectionHeaderHeight="28" sectionFooterHeight="28" id="5kk-HB-VYC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +61,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXOnlineCell" id="Rfp-pP-O8l" userLabel="HXOnlineCell" customClass="HXOnlineCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXDiscoveryCell" id="Rfp-pP-O8l" userLabel="HXDiscoveryCell" customClass="HXDiscoveryCell">
                                 <rect key="frame" x="0.0" y="28" width="320" height="324"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rfp-pP-O8l" id="TE0-PP-Ykn">
@@ -208,7 +208,7 @@
                                     <outlet property="titleLabel" destination="urc-Wt-G6V" id="8do-1I-vbz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXOnlineReplayCell" id="rE9-Ta-J31" userLabel="HXOnlineCell" customClass="HXOnlineReplayCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXDiscoveryReplayCell" id="rE9-Ta-J31" userLabel="HXDiscoveryCell" customClass="HXDiscoveryReplayCell">
                                 <rect key="frame" x="0.0" y="352" width="320" height="324"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rE9-Ta-J31" id="TAo-dR-TC9">

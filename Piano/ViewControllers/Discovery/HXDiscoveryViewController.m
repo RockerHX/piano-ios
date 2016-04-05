@@ -1,13 +1,13 @@
 //
-//  HXOnlineViewController.m
+//  HXDiscoveryViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/23.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXOnlineViewController.h"
-#import "HXOnlineContainerViewController.h"
+#import "HXDiscoveryViewController.h"
+#import "HXDiscoveryContainerViewController.h"
 #import "HXWatchLiveViewController.h"
 #import "HXReplayViewController.h"
 #import "HXRecordLiveViewController.h"
@@ -16,23 +16,23 @@
 #import "HXProfileViewController.h"
 
 
-@interface HXOnlineViewController () <
-HXOnlineContainerViewControllerDelegate
+@interface HXDiscoveryViewController () <
+HXDiscoveryContainerViewControllerDelegate
 >
 @end
 
 
-@implementation HXOnlineViewController {
-    HXOnlineContainerViewController *_containerViewController;
+@implementation HXDiscoveryViewController {
+    HXDiscoveryContainerViewController *_containerViewController;
 }
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameOnline;
+    return HXStoryBoardNameDiscovery;
 }
 
 + (NSString *)navigationControllerIdentifier {
-    return @"HXOnlineNavigationController";
+    return @"HXDiscoveryNavigationController";
 }
 
 #pragma mark - Segue
@@ -67,11 +67,11 @@ HXOnlineContainerViewControllerDelegate
 
 #pragma mark - Public Methods
 - (void)startFetchList {
-    [_containerViewController startFetchOnlineList];
+    [_containerViewController startFetchDiscoveryList];
 }
 
-#pragma mark - HXOnlineContainerViewControllerDelegate Methods
-- (void)container:(HXOnlineContainerViewController *)container showLiveByModel:(HXOnlineModel *)model {
+#pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
+- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
     if ([model.uID isEqualToString:[HXUserSession session].uid]) {
         return;
     }
@@ -79,25 +79,25 @@ HXOnlineContainerViewControllerDelegate
     if (model) {
         UINavigationController *modalNavigationController = nil;
         switch (model.type) {
-            case HXOnlineTypeLive: {
+            case HXDiscoveryTypeLive: {
                 modalNavigationController = [HXWatchLiveViewController navigationControllerInstance];
                 HXWatchLiveViewController *watchLiveViewController = [modalNavigationController.viewControllers firstObject];
                 watchLiveViewController.roomID = model.ID;
                 break;
             }
-            case HXOnlineTypeReplay: {
+            case HXDiscoveryTypeReplay: {
 //                modalNavigationController = [HXReplayViewController navigationControllerInstance];
 //                HXReplayViewController *replayViewController = [modalNavigationController.viewControllers firstObject];
 //                replayViewController.model = model;
                 break;
             }
-            case HXOnlineTypeNewEntry: {
+            case HXDiscoveryTypeNewEntry: {
 //                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
 //                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
 //                recordLiveViewController.model = model;
                 break;
             }
-            case HXOnlineTypeVideo: {
+            case HXDiscoveryTypeVideo: {
 //                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
 //                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
 //                recordLiveViewController.model = model;
@@ -108,7 +108,7 @@ HXOnlineContainerViewControllerDelegate
     }
 }
 
-- (void)container:(HXOnlineContainerViewController *)container showAnchorByModel:(HXOnlineModel *)model {
+- (void)container:(HXDiscoveryContainerViewController *)container showAnchorByModel:(HXDiscoveryModel *)model {
     HXProfileViewController *profileViewController = [HXProfileViewController instance];
     profileViewController.uid = model.uID;
     [self.navigationController pushViewController:profileViewController animated:YES];
