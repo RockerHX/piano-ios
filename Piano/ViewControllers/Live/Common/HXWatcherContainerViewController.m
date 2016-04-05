@@ -54,8 +54,7 @@
 
 #pragma mark - UICollection View Delegate Methods
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    HXWatcherCell *watcherCell = (HXWatcherCell *)cell;
-    [watcherCell updateWithWatcher:_watchers[indexPath.row]];
+    [(HXWatcherCell *)cell updateWithWatcher:_watchers[indexPath.row]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

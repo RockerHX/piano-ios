@@ -29,7 +29,7 @@
 
 - (void)requestCommandConfigure {
     @weakify(self)
-    _requestCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    _fetchCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self)
             [self fetchOnlineListWithSubscriber:subscriber];

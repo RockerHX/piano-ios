@@ -50,7 +50,7 @@ HXOnlineCellDelegate
 
 - (void)fetchOnlineList {
     @weakify(self)
-    RACSignal *requestSiganl = [_viewModel.requestCommand execute:nil];
+    RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
     [requestSiganl subscribeError:^(NSError *error) {
         @strongify(self)
         [self showBannerWithPrompt:error.domain];
@@ -104,8 +104,7 @@ HXOnlineCellDelegate
     HXOnlineModel *model = _viewModel.onlineList[indexPath.row];
     switch (model.type) {
         case HXOnlineTypeLive: {
-            HXOnlineCell *onlineCell = (HXOnlineCell *)cell;
-            [onlineCell updateCellWithModel:model];
+            [(HXOnlineCell *)cell updateCellWithModel:model];
             break;
         }
         case HXOnlineTypeReplay: {

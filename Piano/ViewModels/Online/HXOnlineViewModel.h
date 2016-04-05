@@ -12,9 +12,9 @@
 
 @interface HXOnlineViewModel : NSObject
 
-@property (nonatomic, assign, readonly) CGFloat  cellHeight;
+@property (nonatomic, strong, readonly) RACCommand *fetchCommand;
 
-@property (nonatomic, strong, readonly) RACCommand *requestCommand;
+@property (nonatomic, assign, readonly)    CGFloat  cellHeight;
 
 @property (nonatomic, strong, readonly) NSArray<HXOnlineModel *> *onlineList;
 

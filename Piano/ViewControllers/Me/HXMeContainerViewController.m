@@ -118,18 +118,15 @@ HXMeAttentionContainerCellDelegate
     HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
         case HXMeRowTypeHeader: {
-            HXMeHeaderCell *headerCell = (HXMeHeaderCell *)cell;
-            [headerCell updateCellWithProfileModel:_viewModel.model];
+            [(HXMeHeaderCell *)cell updateCellWithProfileModel:_viewModel.model];
             break;
         }
         case HXMeRowTypeAttentionPrompt: {
-            HXMeAttentionPromptCell *attentionPromptCell = (HXMeAttentionPromptCell *)cell;
-            [attentionPromptCell updateCellWithCount:_viewModel.model.attentions.count];
+            [(HXMeAttentionPromptCell *)cell updateCellWithCount:_viewModel.model.attentions.count];
             break;
         }
         case HXMeRowTypeAttentions: {
-            HXMeAttentionContainerCell *attentionContainerCell = (HXMeAttentionContainerCell *)cell;
-            [attentionContainerCell updateCellWithAttentions:_viewModel.model.attentions];
+            [(HXMeAttentionContainerCell *)cell updateCellWithAttentions:_viewModel.model.attentions];
             break;
         }
         default: {

@@ -63,8 +63,7 @@ HXLiveCommentCellDelegate
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXLiveCommentCell *commentCell = (HXLiveCommentCell *)cell;
-    [commentCell updateWithComment:_comments[indexPath.row]];
+    [(HXLiveCommentCell *)cell updateWithComment:_comments[indexPath.row]];
 }
 
 #pragma mark - HXLiveCommentCellDelegate Methods
