@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, HXRecordBottomBarAction) {
 
 @interface HXRecordBottomBar : UIView
 
-@property (weak, nonatomic) IBOutlet id  <HXRecordBottomBarDelegate>delegate;
+@property (weak, nonatomic) IBOutlet       id  <HXRecordBottomBarDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *beautyButton;
