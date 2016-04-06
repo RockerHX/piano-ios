@@ -12,12 +12,14 @@
 #import "HXSettingSession.h"
 #import "HXLiveModel.h"
 #import "HXUserSession.h"
+#import "HXRecordAnchorView.h"
 #import "HXRecordBottomBar.h"
 
 
 @interface HXRecordLiveViewController () <
 ZegoChatDelegate,
 ZegoVideoDelegate,
+HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate
 >
 @end
@@ -213,6 +215,16 @@ HXRecordBottomBarDelegate
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {
     ;
+}
+
+#pragma mark - HXRecordAnchorViewDelegate Methods
+- (void)anchorView:(HXRecordAnchorView *)anchorView takeAction:(HXRecordAnchorViewAction)action {
+    switch (action) {
+        case HXRecordAnchorViewActionShowAnchor: {
+            ;
+            break;
+        }
+    }
 }
 
 #pragma mark - HXRecordBottomBarDelegate Methods
