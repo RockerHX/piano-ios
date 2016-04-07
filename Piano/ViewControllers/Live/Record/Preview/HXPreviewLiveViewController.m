@@ -16,6 +16,7 @@
 
 
 @interface HXPreviewLiveViewController () <
+HXCountDownViewControllerDelegate,
 HXPreviewLiveTopBarDelegate,
 HXPreviewLiveEidtViewDelegate,
 HXPreviewLiveControlViewDelegate
@@ -32,6 +33,7 @@ HXPreviewLiveControlViewDelegate
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _countDownViewController = segue.destinationViewController;
+    _countDownViewController.delegate = self;
 }
 
 #pragma mark - Status Bar
@@ -71,6 +73,16 @@ HXPreviewLiveControlViewDelegate
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     [zegoAVApi setLocalView:nil];
     [zegoAVApi stopPreview];
+}
+
+- (void)startCountDown {
+    _countDownContainerView.hidden = NO;
+    [_countDownViewController startCountDown];
+}
+
+#pragma mark - HXCountDownViewControllerDelegate Methods
+- (void)countDownFinished {
+    _countDownContainerView.hidden = YES;
 }
 
 #pragma mark - HXPreviewLiveTopBarDelegate Methods
@@ -126,7 +138,7 @@ HXPreviewLiveControlViewDelegate
             break;
         }
         case HXPreviewLiveControlViewActionStartLive: {
-            ;
+            [self startCountDown];
             break;
         }
     }

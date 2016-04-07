@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol HXCountDownViewControllerDelegate <NSObject>
+
+@required
+- (void)countDownFinished;
+
+@end
+
+
 @interface HXCountDownViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet      id  <HXCountDownViewControllerDelegate>delegate;
+
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+
+- (void)startCountDown;
 
 @end

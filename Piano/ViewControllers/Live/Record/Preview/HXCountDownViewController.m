@@ -8,30 +8,62 @@
 
 #import "HXCountDownViewController.h"
 
-@interface HXCountDownViewController ()
 
+@interface HXCountDownViewController ()
 @end
 
-@implementation HXCountDownViewController
 
+@implementation HXCountDownViewController {
+    NSTimer *_timer;
+    NSUInteger _count;
+}
+
+#pragma mark - Status Bar
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self loadConfigure];
+    [self viewConfigure];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dealloc {
+    [_timer invalidate];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    ;
 }
-*/
+
+- (void)viewConfigure {
+    ;
+}
+
+#pragma mark - Public Methods
+- (void)startCountDown {
+    _count = 3;
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+}
+
+#pragma mark - Private Methods
+- (void)countDown {
+    if (_count < 1) {
+        [_timer invalidate];
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(countDownFinished)]) {
+            [_delegate countDownFinished];
+        }
+        
+        return;
+    }
+    
+    _count--;
+    _countLabel.text = @(_count).stringValue;
+}
 
 @end

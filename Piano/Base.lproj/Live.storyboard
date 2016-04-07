@@ -591,6 +591,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="lGr-mw-2X2"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="delegate" destination="lMF-gb-QbS" id="XoV-hH-yYl"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -783,8 +786,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqG-OA-m6q" userLabel="Count Label">
-                                <rect key="frame" x="116" y="165" width="89" height="239"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqG-OA-m6q" userLabel="Count Label">
+                                <rect key="frame" x="101" y="165" width="119" height="239"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="200"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -796,6 +799,9 @@
                             <constraint firstItem="WqG-OA-m6q" firstAttribute="centerY" secondItem="r8v-em-WWI" secondAttribute="centerY" id="b0I-AQ-ZkP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="countLabel" destination="WqG-OA-m6q" id="wME-vc-lRc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPh-jA-wRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
