@@ -76,6 +76,7 @@
 		CD4492E71CAAA504005F36B3 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD45673A1CAE13B800837DFF /* HXMeMyStationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */; };
 		CD546D011CAE9A63009FB2FD /* FormatTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */; };
+		CD5D02701CB5FB2D000285DC /* HXRecordLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D026F1CB5FB2D000285DC /* HXRecordLiveViewModel.m */; };
 		CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */; };
 		CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */; };
 		CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */; };
@@ -319,6 +320,8 @@
 		CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeMyStationCell.m; sourceTree = "<group>"; };
 		CD546CFF1CAE9A63009FB2FD /* FormatTimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormatTimeHelper.h; sourceTree = "<group>"; };
 		CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormatTimeHelper.m; sourceTree = "<group>"; };
+		CD5D026E1CB5FB2D000285DC /* HXRecordLiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordLiveViewModel.h; sourceTree = "<group>"; };
+		CD5D026F1CB5FB2D000285DC /* HXRecordLiveViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordLiveViewModel.m; sourceTree = "<group>"; };
 		CD5DD8A51CA912790077A17B /* HXAlbumsCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCell.h; sourceTree = "<group>"; };
 		CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsCommentCell.m; sourceTree = "<group>"; };
 		CD5DD8A71CA912790077A17B /* HXAlbumsCommentCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsCommentCountCell.h; sourceTree = "<group>"; };
@@ -969,6 +972,7 @@
 			children = (
 				CD5F21501CAD1D750067A1DA /* Common */,
 				CD3199821CAA6173006C845F /* Watch */,
+				CD5D026D1CB5FB15000285DC /* Record */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -1016,6 +1020,15 @@
 				CD23677D1CA91A3B002C8233 /* Cells */,
 			);
 			path = Me;
+			sourceTree = "<group>";
+		};
+		CD5D026D1CB5FB15000285DC /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				CD5D026E1CB5FB2D000285DC /* HXRecordLiveViewModel.h */,
+				CD5D026F1CB5FB2D000285DC /* HXRecordLiveViewModel.m */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		CD5DD8A41CA912790077A17B /* Cells */ = {
@@ -2045,6 +2058,7 @@
 				398451E31CAD0300009018C6 /* NSObject+BlockSupport.m in Sources */,
 				CD6C194B1CA4E7AD00849B39 /* HXReplayBottomBar.m in Sources */,
 				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
+				CD5D02701CB5FB2D000285DC /* HXRecordLiveViewModel.m in Sources */,
 				CDED8F231CA13BB4003867B8 /* HXAppConstants.m in Sources */,
 				CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */,
 				CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */,
