@@ -24,7 +24,7 @@ HXXibImplementation
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    [_locationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(locationViewTaped)]];
 }
 
 - (void)viewConfigure {
@@ -35,7 +35,15 @@ HXXibImplementation
 
 #pragma mark - Event Response
 - (IBAction)cameraButtonPressed {
-    
+    if (_delegate && [_delegate respondsToSelector:@selector(editView:takeAction:)]) {
+        [_delegate editView:self takeAction:HXPreviewLiveEidtViewActionCamera];
+    }
+}
+
+- (void)locationViewTaped {
+    if (_delegate && [_delegate respondsToSelector:@selector(editView:takeAction:)]) {
+        [_delegate editView:self takeAction:HXPreviewLiveEidtViewActionLocation];
+    }
 }
 
 @end
