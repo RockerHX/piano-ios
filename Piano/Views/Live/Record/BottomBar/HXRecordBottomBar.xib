@@ -8,10 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXRecordBottomBar">
             <connections>
                 <outlet property="beautyButton" destination="suZ-1R-9cE" id="iWY-47-q9r"/>
+                <outlet property="changeButton" destination="Tgm-aa-Jxc" id="80b-Ot-23e"/>
                 <outlet property="commentButton" destination="PeU-ya-QOq" id="K8g-uh-QHO"/>
                 <outlet property="giftButton" destination="RTn-f4-zfa" id="2GI-uH-KAB"/>
                 <outlet property="muteButton" destination="agR-1V-bAn" id="9tU-bj-Cyc"/>
-                <outlet property="refreshButton" destination="Tgm-aa-Jxc" id="Qyf-bk-W4D"/>
                 <outlet property="shareButton" destination="TFQ-MX-rVo" id="uhy-yk-b2m"/>
             </connections>
         </placeholder>
@@ -39,9 +39,9 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tgm-aa-Jxc">
                             <rect key="frame" x="82" y="9" width="31" height="31"/>
-                            <state key="normal" image="L-RefreshIcon"/>
+                            <state key="normal" image="L-ChangeIcon"/>
                             <connections>
-                                <action selector="refreshButtonPressed" destination="-1" eventType="touchUpInside" id="chK-Qz-ILt"/>
+                                <action selector="changeButtonPressed" destination="-1" eventType="touchUpInside" id="71H-hW-kGG"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agR-1V-bAn">
@@ -109,10 +109,10 @@
     </objects>
     <resources>
         <image name="L-BeautyIcon" width="31" height="31"/>
+        <image name="L-ChangeIcon" width="31" height="31"/>
         <image name="L-CommentIcon" width="31" height="31"/>
         <image name="L-GiftIcon" width="31" height="31"/>
         <image name="L-MuteIcon" width="31" height="31"/>
-        <image name="L-RefreshIcon" width="31" height="31"/>
         <image name="L-ShareIcon" width="31" height="31"/>
     </resources>
 </document>

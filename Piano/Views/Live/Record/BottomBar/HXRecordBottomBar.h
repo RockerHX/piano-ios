@@ -36,14 +36,14 @@ typedef NS_ENUM(NSUInteger, HXRecordBottomBarAction) {
 
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *beautyButton;
-@property (weak, nonatomic) IBOutlet UIButton *refreshButton;
+@property (weak, nonatomic) IBOutlet UIButton *changeButton;
 @property (weak, nonatomic) IBOutlet UIButton *muteButton;
 @property (weak, nonatomic) IBOutlet UIButton *giftButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 - (IBAction)commentButtonPressed;
 - (IBAction)beautyButtonPressed;
-- (IBAction)refreshButtonPressed;
+- (IBAction)changeButtonPressed;
 - (IBAction)muteButtonPressed;
 - (IBAction)giftButtonPressed;
 - (IBAction)shareButtonPressed;

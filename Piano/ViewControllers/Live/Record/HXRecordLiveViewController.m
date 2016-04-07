@@ -14,6 +14,7 @@
 #import "HXUserSession.h"
 #import "HXRecordAnchorView.h"
 #import "HXRecordBottomBar.h"
+#import "HXPreviewLiveViewController.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -25,7 +26,9 @@ HXRecordBottomBarDelegate
 @end
 
 
-@implementation HXRecordLiveViewController
+@implementation HXRecordLiveViewController {
+    HXPreviewLiveViewController *_previewViewController;
+}
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
@@ -34,6 +37,16 @@ HXRecordBottomBarDelegate
 
 + (NSString *)navigationControllerIdentifier {
     return @"HXRecordLiveNavigationController";
+}
+
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    _previewViewController = segue.destinationViewController;
+}
+
+#pragma mark - Status Bar
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - View Controller Life Cycle
