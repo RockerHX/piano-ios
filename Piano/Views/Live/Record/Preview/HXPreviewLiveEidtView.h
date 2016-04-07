@@ -11,4 +11,10 @@
 
 @interface HXPreviewLiveEidtView : UIView
 
+@property (weak, nonatomic) IBOutlet      UIView *container;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet     UILabel *locationLabel;
+
+- (IBAction)cameraButtonPressed;
+
 @end

@@ -18,35 +18,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o9-9n-4me">
-                    <rect key="frame" x="71" y="5" width="31" height="31"/>
+                    <rect key="frame" x="46" y="0.0" width="31" height="31"/>
                     <state key="normal" image="L-ChangeIcon"/>
                     <connections>
                         <action selector="changeButtonPressed" destination="-1" eventType="touchUpInside" id="zN0-eX-xW1"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVj-RP-kV3">
-                    <rect key="frame" x="0.0" y="5" width="31" height="31"/>
+                    <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
                     <state key="normal" image="L-BeautyIcon"/>
                     <connections>
                         <action selector="beautyButtonPressed" destination="-1" eventType="touchUpInside" id="8Lz-6q-Uy8"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaO-93-Wzk">
-                    <rect key="frame" x="289" y="5" width="31" height="31"/>
+                    <rect key="frame" x="289" y="0.0" width="31" height="31"/>
                     <state key="normal" image="L-CloseIcon"/>
                     <connections>
                         <action selector="closeButtonPressed" destination="-1" eventType="touchUpInside" id="6W6-mX-pdj"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="3o9-9n-4me" firstAttribute="centerY" secondItem="KVj-RP-kV3" secondAttribute="centerY" id="NuT-uH-5eA"/>
                 <constraint firstItem="KVj-RP-kV3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S0Q-Je-3wE"/>
-                <constraint firstItem="3o9-9n-4me" firstAttribute="leading" secondItem="KVj-RP-kV3" secondAttribute="trailing" constant="40" id="dd8-Ic-jVM"/>
-                <constraint firstItem="HaO-93-Wzk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="keq-JL-OmD"/>
-                <constraint firstItem="KVj-RP-kV3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mva-vU-TOg"/>
+                <constraint firstItem="3o9-9n-4me" firstAttribute="leading" secondItem="KVj-RP-kV3" secondAttribute="trailing" constant="15" id="dd8-Ic-jVM"/>
+                <constraint firstItem="HaO-93-Wzk" firstAttribute="centerY" secondItem="3o9-9n-4me" secondAttribute="centerY" id="eix-Td-cOa"/>
                 <constraint firstAttribute="trailing" secondItem="HaO-93-Wzk" secondAttribute="trailing" id="ntJ-Qe-6gh"/>
+                <constraint firstItem="KVj-RP-kV3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="une-fA-OO5"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

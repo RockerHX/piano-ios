@@ -14,4 +14,28 @@
 
 HXXibImplementation
 
+#pragma mark - Load Methods
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self loadConfigure];
+    [self viewConfigure];
+}
+
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    ;
+}
+
+- (void)viewConfigure {
+    _container.backgroundColor = [UIColor clearColor];
+    
+    [_textField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+}
+
+#pragma mark - Event Response
+- (IBAction)cameraButtonPressed {
+    
+}
+
 @end

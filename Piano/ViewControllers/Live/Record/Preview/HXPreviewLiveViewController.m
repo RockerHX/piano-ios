@@ -59,6 +59,7 @@ HXPreviewLiveTopBarDelegate
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     [zegoAVApi setAVConfig:[HXSettingSession session].configure];
     [zegoAVApi setLocalView:_preview];
+    [zegoAVApi setLocalViewMode:ZegoVideoViewModeScaleAspectFill];
     [zegoAVApi startPreview];
 }
 
