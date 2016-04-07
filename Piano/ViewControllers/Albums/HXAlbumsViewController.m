@@ -98,8 +98,13 @@ HXAlbumsContainerViewControllerDelegate
     MusicMgr *musicMgr = [MusicMgr standard];
     switch (action) {
         case HXAlbumsActionPlay: {
-            [musicMgr setPlayList:_viewModel.songs hostObject:_containerViewController];
-            [musicMgr playCurrent];
+			if (musicMgr.currentUrlInPlayer
+				&& [musicMgr isCurrentHostObject:_containerViewController]) {
+				[musicMgr pause];
+			} else {
+				[musicMgr setPlayList:_viewModel.songs hostObject:_containerViewController];
+				[musicMgr playCurrent];
+			}
             break;
         }
         case HXAlbumsActionPause: {
@@ -119,8 +124,16 @@ HXAlbumsContainerViewControllerDelegate
 
 - (void)container:(HXAlbumsContainerViewController *)container selectedSong:(HXSongModel *)song {
     NSInteger index = [_viewModel.songs indexOfObject:song];
-    [[MusicMgr standard] setPlayList:_viewModel.songs hostObject:_containerViewController];
-    [[MusicMgr standard] playWithIndex:index];
+	MusicMgr *musicMgr = [MusicMgr standard];
+
+	if (musicMgr.currentUrlInPlayer
+		&& [musicMgr isCurrentHostObject:_containerViewController]
+		&& [musicMgr.currentItem.mid isEqualToString:song.mid]) {
+		[musicMgr pause];
+	} else {
+		[musicMgr setPlayList:_viewModel.songs hostObject:_containerViewController];
+		[[MusicMgr standard] playWithIndex:index];
+	}
 }
 
 - (void)container:(HXAlbumsContainerViewController *)container selectedComment:(HXCommentModel *)comment {
