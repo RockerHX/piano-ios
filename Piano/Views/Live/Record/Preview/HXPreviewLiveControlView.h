@@ -9,6 +9,34 @@
 #import <UIKit/UIKit.h>
 
 
+typedef NS_ENUM(NSUInteger, HXPreviewLiveControlViewAction) {
+    HXPreviewLiveControlViewActionFriendsCycle,
+    HXPreviewLiveControlViewActionWeChat,
+    HXPreviewLiveControlViewActionWeiBo,
+    HXPreviewLiveControlViewActionStartLive,
+};
+
+
+@class HXPreviewLiveControlView;
+
+
+@protocol HXPreviewLiveControlViewDelegate <NSObject>
+
+@required
+- (void)controlView:(HXPreviewLiveControlView *)controlView takeAction:(HXPreviewLiveControlViewAction)action;
+
+@end
+
+
 @interface HXPreviewLiveControlView : UIView
+
+@property (weak, nonatomic) IBOutlet     id  <HXPreviewLiveControlViewDelegate>delegate;
+
+@property (weak, nonatomic) IBOutlet UIView *container;
+
+- (IBAction)friendsCycleButtonPressed;
+- (IBAction)wechatButtonPressed;
+- (IBAction)weiboButtonPressed;
+- (IBAction)startLiveButtonPressed;
 
 @end

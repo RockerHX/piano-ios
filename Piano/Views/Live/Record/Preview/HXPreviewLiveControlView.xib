@@ -5,15 +5,90 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXPreviewLiveControlView"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXPreviewLiveControlView">
+            <connections>
+                <outlet property="container" destination="iN0-l3-epB" id="Rwo-72-HNh"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="175"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUj-90-sZu" customClass="HXIBButton">
+                    <rect key="frame" x="0.0" y="68" width="320" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Khl-zY-T5y"/>
+                    </constraints>
+                    <state key="normal" title="开始直播">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="22"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="startLiveButtonPressed" destination="-1" eventType="touchUpInside" id="AeR-rn-DVY"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHQ-4d-0ln" userLabel="Share Container View">
+                    <rect key="frame" x="85" y="30" width="150" height="30"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWu-Lt-8s4">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <state key="normal" image="L-FriendsCircleIcon"/>
+                            <connections>
+                                <action selector="friendsCycleButtonPressed" destination="-1" eventType="touchUpInside" id="gTt-pW-63m"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3F9-ZO-4du">
+                            <rect key="frame" x="60" y="0.0" width="30" height="30"/>
+                            <state key="normal" image="L-WeCharIcon"/>
+                            <connections>
+                                <action selector="wechatButtonPressed" destination="-1" eventType="touchUpInside" id="rT2-ch-tbm"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4j8-k6-f8Y">
+                            <rect key="frame" x="120" y="0.0" width="30" height="30"/>
+                            <state key="normal" image="L-WeiBoIcon"/>
+                            <connections>
+                                <action selector="weiboButtonPressed" destination="-1" eventType="touchUpInside" id="lo8-vd-0Wi"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="jWu-Lt-8s4" secondAttribute="bottom" id="5o1-yn-R27"/>
+                        <constraint firstItem="3F9-ZO-4du" firstAttribute="leading" secondItem="jWu-Lt-8s4" secondAttribute="trailing" constant="30" id="8xh-vf-ANa"/>
+                        <constraint firstItem="jWu-Lt-8s4" firstAttribute="top" secondItem="gHQ-4d-0ln" secondAttribute="top" id="KlQ-H8-wdk"/>
+                        <constraint firstItem="jWu-Lt-8s4" firstAttribute="leading" secondItem="gHQ-4d-0ln" secondAttribute="leading" id="NoB-as-T7V"/>
+                        <constraint firstAttribute="bottom" secondItem="4j8-k6-f8Y" secondAttribute="bottom" id="PkY-9a-9Lm"/>
+                        <constraint firstAttribute="bottom" secondItem="3F9-ZO-4du" secondAttribute="bottom" id="a8Z-iW-Aqq"/>
+                        <constraint firstItem="4j8-k6-f8Y" firstAttribute="leading" secondItem="3F9-ZO-4du" secondAttribute="trailing" constant="30" id="bhW-tF-CJ9"/>
+                        <constraint firstAttribute="trailing" secondItem="4j8-k6-f8Y" secondAttribute="trailing" id="cTu-1i-J8d"/>
+                        <constraint firstItem="3F9-ZO-4du" firstAttribute="top" secondItem="gHQ-4d-0ln" secondAttribute="top" id="lPo-Ho-UMe"/>
+                        <constraint firstItem="4j8-k6-f8Y" firstAttribute="top" secondItem="gHQ-4d-0ln" secondAttribute="top" id="skI-fg-iLW"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="sUj-90-sZu" secondAttribute="bottom" constant="8" id="15G-Dj-cxI"/>
+                <constraint firstItem="gHQ-4d-0ln" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5dr-6z-T2r"/>
+                <constraint firstAttribute="trailing" secondItem="sUj-90-sZu" secondAttribute="trailing" id="Bx9-p3-cUy"/>
+                <constraint firstItem="sUj-90-sZu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JZi-om-whX"/>
+                <constraint firstItem="sUj-90-sZu" firstAttribute="top" secondItem="gHQ-4d-0ln" secondAttribute="bottom" constant="8" id="PDY-kY-7Af"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="307" y="310.5"/>
+            <point key="canvasLocation" x="307" y="310"/>
         </view>
     </objects>
+    <resources>
+        <image name="L-FriendsCircleIcon" width="30" height="30"/>
+        <image name="L-WeCharIcon" width="30" height="30"/>
+        <image name="L-WeiBoIcon" width="30" height="30"/>
+    </resources>
 </document>

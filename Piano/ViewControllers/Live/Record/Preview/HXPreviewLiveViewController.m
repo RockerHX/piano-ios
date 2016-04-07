@@ -11,10 +11,14 @@
 #import "HXZegoAVKitManager.h"
 #import "HXSettingSession.h"
 #import "HXPreviewLiveTopBar.h"
+#import "HXPreviewLiveEidtView.h"
+#import "HXPreviewLiveControlView.h"
 
 
 @interface HXPreviewLiveViewController () <
-HXPreviewLiveTopBarDelegate
+HXPreviewLiveTopBarDelegate,
+HXPreviewLiveEidtViewDelegate,
+HXPreviewLiveControlViewDelegate
 >
 @end
 
@@ -83,6 +87,46 @@ HXPreviewLiveTopBarDelegate
         }
         case HXPreviewLiveTopBarActionColse: {
             [self dismissViewControllerAnimated:YES completion:nil];
+            break;
+        }
+    }
+}
+
+#pragma marrk - HXPreviewLiveEidtViewDelegate Methods
+- (void)editView:(HXPreviewLiveEidtView *)editView takeAction:(HXPreviewLiveEidtViewAction)action {
+    switch (action) {
+        case HXPreviewLiveEidtViewActionEdit: {
+            ;
+            break;
+        }
+        case HXPreviewLiveEidtViewActionCamera: {
+            ;
+            break;
+        }
+        case HXPreviewLiveEidtViewActionLocation: {
+            ;
+            break;
+        }
+    }
+}
+
+#pragma mark - HXPreviewLiveControlViewDelegate Methods
+- (void)controlView:(HXPreviewLiveControlView *)controlView takeAction:(HXPreviewLiveControlViewAction)action {
+    switch (action) {
+        case HXPreviewLiveControlViewActionFriendsCycle: {
+            ;
+            break;
+        }
+        case HXPreviewLiveControlViewActionWeChat: {
+            ;
+            break;
+        }
+        case HXPreviewLiveControlViewActionWeiBo: {
+            ;
+            break;
+        }
+        case HXPreviewLiveControlViewActionStartLive: {
+            ;
             break;
         }
     }
