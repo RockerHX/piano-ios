@@ -11,6 +11,7 @@
 #import "HXPublishViewController.h"
 #import "HXMeViewController.h"
 #import "HXLoginViewController.h"
+#import "HXRecordLiveViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
 #import "ReactiveCocoa.h"
@@ -79,7 +80,7 @@ HXLoginViewControllerDelegate
     
     NSArray *viewControllers = self.viewControllers;
     _publishNavigationController = viewControllers[1];
-    self.viewControllers = @[[viewControllers firstObject], [viewControllers lastObject]];
+//    self.viewControllers = @[[viewControllers firstObject], [viewControllers lastObject]];
 }
 
 - (void)tabBarItemConfigure {
@@ -140,14 +141,6 @@ HXLoginViewControllerDelegate
 			UINavigationController *discoveryNavigationController = self.viewControllers.firstObject;
 			HXDiscoveryViewController *discoveryViewController = discoveryNavigationController.viewControllers.firstObject;
 			[discoveryViewController startFetchList];
-
-#warning @andy
-//			[MiaAPIHelper getAlbumWithID:@"1" completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//				NSLog(@"getAlbumWithID");
-//			} timeoutBlock:^(MiaRequestItem *requestItem) {
-//				NSLog(@"");
-//			}];
-
 		} else {
 			[self autoReconnect];
 		}
@@ -208,6 +201,12 @@ HXLoginViewControllerDelegate
     [meViewController refresh];
 }
 
+- (void)startLive {
+    UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+//    HXRecordLiveViewController *recordLiveViewController = recordLiveNavigationController.viewControllers.firstObject;
+    [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
+}
+
 #pragma mark - UITabBarControllerDelegate Methods
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     if ([[self.viewControllers firstObject] isEqual:viewController]) {
@@ -224,6 +223,7 @@ HXLoginViewControllerDelegate
             if ([[self.viewControllers lastObject] isEqual:viewController]) {
                 return YES;
             } else {
+                [self startLive];
                 return NO;
             }
         }
