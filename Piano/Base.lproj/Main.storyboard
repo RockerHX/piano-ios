@@ -28,7 +28,7 @@
         <scene sceneID="HF3-Pp-52M">
             <objects>
                 <navigationController storyboardIdentifier="HXPublishNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VPc-X6-5AQ" userLabel="HXPublishNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发布" id="7g9-Ri-8wK"/>
+                    <tabBarItem key="tabBarItem" title="" image="T-LiveIcon" id="7g9-Ri-8wK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g52-yd-bP5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -42,7 +42,7 @@
         <scene sceneID="X9j-Bd-Urt">
             <objects>
                 <navigationController storyboardIdentifier="HXMeNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txc-rK-VJg" userLabel="HXMeNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" id="IAM-oX-QbD"/>
+                    <tabBarItem key="tabBarItem" title="" image="T-MeIcon-US" selectedImage="T-MeIcon-S" id="IAM-oX-QbD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yOb-7h-7qE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -52,11 +52,11 @@
             </objects>
             <point key="canvasLocation" x="334" y="772"/>
         </scene>
-        <!--HXOnlineNavigationController-->
+        <!--HXDiscoveryNavigationController-->
         <scene sceneID="pIV-8O-zAG">
             <objects>
-                <navigationController storyboardIdentifier="HXOnlineNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXOnlineNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="直播" id="NkN-4J-GVv"/>
+                <navigationController storyboardIdentifier="HXDiscoveryNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy6-7Q-Aey" userLabel="HXDiscoveryNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="T-DiscoveryIcon-US" selectedImage="T-DiscoveryIcon-S" id="NkN-4J-GVv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rlr-1H-sSR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -67,4 +67,11 @@
             <point key="canvasLocation" x="-477" y="772"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="T-DiscoveryIcon-S" width="35" height="35"/>
+        <image name="T-DiscoveryIcon-US" width="35" height="35"/>
+        <image name="T-LiveIcon" width="41" height="41"/>
+        <image name="T-MeIcon-S" width="35" height="35"/>
+        <image name="T-MeIcon-US" width="35" height="35"/>
+    </resources>
 </document>

@@ -21,9 +21,33 @@ HXXibImplementation
     }
 }
 
-- (IBAction)forwardingButtonPressed {
+- (IBAction)beautyButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
-        [_delegate bottomBar:self takeAction:HXRecordBottomBarActionForwarding];
+        [_delegate bottomBar:self takeAction:HXRecordBottomBarActionBeauty];
+    }
+}
+
+- (IBAction)refreshButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
+        [_delegate bottomBar:self takeAction:HXRecordBottomBarActionRefresh];
+    }
+}
+
+- (IBAction)muteButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
+        [_delegate bottomBar:self takeAction:HXRecordBottomBarActionMute];
+    }
+}
+
+- (IBAction)giftButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
+        [_delegate bottomBar:self takeAction:HXRecordBottomBarActionGift];
+    }
+}
+
+- (IBAction)shareButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
+        [_delegate bottomBar:self takeAction:HXRecordBottomBarActionShare];
     }
 }
 

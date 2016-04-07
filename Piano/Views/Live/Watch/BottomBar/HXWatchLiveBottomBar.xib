@@ -3,46 +3,81 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXWatchLiveBottomBar"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXWatchLiveBottomBar">
+            <connections>
+                <outlet property="albumButton" destination="DCW-hx-hwF" id="eKj-iz-D2u"/>
+                <outlet property="commentButton" destination="PeU-ya-QOq" id="9UC-2E-eVz"/>
+                <outlet property="freeGiftButton" destination="RdE-1s-nQg" id="Erp-qG-dbH"/>
+                <outlet property="giftButton" destination="NBb-uy-x54" id="VjH-Oy-f6P"/>
+                <outlet property="shareButton" destination="RTn-f4-zfa" id="fvV-us-S9f"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-ya-QOq">
-                    <rect key="frame" x="0.0" y="4" width="32" height="32"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="32" id="tEa-to-Tfc"/>
-                        <constraint firstAttribute="width" secondItem="PeU-ya-QOq" secondAttribute="height" multiplier="1:1" id="yuF-uz-qfJ"/>
-                    </constraints>
-                    <state key="normal" title="评论"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-ya-QOq">
+                    <rect key="frame" x="0.0" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-CommentIcon"/>
                     <connections>
                         <action selector="commentButtonPressed" destination="-1" eventType="touchUpInside" id="eZq-Rk-Fh2"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTn-f4-zfa">
-                    <rect key="frame" x="42" y="5" width="32" height="30"/>
-                    <state key="normal" title="转发"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTn-f4-zfa">
+                    <rect key="frame" x="41" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-ShareIcon"/>
                     <connections>
-                        <action selector="forwardingButtonPressed" destination="-1" eventType="touchUpInside" id="GG6-hl-HHr"/>
+                        <action selector="shareButtonPressed" destination="-1" eventType="touchUpInside" id="ZWz-eD-cN8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCW-hx-hwF">
+                    <rect key="frame" x="123" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-AlbumIcon"/>
+                    <connections>
+                        <action selector="albumButtonPressed" destination="-1" eventType="touchUpInside" id="9Nq-Wp-XhB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdE-1s-nQg">
+                    <rect key="frame" x="264" y="4" width="36" height="36"/>
+                    <state key="normal" image="L-FreeGiftIcon"/>
+                    <connections>
+                        <action selector="freeGiftButtonPressed" destination="-1" eventType="touchUpInside" id="ajY-bg-bEK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBb-uy-x54">
+                    <rect key="frame" x="82" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-GiftIcon"/>
+                    <connections>
+                        <action selector="giftButtonPressed" destination="-1" eventType="touchUpInside" id="vcD-J8-U4T"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="RTn-f4-zfa" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PYN-h6-hBU"/>
-                <constraint firstItem="RTn-f4-zfa" firstAttribute="width" secondItem="PeU-ya-QOq" secondAttribute="height" multiplier="1:1" id="TFp-sQ-yAz"/>
+                <constraint firstItem="DCW-hx-hwF" firstAttribute="centerY" secondItem="NBb-uy-x54" secondAttribute="centerY" id="1TZ-Yw-fvO"/>
+                <constraint firstItem="NBb-uy-x54" firstAttribute="centerY" secondItem="RTn-f4-zfa" secondAttribute="centerY" id="3cB-3Q-7Na"/>
+                <constraint firstItem="RTn-f4-zfa" firstAttribute="centerY" secondItem="PeU-ya-QOq" secondAttribute="centerY" id="3ss-xD-nuZ"/>
+                <constraint firstAttribute="trailing" secondItem="RdE-1s-nQg" secondAttribute="trailing" id="V5N-yJ-zzd"/>
+                <constraint firstItem="DCW-hx-hwF" firstAttribute="leading" secondItem="NBb-uy-x54" secondAttribute="trailing" constant="10" id="c9T-oF-zV8"/>
+                <constraint firstAttribute="bottom" secondItem="PeU-ya-QOq" secondAttribute="bottom" id="d66-o1-mYE"/>
                 <constraint firstItem="PeU-ya-QOq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dWa-9L-FlL"/>
-                <constraint firstItem="RTn-f4-zfa" firstAttribute="width" secondItem="PeU-ya-QOq" secondAttribute="width" id="knm-ap-O8P"/>
+                <constraint firstItem="NBb-uy-x54" firstAttribute="leading" secondItem="RTn-f4-zfa" secondAttribute="trailing" constant="10" id="iWG-cn-HsT"/>
+                <constraint firstAttribute="bottom" secondItem="RdE-1s-nQg" secondAttribute="bottom" id="pW7-zj-V6j"/>
                 <constraint firstItem="RTn-f4-zfa" firstAttribute="leading" secondItem="PeU-ya-QOq" secondAttribute="trailing" constant="10" id="t2S-9c-OJI"/>
-                <constraint firstItem="PeU-ya-QOq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xl3-yf-jMo"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="287" y="389"/>
         </view>
     </objects>
+    <resources>
+        <image name="L-AlbumIcon" width="31" height="31"/>
+        <image name="L-CommentIcon" width="31" height="31"/>
+        <image name="L-FreeGiftIcon" width="36" height="36"/>
+        <image name="L-GiftIcon" width="31" height="31"/>
+        <image name="L-ShareIcon" width="31" height="31"/>
+    </resources>
 </document>

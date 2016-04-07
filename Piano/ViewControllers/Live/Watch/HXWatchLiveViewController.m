@@ -10,6 +10,7 @@
 #import "HXZegoAVKitManager.h"
 #import "HXWatcherContainerViewController.h"
 #import "HXCommentContainerViewController.h"
+#import "HXCommentViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
@@ -17,7 +18,6 @@
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
-#import "HXCommentViewController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -288,16 +288,28 @@ HXWatchLiveBottomBarDelegate
 }
 
 #pragma mark - HXWatchLiveBottomBarDelegate Methods
-- (void)bottomBar:(HXWatchLiveBottomBar *)bar takeAction:(HXWatchLiveBottomBarAction)action {
+- (void)bottomBar:(HXWatchLiveBottomBar *)bar takeAction:(HXWatchBottomBarAction)action {
     switch (action) {
-        case HXWatchLiveBottomBarActionComment: {
+        case HXWatchBottomBarActionComment: {
             HXCommentViewController *commentViewController = [HXCommentViewController instance];
             commentViewController.roomID = _roomID;
             [self addChildViewController:commentViewController];
             [self.view addSubview:commentViewController.view];
             break;
         }
-        case HXWatchLiveBottomBarActionForwarding: {
+        case HXWatchBottomBarActionShare: {
+            ;
+            break;
+        }
+        case HXWatchBottomBarActionGift: {
+            ;
+            break;
+        }
+        case HXWatchBottomBarActionAlbum: {
+            ;
+            break;
+        }
+        case HXWatchBottomBarActionFreeGift: {
             ;
             break;
         }

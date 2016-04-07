@@ -72,13 +72,13 @@
                         <constraint firstItem="T0B-6I-Ucv" firstAttribute="leading" secondItem="gkY-KR-sXU" secondAttribute="leading" id="odd-86-1Gc"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNb-Eq-SVF">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNb-Eq-SVF">
                     <rect key="frame" x="113" y="4" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bNb-Eq-SVF" secondAttribute="height" multiplier="1:1" id="jsG-RS-VXD"/>
                         <constraint firstAttribute="width" constant="32" id="m7S-3u-eem"/>
                     </constraints>
-                    <state key="normal" title="关注"/>
+                    <state key="normal" image="L-AddAttentionIcon"/>
                     <connections>
                         <action selector="attentionButtonPressed" destination="-1" eventType="touchUpInside" id="s19-7t-U0w"/>
                     </connections>
@@ -104,4 +104,7 @@
             <point key="canvasLocation" x="124.5" y="322"/>
         </view>
     </objects>
+    <resources>
+        <image name="L-AddAttentionIcon" width="30" height="30"/>
+    </resources>
 </document>

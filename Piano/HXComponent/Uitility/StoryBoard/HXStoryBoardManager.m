@@ -25,8 +25,8 @@
 + (NSString *)storyBoardName:(HXStoryBoardName)name {
     NSString *storyBoardName = nil;
     switch (name) {
-        case HXStoryBoardNameOnline: {
-            storyBoardName = @"Online";
+        case HXStoryBoardNameDiscovery: {
+            storyBoardName = @"Discovery";
             break;
         }
         case HXStoryBoardNamePublish: {

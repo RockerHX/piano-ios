@@ -7,7 +7,7 @@
 //
 
 #import "HXMainViewController.h"
-#import "HXOnlineViewController.h"
+#import "HXDiscoveryViewController.h"
 #import "HXPublishViewController.h"
 #import "HXMeViewController.h"
 #import "HXLoginViewController.h"
@@ -16,6 +16,7 @@
 #import "ReactiveCocoa.h"
 #import "HXUserSession.h"
 #import "FileLog.h"
+#import "UIView+Frame.h"
 
 @interface HXMainViewController () <
 UITabBarControllerDelegate,
@@ -28,6 +29,13 @@ HXLoginViewControllerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self tabBarItemConfigure];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -62,8 +70,8 @@ HXLoginViewControllerDelegate
 
 - (void)subControllersConfigure {
     for (UINavigationController *navigationController in self.viewControllers) {
-        if ([navigationController.restorationIdentifier isEqualToString:[HXOnlineViewController navigationControllerIdentifier]]) {
-            [navigationController setViewControllers:@[[HXOnlineViewController instance]]];
+        if ([navigationController.restorationIdentifier isEqualToString:[HXDiscoveryViewController navigationControllerIdentifier]]) {
+            [navigationController setViewControllers:@[[HXDiscoveryViewController instance]]];
         } else if ([navigationController.restorationIdentifier isEqualToString:[HXMeViewController navigationControllerIdentifier]]) {
             [navigationController setViewControllers:@[[HXMeViewController instance]]];
         }
@@ -72,6 +80,12 @@ HXLoginViewControllerDelegate
     NSArray *viewControllers = self.viewControllers;
     _publishNavigationController = viewControllers[1];
     self.viewControllers = @[[viewControllers firstObject], [viewControllers lastObject]];
+}
+
+- (void)tabBarItemConfigure {
+    for (UITabBarItem *item in self.tabBar.items) {
+        item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    }
 }
 
 #pragma mark - Private Methods
@@ -123,9 +137,9 @@ HXLoginViewControllerDelegate
 //			[self checkUpdate];
 			[self autoLogin];
 
-			UINavigationController *onlineNavigationController = self.viewControllers.firstObject;
-			HXOnlineViewController *onlineViewController = onlineNavigationController.viewControllers.firstObject;
-			[onlineViewController startFetchList];
+			UINavigationController *discoveryNavigationController = self.viewControllers.firstObject;
+			HXDiscoveryViewController *discoveryViewController = discoveryNavigationController.viewControllers.firstObject;
+			[discoveryViewController startFetchList];
 
 #warning @andy
 //			[MiaAPIHelper getAlbumWithID:@"1" completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
