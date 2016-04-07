@@ -22,10 +22,8 @@ HXAlbumsControlCellDelegate
 
 @implementation HXAlbumsContainerViewController {
     HXAlbumsControlCell *_controlCell;
-}
-
-- (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:MusicMgrNotificationPlayerEvent object:nil];
+    
+    dispatch_source_t _timer;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -38,7 +36,7 @@ HXAlbumsControlCellDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPlayerEvent:) name:MusicMgrNotificationPlayerEvent object:nil];
+    ;
 }
 
 - (void)viewConfigure {
@@ -48,11 +46,43 @@ HXAlbumsControlCellDelegate
 #pragma mark - Public Methods
 - (void)refresh {
     [self.tableView reloadData];
+    
+    [self updateControlCellPlayState];
 }
 
 #pragma mark - Private Methods
-- (void)updateControlCell {
-//    _controlCell.starTimeLabel.text = [NSString stringWithFormat:@"%02d:%@02d", ];
+- (void)updateControlCellPlayState {
+    MusicMgr *musicMgr = [MusicMgr standard];
+    if ([musicMgr isCurrentHostObject:self]) {
+        _controlCell.playButton.selected = [musicMgr isPlaying];
+    }
+}
+
+- (void)updateControlCellTimeDisplay {
+    MusicMgr *musicMgr = [MusicMgr standard];
+    
+    NSInteger musicDurationSecond = musicMgr.durationSeconds;
+    NSInteger musicDurationMinute = musicDurationSecond / 60;
+    
+    NSInteger musicPlaySecond = musicMgr.currentPlayedSeconds;
+    NSInteger musicPlayMinute = musicPlaySecond / 60;
+    
+    _controlCell.playTimeLabel.text = [NSString stringWithFormat:@"%02zd:%02zd", musicPlayMinute, (musicPlaySecond % 60)];
+    _controlCell.slider.value = musicMgr.currentPlayedPostion;
+    _controlCell.durationTimeLabel.text = [NSString stringWithFormat:@"%02zd:%02zd", musicDurationMinute, (musicDurationSecond % 60)];
+}
+
+- (void)startMusicTimeRead {
+    uint64_t interval = NSEC_PER_SEC;
+    dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0), interval, 0);
+    dispatch_source_set_event_handler(_timer, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateControlCellTimeDisplay];
+        });
+    });
+    dispatch_resume(_timer);
 }
 
 #pragma mark - Table View Data Source Methods
@@ -140,6 +170,7 @@ HXAlbumsControlCellDelegate
     HXAlbumsRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
         case HXAlbumsRowTypeSong: {
+            [self startMusicTimeRead];
             if (_delegate && [_delegate respondsToSelector:@selector(container:selectedSong:)]) {
                 [_delegate container:self selectedSong:_viewModel.songs[indexPath.row - _viewModel.songStartIndex]];
             }
@@ -158,33 +189,30 @@ HXAlbumsControlCellDelegate
 }
 
 #pragma mark - HXAlbumsControlCellDelegate Methods
-- (void)controlCell:(HXAlbumsControlCell *)cell takeAction:(HXAlbumsControlCellAction)action {
-    switch (action) {
+- (void)controlCell:(HXAlbumsControlCell *)cell takeAction:(HXAlbumsControlCellAction)cellAction {
+    HXAlbumsAction action;
+    switch (cellAction) {
         case HXAlbumsControlCellActionPlay: {
-#warning Eden
-			[[MusicMgr standard] setPlayList:_viewModel.songs hostObject:self];
-			[[MusicMgr standard] playCurrent];
+            action = HXAlbumsActionPlay;
+            [self startMusicTimeRead];
+            break;
+        }
+        case HXAlbumsControlCellActionPause: {
+            action = HXAlbumsActionPause;
             break;
         }
         case HXAlbumsControlCellActionPrevious: {
-            ;
+            action = HXAlbumsActionPrevious;
             break;
         }
         case HXAlbumsControlCellActionNext: {
-            ;
+            action = HXAlbumsActionNext;
             break;
         }
     }
-}
-
-#pragma mark - Notification Methods
-- (void)notificationPlayerEvent:(NSNotification *)notification {
-	NSString *mid = notification.userInfo[MusicMgrNotificationKey_MusicID];
-	for (HXSongModel *item in _viewModel.songs) {
-		if ([item.mid isEqualToString:mid]) {
-			[self.tableView reloadData];
-		}
-	}
+    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
+        [_delegate container:self takeAction:action];
+    }
 }
 
 @end

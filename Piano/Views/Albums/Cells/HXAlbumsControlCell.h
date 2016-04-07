@@ -11,6 +11,7 @@
 
 typedef NS_ENUM(NSUInteger, HXAlbumsControlCellAction) {
     HXAlbumsControlCellActionPlay,
+    HXAlbumsControlCellActionPause,
     HXAlbumsControlCellActionPrevious,
     HXAlbumsControlCellActionNext,
 };
@@ -34,11 +35,11 @@ typedef NS_ENUM(NSUInteger, HXAlbumsControlCellAction) {
 
 @property (weak, nonatomic) IBOutlet UIImageView *cover;
 @property (weak, nonatomic) IBOutlet    UIButton *playButton;
-@property (weak, nonatomic) IBOutlet     UILabel *starTimeLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *playTimeLabel;
 @property (weak, nonatomic) IBOutlet    UISlider *slider;
-@property (weak, nonatomic) IBOutlet     UILabel *endTimeLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *durationTimeLabel;
 
-- (IBAction)playButtonPressed;
+- (IBAction)playButtonPressed:(UIButton *)button;
 - (IBAction)previousButtonPressed;
 - (IBAction)nextButtonPressed;
 

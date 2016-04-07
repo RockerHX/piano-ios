@@ -14,7 +14,9 @@
 
 #pragma mark - Public Methods
 - (void)updateCellWithSong:(HXSongModel *)song index:(NSInteger)index {
-    _indexLabel.text = @(index).stringValue;
+    _stateIcon.hidden = !song.play;
+    _indexLabel.hidden = song.play;
+    _indexLabel.text = @(index + 1).stringValue;
     _nameLabel.text = song.title;
     _durationLabel.text = song.durationPrompt;
 }

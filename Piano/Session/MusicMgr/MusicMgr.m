@@ -170,6 +170,7 @@ const NSInteger kInvalidateCurrentIndex = -1;
 
 	HXSongModel *item = _playList[index];
 	if (item) {
+        self.currentItem.play = NO;
 		[_player playWithItem:item];
 		_currentIndex = index;
 	}
@@ -203,6 +204,8 @@ const NSInteger kInvalidateCurrentIndex = -1;
 	if (_playList.count <= 0) {
 		return;
 	}
+    
+    self.currentItem.play = NO;
 
 	NSInteger prevIndex = [self getPrevIndex];
 	[_player playWithItem:_playList[prevIndex]];
@@ -212,7 +215,9 @@ const NSInteger kInvalidateCurrentIndex = -1;
 - (void)playNext {
 	if (_playList.count <= 0) {
 		return;
-	}
+    }
+    
+    self.currentItem.play = NO;
 
 	NSInteger nextIndex = [self getNextIndex];
 	[_player playWithItem:_playList[nextIndex]];

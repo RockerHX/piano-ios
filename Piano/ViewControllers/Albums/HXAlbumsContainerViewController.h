@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "HXAlbumsViewModel.h"
 
+typedef NS_ENUM(NSUInteger, HXAlbumsAction) {
+    HXAlbumsActionPlay,
+    HXAlbumsActionPause,
+    HXAlbumsActionPrevious,
+    HXAlbumsActionNext,
+};
+
 
 @class HXAlbumsContainerViewController;
 
@@ -16,6 +23,7 @@
 @protocol HXAlbumsContainerViewControllerDelegate <NSObject>
 
 @required
+- (void)container:(HXAlbumsContainerViewController *)container takeAction:(HXAlbumsAction)action;
 - (void)container:(HXAlbumsContainerViewController *)container selectedSong:(HXSongModel *)song;
 - (void)container:(HXAlbumsContainerViewController *)container selectedComment:(HXCommentModel *)comment;
 
