@@ -215,4 +215,9 @@ HXAlbumsControlCellDelegate
     }
 }
 
+- (void)controlCell:(HXAlbumsControlCell *)cell seekToPosition:(float)postion {
+	MusicMgr *musicMgr = [MusicMgr standard];
+	[musicMgr seekToPosition:postion];
+}
+
 @end

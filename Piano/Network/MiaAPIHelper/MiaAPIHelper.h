@@ -106,6 +106,34 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 	  completeBlock:(MiaRequestCompleteBlock)completeBlock
 	   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)createRoomWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+					   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)setRoomTitle:(NSString *)title
+			  roomID:(NSString *)roomID
+	   completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)setRoomCover:(NSString *)coverID
+			  roomID:(NSString *)roomID
+	   completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)setRoomLocationWithLatitude:(double)lat
+						  longitude:(double)lon
+							address:(NSString *)address
+							 roomID:(NSString *)roomID
+					  completeBlock:(MiaRequestCompleteBlock)completeBlock
+					   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)forbidUser:(NSString *)uID
+	 completeBlock:(MiaRequestCompleteBlock)completeBlock
+	  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)getRoomStat:(NSString *)roomID
+	  completeBlock:(MiaRequestCompleteBlock)completeBlock
+	   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 + (void)getUserProfileWithUID:(NSString *)uID
 				completeBlock:(MiaRequestCompleteBlock)completeBlock
 				 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
@@ -117,5 +145,17 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)getAlbumWithID:(NSString *)albumID
          completeBlock:(MiaRequestCompleteBlock)completeBlock
           timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)getAlbumComment:(NSString *)itemID
+				  start:(long)start
+				  limit:(long)limit
+		  completeBlock:(MiaRequestCompleteBlock)completeBlock
+		   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)postAlbumComment:(NSString *)itemID
+				 content:(NSString *)content
+				  commentID:(NSString *)commentID
+		   completeBlock:(MiaRequestCompleteBlock)completeBlock
+			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 @end

@@ -50,6 +50,13 @@
     }
 }
 
+- (IBAction)valueChange:(UISlider *)slider {
+	NSLog(@"slider value : %.2f",[slider value]);
+
+	if (_delegate && [_delegate respondsToSelector:@selector(controlCell:seekToPosition:)]) {
+		[_delegate controlCell:self seekToPosition:[slider value]];
+	}
+}
 #pragma mark - Public Methods
 - (void)updateCellWithAlbum:(HXAlbumModel *)model {
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];

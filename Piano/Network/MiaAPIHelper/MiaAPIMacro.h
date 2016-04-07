@@ -86,8 +86,19 @@ static NSString * const MiaAPICommand_Channel_GetHome		= @"Channel.Get.Home";
 static NSString * const MiaAPICommand_Live_EnterRoom		= @"Live.Room.Post.Enter";
 static NSString * const MiaAPICommand_Live_LeaveRoom		= @"Live.Room.Post.Leave";
 static NSString * const MiaAPICommand_Live_CommentRoom		= @"Live.Room.Post.Comment";
+static NSString * const MiaAPICommand_Live_PostCreate		= @"Live.Room.Post.Create";
+static NSString * const MiaAPICommand_Live_PutTitle			= @"Live.Room.Put.Title";
+static NSString * const MiaAPICommand_Live_PutCover			= @"Live.Room.Put.Cover";
+static NSString * const MiaAPICommand_Live_PutLocation		= @"Live.Room.Put.Location";
+static NSString * const MiaAPICommand_Live_PostForbid		= @"Live.Room.Post.Forbid";
+static NSString * const MiaAPICommand_Live_GetStat			= @"Live.Room.Get.Stat";
 static NSString * const MiaAPIKey_RoomID					= @"roomID";
 static NSString * const MiaAPIKey_Content					= @"content";
+static NSString * const MiaAPIKey_Title						= @"title";
+static NSString * const MiaAPIKey_CoverID					= @"coverID";
+static NSString * const MiaAPIKey_Latitude					= @"lat";
+static NSString * const MiaAPIKey_Longitude					= @"lng";
+static NSString * const MiaAPIKey_Address					= @"addr";
 
 // Musician
 static NSString * const MiaAPICommand_Musician_GetProfile	= @"Musician.Get.Profile";
@@ -95,3 +106,11 @@ static NSString * const MiaAPICommand_Musician_GetProfile	= @"Musician.Get.Profi
 static NSString * const MiaAPICommand_Musician_GetAlbum		= @"Musician.Get.Album";
 static NSString * const MiaAPIKey_AlbumID					= @"albumID";
 
+static NSString * const MiaAPICommand_Musician_GetComment	= @"Musician.Get.Comment";
+static NSString * const MiaAPIKey_CommentID					= @"commentID";
+
+static NSString * const MiaAPICommand_Musician_PostComment	= @"Musician.Post.Comment";
+static NSString * const MiaAPIKey_ItemID					= @"itemID";
+static NSString * const MiaAPIKey_ItemType					= @"itemType";
+static NSString * const MiaAPIKey_Start						= @"start";
+static NSString * const MiaAPIKey_Limit						= @"limit";

@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, HXAlbumsControlCellAction) {
 
 @required
 - (void)controlCell:(HXAlbumsControlCell *)cell takeAction:(HXAlbumsControlCellAction)action;
+- (void)controlCell:(HXAlbumsControlCell *)cell seekToPosition:(float)postion;
 
 @end
 
@@ -42,6 +43,7 @@ typedef NS_ENUM(NSUInteger, HXAlbumsControlCellAction) {
 - (IBAction)playButtonPressed:(UIButton *)button;
 - (IBAction)previousButtonPressed;
 - (IBAction)nextButtonPressed;
+- (IBAction)valueChange:(UISlider *)slider;
 
 - (void)updateCellWithAlbum:(HXAlbumModel *)model;
 
