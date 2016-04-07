@@ -316,6 +316,92 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)createRoomWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_PostCreate
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)setRoomTitle:(NSString *)title
+			  roomID:(NSString *)roomID
+	completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+	[dictValues setValue:title forKey:MiaAPIKey_Title];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_PutTitle
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)setRoomCover:(NSString *)coverID
+			  roomID:(NSString *)roomID
+	   completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+	[dictValues setValue:coverID forKey:MiaAPIKey_CoverID];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_PutCover
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)setRoomLocationWithLatitude:(double)lat
+							  longitude:(double)lon
+								address:(NSString *)address
+								 roomID:(NSString *)roomID
+	   completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+	[dictValues setValue:address forKey:MiaAPIKey_Address];
+	[dictValues setValue:[NSNumber numberWithFloat:lat] forKey:MiaAPIKey_Latitude];
+	[dictValues setValue:[NSNumber numberWithFloat:lon] forKey:MiaAPIKey_Longitude];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_PutLocation
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)forbidUser:(NSString *)uID
+	   completeBlock:(MiaRequestCompleteBlock)completeBlock
+	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:uID forKey:MiaAPIKey_UID];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_PostForbid
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)getRoomStat:(NSString *)roomID
+	  completeBlock:(MiaRequestCompleteBlock)completeBlock
+	   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_GetStat
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 #pragma mark - profile
 + (void)getUserProfileWithUID:(NSString *)uID
 					completeBlock:(MiaRequestCompleteBlock)completeBlock
