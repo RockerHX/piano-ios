@@ -31,9 +31,10 @@
 }
 
 #pragma mark - Event Response
-- (IBAction)playButtonPressed {
+- (IBAction)playButtonPressed:(UIButton *)button {
+    button.selected = !button.selected;
     if (_delegate && [_delegate respondsToSelector:@selector(controlCell:takeAction:)]) {
-        [_delegate controlCell:self takeAction:HXAlbumsControlCellActionPlay];
+        [_delegate controlCell:self takeAction:(button.selected ? HXAlbumsControlCellActionPlay : HXAlbumsControlCellActionPause)];
     }
 }
 
@@ -52,7 +53,6 @@
 #pragma mark - Public Methods
 - (void)updateCellWithAlbum:(HXAlbumModel *)model {
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
-    
 }
 
 @end

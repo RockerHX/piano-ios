@@ -114,8 +114,9 @@
                                                                 <constraint firstAttribute="width" secondItem="xeX-rZ-d67" secondAttribute="height" multiplier="1:1" id="mF2-fq-H4N"/>
                                                             </constraints>
                                                             <state key="normal" title="Play" image="AD-PlayIcon-L"/>
+                                                            <state key="selected" image="AD-PauseIcon-L"/>
                                                             <connections>
-                                                                <action selector="playButtonPressed" destination="cMa-ZH-xn2" eventType="touchUpInside" id="WV1-EM-Y6t"/>
+                                                                <action selector="playButtonPressed:" destination="cMa-ZH-xn2" eventType="touchUpInside" id="six-2s-AHU"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmA-ZP-FDF">
@@ -124,7 +125,7 @@
                                                                 <constraint firstAttribute="width" constant="30" id="QrE-RJ-LzB"/>
                                                                 <constraint firstAttribute="width" secondItem="OmA-ZP-FDF" secondAttribute="height" multiplier="1:1" id="btf-Bx-yAW"/>
                                                             </constraints>
-                                                            <state key="normal" title="Pre" image="AD-PreviousIcon-U"/>
+                                                            <state key="normal" title="Pre" image="AD-PreviousIcon-E"/>
                                                             <connections>
                                                                 <action selector="previousButtonPressed" destination="cMa-ZH-xn2" eventType="touchUpInside" id="Q7C-pD-qDT"/>
                                                             </connections>
@@ -135,12 +136,12 @@
                                                                 <constraint firstAttribute="width" constant="30" id="Xxs-z3-IBB"/>
                                                                 <constraint firstAttribute="width" secondItem="ID4-O3-yDn" secondAttribute="height" multiplier="1:1" id="i6K-nC-em5"/>
                                                             </constraints>
-                                                            <state key="normal" title="Next" image="AD-NextIcon-U"/>
+                                                            <state key="normal" title="Next" image="AD-NextIcon-E"/>
                                                             <connections>
                                                                 <action selector="nextButtonPressed" destination="cMa-ZH-xn2" eventType="touchUpInside" id="CMN-4j-4Yc"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-Oi-y7p">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-Oi-y7p" userLabel="Play Time Label">
                                                             <rect key="frame" x="38" y="23" width="32" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="W8B-vb-tuT"/>
@@ -149,7 +150,7 @@
                                                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXO-q3-CCA">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXO-q3-CCA" userLabel="Duration Time Label">
                                                             <rect key="frame" x="170" y="23" width="32" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="t37-tx-C6h"/>
@@ -211,10 +212,10 @@
                                 <connections>
                                     <outlet property="cover" destination="uBI-3e-ebX" id="wdo-FD-Vs5"/>
                                     <outlet property="delegate" destination="dl0-fw-bkU" id="MCA-tT-9gi"/>
-                                    <outlet property="endTimeLabel" destination="dXO-q3-CCA" id="2ib-5M-F9N"/>
+                                    <outlet property="durationTimeLabel" destination="dXO-q3-CCA" id="c7a-57-qIp"/>
                                     <outlet property="playButton" destination="xeX-rZ-d67" id="2kg-Ve-6VU"/>
+                                    <outlet property="playTimeLabel" destination="LDy-Oi-y7p" id="pBC-go-FD1"/>
                                     <outlet property="slider" destination="gJe-Bj-lnm" id="cPy-NF-4xz"/>
-                                    <outlet property="starTimeLabel" destination="LDy-Oi-y7p" id="7El-r8-2mz"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXAlbumsSongCell" id="Akb-Cn-cus" userLabel="HXAlbumsSongCell" customClass="HXAlbumsSongCell">
@@ -224,7 +225,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GlM-AN-KUk" userLabel="Pause Icon">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AD-PauseIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="GlM-AN-KUk" userLabel="Pause Icon">
                                             <rect key="frame" x="9" y="12" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="0XP-10-MQX"/>
@@ -386,8 +387,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AD-NextIcon-U" width="30" height="30"/>
+        <image name="AD-NextIcon-E" width="30" height="30"/>
+        <image name="AD-PauseIcon-L" width="30" height="30"/>
+        <image name="AD-PauseIcon-S" width="20" height="20"/>
         <image name="AD-PlayIcon-L" width="30" height="30"/>
-        <image name="AD-PreviousIcon-U" width="30" height="30"/>
+        <image name="AD-PreviousIcon-E" width="30" height="30"/>
     </resources>
 </document>

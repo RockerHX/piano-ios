@@ -9,6 +9,7 @@
 #import "HXAlbumsViewController.h"
 #import "HXAlbumsNavigationBar.h"
 #import "HXAlbumsContainerViewController.h"
+#import "MusicMgr.h"
 
 
 @interface HXAlbumsViewController () <
@@ -46,8 +47,14 @@ HXAlbumsContainerViewControllerDelegate
     [self viewConfigure];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MusicMgrNotificationPlayerEvent object:nil];
+}
+
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPlayerEvent:) name:MusicMgrNotificationPlayerEvent object:nil];
+    
     [self showHUD];
     
     _viewModel = [[HXAlbumsViewModel alloc] initWithAlbumID:_albumID];
@@ -70,6 +77,12 @@ HXAlbumsContainerViewControllerDelegate
     ;
 }
 
+#pragma mark - Notification Methods
+- (void)notificationPlayerEvent:(NSNotification *)notification {
+//	NSString *mid = notification.userInfo[MusicMgrNotificationKey_MusicID];
+    [_containerViewController refresh];
+}
+
 #pragma mark - HXAlbumsNavigationBarDelegate Methods
 - (void)navigationBar:(HXAlbumsNavigationBar *)bar takeAction:(HXAlbumsNavigationBarAction)action {
     switch (action) {
@@ -81,9 +94,33 @@ HXAlbumsContainerViewControllerDelegate
 }
 
 #pragma mark - HXAlbumsContainerViewControllerDelegate Methods
+- (void)container:(HXAlbumsContainerViewController *)container takeAction:(HXAlbumsAction)action {
+    MusicMgr *musicMgr = [MusicMgr standard];
+    switch (action) {
+        case HXAlbumsActionPlay: {
+            [musicMgr setPlayList:_viewModel.songs hostObject:_containerViewController];
+            [musicMgr playCurrent];
+            break;
+        }
+        case HXAlbumsActionPause: {
+            [musicMgr pause];
+            break;
+        }
+        case HXAlbumsActionPrevious: {
+            [musicMgr playPrevios];
+            break;
+        }
+        case HXAlbumsActionNext: {
+            [musicMgr playNext];
+            break;
+        }
+    }
+}
+
 - (void)container:(HXAlbumsContainerViewController *)container selectedSong:(HXSongModel *)song {
-#warning @eden
-    ;
+    NSInteger index = [_viewModel.songs indexOfObject:song];
+    [[MusicMgr standard] setPlayList:_viewModel.songs hostObject:_containerViewController];
+    [[MusicMgr standard] playWithIndex:index];
 }
 
 - (void)container:(HXAlbumsContainerViewController *)container selectedComment:(HXCommentModel *)comment {

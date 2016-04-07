@@ -27,7 +27,7 @@ HXXibImplementation
     }
 }
 
-- (IBAction)refreshButtonPressed {
+- (IBAction)changeButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
         [_delegate bottomBar:self takeAction:HXRecordBottomBarActionRefresh];
     }

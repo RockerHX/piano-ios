@@ -106,6 +106,7 @@
 }
 
 - (void)playWithItem:(HXSongModel *)item {
+    item.play = YES;
 	[[FileLog standard] log:@"playWithItem %@, %@", item.title, item.mp3Url];
 
 	if ([self isPlayingWithUrl:item.mp3Url]) {
