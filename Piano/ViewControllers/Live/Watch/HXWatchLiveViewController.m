@@ -96,7 +96,7 @@ HXWatchLiveBottomBarDelegate
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     
     [zegoAVApi setRemoteView:RemoteViewIndex_First view:_liveView];
-    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleToFill];
+    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleAspectFill];
     
     //设置回调代理
     [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];

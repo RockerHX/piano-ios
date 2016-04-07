@@ -173,14 +173,14 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0p-VM-AFR" userLabel="Content Container">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0p-VM-AFR" userLabel="Content Container">
                                             <rect key="frame" x="35" y="10" width="265" height="30"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FIQ-FP-rIy">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FIQ-FP-rIy">
                                                     <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="评论用户:你个煞笔" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="221" translatesAutoresizingMaskIntoConstraints="NO" id="9n5-wC-pRa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评论用户:你个煞笔" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="221" translatesAutoresizingMaskIntoConstraints="NO" id="9n5-wC-pRa">
                                                     <rect key="frame" x="24" y="6" width="221" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
@@ -642,6 +642,7 @@
                     <connections>
                         <outlet property="controlContainerView" destination="an9-wJ-Woj" id="de5-m1-nEy"/>
                         <outlet property="countDownContainerView" destination="4xH-8K-Dnn" id="jjC-62-Tvh"/>
+                        <outlet property="editView" destination="MXs-zs-zya" id="U4b-zx-6V8"/>
                         <outlet property="preview" destination="bsK-Vm-4cd" id="hNn-UH-jYR"/>
                     </connections>
                 </viewController>
@@ -768,6 +769,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="liveView" destination="Agg-0j-dp2" id="xrG-iF-yvF"/>
+                        <outlet property="previewContainer" destination="gBE-eG-6gh" id="JkK-rD-9uM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E11-tB-DEb" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -21,13 +21,18 @@
 ZegoChatDelegate,
 ZegoVideoDelegate,
 HXRecordAnchorViewDelegate,
-HXRecordBottomBarDelegate
+HXRecordBottomBarDelegate,
+HXPreviewLiveViewControllerDelegate
 >
 @end
 
 
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
+    
+    NSString *_roomID;
+    NSString *_roomTitle;
+    NSString *_shareUrl;
 }
 
 #pragma mark - Class Methods
@@ -42,6 +47,7 @@ HXRecordBottomBarDelegate
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _previewViewController = segue.destinationViewController;
+    _previewViewController.delegate = self;
 }
 
 #pragma mark - Status Bar
@@ -67,39 +73,20 @@ HXRecordBottomBarDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self loadConfigure];
-//    [self viewConfigure];
+    [self loadConfigure];
+    [self viewConfigure];
 }
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-    
-    [zegoAVApi setRemoteView:RemoteViewIndex_First view:_liveView];
-//    [zegoAVApi setRemoteView:RemoteViewIndex_Second view:secondRemoteView];
-    
-//    [zegoAVApi setLocalViewMode:ZegoVideoViewModeScaleAspectFit];
-    [zegoAVApi setRemoteViewMode:RemoteViewIndex_First mode:ZegoVideoViewModeScaleAspectFit];
-//    [zegoAVApi setRemoteViewMode:RemoteViewIndex_Second mode:ZegoVideoViewModeScaleAspectFit];
-    
-    //设置回调代理
-    [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
-    [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
-    
-    //进入聊天室
-    ZegoUser * user = [ZegoUser new];
-    user.userID = [HXUserSession session].uid;
-    user.userName = [HXUserSession session].nickName;
-    
-    UInt32 roomToken = (UInt32)_model.zegoToken;
-    UInt32 roomNum = (UInt32)_model.zegoID;
-    
-    [zegoAVApi getInChatRoom:user zegoToken:roomToken zegoId:roomNum];
-    [zegoAVApi setAVConfig:[HXSettingSession session].configure];
+    ;
 }
 
 - (void)viewConfigure {
-    ;
+    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
+    //设置回调代理
+    [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
+    [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
 }
 
 #pragma mark - Event Response
@@ -121,6 +108,17 @@ HXRecordBottomBarDelegate
     [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
 }
 
+- (void)startLive {
+    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
+    //进入聊天室
+    ZegoUser *user = [ZegoUser new];
+    user.userID = [HXUserSession session].uid;
+    user.userName = [HXUserSession session].nickName;
+    
+    [zegoAVApi getInChatRoom:user zegoToken:0 zegoId:0];
+    [zegoAVApi setAVConfig:[HXSettingSession session].configure];
+}
+
 #pragma mark - ZegoChatDelegate
 - (void)onGetInChatRoomResult:(uint32)result zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId {
     if (result == 0) {
@@ -130,12 +128,10 @@ HXRecordBottomBarDelegate
         return;
     }
     
-//    if (_type == HXLiveTypePublish) {
-//        ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
-//        [zegoApi setLocalView:_liveView];
-//        [zegoApi startPreview];
-//        [zegoApi startPublishInChatRoom:_model.userName];
-//    }
+    ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
+    [zegoApi setLocalView:_liveView];
+    [zegoApi startPreview];
+    [zegoApi startPublishInChatRoom:_roomTitle];
     NSLog(@"直播中!");
 }
 
@@ -268,6 +264,17 @@ HXRecordBottomBarDelegate
             break;
         }
     }
+}
+
+#pragma mark - HXPreviewLiveViewControllerDelegate Methods
+- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl {
+    
+    _roomID = roomID;
+    _roomTitle = roomTitle;
+    _shareUrl = shareUrl;
+    
+    [self startLive];
+    _previewContainer.hidden = YES;
 }
 
 @end

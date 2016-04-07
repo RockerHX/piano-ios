@@ -13,6 +13,7 @@
 #import "HXPreviewLiveTopBar.h"
 #import "HXPreviewLiveEidtView.h"
 #import "HXPreviewLiveControlView.h"
+#import "MiaAPIHelper.h"
 
 
 @interface HXPreviewLiveViewController () <
@@ -27,6 +28,9 @@ HXPreviewLiveControlViewDelegate
 @implementation HXPreviewLiveViewController {
     HXCountDownViewController *_countDownViewController;
     
+    NSString *_roomID;
+    NSString *_roomTitle;
+    NSString *_shareUrl;
     BOOL _frontCamera;
 }
 
@@ -52,9 +56,24 @@ HXPreviewLiveControlViewDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _frontCamera = YES;
+    
+    [MiaAPIHelper createRoomWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        [self hiddenHUD];
+        
+        if (success) {
+            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+            self->_roomID = data[@"roomID"];
+            self->_shareUrl = data[@"shareUrl"];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [self hiddenHUD];
+        [self showBannerWithPrompt:TimtOutPrompt];
+    }];
 }
 
 - (void)viewConfigure {
+    [self showHUD];
+    
     [self startPreview];
 }
 
@@ -80,9 +99,38 @@ HXPreviewLiveControlViewDelegate
     [_countDownViewController startCountDown];
 }
 
+- (void)setRoomTitle {
+    [self showHUD];
+    
+    _roomTitle = _editView.textField.text;
+    
+    if (_roomTitle.length) {
+        [MiaAPIHelper setRoomTitle:_roomTitle
+                            roomID:_roomID
+                     completeBlock:
+         ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+             if (success) {
+                 self.controlContainerView.hidden = YES;
+                 [self startCountDown];
+             }
+             [self hiddenHUD];
+         } timeoutBlock:^(MiaRequestItem *requestItem) {
+             [self hiddenHUD];
+             [self showBannerWithPrompt:TimtOutPrompt];
+         }];
+    } else {
+        [self hiddenHUD];
+        [self showBannerWithPrompt:@"请先填写直播标题！"];
+    }
+}
+
 #pragma mark - HXCountDownViewControllerDelegate Methods
 - (void)countDownFinished {
     _countDownContainerView.hidden = YES;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(previewControllerHandleFinishedShouldStartLive:roomID:roomTitle:shareUrl:)]) {
+        [_delegate previewControllerHandleFinishedShouldStartLive:self roomID:_roomID roomTitle:_roomTitle shareUrl:_shareUrl];
+    }
 }
 
 #pragma mark - HXPreviewLiveTopBarDelegate Methods
@@ -98,6 +146,7 @@ HXPreviewLiveControlViewDelegate
             break;
         }
         case HXPreviewLiveTopBarActionColse: {
+            [self stopPreview];
             [self dismissViewControllerAnimated:YES completion:nil];
             break;
         }
@@ -138,7 +187,7 @@ HXPreviewLiveControlViewDelegate
             break;
         }
         case HXPreviewLiveControlViewActionStartLive: {
-            [self startCountDown];
+            [self setRoomTitle];
             break;
         }
     }
