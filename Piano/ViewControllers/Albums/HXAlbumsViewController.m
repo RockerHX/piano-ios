@@ -82,6 +82,7 @@ HXAlbumsContainerViewControllerDelegate
 
 #pragma mark - HXAlbumsContainerViewControllerDelegate Methods
 - (void)container:(HXAlbumsContainerViewController *)container selectedSong:(HXSongModel *)song {
+#warning @eden
     ;
 }
 

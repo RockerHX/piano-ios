@@ -13,7 +13,7 @@
 #import "UserSetting.h"
 #import "WebSocketMgr.h"
 #import "NSString+IsNull.h"
-#import "MusicItem.h"
+#import "HXSongModel.h"
 #import "MusicMgr.h"
 #import "PathHelper.h"
 #import "FileLog.h"
@@ -62,25 +62,25 @@
 	NSLog(@"SongPreloader dealoc");
 }
 
-- (void)preloadWithMusicItem:(MusicItem *)item {
-//	if ([[FavoriteMgr standard] isItemCachedWithUrl:item.murl]) {
+- (void)preloadWithItem:(HXSongModel *)item {
+//	if ([[FavoriteMgr standard] isItemCachedWithUrl:item.mp3Url]) {
 //		NSLog(@"#SongPreloader# preload ignored, has downloaded");
 //		return;
 //	}
 
 	NSLog(@"#SongPreloader# preload");
 	if (_delegate) {
-		if ([_delegate songPreloaderIsPlayerLoadedThisUrl:item.murl]) {
+		if ([_delegate songPreloaderIsPlayerLoadedThisUrl:item.mp3Url]) {
 			return;
 		}
 	}
 
-	if (![UserSetting isAllowedToPlayNowWithURL:item.murl]) {
+	if (![UserSetting isAllowedToPlayNowWithURL:item.mp3Url]) {
 		return;
 	}
 
-	[[FileLog standard] log:@"preloadWithMusicItem %@", item.murl];
-	_audioStream.url = [NSURL URLWithString:item.murl];
+	[[FileLog standard] log:@"preloadWithItem %@", item.mp3Url];
+	_audioStream.url = [NSURL URLWithString:item.mp3Url];
 	[_audioStream preload];
 
 	_currentItem = item;

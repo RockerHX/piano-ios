@@ -8,16 +8,18 @@
 
 #import "MJExtension.h"
 
+extern NSString * const kDefaultMusicID;
 
-@interface HXSongModel : NSObject
+@interface HXSongModel : NSObject<NSCoding>
 
 @property(nonatomic, assign) NSInteger  duration;
 
-@property(nonatomic, strong)  NSString *ID;
+@property(nonatomic, strong)  NSString *mid;
 @property(nonatomic, strong)  NSString *uID;
 @property(nonatomic, strong)  NSString *albumID;
 @property(nonatomic, strong)  NSString *title;
 @property(nonatomic, strong)  NSString *summary;
+@property(nonatomic, strong)  NSString *nick;
 @property(nonatomic, strong)  NSString *coverUrl;
 @property(nonatomic, strong)  NSString *mp3Url;
 

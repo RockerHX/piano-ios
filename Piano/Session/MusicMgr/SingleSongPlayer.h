@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MusicItem;
+@class HXSongModel;
 @class SingleSongPlayer;
 
 @protocol SingleSongPlayerDelegate <NSObject>
@@ -25,10 +25,10 @@
 @interface SingleSongPlayer : NSObject
 
 @property (nonatomic, weak) id <SingleSongPlayerDelegate> delegate;
-@property (strong, nonatomic) MusicItem * currentItem;
+@property (strong, nonatomic) HXSongModel * currentItem;
 @property (strong, nonatomic, readonly) NSString * currentUrl;
 
-- (void)playWithMusicItem:(MusicItem *)item;
+- (void)playWithItem:(HXSongModel *)item;
 
 - (BOOL)isPlaying;
 - (BOOL)isPlayingWithUrl:(NSString *)url;

@@ -11,6 +11,7 @@
 #import "HXAlbumsSongCell.h"
 #import "HXAlbumsCommentCountCell.h"
 #import "HXAlbumsCommentCell.h"
+#import "MusicMgr.h"
 
 
 @interface HXAlbumsContainerViewController () <
@@ -23,6 +24,10 @@ HXAlbumsControlCellDelegate
     HXAlbumsControlCell *_controlCell;
 }
 
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:MusicMgrNotificationPlayerEvent object:nil];
+}
+
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,7 +38,7 @@ HXAlbumsControlCellDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPlayerEvent:) name:MusicMgrNotificationPlayerEvent object:nil];
 }
 
 - (void)viewConfigure {
@@ -157,6 +162,8 @@ HXAlbumsControlCellDelegate
     switch (action) {
         case HXAlbumsControlCellActionPlay: {
 #warning Eden
+			[[MusicMgr standard] setPlayList:_viewModel.songs hostObject:self];
+			[[MusicMgr standard] playCurrent];
             break;
         }
         case HXAlbumsControlCellActionPrevious: {
@@ -168,6 +175,16 @@ HXAlbumsControlCellDelegate
             break;
         }
     }
+}
+
+#pragma mark - Notification Methods
+- (void)notificationPlayerEvent:(NSNotification *)notification {
+	NSString *mid = notification.userInfo[MusicMgrNotificationKey_MusicID];
+	for (HXSongModel *item in _viewModel.songs) {
+		if ([item.mid isEqualToString:mid]) {
+			[self.tableView reloadData];
+		}
+	}
 }
 
 @end

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "MusicItem.h"
+#import "HXSongModel.h"
 
 extern NSString * const MusicMgrNotificationKey_RemoteControlEvent;
 extern NSString * const MusicMgrNotificationKey_PlayerEvent;
-extern NSString * const MusicMgrNotificationKey_sID;
+extern NSString * const MusicMgrNotificationKey_MusicID;
 
 extern NSString * const MusicMgrNotificationRemoteControlEvent;
 extern NSString * const MusicMgrNotificationPlayerEvent;
@@ -34,18 +34,18 @@ typedef void(^PlayWith3GOnceTimeBlock)(BOOL isAllowed);
 + (MusicMgr *)standard;
 
 @property (nonatomic, assign) NSInteger  currentIndex;
-@property (nonatomic, strong) MusicItem *currentItem;
+@property (nonatomic, strong) HXSongModel *currentItem;
 @property (nonatomic, strong, readonly) NSString *currentUrlInPlayer;
 
 @property (nonatomic, assign, readonly)            NSInteger  musicCount;
-@property (nonatomic, strong, readonly) NSArray<MusicItem *> *playList;
+@property (nonatomic, strong, readonly) NSArray<HXSongModel *> *playList;
 
 @property (nonatomic, assign) BOOL  isShufflePlay;
 @property (nonatomic, assign) BOOL  isInterruption;
 
 - (BOOL)isCurrentHostObject:(id)hostObject;
 - (void)setPlayList:(NSArray *)playList hostObject:(id)hostObject;
-- (void)setPlayListWithItem:(MusicItem *)item hostObject:(id)hostObject;
+- (void)setPlayListWithItem:(HXSongModel *)item hostObject:(id)hostObject;
 
 // 播放当前列表对应下标的歌曲
 - (void)playWithIndex:(NSInteger)index;
