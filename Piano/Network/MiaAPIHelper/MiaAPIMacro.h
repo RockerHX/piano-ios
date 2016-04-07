@@ -95,3 +95,11 @@ static NSString * const MiaAPICommand_Musician_GetProfile	= @"Musician.Get.Profi
 static NSString * const MiaAPICommand_Musician_GetAlbum		= @"Musician.Get.Album";
 static NSString * const MiaAPIKey_AlbumID					= @"albumID";
 
+static NSString * const MiaAPICommand_Musician_GetComment	= @"Musician.Get.Comment";
+static NSString * const MiaAPIKey_CommentID					= @"commentID";
+
+static NSString * const MiaAPICommand_Musician_PostComment	= @"Musician.Post.Comment";
+static NSString * const MiaAPIKey_ItemID					= @"itemID";
+static NSString * const MiaAPIKey_ItemType					= @"itemType";
+static NSString * const MiaAPIKey_Start						= @"start";
+static NSString * const MiaAPIKey_Limit						= @"limit";

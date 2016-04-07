@@ -118,4 +118,16 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
          completeBlock:(MiaRequestCompleteBlock)completeBlock
           timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)getAlbumComment:(NSString *)itemID
+				  start:(long)start
+				  limit:(long)limit
+		  completeBlock:(MiaRequestCompleteBlock)completeBlock
+		   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)postAlbumComment:(NSString *)itemID
+				 content:(NSString *)content
+				  commentID:(NSString *)commentID
+		   completeBlock:(MiaRequestCompleteBlock)completeBlock
+			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end
