@@ -130,6 +130,7 @@ HXAlbumsContainerViewControllerDelegate
 		&& [musicMgr isCurrentHostObject:_containerViewController]
 		&& [musicMgr.currentItem.mid isEqualToString:song.mid]) {
 		[musicMgr pause];
+		song.play = musicMgr.isPlaying;
 	} else {
 		[musicMgr setPlayList:_viewModel.songs hostObject:_containerViewController];
 		[[MusicMgr standard] playWithIndex:index];
