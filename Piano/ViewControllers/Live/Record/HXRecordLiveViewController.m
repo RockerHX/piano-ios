@@ -10,7 +10,6 @@
 #import "HXZegoAVKitManager.h"
 #import <ZegoAVKit/ZegoMoviePlayer.h>
 #import "HXSettingSession.h"
-#import "HXLiveModel.h"
 #import "HXUserSession.h"
 #import "HXRecordAnchorView.h"
 #import "HXRecordBottomBar.h"
@@ -115,9 +114,7 @@ HXLiveEndViewControllerDelegate
 - (void)endLive {
     [self leaveRoom];
     
-    HXLiveEndViewController *endViewController = [HXLiveEndViewController instance];
-    endViewController.delegate = self;
-    [self presentViewController:endViewController animated:YES completion:nil];
+    _endCountContainer.hidden = NO;
 }
 
 - (void)leaveRoom {
@@ -279,7 +276,10 @@ HXLiveEndViewControllerDelegate
     _shareUrl = shareUrl;
     
     [self startLive];
+    
     _previewContainer.hidden = YES;
+    [_previewContainer removeFromSuperview];
+    _previewContainer = nil;
 }
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods

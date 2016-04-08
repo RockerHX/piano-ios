@@ -57,14 +57,14 @@ HXPreviewLiveControlViewDelegate
 - (void)loadConfigure {
     _frontCamera = YES;
     
+    [self showHUD];
     [MiaAPIHelper createRoomWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        [self hiddenHUD];
-        
         if (success) {
             NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
             self->_roomID = data[@"roomID"];
             self->_shareUrl = data[@"shareUrl"];
         }
+        [self hiddenHUD];
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [self hiddenHUD];
         [self showBannerWithPrompt:TimtOutPrompt];
@@ -72,8 +72,6 @@ HXPreviewLiveControlViewDelegate
 }
 
 - (void)viewConfigure {
-    [self showHUD];
-    
     [self startPreview];
 }
 
@@ -127,6 +125,9 @@ HXPreviewLiveControlViewDelegate
 #pragma mark - HXCountDownViewControllerDelegate Methods
 - (void)countDownFinished {
     _countDownContainerView.hidden = YES;
+    
+    [_countDownContainerView removeFromSuperview];
+    _countDownContainerView = nil;
     
     if (_delegate && [_delegate respondsToSelector:@selector(previewControllerHandleFinishedShouldStartLive:roomID:roomTitle:shareUrl:)]) {
         [_delegate previewControllerHandleFinishedShouldStartLive:self roomID:_roomID roomTitle:_roomTitle shareUrl:_shareUrl];
