@@ -17,90 +17,66 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="23x-b0-eyX">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
-                    <rect key="frame" x="0.0" y="40" width="300" height="40"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-ya-QOq">
-                            <rect key="frame" x="0.0" y="9" width="31" height="31"/>
-                            <state key="normal" image="L-CommentIcon"/>
-                            <connections>
-                                <action selector="commentButtonPressed" destination="-1" eventType="touchUpInside" id="trS-yv-74q"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTn-f4-zfa">
-                            <rect key="frame" x="269" y="9" width="31" height="31"/>
-                            <state key="normal" image="L-GiftIcon"/>
-                            <connections>
-                                <action selector="giftButtonPressed" destination="-1" eventType="touchUpInside" id="brB-Ln-lko"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tgm-aa-Jxc">
-                            <rect key="frame" x="82" y="9" width="31" height="31"/>
-                            <state key="normal" image="L-ChangeIcon"/>
-                            <connections>
-                                <action selector="changeButtonPressed" destination="-1" eventType="touchUpInside" id="71H-hW-kGG"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agR-1V-bAn">
-                            <rect key="frame" x="123" y="9" width="31" height="31"/>
-                            <state key="normal" image="L-MuteIcon"/>
-                            <connections>
-                                <action selector="muteButtonPressed" destination="-1" eventType="touchUpInside" id="UWt-kc-9bm"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suZ-1R-9cE">
-                            <rect key="frame" x="41" y="9" width="31" height="31"/>
-                            <state key="normal" image="L-BeautyIcon"/>
-                            <connections>
-                                <action selector="beautyButtonPressed" destination="-1" eventType="touchUpInside" id="OLS-iz-l0h"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="RTn-f4-zfa" secondAttribute="trailing" id="0f5-vy-5LZ"/>
-                        <constraint firstItem="agR-1V-bAn" firstAttribute="leading" secondItem="Tgm-aa-Jxc" secondAttribute="trailing" constant="10" id="D2N-dv-xKM"/>
-                        <constraint firstItem="suZ-1R-9cE" firstAttribute="leading" secondItem="PeU-ya-QOq" secondAttribute="trailing" constant="10" id="JUw-x3-ueR"/>
-                        <constraint firstAttribute="height" constant="40" id="OVI-W2-rD1"/>
-                        <constraint firstItem="RTn-f4-zfa" firstAttribute="centerY" secondItem="agR-1V-bAn" secondAttribute="centerY" id="QbI-9z-r5N"/>
-                        <constraint firstItem="PeU-ya-QOq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dWa-9L-FlL"/>
-                        <constraint firstAttribute="bottom" secondItem="PeU-ya-QOq" secondAttribute="bottom" id="itp-NH-jDe"/>
-                        <constraint firstItem="Tgm-aa-Jxc" firstAttribute="centerY" secondItem="suZ-1R-9cE" secondAttribute="centerY" id="kaz-hn-JXt"/>
-                        <constraint firstItem="suZ-1R-9cE" firstAttribute="centerY" secondItem="PeU-ya-QOq" secondAttribute="centerY" id="lcZ-OE-rw2"/>
-                        <constraint firstItem="Tgm-aa-Jxc" firstAttribute="leading" secondItem="suZ-1R-9cE" secondAttribute="trailing" constant="10" id="nt5-Dc-UdO"/>
-                        <constraint firstItem="agR-1V-bAn" firstAttribute="centerY" secondItem="Tgm-aa-Jxc" secondAttribute="centerY" id="wgs-gV-n03"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjb-0J-Qf4">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFQ-MX-rVo">
-                            <rect key="frame" x="269" y="4" width="31" height="31"/>
-                            <state key="normal" image="L-ShareIcon"/>
-                            <connections>
-                                <action selector="shareButtonPressed" destination="-1" eventType="touchUpInside" id="G1B-dl-8RP"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="TFQ-MX-rVo" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="Fwd-Gr-xjG"/>
-                        <constraint firstAttribute="trailing" secondItem="TFQ-MX-rVo" secondAttribute="trailing" id="OVW-c5-Om9"/>
-                    </constraints>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-ya-QOq">
+                    <rect key="frame" x="0.0" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-CommentIcon"/>
+                    <connections>
+                        <action selector="commentButtonPressed" destination="-1" eventType="touchUpInside" id="trS-yv-74q"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTn-f4-zfa">
+                    <rect key="frame" x="269" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-GiftIcon"/>
+                    <connections>
+                        <action selector="giftButtonPressed" destination="-1" eventType="touchUpInside" id="brB-Ln-lko"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agR-1V-bAn">
+                    <rect key="frame" x="123" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-MuteIcon"/>
+                    <connections>
+                        <action selector="muteButtonPressed" destination="-1" eventType="touchUpInside" id="UWt-kc-9bm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suZ-1R-9cE">
+                    <rect key="frame" x="41" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-BeautyIcon"/>
+                    <connections>
+                        <action selector="beautyButtonPressed" destination="-1" eventType="touchUpInside" id="OLS-iz-l0h"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFQ-MX-rVo">
+                    <rect key="frame" x="164" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-ShareIcon"/>
+                    <connections>
+                        <action selector="shareButtonPressed" destination="-1" eventType="touchUpInside" id="G1B-dl-8RP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tgm-aa-Jxc">
+                    <rect key="frame" x="82" y="9" width="31" height="31"/>
+                    <state key="normal" image="L-ChangeIcon"/>
+                    <connections>
+                        <action selector="changeButtonPressed" destination="-1" eventType="touchUpInside" id="71H-hW-kGG"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="0.89411764709999997" green="0.90980392160000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="Fjb-0J-Qf4" secondAttribute="bottom" id="5kL-5i-RcM"/>
-                <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="23x-b0-eyX" secondAttribute="leading" id="Blh-tf-1sP"/>
-                <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="Qdw-Pg-1G0"/>
-                <constraint firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="T57-F7-kuc"/>
-                <constraint firstAttribute="trailing" secondItem="Fjb-0J-Qf4" secondAttribute="trailing" id="UKb-uh-d3h"/>
-                <constraint firstItem="Fjb-0J-Qf4" firstAttribute="top" secondItem="23x-b0-eyX" secondAttribute="top" id="i8m-eC-WVE"/>
-                <constraint firstItem="Fjb-0J-Qf4" firstAttribute="leading" secondItem="23x-b0-eyX" secondAttribute="leading" id="iph-tY-UIt"/>
+                <constraint firstAttribute="bottom" secondItem="RTn-f4-zfa" secondAttribute="bottom" id="8zp-5p-bHX"/>
+                <constraint firstAttribute="trailing" secondItem="RTn-f4-zfa" secondAttribute="trailing" id="DGH-D4-8u2"/>
+                <constraint firstItem="TFQ-MX-rVo" firstAttribute="leading" secondItem="agR-1V-bAn" secondAttribute="trailing" constant="10" id="GWP-cx-j7a"/>
+                <constraint firstItem="agR-1V-bAn" firstAttribute="centerY" secondItem="Tgm-aa-Jxc" secondAttribute="centerY" id="IQ0-9J-VzZ"/>
+                <constraint firstItem="TFQ-MX-rVo" firstAttribute="centerY" secondItem="agR-1V-bAn" secondAttribute="centerY" id="KdE-dq-UMR"/>
+                <constraint firstItem="agR-1V-bAn" firstAttribute="leading" secondItem="Tgm-aa-Jxc" secondAttribute="trailing" constant="10" id="Ouf-26-4vH"/>
+                <constraint firstItem="suZ-1R-9cE" firstAttribute="centerY" secondItem="PeU-ya-QOq" secondAttribute="centerY" id="aTN-Rh-WY9"/>
+                <constraint firstItem="PeU-ya-QOq" firstAttribute="leading" secondItem="23x-b0-eyX" secondAttribute="leading" id="bjR-Wm-f25"/>
+                <constraint firstAttribute="bottom" secondItem="PeU-ya-QOq" secondAttribute="bottom" id="e74-Wf-LsK"/>
+                <constraint firstItem="Tgm-aa-Jxc" firstAttribute="centerY" secondItem="suZ-1R-9cE" secondAttribute="centerY" id="gJh-rQ-U4J"/>
+                <constraint firstItem="Tgm-aa-Jxc" firstAttribute="leading" secondItem="suZ-1R-9cE" secondAttribute="trailing" constant="10" id="lXt-tC-T4n"/>
+                <constraint firstItem="suZ-1R-9cE" firstAttribute="leading" secondItem="PeU-ya-QOq" secondAttribute="trailing" constant="10" id="xM1-IA-Qhm"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -100,7 +100,6 @@ HXLiveEndViewControllerDelegate
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
     [[HXZegoAVKitManager manager].zegoAVApi takeLocalViewSnapshot];
-//    [self endLive];
 }
 
 #pragma mark - Private Methods
