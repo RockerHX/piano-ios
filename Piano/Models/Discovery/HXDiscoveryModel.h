@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryType) {
 @property (nonatomic, strong)  NSString *nickName;
 @property (nonatomic, strong)  NSString *avatarUrl;
 @property (nonatomic, strong)  NSString *coverUrl;
+@property (nonatomic, strong)  NSString *videoUrl;
 
 @property (nonatomic, assign) NSInteger  onlineCount;
 @property (nonatomic, assign) NSInteger  viewCount;

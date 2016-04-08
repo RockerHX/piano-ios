@@ -157,6 +157,7 @@
 		CDE2FC801CABD3D200476968 /* HXProfileContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC7F1CABD3D200476968 /* HXProfileContainerViewController.m */; };
 		CDE2FC841CABD43700476968 /* HXProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC831CABD43700476968 /* HXProfileViewModel.m */; };
 		CDE2FC871CABF3F000476968 /* HXWatcherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC861CABF3F000476968 /* HXWatcherModel.m */; };
+		CDE416FC1CB7D672005F8901 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */; };
 		CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */; };
 		CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF41CA13BB4003867B8 /* UIView+FindUIViewController.m */; };
 		CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF61CA13BB4003867B8 /* UIView+Frame.m */; };
@@ -475,6 +476,7 @@
 		CDE2FC831CABD43700476968 /* HXProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileViewModel.m; sourceTree = "<group>"; };
 		CDE2FC851CABF3F000476968 /* HXWatcherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherModel.h; sourceTree = "<group>"; };
 		CDE2FC861CABF3F000476968 /* HXWatcherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherModel.m; sourceTree = "<group>"; };
+		CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CDED8EF11CA13BB4003867B8 /* NSObject+LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LoginAction.h"; sourceTree = "<group>"; };
 		CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LoginAction.m"; sourceTree = "<group>"; };
 		CDED8EF31CA13BB4003867B8 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDE416FC1CB7D672005F8901 /* MediaPlayer.framework in Frameworks */,
 				CD4492E61CAAA504005F36B3 /* ZegoAVKit.framework in Frameworks */,
 				124CB626904D3CA3E11516EC /* libPods.a in Frameworks */,
 			);
@@ -686,6 +689,7 @@
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */,
 				CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */,
 				B1BFCF29A3BF4A6DA2007B29 /* libPods.a */,
 			);

@@ -15,6 +15,7 @@
 #import "HXUserSession.h"
 #import "HXProfileViewController.h"
 #import "HXAlbumsViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 
 @interface HXDiscoveryViewController () <
@@ -103,9 +104,10 @@ HXDiscoveryContainerViewControllerDelegate
                 break;
             }
             case HXDiscoveryTypeReplay: {
-//                modalNavigationController = [HXReplayViewController navigationControllerInstance];
-//                HXReplayViewController *replayViewController = [modalNavigationController.viewControllers firstObject];
+                UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
+//                HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
 //                replayViewController.model = model;
+                [self presentViewController:replayNaviagtionController animated:YES completion:nil];
                 break;
             }
             case HXDiscoveryTypeNewAlbum: {
@@ -117,9 +119,9 @@ HXDiscoveryContainerViewControllerDelegate
                 break;
             }
             case HXDiscoveryTypeVideo: {
-//                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-//                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
-//                recordLiveViewController.model = model;
+                NSURL *url = [NSURL URLWithString:model.videoUrl];
+                MPMoviePlayerViewController *videoViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+                [self presentViewController:videoViewController animated:YES completion:nil];
                 break;
             }
         }
