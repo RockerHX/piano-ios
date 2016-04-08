@@ -99,6 +99,7 @@ HXLiveEndViewControllerDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
+    [_anchorView stopRecordTime];
     [[HXZegoAVKitManager manager].zegoAVApi takeLocalViewSnapshot];
 }
 
@@ -189,6 +190,7 @@ HXLiveEndViewControllerDelegate
 #pragma mark - ZegoVideoDelegate
 - (void)onPublishSucc:(uint32)zegoToken zegoId:(uint32)zegoId title:(NSString *)title {
     NSLog(@"启动直播成功，直播进行中...");
+    [_anchorView starRecordTime];
 }
 
 - (void)onPublishStop:(ShowErrCode)err zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId title:(NSString *)title {

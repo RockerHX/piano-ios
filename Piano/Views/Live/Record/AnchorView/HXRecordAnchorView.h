@@ -34,4 +34,7 @@ typedef NS_ENUM(NSUInteger, HXRecordAnchorViewAction) {
 
 - (IBAction)avatarButtonPressed;
 
+- (void)starRecordTime;
+- (void)stopRecordTime;
+
 @end

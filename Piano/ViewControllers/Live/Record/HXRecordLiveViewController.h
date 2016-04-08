@@ -9,11 +9,16 @@
 #import "UIViewController+HXClass.h"
 
 
+@class HXRecordAnchorView;
+
+
 @interface HXRecordLiveViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *liveView;
 @property (weak, nonatomic) IBOutlet UIView *previewContainer;
 @property (weak, nonatomic) IBOutlet UIView *endCountContainer;
+
+@property (weak, nonatomic) IBOutlet HXRecordAnchorView *anchorView;
 
 - (IBAction)closeButtonPressed;
 
