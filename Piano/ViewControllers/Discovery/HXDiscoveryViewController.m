@@ -104,10 +104,10 @@ HXDiscoveryContainerViewControllerDelegate
                 break;
             }
             case HXDiscoveryTypeReplay: {
-                UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
+//                UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
 //                HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
 //                replayViewController.model = model;
-                [self presentViewController:replayNaviagtionController animated:YES completion:nil];
+//                [self presentViewController:replayNaviagtionController animated:YES completion:nil];
                 break;
             }
             case HXDiscoveryTypeNewAlbum: {
