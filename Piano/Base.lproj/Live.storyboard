@@ -39,7 +39,7 @@
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.90980392160000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvH-Rw-RfM" userLabel="Content Container View">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGF-DP-Xhn" userLabel="Top Bar">
                                         <rect key="frame" x="10" y="15" width="300" height="40"/>
@@ -53,7 +53,7 @@
                                                     <outlet property="delegate" destination="k8B-Y3-ojo" id="RuJ-l4-WwL"/>
                                                 </connections>
                                             </view>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1M-qP-dBa">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1M-qP-dBa" userLabel="Watcher Container">
                                                 <rect key="frame" x="165" y="4" width="96" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="BPG-jR-6CA"/>
@@ -73,7 +73,7 @@
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuX-eh-vfZ" userLabel="Comment Container">
-                                        <rect key="frame" x="10" y="274" width="300" height="160"/>
+                                        <rect key="frame" x="10" y="338" width="300" height="160"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="Yeh-A1-kdq"/>
                                         </constraints>
@@ -82,7 +82,7 @@
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5m6-An-NpA" userLabel="Bottom Bar" customClass="HXWatchLiveBottomBar">
-                                        <rect key="frame" x="10" y="444" width="300" height="40"/>
+                                        <rect key="frame" x="10" y="508" width="300" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="acP-63-9y5"/>
                                         </constraints>
@@ -105,7 +105,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R38-Wu-TSw">
-                                <rect key="frame" x="279" y="83" width="31" height="31"/>
+                                <rect key="frame" x="279" y="19" width="31" height="31"/>
                                 <state key="normal" image="L-CloseIcon"/>
                                 <connections>
                                     <action selector="closeButtonPressed" destination="k8B-Y3-ojo" eventType="touchUpInside" id="Sfa-KX-THd"/>
@@ -129,6 +129,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IP5-Bf-JY6"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="anchorView" destination="ZgH-JT-Lsv" id="5mr-sh-6D8"/>
                         <outlet property="liveView" destination="Weh-Ip-WpZ" id="PSn-R3-edP"/>
@@ -561,7 +563,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TN2-Ac-bQc" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Qdb-8T-INH">
-                        <rect key="frame" x="0.0" y="0.0" width="96" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="98" height="32"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="gth-QB-cJf">
@@ -644,7 +646,7 @@
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.90980392160000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAv-at-bm5" userLabel="Content Container View">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K18-QZ-PAu" userLabel="Top Bar">
                                         <rect key="frame" x="10" y="15" width="300" height="40"/>
@@ -677,7 +679,7 @@
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sju-kT-rek" userLabel="Comment Container">
-                                        <rect key="frame" x="10" y="244" width="300" height="160"/>
+                                        <rect key="frame" x="10" y="308" width="300" height="160"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="5Nw-lI-oYO"/>
                                         </constraints>
@@ -686,7 +688,7 @@
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-Sr-nxg" userLabel="Bottom Bar" customClass="HXReplayBottomBar">
-                                        <rect key="frame" x="10" y="414" width="300" height="70"/>
+                                        <rect key="frame" x="10" y="478" width="300" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="6GK-sa-Wte"/>
                                         </constraints>
@@ -709,7 +711,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CU9-hb-5Tu">
-                                <rect key="frame" x="279" y="83" width="31" height="31"/>
+                                <rect key="frame" x="279" y="19" width="31" height="31"/>
                                 <state key="normal" image="L-CloseIcon"/>
                                 <connections>
                                     <action selector="closeButtonPressed" destination="gxm-Sv-8N7" eventType="touchUpInside" id="8kp-Zq-u4t"/>
@@ -732,6 +734,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t2R-5s-bdg"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="liveView" destination="4oN-8V-zMZ" id="LEF-CQ-BHW"/>
                     </connections>
@@ -892,13 +896,6 @@
                                                     <outlet property="delegate" destination="KgN-Fz-2Es" id="1S4-ql-7hO"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cq7-4R-779" userLabel="Watcher Container">
-                                                <rect key="frame" x="165" y="4" width="98" height="32"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="xsw-WW-rV2"/>
-                                                </constraints>
-                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etk-iH-YCy">
                                                 <rect key="frame" x="269" y="5" width="31" height="31"/>
                                                 <state key="normal" image="L-CloseIcon"/>
@@ -906,18 +903,27 @@
                                                     <action selector="closeButtonPressed" destination="KgN-Fz-2Es" eventType="touchUpInside" id="euX-JC-GHY"/>
                                                 </connections>
                                             </button>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrf-qW-cRD" userLabel="Watcher Container">
+                                                <rect key="frame" x="165" y="4" width="98" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="0j2-bM-uex"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="TN2-Ac-bQc" kind="embed" id="rQC-rx-khw"/>
+                                                </connections>
+                                            </containerView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="Etk-iH-YCy" firstAttribute="leading" secondItem="mrf-qW-cRD" secondAttribute="trailing" constant="6" id="2ih-Mq-9UF"/>
                                             <constraint firstAttribute="bottom" secondItem="xC5-yV-giV" secondAttribute="bottom" id="CVh-H6-pn3"/>
                                             <constraint firstAttribute="height" constant="40" id="IFq-zN-zSX"/>
                                             <constraint firstItem="xC5-yV-giV" firstAttribute="leading" secondItem="zt2-bD-MKs" secondAttribute="leading" id="QFa-hc-EMT"/>
                                             <constraint firstItem="Etk-iH-YCy" firstAttribute="centerY" secondItem="xC5-yV-giV" secondAttribute="centerY" id="Qb8-AT-8Ex"/>
-                                            <constraint firstItem="Cq7-4R-779" firstAttribute="leading" secondItem="xC5-yV-giV" secondAttribute="trailing" constant="12" id="R1M-Da-Vfu"/>
-                                            <constraint firstItem="Etk-iH-YCy" firstAttribute="leading" secondItem="Cq7-4R-779" secondAttribute="trailing" constant="6" id="RdJ-Rk-Gwd"/>
+                                            <constraint firstItem="mrf-qW-cRD" firstAttribute="centerY" secondItem="xC5-yV-giV" secondAttribute="centerY" id="Rac-uC-rfz"/>
                                             <constraint firstItem="xC5-yV-giV" firstAttribute="top" secondItem="zt2-bD-MKs" secondAttribute="top" id="YTd-tH-u4p"/>
-                                            <constraint firstItem="Cq7-4R-779" firstAttribute="centerY" secondItem="zt2-bD-MKs" secondAttribute="centerY" id="YjY-9h-gH1"/>
                                             <constraint firstAttribute="trailing" secondItem="Etk-iH-YCy" secondAttribute="trailing" id="oXY-mC-HA7"/>
+                                            <constraint firstItem="mrf-qW-cRD" firstAttribute="leading" secondItem="xC5-yV-giV" secondAttribute="trailing" constant="12" id="xyY-Gb-aFt"/>
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE0-wM-lMe" userLabel="Comment Container">
@@ -1036,6 +1042,7 @@
         <image name="L-CloseIcon" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="rQC-rx-khw"/>
         <segue reference="HeX-r3-laS"/>
     </inferredMetricsTieBreakers>
 </document>
