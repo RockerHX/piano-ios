@@ -12,7 +12,7 @@
 typedef NS_ENUM(NSUInteger, HXDiscoveryType) {
     HXDiscoveryTypeLive,
     HXDiscoveryTypeReplay,
-    HXDiscoveryTypeNewEntry,
+    HXDiscoveryTypeNewAlbum,
     HXDiscoveryTypeVideo,
 };
 
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryType) {
 @property (nonatomic, assign) NSInteger  itemID;
 @property (nonatomic, assign) NSInteger  itemType;
 @property (nonatomic, assign) NSInteger  live;
-@property (nonatomic, assign) NSInteger  liveDate;
+@property (nonatomic, strong)  NSString *prompt;
 @property (nonatomic, strong)  NSString *roomID;
 
 @end

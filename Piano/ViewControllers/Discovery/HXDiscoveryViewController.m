@@ -91,7 +91,7 @@ HXDiscoveryContainerViewControllerDelegate
 //                replayViewController.model = model;
                 break;
             }
-            case HXDiscoveryTypeNewEntry: {
+            case HXDiscoveryTypeNewAlbum: {
 //                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
 //                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
 //                recordLiveViewController.model = model;

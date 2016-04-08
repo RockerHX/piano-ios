@@ -1,5 +1,5 @@
 //
-//  HXDiscoveryNewEntryCell.h
+//  HXDiscoveryNewAlbumCell.h
 //  Piano
 //
 //  Created by miaios on 16/3/29.
@@ -8,6 +8,7 @@
 
 #import "HXDiscoveryNormalCell.h"
 
-@interface HXDiscoveryNewEntryCell : HXDiscoveryNormalCell
+
+@interface HXDiscoveryNewAlbumCell : HXDiscoveryNormalCell
 
 @end

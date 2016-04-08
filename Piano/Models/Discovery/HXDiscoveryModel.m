@@ -15,7 +15,8 @@
     return @{@"nickName": @"nick",
             @"avatarUrl": @"userpic",
           @"onlineCount": @"onlineCnt",
-            @"viewCount": @"viewCnt"};
+            @"viewCount": @"viewCnt",
+               @"prompt": @"liveDate"};
 }
 
 - (void)mj_keyValuesDidFinishConvertingToObject {
@@ -28,7 +29,7 @@
     _ID = @(_itemID).stringValue;
     switch (_itemType) {
         case 1: {
-            _type = HXDiscoveryTypeNewEntry;
+            _type = HXDiscoveryTypeNewAlbum;
             break;
         }
         case 2: {

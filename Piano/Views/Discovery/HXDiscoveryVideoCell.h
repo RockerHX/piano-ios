@@ -8,6 +8,7 @@
 
 #import "HXDiscoveryNormalCell.h"
 
+
 @interface HXDiscoveryVideoCell : HXDiscoveryNormalCell
 
 @end

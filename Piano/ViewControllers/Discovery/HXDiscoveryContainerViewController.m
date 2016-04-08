@@ -11,7 +11,7 @@
 #import "HXDiscoveryViewModel.h"
 #import "HXDiscoveryCell.h"
 #import "HXDiscoveryReplayCell.h"
-#import "HXDiscoveryNewEntryCell.h"
+#import "HXDiscoveryNewAlbumCell.h"
 #import "HXDiscoveryVideoCell.h"
 #import "HXAlertBanner.h"
 
@@ -83,8 +83,8 @@ HXDiscoveryCellDelegate
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryReplayCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXDiscoveryTypeNewEntry: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryNewEntryCell class]) forIndexPath:indexPath];
+        case HXDiscoveryTypeNewAlbum: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryNewAlbumCell class]) forIndexPath:indexPath];
             break;
         }
         case HXDiscoveryTypeVideo: {
@@ -102,21 +102,7 @@ HXDiscoveryCellDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
-    switch (model.type) {
-        case HXDiscoveryTypeLive: {
-            [(HXDiscoveryCell *)cell updateCellWithModel:model];
-            break;
-        }
-        case HXDiscoveryTypeReplay: {
-            break;
-        }
-        case HXDiscoveryTypeNewEntry: {
-            break;
-        }
-        case HXDiscoveryTypeVideo: {
-            break;
-        }
-    }
+    [(HXDiscoveryCell *)cell updateCellWithModel:model];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
