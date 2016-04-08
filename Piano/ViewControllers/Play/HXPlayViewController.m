@@ -27,7 +27,7 @@ HXPlayBottomBarDelegate
 @end
 
 @implementation HXPlayViewController {
-    BOOL _shouldHideenNavigationBar;
+    BOOL _shouldHiddenNavigationBar;
     
 //    MusicMgr *_musicMgr;
     dispatch_source_t _timer;
@@ -57,7 +57,7 @@ HXPlayBottomBarDelegate
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:_shouldHideenNavigationBar animated:YES];
+    [self.navigationController setNavigationBarHidden:_shouldHiddenNavigationBar animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -98,7 +98,7 @@ HXPlayBottomBarDelegate
 
 #pragma mark - Private Methods
 - (void)dismiss {
-    _shouldHideenNavigationBar = YES;
+    _shouldHiddenNavigationBar = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

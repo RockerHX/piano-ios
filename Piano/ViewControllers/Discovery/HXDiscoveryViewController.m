@@ -14,6 +14,7 @@
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
 #import "HXProfileViewController.h"
+#import "HXAlbumsViewController.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -24,6 +25,8 @@ HXDiscoveryContainerViewControllerDelegate
 
 @implementation HXDiscoveryViewController {
     HXDiscoveryContainerViewController *_containerViewController;
+    
+    BOOL _shouldHiddenNavigationBar;
 }
 
 #pragma mark - Class Methods
@@ -42,6 +45,19 @@ HXDiscoveryContainerViewControllerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self viewConfigure];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:_shouldHiddenNavigationBar animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -76,13 +92,14 @@ HXDiscoveryContainerViewControllerDelegate
         return;
     }
     
+    _shouldHiddenNavigationBar = NO;
     if (model) {
-        UINavigationController *modalNavigationController = nil;
         switch (model.type) {
             case HXDiscoveryTypeLive: {
-                modalNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-                HXWatchLiveViewController *watchLiveViewController = [modalNavigationController.viewControllers firstObject];
+                UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+                HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
                 watchLiveViewController.roomID = model.ID;
+                [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
                 break;
             }
             case HXDiscoveryTypeReplay: {
@@ -92,9 +109,11 @@ HXDiscoveryContainerViewControllerDelegate
                 break;
             }
             case HXDiscoveryTypeNewAlbum: {
-//                modalNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-//                HXRecordLiveViewController *recordLiveViewController = [modalNavigationController.viewControllers firstObject];
-//                recordLiveViewController.model = model;
+                _shouldHiddenNavigationBar = YES;
+                HXAlbumsViewController *albumsViewController = [HXAlbumsViewController instance];
+//                albumsViewController.albumID = model.ID;
+                albumsViewController.albumID = @"1";
+                [self.navigationController pushViewController:albumsViewController animated:YES];
                 break;
             }
             case HXDiscoveryTypeVideo: {
@@ -104,7 +123,6 @@ HXDiscoveryContainerViewControllerDelegate
                 break;
             }
         }
-        [self presentViewController:modalNavigationController animated:YES completion:nil];
     }
 }
 

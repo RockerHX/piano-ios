@@ -11,7 +11,7 @@
         <!--HXAlbumsViewController-->
         <scene sceneID="wTw-ma-B1p">
             <objects>
-                <viewController storyboardIdentifier="HXAlbumsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gFL-s1-ewn" userLabel="HXAlbumsViewController" customClass="HXAlbumsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXAlbumsViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gFL-s1-ewn" userLabel="HXAlbumsViewController" customClass="HXAlbumsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0xM-J0-Q3y"/>
                         <viewControllerLayoutGuide type="bottom" id="sAv-9j-LOK"/>
