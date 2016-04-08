@@ -33,24 +33,24 @@
                         <action selector="startLiveButtonPressed" destination="-1" eventType="touchUpInside" id="AeR-rn-DVY"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHQ-4d-0ln" userLabel="Share Container View">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHQ-4d-0ln" userLabel="Share Container View">
                     <rect key="frame" x="85" y="30" width="150" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWu-Lt-8s4">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWu-Lt-8s4">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                             <state key="normal" image="L-FriendsCircleIcon"/>
                             <connections>
                                 <action selector="friendsCycleButtonPressed" destination="-1" eventType="touchUpInside" id="gTt-pW-63m"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3F9-ZO-4du">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3F9-ZO-4du">
                             <rect key="frame" x="60" y="0.0" width="30" height="30"/>
                             <state key="normal" image="L-WeCharIcon"/>
                             <connections>
                                 <action selector="wechatButtonPressed" destination="-1" eventType="touchUpInside" id="rT2-ch-tbm"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4j8-k6-f8Y">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4j8-k6-f8Y">
                             <rect key="frame" x="120" y="0.0" width="30" height="30"/>
                             <state key="normal" image="L-WeiBoIcon"/>
                             <connections>

@@ -39,13 +39,14 @@
 }
 
 - (void)viewConfigure {
-    ;
+    _containerView.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - Private Methods
-- (IBAction)exitRoomButtonPressed {
-    if (_delegate && [_delegate respondsToSelector:@selector(liveEndViewControllerWouldLikeExitRoom:)]) {
-        [_delegate liveEndViewControllerWouldLikeExitRoom:self];
+- (IBAction)backButtonPressed {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    if (_delegate && [_delegate respondsToSelector:@selector(endViewControllerWouldLikeExitRoom:)]) {
+        [_delegate endViewControllerWouldLikeExitRoom:self];
     }
 }
 

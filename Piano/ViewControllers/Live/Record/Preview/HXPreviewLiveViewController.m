@@ -187,6 +187,7 @@ HXPreviewLiveControlViewDelegate
             break;
         }
         case HXPreviewLiveControlViewActionStartLive: {
+            [self.view endEditing:YES];
             [self setRoomTitle];
             break;
         }

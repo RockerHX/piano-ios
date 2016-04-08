@@ -15,6 +15,7 @@
 #import "HXRecordAnchorView.h"
 #import "HXRecordBottomBar.h"
 #import "HXPreviewLiveViewController.h"
+#import "HXLiveEndViewController.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -22,7 +23,8 @@ ZegoChatDelegate,
 ZegoVideoDelegate,
 HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate,
-HXPreviewLiveViewControllerDelegate
+HXPreviewLiveViewControllerDelegate,
+HXLiveEndViewControllerDelegate
 >
 @end
 
@@ -91,21 +93,12 @@ HXPreviewLiveViewControllerDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
-    [self dismiss];
+    [self endLive];
 }
 
 #pragma mark - Private Methods
 - (void)shouldSteady:(BOOL)steady {
     [[UIApplication sharedApplication] setIdleTimerDisabled:steady];
-}
-
-- (void)dismiss {
-    [self leaveRoom];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)leaveRoom {
-    [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
 }
 
 - (void)startLive {
@@ -117,6 +110,18 @@ HXPreviewLiveViewControllerDelegate
     
     [zegoAVApi getInChatRoom:user zegoToken:0 zegoId:0];
     [zegoAVApi setAVConfig:[HXSettingSession session].configure];
+}
+
+- (void)endLive {
+    [self leaveRoom];
+    
+    HXLiveEndViewController *endViewController = [HXLiveEndViewController instance];
+    endViewController.delegate = self;
+    [self presentViewController:endViewController animated:YES completion:nil];
+}
+
+- (void)leaveRoom {
+    [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
 }
 
 #pragma mark - ZegoChatDelegate
@@ -275,6 +280,11 @@ HXPreviewLiveViewControllerDelegate
     
     [self startLive];
     _previewContainer.hidden = YES;
+}
+
+#pragma mark - HXLiveEndViewControllerDelegate Methods
+- (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
