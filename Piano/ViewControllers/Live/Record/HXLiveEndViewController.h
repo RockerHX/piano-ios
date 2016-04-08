@@ -8,7 +8,6 @@
 
 #import "UIViewController+HXClass.h"
 
-@class FXBlurView;
 @class HXLiveEndViewController;
 
 
@@ -24,7 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet          id  <HXLiveEndViewControllerDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet  FXBlurView *blurView;
+@property (weak, nonatomic) IBOutlet UIImageView *blurView;
 @property (weak, nonatomic) IBOutlet      UIView *containerView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
@@ -32,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet     UILabel *totalViewCountLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *appendFansCountLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *appendMCurrencyCountLabel;
+
+@property (nonatomic, strong) UIImage *snapShotImage;
 
 - (IBAction)backButtonPressed;
 

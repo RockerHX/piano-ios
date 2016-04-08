@@ -15,6 +15,7 @@
 #import "HXRecordBottomBar.h"
 #import "HXPreviewLiveViewController.h"
 #import "HXLiveEndViewController.h"
+#import "UIView+Image.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -30,6 +31,7 @@ HXLiveEndViewControllerDelegate
 
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
+    HXLiveEndViewController *_endViewController;
     
     NSString *_roomID;
     NSString *_roomTitle;
@@ -47,8 +49,13 @@ HXLiveEndViewControllerDelegate
 
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    _previewViewController = segue.destinationViewController;
-    _previewViewController.delegate = self;
+    if ([segue.identifier isEqualToString:NSStringFromClass([HXPreviewLiveViewController class])]) {
+        _previewViewController = segue.destinationViewController;
+        _previewViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
+        _endViewController = segue.destinationViewController;
+        _endViewController.delegate = self;
+    }
 }
 
 #pragma mark - Status Bar
@@ -92,7 +99,8 @@ HXLiveEndViewControllerDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
-    [self endLive];
+    [[HXZegoAVKitManager manager].zegoAVApi takeLocalViewSnapshot];
+//    [self endLive];
 }
 
 #pragma mark - Private Methods
@@ -111,9 +119,10 @@ HXLiveEndViewControllerDelegate
     [zegoAVApi setAVConfig:[HXSettingSession session].configure];
 }
 
-- (void)endLive {
+- (void)endLiveWithSnapShotImage:(UIImage *)image {
     [self leaveRoom];
     
+    _endViewController.snapShotImage = image;
     _endCountContainer.hidden = NO;
 }
 
@@ -142,7 +151,7 @@ HXLiveEndViewControllerDelegate
     NSLog(@"直播终止");
 }
 
-- (void)onKickOut:(uint32) reason msg:(NSString*)msg{
+- (void)onKickOut:(uint32) reason msg:(NSString*)msg {
     NSLog(@"\n已经被踢出聊天室 （%d:%@）", reason, msg);
 }
 
@@ -225,7 +234,8 @@ HXLiveEndViewControllerDelegate
 }
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {
-    ;
+    UIImage *snapShotImage = [UIImage imageWithCGImage:img];
+    [self endLiveWithSnapShotImage:snapShotImage];
 }
 
 #pragma mark - HXRecordAnchorViewDelegate Methods

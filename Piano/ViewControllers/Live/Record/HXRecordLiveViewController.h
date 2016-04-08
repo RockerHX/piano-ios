@@ -9,15 +9,11 @@
 #import "UIViewController+HXClass.h"
 
 
-@class HXLiveModel;
-
-
 @interface HXRecordLiveViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *liveView;
 @property (weak, nonatomic) IBOutlet UIView *previewContainer;
-
-@property (nonatomic, strong) HXLiveModel *model;
+@property (weak, nonatomic) IBOutlet UIView *endCountContainer;
 
 - (IBAction)closeButtonPressed;
 

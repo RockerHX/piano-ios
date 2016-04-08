@@ -7,6 +7,7 @@
 //
 
 #import "HXLiveEndViewController.h"
+#import "FXBlurView.h"
 
 
 @interface HXLiveEndViewController ()
@@ -39,12 +40,18 @@
 }
 
 - (void)viewConfigure {
+    _blurView.contentMode = UIViewContentModeScaleAspectFill;
     _containerView.backgroundColor = [UIColor clearColor];
+}
+
+#pragma mark - Property
+- (void)setSnapShotImage:(UIImage *)snapShotImage {
+    _snapShotImage = snapShotImage;
+    _blurView.image = [snapShotImage blurredImageWithRadius:30.0f iterations:10 tintColor:[UIColor blackColor]];
 }
 
 #pragma mark - Private Methods
 - (IBAction)backButtonPressed {
-    [self dismissViewControllerAnimated:NO completion:nil];
     if (_delegate && [_delegate respondsToSelector:@selector(endViewControllerWouldLikeExitRoom:)]) {
         [_delegate endViewControllerWouldLikeExitRoom:self];
     }
