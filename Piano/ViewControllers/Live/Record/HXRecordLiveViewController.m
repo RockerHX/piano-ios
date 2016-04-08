@@ -15,7 +15,11 @@
 #import "HXRecordBottomBar.h"
 #import "HXPreviewLiveViewController.h"
 #import "HXLiveEndViewController.h"
-#import "UIView+Image.h"
+#import "HXWatcherContainerViewController.h"
+#import "HXCommentContainerViewController.h"
+#import "HXCommentViewController.h"
+#import "HXRecordLiveViewModel.h"
+#import "UIButton+WebCache.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -32,10 +36,14 @@ HXLiveEndViewControllerDelegate
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
     HXLiveEndViewController *_endViewController;
+    HXWatcherContainerViewController *_watcherContianer;
+    HXCommentContainerViewController *_commentContainer;
     
     NSString *_roomID;
     NSString *_roomTitle;
     NSString *_shareUrl;
+    
+    HXRecordLiveViewModel *_viewModel;
 }
 
 #pragma mark - Class Methods
@@ -54,6 +62,12 @@ HXLiveEndViewControllerDelegate
         _previewViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
         _endViewController = segue.destinationViewController;
+        _endViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXWatcherContainerViewController class])]) {
+        _watcherContianer = segue.destinationViewController;
+        _endViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXCommentContainerViewController class])]) {
+        _commentContainer = segue.destinationViewController;
         _endViewController.delegate = self;
     }
 }
@@ -127,7 +141,28 @@ HXLiveEndViewControllerDelegate
 }
 
 - (void)leaveRoom {
+    [_viewModel.leaveRoomCommand execute:nil];
     [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
+}
+
+- (void)signalLink {
+    @weakify(self)
+    [_viewModel.enterSignal subscribeNext:^(NSArray *watchers) {
+        @strongify(self)
+        self->_watcherContianer.watchers = watchers;
+        self.anchorView.countLabel.text = _viewModel.onlineCount;
+    }];
+    [_viewModel.exitSignal subscribeNext:^(id x) {
+        ;
+    }];
+    [_viewModel.commentSignal subscribeNext:^(NSArray *comments) {
+        @strongify(self)
+        self->_commentContainer.comments = comments;
+    }];
+}
+
+- (void)updateAnchorView {
+    [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal];
 }
 
 #pragma mark - ZegoChatDelegate
@@ -253,7 +288,10 @@ HXLiveEndViewControllerDelegate
 - (void)bottomBar:(HXRecordBottomBar *)bar takeAction:(HXRecordBottomBarAction)action {
     switch (action) {
         case HXRecordBottomBarActionComment: {
-            ;
+            HXCommentViewController *commentViewController = [HXCommentViewController instance];
+            commentViewController.roomID = _roomID;
+            [self addChildViewController:commentViewController];
+            [self.view addSubview:commentViewController.view];
             break;
         }
         case HXRecordBottomBarActionBeauty: {
@@ -288,6 +326,9 @@ HXLiveEndViewControllerDelegate
     
     [self startLive];
     
+    _viewModel = [[HXRecordLiveViewModel alloc] initWithRoomID:roomID];
+    [self signalLink];
+    
     _previewContainer.hidden = YES;
     [_previewContainer removeFromSuperview];
     _previewContainer = nil;
@@ -296,6 +337,19 @@ HXLiveEndViewControllerDelegate
 #pragma mark - HXLiveEndViewControllerDelegate Methods
 - (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - HXWatcherContainerViewControllerDelegate Methods
+- (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
+    ;
+}
+
+#pragma mark - HXCommentContainerViewControllerDelegate Methods
+- (void)commentContainer:(HXCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+    ;
+    //    [HXWatcherBoard showWithWatcher:watcher closed:^{
+    //        ;
+    //    }];
 }
 
 @end

@@ -909,7 +909,7 @@
                                                     <constraint firstAttribute="height" constant="32" id="0j2-bM-uex"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="TN2-Ac-bQc" kind="embed" id="rQC-rx-khw"/>
+                                                    <segue destination="TN2-Ac-bQc" kind="embed" identifier="HXWatcherContainerViewController" id="rQC-rx-khw"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>

@@ -8,6 +8,8 @@
 
 #import "HXLiveEndViewController.h"
 #import "FXBlurView.h"
+#import "HXUserSession.h"
+#import "UIImageView+WebCache.h"
 
 
 @interface HXLiveEndViewController ()
@@ -48,6 +50,9 @@
 - (void)setSnapShotImage:(UIImage *)snapShotImage {
     _snapShotImage = snapShotImage;
     _blurView.image = [snapShotImage blurredImageWithRadius:30.0f iterations:10 tintColor:[UIColor blackColor]];
+    
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl]];
+    _nickNameLabel.text = [HXUserSession session].nickName;
 }
 
 #pragma mark - Private Methods

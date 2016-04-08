@@ -33,10 +33,10 @@ static NSUInteger WatcherMAX = 20;
 - (void)initConfigure {
     _watchers = @[];
     _comments = @[];
+    _onlineCount = @"0";
     
     [self notificationConfigure];
     [self signalLink];
-    [self enterRoomCommandConfigure];
     [self leaveRoomCommandConfigure];
 }
 
@@ -45,6 +45,7 @@ static NSUInteger WatcherMAX = 20;
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomEnter object:nil] subscribeNext:^(NSNotification *notification) {
         @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+        [self updateOnlineCount:[data[@"onlineCnt"] integerValue]];
         [self addWatcher:data];
     }];
     [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
@@ -59,18 +60,6 @@ static NSUInteger WatcherMAX = 20;
     _enterSignal = RACObserve(self, watchers);
     _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
     _commentSignal = RACObserve(self, comments);
-}
-
-- (void)enterRoomCommandConfigure {
-    @weakify(self)
-    _enterRoomCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self)
-            [self enterRoomRequestWithSubscriber:subscriber];
-            return nil;
-        }];
-        return signal;
-    }];
 }
 
 - (void)leaveRoomCommandConfigure {
@@ -157,6 +146,10 @@ static NSUInteger WatcherMAX = 20;
     for (NSDictionary *watcher in onlineList) {
         [self addWatcher:watcher];
     }
+}
+
+- (void)updateOnlineCount:(NSInteger)count {
+    _onlineCount = @(count).stringValue;
 }
 
 @end

@@ -22,12 +22,11 @@
 @property (nonatomic, strong, readonly)  RACSignal *exitSignal;
 @property (nonatomic, strong, readonly)  RACSignal *commentSignal;
 
-@property (nonatomic, strong, readonly) RACCommand *enterRoomCommand;
 @property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
 
 @property (nonatomic, strong, readonly) NSString *anchorAvatar;
 @property (nonatomic, strong, readonly) NSString *anchorNickName;
-@property (nonatomic, strong, readonly) NSString *viewCount;
+@property (nonatomic, strong, readonly) NSString *onlineCount;
 
 @property (nonatomic, strong) NSArray<HXWatcherModel *> *watchers;
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
