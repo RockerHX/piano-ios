@@ -23,10 +23,10 @@
 @interface HXWatchLiveViewController () <
 ZegoChatDelegate,
 ZegoVideoDelegate,
-HXWatcherContainerViewControllerDelegate,
-HXCommentContainerViewControllerDelegate,
 HXLiveAnchorViewDelegate,
-HXWatchLiveBottomBarDelegate
+HXWatchLiveBottomBarDelegate,
+HXWatcherContainerViewControllerDelegate,
+HXCommentContainerViewControllerDelegate
 >
 @end
 
@@ -269,19 +269,6 @@ HXWatchLiveBottomBarDelegate
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
-#pragma mark - HXWatcherContainerViewControllerDelegate Methods
-- (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
-    ;
-}
-
-#pragma mark - HXCommentContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-    ;
-//    [HXWatcherBoard showWithWatcher:watcher closed:^{
-//        ;
-//    }];
-}
-
 #pragma mark - HXLiveAnchorViewDelegate Methods
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
     ;
@@ -314,6 +301,19 @@ HXWatchLiveBottomBarDelegate
             break;
         }
     }
+}
+
+#pragma mark - HXWatcherContainerViewControllerDelegate Methods
+- (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
+    ;
+}
+
+#pragma mark - HXCommentContainerViewControllerDelegate Methods
+- (void)commentContainer:(HXCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+    ;
+    //    [HXWatcherBoard showWithWatcher:watcher closed:^{
+    //        ;
+    //    }];
 }
 
 @end
