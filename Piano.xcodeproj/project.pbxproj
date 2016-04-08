@@ -153,6 +153,7 @@
 		CDC063131CB3E41000E66F2A /* HXDiscoveryVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0630E1CB3E41000E66F2A /* HXDiscoveryVideoCell.m */; };
 		CDC063171CB3E4B600E66F2A /* HXDiscoveryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063161CB3E4B600E66F2A /* HXDiscoveryModel.m */; };
 		CDC0631B1CB3E53200E66F2A /* HXDiscoveryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0631A1CB3E53200E66F2A /* HXDiscoveryViewModel.m */; };
+		CDCB46921CB788FD00ED3A8B /* UIView+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB46911CB788FD00ED3A8B /* UIView+Image.m */; };
 		CDE2FC801CABD3D200476968 /* HXProfileContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC7F1CABD3D200476968 /* HXProfileContainerViewController.m */; };
 		CDE2FC841CABD43700476968 /* HXProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC831CABD43700476968 /* HXProfileViewModel.m */; };
 		CDE2FC871CABF3F000476968 /* HXWatcherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC861CABF3F000476968 /* HXWatcherModel.m */; };
@@ -466,6 +467,8 @@
 		CDC063161CB3E4B600E66F2A /* HXDiscoveryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryModel.m; sourceTree = "<group>"; };
 		CDC063191CB3E53200E66F2A /* HXDiscoveryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryViewModel.h; sourceTree = "<group>"; };
 		CDC0631A1CB3E53200E66F2A /* HXDiscoveryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryViewModel.m; sourceTree = "<group>"; };
+		CDCB46901CB788FD00ED3A8B /* UIView+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Image.h"; sourceTree = "<group>"; };
+		CDCB46911CB788FD00ED3A8B /* UIView+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Image.m"; sourceTree = "<group>"; };
 		CDE2FC7E1CABD3D200476968 /* HXProfileContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileContainerViewController.h; sourceTree = "<group>"; };
 		CDE2FC7F1CABD3D200476968 /* HXProfileContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileContainerViewController.m; sourceTree = "<group>"; };
 		CDE2FC821CABD43700476968 /* HXProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileViewModel.h; sourceTree = "<group>"; };
@@ -1666,6 +1669,8 @@
 				CDED8EF41CA13BB4003867B8 /* UIView+FindUIViewController.m */,
 				CDED8EF51CA13BB4003867B8 /* UIView+Frame.h */,
 				CDED8EF61CA13BB4003867B8 /* UIView+Frame.m */,
+				CDCB46901CB788FD00ED3A8B /* UIView+Image.h */,
+				CDCB46911CB788FD00ED3A8B /* UIView+Image.m */,
 				CDED8EF71CA13BB4003867B8 /* UIViewController+HXClass.h */,
 				CDED8EF81CA13BB4003867B8 /* UIViewController+HXClass.m */,
 			);
@@ -2079,6 +2084,7 @@
 				CD858DA21CAE6BB0007441E9 /* HXProfileAlbumCell.m in Sources */,
 				CD2949F91CA2919B00CA3C3F /* HXRegisterContainerViewController.m in Sources */,
 				398451ED1CAD0543009018C6 /* SongPreloader.m in Sources */,
+				CDCB46921CB788FD00ED3A8B /* UIView+Image.m in Sources */,
 				CD5F21721CAD4C3F0067A1DA /* HXProfileModel.m in Sources */,
 				CD2367AC1CA93D19002C8233 /* HXMeAttentionCell.m in Sources */,
 				CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */,
