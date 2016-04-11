@@ -1,16 +1,16 @@
 //
-//  HXDiscoveryCell.m
+//  HXDiscoveryLiveCell.m
 //  Piano
 //
 //  Created by miaios on 16/3/16.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXDiscoveryCell.h"
+#import "HXDiscoveryLiveCell.h"
 #import "UIImageView+WebCache.h"
 
 
-@implementation HXDiscoveryCell
+@implementation HXDiscoveryLiveCell
 
 #pragma mark - Load Methods
 - (void)awakeFromNib {
@@ -24,6 +24,13 @@
     [_anchorContainer addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)]];
 }
 
+#pragma mark - Event Reponse
+- (void)tapGesture {
+    if (_delegate && [_delegate respondsToSelector:@selector(discoveryLiveCellAnchorContainerTaped:)]) {
+        [_delegate discoveryLiveCellAnchorContainerTaped:self];
+    }
+}
+
 #pragma mark - Public Methods
 - (void)updateCellWithModel:(HXDiscoveryModel *)model {
     [_avatar sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
@@ -32,13 +39,6 @@
     
     _titleLabel.text = model.title;
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
-}
-
-#pragma mark - Event Reponse
-- (void)tapGesture {
-    if (_delegate && [_delegate respondsToSelector:@selector(discoveryCellAnchorContainerTaped:)]) {
-        [_delegate discoveryCellAnchorContainerTaped:self];
-    }
 }
 
 @end

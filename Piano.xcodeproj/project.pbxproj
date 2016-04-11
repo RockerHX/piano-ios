@@ -146,7 +146,7 @@
 		CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */; };
 		CDC063021CB3E32700E66F2A /* HXDiscoveryContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC062FF1CB3E32700E66F2A /* HXDiscoveryContainerViewController.m */; };
 		CDC063031CB3E32700E66F2A /* HXDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063011CB3E32700E66F2A /* HXDiscoveryViewController.m */; };
-		CDC0630F1CB3E41000E66F2A /* HXDiscoveryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063061CB3E41000E66F2A /* HXDiscoveryCell.m */; };
+		CDC0630F1CB3E41000E66F2A /* HXDiscoveryLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063061CB3E41000E66F2A /* HXDiscoveryLiveCell.m */; };
 		CDC063101CB3E41000E66F2A /* HXDiscoveryNewAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063081CB3E41000E66F2A /* HXDiscoveryNewAlbumCell.m */; };
 		CDC063111CB3E41000E66F2A /* HXDiscoveryNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0630A1CB3E41000E66F2A /* HXDiscoveryNormalCell.m */; };
 		CDC063121CB3E41000E66F2A /* HXDiscoveryReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0630C1CB3E41000E66F2A /* HXDiscoveryReplayCell.m */; };
@@ -454,8 +454,8 @@
 		CDC062FF1CB3E32700E66F2A /* HXDiscoveryContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryContainerViewController.m; sourceTree = "<group>"; };
 		CDC063001CB3E32700E66F2A /* HXDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryViewController.h; sourceTree = "<group>"; };
 		CDC063011CB3E32700E66F2A /* HXDiscoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryViewController.m; sourceTree = "<group>"; };
-		CDC063051CB3E41000E66F2A /* HXDiscoveryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryCell.h; sourceTree = "<group>"; };
-		CDC063061CB3E41000E66F2A /* HXDiscoveryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryCell.m; sourceTree = "<group>"; };
+		CDC063051CB3E41000E66F2A /* HXDiscoveryLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryLiveCell.h; sourceTree = "<group>"; };
+		CDC063061CB3E41000E66F2A /* HXDiscoveryLiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryLiveCell.m; sourceTree = "<group>"; };
 		CDC063071CB3E41000E66F2A /* HXDiscoveryNewAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryNewAlbumCell.h; sourceTree = "<group>"; };
 		CDC063081CB3E41000E66F2A /* HXDiscoveryNewAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryNewAlbumCell.m; sourceTree = "<group>"; };
 		CDC063091CB3E41000E66F2A /* HXDiscoveryNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryNormalCell.h; sourceTree = "<group>"; };
@@ -1610,8 +1610,8 @@
 		CDC063041CB3E41000E66F2A /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
-				CDC063051CB3E41000E66F2A /* HXDiscoveryCell.h */,
-				CDC063061CB3E41000E66F2A /* HXDiscoveryCell.m */,
+				CDC063051CB3E41000E66F2A /* HXDiscoveryLiveCell.h */,
+				CDC063061CB3E41000E66F2A /* HXDiscoveryLiveCell.m */,
 				CDC063091CB3E41000E66F2A /* HXDiscoveryNormalCell.h */,
 				CDC0630A1CB3E41000E66F2A /* HXDiscoveryNormalCell.m */,
 				CDC0630B1CB3E41000E66F2A /* HXDiscoveryReplayCell.h */,
@@ -2138,7 +2138,7 @@
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
 				CD91677F1CAE5399000A12DC /* CacheHelper.m in Sources */,
 				CD5F21811CAD4EE50067A1DA /* HXReplayModel.m in Sources */,
-				CDC0630F1CB3E41000E66F2A /* HXDiscoveryCell.m in Sources */,
+				CDC0630F1CB3E41000E66F2A /* HXDiscoveryLiveCell.m in Sources */,
 				CD5F21751CAD4C560067A1DA /* HXAlbumModel.m in Sources */,
 				CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */,
 				CDF1A6881CB7503C00F58772 /* HXLiveEndViewController.m in Sources */,
