@@ -12,6 +12,7 @@
 #import "HXAlbumsCommentCountCell.h"
 #import "HXAlbumsCommentCell.h"
 #import "MusicMgr.h"
+#import "MJRefresh.h"
 
 
 @interface HXAlbumsContainerViewController () <
@@ -40,7 +41,7 @@ HXAlbumsControlCellDelegate
 }
 
 - (void)viewConfigure {
-    ;
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreComment)];
 }
 
 #pragma mark - Public Methods
@@ -48,6 +49,10 @@ HXAlbumsControlCellDelegate
     [self.tableView reloadData];
     
     [self updateControlCellPlayState];
+}
+
+- (void)endFetch {
+    [self.tableView.mj_footer endRefreshing];
 }
 
 #pragma mark - Private Methods
@@ -83,6 +88,12 @@ HXAlbumsControlCellDelegate
         });
     });
     dispatch_resume(_timer);
+}
+
+- (void)fetchMoreComment {
+    if (_delegate && [_delegate respondsToSelector:@selector(containerFetchMoreComment:)]) {
+        [_delegate containerFetchMoreComment:self];
+    }
 }
 
 #pragma mark - Table View Data Source Methods

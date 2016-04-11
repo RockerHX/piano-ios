@@ -159,6 +159,19 @@ HXAlbumsCommentViewControllerDelegate
     ;
 }
 
+- (void)containerFetchMoreComment:(HXAlbumsContainerViewController *)container {
+    @weakify(self)
+    RACSignal *moreCommentSignal = [_viewModel.moreCommentCommand execute:nil];
+    [moreCommentSignal subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+        @strongify(self)
+        [self->_containerViewController endFetch];
+        [self->_containerViewController refresh];
+    }];
+}
+
 #pragma mark - HXAlbumsCommentViewControllerDelegate Methods
 - (void)commentViewControllerCompleted:(HXAlbumsCommentViewController *)viewController {
     @weakify(self)
