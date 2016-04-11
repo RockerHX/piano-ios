@@ -1,5 +1,5 @@
 //
-//  HXCommentViewController.h
+//  HXLiveCommentViewController.h
 //  Piano
 //
 //  Created by miaios on 16/3/31.
@@ -9,7 +9,7 @@
 #import "UIViewController+HXClass.h"
 
 
-@interface HXCommentViewController : UIViewController
+@interface HXLiveCommentViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet      UIView *commentView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;

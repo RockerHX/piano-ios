@@ -7,14 +7,14 @@
 //
 
 #import "HXReplayViewController.h"
-#import "HXCommentContainerViewController.h"
+#import "HXLiveCommentContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXReplayBottomBar.h"
 #import "HXWatcherBoard.h"
 
 
 @interface HXReplayViewController () <
-HXCommentContainerViewControllerDelegate,
+HXLiveCommentContainerViewControllerDelegate,
 HXLiveAnchorViewDelegate,
 HXReplayBottomBarDelegate
 >
@@ -22,7 +22,7 @@ HXReplayBottomBarDelegate
 
 
 @implementation HXReplayViewController {
-    HXCommentContainerViewController *_containerViewController;
+    HXLiveCommentContainerViewController *_containerViewController;
 }
 
 #pragma mark - Class Methods
@@ -79,8 +79,8 @@ HXReplayBottomBarDelegate
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - HXCommentContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+#pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
+- (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
 //    [HXWatcherBoard showWithWatcher:watcher closed:^{
 //        ;
 //    }];

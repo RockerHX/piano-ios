@@ -1,18 +1,18 @@
 //
-//  HXCommentViewController.m
+//  HXLiveCommentViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/31.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXCommentViewController.h"
+#import "HXLiveCommentViewController.h"
 #import "HXCommentViewModel.h"
 
-@interface HXCommentViewController ()
+@interface HXLiveCommentViewController ()
 @end
 
-@implementation HXCommentViewController {
+@implementation HXLiveCommentViewController {
     HXCommentViewModel *_viewModel;
 }
 

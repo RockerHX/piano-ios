@@ -16,8 +16,8 @@
 #import "HXPreviewLiveViewController.h"
 #import "HXLiveEndViewController.h"
 #import "HXWatcherContainerViewController.h"
-#import "HXCommentContainerViewController.h"
-#import "HXCommentViewController.h"
+#import "HXLiveCommentContainerViewController.h"
+#import "HXLiveCommentViewController.h"
 #import "HXRecordLiveViewModel.h"
 #import "UIButton+WebCache.h"
 
@@ -37,7 +37,7 @@ HXLiveEndViewControllerDelegate
     HXPreviewLiveViewController *_previewViewController;
     HXLiveEndViewController *_endViewController;
     HXWatcherContainerViewController *_watcherContianer;
-    HXCommentContainerViewController *_commentContainer;
+    HXLiveCommentContainerViewController *_commentContainer;
     
     NSString *_roomID;
     NSString *_roomTitle;
@@ -66,7 +66,7 @@ HXLiveEndViewControllerDelegate
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXWatcherContainerViewController class])]) {
         _watcherContianer = segue.destinationViewController;
         _endViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXCommentContainerViewController class])]) {
+    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
         _commentContainer = segue.destinationViewController;
         _endViewController.delegate = self;
     }
@@ -288,7 +288,7 @@ HXLiveEndViewControllerDelegate
 - (void)bottomBar:(HXRecordBottomBar *)bar takeAction:(HXRecordBottomBarAction)action {
     switch (action) {
         case HXRecordBottomBarActionComment: {
-            HXCommentViewController *commentViewController = [HXCommentViewController instance];
+            HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
             commentViewController.roomID = _roomID;
             [self addChildViewController:commentViewController];
             [self.view addSubview:commentViewController.view];
@@ -344,8 +344,8 @@ HXLiveEndViewControllerDelegate
     ;
 }
 
-#pragma mark - HXCommentContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+#pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
+- (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
     ;
     //    [HXWatcherBoard showWithWatcher:watcher closed:^{
     //        ;

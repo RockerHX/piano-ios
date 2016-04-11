@@ -1,22 +1,22 @@
 //
-//  HXCommentContainerViewController.m
+//  HXLiveCommentContainerViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/24.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXCommentContainerViewController.h"
+#import "HXLiveCommentContainerViewController.h"
 #import "HXLiveCommentCell.h"
 
 
-@interface HXCommentContainerViewController () <
+@interface HXLiveCommentContainerViewController () <
 HXLiveCommentCellDelegate
 >
 @end
 
 
-@implementation HXCommentContainerViewController
+@implementation HXLiveCommentContainerViewController
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {

@@ -78,7 +78,7 @@
                                             <constraint firstAttribute="height" constant="160" id="Yeh-A1-kdq"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXCommentContainerViewController" id="O5M-18-fAC"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXLiveCommentContainerViewController" id="O5M-18-fAC"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5m6-An-NpA" userLabel="Bottom Bar" customClass="HXWatchLiveBottomBar">
@@ -140,10 +140,10 @@
             </objects>
             <point key="canvasLocation" x="-422" y="334"/>
         </scene>
-        <!--HXCommentContainerViewController-->
+        <!--HXLiveCommentContainerViewController-->
         <scene sceneID="C9C-2x-864">
             <objects>
-                <tableViewController storyboardIdentifier="HXCommentContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXCommentContainerViewController" customClass="HXCommentContainerViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HXLiveCommentContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXLiveCommentContainerViewController" customClass="HXLiveCommentContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,10 +230,10 @@
             </objects>
             <point key="canvasLocation" x="396" y="904"/>
         </scene>
-        <!--HXCommentViewController-->
+        <!--HXLiveCommentViewController-->
         <scene sceneID="FbM-ii-pet">
             <objects>
-                <viewController storyboardIdentifier="HXCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYO-0B-Ek3" userLabel="HXCommentViewController" customClass="HXCommentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXLiveCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYO-0B-Ek3" userLabel="HXLiveCommentViewController" customClass="HXLiveCommentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TLw-Kt-qqx"/>
                         <viewControllerLayoutGuide type="bottom" id="dIx-vc-5L1"/>
@@ -684,7 +684,7 @@
                                             <constraint firstAttribute="height" constant="160" id="5Nw-lI-oYO"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXCommentContainerViewController" id="xaJ-1k-tkf"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXLiveCommentContainerViewController" id="xaJ-1k-tkf"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-Sr-nxg" userLabel="Bottom Bar" customClass="HXReplayBottomBar">
@@ -932,7 +932,7 @@
                                             <constraint firstAttribute="height" constant="160" id="ghU-RT-gfi"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXCommentContainerViewController" id="HeX-r3-laS"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXLiveCommentContainerViewController" id="HeX-r3-laS"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ea-F8-wyq" userLabel="Bottom Bar" customClass="HXRecordBottomBar">
