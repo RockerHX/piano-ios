@@ -130,6 +130,14 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 	 completeBlock:(MiaRequestCompleteBlock)completeBlock
 	  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)followWithUID:(NSString *)uID
+		completeBlock:(MiaRequestCompleteBlock)completeBlock
+		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)unfollowWithUID:(NSString *)uID
+		  completeBlock:(MiaRequestCompleteBlock)completeBlock
+		   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 + (void)getRoomStat:(NSString *)roomID
 	  completeBlock:(MiaRequestCompleteBlock)completeBlock
 	   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
@@ -157,5 +165,12 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 				  commentID:(NSString *)commentID
 		   completeBlock:(MiaRequestCompleteBlock)completeBlock
 			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)getReplyComment:(NSString *)roomID
+			   latitude:(double)lat
+			  longitude:(double)lon
+				   time:(long)time
+		  completeBlock:(MiaRequestCompleteBlock)completeBlock
+		   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 @end
