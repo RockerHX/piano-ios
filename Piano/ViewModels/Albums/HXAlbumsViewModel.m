@@ -107,7 +107,7 @@
 }
 
 - (void)parseAttentionData:(NSDictionary *)data {
-    _model = [HXAlbumModel mj_objectWithKeyValues:data];
+    _model = [HXAlbumModel mj_objectWithKeyValues:data[@"album"]];
     
     NSArray *songList = data[@"song"];
     NSMutableArray *songs = [[NSMutableArray alloc] initWithCapacity:songList.count];
