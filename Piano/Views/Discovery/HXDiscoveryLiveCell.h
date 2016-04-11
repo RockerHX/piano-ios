@@ -1,5 +1,5 @@
 //
-//  HXDiscoveryCell.h
+//  HXDiscoveryLiveCell.h
 //  Piano
 //
 //  Created by miaios on 16/3/16.
@@ -10,20 +10,20 @@
 #import "HXDiscoveryModel.h"
 
 
-@class HXDiscoveryCell;
+@class HXDiscoveryLiveCell;
 
 
-@protocol HXDiscoveryCellDelegate <NSObject>
+@protocol HXDiscoveryLiveCellDelegate <NSObject>
 
 @required
-- (void)discoveryCellAnchorContainerTaped:(HXDiscoveryCell *)cell;
+- (void)discoveryLiveCellAnchorContainerTaped:(HXDiscoveryLiveCell *)cell;
 
 @end
 
 
-@interface HXDiscoveryCell : UITableViewCell
+@interface HXDiscoveryLiveCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet          id  <HXDiscoveryCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet          id  <HXDiscoveryLiveCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet      UIView *anchorContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;

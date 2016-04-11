@@ -9,7 +9,7 @@
 #import "HXDiscoveryContainerViewController.h"
 #import "MJRefresh.h"
 #import "HXDiscoveryViewModel.h"
-#import "HXDiscoveryCell.h"
+#import "HXDiscoveryLiveCell.h"
 #import "HXDiscoveryReplayCell.h"
 #import "HXDiscoveryNewAlbumCell.h"
 #import "HXDiscoveryVideoCell.h"
@@ -17,7 +17,8 @@
 
 
 @interface HXDiscoveryContainerViewController () <
-HXDiscoveryCellDelegate
+HXDiscoveryLiveCellDelegate,
+HXDiscoveryNormalCellDelegate
 >
 @end
 
@@ -76,7 +77,7 @@ HXDiscoveryCellDelegate
     UITableViewCell *cell = nil;
     switch (_viewModel.discoveryList[indexPath.row].type) {
         case HXDiscoveryTypeLive: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryCell class]) forIndexPath:indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
             break;
         }
         case HXDiscoveryTypeReplay: {
@@ -102,7 +103,7 @@ HXDiscoveryCellDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
-    [(HXDiscoveryCell *)cell updateCellWithModel:model];
+    [(HXDiscoveryLiveCell *)cell updateCellWithModel:model];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -111,8 +112,16 @@ HXDiscoveryCellDelegate
     }
 }
 
-#pragma mark - HXDiscoveryCellDelegate Methods
-- (void)discoveryCellAnchorContainerTaped:(HXDiscoveryCell *)cell {
+#pragma mark - HXDiscoveryLiveCellDelegate Methods
+- (void)discoveryLiveCellAnchorContainerTaped:(HXDiscoveryLiveCell *)cell {
+    NSInteger row = [self.tableView indexPathForCell:cell].row;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
+        [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];
+    }
+}
+
+#pragma mark - HXDiscoveryNormalCellDelegate Methods
+- (void)discoveryNormalCellAnchorContainerTaped:(HXDiscoveryNormalCell *)cell {
     NSInteger row = [self.tableView indexPathForCell:cell].row;
     if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
         [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];

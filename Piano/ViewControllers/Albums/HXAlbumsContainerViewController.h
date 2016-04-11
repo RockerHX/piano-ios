@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, HXAlbumsAction) {
 - (void)container:(HXAlbumsContainerViewController *)container takeAction:(HXAlbumsAction)action;
 - (void)container:(HXAlbumsContainerViewController *)container selectedSong:(HXSongModel *)song;
 - (void)container:(HXAlbumsContainerViewController *)container selectedComment:(HXCommentModel *)comment;
+- (void)containerFetchMoreComment:(HXAlbumsContainerViewController *)container;
 
 @end
 
@@ -37,5 +38,6 @@ typedef NS_ENUM(NSUInteger, HXAlbumsAction) {
 @property (nonatomic, strong) HXAlbumsViewModel *viewModel;
 
 - (void)refresh;
+- (void)endFetch;
 
 @end

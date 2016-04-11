@@ -11,7 +11,10 @@
 #import "MiaAPIHelper.h"
 
 
-@implementation HXAlbumsViewModel
+@implementation HXAlbumsViewModel {
+    NSString *_lastCommentID;
+    NSInteger _commentLimit;
+}
 
 #pragma mark - Initialize Methods
 - (instancetype)initWithAlbumID:(NSString *)albumID {
@@ -33,7 +36,12 @@
     
     _rowTypes = @[@(HXAlbumsRowTypeControl)];
     
+    _lastCommentID = @"0";
+    _commentLimit = 10;
+    
     [self fetchDataCommandConfigure];
+    [self reloadCommentCommandConfigure];
+    [self moreCommentCommandConfigure];
 }
 
 - (void)fetchDataCommandConfigure {
@@ -42,6 +50,30 @@
         @strongify(self)
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             [self fetchAlbumsDataRequestWithSubscriber:subscriber];
+            return nil;
+        }];
+    }];
+}
+
+- (void)reloadCommentCommandConfigure {
+    @weakify(self)
+    _reloadCommentCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            _lastCommentID = @"0";
+            _comments = @[].mutableCopy;
+            [self moreCommentRequestWithSubscriber:subscriber];
+            return nil;
+        }];
+    }];
+}
+
+- (void)moreCommentCommandConfigure {
+    @weakify(self)
+    _moreCommentCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            [self moreCommentRequestWithSubscriber:subscriber];
             return nil;
         }];
     }];
@@ -61,8 +93,21 @@
     }];
 }
 
+- (void)moreCommentRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+    [MiaAPIHelper getAlbumComment:_albumID lastCommentID:_lastCommentID limit:_commentLimit completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            [self addCommentsWithCommentList:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+            [subscriber sendCompleted];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+    }];
+}
+
 - (void)parseAttentionData:(NSDictionary *)data {
-    _model = [HXAlbumModel mj_objectWithKeyValues:data];
+    _model = [HXAlbumModel mj_objectWithKeyValues:data[@"album"]];
     
     NSArray *songList = data[@"song"];
     NSMutableArray *songs = [[NSMutableArray alloc] initWithCapacity:songList.count];
@@ -79,6 +124,7 @@
         [comments addObject:model];
     }
     _comments = [comments copy];
+    _lastCommentID = [_comments lastObject].ID;
     
     [self resetRowType];
 }
@@ -102,8 +148,22 @@
 }
 
 - (void)addCommentsWithCommentList:(NSArray *)commentList {
+    NSMutableArray *comments = [_comments mutableCopy];
+    for (NSDictionary *commentData in commentList) {
+        HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:commentData];
+        [comments addObject:model];
+    }
+    _comments = [comments copy];
+    _lastCommentID = [_comments lastObject].ID;
+    
     NSMutableArray *rowTypes = [_rowTypes mutableCopy];
     if (commentList.count) {
+        [_rowTypes enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj integerValue] == HXAlbumsRowTypeComment) {
+                [rowTypes removeObject:obj];
+            }
+        }];
+        
         [_comments enumerateObjectsUsingBlock:^(HXCommentModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [rowTypes addObject:@(HXAlbumsRowTypeComment)];
         }];

@@ -473,14 +473,14 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 }
 
 + (void)getAlbumComment:(NSString *)itemID
-				   start:(long)start
-				   limit:(long)limit
-		 completeBlock:(MiaRequestCompleteBlock)completeBlock
-		  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+          lastCommentID:(NSString *)lastCommentID
+                  limit:(long)limit
+          completeBlock:(MiaRequestCompleteBlock)completeBlock
+           timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
 	[dictValues setValue:itemID forKey:MiaAPIKey_ItemID];
 	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_ItemType];
-	[dictValues setValue:[NSNumber numberWithLong:start] forKey:MiaAPIKey_Start];
+	[dictValues setValue:lastCommentID forKey:MiaAPIKey_Start];
 	[dictValues setValue:[NSNumber numberWithLong:limit] forKey:MiaAPIKey_Limit];
 
 	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Musician_GetComment
@@ -491,10 +491,10 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 }
 
 + (void)postAlbumComment:(NSString *)itemID
-				  content:(NSString *)content
-				  commentID:(NSString *)commentID
-		  completeBlock:(MiaRequestCompleteBlock)completeBlock
-		   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+                 content:(NSString *)content
+               commentID:(NSString *)commentID
+           completeBlock:(MiaRequestCompleteBlock)completeBlock
+            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
 	[dictValues setValue:itemID forKey:MiaAPIKey_ItemID];
 	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_ItemType];

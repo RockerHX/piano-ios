@@ -36,12 +36,15 @@
                                     <segue destination="dl0-fw-bkU" kind="embed" id="vjg-AJ-Uj1"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p57-vL-5nm" customClass="HXAlbumsCommentView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p57-vL-5nm" userLabel="HXAlbumsBottomBar" customClass="HXAlbumsBottomBar">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2Es-Nn-aWO"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="gFL-s1-ewn" id="zEL-tu-OfE"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -305,6 +308,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="countLabel" destination="Ae9-GD-2d3" id="sc7-bw-4s3"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXAlbumsCommentCell" rowHeight="70" id="V3c-z3-Lkg" userLabel="HXAlbumsCommentCell" customClass="HXAlbumsCommentCell">
                                 <rect key="frame" x="0.0" y="472" width="320" height="70"/>
@@ -387,6 +393,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qc2-Jz-cZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="234" y="376"/>
+        </scene>
+        <!--HXAlbumsCommentViewController-->
+        <scene sceneID="zKT-2z-Rgr">
+            <objects>
+                <viewController storyboardIdentifier="HXAlbumsCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3iG-uI-hSS" userLabel="HXAlbumsCommentViewController" customClass="HXAlbumsCommentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EY9-7J-Exh"/>
+                        <viewControllerLayoutGuide type="bottom" id="qX9-EF-bfg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I3d-mZ-5ZV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4l-nE-Zja">
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="说说你对这版专辑的想法" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Exs-JZ-RXU">
+                                        <rect key="frame" x="12" y="10" width="258" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RI-09-QSH">
+                                        <rect key="frame" x="282" y="10" width="30" height="30"/>
+                                        <state key="normal" title="发送"/>
+                                        <connections>
+                                            <action selector="sendButtonPressed" destination="3iG-uI-hSS" eventType="touchUpInside" id="kZJ-CM-9L8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2RI-09-QSH" secondAttribute="trailing" constant="8" id="0ph-EW-Xgp"/>
+                                    <constraint firstItem="2RI-09-QSH" firstAttribute="leading" secondItem="Exs-JZ-RXU" secondAttribute="trailing" constant="12" id="BHR-mU-CcH"/>
+                                    <constraint firstItem="Exs-JZ-RXU" firstAttribute="leading" secondItem="S4l-nE-Zja" secondAttribute="leading" constant="12" id="Nzu-nS-SkR"/>
+                                    <constraint firstItem="Exs-JZ-RXU" firstAttribute="centerY" secondItem="S4l-nE-Zja" secondAttribute="centerY" id="sys-kB-w6c"/>
+                                    <constraint firstItem="2RI-09-QSH" firstAttribute="centerY" secondItem="S4l-nE-Zja" secondAttribute="centerY" id="t1o-k5-YVf"/>
+                                    <constraint firstAttribute="height" constant="50" id="tfo-nP-aeu"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="S4l-nE-Zja" secondAttribute="trailing" id="4pN-t0-feR"/>
+                            <constraint firstAttribute="bottom" secondItem="S4l-nE-Zja" secondAttribute="bottom" id="CUK-af-pca"/>
+                            <constraint firstItem="S4l-nE-Zja" firstAttribute="leading" secondItem="I3d-mZ-5ZV" secondAttribute="leading" id="zr8-yx-hve"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="CUK-af-pca" id="m7u-xf-gCf"/>
+                        <outlet property="commentView" destination="S4l-nE-Zja" id="S0L-bj-5GY"/>
+                        <outlet property="sendButton" destination="2RI-09-QSH" id="6hV-Po-oGb"/>
+                        <outlet property="textField" destination="Exs-JZ-RXU" id="OSZ-nI-XN5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9y8-iZ-CEw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-221" y="1055"/>
         </scene>
     </scenes>
     <resources>

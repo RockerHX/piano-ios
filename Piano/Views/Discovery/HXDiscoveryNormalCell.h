@@ -10,8 +10,22 @@
 #import "HXDiscoveryModel.h"
 
 
+@class HXDiscoveryNormalCell;
+
+
+@protocol HXDiscoveryNormalCellDelegate <NSObject>
+
+@required
+- (void)discoveryNormalCellAnchorContainerTaped:(HXDiscoveryNormalCell *)cell;
+
+@end
+
+
 @interface HXDiscoveryNormalCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet          id  <HXDiscoveryNormalCellDelegate>delegate;
+
+@property (weak, nonatomic) IBOutlet      UIView *anchorContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIImageView *cover;
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;

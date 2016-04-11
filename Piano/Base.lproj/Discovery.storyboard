@@ -61,7 +61,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXDiscoveryCell" id="Rfp-pP-O8l" userLabel="HXDiscoveryCell" customClass="HXDiscoveryCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXDiscoveryLiveCell" id="Rfp-pP-O8l" userLabel="HXDiscoveryLiveCell" customClass="HXDiscoveryLiveCell">
                                 <rect key="frame" x="0.0" y="28" width="320" height="324"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rfp-pP-O8l" id="TE0-PP-Ykn">
@@ -345,8 +345,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="anchorContainer" destination="NLp-Wl-PxR" id="T3N-zf-Q4p"/>
                                     <outlet property="avatar" destination="V3S-KV-NcA" id="xHk-c3-XFN"/>
                                     <outlet property="cover" destination="5cm-16-1Ih" id="pu3-Zn-VdW"/>
+                                    <outlet property="delegate" destination="fRv-sf-web" id="dLz-Mk-UeH"/>
                                     <outlet property="nickNameLabel" destination="cy6-jB-nUo" id="XFA-Au-h04"/>
                                     <outlet property="promptLabel" destination="Wsq-XF-SIj" id="vMa-Xc-3Mg"/>
                                     <outlet property="tagLabel" destination="r6n-US-U6o" id="gg4-dv-C0y"/>
@@ -492,8 +494,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="anchorContainer" destination="oqa-iQ-pOa" id="Rlx-WN-Ide"/>
                                     <outlet property="avatar" destination="JVs-rf-r9i" id="Aiu-vu-tPw"/>
                                     <outlet property="cover" destination="YK7-RQ-PC9" id="bro-Ng-IVD"/>
+                                    <outlet property="delegate" destination="fRv-sf-web" id="6BJ-B9-qgg"/>
                                     <outlet property="nickNameLabel" destination="2QW-ya-AnT" id="7fI-gf-rqL"/>
                                     <outlet property="promptLabel" destination="WDP-sc-mSD" id="H0S-HT-OEu"/>
                                     <outlet property="tagLabel" destination="rfl-ED-kXV" id="Ayz-GF-Flw"/>
@@ -639,8 +643,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="anchorContainer" destination="RLB-JJ-yKE" id="gvh-2u-trp"/>
                                     <outlet property="avatar" destination="5lH-Yb-sn0" id="um7-CE-S14"/>
                                     <outlet property="cover" destination="hDP-hf-van" id="ny5-Nj-rsg"/>
+                                    <outlet property="delegate" destination="fRv-sf-web" id="kC2-Zr-aXm"/>
                                     <outlet property="nickNameLabel" destination="tyS-fx-ZIb" id="brv-0h-3WQ"/>
                                     <outlet property="promptLabel" destination="rpW-AO-LHW" id="FHH-jS-D4d"/>
                                     <outlet property="tagLabel" destination="v3b-g7-YDw" id="mxY-Yj-xft"/>
