@@ -89,9 +89,9 @@ HXDiscoveryContainerViewControllerDelegate
 
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
 - (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
-    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
-        return;
-    }
+//    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
+//        return;
+//    }
     
     _shouldHiddenNavigationBar = NO;
     if (model) {
@@ -104,10 +104,10 @@ HXDiscoveryContainerViewControllerDelegate
                 break;
             }
             case HXDiscoveryTypeReplay: {
-//                UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
-//                HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
-//                replayViewController.model = model;
-//                [self presentViewController:replayNaviagtionController animated:YES completion:nil];
+                UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
+                HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
+                replayViewController.model = model;
+                [self presentViewController:replayNaviagtionController animated:YES completion:nil];
                 break;
             }
             case HXDiscoveryTypeNewAlbum: {

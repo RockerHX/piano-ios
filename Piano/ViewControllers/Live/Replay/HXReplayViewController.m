@@ -11,6 +11,8 @@
 #import "HXLiveAnchorView.h"
 #import "HXReplayBottomBar.h"
 #import "HXWatcherBoard.h"
+#import <AVFoundation/AVFoundation.h>
+#import "HXDiscoveryModel.h"
 
 
 @interface HXReplayViewController () <
@@ -23,6 +25,8 @@ HXReplayBottomBarDelegate
 
 @implementation HXReplayViewController {
     HXLiveCommentContainerViewController *_containerViewController;
+    
+    AVPlayer *_player;
 }
 
 #pragma mark - Class Methods
@@ -62,11 +66,19 @@ HXReplayBottomBarDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playFinished) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 
 - (void)viewConfigure {
-    ;
+    NSURL *url = [NSURL URLWithString:_model.videoUrl];
+    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:url];
+    _player = [AVPlayer playerWithPlayerItem:item];
+    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:_player];
+    layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    layer.frame = self.view.bounds;
+    [self.replayView.layer addSublayer:layer];
+    
+    [_player play];
 }
 
 #pragma mark - Event Response
@@ -85,6 +97,9 @@ HXReplayBottomBarDelegate
 //        ;
 //    }];
 }
+- (void)playFinished {
+    ;
+}
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
@@ -93,7 +108,20 @@ HXReplayBottomBarDelegate
 
 #pragma mark - HXReplayBottomBarDelegate Methods
 - (void)bottomBar:(HXReplayBottomBar *)bar takeAction:(HXReplayBottomBarAction)action {
-    ;
+    switch (action) {
+        case HXReplayBottomBarActionPlay: {
+            ;
+            break;
+        }
+        case HXReplayBottomBarActionPause: {
+            ;
+            break;
+        }
+        case HXReplayBottomBarActionShare: {
+            ;
+            break;
+        }
+    }
 }
 
 @end

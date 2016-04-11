@@ -41,6 +41,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvH-Rw-RfM" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="YcW-dJ-C8a">
+                                        <rect key="frame" x="0.0" y="318" width="320" height="250"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGF-DP-Xhn" userLabel="Top Bar">
                                         <rect key="frame" x="10" y="15" width="300" height="40"/>
                                         <subviews>
@@ -93,13 +96,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="YcW-dJ-C8a" secondAttribute="bottom" id="2E5-zu-C97"/>
                                     <constraint firstItem="5m6-An-NpA" firstAttribute="leading" secondItem="VvH-Rw-RfM" secondAttribute="leading" constant="10" id="67i-Tl-bZx"/>
+                                    <constraint firstItem="YcW-dJ-C8a" firstAttribute="leading" secondItem="VvH-Rw-RfM" secondAttribute="leading" id="CNR-PC-iTy"/>
                                     <constraint firstAttribute="trailing" secondItem="WGF-DP-Xhn" secondAttribute="trailing" constant="10" id="JIm-QR-dVx"/>
                                     <constraint firstAttribute="trailing" secondItem="5m6-An-NpA" secondAttribute="trailing" constant="10" id="LIb-kW-DEh"/>
                                     <constraint firstItem="WuX-eh-vfZ" firstAttribute="leading" secondItem="5m6-An-NpA" secondAttribute="leading" id="dpX-I3-TYz"/>
                                     <constraint firstAttribute="bottom" secondItem="5m6-An-NpA" secondAttribute="bottom" constant="20" id="eyj-86-3qC"/>
                                     <constraint firstItem="WGF-DP-Xhn" firstAttribute="leading" secondItem="VvH-Rw-RfM" secondAttribute="leading" constant="10" id="gO3-ch-XUR"/>
                                     <constraint firstItem="WuX-eh-vfZ" firstAttribute="trailing" secondItem="5m6-An-NpA" secondAttribute="trailing" id="lVm-5u-zfE"/>
+                                    <constraint firstAttribute="trailing" secondItem="YcW-dJ-C8a" secondAttribute="trailing" id="liL-be-s2z"/>
                                     <constraint firstItem="WGF-DP-Xhn" firstAttribute="top" secondItem="VvH-Rw-RfM" secondAttribute="top" constant="15" id="qFW-yz-pgx"/>
                                     <constraint firstItem="5m6-An-NpA" firstAttribute="top" secondItem="WuX-eh-vfZ" secondAttribute="bottom" constant="10" id="zAD-eP-aq1"/>
                                 </constraints>
@@ -562,7 +568,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TN2-Ac-bQc" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Qdb-8T-INH">
-                        <rect key="frame" x="0.0" y="0.0" width="96" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="98" height="32"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="gth-QB-cJf">
@@ -640,13 +646,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oN-8V-zMZ" userLabel="Live Container View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oN-8V-zMZ" userLabel="Replay Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.90980392160000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAv-at-bm5" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-Zz-ND4">
+                                        <rect key="frame" x="0.0" y="318" width="320" height="250"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K18-QZ-PAu" userLabel="Top Bar">
                                         <rect key="frame" x="10" y="15" width="300" height="40"/>
                                         <subviews>
@@ -693,10 +702,13 @@
                                     <constraint firstItem="K18-QZ-PAu" firstAttribute="top" secondItem="UAv-at-bm5" secondAttribute="top" constant="15" id="5KT-fB-SQe"/>
                                     <constraint firstItem="Cy3-Sr-nxg" firstAttribute="leading" secondItem="UAv-at-bm5" secondAttribute="leading" constant="10" id="9t5-sa-8p0"/>
                                     <constraint firstAttribute="bottom" secondItem="Cy3-Sr-nxg" secondAttribute="bottom" constant="20" id="H31-bd-abW"/>
+                                    <constraint firstAttribute="bottom" secondItem="BCb-Zz-ND4" secondAttribute="bottom" id="I2T-tN-2y3"/>
+                                    <constraint firstAttribute="trailing" secondItem="BCb-Zz-ND4" secondAttribute="trailing" id="ST7-2T-GZ1"/>
                                     <constraint firstAttribute="trailing" secondItem="Cy3-Sr-nxg" secondAttribute="trailing" constant="10" id="SpO-v3-VS8"/>
                                     <constraint firstAttribute="trailing" secondItem="K18-QZ-PAu" secondAttribute="trailing" constant="10" id="atw-rj-jVI"/>
                                     <constraint firstItem="sju-kT-rek" firstAttribute="trailing" secondItem="Cy3-Sr-nxg" secondAttribute="trailing" id="jhg-mY-3qQ"/>
                                     <constraint firstItem="Cy3-Sr-nxg" firstAttribute="top" secondItem="sju-kT-rek" secondAttribute="bottom" constant="10" id="mcj-H2-p7c"/>
+                                    <constraint firstItem="BCb-Zz-ND4" firstAttribute="leading" secondItem="UAv-at-bm5" secondAttribute="leading" id="nYa-oB-6BR"/>
                                     <constraint firstItem="K18-QZ-PAu" firstAttribute="leading" secondItem="UAv-at-bm5" secondAttribute="leading" constant="10" id="rWf-gQ-JHq"/>
                                 </constraints>
                             </view>
@@ -726,7 +738,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="liveView" destination="4oN-8V-zMZ" id="LEF-CQ-BHW"/>
+                        <outlet property="replayView" destination="4oN-8V-zMZ" id="5KP-Cg-NWl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3R-kb-Dlr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -873,6 +885,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dU-lx-FmV" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
+                                        <rect key="frame" x="0.0" y="318" width="320" height="250"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt2-bD-MKs" userLabel="Top Bar">
                                         <rect key="frame" x="10" y="15" width="300" height="40"/>
                                         <subviews>
@@ -936,13 +951,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="j3f-nz-ApT" secondAttribute="trailing" id="1ia-WB-u9z"/>
                                     <constraint firstItem="tE0-wM-lMe" firstAttribute="trailing" secondItem="6ea-F8-wyq" secondAttribute="trailing" id="7AC-iO-Fnq"/>
                                     <constraint firstAttribute="bottom" secondItem="6ea-F8-wyq" secondAttribute="bottom" constant="20" id="Chx-AW-UhI"/>
                                     <constraint firstItem="zt2-bD-MKs" firstAttribute="top" secondItem="9dU-lx-FmV" secondAttribute="top" constant="15" id="ClX-uc-lRb"/>
                                     <constraint firstItem="6ea-F8-wyq" firstAttribute="leading" secondItem="9dU-lx-FmV" secondAttribute="leading" constant="10" id="Qnl-Ne-kHJ"/>
                                     <constraint firstItem="zt2-bD-MKs" firstAttribute="leading" secondItem="9dU-lx-FmV" secondAttribute="leading" constant="10" id="Zlb-LB-8oF"/>
                                     <constraint firstItem="tE0-wM-lMe" firstAttribute="leading" secondItem="6ea-F8-wyq" secondAttribute="leading" id="fQF-25-EeI"/>
+                                    <constraint firstAttribute="bottom" secondItem="j3f-nz-ApT" secondAttribute="bottom" id="feH-jc-wPp"/>
                                     <constraint firstItem="6ea-F8-wyq" firstAttribute="top" secondItem="tE0-wM-lMe" secondAttribute="bottom" constant="10" id="hkS-uz-Dks"/>
+                                    <constraint firstItem="j3f-nz-ApT" firstAttribute="leading" secondItem="9dU-lx-FmV" secondAttribute="leading" id="jnJ-1E-THm"/>
                                     <constraint firstAttribute="trailing" secondItem="zt2-bD-MKs" secondAttribute="trailing" constant="10" id="suK-ZB-UmA"/>
                                     <constraint firstAttribute="trailing" secondItem="6ea-F8-wyq" secondAttribute="trailing" constant="10" id="xkQ-cg-n3q"/>
                                 </constraints>
@@ -1031,9 +1049,10 @@
     <resources>
         <image name="L-CloseIcon" width="31" height="31"/>
         <image name="L-CommentBubbleIcon" width="36" height="31"/>
+        <image name="L-MaskBG" width="375" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="goc-yr-hau"/>
-        <segue reference="xaJ-1k-tkf"/>
+        <segue reference="rQC-rx-khw"/>
+        <segue reference="HeX-r3-laS"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -140,6 +140,7 @@
 		CD9167831CAE5437000A12DC /* UIImage+Extrude.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167821CAE5437000A12DC /* UIImage+Extrude.m */; };
 		CD9167891CAE5E6D000A12DC /* HXProfileNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167871CAE5E6D000A12DC /* HXProfileNavigationBar.m */; };
 		CD91678A1CAE5E6D000A12DC /* HXProfileNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */; };
+		CD92AF841CBB9F1000106A89 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD92AF831CBB9F1000106A89 /* AVFoundation.framework */; };
 		CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
 		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
 		CDB099EF1CB520C000C47EA0 /* HXRecordAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */; };
@@ -445,6 +446,8 @@
 		CD9167861CAE5E6D000A12DC /* HXProfileNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileNavigationBar.h; sourceTree = "<group>"; };
 		CD9167871CAE5E6D000A12DC /* HXProfileNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileNavigationBar.m; sourceTree = "<group>"; };
 		CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXProfileNavigationBar.xib; sourceTree = "<group>"; };
+		CD92AF831CBB9F1000106A89 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CD92AF851CBBA02200106A89 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewController.h; sourceTree = "<group>"; };
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
@@ -542,6 +545,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD92AF841CBB9F1000106A89 /* AVFoundation.framework in Frameworks */,
 				CDE416FC1CB7D672005F8901 /* MediaPlayer.framework in Frameworks */,
 				CD4492E61CAAA504005F36B3 /* ZegoAVKit.framework in Frameworks */,
 				124CB626904D3CA3E11516EC /* libPods.a in Frameworks */,
@@ -695,6 +699,8 @@
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD92AF851CBBA02200106A89 /* libc++abi.tbd */,
+				CD92AF831CBB9F1000106A89 /* AVFoundation.framework */,
 				CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */,
 				CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */,
 				B1BFCF29A3BF4A6DA2007B29 /* libPods.a */,
