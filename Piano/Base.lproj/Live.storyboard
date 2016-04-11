@@ -178,12 +178,11 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0p-VM-AFR" userLabel="Content Container">
                                             <rect key="frame" x="35" y="10" width="265" height="30"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FIQ-FP-rIy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-CommentBubbleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FIQ-FP-rIy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="157" height="30"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评论用户:你个煞笔" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="221" translatesAutoresizingMaskIntoConstraints="NO" id="9n5-wC-pRa">
-                                                    <rect key="frame" x="24" y="6" width="221" height="18"/>
+                                                    <rect key="frame" x="20" y="6" width="117" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -192,13 +191,13 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="9n5-wC-pRa" secondAttribute="bottom" constant="6" id="FIF-ge-X46"/>
+                                                <constraint firstItem="FIQ-FP-rIy" firstAttribute="trailing" secondItem="9n5-wC-pRa" secondAttribute="trailing" constant="20" id="Ih0-Yk-V1a"/>
                                                 <constraint firstAttribute="bottom" secondItem="FIQ-FP-rIy" secondAttribute="bottom" id="Ika-eB-qLl"/>
                                                 <constraint firstItem="FIQ-FP-rIy" firstAttribute="top" secondItem="r0p-VM-AFR" secondAttribute="top" id="Skv-Oa-1Sy"/>
                                                 <constraint firstItem="9n5-wC-pRa" firstAttribute="top" secondItem="r0p-VM-AFR" secondAttribute="top" constant="6" id="UrQ-sv-Pqi"/>
-                                                <constraint firstItem="9n5-wC-pRa" firstAttribute="leading" secondItem="r0p-VM-AFR" secondAttribute="leading" constant="24" id="VTi-WW-b6u"/>
+                                                <constraint firstItem="9n5-wC-pRa" firstAttribute="leading" secondItem="r0p-VM-AFR" secondAttribute="leading" constant="20" id="VTi-WW-b6u"/>
                                                 <constraint firstItem="FIQ-FP-rIy" firstAttribute="leading" secondItem="r0p-VM-AFR" secondAttribute="leading" id="geD-M6-hoW"/>
-                                                <constraint firstAttribute="trailing" secondItem="9n5-wC-pRa" secondAttribute="trailing" constant="20" id="unW-40-v9X"/>
-                                                <constraint firstAttribute="trailing" secondItem="FIQ-FP-rIy" secondAttribute="trailing" id="wa2-8p-oob"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9n5-wC-pRa" secondAttribute="trailing" constant="20" id="unW-40-v9X"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -563,7 +562,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TN2-Ac-bQc" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Qdb-8T-INH">
-                        <rect key="frame" x="0.0" y="0.0" width="98" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="gth-QB-cJf">
@@ -660,22 +659,13 @@
                                                     <outlet property="delegate" destination="gxm-Sv-8N7" id="dsh-9b-xtz"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQt-ob-NES" userLabel="Watcher Container">
-                                                <rect key="frame" x="165" y="4" width="98" height="32"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="rfz-2h-SPa"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="ktk-jC-3ie" secondAttribute="bottom" id="JNc-5U-EZ3"/>
                                             <constraint firstItem="ktk-jC-3ie" firstAttribute="leading" secondItem="K18-QZ-PAu" secondAttribute="leading" id="NyM-Ew-dGc"/>
                                             <constraint firstAttribute="height" constant="40" id="WbJ-Dv-WWw"/>
-                                            <constraint firstItem="qQt-ob-NES" firstAttribute="centerY" secondItem="K18-QZ-PAu" secondAttribute="centerY" id="fkk-tG-yZ9"/>
                                             <constraint firstItem="ktk-jC-3ie" firstAttribute="top" secondItem="K18-QZ-PAu" secondAttribute="top" id="g4r-1w-3H8"/>
-                                            <constraint firstItem="qQt-ob-NES" firstAttribute="leading" secondItem="ktk-jC-3ie" secondAttribute="trailing" constant="12" id="nS3-pc-o9c"/>
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sju-kT-rek" userLabel="Comment Container">
@@ -724,7 +714,6 @@
                             <constraint firstItem="4oN-8V-zMZ" firstAttribute="top" secondItem="DAo-oU-1G7" secondAttribute="top" id="MwI-dn-DZe"/>
                             <constraint firstItem="CU9-hb-5Tu" firstAttribute="centerY" secondItem="ktk-jC-3ie" secondAttribute="centerY" id="UxT-X5-XUZ"/>
                             <constraint firstAttribute="bottom" secondItem="UAv-at-bm5" secondAttribute="bottom" id="ZBG-NZ-xeX"/>
-                            <constraint firstItem="CU9-hb-5Tu" firstAttribute="leading" secondItem="qQt-ob-NES" secondAttribute="trailing" constant="6" id="cv9-SG-k5V"/>
                             <constraint firstAttribute="trailing" secondItem="UAv-at-bm5" secondAttribute="trailing" id="gpQ-86-RMd"/>
                             <constraint firstAttribute="bottom" secondItem="4oN-8V-zMZ" secondAttribute="bottom" id="iOE-BC-KkR"/>
                             <constraint firstItem="4oN-8V-zMZ" firstAttribute="leading" secondItem="DAo-oU-1G7" secondAttribute="leading" id="nax-1p-fLe"/>
@@ -1041,9 +1030,10 @@
     </scenes>
     <resources>
         <image name="L-CloseIcon" width="31" height="31"/>
+        <image name="L-CommentBubbleIcon" width="36" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rQC-rx-khw"/>
-        <segue reference="HeX-r3-laS"/>
+        <segue reference="goc-yr-hau"/>
+        <segue reference="xaJ-1k-tkf"/>
     </inferredMetricsTieBreakers>
 </document>
