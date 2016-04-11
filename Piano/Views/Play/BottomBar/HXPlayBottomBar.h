@@ -34,11 +34,9 @@ typedef NS_ENUM(NSUInteger, HXPlayBottomBarAction) {
 @property (weak, nonatomic) IBOutlet  UILabel *playTimeLabel;
 @property (weak, nonatomic) IBOutlet  UILabel *musicTimeLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *previousButton;
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
-@property (weak, nonatomic) IBOutlet UIButton *infectButton;
 
 @property (nonatomic, assign) BOOL  pause;
 @property (nonatomic, assign) BOOL  enablePrevious;

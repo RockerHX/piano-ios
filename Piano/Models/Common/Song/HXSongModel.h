@@ -19,7 +19,9 @@ extern NSString * const kDefaultMusicID;
 @property(nonatomic, strong)  NSString *albumID;
 @property(nonatomic, strong)  NSString *title;
 @property(nonatomic, strong)  NSString *summary;
-@property(nonatomic, strong)  NSString *nick;
+@property(nonatomic, strong)  NSString *nickName;
+@property(nonatomic, strong)  NSString *songName;
+@property(nonatomic, strong)  NSString *singerName;
 @property(nonatomic, strong)  NSString *coverUrl;
 @property(nonatomic, strong)  NSString *mp3Url;
 

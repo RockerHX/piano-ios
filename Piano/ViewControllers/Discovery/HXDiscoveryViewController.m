@@ -16,6 +16,7 @@
 #import "HXProfileViewController.h"
 #import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "MusicMgr.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -77,9 +78,10 @@ HXDiscoveryContainerViewControllerDelegate
 
 #pragma mark - Event Response
 - (IBAction)musicButtonPressed {
-    UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
-//    HXPlayViewController *playViewController = [playNavigationController.viewControllers firstObject];
-    [self presentViewController:playNavigationController animated:YES completion:nil];
+    if ([MusicMgr standard].playList.count) {
+        UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
+        [self presentViewController:playNavigationController animated:YES completion:nil];
+    }
 }
 
 #pragma mark - Public Methods
