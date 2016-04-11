@@ -25,6 +25,8 @@ typedef NS_ENUM(NSUInteger, HXAlbumsRowType) {
 
 @property (nonatomic, strong, readonly)   NSString *albumID;
 @property (nonatomic, strong, readonly) RACCommand *fetchCommand;
+@property (nonatomic, strong, readonly) RACCommand *reloadCommentCommand;
+@property (nonatomic, strong, readonly) RACCommand *moreCommentCommand;
 
 @property (nonatomic, assign, readonly)    CGFloat  controlHeight;
 @property (nonatomic, assign, readonly)    CGFloat  songHeight;

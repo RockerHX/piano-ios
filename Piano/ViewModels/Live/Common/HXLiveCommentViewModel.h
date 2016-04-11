@@ -1,5 +1,5 @@
 //
-//  HXCommentViewModel.h
+//  HXLiveCommentViewModel.h
 //  Piano
 //
 //  Created by miaios on 16/3/31.
@@ -9,7 +9,7 @@
 #import "ReactiveCocoa.h"
 
 
-@interface HXCommentViewModel : NSObject
+@interface HXLiveCommentViewModel : NSObject
 
 @property (nonatomic, strong, readonly)   NSString *roomID;
 @property (nonatomic, strong, readonly)   NSString *content;

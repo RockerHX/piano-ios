@@ -8,13 +8,17 @@
 
 #import "HXAlbumsViewController.h"
 #import "HXAlbumsNavigationBar.h"
+#import "HXAlbumsBottomBar.h"
 #import "HXAlbumsContainerViewController.h"
 #import "MusicMgr.h"
+#import "HXAlbumsCommentViewController.h"
 
 
 @interface HXAlbumsViewController () <
 HXAlbumsNavigationBarDelegate,
-HXAlbumsContainerViewControllerDelegate
+HXAlbumsContainerViewControllerDelegate,
+HXAlbumsBottomBarDelegate,
+HXAlbumsCommentViewControllerDelegate
 >
 @end
 
@@ -93,6 +97,20 @@ HXAlbumsContainerViewControllerDelegate
     }
 }
 
+#pragma mark - HXAlbumsBottomBarDelegate Methods
+- (void)bottomView:(HXAlbumsBottomBar *)view takeAction:(HXAlbumsBottomBarAction)action {
+    switch (action) {
+        case HXAlbumsBottomBarActionComment: {
+            HXAlbumsCommentViewController *commentViewController = [HXAlbumsCommentViewController instance];
+            commentViewController.delegate = self;
+            commentViewController.albumID = _albumID;
+            [self addChildViewController:commentViewController];
+            [self.view addSubview:commentViewController.view];
+            break;
+        }
+    }
+}
+
 #pragma mark - HXAlbumsContainerViewControllerDelegate Methods
 - (void)container:(HXAlbumsContainerViewController *)container takeAction:(HXAlbumsAction)action {
     MusicMgr *musicMgr = [MusicMgr standard];
@@ -139,6 +157,19 @@ HXAlbumsContainerViewControllerDelegate
 
 - (void)container:(HXAlbumsContainerViewController *)container selectedComment:(HXCommentModel *)comment {
     ;
+}
+
+#pragma mark - HXAlbumsCommentViewControllerDelegate Methods
+- (void)commentViewControllerCompleted:(HXAlbumsCommentViewController *)viewController {
+    @weakify(self)
+    RACSignal *reloadCommentSignal = [_viewModel.reloadCommentCommand execute:nil];
+    [reloadCommentSignal subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+        @strongify(self)
+        [self->_containerViewController refresh];
+    }];
 }
 
 @end

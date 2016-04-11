@@ -1,16 +1,16 @@
 //
-//  HXCommentViewModel.m
+//  HXLiveCommentViewModel.m
 //  Piano
 //
 //  Created by miaios on 16/3/31.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXCommentViewModel.h"
+#import "HXLiveCommentViewModel.h"
 #import "MiaAPIHelper.h"
 
 
-@implementation HXCommentViewModel
+@implementation HXLiveCommentViewModel
 
 #pragma mark - Initialize Methods
 - (instancetype)initWithRoomID:(NSString *)roomID {

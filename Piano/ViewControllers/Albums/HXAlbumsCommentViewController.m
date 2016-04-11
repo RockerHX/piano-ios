@@ -1,24 +1,24 @@
 //
-//  HXLiveCommentViewController.m
+//  HXAlbumsCommentViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/31.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveCommentViewController.h"
-#import "HXLiveCommentViewModel.h"
+#import "HXAlbumsCommentViewController.h"
+#import "HXAlbumsCommentViewModel.h"
 
-@interface HXLiveCommentViewController ()
+@interface HXAlbumsCommentViewController ()
 @end
 
-@implementation HXLiveCommentViewController {
-    HXLiveCommentViewModel *_viewModel;
+@implementation HXAlbumsCommentViewController {
+    HXAlbumsCommentViewModel *_viewModel;
 }
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameLive;
+    return HXStoryBoardNameAlbums;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -37,7 +37,7 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _viewModel = [[HXLiveCommentViewModel alloc] initWithRoomID:_roomID];
+    _viewModel = [[HXAlbumsCommentViewModel alloc] initWithAlbumID:_albumID];
     RAC(_viewModel, content) = _textField.rac_textSignal;
     
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)]];
@@ -62,6 +62,9 @@
         [self showBannerWithPrompt:error.domain];
     } completed:^{
         @strongify(self)
+        if (_delegate && [_delegate respondsToSelector:@selector(commentViewControllerCompleted:)]) {
+            [_delegate commentViewControllerCompleted:self];
+        }
         [self hiddenHUD];
         [self tapGesture];
     }];
