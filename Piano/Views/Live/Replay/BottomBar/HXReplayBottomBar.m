@@ -8,6 +8,7 @@
 
 #import "HXReplayBottomBar.h"
 #import "HXXib.h"
+#import "HXReplaySlider.h"
 
 
 @implementation HXReplayBottomBar
