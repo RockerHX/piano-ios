@@ -177,4 +177,8 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
                     completeBlock:(MiaRequestCompleteBlock)completeBlock
                      timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)viewReplayWithRoomID:(NSString *)roomID
+			   completeBlock:(MiaRequestCompleteBlock)completeBlock
+				timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end
