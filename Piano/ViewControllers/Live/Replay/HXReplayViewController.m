@@ -10,9 +10,8 @@
 #import "HXLiveCommentContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXReplayBottomBar.h"
-#import "HXWatcherBoard.h"
 #import <AVFoundation/AVFoundation.h>
-#import "HXDiscoveryModel.h"
+#import "HXReplayViewModel.h"
 
 
 @interface HXReplayViewController () <
@@ -142,9 +141,7 @@ HXReplayBottomBarDelegate
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-//    [HXWatcherBoard showWithWatcher:watcher closed:^{
-//        ;
-//    }];
+    ;
 }
 
 #pragma mark - HXLiveAnchorViewDelegate Methods

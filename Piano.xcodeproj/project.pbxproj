@@ -142,6 +142,7 @@
 		CD91678A1CAE5E6D000A12DC /* HXProfileNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */; };
 		CD92AF841CBB9F1000106A89 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD92AF831CBB9F1000106A89 /* AVFoundation.framework */; };
 		CD92AF8B1CBBAF3300106A89 /* HXReplaySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CD92AF8A1CBBAF3300106A89 /* HXReplaySlider.m */; };
+		CD92AF8F1CBCD8B400106A89 /* HXReplayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD92AF8E1CBCD8B400106A89 /* HXReplayViewModel.m */; };
 		CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
 		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
 		CDB099EF1CB520C000C47EA0 /* HXRecordAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */; };
@@ -451,6 +452,8 @@
 		CD92AF851CBBA02200106A89 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		CD92AF891CBBAF3300106A89 /* HXReplaySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplaySlider.h; sourceTree = "<group>"; };
 		CD92AF8A1CBBAF3300106A89 /* HXReplaySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplaySlider.m; sourceTree = "<group>"; };
+		CD92AF8D1CBCD8B400106A89 /* HXReplayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewModel.h; sourceTree = "<group>"; };
+		CD92AF8E1CBCD8B400106A89 /* HXReplayViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewModel.m; sourceTree = "<group>"; };
 		CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewController.h; sourceTree = "<group>"; };
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
@@ -1003,6 +1006,7 @@
 			children = (
 				CD5F21501CAD1D750067A1DA /* Common */,
 				CD3199821CAA6173006C845F /* Watch */,
+				CD92AF8C1CBCD89C00106A89 /* Replay */,
 				CD5D026D1CB5FB15000285DC /* Record */,
 			);
 			path = Live;
@@ -1573,6 +1577,15 @@
 				CD92AF8A1CBBAF3300106A89 /* HXReplaySlider.m */,
 			);
 			path = Slider;
+			sourceTree = "<group>";
+		};
+		CD92AF8C1CBCD89C00106A89 /* Replay */ = {
+			isa = PBXGroup;
+			children = (
+				CD92AF8D1CBCD8B400106A89 /* HXReplayViewModel.h */,
+				CD92AF8E1CBCD8B400106A89 /* HXReplayViewModel.m */,
+			);
+			path = Replay;
 			sourceTree = "<group>";
 		};
 		CDAA8DA41CA3C7DA0048C526 /* Replay */ = {
@@ -2157,6 +2170,7 @@
 				CD2949FB1CA2919B00CA3C3F /* HXUserTermsViewController.m in Sources */,
 				CD1B84171CAA90C200B9B1E8 /* HXAttentionModel.m in Sources */,
 				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
+				CD92AF8F1CBCD8B400106A89 /* HXReplayViewModel.m in Sources */,
 				CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */,
 				CD9167731CAE52E7000A12DC /* MIAButton.m in Sources */,
 				CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */,
