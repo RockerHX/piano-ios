@@ -97,7 +97,7 @@ HXReplayBottomBarDelegate
 }
 
 - (void)timerConfigure {
-    uint64_t interval = NSEC_PER_MSEC * 100;
+    uint64_t interval = NSEC_PER_SEC;
     dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0), interval, 0);
@@ -187,9 +187,16 @@ HXReplayBottomBarDelegate
 }
 
 - (void)bottomBar:(HXReplayBottomBar *)bar dragProgressBar:(CGFloat)progress {
-    CMTime time = (CMTime){_model.duration * progress, 1, 1, 0};
+    NSTimeInterval currentTime = _model.duration * progress;
+    CMTime time = (CMTime){currentTime, 1, 1, 0};
+    
+    @weakify(self)
     [_player seekToTime:time completionHandler:^(BOOL finished) {
-        ;
+        @strongify(self)
+        if (finished) {
+            self->_viewModel.timeNode = currentTime;
+            [self fetchBarrageData];
+        }
     }];
 }
 
