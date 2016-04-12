@@ -14,6 +14,12 @@
 
 HXXibImplementation
 
+#pragma mark - Property
+- (void)setAttented:(BOOL)attented {
+    _attented = attented;
+    [_attentionButton setImage:[UIImage imageNamed:(attented ? @"L-AttentedIcon" : @"L-AddAttentionIcon")] forState:UIControlStateNormal];
+}
+
 #pragma mark - Event Response
 - (IBAction)avatarButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(anchorView:takeAction:)]) {

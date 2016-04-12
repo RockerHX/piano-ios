@@ -12,6 +12,7 @@
 #import "HXReplayBottomBar.h"
 #import <AVFoundation/AVFoundation.h>
 #import "HXReplayViewModel.h"
+#import "UIButton+WebCache.h"
 
 
 @interface HXReplayViewController () <
@@ -76,6 +77,7 @@ HXReplayBottomBarDelegate
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playError) name:AVPlayerItemFailedToPlayToEndTimeNotification object:nil];
     
     _viewModel = [[HXReplayViewModel alloc] initWithDiscoveryModel:_model];
+    [self sigalLink];
     
     [self playerConfigure];
     [self timerConfigure];
@@ -87,7 +89,20 @@ HXReplayBottomBarDelegate
     layer.frame = self.view.bounds;
     [self.replayView.layer addSublayer:layer];
     
+    [self updateAnchorView];
     _bottomBar.duration = _model.duration;
+}
+
+- (void)sigalLink {
+    @weakify(self)
+    RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
+    [checkAttentionStateSiganl subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+//        @strongify(self)
+//        self->_containerViewController.comments = self->_viewModel.comments;
+    }];
 }
 
 - (void)playerConfigure {
@@ -158,6 +173,12 @@ HXReplayBottomBarDelegate
     }];
 }
 
+- (void)updateAnchorView {
+    [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:_viewModel.anchorAvatar] forState:UIControlStateNormal];
+    _anchorView.nickNameLabel.text = _viewModel.anchorNickName;
+    _anchorView.countLabel.text = _viewModel.viewCount;
+}
+
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
     ;
@@ -165,7 +186,23 @@ HXReplayBottomBarDelegate
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
-    ;
+    switch (action) {
+        case HXLiveAnchorViewActionShowAnchor: {
+            ;
+            break;
+        }
+        case HXLiveAnchorViewActionAttention: {
+            @weakify(self)
+            RACSignal *takeAttentionSiganl = [_viewModel.takeAttentionCommand execute:nil];
+            [takeAttentionSiganl subscribeNext:^(NSNumber *state) {
+                anchorView.attented = state.boolValue;
+            } error:^(NSError *error) {
+                @strongify(self)
+                [self showBannerWithPrompt:error.domain];
+            }];
+            break;
+        }
+    }
 }
 
 #pragma mark - HXReplayBottomBarDelegate Methods

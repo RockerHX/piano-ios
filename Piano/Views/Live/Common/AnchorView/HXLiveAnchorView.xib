@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXLiveAnchorView">
             <connections>
+                <outlet property="attentionButton" destination="bNb-Eq-SVF" id="M8G-PT-bFE"/>
                 <outlet property="avatar" destination="Iuj-VO-Lk7" id="ZR5-65-EZt"/>
                 <outlet property="countLabel" destination="dcQ-qJ-VZU" id="71q-Gv-zaG"/>
                 <outlet property="nickNameLabel" destination="s7d-ZL-oRp" id="oAn-aN-aIF"/>

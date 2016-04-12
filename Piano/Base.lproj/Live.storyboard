@@ -738,6 +738,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="anchorView" destination="ktk-jC-3ie" id="6tK-nx-jMX"/>
                         <outlet property="bottomBar" destination="Cy3-Sr-nxg" id="TJ9-nY-AtB"/>
                         <outlet property="replayView" destination="4oN-8V-zMZ" id="5KP-Cg-NWl"/>
                     </connections>

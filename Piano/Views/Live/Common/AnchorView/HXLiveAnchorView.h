@@ -32,6 +32,9 @@ typedef NS_ENUM(NSUInteger, HXLiveAnchorViewAction) {
 @property (weak, nonatomic) IBOutlet UIButton *avatar;
 @property (weak, nonatomic) IBOutlet  UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet  UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UIButton *attentionButton;
+
+@property (nonatomic, assign) BOOL attented;
 
 - (IBAction)avatarButtonPressed;
 - (IBAction)attentionButtonPressed;

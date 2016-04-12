@@ -10,12 +10,14 @@
 
 
 @class HXDiscoveryModel;
+@class HXLiveAnchorView;
 @class HXReplayBottomBar;
 
 
 @interface HXReplayViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet            UIView *replayView;
+@property (weak, nonatomic) IBOutlet  HXLiveAnchorView *anchorView;
 @property (weak, nonatomic) IBOutlet HXReplayBottomBar *bottomBar;
 
 @property (nonatomic, strong) HXDiscoveryModel *model;

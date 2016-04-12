@@ -25,6 +25,8 @@
 #pragma mark - Configure Methods
 - (void)initConfigure {
     [self fetchCommentCommandConfigure];
+    [self checkAttentionStateCommandConfigure];
+    [self takeAttentionCommandConfigure];
 }
 
 - (void)fetchCommentCommandConfigure {
@@ -39,6 +41,47 @@
     }];
 }
 
+- (void)checkAttentionStateCommandConfigure {
+    @weakify(self)
+    _checkAttentionStateCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self)
+            [self checkAttentionStateRequestWithSubscriber:subscriber];
+            return nil;
+        }];
+        return signal;
+    }];
+}
+
+- (void)takeAttentionCommandConfigure {
+    @weakify(self)
+    _takeAttentionCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self)
+            if (_anchorAttented) {
+                [self unFollowRequestWithSubscriber:subscriber];
+            } else {
+                [self followRequestWithSubscriber:subscriber];
+            }
+            return nil;
+        }];
+        return signal;
+    }];
+}
+
+#pragma mark - Property
+- (NSString *)anchorAvatar {
+    return _model.avatarUrl;
+}
+
+- (NSString *)anchorNickName {
+    return _model.nickName;
+}
+
+- (NSString *)viewCount {
+    return @(_model.viewCount).stringValue;
+}
+
 #pragma mark - Private Methods
 - (void)fetchCommentRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper getReplyCommentWithRoomID:_model.roomID latitude:0 longitude:0 time:_timeNode completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
@@ -47,6 +90,47 @@
             _timeNode = [data[@"time"] integerValue];
             [self addComment:data[@"comments"]];
             
+            [subscriber sendCompleted];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+    }];
+}
+
+- (void)checkAttentionStateRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+//    [MiaAPIHelper followWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+//        if (success) {
+//            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+//            [subscriber sendCompleted];
+//        } else {
+//            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+//        }
+//    } timeoutBlock:^(MiaRequestItem *requestItem) {
+//        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+//    }];
+}
+
+- (void)followRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+    [MiaAPIHelper followWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            _anchorAttented = YES;
+            [subscriber sendNext:@(_anchorAttented)];
+            [subscriber sendCompleted];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+    }];
+}
+
+- (void)unFollowRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+    [MiaAPIHelper followWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            _anchorAttented = NO;
+            [subscriber sendNext:@(_anchorAttented)];
             [subscriber sendCompleted];
         } else {
             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];

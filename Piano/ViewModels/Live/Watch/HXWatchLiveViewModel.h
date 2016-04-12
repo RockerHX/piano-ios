@@ -14,16 +14,16 @@
 
 @interface HXWatchLiveViewModel : NSObject
 
-@property (nonatomic, strong) HXLiveModel *model;
-
-@property (nonatomic, strong, readonly)    NSString *roomID;
-
 @property (nonatomic, strong, readonly)  RACSignal *enterSignal;
 @property (nonatomic, strong, readonly)  RACSignal *exitSignal;
 @property (nonatomic, strong, readonly)  RACSignal *commentSignal;
 
 @property (nonatomic, strong, readonly) RACCommand *enterRoomCommand;
 @property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
+
+@property (nonatomic, strong) HXLiveModel *model;
+
+@property (nonatomic, strong, readonly) NSString *roomID;
 
 @property (nonatomic, strong, readonly) NSString *anchorAvatar;
 @property (nonatomic, strong, readonly) NSString *anchorNickName;
