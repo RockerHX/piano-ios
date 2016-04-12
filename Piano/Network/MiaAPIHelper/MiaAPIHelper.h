@@ -130,6 +130,10 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 	 completeBlock:(MiaRequestCompleteBlock)completeBlock
 	  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)getFollowWithUID:(NSString *)uID
+		   completeBlock:(MiaRequestCompleteBlock)completeBlock
+		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 + (void)followWithUID:(NSString *)uID
 		completeBlock:(MiaRequestCompleteBlock)completeBlock
 		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
