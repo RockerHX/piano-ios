@@ -41,11 +41,13 @@ HXXibImplementation
     [_cover sd_setImageWithURL:[NSURL URLWithString:song.coverUrl] placeholderImage:nil];
     _songNameLabel.text = song.title;
     _singerNameLabel.text = song.nickName;
-    [self handleLyrics:song.lyric];
+	[self handleLyrics:song.lyric];
 }
 
 #pragma mark - Private Methods
 - (void)handleLyrics:(NSString *)lyrics {
+	_lyricsView.text = lyrics;
+
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:_lyricsView.attributedText];
     [attributedString addAttributes:_lyricsAttributes range:[lyrics rangeOfString:lyrics]];
     _lyricsView.attributedText = attributedString.copy;
