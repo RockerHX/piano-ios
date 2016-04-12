@@ -47,11 +47,13 @@ HXXibImplementation
 #pragma mark - Private Methods
 - (void)handleLyrics:(NSString *)lyrics {
 	_lyricsView.text = lyrics;
+	_lyricsView.textAlignment = NSTextAlignmentCenter;
+	_lyricsView.selectable = NO;
+	[_lyricsView scrollRangeToVisible:NSMakeRange(0, 0)];
 
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:_lyricsView.attributedText];
-    [attributedString addAttributes:_lyricsAttributes range:[lyrics rangeOfString:lyrics]];
-    _lyricsView.attributedText = attributedString.copy;
-    _lyricsView.textAlignment = NSTextAlignmentCenter;
+//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:_lyricsView.attributedText];
+//    [attributedString addAttributes:_lyricsAttributes range:[lyrics rangeOfString:lyrics]];
+//    _lyricsView.attributedText = attributedString.copy;
 }
 
 @end
