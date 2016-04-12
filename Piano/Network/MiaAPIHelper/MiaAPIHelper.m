@@ -389,6 +389,36 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)followWithUID:(NSString *)uID
+		completeBlock:(MiaRequestCompleteBlock)completeBlock
+		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:uID forKey:MiaAPIKey_UID];
+	// "type": "1 关注， 2取消关注"
+	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_Type];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostFollow
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)unfollowWithUID:(NSString *)uID
+		completeBlock:(MiaRequestCompleteBlock)completeBlock
+		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:uID forKey:MiaAPIKey_UID];
+	// "type": "1 关注， 2取消关注"
+	[dictValues setValue:[NSNumber numberWithLong:2] forKey:MiaAPIKey_Type];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostFollow
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 + (void)getRoomStat:(NSString *)roomID
 	  completeBlock:(MiaRequestCompleteBlock)completeBlock
 	   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
@@ -476,6 +506,25 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 
 
 	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Musician_PostComment
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)getReplyComment:(NSString *)roomID
+			   latitude:(double)lat
+			  longitude:(double)lon
+				  time:(long)time
+		  completeBlock:(MiaRequestCompleteBlock)completeBlock
+		   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	[dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+	[dictValues setValue:[NSNumber numberWithFloat:lat] forKey:MiaAPIKey_Latitude];
+	[dictValues setValue:[NSNumber numberWithFloat:lon] forKey:MiaAPIKey_Longitude];
+	[dictValues setValue:[NSNumber numberWithLong:time] forKey:MiaAPIKey_Time];
+
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Musician_Replay_GetComment
 															   parameters:dictValues
 															completeBlock:completeBlock
 															 timeoutBlock:timeoutBlock];

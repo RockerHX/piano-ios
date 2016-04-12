@@ -91,6 +91,7 @@ static NSString * const MiaAPICommand_Live_PutTitle			= @"Live.Room.Put.Title";
 static NSString * const MiaAPICommand_Live_PutCover			= @"Live.Room.Put.Cover";
 static NSString * const MiaAPICommand_Live_PutLocation		= @"Live.Room.Put.Location";
 static NSString * const MiaAPICommand_Live_PostForbid		= @"Live.Room.Post.Forbid";
+static NSString * const MiaAPICommand_User_PostFollow		= @"User.Post.Follow";
 static NSString * const MiaAPICommand_Live_GetStat			= @"Live.Room.Get.Stat";
 static NSString * const MiaAPIKey_RoomID					= @"roomID";
 static NSString * const MiaAPIKey_Content					= @"content";
@@ -114,3 +115,7 @@ static NSString * const MiaAPIKey_ItemID					= @"itemID";
 static NSString * const MiaAPIKey_ItemType					= @"itemType";
 static NSString * const MiaAPIKey_Start						= @"start";
 static NSString * const MiaAPIKey_Limit						= @"limit";
+
+
+static NSString * const MiaAPICommand_Musician_Replay_GetComment	= @"Musician.Replay.Get.Comment";
+static NSString * const MiaAPIKey_Time                       		= @"time";
