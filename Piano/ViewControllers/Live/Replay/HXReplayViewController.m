@@ -96,12 +96,12 @@ HXReplayBottomBarDelegate
 - (void)sigalLink {
     @weakify(self)
     RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
-    [checkAttentionStateSiganl subscribeError:^(NSError *error) {
+    [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
+        @strongify(self)
+        self->_anchorView.attented = state.boolValue;
+    } error:^(NSError *error) {
         @strongify(self)
         [self showBannerWithPrompt:error.domain];
-    } completed:^{
-//        @strongify(self)
-//        self->_containerViewController.comments = self->_viewModel.comments;
     }];
 }
 

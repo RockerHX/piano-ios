@@ -100,16 +100,18 @@
 }
 
 - (void)checkAttentionStateRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-//    [MiaAPIHelper followWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//        if (success) {
-//            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
-//            [subscriber sendCompleted];
-//        } else {
-//            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
-//        }
-//    } timeoutBlock:^(MiaRequestItem *requestItem) {
-//        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
-//    }];
+    [MiaAPIHelper getFollowStateWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+            _anchorAttented = [data[@"follow"] boolValue];
+            [subscriber sendNext:@(_anchorAttented)];
+            [subscriber sendCompleted];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+    }];
 }
 
 - (void)followRequestWithSubscriber:(id<RACSubscriber>)subscriber {
@@ -127,7 +129,7 @@
 }
 
 - (void)unFollowRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper followWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper unfollowWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             _anchorAttented = NO;
             [subscriber sendNext:@(_anchorAttented)];

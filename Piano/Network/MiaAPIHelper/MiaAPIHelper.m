@@ -389,9 +389,9 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)getFollowWithUID:(NSString *)uID
-		completeBlock:(MiaRequestCompleteBlock)completeBlock
-		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
++ (void)getFollowStateWithUID:(NSString *)uID
+                completeBlock:(MiaRequestCompleteBlock)completeBlock
+                 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
 	[dictValues setValue:uID forKey:MiaAPIKey_UID];
 	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_GetFollow
