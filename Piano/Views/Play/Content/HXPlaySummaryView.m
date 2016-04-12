@@ -39,9 +39,9 @@ HXXibImplementation
 #pragma mark - Public Methods
 - (void)displayWithSong:(HXSongModel *)song {
     [_cover sd_setImageWithURL:[NSURL URLWithString:song.coverUrl] placeholderImage:nil];
-    _songNameLabel.text = song.songName;
-    _singerNameLabel.text = song.singerName;
-    [self handleLyrics:nil];
+    _songNameLabel.text = song.title;
+    _singerNameLabel.text = song.nickName;
+    [self handleLyrics:song.lyric];
 }
 
 #pragma mark - Private Methods
