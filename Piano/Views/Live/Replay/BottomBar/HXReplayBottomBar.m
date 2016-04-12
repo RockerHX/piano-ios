@@ -8,22 +8,40 @@
 
 #import "HXReplayBottomBar.h"
 #import "HXXib.h"
+#import "HXReplaySlider.h"
 
 
 @implementation HXReplayBottomBar
 
 HXXibImplementation
 
+#pragma mark - Load Methods
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self loadConfigure];
+    [self viewConfigure];
+}
+
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    ;
+}
+
+- (void)viewConfigure {
+    _container.backgroundColor = [UIColor clearColor];
+}
+
 #pragma mark - Event Response
-- (IBAction)commentButtonPressed {
+- (IBAction)pauseButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
-        [_delegate bottomBar:self takeAction:HXReplayBottomBarActionComment];
+        [_delegate bottomBar:self takeAction:HXReplayBottomBarActionPause];
     }
 }
 
-- (IBAction)forwardingButtonPressed {
+- (IBAction)shareButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
-        [_delegate bottomBar:self takeAction:HXReplayBottomBarActionForwarding];
+        [_delegate bottomBar:self takeAction:HXReplayBottomBarActionShare];
     }
 }
 

@@ -3,10 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXReplayBottomBar"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXReplayBottomBar">
+            <connections>
+                <outlet property="container" destination="23x-b0-eyX" id="Fbt-eN-vVA"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="23x-b0-eyX">
             <rect key="frame" x="0.0" y="0.0" width="300" height="70"/>
@@ -15,22 +18,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
                     <rect key="frame" x="0.0" y="30" width="300" height="40"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-ya-QOq">
-                            <rect key="frame" x="0.0" y="4" width="32" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="32" id="tEa-to-Tfc"/>
-                                <constraint firstAttribute="width" secondItem="PeU-ya-QOq" secondAttribute="height" multiplier="1:1" id="yuF-uz-qfJ"/>
-                            </constraints>
-                            <state key="normal" title="暂停"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-ya-QOq">
+                            <rect key="frame" x="0.0" y="4" width="31" height="31"/>
+                            <state key="normal" image="LR-PauseIcon"/>
+                            <state key="selected" image="LR-PlayIcon"/>
                             <connections>
-                                <action selector="commentButtonPressed" destination="-1" eventType="touchUpInside" id="eZq-Rk-Fh2"/>
+                                <action selector="pauseButtonPressed" destination="-1" eventType="touchUpInside" id="vm9-FU-A6l"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTn-f4-zfa">
-                            <rect key="frame" x="268" y="5" width="32" height="30"/>
-                            <state key="normal" title="转发"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTn-f4-zfa">
+                            <rect key="frame" x="269" y="4" width="31" height="31"/>
+                            <state key="normal" image="L-ShareIcon"/>
                             <connections>
-                                <action selector="forwardingButtonPressed" destination="-1" eventType="touchUpInside" id="GG6-hl-HHr"/>
+                                <action selector="shareButtonPressed" destination="-1" eventType="touchUpInside" id="IdW-dY-Jln"/>
                             </connections>
                         </button>
                     </subviews>
@@ -39,9 +39,7 @@
                         <constraint firstAttribute="trailing" secondItem="RTn-f4-zfa" secondAttribute="trailing" id="0f5-vy-5LZ"/>
                         <constraint firstAttribute="height" constant="40" id="OVI-W2-rD1"/>
                         <constraint firstItem="RTn-f4-zfa" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PYN-h6-hBU"/>
-                        <constraint firstItem="RTn-f4-zfa" firstAttribute="width" secondItem="PeU-ya-QOq" secondAttribute="height" multiplier="1:1" id="TFp-sQ-yAz"/>
                         <constraint firstItem="PeU-ya-QOq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dWa-9L-FlL"/>
-                        <constraint firstItem="RTn-f4-zfa" firstAttribute="width" secondItem="PeU-ya-QOq" secondAttribute="width" id="knm-ap-O8P"/>
                         <constraint firstItem="PeU-ya-QOq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xl3-yf-jMo"/>
                     </constraints>
                 </view>
@@ -49,7 +47,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAw-5s-REF">
-                            <rect key="frame" x="253" y="8" width="32" height="14"/>
+                            <rect key="frame" x="268" y="8" width="32" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="wCq-gR-ngl"/>
                             </constraints>
@@ -57,14 +55,16 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbX-9p-CZ9">
-                            <rect key="frame" x="13" y="0.0" width="237" height="31"/>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbX-9p-CZ9" customClass="HXReplaySlider">
+                            <rect key="frame" x="-2" y="0.0" width="267" height="31"/>
+                            <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                         </slider>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="UbX-9p-CZ9" firstAttribute="leading" secondItem="Fjb-0J-Qf4" secondAttribute="leading" constant="15" id="2n1-ou-4e7"/>
-                        <constraint firstAttribute="trailing" secondItem="NAw-5s-REF" secondAttribute="trailing" constant="15" id="9Ew-QZ-GCw"/>
+                        <constraint firstItem="UbX-9p-CZ9" firstAttribute="leading" secondItem="Fjb-0J-Qf4" secondAttribute="leading" id="2n1-ou-4e7"/>
+                        <constraint firstAttribute="trailing" secondItem="NAw-5s-REF" secondAttribute="trailing" id="9Ew-QZ-GCw"/>
                         <constraint firstItem="UbX-9p-CZ9" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="Fqi-X6-let"/>
                         <constraint firstItem="NAw-5s-REF" firstAttribute="leading" secondItem="UbX-9p-CZ9" secondAttribute="trailing" constant="5" id="MUB-Ri-wy2"/>
                         <constraint firstItem="NAw-5s-REF" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="w0c-q3-eQK"/>
@@ -86,4 +86,9 @@
             <point key="canvasLocation" x="301" y="428"/>
         </view>
     </objects>
+    <resources>
+        <image name="L-ShareIcon" width="31" height="31"/>
+        <image name="LR-PauseIcon" width="31" height="31"/>
+        <image name="LR-PlayIcon" width="31" height="31"/>
+    </resources>
 </document>

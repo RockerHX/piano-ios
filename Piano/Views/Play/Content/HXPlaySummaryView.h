@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MusicItem;
+@class HXSongModel;
 @class HXPlaySummaryView;
 
 @protocol HXPlaySummaryViewDelegate <NSObject>
@@ -28,6 +28,6 @@
 @property (weak, nonatomic) IBOutlet     UILabel *singerNameLabel;
 @property (weak, nonatomic) IBOutlet  UITextView *lyricsView;
 
-- (void)displayWithMusic:(MusicItem *)music;
+- (void)displayWithSong:(HXSongModel *)song;
 
 @end

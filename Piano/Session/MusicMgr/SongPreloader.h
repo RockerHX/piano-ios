@@ -20,8 +20,8 @@
 
 @interface SongPreloader : NSObject
 
-@property (nonatomic, weak) id <SongPreloaderDelegate> delegate;
-@property (strong, nonatomic) HXSongModel * currentItem;
+@property (nonatomic, weak)            id  <SongPreloaderDelegate>delegate;
+@property (strong, nonatomic) HXSongModel *currentItem;
 
 - (void)preloadWithItem:(HXSongModel *)item;
 - (void)stop;

@@ -16,6 +16,7 @@
 #import "HXProfileViewController.h"
 #import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "MusicMgr.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -77,9 +78,10 @@ HXDiscoveryContainerViewControllerDelegate
 
 #pragma mark - Event Response
 - (IBAction)musicButtonPressed {
-    UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
-//    HXPlayViewController *playViewController = [playNavigationController.viewControllers firstObject];
-    [self presentViewController:playNavigationController animated:YES completion:nil];
+    if ([MusicMgr standard].playList.count) {
+        UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
+        [self presentViewController:playNavigationController animated:YES completion:nil];
+    }
 }
 
 #pragma mark - Public Methods
@@ -89,9 +91,9 @@ HXDiscoveryContainerViewControllerDelegate
 
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
 - (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
-    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
-        return;
-    }
+//    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
+//        return;
+//    }
     
     _shouldHiddenNavigationBar = NO;
     if (model) {
@@ -104,10 +106,10 @@ HXDiscoveryContainerViewControllerDelegate
                 break;
             }
             case HXDiscoveryTypeReplay: {
-//                UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
-//                HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
-//                replayViewController.model = model;
-//                [self presentViewController:replayNaviagtionController animated:YES completion:nil];
+                UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
+                HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
+                replayViewController.model = model;
+                [self presentViewController:replayNaviagtionController animated:YES completion:nil];
                 break;
             }
             case HXDiscoveryTypeNewAlbum: {

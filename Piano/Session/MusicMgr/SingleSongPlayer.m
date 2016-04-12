@@ -120,7 +120,7 @@
 		return;
 	}
 
-	[self playWithoutCheckWithUrl:item.mp3Url title:item.title artist:item.nick cover:item.coverUrl];
+	[self playWithoutCheckWithUrl:item.mp3Url title:item.title artist:item.nickName cover:item.coverUrl];
 	_currentItem = item;
 }
 
@@ -279,7 +279,7 @@
 - (void)checkBeforePlayWithItem:(HXSongModel *)item {
 	[[MusicMgr standard] checkIsAllowToPlayWith3GOnceTimeWithBlock:^(BOOL isAllowed) {
 		if (isAllowed) {
-			[self playWithoutCheckWithUrl:item.mp3Url title:item.title artist:item.nick cover:item.coverUrl];
+			[self playWithoutCheckWithUrl:item.mp3Url title:item.title artist:item.nickName cover:item.coverUrl];
 		}
 	}];
 }

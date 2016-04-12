@@ -10,11 +10,13 @@
 
 
 typedef NS_ENUM(NSUInteger, HXReplayBottomBarAction) {
-    HXReplayBottomBarActionComment,
-    HXReplayBottomBarActionForwarding,
+    HXReplayBottomBarActionPlay,
+    HXReplayBottomBarActionPause,
+    HXReplayBottomBarActionShare,
 };
 
 
+@class HXReplaySlider;
 @class HXReplayBottomBar;
 
 
@@ -30,7 +32,10 @@ typedef NS_ENUM(NSUInteger, HXReplayBottomBarAction) {
 
 @property (weak, nonatomic) IBOutlet id  <HXReplayBottomBarDelegate>delegate;
 
-- (IBAction)commentButtonPressed;
-- (IBAction)forwardingButtonPressed;
+@property (weak, nonatomic) IBOutlet         UIView *container;
+@property (weak, nonatomic) IBOutlet HXReplaySlider *slider;
+
+- (IBAction)pauseButtonPressed;
+- (IBAction)shareButtonPressed;
 
 @end

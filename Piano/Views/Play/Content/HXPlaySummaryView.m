@@ -8,8 +8,8 @@
 
 #import "HXPlaySummaryView.h"
 #import "HXXib.h"
-//#import "MusicItem.h"
 #import "UIImageView+WebCache.h"
+#import "HXSongModel.h"
 
 @implementation HXPlaySummaryView {
     NSDictionary *_lyricsAttributes;
@@ -37,10 +37,10 @@ HXXibImplementation
 }
 
 #pragma mark - Public Methods
-- (void)displayWithMusic:(MusicItem *)music {
-//    [_cover sd_setImageWithURL:[NSURL URLWithString:music.purl] placeholderImage:nil];
-//    _songNameLabel.text = music.name;
-//    _singerNameLabel.text = music.singerName;
+- (void)displayWithSong:(HXSongModel *)song {
+    [_cover sd_setImageWithURL:[NSURL URLWithString:song.coverUrl] placeholderImage:nil];
+    _songNameLabel.text = song.songName;
+    _singerNameLabel.text = song.singerName;
     [self handleLyrics:nil];
 }
 

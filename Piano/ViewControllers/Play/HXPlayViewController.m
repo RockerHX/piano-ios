@@ -10,14 +10,11 @@
 #import "HXPlayTopBar.h"
 #import "HXPlaySummaryView.h"
 #import "HXPlayBottomBar.h"
-//#import "MusicMgr.h"
+#import "MusicMgr.h"
 #import "UIImageView+WebCache.h"
 #import "HXUserSession.h"
 #import "MiaAPIHelper.h"
-//#import "LocationMgr.h"
 #import "HXAlertBanner.h"
-//#import "FavoriteMgr.h"
-//#import "HXMusicDetailViewController.h"
 
 @interface HXPlayViewController () <
 HXPlayTopBarDelegate,
@@ -29,7 +26,7 @@ HXPlayBottomBarDelegate
 @implementation HXPlayViewController {
     BOOL _shouldHiddenNavigationBar;
     
-//    MusicMgr *_musicMgr;
+    MusicMgr *_musicMgr;
     dispatch_source_t _timer;
 }
 
@@ -68,15 +65,13 @@ HXPlayBottomBarDelegate
 }
 
 - (void)dealloc {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MusicMgrNotificationPlayerEvent object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:FavoriteMgrNotificationKey_EmptyList object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MusicMgrNotificationPlayerEvent object:nil];
 }
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-//    _musicMgr = [MusicMgr standard];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPlayerEvent:) name:MusicMgrNotificationPlayerEvent object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationEmptyList) name:FavoriteMgrNotificationKey_EmptyList object:nil];
+    _musicMgr = [MusicMgr standard];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPlayerEvent:) name:MusicMgrNotificationPlayerEvent object:nil];
 }
 
 - (void)viewConfigure {
@@ -88,14 +83,6 @@ HXPlayBottomBarDelegate
     [self updatePlayView];
 }
 
-- (void)notificationEmptyList {
-//	if (_musicMgr.playList.count) {
-//		return;
-//	}
-
-    [self dismiss];
-}
-
 #pragma mark - Private Methods
 - (void)dismiss {
     _shouldHiddenNavigationBar = YES;
@@ -103,7 +90,7 @@ HXPlayBottomBarDelegate
 }
 
 - (void)updatePlayView {
-//    [_coverBG sd_setImageWithURL:[NSURL URLWithString:_musicMgr.currentItem.music.purl] placeholderImage:nil];
+    [_coverBG sd_setImageWithURL:[NSURL URLWithString:_musicMgr.currentItem.coverUrl] placeholderImage:nil];
     
     [self updateTopBar];
     [self updateSummaryView];
@@ -111,36 +98,23 @@ HXPlayBottomBarDelegate
 }
 
 - (void)updateTopBar {
-//    ShareItem *item = _musicMgr.currentItem;
-//    _topBar.sharerNameLabel.text = item.sNick;
+//    HXSongModel *song = _musicMgr.currentItem;
 }
 
 - (void)updateSummaryView {
-//    [_summaryView updateWithMusic:_musicMgr.currentItem.music];
+    [_summaryView displayWithSong:_musicMgr.currentItem];
 }
 
 - (void)updateBottomBar {
     [self startMusicTimeRead];
     
-//    ShareItem *item = _musicMgr.currentItem;
-//    _bottomBar.favorited = item.favorite;
-//    _bottomBar.infected = item.isInfected;
-//    
-//    NSInteger playIndex = _musicMgr.currentIndex;
-//    BOOL isFirst = (playIndex == 0);
-//    BOOL isLast = (playIndex == _musicMgr.musicCount);
-//    
-//    NSInteger nextIndex = _musicMgr.currentIndex + 1;
-//    if (nextIndex < _musicMgr.playList.count) {
-//        ShareItem *nextItem = _musicMgr.playList[nextIndex];
-//        if (nextItem.placeHolder) {
-//            isLast = YES;
-//        }
-//    }
-//    
-//    _bottomBar.pause = _musicMgr.isPlaying;
-//    _bottomBar.enablePrevious = !isFirst;
-//    _bottomBar.enableNext = !isLast;
+    NSInteger playIndex = _musicMgr.currentIndex;
+    BOOL isFirst = (playIndex == 0);
+    BOOL isLast = (playIndex == _musicMgr.musicCount);
+    
+    _bottomBar.pause = _musicMgr.isPlaying;
+    _bottomBar.enablePrevious = !isFirst;
+    _bottomBar.enableNext = !isLast;
 }
 
 - (void)startMusicTimeRead {
@@ -157,9 +131,9 @@ HXPlayBottomBarDelegate
 }
 
 - (void)updatePlayTime {
-//    _bottomBar.musicTime = _musicMgr.durationSeconds;
-//    _bottomBar.slider.value = _musicMgr.currentPlayedPostion;
-//    _bottomBar.playTime = _musicMgr.currentPlayedSeconds;
+    _bottomBar.musicTime = _musicMgr.durationSeconds;
+    _bottomBar.slider.value = _musicMgr.currentPlayedPostion;
+    _bottomBar.playTime = _musicMgr.currentPlayedSeconds;
 }
 
 - (NSArray *)musicList {
@@ -175,24 +149,24 @@ HXPlayBottomBarDelegate
 }
 
 - (void)play {
-//    [_musicMgr playCurrent];
+    [_musicMgr playCurrent];
 }
 
 - (void)pause {
-//	if ([_musicMgr isPlaying]) {
-//		[_musicMgr pause];
-//	} else {
-//		[_musicMgr playCurrent];
-//	}
+	if ([_musicMgr isPlaying]) {
+		[_musicMgr pause];
+	} else {
+		[_musicMgr playCurrent];
+	}
 }
 
 - (void)previous {
-//    [_musicMgr playPrevios];
+    [_musicMgr playPrevios];
     [self updatePlayView];
 }
 
 - (void)next {
-//    [_musicMgr playNext];
+    [_musicMgr playNext];
     [self updatePlayView];
 }
 
@@ -313,7 +287,7 @@ HXPlayBottomBarDelegate
 }
 
 - (void)bottomBar:(HXPlayBottomBar *)bar seekToPosition:(float)postion {
-//	[_musicMgr seekToPosition:postion];
+	[_musicMgr seekToPosition:postion];
 }
 
 @end

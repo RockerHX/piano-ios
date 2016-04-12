@@ -25,7 +25,6 @@ typedef NS_ENUM(NSUInteger, HXPlayTopBarAction) {
 
 @property (weak, nonatomic) IBOutlet      id  <HXPlayTopBarDelegate>delegate;
 @property (weak, nonatomic) IBOutlet  UIView *containerView;
-@property (weak, nonatomic) IBOutlet UILabel *sharerNameLabel;
 
 - (IBAction)backButtonPressed;
 
