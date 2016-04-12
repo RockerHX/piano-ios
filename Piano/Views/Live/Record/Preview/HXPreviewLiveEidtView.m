@@ -46,4 +46,10 @@ HXXibImplementation
     }
 }
 
+#pragma mark - UITextFieldDelegate Methods
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end

@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, HXPreviewLiveEidtViewAction) {
 @end
 
 
-@interface HXPreviewLiveEidtView : UIView
+@interface HXPreviewLiveEidtView : UIView <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet          id  <HXPreviewLiveEidtViewDelegate>delegate;
 
