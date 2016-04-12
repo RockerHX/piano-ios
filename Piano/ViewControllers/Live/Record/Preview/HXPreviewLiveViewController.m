@@ -57,6 +57,8 @@ HXPreviewLiveControlViewDelegate
 - (void)loadConfigure {
     _frontCamera = YES;
     
+    [_controlContainerView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyBoard)]];
+    
     [self showHUD];
     [MiaAPIHelper createRoomWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
@@ -120,6 +122,10 @@ HXPreviewLiveControlViewDelegate
         [self hiddenHUD];
         [self showBannerWithPrompt:@"请先填写直播标题！"];
     }
+}
+
+- (void)closeKeyBoard {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - HXCountDownViewControllerDelegate Methods

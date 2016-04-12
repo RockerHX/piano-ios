@@ -29,7 +29,9 @@ HXXibImplementation
 - (void)loadConfigure {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 15.0f;
-    _lyricsAttributes = @{NSParagraphStyleAttributeName: paragraphStyle};
+    _lyricsAttributes = @{NSParagraphStyleAttributeName: paragraphStyle,
+                         NSForegroundColorAttributeName: [UIColor whiteColor],
+                                    NSFontAttributeName: [UIFont systemFontOfSize:16.0f]};
 }
 
 - (void)viewConfigure {
@@ -45,15 +47,13 @@ HXXibImplementation
 }
 
 #pragma mark - Private Methods
-- (void)handleLyrics:(NSString *)lyrics {
-	_lyricsView.text = lyrics;
-	_lyricsView.textAlignment = NSTextAlignmentCenter;
-	_lyricsView.selectable = NO;
-	[_lyricsView scrollRangeToVisible:NSMakeRange(0, 0)];
-
-//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:_lyricsView.attributedText];
-//    [attributedString addAttributes:_lyricsAttributes range:[lyrics rangeOfString:lyrics]];
-//    _lyricsView.attributedText = attributedString.copy;
+- (void)handleLyrics:(NSString *)lyric {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:lyric];
+    [attributedString addAttributes:_lyricsAttributes range:[lyric rangeOfString:lyric]];
+    _lyricsView.attributedText = attributedString.copy;
+    _lyricsView.textAlignment = NSTextAlignmentCenter;
+    
+    [_lyricsView setContentOffset:CGPointZero animated:NO];
 }
 
 @end

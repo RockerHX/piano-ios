@@ -55,15 +55,15 @@ typedef void(^FailureBlock)(NSString *);
     return (_user.notifyCount > 0);
 }
 
-- (HXRole)role {
-    HXRole role;
+- (HXUserRole)role {
+    HXUserRole role;
     switch (self.state) {
         case HXUserStateLogout: {
-            role = HXRoleNormalUser;
+            role = _guest.role;
             break;
         }
         case HXUserStateLogin: {
-            ;
+            role = _user.role;
             break;
         }
     }

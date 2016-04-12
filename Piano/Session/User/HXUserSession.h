@@ -9,6 +9,7 @@
 #import "HXUserModel.h"
 #import "HXGuestModel.h"
 #import "ReactiveCocoa.h"
+#import "HXUserRole.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,11 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 FOUNDATION_EXPORT NSString *const kClearNotifyNotifacation;
 
-
-typedef NS_ENUM(NSUInteger, HXRole) {
-    HXRoleNormalUser,
-    HXRoleAnchor,
-};
 
 typedef NS_ENUM(BOOL, HXUserState) {
     HXUserStateLogout,
@@ -31,7 +27,7 @@ typedef NS_ENUM(BOOL, HXUserState) {
 @interface HXUserSession : NSObject
 
 @property (nonatomic, assign, readonly)         BOOL  notify;
-@property (nonatomic, assign, readonly)       HXRole  role;
+@property (nonatomic, assign, readonly)   HXUserRole  role;
 @property (nonatomic, assign, readonly)  HXUserState  state;
 
 @property (nonatomic, strong, readonly)     NSString *uid;

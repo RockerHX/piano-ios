@@ -7,7 +7,7 @@
 //
 
 #import "MJExtension.h"
-#import "HXGuestModel.h"
+#import "HXUserRole.h"
 
 @interface HXUserModel : NSObject
 
