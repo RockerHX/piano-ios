@@ -39,17 +39,21 @@ HXXibImplementation
 #pragma mark - Public Methods
 - (void)displayWithSong:(HXSongModel *)song {
     [_cover sd_setImageWithURL:[NSURL URLWithString:song.coverUrl] placeholderImage:nil];
-    _songNameLabel.text = song.songName;
-    _singerNameLabel.text = song.singerName;
-    [self handleLyrics:nil];
+    _songNameLabel.text = song.title;
+    _singerNameLabel.text = song.nickName;
+	[self handleLyrics:song.lyric];
 }
 
 #pragma mark - Private Methods
 - (void)handleLyrics:(NSString *)lyrics {
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:_lyricsView.attributedText];
-    [attributedString addAttributes:_lyricsAttributes range:[lyrics rangeOfString:lyrics]];
-    _lyricsView.attributedText = attributedString.copy;
-    _lyricsView.textAlignment = NSTextAlignmentCenter;
+	_lyricsView.text = lyrics;
+	_lyricsView.textAlignment = NSTextAlignmentCenter;
+	_lyricsView.selectable = NO;
+	[_lyricsView scrollRangeToVisible:NSMakeRange(0, 0)];
+
+//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:_lyricsView.attributedText];
+//    [attributedString addAttributes:_lyricsAttributes range:[lyrics rangeOfString:lyrics]];
+//    _lyricsView.attributedText = attributedString.copy;
 }
 
 @end
