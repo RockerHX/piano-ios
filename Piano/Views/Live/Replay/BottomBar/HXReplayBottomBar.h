@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, HXReplayBottomBarAction) {
 
 @required
 - (void)bottomBar:(HXReplayBottomBar *)bar takeAction:(HXReplayBottomBarAction)action;
+- (void)bottomBar:(HXReplayBottomBar *)bar dragProgressBar:(CGFloat)progress;
 
 @end
 
@@ -33,9 +34,15 @@ typedef NS_ENUM(NSUInteger, HXReplayBottomBarAction) {
 @property (weak, nonatomic) IBOutlet id  <HXReplayBottomBarDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet         UIView *container;
+@property (weak, nonatomic) IBOutlet        UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet HXReplaySlider *slider;
+@property (weak, nonatomic) IBOutlet        UILabel *endTimeLabel;
 
-- (IBAction)pauseButtonPressed;
+@property (nonatomic, assign) CGFloat currentTime;
+@property (nonatomic, assign) CGFloat duration;
+
+- (IBAction)pauseButtonPressed:(UIButton *)button;
 - (IBAction)shareButtonPressed;
+- (IBAction)sliderValueChanged:(UISlider *)slider;
 
 @end

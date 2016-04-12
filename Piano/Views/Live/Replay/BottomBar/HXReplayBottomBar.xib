@@ -8,6 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXReplayBottomBar">
             <connections>
                 <outlet property="container" destination="23x-b0-eyX" id="Fbt-eN-vVA"/>
+                <outlet property="endTimeLabel" destination="NAw-5s-REF" id="ebM-Ld-R4Q"/>
+                <outlet property="slider" destination="UbX-9p-CZ9" id="nhq-Ju-kCy"/>
+                <outlet property="startTimeLabel" destination="kJ0-zD-ZZM" id="z1A-za-Oqf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,7 +26,7 @@
                             <state key="normal" image="LR-PauseIcon"/>
                             <state key="selected" image="LR-PlayIcon"/>
                             <connections>
-                                <action selector="pauseButtonPressed" destination="-1" eventType="touchUpInside" id="vm9-FU-A6l"/>
+                                <action selector="pauseButtonPressed:" destination="-1" eventType="touchUpInside" id="hft-HJ-YiZ"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTn-f4-zfa">
@@ -56,17 +59,33 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbX-9p-CZ9" customClass="HXReplaySlider">
-                            <rect key="frame" x="-2" y="0.0" width="267" height="31"/>
+                            <rect key="frame" x="35" y="0.0" width="230" height="31"/>
                             <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="sliderValueChanged:" destination="-1" eventType="touchUpInside" id="6mq-jH-daz"/>
+                                <action selector="sliderValueChanged:" destination="-1" eventType="touchCancel" id="BUY-GX-PPL"/>
+                                <action selector="sliderValueChanged:" destination="-1" eventType="touchUpOutside" id="eL9-Ry-acr"/>
+                            </connections>
                         </slider>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ0-zD-ZZM">
+                            <rect key="frame" x="0.0" y="8" width="32" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="ZXJ-ea-9mO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="UbX-9p-CZ9" firstAttribute="leading" secondItem="Fjb-0J-Qf4" secondAttribute="leading" id="2n1-ou-4e7"/>
+                        <constraint firstItem="kJ0-zD-ZZM" firstAttribute="leading" secondItem="Fjb-0J-Qf4" secondAttribute="leading" id="0Zy-Ww-fzn"/>
                         <constraint firstAttribute="trailing" secondItem="NAw-5s-REF" secondAttribute="trailing" id="9Ew-QZ-GCw"/>
                         <constraint firstItem="UbX-9p-CZ9" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="Fqi-X6-let"/>
                         <constraint firstItem="NAw-5s-REF" firstAttribute="leading" secondItem="UbX-9p-CZ9" secondAttribute="trailing" constant="5" id="MUB-Ri-wy2"/>
+                        <constraint firstItem="UbX-9p-CZ9" firstAttribute="leading" secondItem="kJ0-zD-ZZM" secondAttribute="trailing" constant="5" id="aCL-54-C3k"/>
+                        <constraint firstItem="kJ0-zD-ZZM" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="qzp-Rh-pBX"/>
                         <constraint firstItem="NAw-5s-REF" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="w0c-q3-eQK"/>
                     </constraints>
                 </view>

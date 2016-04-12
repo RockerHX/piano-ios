@@ -738,6 +738,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bottomBar" destination="Cy3-Sr-nxg" id="TJ9-nY-AtB"/>
                         <outlet property="replayView" destination="4oN-8V-zMZ" id="5KP-Cg-NWl"/>
                     </connections>
                 </viewController>
@@ -1053,6 +1054,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rQC-rx-khw"/>
-        <segue reference="HeX-r3-laS"/>
+        <segue reference="xaJ-1k-tkf"/>
     </inferredMetricsTieBreakers>
 </document>
