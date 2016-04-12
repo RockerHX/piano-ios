@@ -80,7 +80,10 @@ HXLoginViewControllerDelegate
     
     NSArray *viewControllers = self.viewControllers;
     _publishNavigationController = viewControllers[1];
-//    self.viewControllers = @[[viewControllers firstObject], [viewControllers lastObject]];
+    if ([HXUserSession session].role == HXUserRoleAnchor) {
+        return;
+    }
+    self.viewControllers = @[[viewControllers firstObject], [viewControllers lastObject]];
 }
 
 - (void)tabBarItemConfigure {
@@ -237,6 +240,9 @@ HXLoginViewControllerDelegate
             break;
         }
         case HXLoginViewControllerActionLoginSuccess: {
+            if ([HXUserSession session].role == HXUserRoleAnchor) {
+                self.viewControllers = @[[self.viewControllers firstObject], _publishNavigationController, [self.viewControllers lastObject]];
+            }
             [self fetchProfileData];
             break;
         }

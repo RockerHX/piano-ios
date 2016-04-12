@@ -7,12 +7,7 @@
 //
 
 #import "MJExtension.h"
-
-typedef NS_ENUM(NSInteger, HXUserRole) {
-	HXUserRoleGuest = 0,
-	HXUserRoleNormal = 1,
-	HXUserRoleAnchor = 2,
-};
+#import "HXUserRole.h"
 
 @interface HXGuestModel : NSObject
 

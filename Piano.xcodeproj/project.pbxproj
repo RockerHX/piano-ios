@@ -454,6 +454,7 @@
 		CD92AF8A1CBBAF3300106A89 /* HXReplaySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplaySlider.m; sourceTree = "<group>"; };
 		CD92AF8D1CBCD8B400106A89 /* HXReplayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewModel.h; sourceTree = "<group>"; };
 		CD92AF8E1CBCD8B400106A89 /* HXReplayViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewModel.m; sourceTree = "<group>"; };
+		CD92AF901CBD006A00106A89 /* HXUserRole.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXUserRole.h; sourceTree = "<group>"; };
 		CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewController.h; sourceTree = "<group>"; };
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
@@ -858,6 +859,7 @@
 		CD2949E11CA28D8400CA3C3F /* User */ = {
 			isa = PBXGroup;
 			children = (
+				CD92AF901CBD006A00106A89 /* HXUserRole.h */,
 				398A6D0F1CAB77D6001A68B1 /* HXGuestModel.h */,
 				398A6D101CAB77D6001A68B1 /* HXGuestModel.m */,
 				CD2949E21CA28D8400CA3C3F /* HXUserModel.h */,
