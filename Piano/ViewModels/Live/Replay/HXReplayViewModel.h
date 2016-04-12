@@ -14,9 +14,9 @@
 @interface HXReplayViewModel : NSObject
 
 @property (nonatomic, strong, readonly) RACCommand *fetchCommentCommand;
-@property (nonatomic, strong, readonly)  RACSignal *reloadCommentSignal;
 
 @property (nonatomic, strong, readonly) HXDiscoveryModel *model;
+@property (nonatomic, assign, readonly)   NSTimeInterval  timeNode;
 
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
 

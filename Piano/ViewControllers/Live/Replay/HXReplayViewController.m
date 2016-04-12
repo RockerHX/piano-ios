@@ -25,6 +25,7 @@ HXReplayBottomBarDelegate
 @implementation HXReplayViewController {
     HXLiveCommentContainerViewController *_containerViewController;
     
+    HXReplayViewModel *_viewModel;
     AVPlayer *_player;
     dispatch_source_t _timer;
     
@@ -74,10 +75,9 @@ HXReplayBottomBarDelegate
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playFinished) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playError) name:AVPlayerItemFailedToPlayToEndTimeNotification object:nil];
     
-    NSURL *url = [NSURL URLWithString:_model.videoUrl];
-    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:url];
-    _player = [AVPlayer playerWithPlayerItem:item];
+    _viewModel = [[HXReplayViewModel alloc] initWithDiscoveryModel:_model];
     
+    [self playerConfigure];
     [self timerConfigure];
 }
 
@@ -86,10 +86,18 @@ HXReplayBottomBarDelegate
     layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     layer.frame = self.view.bounds;
     [self.replayView.layer addSublayer:layer];
+    
+    _bottomBar.duration = _model.duration;
+}
+
+- (void)playerConfigure {
+    NSURL *url = [NSURL URLWithString:_model.videoUrl];
+    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:url];
+    _player = [AVPlayer playerWithPlayerItem:item];
 }
 
 - (void)timerConfigure {
-    uint64_t interval = NSEC_PER_MSEC * 500;
+    uint64_t interval = NSEC_PER_MSEC * 100;
     dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0), interval, 0);
@@ -108,14 +116,15 @@ HXReplayBottomBarDelegate
 
 - (void)playTimeJumped:(NSNotification *)notification {
     AVPlayerItem *playItem = notification.object;
-    if (playItem.duration.value && !_startPlay) {
+    if ((playItem.duration.value > 0) && !_startPlay) {
         _startPlay = YES;
         [self fetchBarrageData];
     }
 }
 
 - (void)playFinished {
-    ;
+    dispatch_source_cancel(_timer);
+    _bottomBar.currentTime = _model.duration;
 }
 
 - (void)playError {
@@ -132,11 +141,21 @@ HXReplayBottomBarDelegate
     CGFloat currentTime = time.value / time.timescale;
     _bottomBar.currentTime = currentTime;
     
-    _bottomBar.duration = _model.duration;
+    if ((currentTime >= _viewModel.timeNode) && _startPlay) {
+        [self fetchBarrageData];
+    }
 }
 
 - (void)fetchBarrageData {
-    ;
+    @weakify(self)
+    RACSignal *fetchCommentSiganl = [_viewModel.fetchCommentCommand execute:nil];
+    [fetchCommentSiganl subscribeError:^(NSError *error) {
+        @strongify(self)
+        [self showBannerWithPrompt:error.domain];
+    } completed:^{
+        @strongify(self)
+        self->_containerViewController.comments = self->_viewModel.comments;
+    }];
 }
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods

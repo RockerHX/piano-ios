@@ -25,7 +25,6 @@
 #pragma mark - Configure Methods
 - (void)initConfigure {
     [self fetchCommentCommandConfigure];
-    [self signalLink];
 }
 
 - (void)fetchCommentCommandConfigure {
@@ -40,15 +39,14 @@
     }];
 }
 
-- (void)signalLink {
-    _reloadCommentSignal = RACObserve(self, comments);
-}
-
 #pragma mark - Private Methods
 - (void)fetchCommentRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper enterRoom:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper getReplyCommentWithRoomID:_model.roomID latitude:0 longitude:0 time:_timeNode completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            [self parseData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+            _timeNode = [data[@"time"] integerValue];
+            [self addComment:data[@"comments"]];
+            
             [subscriber sendCompleted];
         } else {
             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
@@ -58,21 +56,14 @@
     }];
 }
 
-- (void)addWatcher:(NSDictionary *)data {
-//    NSMutableArray *watchers = _watchers.mutableCopy;
-//    if (watchers.count >= WatcherMAX) {
-//        [watchers removeLastObject];
-//    }
-//    
-//    HXWatcherModel *model = [HXWatcherModel mj_objectWithKeyValues:data];
-//    for (HXWatcherModel *watcher in _watchers) {
-//        if ([model.uID isEqualToString:watcher.uID]) {
-//            return;
-//        }
-//    }
-//    
-//    [watchers insertObject:model atIndex:0];
-//    self.watchers = [watchers copy];
+- (void)addComment:(NSDictionary *)datas {
+    NSMutableArray *comments = @[].mutableCopy;
+    for (NSDictionary *data in datas) {
+        HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:data];
+        [comments addObject:model];
+    }
+    
+    self.comments = [comments copy];
 }
 
 @end

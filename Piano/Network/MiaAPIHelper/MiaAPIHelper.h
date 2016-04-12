@@ -166,11 +166,11 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 		   completeBlock:(MiaRequestCompleteBlock)completeBlock
 			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
-+ (void)getReplyComment:(NSString *)roomID
-			   latitude:(double)lat
-			  longitude:(double)lon
-				   time:(long)time
-		  completeBlock:(MiaRequestCompleteBlock)completeBlock
-		   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
++ (void)getReplyCommentWithRoomID:(NSString *)roomID
+                         latitude:(double)lat
+                        longitude:(double)lon
+                             time:(long)time
+                    completeBlock:(MiaRequestCompleteBlock)completeBlock
+                     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 @end
