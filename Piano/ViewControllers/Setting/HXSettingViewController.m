@@ -333,10 +333,9 @@ GenderPickerViewDelegate
             
             [[HXUserSession session] logout];
             [HXAlertBanner showWithMessage:@"退出登录成功" tap:nil];
-            [self shouldLogout];
-			
-#warning @andy 退出登录后应该跳回首页
+            
             [self.navigationController popViewControllerAnimated:NO];
+            [self shouldLogout];
         } else {
             id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
             [HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];

@@ -50,6 +50,9 @@ HXLoginViewControllerDelegate
     [[NSNotificationCenter defaultCenter] removeObserver:self name:WebSocketMgrNotificationDidFailWithError object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:WebSocketMgrNotificationDidAutoReconnectFailed object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:WebSocketMgrNotificationDidCloseWithCode object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kLogoutNotification object:nil];
 }
 
 #pragma mark - Config Methods
@@ -62,6 +65,9 @@ HXLoginViewControllerDelegate
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidFailWithError:) name:WebSocketMgrNotificationDidFailWithError object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidAutoReconnectFailed:) name:WebSocketMgrNotificationDidAutoReconnectFailed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidCloseWithCode:) name:WebSocketMgrNotificationDidCloseWithCode object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginSence) name:kLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutCompleted) name:kLogoutNotification object:nil];
 }
 
 - (void)viewConfigure {
@@ -103,6 +109,11 @@ HXLoginViewControllerDelegate
         __strong __typeof__(self)strongSelf = weakSelf;
         [strongSelf presentViewController:loginNavigationController animated:NO completion:nil];
     }];
+}
+
+- (void)logoutCompleted {
+    self.viewControllers = @[[self.viewControllers firstObject], [self.viewControllers lastObject]];
+    [self setSelectedIndex:0];
 }
 
 - (void)transitionAnimationWithDuration:(CFTimeInterval)duration type:(NSString *)type subtype:(NSString *)subtype transiteCode:(void(^)(void))transiteCode {
