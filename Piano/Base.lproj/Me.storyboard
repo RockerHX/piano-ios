@@ -205,7 +205,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-wK-i5j">
                                             <rect key="frame" x="292" y="18" width="20" height="20"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3x2-et-FqY" userLabel="Bottom Line">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3x2-et-FqY" userLabel="Bottom Line">
                                             <rect key="frame" x="15" y="56" width="305" height="0.0"/>
                                             <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>

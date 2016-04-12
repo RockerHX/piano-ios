@@ -35,8 +35,7 @@
 - (void)setupRowTypes {
     _rowTypes = @[@(HXMeRowTypeHeader),
                   @(HXMeRowTypeRecharge),
-                  @(HXMeRowTypePurchaseHistory),
-                  @(HXMeRowTypeMyStation)];
+                  @(HXMeRowTypePurchaseHistory)];
 }
 
 - (void)fetchDataCommandConfigure {
@@ -72,14 +71,14 @@
 - (void)resetRowType {
     if (_model.attentions.count) {
         NSMutableArray *rowTypes = [_rowTypes mutableCopy];
-        for (NSInteger index = 4; index < _rowTypes.count; index++) {
+        for (NSInteger index = 3; index < _rowTypes.count; index++) {
             HXMeRowType rowType = [_rowTypes[index] integerValue];
             if ((rowType == HXMeRowTypeAttentionPrompt) || (rowType == HXMeRowTypeAttentions)) {
                 return;
             }
         }
-        [rowTypes insertObject:@(HXMeRowTypeAttentionPrompt) atIndex:4];
-        [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:5];
+        [rowTypes insertObject:@(HXMeRowTypeAttentionPrompt) atIndex:3];
+        [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:4];
         _rowTypes = [rowTypes copy];
     }
     _rows = _rowTypes.count;
