@@ -13,6 +13,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "HXReplayViewModel.h"
 #import "UIButton+WebCache.h"
+#import "HXUserSession.h"
 
 
 @interface HXReplayViewController () <
@@ -94,15 +95,24 @@ HXReplayBottomBarDelegate
 }
 
 - (void)sigalLink {
-    @weakify(self)
-    RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
-    [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
-        @strongify(self)
-        self->_anchorView.attented = state.boolValue;
-    } error:^(NSError *error) {
-        @strongify(self)
-        [self showBannerWithPrompt:error.domain];
-    }];
+    switch ([HXUserSession session].state) {
+        case HXUserStateLogout: {
+            return;
+            break;
+        }
+        case HXUserStateLogin: {
+            @weakify(self)
+            RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
+            [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
+                @strongify(self)
+                self->_anchorView.attented = state.boolValue;
+            } error:^(NSError *error) {
+                @strongify(self)
+                [self showBannerWithPrompt:error.domain];
+            }];
+            break;
+        }
+    }
 }
 
 - (void)playerConfigure {
