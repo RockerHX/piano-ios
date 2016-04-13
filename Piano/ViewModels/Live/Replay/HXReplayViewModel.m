@@ -24,6 +24,8 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
+    _comments = @[];
+    
     [self fetchCommentCommandConfigure];
     [self checkAttentionStateCommandConfigure];
     [self takeAttentionCommandConfigure];
@@ -80,6 +82,15 @@
 
 - (NSString *)viewCount {
     return @(_model.viewCount).stringValue;
+}
+
+#pragma mark - Public Methods
+- (void)updateTimeNode:(NSTimeInterval)node {
+    _timeNode = node;
+}
+
+- (void)clearComments {
+    _comments = @[];
 }
 
 #pragma mark - Private Methods
@@ -143,7 +154,7 @@
 }
 
 - (void)addComment:(NSDictionary *)datas {
-    NSMutableArray *comments = @[].mutableCopy;
+    NSMutableArray *comments = [_comments mutableCopy];
     for (NSDictionary *data in datas) {
         HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:data];
         [comments addObject:model];

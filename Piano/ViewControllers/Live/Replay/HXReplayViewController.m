@@ -31,7 +31,7 @@ HXReplayBottomBarDelegate
     AVPlayer *_player;
     dispatch_source_t _timer;
     
-    BOOL _startPlay;
+    BOOL _play;
 }
 
 #pragma mark - Class Methods
@@ -141,19 +141,21 @@ HXReplayBottomBarDelegate
 
 - (void)playTimeJumped:(NSNotification *)notification {
     AVPlayerItem *playItem = notification.object;
-    if ((playItem.duration.value > 0) && !_startPlay) {
-        _startPlay = YES;
+    if ((playItem.duration.value > 0) && !_play) {
+        _play = YES;
         [self fetchBarrageData];
     }
 }
 
 - (void)playFinished {
+    _play = NO;
     dispatch_source_cancel(_timer);
     _bottomBar.currentTime = _model.duration;
 }
 
 - (void)playError {
-    ;
+    _play = NO;
+    dispatch_source_cancel(_timer);
 }
 
 #pragma mark - Private Methods
@@ -166,7 +168,7 @@ HXReplayBottomBarDelegate
     CGFloat currentTime = time.value / time.timescale;
     _bottomBar.currentTime = currentTime;
     
-    if ((currentTime >= _viewModel.timeNode) && _startPlay) {
+    if ((currentTime >= _viewModel.timeNode) && _play) {
         [self fetchBarrageData];
     }
 }
@@ -219,10 +221,12 @@ HXReplayBottomBarDelegate
 - (void)bottomBar:(HXReplayBottomBar *)bar takeAction:(HXReplayBottomBarAction)action {
     switch (action) {
         case HXReplayBottomBarActionPlay: {
+            _play = YES;
             [_player play];
             break;
         }
         case HXReplayBottomBarActionPause: {
+            _play = NO;
             [_player pause];
             break;
         }
@@ -241,8 +245,14 @@ HXReplayBottomBarDelegate
     [_player seekToTime:time completionHandler:^(BOOL finished) {
         @strongify(self)
         if (finished) {
-            self->_viewModel.timeNode = currentTime;
+            [self timerConfigure];
+            [self->_viewModel clearComments];
+            [self->_viewModel updateTimeNode:currentTime];
             [self fetchBarrageData];
+            
+            if (!_play) {
+                [_player play];
+            }
         }
     }];
 }
