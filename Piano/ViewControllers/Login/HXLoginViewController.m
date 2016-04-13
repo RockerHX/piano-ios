@@ -258,6 +258,7 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
     
     [[HXUserSession session] updateUserWithData:data];
     
+    [self dismissLoginSence];
     if (_delegate && [_delegate respondsToSelector:@selector(loginViewController:takeAction:)]) {
         [_delegate loginViewController:self takeAction:HXLoginViewControllerActionLoginSuccess];
     }
