@@ -136,6 +136,9 @@ HXReplayBottomBarDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
+    [_player pause];
+    _player = nil;
+    
     [self dismiss];
 }
 
@@ -239,7 +242,7 @@ HXReplayBottomBarDelegate
 
 - (void)bottomBar:(HXReplayBottomBar *)bar dragProgressBar:(CGFloat)progress {
     NSTimeInterval currentTime = _model.duration * progress;
-    CMTime time = (CMTime){currentTime, 1, 1, 0};
+    CMTime time = CMTimeMake(currentTime, 1);
     
     @weakify(self)
     [_player seekToTime:time completionHandler:^(BOOL finished) {
