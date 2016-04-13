@@ -28,7 +28,9 @@ ZegoVideoDelegate,
 HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate,
 HXPreviewLiveViewControllerDelegate,
-HXLiveEndViewControllerDelegate
+HXLiveEndViewControllerDelegate,
+HXWatcherContainerViewControllerDelegate,
+HXLiveCommentContainerViewControllerDelegate
 >
 @end
 

@@ -117,6 +117,7 @@
 		CD6C198E1CA519A900849B39 /* HXPlayTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19871CA519A900849B39 /* HXPlayTopBar.m */; };
 		CD6C198F1CA519A900849B39 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
 		CD7960831CBDE7FD004CC661 /* HXLiveEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */; };
+		CD7960861CBE39A6004CC661 /* UIViewController+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */; };
 		CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */; };
 		CD858D901CAE68CA007441E9 /* HXProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */; };
 		CD858D961CAE69AD007441E9 /* HXProfileAlbumContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */; };
@@ -405,6 +406,8 @@
 		CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXPlayTopBar.xib; sourceTree = "<group>"; };
 		CD7960811CBDE7FD004CC661 /* HXLiveEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveEndViewController.h; sourceTree = "<group>"; };
 		CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveEndViewController.m; sourceTree = "<group>"; };
+		CD7960841CBE39A6004CC661 /* UIViewController+LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LoginAction.h"; sourceTree = "<group>"; };
+		CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LoginAction.m"; sourceTree = "<group>"; };
 		CD858D8B1CAE68A1007441E9 /* HXProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileHeaderCell.h; sourceTree = "<group>"; };
 		CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileHeaderCell.m; sourceTree = "<group>"; };
 		CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileLiveCell.h; sourceTree = "<group>"; };
@@ -1710,6 +1713,8 @@
 			children = (
 				CDED8EF11CA13BB4003867B8 /* NSObject+LoginAction.h */,
 				CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */,
+				CD7960841CBE39A6004CC661 /* UIViewController+LoginAction.h */,
+				CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */,
 				CDED8EF31CA13BB4003867B8 /* UIView+FindUIViewController.h */,
 				CDED8EF41CA13BB4003867B8 /* UIView+FindUIViewController.m */,
 				CDED8EF51CA13BB4003867B8 /* UIView+Frame.h */,
@@ -2090,6 +2095,7 @@
 				CD2949D41CA28A3500CA3C3F /* UIButton+HXIBnspectable.m in Sources */,
 				CD5F21531CAD1D850067A1DA /* HXLiveCommentViewModel.m in Sources */,
 				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
+				CD7960861CBE39A6004CC661 /* UIViewController+LoginAction.m in Sources */,
 				CD5F215D1CAD2E8B0067A1DA /* HXLiveAnchorView.m in Sources */,
 				CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */,
 				CD23679C1CA93B2F002C8233 /* HXMeRechargeCell.m in Sources */,

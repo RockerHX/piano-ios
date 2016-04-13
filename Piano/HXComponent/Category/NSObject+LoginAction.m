@@ -8,8 +8,10 @@
 
 #import "NSObject+LoginAction.h"
 
+
 NSString *const kLoginNotification   = @"kLoginNotification";
 NSString *const kLogoutNotification  = @"kLogoutNotification";
+
 
 @implementation NSObject (LoginAction)
 
