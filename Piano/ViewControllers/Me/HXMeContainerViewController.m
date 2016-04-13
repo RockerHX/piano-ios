@@ -13,7 +13,6 @@
 #import "HXMeMyStationCell.h"
 #import "HXMeAttentionPromptCell.h"
 #import "HXMeAttentionContainerCell.h"
-#import "HXWatchLiveViewController.h"
 
 
 @interface HXMeContainerViewController () <
@@ -160,15 +159,9 @@ HXMeAttentionContainerCellDelegate
 
 #pragma mark - HXMeAttentionContainerCellDelegate Methods
 - (void)attentionCell:(HXMeAttentionContainerCell *)cell selectedAttention:(HXAttentionModel *)attention {
-    if (!attention.roomID) {
-        [self showBannerWithPrompt:@"直播已结束"];
-        return;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:hanleAttentionAnchor:)]) {
+        [_delegate container:self hanleAttentionAnchor:attention];
     }
-    
-    UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
-    watchLiveViewController.roomID = attention.roomID;
-    [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
 }
 
 @end

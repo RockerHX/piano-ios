@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HXMeViewModel.h"
+#import "HXAttentionModel.h"
 
 
 @class HXMeContainerViewController;
@@ -17,6 +18,7 @@
 
 @required
 - (void)container:(HXMeContainerViewController *)container scrollOffset:(CGFloat)offset;
+- (void)container:(HXMeContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model;
 
 @end
 
