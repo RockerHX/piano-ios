@@ -102,8 +102,7 @@ HXReplayBottomBarDelegate
             @strongify(self)
             self->_anchorView.attented = state.boolValue;
         } error:^(NSError *error) {
-            @strongify(self)
-            [self showBannerWithPrompt:error.domain];
+            NSLog(@"getFollow:%@", error.domain);
         }];
     }
 }
