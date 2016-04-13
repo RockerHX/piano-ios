@@ -39,8 +39,10 @@ HXXibImplementation
 }
 
 - (void)stopRecordTime {
-    dispatch_source_cancel(_timer);
-    _timer = nil;
+    if (_timer) {
+        dispatch_source_cancel(_timer);
+        _timer = nil;
+    }
 }
 
 #pragma mark - Private Methods
