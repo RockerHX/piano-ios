@@ -10,6 +10,7 @@
 #import "FXBlurView.h"
 #import "HXUserSession.h"
 #import "UIImageView+WebCache.h"
+#import "HXLiveModel.h"
 
 
 @interface HXLiveEndViewController ()
@@ -47,12 +48,17 @@
 }
 
 #pragma mark - Property
+- (void)setIsLive:(BOOL)isLive {
+    _isLive = isLive;
+    _countContainerView.hidden = !isLive;
+}
+
 - (void)setSnapShotImage:(UIImage *)snapShotImage {
     _snapShotImage = snapShotImage;
     _blurView.image = [snapShotImage blurredImageWithRadius:30.0f iterations:10 tintColor:[UIColor blackColor]];
     
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl]];
-    _nickNameLabel.text = [HXUserSession session].nickName;
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:(_isLive ? [HXUserSession session].user.avatarUrl : _liveModel.avatarUrl)]];
+    _nickNameLabel.text = (_isLive ? [HXUserSession session].nickName : _liveModel.nickName);
 }
 
 #pragma mark - Private Methods

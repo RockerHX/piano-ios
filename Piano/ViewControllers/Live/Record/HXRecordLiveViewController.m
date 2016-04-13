@@ -65,10 +65,10 @@ HXLiveEndViewControllerDelegate
         _endViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXWatcherContainerViewController class])]) {
         _watcherContianer = segue.destinationViewController;
-        _endViewController.delegate = self;
+        _watcherContianer.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
         _commentContainer = segue.destinationViewController;
-        _endViewController.delegate = self;
+        _commentContainer.delegate = self;
     }
 }
 
@@ -346,10 +346,9 @@ HXLiveEndViewControllerDelegate
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-    ;
-    //    [HXWatcherBoard showWithWatcher:watcher closed:^{
-    //        ;
-    //    }];
+//    [HXWatcherBoard showWithWatcher:watcher closed:^{
+//        ;
+//    }];
 }
 
 @end

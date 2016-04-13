@@ -8,6 +8,8 @@
 
 #import "UIViewController+HXClass.h"
 
+
+@class HXLiveModel;
 @class HXLiveEndViewController;
 
 
@@ -25,12 +27,16 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *blurView;
 @property (weak, nonatomic) IBOutlet      UIView *containerView;
+@property (weak, nonatomic) IBOutlet      UIView *countContainerView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *totalViewCountLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *appendFansCountLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *appendMCurrencyCountLabel;
+
+@property (nonatomic, assign)        BOOL  isLive;
+@property (nonatomic, strong) HXLiveModel *liveModel;
 
 @property (nonatomic, strong) UIImage *snapShotImage;
 
