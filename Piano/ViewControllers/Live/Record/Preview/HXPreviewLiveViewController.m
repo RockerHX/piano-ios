@@ -321,6 +321,7 @@ HXPreviewLiveControlViewDelegate
 	[MiaAPIHelper setRoomCover:fileID roomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 		if (success) {
 			NSLog(@"notify after upload pic success");
+#warning @andy 封面上传成功后的UI更新
 		} else {
 			NSLog(@"notify after upload pic failed:%@", userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
 		}
