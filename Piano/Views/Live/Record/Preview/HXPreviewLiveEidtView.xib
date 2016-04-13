@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="container" destination="iN0-l3-epB" id="eUS-pp-E8p"/>
                 <outlet property="locationLabel" destination="18q-oa-yiU" id="AJb-wp-JZW"/>
+                <outlet property="locationView" destination="wAl-mb-8gl" id="WXK-X5-ZML"/>
                 <outlet property="textField" destination="XkG-eq-l4h" id="ala-Nk-Vmy"/>
             </connections>
         </placeholder>

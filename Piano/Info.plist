@@ -63,5 +63,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Mia音乐将为您推荐你身边的好音乐</string>
 </dict>
 </plist>

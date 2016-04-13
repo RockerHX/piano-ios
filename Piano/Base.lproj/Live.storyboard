@@ -814,6 +814,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="jeh-bw-b7r"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="delegate" destination="lMF-gb-QbS" id="ULf-Rj-l6E"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLU-Bt-fMA" userLabel="Control View" customClass="HXPreviewLiveControlView">
                                         <rect key="frame" x="40" y="388" width="240" height="120"/>

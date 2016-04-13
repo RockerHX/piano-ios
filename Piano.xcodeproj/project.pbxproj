@@ -118,6 +118,7 @@
 		CD6C198F1CA519A900849B39 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
 		CD7960831CBDE7FD004CC661 /* HXLiveEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */; };
 		CD7960861CBE39A6004CC661 /* UIViewController+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */; };
+		CD79608A1CBE4BA1004CC661 /* LocationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960891CBE4BA1004CC661 /* LocationMgr.m */; };
 		CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */; };
 		CD858D901CAE68CA007441E9 /* HXProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */; };
 		CD858D961CAE69AD007441E9 /* HXProfileAlbumContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */; };
@@ -408,6 +409,8 @@
 		CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveEndViewController.m; sourceTree = "<group>"; };
 		CD7960841CBE39A6004CC661 /* UIViewController+LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LoginAction.h"; sourceTree = "<group>"; };
 		CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LoginAction.m"; sourceTree = "<group>"; };
+		CD7960881CBE4BA1004CC661 /* LocationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMgr.h; sourceTree = "<group>"; };
+		CD7960891CBE4BA1004CC661 /* LocationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMgr.m; sourceTree = "<group>"; };
 		CD858D8B1CAE68A1007441E9 /* HXProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileHeaderCell.h; sourceTree = "<group>"; };
 		CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileHeaderCell.m; sourceTree = "<group>"; };
 		CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileLiveCell.h; sourceTree = "<group>"; };
@@ -598,6 +601,7 @@
 		395D67021C9AB15000ED0454 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CD7960871CBE4BA1004CC661 /* LocationMgr */,
 				395D67181C9AB1D700ED0454 /* UserDefaultsUtils */,
 				CD546CFE1CAE9A63009FB2FD /* FormatTimeHelper */,
 				CD91677C1CAE5399000A12DC /* CacheHelper */,
@@ -1409,6 +1413,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		CD7960871CBE4BA1004CC661 /* LocationMgr */ = {
+			isa = PBXGroup;
+			children = (
+				CD7960881CBE4BA1004CC661 /* LocationMgr.h */,
+				CD7960891CBE4BA1004CC661 /* LocationMgr.m */,
+			);
+			path = LocationMgr;
+			sourceTree = "<group>";
+		};
 		CD858D8A1CAE6890007441E9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -2151,6 +2164,7 @@
 				CD2949FF1CA292ED00CA3C3F /* HXNavigationController.m in Sources */,
 				CD5F21691CAD34710067A1DA /* HXWatcherCell.m in Sources */,
 				CD9167891CAE5E6D000A12DC /* HXProfileNavigationBar.m in Sources */,
+				CD79608A1CBE4BA1004CC661 /* LocationMgr.m in Sources */,
 				CD858D901CAE68CA007441E9 /* HXProfileLiveCell.m in Sources */,
 				CD6C19571CA5133300849B39 /* HXRecordLiveViewController.m in Sources */,
 				CD2949D91CA28A3500CA3C3F /* HXIBLabel.m in Sources */,
