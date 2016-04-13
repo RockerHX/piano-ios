@@ -28,7 +28,9 @@ ZegoVideoDelegate,
 HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate,
 HXPreviewLiveViewControllerDelegate,
-HXLiveEndViewControllerDelegate
+HXLiveEndViewControllerDelegate,
+HXWatcherContainerViewControllerDelegate,
+HXLiveCommentContainerViewControllerDelegate
 >
 @end
 
@@ -65,10 +67,10 @@ HXLiveEndViewControllerDelegate
         _endViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXWatcherContainerViewController class])]) {
         _watcherContianer = segue.destinationViewController;
-        _endViewController.delegate = self;
+        _watcherContianer.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
         _commentContainer = segue.destinationViewController;
-        _endViewController.delegate = self;
+        _commentContainer.delegate = self;
     }
 }
 
@@ -109,6 +111,8 @@ HXLiveEndViewControllerDelegate
     //设置回调代理
     [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
     [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
+    
+    [self updateAnchorView];
 }
 
 #pragma mark - Event Response
@@ -346,10 +350,9 @@ HXLiveEndViewControllerDelegate
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-    ;
-    //    [HXWatcherBoard showWithWatcher:watcher closed:^{
-    //        ;
-    //    }];
+//    [HXWatcherBoard showWithWatcher:watcher closed:^{
+//        ;
+//    }];
 }
 
 @end

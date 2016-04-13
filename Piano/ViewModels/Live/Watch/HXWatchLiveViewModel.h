@@ -20,9 +20,12 @@
 
 @property (nonatomic, strong, readonly) RACCommand *enterRoomCommand;
 @property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
+@property (nonatomic, strong, readonly) RACCommand *checkAttentionStateCommand;
+@property (nonatomic, strong, readonly) RACCommand *takeAttentionCommand;
 
 @property (nonatomic, strong) HXLiveModel *model;
 
+@property (nonatomic, assign)               BOOL  anchorAttented;
 @property (nonatomic, strong, readonly) NSString *roomID;
 
 @property (nonatomic, strong, readonly) NSString *anchorAvatar;

@@ -8,6 +8,7 @@
 
 #import "HXReplayViewModel.h"
 #import "MiaAPIHelper.h"
+#import "LocationMgr.h"
 
 
 @implementation HXReplayViewModel
@@ -24,6 +25,8 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
+    _comments = @[];
+    
     [self fetchCommentCommandConfigure];
     [self checkAttentionStateCommandConfigure];
     [self takeAttentionCommandConfigure];
@@ -82,20 +85,31 @@
     return @(_model.viewCount).stringValue;
 }
 
+#pragma mark - Public Methods
+- (void)updateTimeNode:(NSTimeInterval)node {
+    _timeNode = node;
+}
+
+- (void)clearComments {
+    _comments = @[];
+}
+
 #pragma mark - Private Methods
 - (void)fetchCommentRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper getReplyCommentWithRoomID:_model.roomID latitude:0 longitude:0 time:_timeNode completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        if (success) {
-            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
-            _timeNode = [data[@"time"] integerValue];
-            [self addComment:data[@"comments"]];
-            
-            [subscriber sendCompleted];
-        } else {
-            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
-        }
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+    [[LocationMgr standard] startUpdatingLocationWithOnceBlock:^(CLLocationCoordinate2D coordinate, NSString *address) {
+        [MiaAPIHelper getReplyCommentWithRoomID:_model.roomID latitude:coordinate.latitude longitude:coordinate.longitude time:_timeNode completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+            if (success) {
+                NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+                _timeNode = [data[@"time"] integerValue];
+                [self addComment:data[@"comments"]];
+                
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+            }
+        } timeoutBlock:^(MiaRequestItem *requestItem) {
+            [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+        }];
     }];
 }
 
@@ -143,7 +157,7 @@
 }
 
 - (void)addComment:(NSDictionary *)datas {
-    NSMutableArray *comments = @[].mutableCopy;
+    NSMutableArray *comments = [_comments mutableCopy];
     for (NSDictionary *data in datas) {
         HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:data];
         [comments addObject:model];

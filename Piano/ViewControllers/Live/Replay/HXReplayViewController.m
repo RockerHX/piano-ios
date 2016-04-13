@@ -13,6 +13,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "HXReplayViewModel.h"
 #import "UIButton+WebCache.h"
+#import "HXUserSession.h"
 
 
 @interface HXReplayViewController () <
@@ -30,7 +31,7 @@ HXReplayBottomBarDelegate
     AVPlayer *_player;
     dispatch_source_t _timer;
     
-    BOOL _startPlay;
+    BOOL _play;
 }
 
 #pragma mark - Class Methods
@@ -94,14 +95,17 @@ HXReplayBottomBarDelegate
 }
 
 - (void)sigalLink {
-    @weakify(self)
-    RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
-    [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
-        @strongify(self)
-        self->_anchorView.attented = state.boolValue;
-    } error:^(NSError *error) {
-		NSLog(@"getFollow:%@", error.domain);
-    }];
+    if ([HXUserSession session].state == HXUserStateLogin) {
+        @weakify(self)
+        RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
+        [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
+            @strongify(self)
+            self->_anchorView.attented = state.boolValue;
+        } error:^(NSError *error) {
+            @strongify(self)
+            [self showBannerWithPrompt:error.domain];
+        }];
+    }
 }
 
 - (void)playerConfigure {
@@ -130,23 +134,30 @@ HXReplayBottomBarDelegate
 
 - (void)playTimeJumped:(NSNotification *)notification {
     AVPlayerItem *playItem = notification.object;
-    if ((playItem.duration.value > 0) && !_startPlay) {
-        _startPlay = YES;
+    if ((playItem.duration.value > 0) && !_play) {
+        _play = YES;
         [self fetchBarrageData];
     }
 }
 
 - (void)playFinished {
+    _play = NO;
     dispatch_source_cancel(_timer);
     _bottomBar.currentTime = _model.duration;
 }
 
 - (void)playError {
-    ;
+    _play = NO;
+    dispatch_source_cancel(_timer);
 }
 
 #pragma mark - Private Methods
 - (void)dismiss {
+    dispatch_source_cancel(_timer);
+    _play = NO;
+    [_player pause];
+    _player = nil;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -155,7 +166,7 @@ HXReplayBottomBarDelegate
     CGFloat currentTime = time.value / time.timescale;
     _bottomBar.currentTime = currentTime;
     
-    if ((currentTime >= _viewModel.timeNode) && _startPlay) {
+    if ((currentTime >= _viewModel.timeNode) && _play) {
         [self fetchBarrageData];
     }
 }
@@ -191,6 +202,11 @@ HXReplayBottomBarDelegate
             break;
         }
         case HXLiveAnchorViewActionAttention: {
+            if ([HXUserSession session].state == HXUserStateLogout) {
+                [self showLoginSence];
+                return;
+            }
+            
             @weakify(self)
             RACSignal *takeAttentionSiganl = [_viewModel.takeAttentionCommand execute:nil];
             [takeAttentionSiganl subscribeNext:^(NSNumber *state) {
@@ -208,10 +224,12 @@ HXReplayBottomBarDelegate
 - (void)bottomBar:(HXReplayBottomBar *)bar takeAction:(HXReplayBottomBarAction)action {
     switch (action) {
         case HXReplayBottomBarActionPlay: {
+            _play = YES;
             [_player play];
             break;
         }
         case HXReplayBottomBarActionPause: {
+            _play = NO;
             [_player pause];
             break;
         }
@@ -224,14 +242,20 @@ HXReplayBottomBarDelegate
 
 - (void)bottomBar:(HXReplayBottomBar *)bar dragProgressBar:(CGFloat)progress {
     NSTimeInterval currentTime = _model.duration * progress;
-    CMTime time = (CMTime){currentTime, 1, 1, 0};
+    CMTime time = CMTimeMake(currentTime, 1);
     
     @weakify(self)
     [_player seekToTime:time completionHandler:^(BOOL finished) {
         @strongify(self)
         if (finished) {
-            self->_viewModel.timeNode = currentTime;
+            [self timerConfigure];
+            [self->_viewModel clearComments];
+            [self->_viewModel updateTimeNode:currentTime];
             [self fetchBarrageData];
+            
+            if (!_play) {
+                [_player play];
+            }
         }
     }];
 }

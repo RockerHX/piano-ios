@@ -10,6 +10,7 @@
 #import "HXZegoAVKitManager.h"
 #import "HXWatcherContainerViewController.h"
 #import "HXLiveCommentContainerViewController.h"
+#import "HXLiveEndViewController.h"
 #import "HXLiveCommentViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
@@ -26,7 +27,8 @@ ZegoVideoDelegate,
 HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
 HXWatcherContainerViewControllerDelegate,
-HXLiveCommentContainerViewControllerDelegate
+HXLiveCommentContainerViewControllerDelegate,
+HXLiveEndViewControllerDelegate
 >
 @end
 
@@ -34,6 +36,7 @@ HXLiveCommentContainerViewControllerDelegate
 @implementation HXWatchLiveViewController {
     HXWatcherContainerViewController *_watcherContianer;
     HXLiveCommentContainerViewController *_commentContainer;
+    HXLiveEndViewController *_endViewController;
     HXWatchLiveViewModel *_viewModel;
 }
 
@@ -52,10 +55,12 @@ HXLiveCommentContainerViewControllerDelegate
     if ([identifier isEqualToString:NSStringFromClass([HXWatcherContainerViewController class])]) {
         _watcherContianer = segue.destinationViewController;
         _watcherContianer.delegate = self;
-        ;
     } else if ([identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
         _commentContainer = segue.destinationViewController;
         _commentContainer.delegate = self;
+    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
+        _endViewController = segue.destinationViewController;
+        _endViewController.delegate = self;
     }
 }
 
@@ -110,7 +115,7 @@ HXLiveCommentContainerViewControllerDelegate
         self->_watcherContianer.watchers = watchers;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
-        ;
+        [[HXZegoAVKitManager manager].zegoAVApi takeRemoteViewSnapshot];
     }];
     [_viewModel.commentSignal subscribeNext:^(NSArray *comments) {
         @strongify(self)
@@ -147,6 +152,16 @@ HXLiveCommentContainerViewControllerDelegate
     [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
 }
 
+- (void)endLiveWithSnapShotImage:(UIImage *)image {
+    self->_endViewController.isLive = NO;
+    self->_endViewController.liveModel = _viewModel.model;
+    
+    _endViewController.snapShotImage = image;
+    self.endCountContainer.hidden = NO;
+    
+    [self leaveRoom];
+}
+
 - (void)fetchDataFinfished {
     [self roomConfigure];
     [self updateAnchorView];
@@ -171,6 +186,18 @@ HXLiveCommentContainerViewControllerDelegate
     [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:_viewModel.anchorAvatar] forState:UIControlStateNormal];
     _anchorView.nickNameLabel.text = _viewModel.anchorNickName;
     _anchorView.countLabel.text = _viewModel.viewCount;
+    
+    if ([HXUserSession session].state == HXUserStateLogin) {
+        @weakify(self)
+        RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
+        [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
+            @strongify(self)
+            self->_anchorView.attented = state.boolValue;
+        } error:^(NSError *error) {
+            @strongify(self)
+            [self showBannerWithPrompt:error.domain];
+        }];
+    }
 }
 
 #pragma mark - ZegoChatDelegate Methods
@@ -265,17 +292,46 @@ HXLiveCommentContainerViewControllerDelegate
 
 - (void)onSetPublishExtraDataResult:(uint32)errCode zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId dataKey:(NSString*)strDataKey {}
 
-- (void)onTakeRemoteViewSnapshot:(CGImageRef)img {}
+- (void)onTakeRemoteViewSnapshot:(CGImageRef)img {
+    UIImage *snapShotImage = [UIImage imageWithCGImage:img];
+    [self endLiveWithSnapShotImage:snapShotImage];
+}
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
-    ;
+    switch (action) {
+        case HXLiveAnchorViewActionShowAnchor: {
+            ;
+            break;
+        }
+        case HXLiveAnchorViewActionAttention: {
+            if ([HXUserSession session].state == HXUserStateLogout) {
+                [self showLoginSence];
+                return;
+            }
+            
+            @weakify(self)
+            RACSignal *takeAttentionSiganl = [_viewModel.takeAttentionCommand execute:nil];
+            [takeAttentionSiganl subscribeNext:^(NSNumber *state) {
+                anchorView.attented = state.boolValue;
+            } error:^(NSError *error) {
+                @strongify(self)
+                [self showBannerWithPrompt:error.domain];
+            }];
+            break;
+        }
+    }
 }
 
 #pragma mark - HXWatchLiveBottomBarDelegate Methods
 - (void)bottomBar:(HXWatchLiveBottomBar *)bar takeAction:(HXWatchBottomBarAction)action {
+    if ([HXUserSession session].state == HXUserStateLogout) {
+        [self showLoginSence];
+        return;
+    }
+    
     switch (action) {
         case HXWatchBottomBarActionComment: {
             HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
@@ -310,10 +366,14 @@ HXLiveCommentContainerViewControllerDelegate
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-    ;
-    //    [HXWatcherBoard showWithWatcher:watcher closed:^{
-    //        ;
-    //    }];
+//    [HXWatcherBoard showWithWatcher:watcher closed:^{
+//        ;
+//    }];
+}
+
+#pragma mark - HXLiveEndViewControllerDelegate Methods
+- (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -45,6 +45,7 @@ HXMeContainerViewControllerDelegate
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self refresh];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 

@@ -117,17 +117,27 @@
                                     <action selector="closeButtonPressed" destination="k8B-Y3-ojo" eventType="touchUpInside" id="Sfa-KX-THd"/>
                                 </connections>
                             </button>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66e-OW-Cd2" userLabel="End Count Container">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="BL6-gn-Sp7" kind="embed" identifier="HXLiveEndViewController" id="byL-Cj-PN6"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="66e-OW-Cd2" secondAttribute="bottom" id="5lk-gB-xxQ"/>
+                            <constraint firstItem="66e-OW-Cd2" firstAttribute="top" secondItem="43w-fr-l6Q" secondAttribute="top" id="F6G-5k-8xd"/>
                             <constraint firstItem="R38-Wu-TSw" firstAttribute="centerY" secondItem="ZgH-JT-Lsv" secondAttribute="centerY" id="IsN-ag-wU7"/>
                             <constraint firstItem="Weh-Ip-WpZ" firstAttribute="top" secondItem="43w-fr-l6Q" secondAttribute="top" id="Oxb-ql-frS"/>
                             <constraint firstItem="VvH-Rw-RfM" firstAttribute="top" secondItem="HZd-BB-htj" secondAttribute="bottom" id="VFN-ku-RoB"/>
                             <constraint firstAttribute="trailing" secondItem="R38-Wu-TSw" secondAttribute="trailing" constant="10" id="Ycx-b8-XbC"/>
                             <constraint firstItem="VvH-Rw-RfM" firstAttribute="leading" secondItem="43w-fr-l6Q" secondAttribute="leading" id="Zhc-LI-ErS"/>
                             <constraint firstAttribute="trailing" secondItem="VvH-Rw-RfM" secondAttribute="trailing" id="amT-og-shl"/>
+                            <constraint firstItem="66e-OW-Cd2" firstAttribute="leading" secondItem="43w-fr-l6Q" secondAttribute="leading" id="gTp-7n-Ncn"/>
                             <constraint firstAttribute="trailing" secondItem="Weh-Ip-WpZ" secondAttribute="trailing" id="inf-cH-Rtp"/>
                             <constraint firstItem="R38-Wu-TSw" firstAttribute="leading" secondItem="Z1M-qP-dBa" secondAttribute="trailing" constant="8" id="jG8-1Y-maI"/>
+                            <constraint firstAttribute="trailing" secondItem="66e-OW-Cd2" secondAttribute="trailing" id="m53-QB-i0Y"/>
                             <constraint firstItem="Z1M-qP-dBa" firstAttribute="centerY" secondItem="R38-Wu-TSw" secondAttribute="centerY" id="oXc-LV-U6y"/>
                             <constraint firstAttribute="bottom" secondItem="VvH-Rw-RfM" secondAttribute="bottom" id="oa3-DB-pWm"/>
                             <constraint firstAttribute="bottom" secondItem="Weh-Ip-WpZ" secondAttribute="bottom" id="uHO-22-XqT"/>
@@ -139,6 +149,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="anchorView" destination="ZgH-JT-Lsv" id="5mr-sh-6D8"/>
+                        <outlet property="endCountContainer" destination="66e-OW-Cd2" id="xko-Q2-tG5"/>
                         <outlet property="liveView" destination="Weh-Ip-WpZ" id="PSn-R3-edP"/>
                     </connections>
                 </viewController>
@@ -555,20 +566,21 @@
                         <outlet property="avatar" destination="x3G-e8-AmB" id="rIM-cl-0SV"/>
                         <outlet property="blurView" destination="nbv-L1-xji" id="Q15-Sd-kGh"/>
                         <outlet property="containerView" destination="nbR-8c-MP4" id="0DC-sm-n83"/>
+                        <outlet property="countContainerView" destination="n9j-fj-edH" id="d8s-vE-reQ"/>
                         <outlet property="nickNameLabel" destination="x74-7O-8tp" id="GiS-iZ-84c"/>
                         <outlet property="totalViewCountLabel" destination="hwf-D9-Wi4" id="e23-6F-1s3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VwH-3g-9xi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239" y="-331"/>
+            <point key="canvasLocation" x="396" y="-497"/>
         </scene>
         <!--HXWatcherContainerViewController-->
         <scene sceneID="mz6-cH-gQw">
             <objects>
                 <collectionViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TN2-Ac-bQc" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Qdb-8T-INH">
-                        <rect key="frame" x="0.0" y="0.0" width="98" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="gth-QB-cJf">
@@ -802,6 +814,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="jeh-bw-b7r"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="delegate" destination="lMF-gb-QbS" id="ULf-Rj-l6E"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLU-Bt-fMA" userLabel="Control View" customClass="HXPreviewLiveControlView">
                                         <rect key="frame" x="40" y="388" width="240" height="120"/>
@@ -1054,7 +1069,8 @@
         <image name="L-MaskBG" width="375" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rQC-rx-khw"/>
-        <segue reference="HeX-r3-laS"/>
+        <segue reference="O5M-18-fAC"/>
+        <segue reference="byL-Cj-PN6"/>
+        <segue reference="goc-yr-hau"/>
     </inferredMetricsTieBreakers>
 </document>

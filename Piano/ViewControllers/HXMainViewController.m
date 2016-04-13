@@ -66,7 +66,7 @@ HXLoginViewControllerDelegate
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidAutoReconnectFailed:) name:WebSocketMgrNotificationDidAutoReconnectFailed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidCloseWithCode:) name:WebSocketMgrNotificationDidCloseWithCode object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginSence) name:kLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldShowLoginSence) name:kLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutCompleted) name:kLogoutNotification object:nil];
 }
 
@@ -99,45 +99,14 @@ HXLoginViewControllerDelegate
 }
 
 #pragma mark - Private Methods
-- (void)showLoginSence {
-    UINavigationController *loginNavigationController = [HXLoginViewController navigationControllerInstance];
-    HXLoginViewController *loginViewController = loginNavigationController.viewControllers.firstObject;
+- (void)shouldShowLoginSence {
+    HXLoginViewController *loginViewController = [self showLoginSence];
     loginViewController.delegate = self;
-    
-    __weak __typeof__(self)weakSelf = self;
-    [self transitionAnimationWithDuration:0.3f type:kCATransitionMoveIn subtype:kCATransitionFromRight transiteCode:^{
-        __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf presentViewController:loginNavigationController animated:NO completion:nil];
-    }];
 }
 
 - (void)logoutCompleted {
     self.viewControllers = @[[self.viewControllers firstObject], [self.viewControllers lastObject]];
     [self setSelectedIndex:0];
-}
-
-- (void)transitionAnimationWithDuration:(CFTimeInterval)duration type:(NSString *)type subtype:(NSString *)subtype transiteCode:(void(^)(void))transiteCode {
-    if (transiteCode) {
-        [CATransaction begin];
-        
-        CATransition *transition = [CATransition animation];
-        transition.duration = duration;
-        transition.type = type;
-        transition.subtype = subtype;
-        transition.fillMode = kCAFillModeForwards;
-        
-        [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:kCATransition];
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        [CATransaction setCompletionBlock: ^ {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(transition.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^ {
-                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-            });
-        }];
-        
-        transiteCode();
-        
-        [CATransaction commit];
-    }
 }
 
 #pragma mark - Socket
@@ -229,7 +198,7 @@ HXLoginViewControllerDelegate
     
     switch ([HXUserSession session].state) {
         case HXUserStateLogout: {
-            [self showLoginSence];
+            [self shouldShowLoginSence];
             return NO;
             break;
         }
@@ -258,10 +227,6 @@ HXLoginViewControllerDelegate
             break;
         }
     }
-    
-    [self transitionAnimationWithDuration:0.3f type:kCATransitionReveal subtype:kCATransitionFromLeft transiteCode:^{
-        [loginViewController dismissViewControllerAnimated:NO completion:nil];
-    }];
 }
 
 @end

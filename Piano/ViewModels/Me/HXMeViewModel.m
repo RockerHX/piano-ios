@@ -69,8 +69,8 @@
 }
 
 - (void)resetRowType {
+    NSMutableArray *rowTypes = [_rowTypes mutableCopy];
     if (_model.attentions.count) {
-        NSMutableArray *rowTypes = [_rowTypes mutableCopy];
         for (NSInteger index = 3; index < _rowTypes.count; index++) {
             HXMeRowType rowType = [_rowTypes[index] integerValue];
             if ((rowType == HXMeRowTypeAttentionPrompt) || (rowType == HXMeRowTypeAttentions)) {
@@ -79,8 +79,15 @@
         }
         [rowTypes insertObject:@(HXMeRowTypeAttentionPrompt) atIndex:3];
         [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:4];
-        _rowTypes = [rowTypes copy];
+    } else {
+        for (NSInteger index = 3; index < _rowTypes.count; index++) {
+            HXMeRowType rowType = [_rowTypes[index] integerValue];
+            if ((rowType == HXMeRowTypeAttentionPrompt) || (rowType == HXMeRowTypeAttentions)) {
+                [rowTypes removeLastObject];
+            }
+        }
     }
+    _rowTypes = [rowTypes copy];
     _rows = _rowTypes.count;
 }
 

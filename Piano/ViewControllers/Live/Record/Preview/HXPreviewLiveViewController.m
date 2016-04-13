@@ -14,6 +14,7 @@
 #import "HXPreviewLiveEidtView.h"
 #import "HXPreviewLiveControlView.h"
 #import "MiaAPIHelper.h"
+#import "LocationMgr.h"
 
 
 @interface HXPreviewLiveViewController () <
@@ -75,6 +76,7 @@ HXPreviewLiveControlViewDelegate
 
 - (void)viewConfigure {
     [self startPreview];
+    [self startUpdatingLocation];
 }
 
 #pragma mark - Private Methods
@@ -92,6 +94,15 @@ HXPreviewLiveControlViewDelegate
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     [zegoAVApi setLocalView:nil];
     [zegoAVApi stopPreview];
+}
+
+- (void)startUpdatingLocation {
+#warning Eden - Update Location
+    [[LocationMgr standard] startUpdatingLocationWithOnceBlock:^(CLLocationCoordinate2D coordinate, NSString *address) {
+        if (address.length) {
+            _editView.locationLabel.text = address;
+        }
+    }];
 }
 
 - (void)startCountDown {
@@ -168,11 +179,11 @@ HXPreviewLiveControlViewDelegate
             break;
         }
         case HXPreviewLiveEidtViewActionCamera: {
-            ;
+#warning Eden - Preview Camera Action
             break;
         }
         case HXPreviewLiveEidtViewActionLocation: {
-            ;
+            _editView.locationView.hidden = YES;
             break;
         }
     }

@@ -34,10 +34,18 @@ static NSUInteger WatcherMAX = 20;
     _watchers = @[];
     _comments = @[];
     
-    [self notificationConfigure];
     [self signalLink];
+    [self notificationConfigure];
     [self enterRoomCommandConfigure];
     [self leaveRoomCommandConfigure];
+    [self checkAttentionStateCommandConfigure];
+    [self takeAttentionCommandConfigure];
+}
+
+- (void)signalLink {
+    _enterSignal = RACObserve(self, watchers);
+    _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
+    _commentSignal = RACObserve(self, comments);
 }
 
 - (void)notificationConfigure {
@@ -53,12 +61,6 @@ static NSUInteger WatcherMAX = 20;
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addComment:data];
     }];
-}
-
-- (void)signalLink {
-    _enterSignal = RACObserve(self, watchers);
-    _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
-    _commentSignal = RACObserve(self, comments);
 }
 
 - (void)enterRoomCommandConfigure {
@@ -79,6 +81,34 @@ static NSUInteger WatcherMAX = 20;
         RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self)
             [self leaveRoomRequestWithSubscriber:subscriber];
+            return nil;
+        }];
+        return signal;
+    }];
+}
+
+- (void)checkAttentionStateCommandConfigure {
+    @weakify(self)
+    _checkAttentionStateCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self)
+            [self checkAttentionStateRequestWithSubscriber:subscriber];
+            return nil;
+        }];
+        return signal;
+    }];
+}
+
+- (void)takeAttentionCommandConfigure {
+    @weakify(self)
+    _takeAttentionCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self)
+            if (_anchorAttented) {
+                [self unFollowRequestWithSubscriber:subscriber];
+            } else {
+                [self followRequestWithSubscriber:subscriber];
+            }
             return nil;
         }];
         return signal;
@@ -157,6 +187,49 @@ static NSUInteger WatcherMAX = 20;
     for (NSDictionary *watcher in onlineList) {
         [self addWatcher:watcher];
     }
+}
+
+- (void)checkAttentionStateRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+    [MiaAPIHelper getFollowStateWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+            _anchorAttented = [data[@"follow"] boolValue];
+            [subscriber sendNext:@(_anchorAttented)];
+            [subscriber sendCompleted];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+    }];
+}
+
+- (void)followRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+    [MiaAPIHelper followWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            _anchorAttented = YES;
+            [subscriber sendNext:@(_anchorAttented)];
+            [subscriber sendCompleted];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+    }];
+}
+
+- (void)unFollowRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+    [MiaAPIHelper unfollowWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            _anchorAttented = NO;
+            [subscriber sendNext:@(_anchorAttented)];
+            [subscriber sendCompleted];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+    }];
 }
 
 @end
