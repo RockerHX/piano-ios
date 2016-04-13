@@ -35,7 +35,7 @@ HXPreviewLiveControlViewDelegate
     HXCountDownViewController *_countDownViewController;
 
 	UIImage *_uploadingImage;
-	MBProgressHUD *_uploadAvatarProgressHUD;
+	MBProgressHUD *_uploadPictureProgressHUD;
 
     NSString *_roomID;
     NSString *_roomTitle;
@@ -147,7 +147,7 @@ HXPreviewLiveControlViewDelegate
     [self.view endEditing:YES];
 }
 
-- (void)avatarTouchAction {
+- (void)coverTouchAction {
 	UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
 	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
 		imagePickerController.sourceType =  UIImagePickerControllerSourceTypeSavedPhotosAlbum;
@@ -198,7 +198,7 @@ HXPreviewLiveControlViewDelegate
             break;
         }
         case HXPreviewLiveEidtViewActionCamera: {
-			[self avatarTouchAction];
+			[self coverTouchAction];
             break;
         }
         case HXPreviewLiveEidtViewActionLocation: {
@@ -234,7 +234,7 @@ HXPreviewLiveControlViewDelegate
 #pragma mark - UIImagePickerControllerDelegate Methods
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 	[picker dismissViewControllerAnimated:YES completion:nil];
-	if (_uploadAvatarProgressHUD) {
+	if (_uploadPictureProgressHUD) {
 		NSLog(@"Last uploading is still running!!");
 		return;
 	}
@@ -242,8 +242,8 @@ HXPreviewLiveControlViewDelegate
 	//获得编辑过的图片
 	_uploadingImage = [info objectForKey: @"UIImagePickerControllerEditedImage"];
 
-	_uploadAvatarProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"直播封面上传中..."];
-	[MiaAPIHelper getUploadAvatarAuthWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+	_uploadPictureProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"直播封面上传中..."];
+	[MiaAPIHelper getUploadAuthWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 		if (success) {
 			NSString *uploadUrl = userInfo[MiaAPIKey_Values][@"data"][@"url"];
 			NSString *auth = userInfo[MiaAPIKey_Values][@"data"][@"auth"];
@@ -251,7 +251,7 @@ HXPreviewLiveControlViewDelegate
 			NSString *filename = userInfo[MiaAPIKey_Values][@"data"][@"fname"];
 			NSString *fileID = [NSString stringWithFormat:@"%@", userInfo[MiaAPIKey_Values][@"data"][@"fileID"]];
 
-			[self uploadAvatarWithUrl:uploadUrl
+			[self uploadPictureWithUrl:uploadUrl
 								 auth:auth
 						  contentType:contentType
 							 filename:filename
@@ -260,12 +260,12 @@ HXPreviewLiveControlViewDelegate
 		} else {
 			id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
 			[HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
-			[_uploadAvatarProgressHUD removeFromSuperview];
-			_uploadAvatarProgressHUD = nil;
+			[_uploadPictureProgressHUD removeFromSuperview];
+			_uploadPictureProgressHUD = nil;
 		}
 	} timeoutBlock:^(MiaRequestItem *requestItem) {
-		[_uploadAvatarProgressHUD removeFromSuperview];
-		_uploadAvatarProgressHUD = nil;
+		[_uploadPictureProgressHUD removeFromSuperview];
+		_uploadPictureProgressHUD = nil;
 		[HXAlertBanner showWithMessage:@"上传直播封面失败，网络请求超时" tap:nil];
 	}];
 }
@@ -274,7 +274,7 @@ HXPreviewLiveControlViewDelegate
 	[picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)uploadAvatarWithUrl:(NSString *)url
+- (void)uploadPictureWithUrl:(NSString *)url
 					   auth:(NSString *)auth
 				contentType:(NSString *)contentType
 				   filename:(NSString *)filename
@@ -291,8 +291,8 @@ HXPreviewLiveControlViewDelegate
 		float compressionQuality = 0.9f;
 		NSData *imageData;
 
-		const static CGFloat kUploadAvatarMaxSize = 320;
-		UIImage *squareImage = [UIImage imageWithCutImage:image moduleSize:CGSizeMake(kUploadAvatarMaxSize, kUploadAvatarMaxSize)];
+		const static CGFloat kImageMaxSize = 320;
+		UIImage *squareImage = [UIImage imageWithCutImage:image moduleSize:CGSizeMake(kImageMaxSize, kImageMaxSize)];
 		imageData = UIImageJPEGRepresentation(squareImage, compressionQuality);
 		[request setValue:[NSString stringWithFormat:@"%ld", (unsigned long)imageData.length] forHTTPHeaderField:@"Content-Length"];
 
@@ -303,16 +303,16 @@ HXPreviewLiveControlViewDelegate
 		  ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 			  BOOL success = (!error && [data length] == 0);
 			  dispatch_async(dispatch_get_main_queue(), ^{
-				  [self updateAvatarWith:squareImage success:success url:url fileID:fileID];
+				  [self updatePictureWith:squareImage success:success url:url fileID:fileID];
 			  });
 		  }] resume];
 	});
 }
 
-- (void)updateAvatarWith:(UIImage *)avatarImage success:(BOOL)success url:(NSString *)url fileID:(NSString *)fileID {
-	if (_uploadAvatarProgressHUD) {
-		[_uploadAvatarProgressHUD removeFromSuperview];
-		_uploadAvatarProgressHUD = nil;
+- (void)updatePictureWith:(UIImage *)image success:(BOOL)success url:(NSString *)url fileID:(NSString *)fileID {
+	if (_uploadPictureProgressHUD) {
+		[_uploadPictureProgressHUD removeFromSuperview];
+		_uploadPictureProgressHUD = nil;
 	}
 	if (!success) {
 		return;
