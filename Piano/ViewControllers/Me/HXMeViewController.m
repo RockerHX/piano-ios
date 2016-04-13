@@ -10,6 +10,8 @@
 #import "HXMeNavigationBar.h"
 #import "HXMeContainerViewController.h"
 #import "HXSettingViewController.h"
+#import "HXWatchLiveViewController.h"
+#import "HXProfileViewController.h"
 
 
 @interface HXMeViewController () <
@@ -108,6 +110,25 @@ HXMeContainerViewControllerDelegate
 #pragma mark - HXMeContainerViewControllerDelegate Methods
 - (void)container:(HXMeContainerViewController *)container scrollOffset:(CGFloat)offset {
     [_navigationBar showBottomLine:((offset > 0) ? YES : NO)];
+}
+
+- (void)container:(HXMeContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model {
+    if (model.live) {
+        if (!model.roomID) {
+            [self showBannerWithPrompt:@"直播已结束"];
+            return;
+        }
+        
+        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+        watchLiveViewController.roomID = model.roomID;
+        [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+    } else {
+        _shouldHideNavigationBar = YES;
+        HXProfileViewController *profileViewController = [HXProfileViewController instance];
+        profileViewController.uid = model.uID;
+        [self.navigationController pushViewController:profileViewController animated:YES];
+    }
 }
 
 @end

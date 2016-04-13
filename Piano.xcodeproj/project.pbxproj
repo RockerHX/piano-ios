@@ -119,6 +119,191 @@
 		CD7960831CBDE7FD004CC661 /* HXLiveEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */; };
 		CD7960861CBE39A6004CC661 /* UIViewController+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */; };
 		CD79608A1CBE4BA1004CC661 /* LocationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960891CBE4BA1004CC661 /* LocationMgr.m */; };
+		CD79608E1CBE594C004CC661 /* HXSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */; };
+		CD79608F1CBE594C004CC661 /* HXLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72981CA11E02003CDB77 /* HXLiveModel.m */; };
+		CD7960901CBE594C004CC661 /* UIView+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C71CA28A3500CA3C3F /* UIView+HXIBnspectable.m */; };
+		CD7960911CBE594C004CC661 /* HXStoryBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F181CA13BB4003867B8 /* HXStoryBoardManager.m */; };
+		CD7960921CBE594C004CC661 /* HXUserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F401CA15181003867B8 /* HXUserSession.m */; };
+		CD7960931CBE594C004CC661 /* HXIBImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CC1CA28A3500CA3C3F /* HXIBImageView.m */; };
+		CD7960941CBE594C004CC661 /* HXProfileReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858DA71CAE6BCC007441E9 /* HXProfileReplayCell.m */; };
+		CD7960951CBE594C004CC661 /* HXRecordAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */; };
+		CD7960961CBE594C004CC661 /* SingleSongPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E81CAD0543009018C6 /* SingleSongPlayer.m */; };
+		CD7960971CBE594C004CC661 /* HXMeAttentionContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367AE1CA93D51002C8233 /* HXMeAttentionContainerCell.m */; };
+		CD7960981CBE594C004CC661 /* HXProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC831CABD43700476968 /* HXProfileViewModel.m */; };
+		CD7960991CBE594C004CC661 /* HXRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949F41CA2919B00CA3C3F /* HXRegisterViewController.m */; };
+		CD79609A1CBE594C004CC661 /* HXPreviewLiveTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D027A1CB60608000285DC /* HXPreviewLiveTopBar.m */; };
+		CD79609B1CBE594C004CC661 /* HXPlaySummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19801CA519A900849B39 /* HXPlaySummaryView.m */; };
+		CD79609C1CBE594C004CC661 /* UIViewController+HXClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF81CA13BB4003867B8 /* UIViewController+HXClass.m */; };
+		CD79609D1CBE594C004CC661 /* HXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949D01CA28A3500CA3C3F /* HXIBView.m */; };
+		CD79609E1CBE594C004CC661 /* HXIBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CA1CA28A3500CA3C3F /* HXIBButton.m */; };
+		CD79609F1CBE594C004CC661 /* HXRecordBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19501CA4EE8700849B39 /* HXRecordBottomBar.m */; };
+		CD7960A01CBE594C004CC661 /* UIButton+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C31CA28A3500CA3C3F /* UIButton+HXIBnspectable.m */; };
+		CD7960A11CBE594C004CC661 /* HXLiveCommentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21521CAD1D850067A1DA /* HXLiveCommentViewModel.m */; };
+		CD7960A21CBE594C004CC661 /* WebSocketMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FE1C9AB0E800ED0454 /* WebSocketMgr.m */; };
+		CD7960A31CBE594C004CC661 /* UIViewController+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */; };
+		CD7960A41CBE594C004CC661 /* HXLiveAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F215A1CAD2E8B0067A1DA /* HXLiveAnchorView.m */; };
+		CD7960A51CBE594C004CC661 /* HXCaptchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F041CA13BB4003867B8 /* HXCaptchButton.m */; };
+		CD7960A61CBE594C004CC661 /* HXMeRechargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD23679B1CA93B2F002C8233 /* HXMeRechargeCell.m */; };
+		CD7960A71CBE594C004CC661 /* HXMeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367951CA9212B002C8233 /* HXMeViewModel.m */; };
+		CD7960A81CBE594C004CC661 /* HXAlbumsSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AC1CA912790077A17B /* HXAlbumsSongCell.m */; };
+		CD7960A91CBE594C004CC661 /* HXForgotPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949ED1CA2919B00CA3C3F /* HXForgotPWViewController.m */; };
+		CD7960AA1CBE594C004CC661 /* HXAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301061CA8D4ED00C19C32 /* HXAlbumsViewController.m */; };
+		CD7960AB1CBE594C004CC661 /* HXProfileReplayContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D9B1CAE6B24007441E9 /* HXProfileReplayContainerCell.m */; };
+		CD7960AC1CBE594C004CC661 /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */; };
+		CD7960AD1CBE594C004CC661 /* HXLiveCommentContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19401CA4E4AE00849B39 /* HXLiveCommentContainerViewController.m */; };
+		CD7960AE1CBE594C004CC661 /* HXSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4156C61CB39C890060CBE9 /* HXSongModel.m */; };
+		CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C195C1CA5193B00849B39 /* HXPlayViewController.m */; };
+		CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301091CA8D50E00C19C32 /* HXAlbumsContainerViewController.m */; };
+		CD7960B11CBE594C004CC661 /* HXLiveCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F214E1CAD10B80067A1DA /* HXLiveCommentViewController.m */; };
+		CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF3010C1CA8D74700C19C32 /* HXAlbumsViewModel.m */; };
+		CD7960B31CBE594C004CC661 /* MBProgressHUDHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167761CAE5304000A12DC /* MBProgressHUDHelp.m */; };
+		CD7960B41CBE594C004CC661 /* UIImage+ColorToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91677A1CAE534B000A12DC /* UIImage+ColorToImage.m */; };
+		CD7960B51CBE594C004CC661 /* HXDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063011CB3E32700E66F2A /* HXDiscoveryViewController.m */; };
+		CD7960B61CBE594C004CC661 /* HXAlbumsBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367831CA91CFB002C8233 /* HXAlbumsBottomBar.m */; };
+		CD7960B71CBE594C004CC661 /* HXMeMyStationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */; };
+		CD7960B81CBE594C004CC661 /* HXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */; };
+		CD7960B91CBE594C004CC661 /* MiaRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FC1C9AB0E800ED0454 /* MiaRequestItem.m */; };
+		CD7960BA1CBE594C004CC661 /* HXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F071CA13BB4003867B8 /* HXLabel.m */; };
+		CD7960BB1CBE594C004CC661 /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */; };
+		CD7960BC1CBE594C004CC661 /* HXWatcherContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21651CAD2F6A0067A1DA /* HXWatcherContainerViewController.m */; };
+		CD7960BD1CBE594C004CC661 /* HXGuestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A6D101CAB77D6001A68B1 /* HXGuestModel.m */; };
+		CD7960BE1CBE594C004CC661 /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */; };
+		CD7960BF1CBE594C004CC661 /* HXCountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02761CB60189000285DC /* HXCountDownViewController.m */; };
+		CD7960C01CBE594C004CC661 /* GenderPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91676A1CAE528D000A12DC /* GenderPickerView.m */; };
+		CD7960C11CBE594C004CC661 /* NSObject+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */; };
+		CD7960C21CBE594C004CC661 /* HXPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E727F1CA11DE0003CDB77 /* HXPublishViewController.m */; };
+		CD7960C31CBE594C004CC661 /* HXAlbumsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367871CA91CFB002C8233 /* HXAlbumsNavigationBar.m */; };
+		CD7960C41CBE594C004CC661 /* ChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167641CAE524C000A12DC /* ChangePwdViewController.m */; };
+		CD7960C51CBE594C004CC661 /* UIImage+Extrude.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167821CAE5437000A12DC /* UIImage+Extrude.m */; };
+		CD7960C61CBE594C004CC661 /* HXDiscoveryVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0630E1CB3E41000E66F2A /* HXDiscoveryVideoCell.m */; };
+		CD7960C71CBE594C004CC661 /* HXVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F217C1CAD4E3B0067A1DA /* HXVideoModel.m */; };
+		CD7960C81CBE594C004CC661 /* HXWatchLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */; };
+		CD7960C91CBE594C004CC661 /* HXDiscoveryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0631A1CB3E53200E66F2A /* HXDiscoveryViewModel.m */; };
+		CD7960CA1CBE594C004CC661 /* HXAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F001CA13BB4003867B8 /* HXAlertBanner.m */; };
+		CD7960CB1CBE594C004CC661 /* HXProfileAlbumContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */; };
+		CD7960CC1CBE594C004CC661 /* HXProfileAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858DA11CAE6BB0007441E9 /* HXProfileAlbumCell.m */; };
+		CD7960CD1CBE594C004CC661 /* HXRegisterContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949F21CA2919B00CA3C3F /* HXRegisterContainerViewController.m */; };
+		CD7960CE1CBE594C004CC661 /* SongPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451EA1CAD0543009018C6 /* SongPreloader.m */; };
+		CD7960CF1CBE594C004CC661 /* UIView+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB46911CB788FD00ED3A8B /* UIView+Image.m */; };
+		CD7960D01CBE594C004CC661 /* HXProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21711CAD4C3F0067A1DA /* HXProfileModel.m */; };
+		CD7960D11CBE594C004CC661 /* HXMeAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367AB1CA93D19002C8233 /* HXMeAttentionCell.m */; };
+		CD7960D21CBE594C004CC661 /* HXWatchLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */; };
+		CD7960D31CBE594C004CC661 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF61CA13BB4003867B8 /* UIView+Frame.m */; };
+		CD7960D41CBE594C004CC661 /* HXUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949E31CA28D8400CA3C3F /* HXUserModel.m */; };
+		CD7960D51CBE594C004CC661 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
+		CD7960D61CBE594C004CC661 /* HXMePurchaseHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367A11CA93B6B002C8233 /* HXMePurchaseHistoryCell.m */; };
+		CD7960D71CBE594C004CC661 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
+		CD7960D81CBE594C004CC661 /* HXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949FE1CA292ED00CA3C3F /* HXNavigationController.m */; };
+		CD7960D91CBE594C004CC661 /* HXWatcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21681CAD34710067A1DA /* HXWatcherCell.m */; };
+		CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167871CAE5E6D000A12DC /* HXProfileNavigationBar.m */; };
+		CD7960DB1CBE594C004CC661 /* LocationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960891CBE4BA1004CC661 /* LocationMgr.m */; };
+		CD7960DC1CBE594C004CC661 /* HXProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */; };
+		CD7960DD1CBE594C004CC661 /* HXRecordLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19561CA5133300849B39 /* HXRecordLiveViewController.m */; };
+		CD7960DE1CBE594C004CC661 /* HXIBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CE1CA28A3500CA3C3F /* HXIBLabel.m */; };
+		CD7960DF1CBE594C004CC661 /* HXTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F101CA13BB4003867B8 /* HXTextView.m */; };
+		CD7960E01CBE594C004CC661 /* MusicMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E61CAD0543009018C6 /* MusicMgr.m */; };
+		CD7960E11CBE594C004CC661 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451F01CAD05DB009018C6 /* UserSetting.m */; };
+		CD7960E21CBE594C004CC661 /* NSObject+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */; };
+		CD7960E31CBE594C004CC661 /* HXReplayBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19491CA4E7AD00849B39 /* HXReplayBottomBar.m */; };
+		CD7960E41CBE594C004CC661 /* HXPreviewLiveEidtView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02801CB60624000285DC /* HXPreviewLiveEidtView.m */; };
+		CD7960E51CBE594C004CC661 /* PathHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D670E1C9AB19D00ED0454 /* PathHelper.m */; };
+		CD7960E61CBE594C004CC661 /* HXLiveEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */; };
+		CD7960E71CBE594C004CC661 /* HXRecordLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D026F1CB5FB2D000285DC /* HXRecordLiveViewModel.m */; };
+		CD7960E81CBE594C004CC661 /* HXAppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EFB1CA13BB4003867B8 /* HXAppConstants.m */; };
+		CD7960E91CBE594C004CC661 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF41CA13BB4003867B8 /* UIView+FindUIViewController.m */; };
+		CD7960EA1CBE594C004CC661 /* HXLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F0C1CA13BB4003867B8 /* HXLoadingView.m */; };
+		CD7960EB1CBE594C004CC661 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67161C9AB1C500ED0454 /* NSString+MD5.m */; };
+		CD7960EC1CBE594C004CC661 /* HXDiscoveryReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0630C1CB3E41000E66F2A /* HXDiscoveryReplayCell.m */; };
+		CD7960ED1CBE594C004CC661 /* HXMeHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367981CA937EB002C8233 /* HXMeHeaderCell.m */; };
+		CD7960EE1CBE594C004CC661 /* HXProfileVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858DA41CAE6BBD007441E9 /* HXProfileVideoCell.m */; };
+		CD7960EF1CBE594C004CC661 /* HXDiscoveryNewAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063081CB3E41000E66F2A /* HXDiscoveryNewAlbumCell.m */; };
+		CD7960F01CBE594C004CC661 /* HXPreviewLiveControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02831CB60632000285DC /* HXPreviewLiveControlView.m */; };
+		CD7960F11CBE594C004CC661 /* HXFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167661CAE524C000A12DC /* HXFeedBackViewController.m */; };
+		CD7960F21CBE594C004CC661 /* HXLiveCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19451CA4E78000849B39 /* HXLiveCommentCell.m */; };
+		CD7960F31CBE594C004CC661 /* HXIBnsepectableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949D31CA28A3500CA3C3F /* HXIBnsepectableManager.m */; };
+		CD7960F41CBE594C004CC661 /* HXProfileContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC7F1CABD3D200476968 /* HXProfileContainerViewController.m */; };
+		CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949F61CA2919B00CA3C3F /* HXUserTermsViewController.m */; };
+		CD7960F61CBE594C004CC661 /* HXAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B84161CAA90C200B9B1E8 /* HXAttentionModel.m */; };
+		CD7960F71CBE594C004CC661 /* NSTimer+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67061C9AB15000ED0454 /* NSTimer+BlockSupport.m */; };
+		CD7960F81CBE594C004CC661 /* HXReplayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD92AF8E1CBCD8B400106A89 /* HXReplayViewModel.m */; };
+		CD7960F91CBE594C004CC661 /* HXPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F151CA13BB4003867B8 /* HXPathManager.m */; };
+		CD7960FA1CBE594C004CC661 /* MIAButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167711CAE52E7000A12DC /* MIAButton.m */; };
+		CD7960FB1CBE594C004CC661 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
+		CD7960FC1CBE594C004CC661 /* HXAlbumsCommentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDECFF911CBB7F48001EF9DC /* HXAlbumsCommentViewModel.m */; };
+		CD7960FD1CBE594C004CC661 /* HXMeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367911CA91DF9002C8233 /* HXMeContainerViewController.m */; };
+		CD7960FE1CBE594C004CC661 /* HXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */; };
+		CD7960FF1CBE594C004CC661 /* HXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949EF1CA2919B00CA3C3F /* HXLoginViewController.m */; };
+		CD7961001CBE594C004CC661 /* MIALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91676E1CAE52E7000A12DC /* MIALabel.m */; };
+		CD7961011CBE594C004CC661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
+		CD7961021CBE594C004CC661 /* MiaAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66F81C9AB0E800ED0454 /* MiaAPIHelper.m */; };
+		CD7961031CBE594C004CC661 /* HXReplaySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CD92AF8A1CBBAF3300106A89 /* HXReplaySlider.m */; };
+		CD7961041CBE594C004CC661 /* CacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91677E1CAE5399000A12DC /* CacheHelper.m */; };
+		CD7961051CBE594C004CC661 /* HXReplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21801CAD4EE50067A1DA /* HXReplayModel.m */; };
+		CD7961061CBE594C004CC661 /* HXDiscoveryLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063061CB3E41000E66F2A /* HXDiscoveryLiveCell.m */; };
+		CD7961071CBE594C004CC661 /* HXAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21741CAD4C560067A1DA /* HXAlbumModel.m */; };
+		CD7961081CBE594C004CC661 /* HXProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */; };
+		CD7961091CBE594C004CC661 /* HXPlayBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C197C1CA519A900849B39 /* HXPlayBottomBar.m */; };
+		CD79610A1CBE594C004CC661 /* HXWatcherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC861CABF3F000476968 /* HXWatcherModel.m */; };
+		CD79610B1CBE594C004CC661 /* UILabel+HXIBnsepectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m */; };
+		CD79610C1CBE594C004CC661 /* HXDiscoveryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063161CB3E4B600E66F2A /* HXDiscoveryModel.m */; };
+		CD79610D1CBE594C004CC661 /* HXMeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD23678E1CA91D2C002C8233 /* HXMeNavigationBar.m */; };
+		CD79610E1CBE594C004CC661 /* HXLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD294A021CA294B900CA3C3F /* HXLoginViewModel.m */; };
+		CD79610F1CBE594C004CC661 /* HXMeAttentionPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367A41CA93B91002C8233 /* HXMeAttentionPromptCell.m */; };
+		CD7961101CBE594C004CC661 /* HXPreviewLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02731CB5FE49000285DC /* HXPreviewLiveViewController.m */; };
+		CD7961111CBE594C004CC661 /* FileLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D670A1C9AB16B00ED0454 /* FileLog.m */; };
+		CD7961121CBE594C004CC661 /* HXMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F391CA14E74003867B8 /* HXMeViewController.m */; };
+		CD7961131CBE594C004CC661 /* HXWatcherBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1979511CA4E1A900303D27 /* HXWatcherBoard.m */; };
+		CD7961141CBE594C004CC661 /* HXPlayTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19871CA519A900849B39 /* HXPlayTopBar.m */; };
+		CD7961151CBE594C004CC661 /* NSString+IsNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67121C9AB1B700ED0454 /* NSString+IsNull.m */; };
+		CD7961161CBE594C004CC661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
+		CD7961171CBE594C004CC661 /* HXThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F1B1CA13BB4003867B8 /* HXThemeManager.m */; };
+		CD7961181CBE594C004CC661 /* HXVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F1E1CA13BB4003867B8 /* HXVersion.m */; };
+		CD7961191CBE594C004CC661 /* HXZegoAVKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72A61CA11E13003CDB77 /* HXZegoAVKitManager.m */; };
+		CD79611A1CBE594C004CC661 /* HXProfileVideoContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D981CAE6B14007441E9 /* HXProfileVideoContainerCell.m */; };
+		CD79611B1CBE594C004CC661 /* HXAnchorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21781CAD4C930067A1DA /* HXAnchorModel.m */; };
+		CD79611C1CBE594C004CC661 /* HXDiscoveryNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0630A1CB3E41000E66F2A /* HXDiscoveryNormalCell.m */; };
+		CD79611D1CBE594C004CC661 /* HXSettingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72A31CA11E13003CDB77 /* HXSettingSession.m */; };
+		CD79611E1CBE594C004CC661 /* FormatTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */; };
+		CD79611F1CBE594C004CC661 /* HXActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F0A1CA13BB4003867B8 /* HXActivityIndicator.m */; };
+		CD7961201CBE594C004CC661 /* HXDiscoveryContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC062FF1CB3E32700E66F2A /* HXDiscoveryContainerViewController.m */; };
+		CD7961211CBE594C004CC661 /* HXAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD294A061CA294EA00CA3C3F /* HXAccountModel.m */; };
+		CD7961221CBE594C004CC661 /* HXCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4156C91CB39CA30060CBE9 /* HXCommentModel.m */; };
+		CD7961231CBE594C004CC661 /* HXAlbumsCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF087E61CBB41C900147DAA /* HXAlbumsCommentViewController.m */; };
+		CD7961251CBE594C004CC661 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD92AF831CBB9F1000106A89 /* AVFoundation.framework */; };
+		CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */; };
+		CD7961271CBE594C004CC661 /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; };
+		CD7961281CBE594C004CC661 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BFCF29A3BF4A6DA2007B29 /* libPods.a */; };
+		CD79612A1CBE594C004CC661 /* Publish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */; };
+		CD79612B1CBE594C004CC661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
+		CD79612C1CBE594C004CC661 /* HXAlbumsBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2367841CA91CFB002C8233 /* HXAlbumsBottomBar.xib */; };
+		CD79612D1CBE594C004CC661 /* HXPlayBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C197D1CA519A900849B39 /* HXPlayBottomBar.xib */; };
+		CD79612E1CBE594C004CC661 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F301CA13EFD003867B8 /* Profile.storyboard */; };
+		CD79612F1CBE594C004CC661 /* HXWatchLiveBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */; };
+		CD7961301CBE594C004CC661 /* HXLiveAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5F215B1CAD2E8B0067A1DA /* HXLiveAnchorView.xib */; };
+		CD7961311CBE594C004CC661 /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72E91CA11E75003CDB77 /* Discovery.storyboard */; };
+		CD7961321CBE594C004CC661 /* HXWatcherBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1979521CA4E1A900303D27 /* HXWatcherBoard.xib */; };
+		CD7961331CBE594C004CC661 /* HXRecordAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */; };
+		CD7961341CBE594C004CC661 /* HXPreviewLiveTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5D02851CB60682000285DC /* HXPreviewLiveTopBar.xib */; };
+		CD7961351CBE594C004CC661 /* Albums.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF9504A1CA558E300BDB586 /* Albums.storyboard */; };
+		CD7961361CBE594C004CC661 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72E71CA11E75003CDB77 /* Live.storyboard */; };
+		CD7961371CBE594C004CC661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */; };
+		CD7961381CBE594C004CC661 /* HXAlertBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F011CA13BB4003867B8 /* HXAlertBanner.xib */; };
+		CD7961391CBE594C004CC661 /* HXPreviewLiveEidtView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5D02871CB6069B000285DC /* HXPreviewLiveEidtView.xib */; };
+		CD79613A1CBE594C004CC661 /* HXMeNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD23677F1CA91A3B002C8233 /* HXMeNavigationBar.xib */; };
+		CD79613B1CBE594C004CC661 /* HXPlaySummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19811CA519A900849B39 /* HXPlaySummaryView.xib */; };
+		CD79613C1CBE594C004CC661 /* Play.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6C195F1CA5196A00849B39 /* Play.storyboard */; };
+		CD79613D1CBE594C004CC661 /* HXAlbumsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2367881CA91CFB002C8233 /* HXAlbumsNavigationBar.xib */; };
+		CD79613E1CBE594C004CC661 /* HXLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F0D1CA13BB4003867B8 /* HXLoadingView.xib */; };
+		CD79613F1CBE594C004CC661 /* HXPreviewLiveControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5D02891CB606AC000285DC /* HXPreviewLiveControlView.xib */; };
+		CD7961401CBE594C004CC661 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2949E81CA290CB00CA3C3F /* Login.storyboard */; };
+		CD7961411CBE594C004CC661 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */; };
+		CD7961421CBE594C004CC661 /* HXReplayBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C194A1CA4E7AD00849B39 /* HXReplayBottomBar.xib */; };
+		CD7961431CBE594C004CC661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
+		CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
+		CD7961451CBE594C004CC661 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F341CA14D4E003867B8 /* Me.storyboard */; };
+		CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19511CA4EE8700849B39 /* HXRecordBottomBar.xib */; };
+		CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */; };
+		CD79614B1CBE594C004CC661 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */; };
 		CD858D901CAE68CA007441E9 /* HXProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */; };
 		CD858D961CAE69AD007441E9 /* HXProfileAlbumContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */; };
@@ -202,6 +387,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CD4492E71CAAA504005F36B3 /* ZegoAVKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD79614A1CBE594C004CC661 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD79614B1CBE594C004CC661 /* ZegoAVKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +607,8 @@
 		CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LoginAction.m"; sourceTree = "<group>"; };
 		CD7960881CBE4BA1004CC661 /* LocationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMgr.h; sourceTree = "<group>"; };
 		CD7960891CBE4BA1004CC661 /* LocationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMgr.m; sourceTree = "<group>"; };
+		CD79614F1CBE594C004CC661 /* Piano-Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Piano-Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD7961501CBE594C004CC661 /* Info-Beta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Beta.plist"; path = "/Users/miaios/Desktop/piano-ios/Info-Beta.plist"; sourceTree = "<absolute>"; };
 		CD858D8B1CAE68A1007441E9 /* HXProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileHeaderCell.h; sourceTree = "<group>"; };
 		CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileHeaderCell.m; sourceTree = "<group>"; };
 		CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileLiveCell.h; sourceTree = "<group>"; };
@@ -554,6 +752,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CD7961241CBE594C004CC661 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD7961251CBE594C004CC661 /* AVFoundation.framework in Frameworks */,
+				CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */,
+				CD7961271CBE594C004CC661 /* ZegoAVKit.framework in Frameworks */,
+				CD7961281CBE594C004CC661 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD8A9A691C9906CA00698DE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1483,6 +1692,7 @@
 			isa = PBXGroup;
 			children = (
 				CD8A9A6C1C9906CA00698DE9 /* Piano.app */,
+				CD79614F1CBE594C004CC661 /* Piano-Beta.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1509,8 +1719,9 @@
 		CD8A9A6F1C9906CA00698DE9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CD8A9A801C9906CA00698DE9 /* Info.plist */,
 				CD8A9A701C9906CA00698DE9 /* main.m */,
+				CD8A9A801C9906CA00698DE9 /* Info.plist */,
+				CD7961501CBE594C004CC661 /* Info-Beta.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1936,6 +2147,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CD79608B1CBE594C004CC661 /* Piano-Beta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD79614C1CBE594C004CC661 /* Build configuration list for PBXNativeTarget "Piano-Beta" */;
+			buildPhases = (
+				CD79608C1CBE594C004CC661 /* Check Pods Manifest.lock */,
+				CD79608D1CBE594C004CC661 /* Sources */,
+				CD7961241CBE594C004CC661 /* Frameworks */,
+				CD7961291CBE594C004CC661 /* Resources */,
+				CD7961481CBE594C004CC661 /* Embed Pods Frameworks */,
+				CD7961491CBE594C004CC661 /* Copy Pods Resources */,
+				CD79614A1CBE594C004CC661 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Piano-Beta";
+			productName = Piano;
+			productReference = CD79614F1CBE594C004CC661 /* Piano-Beta.app */;
+			productType = "com.apple.product-type.application";
+		};
 		CD8A9A6B1C9906CA00698DE9 /* Piano */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD8A9A831C9906CA00698DE9 /* Build configuration list for PBXNativeTarget "Piano" */;
@@ -1990,11 +2222,49 @@
 			projectRoot = "";
 			targets = (
 				CD8A9A6B1C9906CA00698DE9 /* Piano */,
+				CD79608B1CBE594C004CC661 /* Piano-Beta */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CD7961291CBE594C004CC661 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD79612A1CBE594C004CC661 /* Publish.storyboard in Resources */,
+				CD79612B1CBE594C004CC661 /* LaunchScreen.storyboard in Resources */,
+				CD79612C1CBE594C004CC661 /* HXAlbumsBottomBar.xib in Resources */,
+				CD79612D1CBE594C004CC661 /* HXPlayBottomBar.xib in Resources */,
+				CD79612E1CBE594C004CC661 /* Profile.storyboard in Resources */,
+				CD79612F1CBE594C004CC661 /* HXWatchLiveBottomBar.xib in Resources */,
+				CD7961301CBE594C004CC661 /* HXLiveAnchorView.xib in Resources */,
+				CD7961311CBE594C004CC661 /* Discovery.storyboard in Resources */,
+				CD7961321CBE594C004CC661 /* HXWatcherBoard.xib in Resources */,
+				CD7961331CBE594C004CC661 /* HXRecordAnchorView.xib in Resources */,
+				CD7961341CBE594C004CC661 /* HXPreviewLiveTopBar.xib in Resources */,
+				CD7961351CBE594C004CC661 /* Albums.storyboard in Resources */,
+				CD7961361CBE594C004CC661 /* Live.storyboard in Resources */,
+				CD7961371CBE594C004CC661 /* Assets.xcassets in Resources */,
+				CD7961381CBE594C004CC661 /* HXAlertBanner.xib in Resources */,
+				CD7961391CBE594C004CC661 /* HXPreviewLiveEidtView.xib in Resources */,
+				CD79613A1CBE594C004CC661 /* HXMeNavigationBar.xib in Resources */,
+				CD79613B1CBE594C004CC661 /* HXPlaySummaryView.xib in Resources */,
+				CD79613C1CBE594C004CC661 /* Play.storyboard in Resources */,
+				CD79613D1CBE594C004CC661 /* HXAlbumsNavigationBar.xib in Resources */,
+				CD79613E1CBE594C004CC661 /* HXLoadingView.xib in Resources */,
+				CD79613F1CBE594C004CC661 /* HXPreviewLiveControlView.xib in Resources */,
+				CD7961401CBE594C004CC661 /* Login.storyboard in Resources */,
+				CD7961411CBE594C004CC661 /* Setting.storyboard in Resources */,
+				CD7961421CBE594C004CC661 /* HXReplayBottomBar.xib in Resources */,
+				CD7961431CBE594C004CC661 /* Main.storyboard in Resources */,
+				CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */,
+				CD7961451CBE594C004CC661 /* Me.storyboard in Resources */,
+				CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */,
+				CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD8A9A6A1C9906CA00698DE9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2065,6 +2335,51 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		CD79608C1CBE594C004CC661 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CD7961481CBE594C004CC661 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD7961491CBE594C004CC661 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E33E95F894DF2C3B4E55FE2C /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2083,6 +2398,163 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CD79608D1CBE594C004CC661 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD79608E1CBE594C004CC661 /* HXSettingViewController.m in Sources */,
+				CD79608F1CBE594C004CC661 /* HXLiveModel.m in Sources */,
+				CD7960901CBE594C004CC661 /* UIView+HXIBnspectable.m in Sources */,
+				CD7960911CBE594C004CC661 /* HXStoryBoardManager.m in Sources */,
+				CD7960921CBE594C004CC661 /* HXUserSession.m in Sources */,
+				CD7960931CBE594C004CC661 /* HXIBImageView.m in Sources */,
+				CD7960941CBE594C004CC661 /* HXProfileReplayCell.m in Sources */,
+				CD7960951CBE594C004CC661 /* HXRecordAnchorView.m in Sources */,
+				CD7960961CBE594C004CC661 /* SingleSongPlayer.m in Sources */,
+				CD7960971CBE594C004CC661 /* HXMeAttentionContainerCell.m in Sources */,
+				CD7960981CBE594C004CC661 /* HXProfileViewModel.m in Sources */,
+				CD7960991CBE594C004CC661 /* HXRegisterViewController.m in Sources */,
+				CD79609A1CBE594C004CC661 /* HXPreviewLiveTopBar.m in Sources */,
+				CD79609B1CBE594C004CC661 /* HXPlaySummaryView.m in Sources */,
+				CD79609C1CBE594C004CC661 /* UIViewController+HXClass.m in Sources */,
+				CD79609D1CBE594C004CC661 /* HXIBView.m in Sources */,
+				CD79609E1CBE594C004CC661 /* HXIBButton.m in Sources */,
+				CD79609F1CBE594C004CC661 /* HXRecordBottomBar.m in Sources */,
+				CD7960A01CBE594C004CC661 /* UIButton+HXIBnspectable.m in Sources */,
+				CD7960A11CBE594C004CC661 /* HXLiveCommentViewModel.m in Sources */,
+				CD7960A21CBE594C004CC661 /* WebSocketMgr.m in Sources */,
+				CD7960A31CBE594C004CC661 /* UIViewController+LoginAction.m in Sources */,
+				CD7960A41CBE594C004CC661 /* HXLiveAnchorView.m in Sources */,
+				CD7960A51CBE594C004CC661 /* HXCaptchButton.m in Sources */,
+				CD7960A61CBE594C004CC661 /* HXMeRechargeCell.m in Sources */,
+				CD7960A71CBE594C004CC661 /* HXMeViewModel.m in Sources */,
+				CD7960A81CBE594C004CC661 /* HXAlbumsSongCell.m in Sources */,
+				CD7960A91CBE594C004CC661 /* HXForgotPWViewController.m in Sources */,
+				CD7960AA1CBE594C004CC661 /* HXAlbumsViewController.m in Sources */,
+				CD7960AB1CBE594C004CC661 /* HXProfileReplayContainerCell.m in Sources */,
+				CD7960AC1CBE594C004CC661 /* HXAlbumsCommentCell.m in Sources */,
+				CD7960AD1CBE594C004CC661 /* HXLiveCommentContainerViewController.m in Sources */,
+				CD7960AE1CBE594C004CC661 /* HXSongModel.m in Sources */,
+				CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */,
+				CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */,
+				CD7960B11CBE594C004CC661 /* HXLiveCommentViewController.m in Sources */,
+				CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */,
+				CD7960B31CBE594C004CC661 /* MBProgressHUDHelp.m in Sources */,
+				CD7960B41CBE594C004CC661 /* UIImage+ColorToImage.m in Sources */,
+				CD7960B51CBE594C004CC661 /* HXDiscoveryViewController.m in Sources */,
+				CD7960B61CBE594C004CC661 /* HXAlbumsBottomBar.m in Sources */,
+				CD7960B71CBE594C004CC661 /* HXMeMyStationCell.m in Sources */,
+				CD7960B81CBE594C004CC661 /* HXMainViewController.m in Sources */,
+				CD7960B91CBE594C004CC661 /* MiaRequestItem.m in Sources */,
+				CD7960BA1CBE594C004CC661 /* HXLabel.m in Sources */,
+				CD7960BB1CBE594C004CC661 /* HXAlbumsControlCell.m in Sources */,
+				CD7960BC1CBE594C004CC661 /* HXWatcherContainerViewController.m in Sources */,
+				CD7960BD1CBE594C004CC661 /* HXGuestModel.m in Sources */,
+				CD7960BE1CBE594C004CC661 /* HXAlbumsCommentCountCell.m in Sources */,
+				CD7960BF1CBE594C004CC661 /* HXCountDownViewController.m in Sources */,
+				CD7960C01CBE594C004CC661 /* GenderPickerView.m in Sources */,
+				CD7960C11CBE594C004CC661 /* NSObject+LoginAction.m in Sources */,
+				CD7960C21CBE594C004CC661 /* HXPublishViewController.m in Sources */,
+				CD7960C31CBE594C004CC661 /* HXAlbumsNavigationBar.m in Sources */,
+				CD7960C41CBE594C004CC661 /* ChangePwdViewController.m in Sources */,
+				CD7960C51CBE594C004CC661 /* UIImage+Extrude.m in Sources */,
+				CD7960C61CBE594C004CC661 /* HXDiscoveryVideoCell.m in Sources */,
+				CD7960C71CBE594C004CC661 /* HXVideoModel.m in Sources */,
+				CD7960C81CBE594C004CC661 /* HXWatchLiveViewModel.m in Sources */,
+				CD7960C91CBE594C004CC661 /* HXDiscoveryViewModel.m in Sources */,
+				CD7960CA1CBE594C004CC661 /* HXAlertBanner.m in Sources */,
+				CD7960CB1CBE594C004CC661 /* HXProfileAlbumContainerCell.m in Sources */,
+				CD7960CC1CBE594C004CC661 /* HXProfileAlbumCell.m in Sources */,
+				CD7960CD1CBE594C004CC661 /* HXRegisterContainerViewController.m in Sources */,
+				CD7960CE1CBE594C004CC661 /* SongPreloader.m in Sources */,
+				CD7960CF1CBE594C004CC661 /* UIView+Image.m in Sources */,
+				CD7960D01CBE594C004CC661 /* HXProfileModel.m in Sources */,
+				CD7960D11CBE594C004CC661 /* HXMeAttentionCell.m in Sources */,
+				CD7960D21CBE594C004CC661 /* HXWatchLiveBottomBar.m in Sources */,
+				CD7960D31CBE594C004CC661 /* UIView+Frame.m in Sources */,
+				CD7960D41CBE594C004CC661 /* HXUserModel.m in Sources */,
+				CD7960D51CBE594C004CC661 /* UserDefaultsUtils.m in Sources */,
+				CD7960D61CBE594C004CC661 /* HXMePurchaseHistoryCell.m in Sources */,
+				CD7960D71CBE594C004CC661 /* HXWatchLiveViewController.m in Sources */,
+				CD7960D81CBE594C004CC661 /* HXNavigationController.m in Sources */,
+				CD7960D91CBE594C004CC661 /* HXWatcherCell.m in Sources */,
+				CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */,
+				CD7960DB1CBE594C004CC661 /* LocationMgr.m in Sources */,
+				CD7960DC1CBE594C004CC661 /* HXProfileLiveCell.m in Sources */,
+				CD7960DD1CBE594C004CC661 /* HXRecordLiveViewController.m in Sources */,
+				CD7960DE1CBE594C004CC661 /* HXIBLabel.m in Sources */,
+				CD7960DF1CBE594C004CC661 /* HXTextView.m in Sources */,
+				CD7960E01CBE594C004CC661 /* MusicMgr.m in Sources */,
+				CD7960E11CBE594C004CC661 /* UserSetting.m in Sources */,
+				CD7960E21CBE594C004CC661 /* NSObject+BlockSupport.m in Sources */,
+				CD7960E31CBE594C004CC661 /* HXReplayBottomBar.m in Sources */,
+				CD7960E41CBE594C004CC661 /* HXPreviewLiveEidtView.m in Sources */,
+				CD7960E51CBE594C004CC661 /* PathHelper.m in Sources */,
+				CD7960E61CBE594C004CC661 /* HXLiveEndViewController.m in Sources */,
+				CD7960E71CBE594C004CC661 /* HXRecordLiveViewModel.m in Sources */,
+				CD7960E81CBE594C004CC661 /* HXAppConstants.m in Sources */,
+				CD7960E91CBE594C004CC661 /* UIView+FindUIViewController.m in Sources */,
+				CD7960EA1CBE594C004CC661 /* HXLoadingView.m in Sources */,
+				CD7960EB1CBE594C004CC661 /* NSString+MD5.m in Sources */,
+				CD7960EC1CBE594C004CC661 /* HXDiscoveryReplayCell.m in Sources */,
+				CD7960ED1CBE594C004CC661 /* HXMeHeaderCell.m in Sources */,
+				CD7960EE1CBE594C004CC661 /* HXProfileVideoCell.m in Sources */,
+				CD7960EF1CBE594C004CC661 /* HXDiscoveryNewAlbumCell.m in Sources */,
+				CD7960F01CBE594C004CC661 /* HXPreviewLiveControlView.m in Sources */,
+				CD7960F11CBE594C004CC661 /* HXFeedBackViewController.m in Sources */,
+				CD7960F21CBE594C004CC661 /* HXLiveCommentCell.m in Sources */,
+				CD7960F31CBE594C004CC661 /* HXIBnsepectableManager.m in Sources */,
+				CD7960F41CBE594C004CC661 /* HXProfileContainerViewController.m in Sources */,
+				CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */,
+				CD7960F61CBE594C004CC661 /* HXAttentionModel.m in Sources */,
+				CD7960F71CBE594C004CC661 /* NSTimer+BlockSupport.m in Sources */,
+				CD7960F81CBE594C004CC661 /* HXReplayViewModel.m in Sources */,
+				CD7960F91CBE594C004CC661 /* HXPathManager.m in Sources */,
+				CD7960FA1CBE594C004CC661 /* MIAButton.m in Sources */,
+				CD7960FB1CBE594C004CC661 /* HXReplayViewController.m in Sources */,
+				CD7960FC1CBE594C004CC661 /* HXAlbumsCommentViewModel.m in Sources */,
+				CD7960FD1CBE594C004CC661 /* HXMeContainerViewController.m in Sources */,
+				CD7960FE1CBE594C004CC661 /* HXProfileViewController.m in Sources */,
+				CD7960FF1CBE594C004CC661 /* HXLoginViewController.m in Sources */,
+				CD7961001CBE594C004CC661 /* MIALabel.m in Sources */,
+				CD7961011CBE594C004CC661 /* AppDelegate.m in Sources */,
+				CD7961021CBE594C004CC661 /* MiaAPIHelper.m in Sources */,
+				CD7961031CBE594C004CC661 /* HXReplaySlider.m in Sources */,
+				CD7961041CBE594C004CC661 /* CacheHelper.m in Sources */,
+				CD7961051CBE594C004CC661 /* HXReplayModel.m in Sources */,
+				CD7961061CBE594C004CC661 /* HXDiscoveryLiveCell.m in Sources */,
+				CD7961071CBE594C004CC661 /* HXAlbumModel.m in Sources */,
+				CD7961081CBE594C004CC661 /* HXProfileHeaderCell.m in Sources */,
+				CD7961091CBE594C004CC661 /* HXPlayBottomBar.m in Sources */,
+				CD79610A1CBE594C004CC661 /* HXWatcherModel.m in Sources */,
+				CD79610B1CBE594C004CC661 /* UILabel+HXIBnsepectable.m in Sources */,
+				CD79610C1CBE594C004CC661 /* HXDiscoveryModel.m in Sources */,
+				CD79610D1CBE594C004CC661 /* HXMeNavigationBar.m in Sources */,
+				CD79610E1CBE594C004CC661 /* HXLoginViewModel.m in Sources */,
+				CD79610F1CBE594C004CC661 /* HXMeAttentionPromptCell.m in Sources */,
+				CD7961101CBE594C004CC661 /* HXPreviewLiveViewController.m in Sources */,
+				CD7961111CBE594C004CC661 /* FileLog.m in Sources */,
+				CD7961121CBE594C004CC661 /* HXMeViewController.m in Sources */,
+				CD7961131CBE594C004CC661 /* HXWatcherBoard.m in Sources */,
+				CD7961141CBE594C004CC661 /* HXPlayTopBar.m in Sources */,
+				CD7961151CBE594C004CC661 /* NSString+IsNull.m in Sources */,
+				CD7961161CBE594C004CC661 /* main.m in Sources */,
+				CD7961171CBE594C004CC661 /* HXThemeManager.m in Sources */,
+				CD7961181CBE594C004CC661 /* HXVersion.m in Sources */,
+				CD7961191CBE594C004CC661 /* HXZegoAVKitManager.m in Sources */,
+				CD79611A1CBE594C004CC661 /* HXProfileVideoContainerCell.m in Sources */,
+				CD79611B1CBE594C004CC661 /* HXAnchorModel.m in Sources */,
+				CD79611C1CBE594C004CC661 /* HXDiscoveryNormalCell.m in Sources */,
+				CD79611D1CBE594C004CC661 /* HXSettingSession.m in Sources */,
+				CD79611E1CBE594C004CC661 /* FormatTimeHelper.m in Sources */,
+				CD79611F1CBE594C004CC661 /* HXActivityIndicator.m in Sources */,
+				CD7961201CBE594C004CC661 /* HXDiscoveryContainerViewController.m in Sources */,
+				CD7961211CBE594C004CC661 /* HXAccountModel.m in Sources */,
+				CD7961221CBE594C004CC661 /* HXCommentModel.m in Sources */,
+				CD7961231CBE594C004CC661 /* HXAlbumsCommentViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD8A9A681C9906CA00698DE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2334,6 +2806,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CD79614D1CBE594C004CC661 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F16C66128D5E0919759ABA18 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Piano/Frameworks",
+				);
+				INFOPLIST_FILE = "Info-Beta.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live.Beta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		CD79614E1CBE594C004CC661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4704094A70120BB39E18C473 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Piano/Frameworks",
+				);
+				INFOPLIST_FILE = "Info-Beta.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live.Beta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
 		CD8A9A811C9906CA00698DE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2459,6 +2973,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CD79614C1CBE594C004CC661 /* Build configuration list for PBXNativeTarget "Piano-Beta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD79614D1CBE594C004CC661 /* Debug */,
+				CD79614E1CBE594C004CC661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CD8A9A671C9906CA00698DE9 /* Build configuration list for PBXProject "Piano" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
