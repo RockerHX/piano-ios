@@ -136,9 +136,6 @@ HXReplayBottomBarDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
-    [_player pause];
-    _player = nil;
-    
     [self dismiss];
 }
 
@@ -163,6 +160,11 @@ HXReplayBottomBarDelegate
 
 #pragma mark - Private Methods
 - (void)dismiss {
+    dispatch_source_cancel(_timer);
+    _play = NO;
+    [_player pause];
+    _player = nil;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
