@@ -186,6 +186,18 @@ HXLiveEndViewControllerDelegate
     [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:_viewModel.anchorAvatar] forState:UIControlStateNormal];
     _anchorView.nickNameLabel.text = _viewModel.anchorNickName;
     _anchorView.countLabel.text = _viewModel.viewCount;
+    
+    if ([HXUserSession session].state == HXUserStateLogin) {
+        @weakify(self)
+        RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
+        [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
+            @strongify(self)
+            self->_anchorView.attented = state.boolValue;
+        } error:^(NSError *error) {
+            @strongify(self)
+            [self showBannerWithPrompt:error.domain];
+        }];
+    }
 }
 
 #pragma mark - ZegoChatDelegate Methods
@@ -289,20 +301,35 @@ HXLiveEndViewControllerDelegate
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
-    ;
+    switch (action) {
+        case HXLiveAnchorViewActionShowAnchor: {
+            ;
+            break;
+        }
+        case HXLiveAnchorViewActionAttention: {
+            if ([HXUserSession session].state == HXUserStateLogout) {
+                [self showLoginSence];
+                return;
+            }
+            
+            @weakify(self)
+            RACSignal *takeAttentionSiganl = [_viewModel.takeAttentionCommand execute:nil];
+            [takeAttentionSiganl subscribeNext:^(NSNumber *state) {
+                anchorView.attented = state.boolValue;
+            } error:^(NSError *error) {
+                @strongify(self)
+                [self showBannerWithPrompt:error.domain];
+            }];
+            break;
+        }
+    }
 }
 
 #pragma mark - HXWatchLiveBottomBarDelegate Methods
 - (void)bottomBar:(HXWatchLiveBottomBar *)bar takeAction:(HXWatchBottomBarAction)action {
-    switch ([HXUserSession session].state) {
-        case HXUserStateLogout: {
-            [self showLoginSence];
-            return;
-            break;
-        }
-        case HXUserStateLogin: {
-            break;
-        }
+    if ([HXUserSession session].state == HXUserStateLogout) {
+        [self showLoginSence];
+        return;
     }
     
     switch (action) {

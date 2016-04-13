@@ -26,7 +26,6 @@
 @property (nonatomic, strong, readonly) NSString *anchorNickName;
 @property (nonatomic, strong, readonly) NSString *viewCount;
 
-
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
 
 - (instancetype)initWithDiscoveryModel:(HXDiscoveryModel *)model;
