@@ -109,6 +109,8 @@ HXLiveEndViewControllerDelegate
     //设置回调代理
     [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
     [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
+    
+    [self updateAnchorView];
 }
 
 #pragma mark - Event Response
