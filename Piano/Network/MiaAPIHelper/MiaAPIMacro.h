@@ -120,3 +120,5 @@ static NSString * const MiaAPIKey_Limit						= @"limit";
 
 static NSString * const MiaAPICommand_Musician_Replay_GetComment	= @"Musician.Replay.Get.Comment";
 static NSString * const MiaAPIKey_Time                       		= @"time";
+
+static NSString * const MiaAPICommand_Musician_Replay_PostView		= @"Musician.Replay.Post.View";
