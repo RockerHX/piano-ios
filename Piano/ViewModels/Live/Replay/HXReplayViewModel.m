@@ -96,6 +96,7 @@
 
 #pragma mark - Private Methods
 - (void)fetchCommentRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+	[[LocationMgr standard] initLocationMgr];
     [[LocationMgr standard] startUpdatingLocationWithOnceBlock:^(CLLocationCoordinate2D coordinate, NSString *address) {
         [MiaAPIHelper getReplyCommentWithRoomID:_model.roomID latitude:coordinate.latitude longitude:coordinate.longitude time:_timeNode completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
             if (success) {

@@ -85,10 +85,10 @@
 	[geocoder reverseGeocodeLocation:earthlocation completionHandler:^(NSArray *placemarks,NSError *error) {
 		if (placemarks.count > 0) {
 			CLPlacemark *placemark = [placemarks objectAtIndex:0];
-			NSLog(@"______%@", placemark.name); 					// eg. Apple Inc.
+//			NSLog(@"______%@", placemark.name); 					// eg. Apple Inc.
 //			NSLog(@"______%@", placemark.thoroughfare); 			// street name, eg. Infinite Loop
 //			NSLog(@"______%@", placemark.subThoroughfare); 			// eg. 1
-//			NSLog(@"______%@", placemark.locality); 				// city, eg. Cupertino
+			NSLog(@"______%@", placemark.locality); 				// city, eg. Cupertino
 //			NSLog(@"______%@", placemark.subLocality); 				// neighborhood, common name, eg. Mission District
 //			NSLog(@"______%@", placemark.administrativeArea); 		// state, eg. CA
 //			NSLog(@"______%@", placemark.subAdministrativeArea); 	// county, eg. Santa Clara
@@ -102,20 +102,20 @@
 			}
 
 			_currentCoordinate = earthlocation.coordinate;
-			if ([NSString isNull:placemark.locality] || [NSString isNull:placemark.subLocality]) {
+			if ([NSString isNull:placemark.locality]) {
 				_currentAddress = nil;
             } else {
-//                _currentAddress = [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.subLocality];
-                _currentAddress = placemark.subLocality;
+                _currentAddress = placemark.locality;
+			}
+
+			if (_didUpdateBlock) {
+				_didUpdateBlock(_currentCoordinate, _currentAddress);
+				_didUpdateBlock = nil;
 			}
 		}
 	}];
 
 	[manager stopUpdatingLocation];
-	if (_didUpdateBlock) {
-		_didUpdateBlock(_currentCoordinate, _currentAddress);
-		_didUpdateBlock = nil;
-	}
 }
 
 @end

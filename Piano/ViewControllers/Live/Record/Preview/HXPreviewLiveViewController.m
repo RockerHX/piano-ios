@@ -97,7 +97,7 @@ HXPreviewLiveControlViewDelegate
 }
 
 - (void)startUpdatingLocation {
-#warning Eden - Update Location
+	[[LocationMgr standard] initLocationMgr];
     [[LocationMgr standard] startUpdatingLocationWithOnceBlock:^(CLLocationCoordinate2D coordinate, NSString *address) {
         if (address.length) {
             _editView.locationLabel.text = address;
