@@ -294,6 +294,17 @@ HXLiveEndViewControllerDelegate
 
 #pragma mark - HXWatchLiveBottomBarDelegate Methods
 - (void)bottomBar:(HXWatchLiveBottomBar *)bar takeAction:(HXWatchBottomBarAction)action {
+    switch ([HXUserSession session].state) {
+        case HXUserStateLogout: {
+            [self showLoginSence];
+            return;
+            break;
+        }
+        case HXUserStateLogin: {
+            break;
+        }
+    }
+    
     switch (action) {
         case HXWatchBottomBarActionComment: {
             HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
