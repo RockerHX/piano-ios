@@ -55,7 +55,6 @@ static NSUInteger WatcherMAX = 20;
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addWatcher:data];
     }];
-    [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomComment object:nil] subscribeNext:^(NSNotification *notification) {
         @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
