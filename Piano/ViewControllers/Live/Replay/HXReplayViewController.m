@@ -14,6 +14,7 @@
 #import "HXReplayViewModel.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
+#import <ShareSDKUI/ShareSDKUI.h>
 
 
 @interface HXReplayViewController () <
@@ -234,7 +235,27 @@ HXReplayBottomBarDelegate
             break;
         }
         case HXReplayBottomBarActionShare: {
-            ;
+            //1、创建分享参数（必要）
+            NSMutableDictionary *shareParams = @{}.mutableCopy;
+            [shareParams SSDKSetupShareParamsByText:@"分享内容"
+                                             images:[UIImage imageNamed:@"传入的图片名"]
+                                                url:[NSURL URLWithString:@"http://mob.com"]
+                                              title:@"分享标题"
+                                               type:SSDKContentTypeAuto];
+            
+//            // 定制新浪微博的分享内容
+//            [shareParams SSDKSetupSinaWeiboShareParamsByText:@"定制新浪微博的分享内容" title:nil image:[UIImage imageNamed:@"传入的图片名"] url:nil latitude:0 longitude:0 objectID:nil type:SSDKContentTypeAuto];
+            // 定制微信好友的分享内容
+            [shareParams SSDKSetupWeChatParamsByText:@"定制微信的分享内容" title:@"title" url:[NSURL URLWithString:@"http://mob.com"] thumbImage:nil image:[UIImage imageNamed:@"传入的图片名"] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeAuto forPlatformSubType:SSDKPlatformSubTypeWechatSession];// 微信好友子平台
+            
+            //2、分享
+            [ShareSDK showShareActionSheet:self.view
+                                     items:nil
+                               shareParams:shareParams
+                       onShareStateChanged:
+             ^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                 ;
+             }];
             break;
         }
     }
