@@ -112,9 +112,9 @@
 	
 	//Required
 	if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APPSTORE_BUNDLE_ID]) {
-		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY channel:CHANNEL_APPSTORE apsForProduction:NO];
+		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY_APPSTORE channel:CHANNEL_APPSTORE apsForProduction:NO];
 	} else {
-		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY channel:CHANNEL_FIRIM apsForProduction:NO];
+		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY_ENTERPRISE channel:CHANNEL_FIRIM apsForProduction:NO];
 	}
 
 	NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];

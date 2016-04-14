@@ -17,7 +17,8 @@ NSString *const WeiXinKEY                   = @"wxc9564c8f6dccdb39";
 NSString *const WeiXinSecret                = @"a9b5d159df371388530383b633d28181";
 NSString *const WeiBoKEY                    = @"wx6194bafa9ae065cc";
 
-NSString *const JPUSH_APPKEY                = @"1b77f040954bbd861cc049fa";
+NSString *const JPUSH_APPKEY_ENTERPRISE     = @"1b77f040954bbd861cc049fa";
+NSString *const JPUSH_APPKEY_APPSTORE       = @"4d66751a4666e4262d75d33d";
 
 NSString *const APPSTORE_BUNDLE_ID          = @"com.miamusic.live";
 NSString *const CHANNEL_APPSTORE            = @"appstore";

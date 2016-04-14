@@ -16,7 +16,8 @@ FOUNDATION_EXPORT NSString *const WeiXinKEY;                // 微信SDK对应�
 FOUNDATION_EXPORT NSString *const WeiXinSecret;             // 微信SDK对应的AppSecret
 FOUNDATION_EXPORT NSString *const WeiBoKEY;                 // 微博SDK对应的APPKEY
 
-FOUNDATION_EXPORT NSString *const JPUSH_APPKEY;
+FOUNDATION_EXPORT NSString *const JPUSH_APPKEY_ENTERPRISE;
+FOUNDATION_EXPORT NSString *const JPUSH_APPKEY_APPSTORE;
 
 FOUNDATION_EXPORT NSString *const APPSTORE_BUNDLE_ID;
 FOUNDATION_EXPORT NSString *const CHANNEL_APPSTORE;
