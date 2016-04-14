@@ -24,6 +24,7 @@
 #import "MusicMgr.h"
 #import "JPUSHService.h"
 #import "NSString+IsNull.h"
+#import "HXMainViewController.h"
 
 
 @interface AppDelegate ()
@@ -34,7 +35,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
+    
 	//启用远程控制事件接收
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 	// 默认用户配置
@@ -121,7 +122,7 @@
 	if (remoteNotification) {
 		[self handleNotification:remoteNotification];
 	}
-
+    
 	return YES;
 }
 
@@ -202,8 +203,9 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 	}
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
-#warning andy
 		NSLog(@"%@ with roomID: %@", action, param1);
+        HXMainViewController *mainViewController = (HXMainViewController *)self.window.rootViewController;
+        [mainViewController watchLiveWithRoomID:param1];
 	}
 }
 

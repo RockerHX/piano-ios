@@ -18,6 +18,7 @@
 #import "HXUserSession.h"
 #import "FileLog.h"
 #import "UIView+Frame.h"
+#import "HXWatchLiveViewController.h"
 
 @interface HXMainViewController () <
 UITabBarControllerDelegate,
@@ -30,7 +31,6 @@ HXLoginViewControllerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -96,6 +96,14 @@ HXLoginViewControllerDelegate
     for (UITabBarItem *item in self.tabBar.items) {
         item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     }
+}
+
+#pragma mark - Public Methods
+- (void)watchLiveWithRoomID:(NSString *)roomID {
+    UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+    watchLiveViewController.roomID = roomID;
+    [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
 }
 
 #pragma mark - Private Methods

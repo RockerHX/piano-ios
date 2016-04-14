@@ -11,4 +11,6 @@
 
 @interface HXMainViewController : UITabBarController
 
+- (void)watchLiveWithRoomID:(NSString *)roomID;
+
 @end
