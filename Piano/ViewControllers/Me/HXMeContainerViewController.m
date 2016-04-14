@@ -16,6 +16,7 @@
 
 
 @interface HXMeContainerViewController () <
+HXMeHeaderCellDelegate,
 HXMeAttentionContainerCellDelegate
 >
 @end
@@ -154,6 +155,28 @@ HXMeAttentionContainerCellDelegate
         default: {
             break;
         }
+    }
+}
+
+#pragma mark - HXMeHeaderCellDelegate Methods
+- (void)headerCell:(HXMeHeaderCell *)cell takeAction:(HXMeHeaderCellAction)action {
+    HXMeContainerAction containerAction;
+    switch (action) {
+        case HXMeHeaderCellActionAvatarTaped: {
+            containerAction = HXMeContainerActionAvatarTaped;
+            break;
+        }
+        case HXMeHeaderCellActionNickNameTaped: {
+            containerAction = HXMeContainerActionAvatarTaped;
+            break;
+        }
+        case HXMeHeaderCellActionSummaryTaped: {
+            containerAction = HXMeContainerActionAvatarTaped;
+            break;
+        }
+    }
+    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
+        [_delegate container:self takeAction:containerAction];
     }
 }
 

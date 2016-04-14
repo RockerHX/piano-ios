@@ -71,7 +71,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="41t-Ft-TIu" customClass="HXIBImageView">
+                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="41t-Ft-TIu" customClass="HXIBImageView">
                                             <rect key="frame" x="124" y="28" width="72" height="72"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -142,6 +142,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatar" destination="41t-Ft-TIu" id="ina-Ke-PJ5"/>
+                                    <outlet property="delegate" destination="SJM-b9-tbN" id="UlO-nE-CKw"/>
                                     <outlet property="nickNameLabel" destination="TbO-yS-D7G" id="PaA-ca-tFD"/>
                                     <outlet property="summaryLabel" destination="Yio-Pu-KZk" id="azi-hH-1pD"/>
                                 </connections>
@@ -165,7 +166,7 @@
                                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="Quk-Bb-aio">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="Quk-Bb-aio">
                                             <rect key="frame" x="292" y="18" width="20" height="20"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6U-Pj-7C6" userLabel="Bottom Line">
@@ -202,7 +203,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-wK-i5j">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-wK-i5j">
                                             <rect key="frame" x="292" y="18" width="20" height="20"/>
                                         </imageView>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3x2-et-FqY" userLabel="Bottom Line">
@@ -237,7 +238,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-Dw-p1I">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="C-ArrowIcon-Right-Gray" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-Dw-p1I">
                                             <rect key="frame" x="292" y="18" width="20" height="20"/>
                                         </imageView>
                                     </subviews>

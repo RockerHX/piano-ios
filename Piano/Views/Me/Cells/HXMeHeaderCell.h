@@ -10,7 +10,27 @@
 #import "HXProfileModel.h"
 
 
+typedef NS_ENUM(NSUInteger, HXMeHeaderCellAction) {
+    HXMeHeaderCellActionAvatarTaped,
+    HXMeHeaderCellActionNickNameTaped,
+    HXMeHeaderCellActionSummaryTaped,
+};
+
+
+@class HXMeHeaderCell;
+
+
+@protocol HXMeHeaderCellDelegate <NSObject>
+
+@required
+- (void)headerCell:(HXMeHeaderCell *)cell takeAction:(HXMeHeaderCellAction)action;
+
+@end
+
+
 @interface HXMeHeaderCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet          id  <HXMeHeaderCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;

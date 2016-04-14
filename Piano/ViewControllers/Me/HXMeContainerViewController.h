@@ -11,6 +11,13 @@
 #import "HXAttentionModel.h"
 
 
+typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
+    HXMeContainerActionAvatarTaped,
+    HXMeContainerActionNickNameTaped,
+    HXMeContainerActionSummaryTaped,
+};
+
+
 @class HXMeContainerViewController;
 
 
@@ -19,6 +26,7 @@
 @required
 - (void)container:(HXMeContainerViewController *)container scrollOffset:(CGFloat)offset;
 - (void)container:(HXMeContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model;
+- (void)container:(HXMeContainerViewController *)container takeAction:(HXMeContainerAction)action;
 
 @end
 

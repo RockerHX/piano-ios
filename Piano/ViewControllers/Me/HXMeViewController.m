@@ -12,6 +12,7 @@
 #import "HXSettingViewController.h"
 #import "HXWatchLiveViewController.h"
 #import "HXProfileViewController.h"
+#import "HXUserSession.h"
 
 
 @interface HXMeViewController () <
@@ -130,6 +131,28 @@ HXMeContainerViewControllerDelegate
         HXProfileViewController *profileViewController = [HXProfileViewController instance];
         profileViewController.uid = model.uID;
         [self.navigationController pushViewController:profileViewController animated:YES];
+    }
+}
+
+- (void)container:(HXMeContainerViewController *)container takeAction:(HXMeContainerAction)action {
+    switch (action) {
+        case HXMeContainerActionAvatarTaped: {
+            if ([HXUserSession session].role == HXUserRoleAnchor) {
+                _shouldHideNavigationBar = YES;
+                HXProfileViewController *profileViewController = [HXProfileViewController instance];
+                profileViewController.uid = _viewModel.model.uid;
+                [self.navigationController pushViewController:profileViewController animated:YES];
+            }
+            break;
+        }
+        case HXMeContainerActionNickNameTaped: {
+            ;
+            break;
+        }
+        case HXMeContainerActionSummaryTaped: {
+            ;
+            break;
+        }
     }
 }
 
