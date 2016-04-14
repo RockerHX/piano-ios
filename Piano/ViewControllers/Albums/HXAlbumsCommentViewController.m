@@ -59,7 +59,9 @@
         [self showBannerWithPrompt:message];
     } error:^(NSError *error) {
         @strongify(self)
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         if (_delegate && [_delegate respondsToSelector:@selector(commentViewControllerCompleted:)]) {

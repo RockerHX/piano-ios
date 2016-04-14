@@ -68,7 +68,9 @@ HXProfileContainerViewControllerDelegate
     [fetchSignal subscribeError:^(NSError *error) {
         @strongify(self)
         [self hiddenHUD];
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         [self hiddenHUD];

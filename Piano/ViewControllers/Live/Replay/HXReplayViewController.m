@@ -104,7 +104,9 @@ HXReplayBottomBarDelegate
             self->_anchorView.attented = state.boolValue;
         } error:^(NSError *error) {
             @strongify(self)
-            [self showBannerWithPrompt:error.domain];
+            if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+                [self showBannerWithPrompt:error.domain];
+            }
         }];
     }
 }
@@ -177,7 +179,9 @@ HXReplayBottomBarDelegate
     RACSignal *fetchCommentSiganl = [_viewModel.fetchCommentCommand execute:nil];
     [fetchCommentSiganl subscribeError:^(NSError *error) {
         @strongify(self)
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         self->_containerViewController.comments = self->_viewModel.comments;
@@ -214,7 +218,9 @@ HXReplayBottomBarDelegate
                 anchorView.attented = state.boolValue;
             } error:^(NSError *error) {
                 @strongify(self)
-                [self showBannerWithPrompt:error.domain];
+                if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+                    [self showBannerWithPrompt:error.domain];
+                }
             }];
             break;
         }

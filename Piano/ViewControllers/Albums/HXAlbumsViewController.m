@@ -69,7 +69,9 @@ HXAlbumsCommentViewControllerDelegate
     [fetchSignal subscribeError:^(NSError *error) {
         @strongify(self)
         [self hiddenHUD];
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         [self hiddenHUD];
@@ -164,7 +166,9 @@ HXAlbumsCommentViewControllerDelegate
     RACSignal *moreCommentSignal = [_viewModel.moreCommentCommand execute:nil];
     [moreCommentSignal subscribeError:^(NSError *error) {
         @strongify(self)
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         [self->_containerViewController endFetch];
@@ -178,7 +182,9 @@ HXAlbumsCommentViewControllerDelegate
     RACSignal *reloadCommentSignal = [_viewModel.reloadCommentCommand execute:nil];
     [reloadCommentSignal subscribeError:^(NSError *error) {
         @strongify(self)
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         [self->_containerViewController refresh];
