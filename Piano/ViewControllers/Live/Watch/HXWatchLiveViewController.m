@@ -188,6 +188,7 @@ HXLiveEndViewControllerDelegate
     [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:_viewModel.anchorAvatar] forState:UIControlStateNormal];
     _anchorView.nickNameLabel.text = _viewModel.anchorNickName;
     _anchorView.countLabel.text = _viewModel.viewCount;
+    _anchorView.ownside = [[HXUserSession session].uid isEqualToString:_viewModel.model.uID];
     
     if ([HXUserSession session].state == HXUserStateLogin) {
         @weakify(self)

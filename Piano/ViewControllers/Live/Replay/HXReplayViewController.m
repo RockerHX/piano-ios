@@ -96,7 +96,7 @@ HXReplayBottomBarDelegate
 }
 
 - (void)sigalLink {
-    if ([HXUserSession session].state == HXUserStateLogin) {
+    if (([HXUserSession session].state == HXUserStateLogin) && ![[HXUserSession session].uid isEqualToString:_viewModel.model.uID]) {
         @weakify(self)
         RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
         [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
@@ -192,6 +192,7 @@ HXReplayBottomBarDelegate
     [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:_viewModel.anchorAvatar] forState:UIControlStateNormal];
     _anchorView.nickNameLabel.text = _viewModel.anchorNickName;
     _anchorView.countLabel.text = _viewModel.viewCount;
+    _anchorView.ownside = [[HXUserSession session].uid isEqualToString:_viewModel.model.uID];
 }
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods

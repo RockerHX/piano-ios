@@ -20,6 +20,13 @@ HXXibImplementation
     [_attentionButton setImage:[UIImage imageNamed:(attented ? @"L-AttentedIcon" : @"L-AddAttentionIcon")] forState:UIControlStateNormal];
 }
 
+- (void)setOwnside:(BOOL)ownside {
+    _ownside = ownside;
+    if (ownside) {
+        _attentionButtonWidthConstraint.constant = 0.0f;
+    }
+}
+
 #pragma mark - Event Response
 - (IBAction)avatarButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(anchorView:takeAction:)]) {
