@@ -92,8 +92,8 @@ HXPreviewLiveControlViewDelegate
 
 - (void)stopPreview {
     ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-    [zegoAVApi setLocalView:nil];
     [zegoAVApi stopPreview];
+    [zegoAVApi setLocalView:nil];
 }
 
 - (void)startUpdatingLocation {
