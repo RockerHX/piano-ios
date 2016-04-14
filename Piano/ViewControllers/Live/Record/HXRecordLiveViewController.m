@@ -20,6 +20,7 @@
 #import "HXLiveCommentViewController.h"
 #import "HXRecordLiveViewModel.h"
 #import "UIButton+WebCache.h"
+#import "HXWatcherBoard.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -350,14 +351,16 @@ HXLiveCommentContainerViewControllerDelegate
 
 #pragma mark - HXWatcherContainerViewControllerDelegate Methods
 - (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
-    ;
+    [HXWatcherBoard showWithWatcher:watcher gaged:^{
+        ;
+    } closed:^{
+        ;
+    }];
 }
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-//    [HXWatcherBoard showWithWatcher:watcher closed:^{
-//        ;
-//    }];
+    ;
 }
 
 @end

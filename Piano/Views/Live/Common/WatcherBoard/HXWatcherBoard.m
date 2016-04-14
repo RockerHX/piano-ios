@@ -8,12 +8,16 @@
 
 #import "HXWatcherBoard.h"
 #import "AppDelegate.h"
+#import "HXWatcherModel.h"
+#import "UIImageView+WebCache.h"
 
 typedef void(^BLOCK)(void);
 
 @implementation HXWatcherBoard {
     BLOCK _closedBlock;
     BLOCK _gagedBlock;
+    
+    HXWatcherModel *_watcher;
 }
 
 #pragma mark - Initialize Methods
@@ -60,39 +64,43 @@ typedef void(^BLOCK)(void);
 }
 
 #pragma mark - Public Methods
-+ (instancetype)show {
++ (instancetype)showWithWatcher:(HXWatcherModel *)watcher {
     HXWatcherBoard *board = [[[NSBundle mainBundle] loadNibNamed:@"HXWatcherBoard" owner:self options:nil] firstObject];
+    [board updateWithWatcher:watcher];
     [board showBoard];
     return board;
 }
 
-+ (instancetype)showWithWatcher:(id)watcher closed:(void(^)(void))closed {
-    HXWatcherBoard *board = [HXWatcherBoard show];
++ (instancetype)showWithWatcher:(HXWatcherModel *)watcher closed:(void(^)(void))closed {
+    HXWatcherBoard *board = [self showWithWatcher:watcher gaged:nil closed:closed];
     board.gagButton.hidden = YES;
-    board->_closedBlock = closed;
-    [board updateWithWatcher:watcher];
+    board.signatureLabel.hidden = NO;
     return board;
 }
 
-+ (instancetype)showWithWatcher:(id)watcher gaged:(void(^)(void))gaged closed:(void(^)(void))closed {
-    HXWatcherBoard *board = [HXWatcherBoard show];
++ (instancetype)showWithWatcher:(HXWatcherModel *)watcher gaged:(void(^)(void))gaged closed:(void(^)(void))closed {
+    HXWatcherBoard *board = [HXWatcherBoard showWithWatcher:watcher];
+    board.gagButton.hidden = NO;
     board.signatureLabel.hidden = YES;
     board->_gagedBlock = gaged;
     board->_closedBlock = closed;
-    [board updateWithWatcher:watcher];
     return board;
 }
 
 #pragma mark - Private Methods
 - (void)showBoard {
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIWindow *mainWindow = delegate.window;
     self.frame = mainWindow.frame;
     [mainWindow addSubview:self];
 }
 
-- (void)updateWithWatcher:(id)watcher {
-    ;
+- (void)updateWithWatcher:(HXWatcherModel *)watcher {
+    _watcher = watcher;
+    
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:watcher.avatarUrl]];
+    _nickNameLabel.text = watcher.nickName;
+    _signatureLabel.text = watcher.signature;
 }
 
 - (void)dismiss {

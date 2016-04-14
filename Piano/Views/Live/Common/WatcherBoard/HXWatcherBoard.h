@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
+@class HXWatcherModel;
+
+
 @interface HXWatcherBoard : UIView
 
 @property (weak, nonatomic) IBOutlet      UIView *summaryContainer;
@@ -20,8 +23,8 @@
 - (IBAction)closeButtonPressed;
 - (IBAction)gagButtonPressed;
 
-+ (instancetype)show;
-+ (instancetype)showWithWatcher:(id)watcher closed:(void(^)(void))closed;
-+ (instancetype)showWithWatcher:(id)watcher gaged:(void(^)(void))gaged closed:(void(^)(void))closed;
++ (instancetype)showWithWatcher:(HXWatcherModel *)watcher;
++ (instancetype)showWithWatcher:(HXWatcherModel *)watcher closed:(void(^)(void))closed;
++ (instancetype)showWithWatcher:(HXWatcherModel *)watcher gaged:(void(^)(void))gaged closed:(void(^)(void))closed;
 
 @end
