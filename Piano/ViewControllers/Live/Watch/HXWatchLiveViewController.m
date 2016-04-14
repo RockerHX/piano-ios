@@ -125,7 +125,9 @@ HXLiveEndViewControllerDelegate
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
         @strongify(self)
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         [self fetchDataFinfished];
@@ -195,7 +197,9 @@ HXLiveEndViewControllerDelegate
             self->_anchorView.attented = state.boolValue;
         } error:^(NSError *error) {
             @strongify(self)
-            [self showBannerWithPrompt:error.domain];
+            if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+                [self showBannerWithPrompt:error.domain];
+            }
         }];
     }
 }
@@ -318,7 +322,9 @@ HXLiveEndViewControllerDelegate
                 anchorView.attented = state.boolValue;
             } error:^(NSError *error) {
                 @strongify(self)
-                [self showBannerWithPrompt:error.domain];
+                if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+                    [self showBannerWithPrompt:error.domain];
+                }
             }];
             break;
         }

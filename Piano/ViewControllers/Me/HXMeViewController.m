@@ -87,7 +87,9 @@ HXMeContainerViewControllerDelegate
     RACSignal *fetchSignal = [self.viewModel.fetchCommand execute:nil];
     [fetchSignal subscribeError:^(NSError *error) {
         @strongify(self)
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         [self hiddenHUD];

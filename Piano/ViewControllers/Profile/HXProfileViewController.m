@@ -10,6 +10,7 @@
 #import "HXProfileNavigationBar.h"
 #import "HXProfileContainerViewController.h"
 #import "HXAlbumsViewController.h"
+#import "HXReplayViewController.h"
 
 
 @interface HXProfileViewController () <
@@ -68,7 +69,9 @@ HXProfileContainerViewControllerDelegate
     [fetchSignal subscribeError:^(NSError *error) {
         @strongify(self)
         [self hiddenHUD];
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
     } completed:^{
         @strongify(self)
         [self hiddenHUD];
@@ -108,7 +111,10 @@ HXProfileContainerViewControllerDelegate
 }
 
 - (void)container:(HXProfileContainerViewController *)container selectedReplay:(HXReplayModel *)replay {
-    
+    UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
+    HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
+    replayViewController.model = [HXDiscoveryModel createWithReplayModel:replay];
+    [self presentViewController:replayNaviagtionController animated:YES completion:nil];
 }
 
 @end

@@ -15,6 +15,7 @@
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"nickName": @"nick",
             @"viewCount": @"viewCnt",
+            @"avatarUrl": @"picUrl",
            @"createDate": @"createTIme"};
 }
 

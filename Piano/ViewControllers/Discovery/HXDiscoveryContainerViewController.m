@@ -54,7 +54,9 @@ HXDiscoveryNormalCellDelegate
     RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
     [requestSiganl subscribeError:^(NSError *error) {
         @strongify(self)
-        [self showBannerWithPrompt:error.domain];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
         [self endLoad];
     } completed:^{
         @strongify(self)

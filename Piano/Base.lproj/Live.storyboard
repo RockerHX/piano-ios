@@ -580,7 +580,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="HXWatcherContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TN2-Ac-bQc" userLabel="HXWatcherContainerViewController" customClass="HXWatcherContainerViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Qdb-8T-INH">
-                        <rect key="frame" x="0.0" y="0.0" width="96" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="98" height="32"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="gth-QB-cJf">
@@ -1069,8 +1069,8 @@
         <image name="L-MaskBG" width="375" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O5M-18-fAC"/>
-        <segue reference="byL-Cj-PN6"/>
-        <segue reference="goc-yr-hau"/>
+        <segue reference="rQC-rx-khw"/>
+        <segue reference="3Mh-Zf-ECv"/>
+        <segue reference="HeX-r3-laS"/>
     </inferredMetricsTieBreakers>
 </document>

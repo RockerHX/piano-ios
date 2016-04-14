@@ -426,15 +426,6 @@
 		395D67191C9AB1D700ED0454 /* UserDefaultsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtils.h; sourceTree = "<group>"; };
 		395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtils.m; sourceTree = "<group>"; };
 		3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Beta.plist"; sourceTree = "<group>"; };
-		3979D0031CBF3CB20036ED65 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		3979D0051CBF3CBA0036ED65 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		3979D0071CBF3CC10036ED65 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		3979D0091CBF3CC90036ED65 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		3979D00B1CBF3CD10036ED65 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3979D00D1CBF3CDC0036ED65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		3979D00F1CBF3CF80036ED65 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		3979D0111CBF3D010036ED65 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		3979D0131CBF3D0E0036ED65 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		398451E11CAD0300009018C6 /* NSObject+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BlockSupport.h"; sourceTree = "<group>"; };
 		398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BlockSupport.m"; sourceTree = "<group>"; };
 		398451E51CAD0543009018C6 /* MusicMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicMgr.h; sourceTree = "<group>"; };
@@ -665,7 +656,6 @@
 		CD9167871CAE5E6D000A12DC /* HXProfileNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileNavigationBar.m; sourceTree = "<group>"; };
 		CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXProfileNavigationBar.xib; sourceTree = "<group>"; };
 		CD92AF831CBB9F1000106A89 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		CD92AF851CBBA02200106A89 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		CD92AF891CBBAF3300106A89 /* HXReplaySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplaySlider.h; sourceTree = "<group>"; };
 		CD92AF8A1CBBAF3300106A89 /* HXReplaySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplaySlider.m; sourceTree = "<group>"; };
 		CD92AF8D1CBCD8B400106A89 /* HXReplayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewModel.h; sourceTree = "<group>"; };
@@ -932,16 +922,6 @@
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3979D0131CBF3D0E0036ED65 /* libz.tbd */,
-				3979D0111CBF3D010036ED65 /* Security.framework */,
-				3979D00F1CBF3CF80036ED65 /* UIKit.framework */,
-				3979D00D1CBF3CDC0036ED65 /* Foundation.framework */,
-				3979D00B1CBF3CD10036ED65 /* CoreGraphics.framework */,
-				3979D0091CBF3CC90036ED65 /* SystemConfiguration.framework */,
-				3979D0071CBF3CC10036ED65 /* CoreTelephony.framework */,
-				3979D0051CBF3CBA0036ED65 /* CoreFoundation.framework */,
-				3979D0031CBF3CB20036ED65 /* CFNetwork.framework */,
-				CD92AF851CBBA02200106A89 /* libc++abi.tbd */,
 				CD92AF831CBB9F1000106A89 /* AVFoundation.framework */,
 				CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */,
 				CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */,
@@ -2217,9 +2197,6 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
-					CD79608B1CBE594C004CC661 = {
-						DevelopmentTeam = H2JE2CWJS7;
-					};
 					CD8A9A6B1C9906CA00698DE9 = {
 						CreatedOnToolsVersion = 7.2.1;
 						SystemCapabilities = {
@@ -2834,8 +2811,8 @@
 			baseConfigurationReference = F16C66128D5E0919759ABA18 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2844,10 +2821,9 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ac1b5bfb-300b-41e2-adf0-52d586e30630";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2856,8 +2832,8 @@
 			baseConfigurationReference = 4704094A70120BB39E18C473 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2866,10 +2842,9 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ac1b5bfb-300b-41e2-adf0-52d586e30630";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -2968,10 +2943,6 @@
 				INFOPLIST_FILE = Piano/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Piano/Vendors/jpush",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2993,10 +2964,6 @@
 				INFOPLIST_FILE = Piano/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Piano/Vendors/jpush",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

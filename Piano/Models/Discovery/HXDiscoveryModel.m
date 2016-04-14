@@ -7,6 +7,7 @@
 //
 
 #import "HXDiscoveryModel.h"
+#import "HXReplayModel.h"
 
 
 @implementation HXDiscoveryModel
@@ -41,6 +42,15 @@
             break;
         }
     }
+}
+
+#pragma mark - Init Methods
++ (instancetype)createWithReplayModel:(HXReplayModel *)replayModel {
+    NSDictionary *keyValues = [replayModel mj_keyValues];
+    HXDiscoveryModel *model = [HXDiscoveryModel mj_objectWithKeyValues:keyValues];
+    model.avatarUrl = replayModel.avatarUrl;
+    model.videoUrl = replayModel.replayUrl;
+    return model;
 }
 
 @end

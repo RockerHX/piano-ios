@@ -7,9 +7,9 @@
 //
 
 #import "UIViewController+HXClass.h"
+#import "HXDiscoveryModel.h"
 
 
-@class HXDiscoveryModel;
 @class HXLiveAnchorView;
 @class HXReplayBottomBar;
 

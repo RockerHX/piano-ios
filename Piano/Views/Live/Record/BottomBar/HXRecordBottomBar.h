@@ -12,7 +12,7 @@
 typedef NS_ENUM(NSUInteger, HXRecordBottomBarAction) {
     HXRecordBottomBarActionComment,
     HXRecordBottomBarActionBeauty,
-    HXRecordBottomBarActionRefresh,
+    HXRecordBottomBarActionChange,
     HXRecordBottomBarActionMute,
     HXRecordBottomBarActionGift,
     HXRecordBottomBarActionShare,

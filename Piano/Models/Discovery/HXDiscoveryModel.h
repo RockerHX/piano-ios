@@ -9,6 +9,9 @@
 #import "MJExtension.h"
 
 
+@class HXReplayModel;
+
+
 typedef NS_ENUM(NSUInteger, HXDiscoveryType) {
     HXDiscoveryTypeLive,
     HXDiscoveryTypeReplay,
@@ -38,5 +41,7 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryType) {
 @property (nonatomic, assign) NSInteger  duration;
 @property (nonatomic, strong)  NSString *prompt;
 @property (nonatomic, strong)  NSString *roomID;
+
++ (instancetype)createWithReplayModel:(HXReplayModel *)model;
 
 @end
