@@ -172,6 +172,8 @@ HXProfileReplayContainerCellDelegate
 
 #pragma mark - HXProfileReplayContainerCellDelegate Methods
 - (void)replayCell:(HXProfileReplayContainerCell *)cell selectedReplay:(HXReplayModel *)replay {
+    replay.uID = _viewModel.uid;
+    replay.avatarUrl = _viewModel.model.avatarUrl;
     if (_delegate && [_delegate respondsToSelector:@selector(container:selectedReplay:)]) {
         [_delegate container:self selectedReplay:replay];
     }

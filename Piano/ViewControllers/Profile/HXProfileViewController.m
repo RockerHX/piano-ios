@@ -10,6 +10,7 @@
 #import "HXProfileNavigationBar.h"
 #import "HXProfileContainerViewController.h"
 #import "HXAlbumsViewController.h"
+#import "HXReplayViewController.h"
 
 
 @interface HXProfileViewController () <
@@ -110,7 +111,10 @@ HXProfileContainerViewControllerDelegate
 }
 
 - (void)container:(HXProfileContainerViewController *)container selectedReplay:(HXReplayModel *)replay {
-    
+    UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
+    HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
+    replayViewController.model = [HXDiscoveryModel createWithReplayModel:replay];
+    [self presentViewController:replayNaviagtionController animated:YES completion:nil];
 }
 
 @end
