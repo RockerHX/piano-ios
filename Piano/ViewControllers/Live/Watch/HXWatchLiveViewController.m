@@ -368,14 +368,14 @@ HXLiveEndViewControllerDelegate
 
 #pragma mark - HXWatcherContainerViewControllerDelegate Methods
 - (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
-    ;
+    [HXWatcherBoard showWithWatcher:watcher closed:^{
+        ;
+    }];
 }
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-//    [HXWatcherBoard showWithWatcher:watcher closed:^{
-//        ;
-//    }];
+    ;
 }
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods

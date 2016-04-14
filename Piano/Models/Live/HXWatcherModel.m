@@ -13,7 +13,8 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"nickName": @"nick",
-            @"avatarUrl": @"userpic"};
+            @"avatarUrl": @"userpic",
+            @"signature": @"bio"};
 }
 
 @end

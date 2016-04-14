@@ -14,5 +14,6 @@
 @property(nonatomic, strong) NSString *uID;
 @property(nonatomic, strong) NSString *nickName;
 @property(nonatomic, strong) NSString *avatarUrl;
+@property(nonatomic, strong) NSString *signature;
 
 @end

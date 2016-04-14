@@ -20,6 +20,8 @@
 #import "HXLiveCommentViewController.h"
 #import "HXRecordLiveViewModel.h"
 #import "UIButton+WebCache.h"
+#import "HXWatcherBoard.h"
+#import "MiaAPIHelper.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -350,14 +352,24 @@ HXLiveCommentContainerViewControllerDelegate
 
 #pragma mark - HXWatcherContainerViewControllerDelegate Methods
 - (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
-    ;
+    [HXWatcherBoard showWithWatcher:watcher gaged:^{
+        [MiaAPIHelper forbidUser:watcher.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+            if (success) {
+                [self showBannerWithPrompt:[watcher.nickName stringByAppendingString:@"已禁言！"]];
+            } else {
+                [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
+            }
+        } timeoutBlock:^(MiaRequestItem *requestItem) {
+            [self showBannerWithPrompt:TimtOutPrompt];
+        }];
+    } closed:^{
+        ;
+    }];
 }
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-//    [HXWatcherBoard showWithWatcher:watcher closed:^{
-//        ;
-//    }];
+    ;
 }
 
 @end
