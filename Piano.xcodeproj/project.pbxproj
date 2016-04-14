@@ -2876,8 +2876,8 @@
 			baseConfigurationReference = F16C66128D5E0919759ABA18 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eden Lin (882GL95AS6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eden Lin (882GL95AS6)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2892,7 +2892,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "08085b1b-c472-47f4-8839-8a3cfbd22014";
+				PROVISIONING_PROFILE = "ac1b5bfb-300b-41e2-adf0-52d586e30630";
 			};
 			name = Debug;
 		};
@@ -2901,8 +2901,8 @@
 			baseConfigurationReference = 4704094A70120BB39E18C473 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eden Lin (882GL95AS6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eden Lin (882GL95AS6)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2917,7 +2917,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "08085b1b-c472-47f4-8839-8a3cfbd22014";
+				PROVISIONING_PROFILE = "ac1b5bfb-300b-41e2-adf0-52d586e30630";
 			};
 			name = Release;
 		};
