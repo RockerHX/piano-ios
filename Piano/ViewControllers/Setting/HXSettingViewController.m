@@ -438,7 +438,7 @@ static CGFloat SectionSpace = 16.0f;
     _uploadingImage = [info objectForKey: @"UIImagePickerControllerEditedImage"];
     
     _uploadAvatarProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"头像上传中..."];
-    [MiaAPIHelper getUploadAvatarAuthWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper getUploadAuthWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             NSString *uploadUrl = userInfo[MiaAPIKey_Values][@"data"][@"url"];
             NSString *auth = userInfo[MiaAPIKey_Values][@"data"][@"auth"];

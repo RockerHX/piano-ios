@@ -17,6 +17,7 @@
 		395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67121C9AB1B700ED0454 /* NSString+IsNull.m */; };
 		395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67161C9AB1C500ED0454 /* NSString+MD5.m */; };
 		395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
+		3979CFFD1CBF340C0036ED65 /* Info-Beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */; };
 		398451E31CAD0300009018C6 /* NSObject+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */; };
 		398451EB1CAD0543009018C6 /* MusicMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E61CAD0543009018C6 /* MusicMgr.m */; };
 		398451EC1CAD0543009018C6 /* SingleSongPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E81CAD0543009018C6 /* SingleSongPlayer.m */; };
@@ -424,6 +425,7 @@
 		395D67161C9AB1C500ED0454 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		395D67191C9AB1D700ED0454 /* UserDefaultsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtils.h; sourceTree = "<group>"; };
 		395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtils.m; sourceTree = "<group>"; };
+		3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Beta.plist"; sourceTree = "<group>"; };
 		398451E11CAD0300009018C6 /* NSObject+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BlockSupport.h"; sourceTree = "<group>"; };
 		398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BlockSupport.m"; sourceTree = "<group>"; };
 		398451E51CAD0543009018C6 /* MusicMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicMgr.h; sourceTree = "<group>"; };
@@ -608,7 +610,6 @@
 		CD7960881CBE4BA1004CC661 /* LocationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMgr.h; sourceTree = "<group>"; };
 		CD7960891CBE4BA1004CC661 /* LocationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMgr.m; sourceTree = "<group>"; };
 		CD79614F1CBE594C004CC661 /* Piano-Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Piano-Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD7961501CBE594C004CC661 /* Info-Beta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Beta.plist"; path = "/Users/miaios/Desktop/piano-ios/Info-Beta.plist"; sourceTree = "<absolute>"; };
 		CD858D8B1CAE68A1007441E9 /* HXProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileHeaderCell.h; sourceTree = "<group>"; };
 		CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileHeaderCell.m; sourceTree = "<group>"; };
 		CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileLiveCell.h; sourceTree = "<group>"; };
@@ -1717,9 +1718,9 @@
 		CD8A9A6F1C9906CA00698DE9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */,
 				CD8A9A701C9906CA00698DE9 /* main.m */,
 				CD8A9A801C9906CA00698DE9 /* Info.plist */,
-				CD7961501CBE594C004CC661 /* Info-Beta.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2278,6 +2279,7 @@
 				CD1979541CA4E1A900303D27 /* HXWatcherBoard.xib in Resources */,
 				CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */,
 				CD5D02861CB60682000285DC /* HXPreviewLiveTopBar.xib in Resources */,
+				3979CFFD1CBF340C0036ED65 /* Info-Beta.plist in Resources */,
 				CDF9504C1CA558E300BDB586 /* Albums.storyboard in Resources */,
 				CD2E72F11CA11E75003CDB77 /* Live.storyboard in Resources */,
 				CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */,
@@ -2816,10 +2818,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Piano/Frameworks",
 				);
-				INFOPLIST_FILE = "Info-Beta.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live.Beta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2837,10 +2839,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Piano/Frameworks",
 				);
-				INFOPLIST_FILE = "Info-Beta.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live.Beta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2941,7 +2943,7 @@
 				INFOPLIST_FILE = Piano/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2962,7 +2964,7 @@
 				INFOPLIST_FILE = Piano/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
