@@ -174,15 +174,14 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 	// IOS 7 Support Required
-	[JPUSHService handleRemoteNotification:userInfo];
-	completionHandler(UIBackgroundFetchResultNewData);
-
-	if (application.applicationState == UIApplicationStateBackground) {
-		NSLog(@"UIApplicationStateBackground");
+	if (application.applicationState == UIApplicationStateInactive) {
 		[self handleNotification:userInfo];
 	} else {
-		NSLog(@"not ------ UIApplicationStateBackground");
+		NSLog(@"active or background, do nothing.");
 	}
+
+	[JPUSHService handleRemoteNotification:userInfo];
+	completionHandler(UIBackgroundFetchResultNewData);
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
