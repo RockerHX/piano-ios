@@ -23,6 +23,7 @@
 #import "UserSetting.h"
 #import "MusicMgr.h"
 #import "JPUSHService.h"
+#import "NSString+IsNull.h"
 
 
 @interface AppDelegate ()
@@ -103,10 +104,10 @@
 											  categories:nil];
 	} else {
 		//categories    nil
-		[JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-														  UIRemoteNotificationTypeSound |
-														  UIRemoteNotificationTypeAlert)
-											  categories:nil];
+//		[JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+//														  UIRemoteNotificationTypeSound |
+//														  UIRemoteNotificationTypeAlert)
+//											  categories:nil];
 	}
 	
 	//Required
@@ -116,6 +117,10 @@
 		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY channel:CHANNEL_FIRIM apsForProduction:NO];
 	}
 
+	NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
+	if (remoteNotification) {
+		[self handleNotification:remoteNotification];
+	}
 
 	return YES;
 }
@@ -144,28 +149,39 @@
 	AVAudioSession *audioSession=[AVAudioSession sharedInstance];
 	[audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
 	[audioSession setActive:YES error:nil];
+
+	[JPUSHService resetBadge];
+	[application setApplicationIconBadgeNumber:0];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - 远程控制事件
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+	NSDictionary *userInfo = [NSDictionary dictionaryWithObject:event forKey:MusicMgrNotificationKey_RemoteControlEvent];
+	[[NSNotificationCenter defaultCenter] postNotificationName:MusicMgrNotificationRemoteControlEvent object:self userInfo:userInfo];
+}
+
+#pragma mark - Notifications
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 	/// Required -    DeviceToken
 	[JPUSHService registerDeviceToken:deviceToken];
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	// Required,For systems with less than or equal to iOS6
-	[JPUSHService handleRemoteNotification:userInfo];
-}
-
-- (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo
-fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 	// IOS 7 Support Required
 	[JPUSHService handleRemoteNotification:userInfo];
 	completionHandler(UIBackgroundFetchResultNewData);
+
+	if (application.applicationState == UIApplicationStateBackground) {
+		NSLog(@"UIApplicationStateBackground");
+		[self handleNotification:userInfo];
+	} else {
+		NSLog(@"not ------ UIApplicationStateBackground");
+	}
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -173,10 +189,22 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 	NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
-#pragma mark - 远程控制事件
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
-	NSDictionary *userInfo = [NSDictionary dictionaryWithObject:event forKey:MusicMgrNotificationKey_RemoteControlEvent];
-	[[NSNotificationCenter defaultCenter] postNotificationName:MusicMgrNotificationRemoteControlEvent object:self userInfo:userInfo];
+static NSString * const PushExtraKey_Action					= @"action";
+static NSString * const PushExtraKey_PARAM1					= @"param1";
+static NSString * const PushAction_WatchLive				= @"watchlive";
+
+#pragma mark - handle notifications
+- (void)handleNotification:(NSDictionary *)userInfo {
+	NSString *action = userInfo[PushExtraKey_Action];
+	NSString *param1 = userInfo[PushExtraKey_PARAM1];
+	if ([NSString isNull:action] || [NSString isNull:param1]) {
+		return;
+	}
+
+	if ([action isEqualToString:PushAction_WatchLive]) {
+#warning andy
+		NSLog(@"%@ with roomID: %@", action, param1);
+	}
 }
 
 @end
