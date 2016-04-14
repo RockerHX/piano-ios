@@ -46,6 +46,8 @@ HXLiveCommentContainerViewControllerDelegate
     NSString *_shareUrl;
     
     HXRecordLiveViewModel *_viewModel;
+    BOOL _frontCamera;
+    BOOL _microEnable;
 }
 
 #pragma mark - Class Methods
@@ -103,7 +105,7 @@ HXLiveCommentContainerViewControllerDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    _microEnable = YES;
 }
 
 - (void)viewConfigure {
@@ -302,12 +304,14 @@ HXLiveCommentContainerViewControllerDelegate
             ;
             break;
         }
-        case HXRecordBottomBarActionRefresh: {
-            ;
+        case HXRecordBottomBarActionChange: {
+            _frontCamera = !_frontCamera;
+            [[HXZegoAVKitManager manager].zegoAVApi setFrontCam:_frontCamera];
             break;
         }
         case HXRecordBottomBarActionMute: {
-            ;
+            _microEnable = !_microEnable;
+            [[HXZegoAVKitManager manager].zegoAVApi enableMic:_microEnable];
             break;
         }
         case HXRecordBottomBarActionGift: {
@@ -322,11 +326,12 @@ HXLiveCommentContainerViewControllerDelegate
 }
 
 #pragma mark - HXPreviewLiveViewControllerDelegate Methods
-- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl {
+- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl frontCamera:(BOOL)frontCamera {
     
     _roomID = roomID;
     _roomTitle = roomTitle;
     _shareUrl = shareUrl;
+    _frontCamera = frontCamera;
     
     [self startLive];
     

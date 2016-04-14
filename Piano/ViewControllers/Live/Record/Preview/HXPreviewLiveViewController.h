@@ -20,7 +20,8 @@
 - (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController
                                                 roomID:(NSString *)roomID
                                              roomTitle:(NSString *)roomTitle
-                                              shareUrl:(NSString *)shareUrl;
+                                              shareUrl:(NSString *)shareUrl
+                                           frontCamera:(BOOL)frontCamera;
 
 @end
 

@@ -29,7 +29,7 @@ HXXibImplementation
 
 - (IBAction)changeButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
-        [_delegate bottomBar:self takeAction:HXRecordBottomBarActionRefresh];
+        [_delegate bottomBar:self takeAction:HXRecordBottomBarActionChange];
     }
 }
 
