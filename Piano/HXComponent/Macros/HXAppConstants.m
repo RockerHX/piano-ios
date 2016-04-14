@@ -17,6 +17,12 @@ NSString *const WeiXinKEY                   = @"wxc9564c8f6dccdb39";
 NSString *const WeiXinSecret                = @"a9b5d159df371388530383b633d28181";
 NSString *const WeiBoKEY                    = @"wx6194bafa9ae065cc";
 
+NSString *const JPUSH_APPKEY                = @"67d97a0b33cd4b4c7e1a7982";
+
+NSString *const APPSTORE_BUNDLE_ID          = @"com.miamusic.live";
+NSString *const CHANNEL_APPSTORE            = @"appstore";
+NSString *const CHANNEL_FIRIM               = @"fir.im";
+
 #pragma mark - Notification Name
 NSString *const HXApplicationDidBecomeActiveNotification    = @"HXApplicationDidBecomeActiveNotification";
 NSString *const HXMusicPlayerMgrDidPlayNotification         = @"HXMusicPlayerMgrDidPlayNotification";

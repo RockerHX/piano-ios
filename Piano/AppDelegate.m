@@ -22,6 +22,7 @@
 // MusicMgr
 #import "UserSetting.h"
 #import "MusicMgr.h"
+#import "JPUSHService.h"
 
 
 @interface AppDelegate ()
@@ -45,10 +46,10 @@
     // 启动[友盟统计]
     [MobClick setCrashReportEnabled:NO];
     
-    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.miamusic.ios"]) {
-        [MobClick startWithAppkey:UMengAPPKEY reportPolicy:BATCH channelId:@"appstore"];
+    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APPSTORE_BUNDLE_ID]) {
+        [MobClick startWithAppkey:UMengAPPKEY reportPolicy:BATCH channelId:CHANNEL_APPSTORE];
     } else {
-        [MobClick startWithAppkey:UMengAPPKEY reportPolicy:BATCH channelId:@"fir.im"];
+        [MobClick startWithAppkey:UMengAPPKEY reportPolicy:BATCH channelId:CHANNEL_FIRIM];
     }
     
 //#pragma mark - Testin Crash SDK
@@ -91,8 +92,32 @@
                 break;
         }
     }];
-    
-    return YES;
+
+#pragma mark - JPush SDK
+	//Required
+	if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+		//       categories
+		[JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+														  UIUserNotificationTypeSound |
+														  UIUserNotificationTypeAlert)
+											  categories:nil];
+	} else {
+		//categories    nil
+		[JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+														  UIRemoteNotificationTypeSound |
+														  UIRemoteNotificationTypeAlert)
+											  categories:nil];
+	}
+	
+	//Required
+	if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APPSTORE_BUNDLE_ID]) {
+		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY channel:CHANNEL_APPSTORE apsForProduction:NO];
+	} else {
+		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY channel:CHANNEL_FIRIM apsForProduction:NO];
+	}
+
+
+	return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -123,6 +148,29 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	/// Required -    DeviceToken
+	[JPUSHService registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	// Required,For systems with less than or equal to iOS6
+	[JPUSHService handleRemoteNotification:userInfo];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+	// IOS 7 Support Required
+	[JPUSHService handleRemoteNotification:userInfo];
+	completionHandler(UIBackgroundFetchResultNewData);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+	//Optional
+	NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
 #pragma mark - 远程控制事件
