@@ -18,17 +18,6 @@
 		395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67161C9AB1C500ED0454 /* NSString+MD5.m */; };
 		395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
 		3979CFFD1CBF340C0036ED65 /* Info-Beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */; };
-		3979D0021CBF3C820036ED65 /* jpush-ios-2.1.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D0001CBF3C820036ED65 /* jpush-ios-2.1.6.a */; };
-		3979D0041CBF3CB20036ED65 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D0031CBF3CB20036ED65 /* CFNetwork.framework */; };
-		3979D0061CBF3CBA0036ED65 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D0051CBF3CBA0036ED65 /* CoreFoundation.framework */; };
-		3979D0081CBF3CC10036ED65 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D0071CBF3CC10036ED65 /* CoreTelephony.framework */; };
-		3979D00A1CBF3CC90036ED65 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D0091CBF3CC90036ED65 /* SystemConfiguration.framework */; };
-		3979D00C1CBF3CD10036ED65 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D00B1CBF3CD10036ED65 /* CoreGraphics.framework */; };
-		3979D00E1CBF3CDC0036ED65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D00D1CBF3CDC0036ED65 /* Foundation.framework */; };
-		3979D0101CBF3CF80036ED65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D00F1CBF3CF80036ED65 /* UIKit.framework */; };
-		3979D0121CBF3D010036ED65 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D0111CBF3D010036ED65 /* Security.framework */; };
-		3979D0141CBF3D0E0036ED65 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D0131CBF3D0E0036ED65 /* libz.tbd */; };
-		3979D0171CBF41760036ED65 /* jpush-ios-2.1.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3979D0001CBF3C820036ED65 /* jpush-ios-2.1.6.a */; };
 		398451E31CAD0300009018C6 /* NSObject+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */; };
 		398451EB1CAD0543009018C6 /* MusicMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E61CAD0543009018C6 /* MusicMgr.m */; };
 		398451EC1CAD0543009018C6 /* SingleSongPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E81CAD0543009018C6 /* SingleSongPlayer.m */; };
@@ -437,8 +426,6 @@
 		395D67191C9AB1D700ED0454 /* UserDefaultsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtils.h; sourceTree = "<group>"; };
 		395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtils.m; sourceTree = "<group>"; };
 		3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Beta.plist"; sourceTree = "<group>"; };
-		3979D0001CBF3C820036ED65 /* jpush-ios-2.1.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.6.a"; sourceTree = "<group>"; };
-		3979D0011CBF3C820036ED65 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		3979D0031CBF3CB20036ED65 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3979D0051CBF3CBA0036ED65 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		3979D0071CBF3CC10036ED65 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -779,16 +766,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3979D0171CBF41760036ED65 /* jpush-ios-2.1.6.a in Frameworks */,
-				3979D0141CBF3D0E0036ED65 /* libz.tbd in Frameworks */,
-				3979D0121CBF3D010036ED65 /* Security.framework in Frameworks */,
-				3979D0101CBF3CF80036ED65 /* UIKit.framework in Frameworks */,
-				3979D00E1CBF3CDC0036ED65 /* Foundation.framework in Frameworks */,
-				3979D00C1CBF3CD10036ED65 /* CoreGraphics.framework in Frameworks */,
-				3979D00A1CBF3CC90036ED65 /* SystemConfiguration.framework in Frameworks */,
-				3979D0081CBF3CC10036ED65 /* CoreTelephony.framework in Frameworks */,
-				3979D0061CBF3CBA0036ED65 /* CoreFoundation.framework in Frameworks */,
-				3979D0041CBF3CB20036ED65 /* CFNetwork.framework in Frameworks */,
 				CD7961251CBE594C004CC661 /* AVFoundation.framework in Frameworks */,
 				CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */,
 				CD7961271CBE594C004CC661 /* ZegoAVKit.framework in Frameworks */,
@@ -803,7 +780,6 @@
 				CD92AF841CBB9F1000106A89 /* AVFoundation.framework in Frameworks */,
 				CDE416FC1CB7D672005F8901 /* MediaPlayer.framework in Frameworks */,
 				CD4492E61CAAA504005F36B3 /* ZegoAVKit.framework in Frameworks */,
-				3979D0021CBF3C820036ED65 /* jpush-ios-2.1.6.a in Frameworks */,
 				124CB626904D3CA3E11516EC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -920,23 +896,6 @@
 				395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */,
 			);
 			path = UserDefaultsUtils;
-			sourceTree = "<group>";
-		};
-		3979CFFE1CBF3C820036ED65 /* Vendors */ = {
-			isa = PBXGroup;
-			children = (
-				3979CFFF1CBF3C820036ED65 /* jpush */,
-			);
-			path = Vendors;
-			sourceTree = "<group>";
-		};
-		3979CFFF1CBF3C820036ED65 /* jpush */ = {
-			isa = PBXGroup;
-			children = (
-				3979D0001CBF3C820036ED65 /* jpush-ios-2.1.6.a */,
-				3979D0011CBF3C820036ED65 /* JPUSHService.h */,
-			);
-			path = jpush;
 			sourceTree = "<group>";
 		};
 		398451E01CAD0300009018C6 /* NSObject+BlockSupport */ = {
@@ -1760,7 +1719,6 @@
 		CD8A9A6E1C9906CA00698DE9 /* Piano */ = {
 			isa = PBXGroup;
 			children = (
-				3979CFFE1CBF3C820036ED65 /* Vendors */,
 				CDED8EEF1CA13BB4003867B8 /* HXComponent */,
 				395D67021C9AB15000ED0454 /* Utils */,
 				395D66F51C9AB0E800ED0454 /* Network */,
@@ -2886,10 +2844,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Piano/Vendors/jpush",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ac1b5bfb-300b-41e2-adf0-52d586e30630";
@@ -2911,10 +2866,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Piano/Vendors/jpush",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ac1b5bfb-300b-41e2-adf0-52d586e30630";
