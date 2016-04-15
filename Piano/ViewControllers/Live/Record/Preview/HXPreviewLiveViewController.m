@@ -17,7 +17,6 @@
 #import "LocationMgr.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUDHelp.h"
-#import "HXAlertBanner.h"
 #import "UIImage+Extrude.h"
 
 @interface HXPreviewLiveViewController () <
@@ -241,7 +240,7 @@ HXPreviewLiveControlViewDelegate
 
 	//获得编辑过的图片
 	_uploadingImage = [info objectForKey: @"UIImagePickerControllerEditedImage"];
-
+    
 	_uploadPictureProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"直播封面上传中..."];
 	[MiaAPIHelper getUploadAuthWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 		if (success) {
@@ -259,14 +258,14 @@ HXPreviewLiveControlViewDelegate
 								image:_uploadingImage];
 		} else {
 			id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
-			[HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
+            [self showBannerWithPrompt:[NSString stringWithFormat:@"%@", error]];
 			[_uploadPictureProgressHUD removeFromSuperview];
 			_uploadPictureProgressHUD = nil;
 		}
 	} timeoutBlock:^(MiaRequestItem *requestItem) {
 		[_uploadPictureProgressHUD removeFromSuperview];
-		_uploadPictureProgressHUD = nil;
-		[HXAlertBanner showWithMessage:@"上传直播封面失败，网络请求超时" tap:nil];
+        _uploadPictureProgressHUD = nil;
+        [self showBannerWithPrompt:@"上传直播封面失败，网络请求超时"];
 	}];
 }
 
@@ -320,8 +319,9 @@ HXPreviewLiveControlViewDelegate
 
 	[MiaAPIHelper setRoomCover:fileID roomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 		if (success) {
-			NSLog(@"notify after upload pic success");
-#warning @andy 封面上传成功后的UI更新
+            NSLog(@"notify after upload pic success");
+            UIImage *squareImage = [UIImage imageWithCutImage:image moduleSize:CGSizeMake(11.0f, 11.0f)];
+            [_editView updateCameraIconWithImage:squareImage];
 		} else {
 			NSLog(@"notify after upload pic failed:%@", userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
 		}
