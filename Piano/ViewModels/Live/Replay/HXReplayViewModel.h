@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong, readonly) RACCommand *fetchCommentCommand;
 @property (nonatomic, strong, readonly) RACCommand *checkAttentionStateCommand;
+@property (nonatomic, strong, readonly) RACCommand *viewReplayCommand;
 @property (nonatomic, strong, readonly) RACCommand *takeAttentionCommand;
 
 @property (nonatomic, strong, readonly) HXDiscoveryModel *model;

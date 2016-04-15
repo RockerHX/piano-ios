@@ -100,10 +100,12 @@ HXLoginViewControllerDelegate
 
 #pragma mark - Public Methods
 - (void)watchLiveWithRoomID:(NSString *)roomID {
-    UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
-    watchLiveViewController.roomID = roomID;
-    [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+    if (roomID.length) {
+        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+        watchLiveViewController.roomID = roomID;
+        [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+    }
 }
 
 #pragma mark - Private Methods

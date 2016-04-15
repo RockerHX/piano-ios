@@ -29,6 +29,7 @@
     
     [self fetchCommentCommandConfigure];
     [self checkAttentionStateCommandConfigure];
+    [self viewReplayCommandConfigure];
     [self takeAttentionCommandConfigure];
 }
 
@@ -50,6 +51,18 @@
         RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self)
             [self checkAttentionStateRequestWithSubscriber:subscriber];
+            return nil;
+        }];
+        return signal;
+    }];
+}
+
+- (void)viewReplayCommandConfigure {
+    @weakify(self)
+    _viewReplayCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self)
+            [self viewReplayReuqest];
             return nil;
         }];
         return signal;
@@ -127,6 +140,10 @@
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
     }];
+}
+
+- (void)viewReplayReuqest {
+    [MiaAPIHelper viewReplayWithRoomID:_model.roomID completeBlock:nil timeoutBlock:nil];
 }
 
 - (void)followRequestWithSubscriber:(id<RACSubscriber>)subscriber {

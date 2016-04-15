@@ -109,6 +109,8 @@ HXReplayBottomBarDelegate
             }
         }];
     }
+    
+    [_viewModel.viewReplayCommand execute:nil];
 }
 
 - (void)playerConfigure {
