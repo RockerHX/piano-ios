@@ -11,7 +11,7 @@
 
 #pragma mark - Shortcuts for positions
 - (CGFloat)x {
-    return self.frame.origin.x;
+    return CGRectGetMinX(self.frame);
 }
 
 - (void)setX:(CGFloat)x {
@@ -21,7 +21,7 @@
 }
 
 - (CGFloat)y {
-    return self.frame.origin.y;
+    return CGRectGetMinY(self.frame);
 }
 
 - (void)setY:(CGFloat)y {
@@ -31,7 +31,7 @@
 }
 
 - (CGFloat)width {
-    return self.frame.size.width;
+    return CGRectGetWidth(self.frame);
 }
 
 - (void)setWidth:(CGFloat)width {
@@ -41,7 +41,7 @@
 }
 
 - (CGFloat)height {
-    return self.frame.size.height;
+    return CGRectGetHeight(self.frame);
 }
 
 - (void)setHeight:(CGFloat)height {
@@ -59,7 +59,7 @@
 }
 
 - (CGFloat)bottom {
-    return self.y + self.height;
+    return CGRectGetMaxY(self.frame);
 }
 
 - (void)setBottom:(CGFloat)bottom {
@@ -75,7 +75,7 @@
 }
 
 - (CGFloat)right {
-    return self.x + self.width;
+    return CGRectGetMaxX(self.frame);
 }
 
 - (void)setRight:(CGFloat)right {
@@ -83,7 +83,7 @@
 }
 
 - (CGFloat)boundsX {
-    return self.bounds.origin.x;
+    return CGRectGetMinX(self.bounds);
 }
 
 - (void)setBoundsX:(CGFloat)boundsX {
@@ -93,7 +93,7 @@
 }
 
 - (CGFloat)boundsY {
-    return self.bounds.origin.y;
+    return CGRectGetMinY(self.bounds);
 }
 
 - (void)setBoundsY:(CGFloat)boundsY {
