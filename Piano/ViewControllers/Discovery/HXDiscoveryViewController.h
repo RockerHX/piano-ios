@@ -9,7 +9,7 @@
 #import "UIViewController+HXClass.h"
 
 
-@interface HXDiscoveryViewController : UIViewController
+@interface HXDiscoveryViewController : UICollectionViewController
 
 - (IBAction)musicButtonPressed;
 
