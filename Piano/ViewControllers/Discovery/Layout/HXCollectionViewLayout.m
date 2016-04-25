@@ -40,7 +40,7 @@
 }
 
 - (CGFloat)controlHeight {
-    return self.collectionView.frame.size.height;
+    return self.collectionView.frame.size.height - 20.0f;
 }
 
 - (CGFloat)itemWidth {
