@@ -102,6 +102,38 @@
     self.bounds = bounds;
 }
 
+- (CGFloat)boundsTop {
+    return self.boundsY;
+}
+
+- (void)setBoundsTop:(CGFloat)boundsTop {
+    self.boundsY = boundsTop;
+}
+
+- (CGFloat)boundsBottom {
+    return CGRectGetMaxY(self.bounds);
+}
+
+- (void)setBoundsBottom:(CGFloat)boundsBottom {
+    self.boundsY = boundsBottom - self.height;
+}
+
+- (CGFloat)boundsLeft {
+    return self.boundsX;
+}
+
+- (void)setBoundsLeft:(CGFloat)boundsLeft {
+    self.boundsX = boundsLeft;
+}
+
+- (CGFloat)boundsRight {
+    return CGRectGetMaxX(self.bounds);
+}
+
+- (void)setBoundsRight:(CGFloat)boundsRight {
+    self.boundsX = boundsRight - self.width;
+}
+
 - (CGFloat)centerX {
     return self.center.x;
 }

@@ -17,6 +17,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
 #import "HXCollectionViewLayout.h"
+#import "HXDiscoveryCell.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -68,7 +69,7 @@ HXCollectionViewLayoutDelegate
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryCell class]) forIndexPath:indexPath];
     [(UILabel *)[cell viewWithTag:1] setText:@(indexPath.row).stringValue];
     return cell;
 }
