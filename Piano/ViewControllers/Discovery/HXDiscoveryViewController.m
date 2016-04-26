@@ -16,14 +16,9 @@
 #import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
-#import "HXCollectionViewLayout.h"
-#import "HXDiscoveryLiveCell.h"
-#import "HXDiscoveryNormalCell.h"
 
 
-@interface HXDiscoveryViewController () <
-HXCollectionViewLayoutDelegate
->
+@interface HXDiscoveryViewController ()
 @end
 
 
@@ -45,10 +40,7 @@ HXCollectionViewLayoutDelegate
 }
  
 - (void)viewConfigure {
-    HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
-    layout.delegate = self;
-    layout.itemSpacing = 12.0f;
-    layout.itemSpilled = 20.0f;
+    ;
 }
 
 #pragma mark - Event Response
@@ -62,38 +54,6 @@ HXCollectionViewLayoutDelegate
 #pragma mark - Public Methods
 - (void)startFetchList {
     ;
-}
-
-#pragma mark - Collection View Data Source Methods
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _itemCount;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = nil;
-    
-    HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
-    switch (style) {
-        case HXCollectionViewLayoutStyleHeavy: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
-            break;
-        }
-        case HXCollectionViewLayoutStylePetty: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryNormalCell class]) forIndexPath:indexPath];
-            break;
-        }
-    }
-    return cell;
-}
-
-#pragma mark - Collection View Delegate Methods
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ;
-}
-
-#pragma mark - HXCollectionViewLayoutDelegate Methods
-- (HXCollectionViewLayoutStyle)collectionView:(UICollectionView *)collectionView layout:(HXCollectionViewLayout *)layout styleForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath.row < 5) ? HXCollectionViewLayoutStyleHeavy : HXCollectionViewLayoutStylePetty;
 }
 
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods

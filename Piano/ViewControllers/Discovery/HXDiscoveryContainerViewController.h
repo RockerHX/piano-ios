@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "UIViewController+HXClass.h"
+#import <UIKit/UIKit.h>
 #import "HXDiscoveryModel.h"
 
 
@@ -22,7 +22,7 @@
 @end
 
 
-@interface HXDiscoveryContainerViewController : UITableViewController
+@interface HXDiscoveryContainerViewController : UICollectionViewController
 
 @property (weak, nonatomic) IBOutlet id  <HXDiscoveryContainerViewControllerDelegate>delegate;
 

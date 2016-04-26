@@ -7,16 +7,20 @@
 //
 
 #import "HXDiscoveryContainerViewController.h"
-#import "MJRefresh.h"
 #import "HXDiscoveryViewModel.h"
-#import "HXAlertBanner.h"
+#import "HXCollectionViewLayout.h"
+#import "HXDiscoveryLiveCell.h"
+#import "HXDiscoveryNormalCell.h"
 
 
-@interface HXDiscoveryContainerViewController ()
+@interface HXDiscoveryContainerViewController () <
+HXCollectionViewLayoutDelegate
+>
 @end
 
 
 @implementation HXDiscoveryContainerViewController {
+    NSInteger _itemCount;
     HXDiscoveryViewModel *_viewModel;
 }
 
@@ -30,16 +34,20 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    _itemCount = 20;
     _viewModel = [[HXDiscoveryViewModel alloc] init];
 }
 
 - (void)viewConfigure {
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(fetchDiscoveryList)];
+    HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
+    layout.delegate = self;
+    layout.itemSpacing = 12.0f;
+    layout.itemSpilled = 20.0f;
 }
 
 #pragma mark - Public Methods
 - (void)startFetchDiscoveryList {
-    [self.tableView.mj_header beginRefreshing];
+    ;
 }
 
 - (void)fetchDiscoveryList {
@@ -48,7 +56,7 @@
     [requestSiganl subscribeError:^(NSError *error) {
         @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
-            [self showBannerWithPrompt:error.domain];
+//            [self showBannerWithPrompt:error.domain];
         }
         [self endLoad];
     } completed:^{
@@ -59,52 +67,46 @@
 
 #pragma mark - Private Methods
 - (void)endLoad {
-    [self.tableView.mj_header endRefreshing];
-    [self.tableView reloadData];
+    ;
 }
 
-#pragma mark - Table View Data Source Methods
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _viewModel.discoveryList.count;
+#pragma mark - Scroll View Delegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
+    NSLog(@"%@", @(layout.indexPath.row));
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = nil;
-//    switch (_viewModel.discoveryList[indexPath.row].type) {
-//        case HXDiscoveryTypeLive: {
-//            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
-//            break;
-//        }
-//        case HXDiscoveryTypeReplay: {
-//            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryReplayCell class]) forIndexPath:indexPath];
-//            break;
-//        }
-//        case HXDiscoveryTypeNewAlbum: {
-//            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryNewAlbumCell class]) forIndexPath:indexPath];
-//            break;
-//        }
-//        case HXDiscoveryTypeVideo: {
-//            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryVideoCell class]) forIndexPath:indexPath];
-//            break;
-//        }
-//    }
+#pragma mark - Collection View Data Source Methods
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return _itemCount;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = nil;
+    
+    HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
+    switch (style) {
+        case HXCollectionViewLayoutStyleHeavy: {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
+            break;
+        }
+        case HXCollectionViewLayoutStylePetty: {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryNormalCell class]) forIndexPath:indexPath];
+            break;
+        }
+    }
+    
     return cell;
 }
 
-#pragma mark - Table View Delegate Methods
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return _viewModel.cellHeight;
+#pragma mark - Collection View Delegate Methods
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    ;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
-//    [(HXDiscoveryLiveCell *)cell updateCellWithModel:model];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (_delegate && [_delegate respondsToSelector:@selector(container:showLiveByModel:)]) {
-        [_delegate container:self showLiveByModel:_viewModel.discoveryList[indexPath.row]];
-    }
+#pragma mark - HXCollectionViewLayoutDelegate Methods
+- (HXCollectionViewLayoutStyle)collectionView:(UICollectionView *)collectionView layout:(HXCollectionViewLayout *)layout styleForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return (indexPath.row < 5) ? HXCollectionViewLayoutStyleHeavy : HXCollectionViewLayoutStylePetty;
 }
 
 #pragma mark - HXDiscoveryLiveCellDelegate Methods
