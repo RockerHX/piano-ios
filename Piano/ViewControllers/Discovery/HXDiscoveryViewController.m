@@ -18,6 +18,7 @@
 #import "MusicMgr.h"
 #import "HXCollectionViewLayout.h"
 #import "HXDiscoveryLiveCell.h"
+#import "HXDiscoveryNormalCell.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -69,8 +70,19 @@ HXCollectionViewLayoutDelegate
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
-    [(UILabel *)[cell viewWithTag:1] setText:@(indexPath.row).stringValue];
+    UICollectionViewCell *cell = nil;
+    
+    HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
+    switch (style) {
+        case HXCollectionViewLayoutStyleHeavy: {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
+            break;
+        }
+        case HXCollectionViewLayoutStylePetty: {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryNormalCell class]) forIndexPath:indexPath];
+            break;
+        }
+    }
     return cell;
 }
 

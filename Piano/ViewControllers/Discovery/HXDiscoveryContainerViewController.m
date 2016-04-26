@@ -9,16 +9,10 @@
 #import "HXDiscoveryContainerViewController.h"
 #import "MJRefresh.h"
 #import "HXDiscoveryViewModel.h"
-#import "HXDiscoveryLiveCell.h"
-#import "HXDiscoveryReplayCell.h"
-#import "HXDiscoveryNewAlbumCell.h"
-#import "HXDiscoveryVideoCell.h"
 #import "HXAlertBanner.h"
 
 
-@interface HXDiscoveryContainerViewController () <
-HXDiscoveryNormalCellDelegate
->
+@interface HXDiscoveryContainerViewController ()
 @end
 
 
@@ -76,24 +70,24 @@ HXDiscoveryNormalCellDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
-    switch (_viewModel.discoveryList[indexPath.row].type) {
-        case HXDiscoveryTypeLive: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
-            break;
-        }
-        case HXDiscoveryTypeReplay: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryReplayCell class]) forIndexPath:indexPath];
-            break;
-        }
-        case HXDiscoveryTypeNewAlbum: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryNewAlbumCell class]) forIndexPath:indexPath];
-            break;
-        }
-        case HXDiscoveryTypeVideo: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryVideoCell class]) forIndexPath:indexPath];
-            break;
-        }
-    }
+//    switch (_viewModel.discoveryList[indexPath.row].type) {
+//        case HXDiscoveryTypeLive: {
+//            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
+//            break;
+//        }
+//        case HXDiscoveryTypeReplay: {
+//            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryReplayCell class]) forIndexPath:indexPath];
+//            break;
+//        }
+//        case HXDiscoveryTypeNewAlbum: {
+//            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryNewAlbumCell class]) forIndexPath:indexPath];
+//            break;
+//        }
+//        case HXDiscoveryTypeVideo: {
+//            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXDiscoveryVideoCell class]) forIndexPath:indexPath];
+//            break;
+//        }
+//    }
     return cell;
 }
 
@@ -103,8 +97,8 @@ HXDiscoveryNormalCellDelegate
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
-    [(HXDiscoveryLiveCell *)cell updateCellWithModel:model];
+//    HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
+//    [(HXDiscoveryLiveCell *)cell updateCellWithModel:model];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -114,19 +108,19 @@ HXDiscoveryNormalCellDelegate
 }
 
 #pragma mark - HXDiscoveryLiveCellDelegate Methods
-- (void)discoveryLiveCellAnchorContainerTaped:(HXDiscoveryLiveCell *)cell {
-    NSInteger row = [self.tableView indexPathForCell:cell].row;
-    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
-        [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];
-    }
-}
-
-#pragma mark - HXDiscoveryNormalCellDelegate Methods
-- (void)discoveryNormalCellAnchorContainerTaped:(HXDiscoveryNormalCell *)cell {
-    NSInteger row = [self.tableView indexPathForCell:cell].row;
-    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
-        [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];
-    }
-}
+//- (void)discoveryLiveCellAnchorContainerTaped:(HXDiscoveryLiveCell *)cell {
+//    NSInteger row = [self.tableView indexPathForCell:cell].row;
+//    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
+//        [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];
+//    }
+//}
+//
+//#pragma mark - HXDiscoveryNormalCellDelegate Methods
+//- (void)discoveryNormalCellAnchorContainerTaped:(HXDiscoveryNormalCell *)cell {
+//    NSInteger row = [self.tableView indexPathForCell:cell].row;
+//    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
+//        [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];
+//    }
+//}
 
 @end
