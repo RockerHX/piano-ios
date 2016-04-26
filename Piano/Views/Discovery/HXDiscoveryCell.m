@@ -12,23 +12,6 @@
 
 @implementation HXDiscoveryCell
 
-#pragma mark - Load Methods
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    [self loadConfigure];
-    [self viewConfigure];
-}
-
-#pragma mark - Configure Methods
-- (void)loadConfigure {
-    ;
-}
-
-- (void)viewConfigure {
-    ;
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     

@@ -17,7 +17,6 @@
 
 
 @interface HXDiscoveryContainerViewController () <
-HXDiscoveryLiveCellDelegate,
 HXDiscoveryNormalCellDelegate
 >
 @end
