@@ -26,11 +26,8 @@
 
 #pragma mark - Public Methods
 - (void)updateCellWithModel:(HXDiscoveryModel *)model {
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
     _nickNameLabel.text = model.nickName;
-    _promptLabel.text = model.prompt;
     
-    _titleLabel.text = model.title;
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
 }
 
