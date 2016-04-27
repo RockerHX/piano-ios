@@ -13,10 +13,7 @@
 @interface HXDiscoveryLiveCell : HXDiscoveryCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *cover;
-@property (weak, nonatomic) IBOutlet     UILabel *countLabel;
-@property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
-@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
 
-- (void)updateCellWithModel:(HXDiscoveryModel *)model;
+- (IBAction)startLiveButtonPressed;
 
 @end

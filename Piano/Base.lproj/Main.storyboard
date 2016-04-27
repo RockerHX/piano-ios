@@ -137,8 +137,52 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="KDp-pv-yzy" customClass="HXCollectionViewLayout"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXDiscoveryLiveCell" id="leI-sW-e4A" customClass="HXDiscoveryLiveCell">
-                                <rect key="frame" x="51" y="0.0" width="218" height="249"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXDiscoveryLiveCell" id="taU-uU-gI8" userLabel="HXDiscoveryLiveCell" customClass="HXDiscoveryLiveCell">
+                                <rect key="frame" x="51" y="0.0" width="218" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fch-1c-3Tw">
+                                            <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rxy-wK-F8D" customClass="HXIBButton">
+                                            <rect key="frame" x="50" y="116" width="118" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="thu-XQ-BWE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <state key="normal" title="开始直播">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="22"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fch-1c-3Tw" secondAttribute="bottom" id="1Ax-O6-JyO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rxy-wK-F8D" secondAttribute="trailing" constant="50" id="LUC-bf-Y2A"/>
+                                    <constraint firstAttribute="trailing" secondItem="fch-1c-3Tw" secondAttribute="trailing" id="Pwy-F3-P6W"/>
+                                    <constraint firstItem="fch-1c-3Tw" firstAttribute="top" secondItem="taU-uU-gI8" secondAttribute="top" id="bR0-RH-0hl"/>
+                                    <constraint firstItem="fch-1c-3Tw" firstAttribute="leading" secondItem="taU-uU-gI8" secondAttribute="leading" id="fRT-OA-QUq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rxy-wK-F8D" secondAttribute="bottom" constant="40" id="iOC-Bu-B9i"/>
+                                    <constraint firstItem="Rxy-wK-F8D" firstAttribute="leading" secondItem="taU-uU-gI8" secondAttribute="leading" constant="50" id="loZ-gq-fgZ"/>
+                                </constraints>
+                                <size key="customSize" width="218" height="200"/>
+                                <connections>
+                                    <outlet property="cover" destination="fch-1c-3Tw" id="dNh-hm-S71"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXDiscoveryShowCell" id="leI-sW-e4A" userLabel="HXDiscoveryShowCell" customClass="HXDiscoveryShowCell">
+                                <rect key="frame" x="51" y="210" width="218" height="249"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="218" height="249"/>
@@ -276,8 +320,8 @@
                                     <outlet property="titleLabel" destination="r0T-ac-1X8" id="onY-66-LI9"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXDiscoveryNormalCell" id="7f9-iC-Xtw" customClass="HXDiscoveryNormalCell">
-                                <rect key="frame" x="51" y="259" width="218" height="200"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXDiscoveryNormalCell" id="7f9-iC-Xtw" userLabel="HXDiscoveryNormalCell" customClass="HXDiscoveryNormalCell">
+                                <rect key="frame" x="51" y="469" width="218" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>

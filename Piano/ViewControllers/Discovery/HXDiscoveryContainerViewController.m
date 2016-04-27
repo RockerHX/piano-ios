@@ -10,6 +10,7 @@
 #import "HXDiscoveryViewModel.h"
 #import "HXCollectionViewLayout.h"
 #import "HXDiscoveryLiveCell.h"
+#import "HXDiscoveryShowCell.h"
 #import "HXDiscoveryNormalCell.h"
 
 
@@ -87,7 +88,7 @@ HXCollectionViewLayoutDelegate
     HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryShowCell class]) forIndexPath:indexPath];
             break;
         }
         case HXCollectionViewLayoutStylePetty: {

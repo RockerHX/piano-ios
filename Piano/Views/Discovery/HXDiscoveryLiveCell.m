@@ -7,28 +7,13 @@
 //
 
 #import "HXDiscoveryLiveCell.h"
-#import "UIImageView+WebCache.h"
 
 
 @implementation HXDiscoveryLiveCell
 
-#pragma mark - Load Methods
-- (void)awakeFromNib {
-    [super awakeFromNib];
+#pragma mark - Event Response
+- (IBAction)startLiveButtonPressed {
     
-    [self loadConfigure];
-}
-
-#pragma mark - Configure Methods
-- (void)loadConfigure {
-    ;
-}
-
-#pragma mark - Public Methods
-- (void)updateCellWithModel:(HXDiscoveryModel *)model {
-    _nickNameLabel.text = model.nickName;
-    _titleLabel.text = model.title;
-    [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
 }
 
 @end
