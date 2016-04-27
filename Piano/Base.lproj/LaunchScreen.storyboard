@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="C-LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-6t-2D9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C-LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="NA2-6t-2D9">
                                 <rect key="frame" x="32" y="87" width="257" height="257"/>
                             </imageView>
                         </subviews>
