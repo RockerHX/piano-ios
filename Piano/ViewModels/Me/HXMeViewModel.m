@@ -75,8 +75,8 @@
                 return;
             }
         }
-        [rowTypes insertObject:@(HXMeRowTypeAttentionPrompt) atIndex:3];
-        [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:4];
+        [rowTypes insertObject:@(HXMeRowTypeAttentionPrompt) atIndex:2];
+        [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:3];
     } else {
         for (NSInteger index = 2; index < _rowTypes.count; index++) {
             HXMeRowType rowType = [_rowTypes[index] integerValue];
