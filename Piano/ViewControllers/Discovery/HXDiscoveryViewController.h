@@ -9,25 +9,13 @@
 #import "UIViewController+HXClass.h"
 
 
-typedef NS_ENUM(BOOL, HXDiscoveryMenuState) {
-    HXDiscoveryMenuStateClose,
-    HXDiscoveryMenuStateOpen,
-};
-
-
-typedef NS_ENUM(NSUInteger, HXDiscoveryViewControllerAction) {
-    HXDiscoveryViewControllerActionMenuClose,
-    HXDiscoveryViewControllerActionMenuOpen,
-};
-
-
 @class HXDiscoveryViewController;
 
 
 @protocol HXDiscoveryViewControllerDelegate <NSObject>
 
 @required
-- (void)discoveryViewController:(HXDiscoveryViewController *)viewController action:(HXDiscoveryViewControllerAction)action;
+- (void)discoveryViewControllerHandleMenu:(HXDiscoveryViewController *)viewController;
 
 @end
 
@@ -35,8 +23,6 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryViewControllerAction) {
 @interface HXDiscoveryViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet id  <HXDiscoveryViewControllerDelegate>delegate;
-
-@property (nonatomic, assign, readonly) HXDiscoveryMenuState menuState;
 
 - (void)startFetchList;
 

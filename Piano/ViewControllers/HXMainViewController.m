@@ -222,14 +222,21 @@ HXLoginViewControllerDelegate
 //}
 
 #pragma mark - HXDiscoveryViewControllerDelegate
-- (void)discoveryViewController:(HXDiscoveryViewController *)viewController action:(HXDiscoveryViewControllerAction)action {
-    switch (action) {
-        case HXDiscoveryViewControllerActionMenuClose: {
-            _menuOffset = 0.0f;
+- (void)discoveryViewControllerHandleMenu:(HXDiscoveryViewController *)viewController {
+    switch (_menuState) {
+        case HXMenuStateClose: {
+            if ([HXUserSession session].state == HXUserStateLogout) {
+                [self shouldShowLoginSence];
+                return;
+            }
+            
+            _menuOffset = self.view.width * 0.86f;
+            _menuState = HXMenuStateOpen;
             break;
         }
-        case HXDiscoveryViewControllerActionMenuOpen: {
-            _menuOffset = self.view.width * 0.86f;
+        case HXMenuStateOpen: {
+            _menuOffset = 0.0f;
+            _menuState = HXMenuStateClose;
             break;
         }
     }

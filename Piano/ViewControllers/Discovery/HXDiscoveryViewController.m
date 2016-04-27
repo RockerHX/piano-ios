@@ -55,15 +55,8 @@ HXDiscoveryTopBarDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     switch (action) {
         case HXDiscoveryTopBarActionProfile: {
-            _menuState = !_menuState;
-            
-            HXDiscoveryViewControllerAction action = HXDiscoveryViewControllerActionMenuClose;
-            if (_menuState) {
-                action = HXDiscoveryViewControllerActionMenuOpen;
-            }
-            
-            if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewController:action:)]) {
-                [_delegate discoveryViewController:self action:action];
+            if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewControllerHandleMenu:)]) {
+                [_delegate discoveryViewControllerHandleMenu:self];
             }
             break;
         }
