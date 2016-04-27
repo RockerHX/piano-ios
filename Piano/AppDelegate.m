@@ -202,9 +202,9 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 	}
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
-		NSLog(@"%@ with roomID: %@", action, param1);
-        HXMainViewController *mainViewController = (HXMainViewController *)self.window.rootViewController;
-        [mainViewController watchLiveWithRoomID:param1];
+//		NSLog(@"%@ with roomID: %@", action, param1);
+//        HXMainViewController *mainViewController = (HXMainViewController *)self.window.rootViewController;
+//        [mainViewController watchLiveWithRoomID:param1];
 	}
 }
 

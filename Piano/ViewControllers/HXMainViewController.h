@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HXMainViewController : UITabBarController
-
-- (void)watchLiveWithRoomID:(NSString *)roomID;
+@interface HXMainViewController : UIViewController
 
 @end

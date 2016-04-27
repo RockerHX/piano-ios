@@ -46,6 +46,12 @@ HXXibImplementation
     }
 }
 
+#pragma mark - Public Methods
+- (void)updateCameraIconWithImage:(UIImage *)image {
+    [_cameraButton setImage:image forState:UIControlStateNormal];
+    [_cameraButton setTitle:@"更换封面图片" forState:UIControlStateNormal];
+}
+
 #pragma mark - UITextFieldDelegate Methods
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];

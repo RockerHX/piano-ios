@@ -24,6 +24,7 @@
 		398451ED1CAD0543009018C6 /* SongPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451EA1CAD0543009018C6 /* SongPreloader.m */; };
 		398451F11CAD05DB009018C6 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451F01CAD05DB009018C6 /* UserSetting.m */; };
 		398A6D111CAB77D6001A68B1 /* HXGuestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A6D101CAB77D6001A68B1 /* HXGuestModel.m */; };
+		CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */; };
 		CD1979531CA4E1A900303D27 /* HXWatcherBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1979511CA4E1A900303D27 /* HXWatcherBoard.m */; };
 		CD1979541CA4E1A900303D27 /* HXWatcherBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1979521CA4E1A900303D27 /* HXWatcherBoard.xib */; };
 		CD1B84171CAA90C200B9B1E8 /* HXAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B84161CAA90C200B9B1E8 /* HXAttentionModel.m */; };
@@ -440,6 +441,8 @@
 		398A6D101CAB77D6001A68B1 /* HXGuestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGuestModel.m; sourceTree = "<group>"; };
 		4704094A70120BB39E18C473 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B1BFCF29A3BF4A6DA2007B29 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD01F1C11CCE2007006BF4BF /* HXCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCollectionViewLayout.h; sourceTree = "<group>"; };
+		CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCollectionViewLayout.m; sourceTree = "<group>"; };
 		CD1979501CA4E1A900303D27 /* HXWatcherBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherBoard.h; sourceTree = "<group>"; };
 		CD1979511CA4E1A900303D27 /* HXWatcherBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherBoard.m; sourceTree = "<group>"; };
 		CD1979521CA4E1A900303D27 /* HXWatcherBoard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatcherBoard.xib; sourceTree = "<group>"; };
@@ -928,6 +931,15 @@
 				B1BFCF29A3BF4A6DA2007B29 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD01F1C01CCE2007006BF4BF /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				CD01F1C11CCE2007006BF4BF /* HXCollectionViewLayout.h */,
+				CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		CD19794F1CA4E1A900303D27 /* WatcherBoard */ = {
@@ -1866,6 +1878,7 @@
 		CDC062FD1CB3E32700E66F2A /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
+				CD01F1C01CCE2007006BF4BF /* Layout */,
 				CDC063001CB3E32700E66F2A /* HXDiscoveryViewController.h */,
 				CDC063011CB3E32700E66F2A /* HXDiscoveryViewController.m */,
 				CDC062FE1CB3E32700E66F2A /* HXDiscoveryContainerViewController.h */,
@@ -2466,6 +2479,7 @@
 				CD7960C71CBE594C004CC661 /* HXVideoModel.m in Sources */,
 				CD7960C81CBE594C004CC661 /* HXWatchLiveViewModel.m in Sources */,
 				CD7960C91CBE594C004CC661 /* HXDiscoveryViewModel.m in Sources */,
+				CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */,
 				CD7960CA1CBE594C004CC661 /* HXAlertBanner.m in Sources */,
 				CD7960CB1CBE594C004CC661 /* HXProfileAlbumContainerCell.m in Sources */,
 				CD7960CC1CBE594C004CC661 /* HXProfileAlbumCell.m in Sources */,
