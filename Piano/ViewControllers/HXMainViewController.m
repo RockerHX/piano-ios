@@ -229,7 +229,7 @@ HXLoginViewControllerDelegate
             break;
         }
         case HXDiscoveryViewControllerActionMenuOpen: {
-            _menuOffset = self.view.width * 0.8f;
+            _menuOffset = self.view.width * 0.86f;
             break;
         }
     }

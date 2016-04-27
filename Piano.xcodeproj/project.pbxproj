@@ -301,7 +301,6 @@
 		CD7961421CBE594C004CC661 /* HXReplayBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C194A1CA4E7AD00849B39 /* HXReplayBottomBar.xib */; };
 		CD7961431CBE594C004CC661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
 		CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
-		CD7961451CBE594C004CC661 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F341CA14D4E003867B8 /* Me.storyboard */; };
 		CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19511CA4EE8700849B39 /* HXRecordBottomBar.xib */; };
 		CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */; };
 		CD79614B1CBE594C004CC661 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -367,7 +366,6 @@
 		CDED8F2E1CA13BB4003867B8 /* HXThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F1B1CA13BB4003867B8 /* HXThemeManager.m */; };
 		CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F1E1CA13BB4003867B8 /* HXVersion.m */; };
 		CDED8F321CA13EFD003867B8 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F301CA13EFD003867B8 /* Profile.storyboard */; };
-		CDED8F361CA14D4E003867B8 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F341CA14D4E003867B8 /* Me.storyboard */; };
 		CDED8F3A1CA14E74003867B8 /* HXMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F391CA14E74003867B8 /* HXMeViewController.m */; };
 		CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */; };
 		CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F401CA15181003867B8 /* HXUserSession.m */; };
@@ -734,7 +732,6 @@
 		CDED8F1D1CA13BB4003867B8 /* HXVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXVersion.h; sourceTree = "<group>"; };
 		CDED8F1E1CA13BB4003867B8 /* HXVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXVersion.m; sourceTree = "<group>"; };
 		CDED8F311CA13EFD003867B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
-		CDED8F351CA14D4E003867B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Me.storyboard; sourceTree = "<group>"; };
 		CDED8F381CA14E74003867B8 /* HXMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeViewController.h; sourceTree = "<group>"; };
 		CDED8F391CA14E74003867B8 /* HXMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeViewController.m; sourceTree = "<group>"; };
 		CDED8F3B1CA14F26003867B8 /* HXProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileViewController.h; sourceTree = "<group>"; };
@@ -1582,7 +1579,6 @@
 			isa = PBXGroup;
 			children = (
 				CD2E72EB1CA11E75003CDB77 /* Publish.storyboard */,
-				CDED8F341CA14D4E003867B8 /* Me.storyboard */,
 				CD2949E81CA290CB00CA3C3F /* Login.storyboard */,
 				CDED8F301CA13EFD003867B8 /* Profile.storyboard */,
 				CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */,
@@ -2292,7 +2288,6 @@
 				CD7961421CBE594C004CC661 /* HXReplayBottomBar.xib in Resources */,
 				CD7961431CBE594C004CC661 /* Main.storyboard in Resources */,
 				CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */,
-				CD7961451CBE594C004CC661 /* Me.storyboard in Resources */,
 				CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */,
 				CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */,
 			);
@@ -2329,7 +2324,6 @@
 				CD6C194C1CA4E7AD00849B39 /* HXReplayBottomBar.xib in Resources */,
 				CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */,
 				CD6C198F1CA519A900849B39 /* HXPlayTopBar.xib in Resources */,
-				CDED8F361CA14D4E003867B8 /* Me.storyboard in Resources */,
 				CD6C19531CA4EE8700849B39 /* HXRecordBottomBar.xib in Resources */,
 				CD91678A1CAE5E6D000A12DC /* HXProfileNavigationBar.xib in Resources */,
 			);
@@ -2809,14 +2803,6 @@
 				CDED8F311CA13EFD003867B8 /* Base */,
 			);
 			name = Profile.storyboard;
-			sourceTree = "<group>";
-		};
-		CDED8F341CA14D4E003867B8 /* Me.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CDED8F351CA14D4E003867B8 /* Base */,
-			);
-			name = Me.storyboard;
 			sourceTree = "<group>";
 		};
 		CDF9504A1CA558E300BDB586 /* Albums.storyboard */ = {

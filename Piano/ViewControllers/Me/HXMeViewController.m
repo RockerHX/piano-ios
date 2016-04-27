@@ -29,15 +29,6 @@ HXMeContainerViewControllerDelegate
     BOOL _shouldHideNavigationBar;
 }
 
-#pragma mark - Class Methods
-+ (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameMe;
-}
-
-+ (NSString *)navigationControllerIdentifier {
-    return @"HXMeNavigationController";
-}
-
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _containerViewController = segue.destinationViewController;
