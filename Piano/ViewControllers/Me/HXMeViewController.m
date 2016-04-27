@@ -34,12 +34,6 @@ HXMeContainerViewControllerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self refresh];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -75,9 +69,16 @@ HXMeContainerViewControllerDelegate
         }
     } completed:^{
         @strongify(self)
-        [self hiddenHUD];
-        [self->_containerViewController refresh];
+        [self updateUI];
     }];
+}
+
+#pragma mark - Private Methods
+- (void)updateUI {
+    [self hiddenHUD];
+    
+//    _coverView.image = ;
+    [self->_containerViewController refresh];
 }
 
 #pragma mark - HXMeContainerViewControllerDelegate Methods

@@ -31,6 +31,7 @@ HXLoginViewControllerDelegate
     CGFloat _menuOffset;
     
     HXDiscoveryViewController *_discoveryContainerViewController;
+    HXMeViewController *_meContainerViewController;
 }
 
 #pragma mark - Status Bar
@@ -43,8 +44,8 @@ HXLoginViewControllerDelegate
     if ([segue.identifier isEqualToString:NSStringFromClass([HXDiscoveryViewController class])]) {
         _discoveryContainerViewController = segue.destinationViewController;
         _discoveryContainerViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXDiscoveryViewController class])]) {
-        ;
+    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXMeViewController class])]) {
+        _meContainerViewController = segue.destinationViewController;
     }
 }
 
@@ -188,8 +189,7 @@ HXLoginViewControllerDelegate
 }
 
 - (void)fetchProfileData {
-//    HXMeViewController *meViewController = [((UINavigationController *)[self.viewControllers lastObject]).viewControllers firstObject];
-//    [meViewController refresh];
+    [_meContainerViewController refresh];
 }
 
 - (void)startLive {

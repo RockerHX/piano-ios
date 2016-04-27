@@ -11,6 +11,8 @@
 
 @interface HXMeViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *coverView;
+
 - (void)refresh;
 
 @end
