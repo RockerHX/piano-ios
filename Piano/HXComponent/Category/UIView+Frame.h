@@ -18,11 +18,16 @@
 
 @property (nonatomic) CGFloat top;
 @property (nonatomic) CGFloat bottom;
-@property (nonatomic) CGFloat right;
 @property (nonatomic) CGFloat left;
+@property (nonatomic) CGFloat right;
 
 @property (nonatomic) CGFloat boundsX;
 @property (nonatomic) CGFloat boundsY;
+
+@property (nonatomic) CGFloat boundsTop;
+@property (nonatomic) CGFloat boundsBottom;
+@property (nonatomic) CGFloat boundsLeft;
+@property (nonatomic) CGFloat boundsRight;
 
 @property (nonatomic) CGFloat centerX;
 @property (nonatomic) CGFloat centerY;

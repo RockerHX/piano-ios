@@ -16,11 +16,11 @@
 #import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
-#import "HXCollectionViewLayout.h"
+#import "HXDiscoveryTopBar.h"
 
 
 @interface HXDiscoveryViewController () <
-HXCollectionViewLayoutDelegate
+HXDiscoveryTopBarDelegate
 >
 @end
 
@@ -43,18 +43,7 @@ HXCollectionViewLayoutDelegate
 }
  
 - (void)viewConfigure {
-    HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
-    layout.delegate = self;
-    layout.itemSpacing = 12.0f;
-    layout.itemSpilled = 20.0f;
-}
-
-#pragma mark - Event Response
-- (IBAction)musicButtonPressed {
-    if ([MusicMgr standard].playList.count) {
-        UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
-        [self presentViewController:playNavigationController animated:YES completion:nil];
-    }
+    ;
 }
 
 #pragma mark - Public Methods
@@ -62,25 +51,23 @@ HXCollectionViewLayoutDelegate
     ;
 }
 
-#pragma mark - Collection View Data Source Methods
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _itemCount;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [(UILabel *)[cell viewWithTag:1] setText:@(indexPath.row).stringValue];
-    return cell;
-}
-
-#pragma mark - Collection View Delegate Methods
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ;
-}
-
-#pragma mark - HXCollectionViewLayoutDelegate Methods
-- (HXCollectionViewLayoutStyle)collectionView:(UICollectionView *)collectionView layout:(HXCollectionViewLayout *)layout styleForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath.row < 5) ? HXCollectionViewLayoutStyleHeavy : HXCollectionViewLayoutStylePetty;
+#pragma mark - HXDiscoveryTopBarDelegate
+- (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
+    switch (action) {
+        case HXDiscoveryTopBarActionProfile: {
+            if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewControllerHandleMenu:)]) {
+                [_delegate discoveryViewControllerHandleMenu:self];
+            }
+            break;
+        }
+        case HXDiscoveryTopBarActionMusic: {
+            if ([MusicMgr standard].playList.count) {
+                UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
+                [self presentViewController:playNavigationController animated:YES completion:nil];
+            }
+            break;
+        }
+    }
 }
 
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods

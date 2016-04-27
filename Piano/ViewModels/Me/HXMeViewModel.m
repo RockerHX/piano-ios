@@ -24,7 +24,6 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
-    _headerHeight = 200.0f;
     _normalHeight = 56.0f;
     _attentionHeight = 125.0f;
     
@@ -33,8 +32,7 @@
 }
 
 - (void)setupRowTypes {
-    _rowTypes = @[@(HXMeRowTypeHeader),
-                  @(HXMeRowTypeRecharge),
+    _rowTypes = @[@(HXMeRowTypeRecharge),
                   @(HXMeRowTypePurchaseHistory)];
 }
 
@@ -71,7 +69,7 @@
 - (void)resetRowType {
     NSMutableArray *rowTypes = [_rowTypes mutableCopy];
     if (_model.attentions.count) {
-        for (NSInteger index = 3; index < _rowTypes.count; index++) {
+        for (NSInteger index = 2; index < _rowTypes.count; index++) {
             HXMeRowType rowType = [_rowTypes[index] integerValue];
             if ((rowType == HXMeRowTypeAttentionPrompt) || (rowType == HXMeRowTypeAttentions)) {
                 return;
@@ -80,7 +78,7 @@
         [rowTypes insertObject:@(HXMeRowTypeAttentionPrompt) atIndex:3];
         [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:4];
     } else {
-        for (NSInteger index = 3; index < _rowTypes.count; index++) {
+        for (NSInteger index = 2; index < _rowTypes.count; index++) {
             HXMeRowType rowType = [_rowTypes[index] integerValue];
             if ((rowType == HXMeRowTypeAttentionPrompt) || (rowType == HXMeRowTypeAttentions)) {
                 [rowTypes removeLastObject];

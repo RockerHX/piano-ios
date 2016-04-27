@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXDiscoveryTopBar">
+            <connections>
+                <outlet property="musicButton" destination="UZC-Ng-Inw" id="Laf-P9-3VV"/>
+                <outlet property="profileButton" destination="kEH-gG-lgn" id="ZAy-DR-pge"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEH-gG-lgn" userLabel="Profile Button" customClass="HXIBButton">
+                    <rect key="frame" x="15" y="15" width="46" height="46"/>
+                    <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="kEH-gG-lgn" secondAttribute="height" multiplier="1:1" id="hFq-5m-30b"/>
+                        <constraint firstAttribute="width" constant="46" id="sx1-j8-x3a"/>
+                    </constraints>
+                    <state key="normal" title="Profile"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="23"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="profileButtonPressed" destination="-1" eventType="touchUpInside" id="V8Z-US-Ep4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZC-Ng-Inw" userLabel="Musicn Button">
+                    <rect key="frame" x="259" y="15" width="46" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="iUg-lA-4DN"/>
+                    </constraints>
+                    <state key="normal" title="Music"/>
+                    <connections>
+                        <action selector="musicButtonPressed" destination="-1" eventType="touchUpInside" id="1za-6o-Ir2"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="kEH-gG-lgn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="8Iy-5h-RYc"/>
+                <constraint firstItem="UZC-Ng-Inw" firstAttribute="centerY" secondItem="kEH-gG-lgn" secondAttribute="centerY" id="P43-N6-JFF"/>
+                <constraint firstItem="kEH-gG-lgn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Y47-YF-VCq"/>
+                <constraint firstAttribute="trailing" secondItem="UZC-Ng-Inw" secondAttribute="trailing" constant="15" id="Zjx-T5-Bzo"/>
+                <constraint firstItem="UZC-Ng-Inw" firstAttribute="width" secondItem="UZC-Ng-Inw" secondAttribute="height" multiplier="1:1" id="ecJ-9N-QB0"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="359" y="372"/>
+        </view>
+    </objects>
+</document>

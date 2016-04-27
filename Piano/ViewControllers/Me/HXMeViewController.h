@@ -9,12 +9,7 @@
 #import "UIViewController+HXClass.h"
 
 
-@class HXMeNavigationBar;
-
-
 @interface HXMeViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet HXMeNavigationBar *navigationBar;
 
 - (void)refresh;
 

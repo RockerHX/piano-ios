@@ -7,7 +7,6 @@
 //
 
 #import "HXMeViewController.h"
-#import "HXMeNavigationBar.h"
 #import "HXMeContainerViewController.h"
 #import "HXSettingViewController.h"
 #import "HXWatchLiveViewController.h"
@@ -16,7 +15,6 @@
 
 
 @interface HXMeViewController () <
-HXMeNavigationBarDelegate,
 HXMeContainerViewControllerDelegate
 >
 @end
@@ -27,15 +25,6 @@ HXMeContainerViewControllerDelegate
     HXMeViewModel *_viewModel;
     
     BOOL _shouldHideNavigationBar;
-}
-
-#pragma mark - Class Methods
-+ (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameMe;
-}
-
-+ (NSString *)navigationControllerIdentifier {
-    return @"HXMeNavigationController";
 }
 
 #pragma mark - Segue
@@ -49,13 +38,6 @@ HXMeContainerViewControllerDelegate
     [super viewWillAppear:animated];
     
     [self refresh];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:_shouldHideNavigationBar animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -98,23 +80,7 @@ HXMeContainerViewControllerDelegate
     }];
 }
 
-#pragma mark - HXMeNavigationBarDelegate Methods
-- (void)navigationBar:(HXMeNavigationBar *)bar action:(HXMeNavigationBarAction)action {
-    switch (action) {
-        case HXMeNavigationBarActionSetting: {
-            _shouldHideNavigationBar = NO;
-            HXSettingViewController *settingViewController = [HXSettingViewController instance];
-            [self.navigationController pushViewController:settingViewController animated:YES];
-            break;
-        }
-    }
-}
-
 #pragma mark - HXMeContainerViewControllerDelegate Methods
-- (void)container:(HXMeContainerViewController *)container scrollOffset:(CGFloat)offset {
-    [_navigationBar showBottomLine:((offset > 0) ? YES : NO)];
-}
-
 - (void)container:(HXMeContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model {
     if (model.live) {
         if (!model.roomID) {
@@ -149,7 +115,7 @@ HXMeContainerViewControllerDelegate
             ;
             break;
         }
-        case HXMeContainerActionSummaryTaped: {
+        case HXMeContainerActionSignatureTaped: {
             ;
             break;
         }

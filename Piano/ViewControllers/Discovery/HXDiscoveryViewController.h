@@ -9,9 +9,20 @@
 #import "UIViewController+HXClass.h"
 
 
-@interface HXDiscoveryViewController : UICollectionViewController
+@class HXDiscoveryViewController;
 
-- (IBAction)musicButtonPressed;
+
+@protocol HXDiscoveryViewControllerDelegate <NSObject>
+
+@required
+- (void)discoveryViewControllerHandleMenu:(HXDiscoveryViewController *)viewController;
+
+@end
+
+
+@interface HXDiscoveryViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet id  <HXDiscoveryViewControllerDelegate>delegate;
 
 - (void)startFetchList;
 

@@ -1,16 +1,16 @@
 //
-//  HXDiscoveryNormalCell.m
+//  HXDiscoveryShowCell.m
 //  Piano
 //
-//  Created by miaios on 16/3/23.
+//  Created by miaios on 16/4/27.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXDiscoveryNormalCell.h"
+#import "HXDiscoveryShowCell.h"
 #import "UIImageView+WebCache.h"
 
 
-@implementation HXDiscoveryNormalCell
+@implementation HXDiscoveryShowCell
 
 #pragma mark - Load Methods
 - (void)awakeFromNib {
@@ -27,7 +27,7 @@
 #pragma mark - Public Methods
 - (void)updateCellWithModel:(HXDiscoveryModel *)model {
     _nickNameLabel.text = model.nickName;
-    
+    _titleLabel.text = model.title;
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
 }
 
