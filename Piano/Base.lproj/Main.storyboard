@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="-1066" y="210"/>
         </scene>
-        <!--Main View Controller-->
+        <!--HXMainViewController-->
         <scene sceneID="ZZh-qU-WHE">
             <objects>
-                <viewController id="S7E-XZ-nQC" customClass="HXMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="S7E-XZ-nQC" userLabel="HXMainViewController" customClass="HXMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sEO-LB-bcg"/>
                         <viewControllerLayoutGuide type="bottom" id="1qt-4N-iev"/>
@@ -35,17 +35,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDJ-Lg-0Kk">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDJ-Lg-0Kk" userLabel="Profile Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <connections>
                                     <segue destination="8up-z7-9tM" kind="embed" id="3cQ-VF-njE"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yd3-sQ-Zpk">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yd3-sQ-Zpk" userLabel="Discovery Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="sCW-Sd-p1X" kind="embed" id="LMN-mG-2Bu"/>
+                                    <segue destination="sCW-Sd-p1X" kind="embed" identifier="HXDiscoveryViewController" id="LMN-mG-2Bu"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -64,15 +64,20 @@
                     <navigationItem key="navigationItem" id="zFS-We-bxq"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="discoveryContainerView" destination="Yd3-sQ-Zpk" id="YEy-sU-zp0"/>
+                        <outlet property="discoveryLeftConstraint" destination="3LS-B7-q16" id="Mr3-Bu-uW8"/>
+                        <outlet property="profileContainerView" destination="bDJ-Lg-0Kk" id="SrB-bs-1ed"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGI-nm-tdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-619" y="210"/>
         </scene>
-        <!--Discovery View Controller-->
+        <!--HXDiscoveryViewController-->
         <scene sceneID="bbb-YM-ME8">
             <objects>
-                <viewController id="sCW-Sd-p1X" customClass="HXDiscoveryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXDiscoveryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sCW-Sd-p1X" userLabel="HXDiscoveryViewController" customClass="HXDiscoveryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g7s-BW-b3S"/>
                         <viewControllerLayoutGuide type="bottom" id="Nrj-zM-QlF"/>
@@ -81,6 +86,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhj-ng-Ohe" userLabel="Mask Container">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hym-Jf-3F4">
                                 <rect key="frame" x="0.0" y="82" width="320" height="486"/>
                                 <connections>
@@ -93,15 +102,22 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="82" id="NRd-RD-NAB"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="sCW-Sd-p1X" id="5Np-pJ-J2o"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hym-Jf-3F4" secondAttribute="bottom" id="17h-pn-WO1"/>
                             <constraint firstItem="GfG-ly-NxN" firstAttribute="leading" secondItem="iDl-WQ-m03" secondAttribute="leading" id="6Mg-lB-ShM"/>
+                            <constraint firstItem="xhj-ng-Ohe" firstAttribute="top" secondItem="iDl-WQ-m03" secondAttribute="top" id="7Hq-fl-KFR"/>
                             <constraint firstItem="hym-Jf-3F4" firstAttribute="leading" secondItem="iDl-WQ-m03" secondAttribute="leading" id="ElS-1g-YHn"/>
                             <constraint firstItem="GfG-ly-NxN" firstAttribute="top" secondItem="iDl-WQ-m03" secondAttribute="top" id="Lv9-pU-yee"/>
                             <constraint firstItem="hym-Jf-3F4" firstAttribute="top" secondItem="GfG-ly-NxN" secondAttribute="bottom" id="RWT-6m-olJ"/>
+                            <constraint firstAttribute="bottom" secondItem="xhj-ng-Ohe" secondAttribute="bottom" id="ct1-N8-hQx"/>
+                            <constraint firstAttribute="trailing" secondItem="xhj-ng-Ohe" secondAttribute="trailing" id="mMZ-fU-CCj"/>
+                            <constraint firstItem="xhj-ng-Ohe" firstAttribute="leading" secondItem="iDl-WQ-m03" secondAttribute="leading" id="soP-1O-nlt"/>
                             <constraint firstAttribute="trailing" secondItem="hym-Jf-3F4" secondAttribute="trailing" id="yxl-zF-wS6"/>
                             <constraint firstAttribute="trailing" secondItem="GfG-ly-NxN" secondAttribute="trailing" id="zXm-TF-iCM"/>
                         </constraints>
@@ -111,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="-161" y="210"/>
         </scene>
-        <!--Discovery Container View Controller-->
+        <!--HXDiscoveryContainerViewController-->
         <scene sceneID="z1V-Z9-tXD">
             <objects>
-                <collectionViewController id="dI6-ag-QYF" customClass="HXDiscoveryContainerViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="HXDiscoveryContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dI6-ag-QYF" userLabel="HXDiscoveryContainerViewController" customClass="HXDiscoveryContainerViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Bfb-oK-W2D">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="486"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

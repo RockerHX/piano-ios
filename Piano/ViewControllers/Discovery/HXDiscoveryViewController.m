@@ -16,9 +16,12 @@
 #import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
+#import "HXDiscoveryTopBar.h"
 
 
-@interface HXDiscoveryViewController ()
+@interface HXDiscoveryViewController () <
+HXDiscoveryTopBarDelegate
+>
 @end
 
 
@@ -43,17 +46,35 @@
     ;
 }
 
-#pragma mark - Event Response
-- (IBAction)musicButtonPressed {
-    if ([MusicMgr standard].playList.count) {
-        UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
-        [self presentViewController:playNavigationController animated:YES completion:nil];
-    }
-}
-
 #pragma mark - Public Methods
 - (void)startFetchList {
     ;
+}
+
+#pragma mark - HXDiscoveryTopBarDelegate
+- (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
+    switch (action) {
+        case HXDiscoveryTopBarActionProfile: {
+            _menuState = !_menuState;
+            
+            HXDiscoveryViewControllerAction action = HXDiscoveryViewControllerActionMenuClose;
+            if (_menuState) {
+                action = HXDiscoveryViewControllerActionMenuOpen;
+            }
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewController:action:)]) {
+                [_delegate discoveryViewController:self action:action];
+            }
+            break;
+        }
+        case HXDiscoveryTopBarActionMusic: {
+            if ([MusicMgr standard].playList.count) {
+                UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
+                [self presentViewController:playNavigationController animated:YES completion:nil];
+            }
+            break;
+        }
+    }
 }
 
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods

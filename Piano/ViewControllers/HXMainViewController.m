@@ -19,18 +19,33 @@
 #import "UIView+Frame.h"
 #import "HXWatchLiveViewController.h"
 
+
 @interface HXMainViewController () <
+HXDiscoveryViewControllerDelegate,
 HXLoginViewControllerDelegate
 >
 @end
 
 @implementation HXMainViewController {
     BOOL _shouldHiddenNavigationBar;
+    CGFloat _menuOffset;
+    
+    HXDiscoveryViewController *_discoveryContainerViewController;
 }
 
 #pragma mark - Status Bar
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:NSStringFromClass([HXDiscoveryViewController class])]) {
+        _discoveryContainerViewController = segue.destinationViewController;
+        _discoveryContainerViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXDiscoveryViewController class])]) {
+        ;
+    }
 }
 
 #pragma mark - View Controller Life Cycle
@@ -205,6 +220,25 @@ HXLoginViewControllerDelegate
 //        }
 //    }
 //}
+
+#pragma mark - HXDiscoveryViewControllerDelegate
+- (void)discoveryViewController:(HXDiscoveryViewController *)viewController action:(HXDiscoveryViewControllerAction)action {
+    switch (action) {
+        case HXDiscoveryViewControllerActionMenuClose: {
+            _menuOffset = 0.0f;
+            break;
+        }
+        case HXDiscoveryViewControllerActionMenuOpen: {
+            _menuOffset = self.view.width * 0.8f;
+            break;
+        }
+    }
+    
+    _discoveryLeftConstraint.constant = _menuOffset;
+    [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:5.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
 
 #pragma mark - HXLoginViewControllerDelegate Methods
 - (void)loginViewController:(HXLoginViewController *)loginViewController takeAction:(HXLoginViewControllerAction)action {
