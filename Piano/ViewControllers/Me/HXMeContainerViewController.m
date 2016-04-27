@@ -7,16 +7,15 @@
 //
 
 #import "HXMeContainerViewController.h"
-#import "HXMeHeaderCell.h"
 #import "HXMeRechargeCell.h"
 #import "HXMePurchaseHistoryCell.h"
 #import "HXMeMyStationCell.h"
 #import "HXMeAttentionPromptCell.h"
 #import "HXMeAttentionContainerCell.h"
+#import "UIImageView+WebCache.h"
 
 
 @interface HXMeContainerViewController () <
-HXMeHeaderCellDelegate,
 HXMeAttentionContainerCellDelegate
 >
 @end
@@ -41,16 +40,22 @@ HXMeAttentionContainerCellDelegate
     ;
 }
 
+#pragma mark - Event Response
+- (IBAction)settingButtonPressed {
+    ;
+}
+
 #pragma mark - Public Methods
 - (void)refresh {
+    [self updateHeaderWithProfileModel:_viewModel.model];
     [self.tableView reloadData];
 }
 
-#pragma mark - Scroll View Delegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (_delegate && [_delegate respondsToSelector:@selector(container:scrollOffset:)]) {
-        [_delegate container:self scrollOffset:scrollView.contentOffset.y];
-    }
+#pragma mark - Private Methods
+- (void)updateHeaderWithProfileModel:(HXProfileModel *)model {
+    [_avatarView sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
+    _nickNameLabel.text = model.nickName;
+    _signatureLabel.text = model.summary;
 }
 
 #pragma mark - Table View Data Source Methods
@@ -62,10 +67,6 @@ HXMeAttentionContainerCellDelegate
     UITableViewCell *cell = nil;
     HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
-        case HXMeRowTypeHeader: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeHeaderCell class]) forIndexPath:indexPath];
-            break;
-        }
         case HXMeRowTypeRecharge: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeRechargeCell class]) forIndexPath:indexPath];
             break;
@@ -95,10 +96,6 @@ HXMeAttentionContainerCellDelegate
     CGFloat height = 0.0f;
     HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
-        case HXMeRowTypeHeader: {
-            height = _viewModel.headerHeight;
-            break;
-        }
         case HXMeRowTypeRecharge:
         case HXMeRowTypePurchaseHistory:
         case HXMeRowTypeMyStation:
@@ -117,10 +114,6 @@ HXMeAttentionContainerCellDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
-        case HXMeRowTypeHeader: {
-            [(HXMeHeaderCell *)cell updateCellWithProfileModel:_viewModel.model];
-            break;
-        }
         case HXMeRowTypeAttentionPrompt: {
             [(HXMeAttentionPromptCell *)cell updateCellWithCount:_viewModel.model.attentions.count];
             break;
@@ -155,28 +148,6 @@ HXMeAttentionContainerCellDelegate
         default: {
             break;
         }
-    }
-}
-
-#pragma mark - HXMeHeaderCellDelegate Methods
-- (void)headerCell:(HXMeHeaderCell *)cell takeAction:(HXMeHeaderCellAction)action {
-    HXMeContainerAction containerAction;
-    switch (action) {
-        case HXMeHeaderCellActionAvatarTaped: {
-            containerAction = HXMeContainerActionAvatarTaped;
-            break;
-        }
-        case HXMeHeaderCellActionNickNameTaped: {
-            containerAction = HXMeContainerActionAvatarTaped;
-            break;
-        }
-        case HXMeHeaderCellActionSummaryTaped: {
-            containerAction = HXMeContainerActionAvatarTaped;
-            break;
-        }
-    }
-    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
-        [_delegate container:self takeAction:containerAction];
     }
 }
 

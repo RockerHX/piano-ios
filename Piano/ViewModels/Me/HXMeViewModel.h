@@ -11,7 +11,6 @@
 
 
 typedef NS_ENUM(NSUInteger, HXMeRowType) {
-    HXMeRowTypeHeader,
     HXMeRowTypeRecharge,
     HXMeRowTypePurchaseHistory,
     HXMeRowTypeMyStation,
@@ -24,7 +23,6 @@ typedef NS_ENUM(NSUInteger, HXMeRowType) {
 
 @property (nonatomic, strong, readonly) RACCommand *fetchCommand;
 
-@property (nonatomic, assign, readonly)   CGFloat  headerHeight;
 @property (nonatomic, assign, readonly)   CGFloat  normalHeight;
 @property (nonatomic, assign, readonly)   CGFloat  attentionHeight;
 

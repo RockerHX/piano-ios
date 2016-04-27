@@ -14,7 +14,7 @@
 typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
     HXMeContainerActionAvatarTaped,
     HXMeContainerActionNickNameTaped,
-    HXMeContainerActionSummaryTaped,
+    HXMeContainerActionSignatureTaped,
 };
 
 
@@ -24,7 +24,6 @@ typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
 @protocol HXMeContainerViewControllerDelegate <NSObject>
 
 @required
-- (void)container:(HXMeContainerViewController *)container scrollOffset:(CGFloat)offset;
 - (void)container:(HXMeContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model;
 - (void)container:(HXMeContainerViewController *)container takeAction:(HXMeContainerAction)action;
 
@@ -33,9 +32,16 @@ typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
 
 @interface HXMeContainerViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet id  <HXMeContainerViewControllerDelegate>delegate;
+@property (weak, nonatomic) IBOutlet          id  <HXMeContainerViewControllerDelegate>delegate;
+
+@property (weak, nonatomic) IBOutlet    UIButton *settingButton;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarView;
+@property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet     UILabel *signatureLabel;
 
 @property (nonatomic, strong) HXMeViewModel *viewModel;
+
+- (IBAction)settingButtonPressed;
 
 - (void)refresh;
 
