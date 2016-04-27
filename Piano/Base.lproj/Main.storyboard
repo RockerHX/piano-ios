@@ -43,6 +43,7 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yd3-sQ-Zpk">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="sCW-Sd-p1X" kind="embed" id="LMN-mG-2Bu"/>
                                 </connections>
@@ -55,7 +56,7 @@
                             <constraint firstItem="Yd3-sQ-Zpk" firstAttribute="leading" secondItem="wkx-Ln-0rM" secondAttribute="leading" id="3LS-B7-q16"/>
                             <constraint firstAttribute="bottom" secondItem="Yd3-sQ-Zpk" secondAttribute="bottom" id="Au8-en-gO6"/>
                             <constraint firstAttribute="bottom" secondItem="bDJ-Lg-0Kk" secondAttribute="bottom" id="cNa-GN-dLA"/>
-                            <constraint firstAttribute="trailing" secondItem="Yd3-sQ-Zpk" secondAttribute="trailing" id="hgR-Ny-6sY"/>
+                            <constraint firstItem="Yd3-sQ-Zpk" firstAttribute="width" secondItem="wkx-Ln-0rM" secondAttribute="width" id="hni-sJ-1Oe"/>
                             <constraint firstItem="Yd3-sQ-Zpk" firstAttribute="top" secondItem="wkx-Ln-0rM" secondAttribute="top" id="oHq-EC-Jkd"/>
                             <constraint firstItem="bDJ-Lg-0Kk" firstAttribute="leading" secondItem="wkx-Ln-0rM" secondAttribute="leading" id="qn6-Vo-ACf"/>
                         </constraints>
@@ -81,18 +82,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hym-Jf-3F4">
-                                <rect key="frame" x="0.0" y="100" width="320" height="468"/>
+                                <rect key="frame" x="0.0" y="82" width="320" height="486"/>
                                 <connections>
                                     <segue destination="dI6-ag-QYF" kind="embed" id="Ssy-Fs-rsg"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfG-ly-NxN" userLabel="HXDiscoveryTopBar" customClass="HXDiscoveryTopBar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="NRd-RD-NAB"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hym-Jf-3F4" secondAttribute="bottom" id="17h-pn-WO1"/>
+                            <constraint firstItem="GfG-ly-NxN" firstAttribute="leading" secondItem="iDl-WQ-m03" secondAttribute="leading" id="6Mg-lB-ShM"/>
                             <constraint firstItem="hym-Jf-3F4" firstAttribute="leading" secondItem="iDl-WQ-m03" secondAttribute="leading" id="ElS-1g-YHn"/>
-                            <constraint firstItem="hym-Jf-3F4" firstAttribute="top" secondItem="iDl-WQ-m03" secondAttribute="top" constant="100" id="YL0-mB-NV3"/>
+                            <constraint firstItem="GfG-ly-NxN" firstAttribute="top" secondItem="iDl-WQ-m03" secondAttribute="top" id="Lv9-pU-yee"/>
+                            <constraint firstItem="hym-Jf-3F4" firstAttribute="top" secondItem="GfG-ly-NxN" secondAttribute="bottom" id="RWT-6m-olJ"/>
                             <constraint firstAttribute="trailing" secondItem="hym-Jf-3F4" secondAttribute="trailing" id="yxl-zF-wS6"/>
+                            <constraint firstAttribute="trailing" secondItem="GfG-ly-NxN" secondAttribute="trailing" id="zXm-TF-iCM"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -105,7 +116,7 @@
             <objects>
                 <collectionViewController id="dI6-ag-QYF" customClass="HXDiscoveryContainerViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Bfb-oK-W2D">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="486"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="KDp-pv-yzy" customClass="HXCollectionViewLayout"/>

@@ -28,6 +28,11 @@ HXLoginViewControllerDelegate
     BOOL _shouldHiddenNavigationBar;
 }
 
+#pragma mark - Status Bar
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 #pragma mark - View Controller Life Cycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
