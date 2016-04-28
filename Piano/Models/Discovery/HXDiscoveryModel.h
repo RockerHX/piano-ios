@@ -15,8 +15,8 @@
 @interface HXDiscoveryModel : NSObject
 
 @property (nonatomic, assign)      BOOL  live;
-@property (nonatomic, assign)      BOOL  albumUpdated;
 @property (nonatomic, assign)      BOOL  videoUpdated;
+@property (nonatomic, assign)      BOOL  albumUpdated;
 
 @property (nonatomic, strong)  NSString *uID;
 @property (nonatomic, strong)  NSString *roomID;

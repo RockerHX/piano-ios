@@ -11,6 +11,9 @@
 #import "HexColors.h"
 
 
+static CGFloat IconSpace = 8.0f;
+
+
 @implementation HXDiscoveryNormalCell
 
 #pragma mark - Load Methods
@@ -29,8 +32,24 @@
 - (void)updateCellWithModel:(HXDiscoveryModel *)model {
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
     
-    _nickNameContainer.backgroundColor = [UIColor hx_colorWithHexRGBAString:model.coverColor];
+    UIColor *coverColor = [UIColor hx_colorWithHexRGBAString:model.coverColor];
+    _nickNameContainer.backgroundColor = coverColor;
     _nickNameLabel.text = model.nickName;
+    
+    BOOL videoUpdated = model.videoUpdated;
+    BOOL albumUpdated = model.albumUpdated;
+    
+    if (videoUpdated) {
+        _videoIcon.backgroundColor = coverColor;
+    }
+    if (albumUpdated) {
+        _albumIcon.backgroundColor = coverColor;
+    }
+    
+    _videoIconWidthConstraint.constant = videoUpdated ? _albumIconWidthConstraint.constant : 0.0f;
+    _iconSpaceConstraint.constant = videoUpdated ? IconSpace : 0.0f;
+    _videoIcon.hidden = !videoUpdated;
+    _albumIcon.hidden = !albumUpdated;
 }
 
 @end

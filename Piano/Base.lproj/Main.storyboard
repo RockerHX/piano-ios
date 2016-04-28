@@ -379,7 +379,7 @@
                                                 <constraint firstAttribute="width" secondItem="hbt-ft-vNa" secondAttribute="height" multiplier="1:1" id="b6F-gl-5s7"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JM4-AN-jpV" userLabel="Music Icon">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JM4-AN-jpV" userLabel="Album Icon">
                                             <rect key="frame" x="41" y="131" width="28" height="28"/>
                                             <color key="backgroundColor" red="0.61568627450000002" green="0.47843137250000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -402,13 +402,14 @@
                                     <constraint firstItem="sjE-Wh-idO" firstAttribute="top" secondItem="7f9-iC-Xtw" secondAttribute="top" id="Zrf-z8-Ijg"/>
                                     <constraint firstAttribute="bottom" secondItem="sjE-Wh-idO" secondAttribute="bottom" id="kgo-6t-KIn"/>
                                     <constraint firstItem="JM4-AN-jpV" firstAttribute="leading" secondItem="hbt-ft-vNa" secondAttribute="trailing" constant="8" id="uEb-z8-bpc"/>
-                                    <constraint firstItem="JM4-AN-jpV" firstAttribute="centerY" secondItem="hbt-ft-vNa" secondAttribute="centerY" id="ufa-Ex-K96"/>
+                                    <constraint firstItem="JM4-AN-jpV" firstAttribute="top" secondItem="hbt-ft-vNa" secondAttribute="top" id="xv0-hR-jWZ"/>
                                 </constraints>
                                 <size key="customSize" width="218" height="200"/>
                                 <connections>
+                                    <outlet property="albumIcon" destination="JM4-AN-jpV" id="LCx-bW-dMN"/>
+                                    <outlet property="albumIconWidthConstraint" destination="Wtt-wS-WGm" id="3cm-8b-rJh"/>
                                     <outlet property="cover" destination="sjE-Wh-idO" id="q1b-ph-VDS"/>
-                                    <outlet property="musicIcon" destination="JM4-AN-jpV" id="mfO-4g-afb"/>
-                                    <outlet property="musicIconLeftConstraint" destination="uEb-z8-bpc" id="ty4-yz-kMS"/>
+                                    <outlet property="iconSpaceConstraint" destination="uEb-z8-bpc" id="Fv0-JE-r45"/>
                                     <outlet property="nickNameContainer" destination="2c0-aG-ej8" id="Et5-Eh-kNM"/>
                                     <outlet property="nickNameLabel" destination="SyA-Mc-0RO" id="dkF-cq-okN"/>
                                     <outlet property="videoIcon" destination="hbt-ft-vNa" id="MdL-9d-evV"/>

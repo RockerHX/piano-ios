@@ -16,10 +16,11 @@
 @property (weak, nonatomic) IBOutlet      UIView *nickNameContainer;
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *videoIcon;
-@property (weak, nonatomic) IBOutlet UIImageView *musicIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *albumIcon;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoIconWidthConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *musicIconLeftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumIconWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconSpaceConstraint;
 
 - (void)updateCellWithModel:(HXDiscoveryModel *)model;
 
