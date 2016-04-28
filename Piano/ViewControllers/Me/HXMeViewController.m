@@ -12,6 +12,8 @@
 #import "HXWatchLiveViewController.h"
 #import "HXProfileViewController.h"
 #import "HXUserSession.h"
+#import "UIImageView+WebCache.h"
+#import "FXBlurView.h"
 
 
 @interface HXMeViewController () <
@@ -77,7 +79,12 @@ HXMeContainerViewControllerDelegate
 - (void)updateUI {
     [self hiddenHUD];
     
-//    _coverView.image = ;
+    __weak __typeof__(self)weakSelf = self;
+    [_coverView sd_setImageWithURL:[NSURL URLWithString:_viewModel.model.avatarUrl] completed:
+     ^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        __strong __typeof__(self)strongSelf = weakSelf;
+         strongSelf.coverView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
+    }];
     [self->_containerViewController refresh];
 }
 
