@@ -43,7 +43,6 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yd3-sQ-Zpk" userLabel="Discovery Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="sCW-Sd-p1X" kind="embed" identifier="HXDiscoveryViewController" id="LMN-mG-2Bu"/>
                                 </connections>
@@ -88,7 +87,25 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhj-ng-Ohe" userLabel="Mask Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QIL-l8-kiV" userLabel="Cover View">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PR-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-fu-0tZ" userLabel="Mask View">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="QIL-l8-kiV" firstAttribute="leading" secondItem="xhj-ng-Ohe" secondAttribute="leading" id="3GY-D3-yyJ"/>
+                                    <constraint firstItem="Wwd-fu-0tZ" firstAttribute="top" secondItem="xhj-ng-Ohe" secondAttribute="top" id="62Q-Qi-CpA"/>
+                                    <constraint firstAttribute="bottom" secondItem="QIL-l8-kiV" secondAttribute="bottom" id="FOT-mE-rRv"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wwd-fu-0tZ" secondAttribute="bottom" id="bu5-7H-sST"/>
+                                    <constraint firstItem="QIL-l8-kiV" firstAttribute="top" secondItem="xhj-ng-Ohe" secondAttribute="top" id="ccj-EE-oax"/>
+                                    <constraint firstAttribute="trailing" secondItem="QIL-l8-kiV" secondAttribute="trailing" id="foM-Ah-FmD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wwd-fu-0tZ" secondAttribute="trailing" id="ihh-lt-NC7"/>
+                                    <constraint firstItem="Wwd-fu-0tZ" firstAttribute="leading" secondItem="xhj-ng-Ohe" secondAttribute="leading" id="yZz-Lg-1hq"/>
+                                </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hym-Jf-3F4">
                                 <rect key="frame" x="0.0" y="82" width="320" height="486"/>
@@ -107,7 +124,6 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hym-Jf-3F4" secondAttribute="bottom" id="17h-pn-WO1"/>
                             <constraint firstItem="GfG-ly-NxN" firstAttribute="leading" secondItem="iDl-WQ-m03" secondAttribute="leading" id="6Mg-lB-ShM"/>
@@ -122,6 +138,10 @@
                             <constraint firstAttribute="trailing" secondItem="GfG-ly-NxN" secondAttribute="trailing" id="zXm-TF-iCM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="coverView" destination="QIL-l8-kiV" id="QhE-87-RcR"/>
+                        <outlet property="maskView" destination="Wwd-fu-0tZ" id="VUT-zx-x9S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CgZ-mA-TwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,6 +409,7 @@
                                     <outlet property="cover" destination="sjE-Wh-idO" id="q1b-ph-VDS"/>
                                     <outlet property="musicIcon" destination="JM4-AN-jpV" id="mfO-4g-afb"/>
                                     <outlet property="musicIconLeftConstraint" destination="uEb-z8-bpc" id="ty4-yz-kMS"/>
+                                    <outlet property="nickNameContainer" destination="2c0-aG-ej8" id="Et5-Eh-kNM"/>
                                     <outlet property="nickNameLabel" destination="SyA-Mc-0RO" id="dkF-cq-okN"/>
                                     <outlet property="videoIcon" destination="hbt-ft-vNa" id="MdL-9d-evV"/>
                                     <outlet property="videoIconWidthConstraint" destination="T0Z-B5-AJj" id="4GM-fM-36H"/>
