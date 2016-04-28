@@ -46,7 +46,7 @@
 
 #pragma mark - Private Methods
 - (void)fetchDiscoveryListWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper getHomeListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper getMusiciansWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             [self parseData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             [subscriber sendCompleted];

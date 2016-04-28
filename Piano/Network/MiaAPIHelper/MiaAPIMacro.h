@@ -81,6 +81,7 @@ static NSString * const MiaAPICommand_Push_RoomComment		= @"Rooms.Push.Comment";
 // Home
 static NSString * const MiaAPICommand_Room_GetList			= @"Live.Room.Get.Lists";
 static NSString * const MiaAPICommand_Channel_GetHome		= @"Channel.Get.Home";
+static NSString * const MiaAPICommand_Channel_GetMusician	= @"Channel.Get.Musician";
 
 // Live
 static NSString * const MiaAPICommand_Live_EnterRoom		= @"Live.Room.Post.Enter";

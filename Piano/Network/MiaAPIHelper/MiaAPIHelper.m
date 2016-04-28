@@ -275,6 +275,16 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)getMusiciansWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Channel_GetMusician
+															   parameters:dictValues
+															completeBlock:completeBlock
+															 timeoutBlock:timeoutBlock];
+	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 + (void)enterRoom:(NSString *)roomID
 		 completeBlock:(MiaRequestCompleteBlock)completeBlock
 		  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
