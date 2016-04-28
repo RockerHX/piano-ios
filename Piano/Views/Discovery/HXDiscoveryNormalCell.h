@@ -13,6 +13,7 @@
 @interface HXDiscoveryNormalCell : HXDiscoveryCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *cover;
+@property (weak, nonatomic) IBOutlet      UIView *nickNameContainer;
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *videoIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *musicIcon;

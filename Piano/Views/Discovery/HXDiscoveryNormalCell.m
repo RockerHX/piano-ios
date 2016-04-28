@@ -8,6 +8,7 @@
 
 #import "HXDiscoveryNormalCell.h"
 #import "UIImageView+WebCache.h"
+#import "HexColors.h"
 
 
 @implementation HXDiscoveryNormalCell
@@ -26,9 +27,10 @@
 
 #pragma mark - Public Methods
 - (void)updateCellWithModel:(HXDiscoveryModel *)model {
-    _nickNameLabel.text = model.nickName;
-    
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
+    
+    _nickNameContainer.backgroundColor = [UIColor hx_colorWithHexRGBAString:model.coverColor];
+    _nickNameLabel.text = model.nickName;
 }
 
 @end
