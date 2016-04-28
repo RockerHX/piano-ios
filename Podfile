@@ -20,6 +20,7 @@ pod 'DateTools'
 
 # Tool
 #pod 'IQKeyboardManager'
+pod 'HexColors'
 
 # UIComponment
 #pod 'iCarousel'
