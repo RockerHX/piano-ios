@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -44,13 +43,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QV-6m-qMn" userLabel="Mask View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="P-MaskBG-Top" translatesAutoresizingMaskIntoConstraints="NO" id="T40-CS-g8y">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PL-MaskBG-Top" translatesAutoresizingMaskIntoConstraints="NO" id="T40-CS-g8y">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="T40-CS-g8y" secondAttribute="height" multiplier="3:2" id="nmN-aX-jlr"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="P-MaskBG-Bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ShB-E8-7qB">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PL-MaskBG-Bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ShB-E8-7qB">
                                         <rect key="frame" x="0.0" y="355" width="320" height="213"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ShB-E8-7qB" secondAttribute="height" multiplier="3:2" id="VsS-za-Jy5"/>
@@ -147,7 +146,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="P-MaskBG-Bottom" width="375" height="250"/>
-        <image name="P-MaskBG-Top" width="375" height="250"/>
+        <image name="PL-MaskBG-Bottom" width="25" height="25"/>
+        <image name="PL-MaskBG-Top" width="25" height="25"/>
     </resources>
 </document>

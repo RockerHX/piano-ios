@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -28,7 +27,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgc-qM-UEV" userLabel="Previous Button">
                             <rect key="frame" x="76" y="20" width="40" height="40"/>
-                            <state key="normal" image="P-PreviousIcon-E"/>
+                            <state key="normal" image="PL-PreviousIcon-E"/>
                             <connections>
                                 <action selector="previousButtonPressed" destination="-1" eventType="touchUpInside" id="NS0-Tf-mwR"/>
                             </connections>
@@ -39,14 +38,14 @@
                                 <constraint firstAttribute="width" constant="40" id="0xV-Wb-dng"/>
                                 <constraint firstAttribute="width" secondItem="eRt-O0-d3C" secondAttribute="height" multiplier="1:1" id="CqK-21-q3v"/>
                             </constraints>
-                            <state key="normal" image="P-PauseIcon"/>
+                            <state key="normal" image="PL-PauseIcon"/>
                             <connections>
                                 <action selector="pauseButtonPressed" destination="-1" eventType="touchUpInside" id="cfg-X7-sJ1"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdq-TX-gVP" userLabel="Next Button">
                             <rect key="frame" x="204" y="20" width="40" height="40"/>
-                            <state key="normal" image="P-NextIcon-E"/>
+                            <state key="normal" image="PL-NextIcon-E"/>
                             <connections>
                                 <action selector="nextButtonPressed" destination="-1" eventType="touchUpInside" id="ZIN-qD-BK7"/>
                             </connections>
@@ -143,8 +142,8 @@
         </view>
     </objects>
     <resources>
-        <image name="P-NextIcon-E" width="25" height="25"/>
-        <image name="P-PauseIcon" width="25" height="25"/>
-        <image name="P-PreviousIcon-E" width="25" height="25"/>
+        <image name="PL-NextIcon-E" width="25" height="25"/>
+        <image name="PL-PauseIcon" width="25" height="25"/>
+        <image name="PL-PreviousIcon-E" width="25" height="25"/>
     </resources>
 </document>

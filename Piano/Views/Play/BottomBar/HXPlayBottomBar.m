@@ -28,13 +28,13 @@ HXXibImplementation
 
 - (void)viewConfigure {
     _containerView.backgroundColor = [UIColor clearColor];
-    [_slider setThumbImage:[UIImage imageNamed:@"P-CursorIcon"] forState:UIControlStateNormal];
+    [_slider setThumbImage:[UIImage imageNamed:@"PL-CursorIcon"] forState:UIControlStateNormal];
 }
 
 #pragma mark - Property
 - (void)setPause:(BOOL)pause {
     _pause = pause;
-    [_pauseButton setImage:[UIImage imageNamed:(pause ? @"P-PauseIcon" : @"P-PlayIcon")] forState:UIControlStateNormal];
+    [_pauseButton setImage:[UIImage imageNamed:(pause ? @"PL-PauseIcon" : @"PL-PlayIcon")] forState:UIControlStateNormal];
 }
 
 - (void)setEnablePrevious:(BOOL)enablePrevious {
