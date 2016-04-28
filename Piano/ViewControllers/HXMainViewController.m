@@ -255,10 +255,7 @@ HXLoginViewControllerDelegate
             break;
         }
         case HXLoginViewControllerActionLoginSuccess: {
-//            if ([HXUserSession session].role == HXUserRoleAnchor) {
-//                self.viewControllers = @[[self.viewControllers firstObject], _publishNavigationController, [self.viewControllers lastObject]];
-//            }
-//            [self fetchProfileData];
+            [self fetchProfileData];
             break;
         }
     }
