@@ -7,7 +7,6 @@
 //
 
 #import "HXDiscoveryContainerViewController.h"
-#import "HXDiscoveryViewModel.h"
 #import "HXCollectionViewLayout.h"
 #import "HXDiscoveryLiveCell.h"
 #import "HXDiscoveryShowCell.h"
@@ -20,10 +19,7 @@ HXCollectionViewLayoutDelegate
 @end
 
 
-@implementation HXDiscoveryContainerViewController {
-    NSInteger _itemCount;
-    HXDiscoveryViewModel *_viewModel;
-}
+@implementation HXDiscoveryContainerViewController
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
@@ -35,8 +31,7 @@ HXCollectionViewLayoutDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _itemCount = 20;
-    _viewModel = [[HXDiscoveryViewModel alloc] init];
+    ;
 }
 
 - (void)viewConfigure {
@@ -47,28 +42,13 @@ HXCollectionViewLayoutDelegate
 }
 
 #pragma mark - Public Methods
-- (void)startFetchDiscoveryList {
-    ;
-}
-
-- (void)fetchDiscoveryList {
-    @weakify(self)
-    RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
-    [requestSiganl subscribeError:^(NSError *error) {
-        @strongify(self)
-        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
-//            [self showBannerWithPrompt:error.domain];
-        }
-        [self endLoad];
-    } completed:^{
-        @strongify(self)
-        [self endLoad];
-    }];
+- (void)displayDiscoveryList {
+    [self endLoad];
 }
 
 #pragma mark - Private Methods
 - (void)endLoad {
-    ;
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Scroll View Delegate
@@ -79,7 +59,7 @@ HXCollectionViewLayoutDelegate
 
 #pragma mark - Collection View Data Source Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _itemCount;
+    return _viewModel.discoveryList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -107,10 +87,10 @@ HXCollectionViewLayoutDelegate
 
 #pragma mark - HXCollectionViewLayoutDelegate Methods
 - (HXCollectionViewLayoutStyle)collectionView:(UICollectionView *)collectionView layout:(HXCollectionViewLayout *)layout styleForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath.row < 5) ? HXCollectionViewLayoutStyleHeavy : HXCollectionViewLayoutStylePetty;
+    return _viewModel.discoveryList[indexPath.row].live ? HXCollectionViewLayoutStyleHeavy : HXCollectionViewLayoutStylePetty;
 }
 
-#pragma mark - HXDiscoveryLiveCellDelegate Methods
+//#pragma mark - HXDiscoveryLiveCellDelegate Methods
 //- (void)discoveryLiveCellAnchorContainerTaped:(HXDiscoveryLiveCell *)cell {
 //    NSInteger row = [self.tableView indexPathForCell:cell].row;
 //    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {

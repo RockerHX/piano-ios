@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "HXDiscoveryModel.h"
+#import "UIViewController+HXClass.h"
+#import "HXDiscoveryViewModel.h"
 
 
 @class HXDiscoveryContainerViewController;
@@ -25,7 +25,8 @@
 @interface HXDiscoveryContainerViewController : UICollectionViewController
 
 @property (weak, nonatomic) IBOutlet id  <HXDiscoveryContainerViewControllerDelegate>delegate;
+@property (weak, nonatomic) HXDiscoveryViewModel *viewModel;
 
-- (void)startFetchDiscoveryList;
+- (void)displayDiscoveryList;
 
 @end

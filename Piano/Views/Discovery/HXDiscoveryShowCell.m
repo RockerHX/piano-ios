@@ -27,7 +27,6 @@
 #pragma mark - Public Methods
 - (void)updateCellWithModel:(HXDiscoveryModel *)model {
     _nickNameLabel.text = model.nickName;
-    _titleLabel.text = model.title;
     [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
 }
 

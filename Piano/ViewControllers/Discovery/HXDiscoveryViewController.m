@@ -7,6 +7,7 @@
 //
 
 #import "HXDiscoveryViewController.h"
+#import "HXDiscoveryContainerViewController.h"
 #import "HXWatchLiveViewController.h"
 #import "HXReplayViewController.h"
 #import "HXRecordLiveViewController.h"
@@ -17,6 +18,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
 #import "HXDiscoveryTopBar.h"
+#import "HXLoadingView.h"
+#import "HXDiscoveryViewModel.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -26,7 +29,17 @@ HXDiscoveryTopBarDelegate
 
 
 @implementation HXDiscoveryViewController {
+    HXDiscoveryContainerViewController *_containerViewController;
+    
+    HXDiscoveryViewModel *_viewModel;
+    
     NSInteger _itemCount;
+    HXLoadingView *_loadingView;
+}
+
+#pragma mark - Segue Methods
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    _containerViewController = segue.destinationViewController;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -40,15 +53,31 @@ HXDiscoveryTopBarDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _itemCount = 20;
+    
+    _viewModel = [[HXDiscoveryViewModel alloc] init];
+    _containerViewController.viewModel = _viewModel;
 }
  
 - (void)viewConfigure {
-    ;
+    _loadingView = [HXLoadingView new];
+    [_loadingView showOnViewController:self];
 }
 
 #pragma mark - Public Methods
 - (void)startFetchList {
-    ;
+    @weakify(self)
+    RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
+    [requestSiganl subscribeError:^(NSError *error) {
+        @strongify(self)
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
+        self->_loadingView.loadState = HXLoadStateError;
+    } completed:^{
+        @strongify(self)
+        [self->_containerViewController displayDiscoveryList];
+        self->_loadingView.loadState = HXLoadStateSuccess;
+    }];
 }
 
 #pragma mark - HXDiscoveryTopBarDelegate

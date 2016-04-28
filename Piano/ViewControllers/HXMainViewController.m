@@ -129,10 +129,8 @@ HXLoginViewControllerDelegate
 
 //			[self checkUpdate];
 			[self autoLogin];
-
-//			UINavigationController *discoveryNavigationController = self.viewControllers.firstObject;
-//			HXDiscoveryViewController *discoveryViewController = discoveryNavigationController.viewControllers.firstObject;
-//			[discoveryViewController startFetchList];
+            
+            [_discoveryContainerViewController startFetchList];
 		} else {
 			[self autoReconnect];
 		}
@@ -189,7 +187,9 @@ HXLoginViewControllerDelegate
 }
 
 - (void)fetchProfileData {
-    [_meContainerViewController refresh];
+    if ([HXUserSession session].state == HXUserStateLogin) {
+        [_meContainerViewController refresh];
+    }
 }
 
 - (void)startLive {

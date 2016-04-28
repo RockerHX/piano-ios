@@ -14,8 +14,6 @@
 
 @property (nonatomic, strong, readonly) RACCommand *fetchCommand;
 
-@property (nonatomic, assign, readonly)    CGFloat  cellHeight;
-
 @property (nonatomic, strong, readonly) NSArray<HXDiscoveryModel *> *discoveryList;
 
 @end

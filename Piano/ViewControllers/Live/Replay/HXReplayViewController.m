@@ -92,7 +92,7 @@ HXReplayBottomBarDelegate
     [self.replayView.layer addSublayer:layer];
     
     [self updateAnchorView];
-    _bottomBar.duration = _model.duration;
+//    _bottomBar.duration = _model.duration;
 }
 
 - (void)sigalLink {
@@ -148,7 +148,7 @@ HXReplayBottomBarDelegate
 - (void)playFinished {
     _play = NO;
     dispatch_source_cancel(_timer);
-    _bottomBar.currentTime = _model.duration;
+//    _bottomBar.currentTime = _model.duration;
 }
 
 - (void)playError {
@@ -271,23 +271,23 @@ HXReplayBottomBarDelegate
 }
 
 - (void)bottomBar:(HXReplayBottomBar *)bar dragProgressBar:(CGFloat)progress {
-    NSTimeInterval currentTime = _model.duration * progress;
-    CMTime time = CMTimeMake(currentTime, 1);
-    
-    @weakify(self)
-    [_player seekToTime:time completionHandler:^(BOOL finished) {
-        @strongify(self)
-        if (finished) {
-            [self timerConfigure];
-            [self->_viewModel clearComments];
-            [self->_viewModel updateTimeNode:currentTime];
-            [self fetchBarrageData];
-            
-            if (!_play) {
-                [_player play];
-            }
-        }
-    }];
+//    NSTimeInterval currentTime = _model.duration * progress;
+//    CMTime time = CMTimeMake(currentTime, 1);
+//    
+//    @weakify(self)
+//    [_player seekToTime:time completionHandler:^(BOOL finished) {
+//        @strongify(self)
+//        if (finished) {
+//            [self timerConfigure];
+//            [self->_viewModel clearComments];
+//            [self->_viewModel updateTimeNode:currentTime];
+//            [self fetchBarrageData];
+//            
+//            if (!_play) {
+//                [_player play];
+//            }
+//        }
+//    }];
 }
 
 @end

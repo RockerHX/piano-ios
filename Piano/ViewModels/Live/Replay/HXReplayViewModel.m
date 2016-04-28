@@ -86,16 +86,8 @@
 }
 
 #pragma mark - Property
-- (NSString *)anchorAvatar {
-    return _model.avatarUrl;
-}
-
 - (NSString *)anchorNickName {
     return _model.nickName;
-}
-
-- (NSString *)viewCount {
-    return @(_model.viewCount).stringValue;
 }
 
 #pragma mark - Public Methods

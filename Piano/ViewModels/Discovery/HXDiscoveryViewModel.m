@@ -39,11 +39,6 @@
     }];
 }
 
-#pragma mark - Property
-- (CGFloat)cellHeight {
-    return SCREEN_WIDTH - 60.0f + 64.0f;
-}
-
 #pragma mark - Private Methods
 - (void)fetchDiscoveryListWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper getMusiciansWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {

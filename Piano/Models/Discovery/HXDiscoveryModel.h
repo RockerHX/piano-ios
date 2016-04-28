@@ -12,35 +12,19 @@
 @class HXReplayModel;
 
 
-typedef NS_ENUM(NSUInteger, HXDiscoveryType) {
-    HXDiscoveryTypeLive,
-    HXDiscoveryTypeReplay,
-    HXDiscoveryTypeNewAlbum,
-    HXDiscoveryTypeVideo,
-};
-
-
 @interface HXDiscoveryModel : NSObject
 
-@property (nonatomic, assign, readonly) HXDiscoveryType  type;
-@property (nonatomic, strong, readonly)        NSString *ID;
+@property (nonatomic, assign)      BOOL  live;
+@property (nonatomic, assign)      BOOL  albumUpdated;
+@property (nonatomic, assign)      BOOL  videoUpdated;
 
 @property (nonatomic, strong)  NSString *uID;
-@property (nonatomic, strong)  NSString *title;
+@property (nonatomic, strong)  NSString *roomID;
+@property (nonatomic, strong)  NSString *liveDate;
 @property (nonatomic, strong)  NSString *nickName;
-@property (nonatomic, strong)  NSString *avatarUrl;
 @property (nonatomic, strong)  NSString *coverUrl;
 @property (nonatomic, strong)  NSString *videoUrl;
-
-@property (nonatomic, assign) NSInteger  onlineCount;
-@property (nonatomic, assign) NSInteger  viewCount;
-
-@property (nonatomic, assign) NSInteger  itemID;
-@property (nonatomic, assign) NSInteger  itemType;
-@property (nonatomic, assign) NSInteger  live;
-@property (nonatomic, assign) NSInteger  duration;
-@property (nonatomic, strong)  NSString *prompt;
-@property (nonatomic, strong)  NSString *roomID;
+@property (nonatomic, strong)  NSString *coverColor;
 
 + (instancetype)createWithReplayModel:(HXReplayModel *)model;
 
