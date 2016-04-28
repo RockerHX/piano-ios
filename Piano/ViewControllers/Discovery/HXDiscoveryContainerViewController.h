@@ -16,6 +16,7 @@
 @protocol HXDiscoveryContainerViewControllerDelegate <NSObject>
 
 @required
+- (void)container:(HXDiscoveryContainerViewController *)container scrollWithModel:(HXDiscoveryModel *)model;
 - (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model;
 - (void)container:(HXDiscoveryContainerViewController *)container showAnchorByModel:(HXDiscoveryModel *)model;
 

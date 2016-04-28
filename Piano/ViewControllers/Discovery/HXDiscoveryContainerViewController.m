@@ -54,7 +54,11 @@ HXCollectionViewLayoutDelegate
 #pragma mark - Scroll View Delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
-    NSLog(@"%@", @(layout.indexPath.row));
+//    NSLog(@"%@", @(layout.indexPath.row));
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(container:scrollWithModel:)]) {
+        [_delegate container:self scrollWithModel:_viewModel.discoveryList[layout.indexPath.row]];
+    }
 }
 
 #pragma mark - Collection View Data Source Methods
@@ -81,6 +85,22 @@ HXCollectionViewLayoutDelegate
 }
 
 #pragma mark - Collection View Delegate Methods
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
+    switch (style) {
+        case HXCollectionViewLayoutStyleHeavy: {
+            HXDiscoveryShowCell *showCell = (HXDiscoveryShowCell *)cell;
+            ;
+            break;
+        }
+        case HXCollectionViewLayoutStylePetty: {
+            HXDiscoveryNormalCell *normalCell = (HXDiscoveryNormalCell *)cell;
+            [normalCell updateCellWithModel:_viewModel.discoveryList[indexPath.row]];
+            break;
+        }
+    }
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     ;
 }

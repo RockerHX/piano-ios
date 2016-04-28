@@ -237,6 +237,7 @@ HXLoginViewControllerDelegate
         case HXMenuStateOpen: {
             _menuOffset = 0.0f;
             _menuState = HXMenuStateClose;
+            [_discoveryContainerViewController restoreDisplay];
             break;
         }
     }

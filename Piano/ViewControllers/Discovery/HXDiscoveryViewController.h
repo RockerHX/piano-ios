@@ -24,6 +24,10 @@
 
 @property (weak, nonatomic) IBOutlet id  <HXDiscoveryViewControllerDelegate>delegate;
 
+@property (weak, nonatomic) IBOutlet UIImageView *coverView;
+@property (weak, nonatomic) IBOutlet UIImageView *maskView;
+
 - (void)startFetchList;
+- (void)restoreDisplay;
 
 @end

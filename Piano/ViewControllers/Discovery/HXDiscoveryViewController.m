@@ -20,10 +20,13 @@
 #import "HXDiscoveryTopBar.h"
 #import "HXLoadingView.h"
 #import "HXDiscoveryViewModel.h"
+#import "UIImageView+WebCache.h"
+#import "FXBlurView.h"
 
 
 @interface HXDiscoveryViewController () <
-HXDiscoveryTopBarDelegate
+HXDiscoveryTopBarDelegate,
+HXDiscoveryContainerViewControllerDelegate
 >
 @end
 
@@ -40,6 +43,7 @@ HXDiscoveryTopBarDelegate
 #pragma mark - Segue Methods
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _containerViewController = segue.destinationViewController;
+    _containerViewController.delegate = self;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -75,9 +79,34 @@ HXDiscoveryTopBarDelegate
         self->_loadingView.loadState = HXLoadStateError;
     } completed:^{
         @strongify(self)
-        [self->_containerViewController displayDiscoveryList];
-        self->_loadingView.loadState = HXLoadStateSuccess;
+        [self fetchCompleted];
     }];
+}
+
+- (void)restoreDisplay {
+    [self showMaskContainer:YES];
+}
+
+#pragma mark - Private Methods
+- (void)fetchCompleted {
+    [_containerViewController displayDiscoveryList];
+    [_loadingView setLoadState:HXLoadStateSuccess];
+    
+    [self showCoverWithCoverUrl:[_viewModel.discoveryList firstObject].coverUrl];
+}
+
+- (void)showCoverWithCoverUrl:(NSString *)coverUrl {
+    __weak __typeof__(self)weakSelf = self;
+    [_coverView sd_setImageWithURL:[NSURL URLWithString:coverUrl] completed:
+     ^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+         __strong __typeof__(self)strongSelf = weakSelf;
+         strongSelf.coverView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
+     }];
+}
+
+- (void)showMaskContainer:(BOOL)show {
+    _coverView.hidden = !show;
+    _maskView.hidden = !show;
 }
 
 #pragma mark - HXDiscoveryTopBarDelegate
@@ -85,6 +114,8 @@ HXDiscoveryTopBarDelegate
     switch (action) {
         case HXDiscoveryTopBarActionProfile: {
             if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewControllerHandleMenu:)]) {
+                
+                [self showMaskContainer:NO];
                 [_delegate discoveryViewControllerHandleMenu:self];
             }
             break;
@@ -100,7 +131,11 @@ HXDiscoveryTopBarDelegate
 }
 
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
-//- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
+- (void)container:(HXDiscoveryContainerViewController *)container scrollWithModel:(HXDiscoveryModel *)model {
+    [self showCoverWithCoverUrl:model.coverUrl];
+}
+
+- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
 ////    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
 ////        return;
 ////    }
@@ -138,12 +173,12 @@ HXDiscoveryTopBarDelegate
 //            }
 //        }
 //    }
-//}
-//
-//- (void)container:(HXDiscoveryContainerViewController *)container showAnchorByModel:(HXDiscoveryModel *)model {
+}
+
+- (void)container:(HXDiscoveryContainerViewController *)container showAnchorByModel:(HXDiscoveryModel *)model {
 //    HXProfileViewController *profileViewController = [HXProfileViewController instance];
 //    profileViewController.uid = model.uID;
 //    [self.navigationController pushViewController:profileViewController animated:YES];
-//}
+}
 
 @end
