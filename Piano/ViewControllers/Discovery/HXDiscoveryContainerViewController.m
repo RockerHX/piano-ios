@@ -56,8 +56,8 @@ HXCollectionViewLayoutDelegate
     HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
 //    NSLog(@"%@", @(layout.indexPath.row));
     
-    if (_delegate && [_delegate respondsToSelector:@selector(container:scrollWithModel:)]) {
-        [_delegate container:self scrollWithModel:_viewModel.discoveryList[layout.indexPath.row]];
+    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+        [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[layout.indexPath.row]];
     }
 }
 
@@ -102,7 +102,17 @@ HXCollectionViewLayoutDelegate
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ;
+    HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
+    switch (style) {
+        case HXCollectionViewLayoutStyleHeavy: {
+            ;
+            break;
+        }
+        case HXCollectionViewLayoutStylePetty: {
+            ;
+            break;
+        }
+    }
 }
 
 #pragma mark - HXCollectionViewLayoutDelegate Methods

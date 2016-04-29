@@ -10,15 +10,20 @@
 #import "HXDiscoveryViewModel.h"
 
 
+typedef NS_ENUM(NSUInteger, HXDiscoveryContainerAction) {
+    HXDiscoveryContainerActionScroll,
+    HXDiscoveryContainerActionShowLive,
+    HXDiscoveryContainerActionShowStation,
+};
+
+
 @class HXDiscoveryContainerViewController;
 
 
 @protocol HXDiscoveryContainerViewControllerDelegate <NSObject>
 
 @required
-- (void)container:(HXDiscoveryContainerViewController *)container scrollWithModel:(HXDiscoveryModel *)model;
-- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model;
-- (void)container:(HXDiscoveryContainerViewController *)container showAnchorByModel:(HXDiscoveryModel *)model;
+- (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model;
 
 @end
 

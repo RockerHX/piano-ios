@@ -131,8 +131,21 @@ HXDiscoveryContainerViewControllerDelegate
 }
 
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
-- (void)container:(HXDiscoveryContainerViewController *)container scrollWithModel:(HXDiscoveryModel *)model {
-    [self showCoverWithCoverUrl:model.coverUrl];
+- (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model {
+    switch (action) {
+        case HXDiscoveryContainerActionScroll: {
+            [self showCoverWithCoverUrl:model.coverUrl];
+            break;
+        }
+        case HXDiscoveryContainerActionShowLive: {
+            ;
+            break;
+        }
+        case HXDiscoveryContainerActionShowStation: {
+            ;
+            break;
+        }
+    }
 }
 
 - (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
