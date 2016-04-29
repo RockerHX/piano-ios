@@ -7,6 +7,7 @@
 //
 
 #import "HXDiscoveryLiveCell.h"
+#import "UIImageView+WebCache.h"
 
 
 @implementation HXDiscoveryLiveCell
@@ -16,6 +17,11 @@
     if (_delegate && [_delegate respondsToSelector:@selector(liveCellStartLive:)]) {
         [_delegate liveCellStartLive:self];
     }
+}
+
+#pragma mark - Public Methods
+- (void)updateCellWithModel:(HXDiscoveryModel *)model {
+    [_cover sd_setImageWithURL:[NSURL URLWithString:model.coverUrl]];
 }
 
 @end

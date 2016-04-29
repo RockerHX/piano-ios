@@ -66,6 +66,7 @@
         HXDiscoveryModel *model = [HXDiscoveryModel new];
         model.anchor = YES;
         model.live = YES;
+        model.coverUrl = userSession.user.avatarUrl;
         [discoveryList addObject:model];
     }
     

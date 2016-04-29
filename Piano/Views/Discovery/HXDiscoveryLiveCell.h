@@ -28,4 +28,6 @@
 
 - (IBAction)startLiveButtonPressed;
 
+- (void)updateCellWithModel:(HXDiscoveryModel *)model;
+
 @end

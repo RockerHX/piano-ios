@@ -97,7 +97,8 @@ HXDiscoveryLiveCellDelegate
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
             if (model.anchor) {
-                ;
+                HXDiscoveryLiveCell *liveCell = (HXDiscoveryLiveCell *)cell;
+                [liveCell updateCellWithModel:model];
             } else {
                 HXDiscoveryShowCell *showCell = (HXDiscoveryShowCell *)cell;
                 [showCell updateCellWithModel:model];
