@@ -8,9 +8,9 @@
 
 #import "HXDiscoveryViewController.h"
 #import "HXDiscoveryContainerViewController.h"
+#import "HXRecordLiveViewController.h"
 #import "HXWatchLiveViewController.h"
 #import "HXReplayViewController.h"
-#import "HXRecordLiveViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
 #import "HXProfileViewController.h"
@@ -111,6 +111,17 @@ HXDiscoveryContainerViewControllerDelegate
     _maskView.hidden = !show;
 }
 
+- (void)startLive {
+    UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+    [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
+}
+
+- (void)hiddenNavigationBar {
+    if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewControllerHiddenNavigationBar:)]) {
+        [_delegate discoveryViewControllerHiddenNavigationBar:self];
+    }
+}
+
 #pragma mark - HXDiscoveryTopBarDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     switch (action) {
@@ -140,7 +151,8 @@ HXDiscoveryContainerViewControllerDelegate
             break;
         }
         case HXDiscoveryContainerActionStartLive: {
-            ;
+            [self hiddenNavigationBar];
+            [self startLive];
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
@@ -148,9 +160,7 @@ HXDiscoveryContainerViewControllerDelegate
             break;
         }
         case HXDiscoveryContainerActionShowStation: {
-            if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewControllerHiddenNavigationBar:)]) {
-                [_delegate discoveryViewControllerHiddenNavigationBar:self];
-            }
+            [self hiddenNavigationBar];
             
             HXProfileViewController *profileViewController = [HXProfileViewController instance];
             profileViewController.uid = model.uID;

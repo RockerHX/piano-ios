@@ -182,6 +182,9 @@
                                                     <real key="value" value="22"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="startLiveButtonPressed" destination="taU-uU-gI8" eventType="touchUpInside" id="Dtr-R7-6MP"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -199,6 +202,7 @@
                                 <size key="customSize" width="218" height="200"/>
                                 <connections>
                                     <outlet property="cover" destination="fch-1c-3Tw" id="dNh-hm-S71"/>
+                                    <outlet property="delegate" destination="dI6-ag-QYF" id="Ute-1z-6OE"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXDiscoveryShowCell" id="leI-sW-e4A" userLabel="HXDiscoveryShowCell" customClass="HXDiscoveryShowCell">

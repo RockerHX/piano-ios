@@ -14,7 +14,8 @@
 
 
 @interface HXDiscoveryContainerViewController () <
-HXCollectionViewLayoutDelegate
+HXCollectionViewLayoutDelegate,
+HXDiscoveryLiveCellDelegate
 >
 @end
 
@@ -118,7 +119,7 @@ HXCollectionViewLayoutDelegate
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
             if (model.anchor) {
-                action = HXDiscoveryContainerActionStartLive;
+                return;
             } else {
                 action = HXDiscoveryContainerActionShowLive;
             }
@@ -137,6 +138,13 @@ HXCollectionViewLayoutDelegate
 #pragma mark - HXCollectionViewLayoutDelegate Methods
 - (HXCollectionViewLayoutStyle)collectionView:(UICollectionView *)collectionView layout:(HXCollectionViewLayout *)layout styleForItemAtIndexPath:(NSIndexPath *)indexPath {
     return _viewModel.discoveryList[indexPath.row].live ? HXCollectionViewLayoutStyleHeavy : HXCollectionViewLayoutStylePetty;
+}
+
+#pragma mark - HXDiscoveryLiveCellDelegate Methods
+- (void)liveCellStartLive:(HXDiscoveryLiveCell *)cell {
+    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+        [_delegate container:self takeAction:HXDiscoveryContainerActionStartLive model:nil];
+    }
 }
 
 //#pragma mark - HXDiscoveryLiveCellDelegate Methods

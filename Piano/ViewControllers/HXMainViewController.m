@@ -8,10 +8,8 @@
 
 #import "HXMainViewController.h"
 #import "HXDiscoveryViewController.h"
-#import "HXPublishViewController.h"
 #import "HXMeViewController.h"
 #import "HXLoginViewController.h"
-#import "HXRecordLiveViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
 #import "HXUserSession.h"
@@ -191,35 +189,6 @@ HXLoginViewControllerDelegate
         [_meContainerViewController refresh];
     }
 }
-
-- (void)startLive {
-    UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-//    HXRecordLiveViewController *recordLiveViewController = recordLiveNavigationController.viewControllers.firstObject;
-    [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
-}
-
-//#pragma mark - UITabBarControllerDelegate Methods
-//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-//    if ([[self.viewControllers firstObject] isEqual:viewController]) {
-//        return YES;
-//    }
-//    
-//    switch ([HXUserSession session].state) {
-//        case HXUserStateLogout: {
-//            [self shouldShowLoginSence];
-//            return NO;
-//            break;
-//        }
-//        case HXUserStateLogin: {
-//            if ([[self.viewControllers lastObject] isEqual:viewController]) {
-//                return YES;
-//            } else {
-//                [self startLive];
-//                return NO;
-//            }
-//        }
-//    }
-//}
 
 #pragma mark - HXDiscoveryViewControllerDelegate
 - (void)discoveryViewControllerHandleMenu:(HXDiscoveryViewController *)viewController {

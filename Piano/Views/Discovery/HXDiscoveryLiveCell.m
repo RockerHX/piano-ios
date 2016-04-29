@@ -13,7 +13,9 @@
 
 #pragma mark - Event Response
 - (IBAction)startLiveButtonPressed {
-    
+    if (_delegate && [_delegate respondsToSelector:@selector(liveCellStartLive:)]) {
+        [_delegate liveCellStartLive:self];
+    }
 }
 
 @end
