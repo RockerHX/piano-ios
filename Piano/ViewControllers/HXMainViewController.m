@@ -53,7 +53,7 @@ HXLoginViewControllerDelegate
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -246,6 +246,10 @@ HXLoginViewControllerDelegate
     [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:5.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
+}
+
+- (void)discoveryViewControllerHiddenNavigationBar:(HXDiscoveryViewController *)viewController {
+    _shouldHiddenNavigationBar = YES;
 }
 
 #pragma mark - HXLoginViewControllerDelegate Methods
