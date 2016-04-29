@@ -12,6 +12,7 @@
 
 typedef NS_ENUM(NSUInteger, HXDiscoveryContainerAction) {
     HXDiscoveryContainerActionScroll,
+    HXDiscoveryContainerActionStartLive,
     HXDiscoveryContainerActionShowLive,
     HXDiscoveryContainerActionShowStation,
 };

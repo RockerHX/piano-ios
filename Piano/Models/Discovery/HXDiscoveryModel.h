@@ -14,6 +14,7 @@
 
 @interface HXDiscoveryModel : NSObject
 
+@property (nonatomic, assign)      BOOL  anchor;
 @property (nonatomic, assign)      BOOL  live;
 @property (nonatomic, assign)      BOOL  videoUpdated;
 @property (nonatomic, assign)      BOOL  albumUpdated;

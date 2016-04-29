@@ -38,6 +38,8 @@ HXDiscoveryContainerViewControllerDelegate
     
     NSInteger _itemCount;
     HXLoadingView *_loadingView;
+    
+    BOOL _shouldHiddenNavigationBar;
 }
 
 #pragma mark - Segue Methods
@@ -137,12 +139,22 @@ HXDiscoveryContainerViewControllerDelegate
             [self showCoverWithCoverUrl:model.coverUrl];
             break;
         }
+        case HXDiscoveryContainerActionStartLive: {
+            ;
+            break;
+        }
         case HXDiscoveryContainerActionShowLive: {
             ;
             break;
         }
         case HXDiscoveryContainerActionShowStation: {
-            ;
+            if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewControllerHiddenNavigationBar:)]) {
+                [_delegate discoveryViewControllerHiddenNavigationBar:self];
+            }
+            
+            HXProfileViewController *profileViewController = [HXProfileViewController instance];
+            profileViewController.uid = model.uID;
+            [self.navigationController pushViewController:profileViewController animated:YES];
             break;
         }
     }
@@ -186,12 +198,6 @@ HXDiscoveryContainerViewControllerDelegate
 //            }
 //        }
 //    }
-}
-
-- (void)container:(HXDiscoveryContainerViewController *)container showAnchorByModel:(HXDiscoveryModel *)model {
-//    HXProfileViewController *profileViewController = [HXProfileViewController instance];
-//    profileViewController.uid = model.uID;
-//    [self.navigationController pushViewController:profileViewController animated:YES];
 }
 
 @end

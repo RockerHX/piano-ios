@@ -9,6 +9,7 @@
 #import "HXDiscoveryViewModel.h"
 #import "MiaAPIHelper.h"
 #import "UIConstants.h"
+#import "HXUserSession.h"
 
 
 @implementation HXDiscoveryViewModel
@@ -55,12 +56,33 @@
     }];
 }
 
-- (void)parseData:(NSArray *)datas {
+- (void)parseData:(NSDictionary *)datas {
+    NSArray *liveList = datas[@"live"];
+    NSArray *musicianList = datas[@"musician"];
     NSMutableArray *discoveryList = @[].mutableCopy;
-    for (NSDictionary *data in datas) {
-        HXDiscoveryModel *model = [HXDiscoveryModel mj_objectWithKeyValues:data];
+    
+    HXUserSession *userSession = [HXUserSession session];
+    if ((userSession.state == HXUserStateLogin) && (userSession.role == HXUserRoleAnchor)) {
+        HXDiscoveryModel *model = [HXDiscoveryModel new];
+        model.anchor = YES;
+        model.live = YES;
         [discoveryList addObject:model];
     }
+    
+    for (NSDictionary *data in liveList) {
+        HXDiscoveryModel *model = [HXDiscoveryModel mj_objectWithKeyValues:data];
+        if (model) {
+            [discoveryList addObject:model];
+        }
+    }
+    
+    for (NSDictionary *data in musicianList) {
+        HXDiscoveryModel *model = [HXDiscoveryModel mj_objectWithKeyValues:data];
+        if (model) {
+            [discoveryList addObject:model];
+        }
+    }
+    
     _discoveryList = discoveryList.copy;
 }
 
