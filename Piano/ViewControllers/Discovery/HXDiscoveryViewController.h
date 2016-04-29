@@ -16,6 +16,7 @@
 
 @required
 - (void)discoveryViewControllerHandleMenu:(HXDiscoveryViewController *)viewController;
+- (void)discoveryViewControllerHiddenNavigationBar:(HXDiscoveryViewController *)viewController;
 
 @end
 

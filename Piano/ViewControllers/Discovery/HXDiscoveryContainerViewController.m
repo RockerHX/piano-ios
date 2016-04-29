@@ -69,10 +69,15 @@ HXCollectionViewLayoutDelegate
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = nil;
     
+    HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
     HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryShowCell class]) forIndexPath:indexPath];
+            if (model.anchor) {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
+            } else {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryShowCell class]) forIndexPath:indexPath];
+            }
             break;
         }
         case HXCollectionViewLayoutStylePetty: {
@@ -86,32 +91,46 @@ HXCollectionViewLayoutDelegate
 
 #pragma mark - Collection View Delegate Methods
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
     HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
-            HXDiscoveryShowCell *showCell = (HXDiscoveryShowCell *)cell;
-            ;
+            if (model.anchor) {
+                ;
+            } else {
+                HXDiscoveryShowCell *showCell = (HXDiscoveryShowCell *)cell;
+                [showCell updateCellWithModel:model];
+            }
             break;
         }
         case HXCollectionViewLayoutStylePetty: {
             HXDiscoveryNormalCell *normalCell = (HXDiscoveryNormalCell *)cell;
-            [normalCell updateCellWithModel:_viewModel.discoveryList[indexPath.row]];
+            [normalCell updateCellWithModel:model];
             break;
         }
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    HXDiscoveryContainerAction action;
+    HXDiscoveryModel *model = _viewModel.discoveryList[indexPath.row];
     HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
-            ;
+            if (model.anchor) {
+                action = HXDiscoveryContainerActionStartLive;
+            } else {
+                action = HXDiscoveryContainerActionShowLive;
+            }
             break;
         }
         case HXCollectionViewLayoutStylePetty: {
-            ;
+            action = HXDiscoveryContainerActionShowStation;
             break;
         }
+    }
+    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+        [_delegate container:self takeAction:action model:model];
     }
 }
 
