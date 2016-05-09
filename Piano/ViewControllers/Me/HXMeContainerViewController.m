@@ -14,7 +14,6 @@
 #import "HXMeAttentionContainerCell.h"
 #import "UIImageView+WebCache.h"
 
-#import "MIAMeContainerViewController.h"
 #import "MIAProfileViewController.h"
 
 

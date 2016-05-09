@@ -171,10 +171,10 @@ static CGFloat const kProfileHeadViewHeight = 500.;
         //专辑
         return 150.;
     }else if (indexPath.section == 2){
-        //专辑
+        //视频
         return 120.;
     }else if (indexPath.section == 3){
-        //专辑
+        //直播回放
         return 210.;
     }
     return 100.;

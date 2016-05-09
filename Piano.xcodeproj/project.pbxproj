@@ -24,8 +24,6 @@
 		398451ED1CAD0543009018C6 /* SongPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451EA1CAD0543009018C6 /* SongPreloader.m */; };
 		398451F11CAD05DB009018C6 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451F01CAD05DB009018C6 /* UserSetting.m */; };
 		398A6D111CAB77D6001A68B1 /* HXGuestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A6D101CAB77D6001A68B1 /* HXGuestModel.m */; };
-		42984AD71CDAED7D004F00D5 /* MIABaseShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AD61CDAED7D004F00D5 /* MIABaseShowView.m */; };
-		42984AD81CDAED7D004F00D5 /* MIABaseShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AD61CDAED7D004F00D5 /* MIABaseShowView.m */; };
 		42984AFB1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
@@ -50,20 +48,6 @@
 		42984B101CDAEF84004F00D5 /* JOFLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF91CDAEF84004F00D5 /* JOFLog.m */; };
 		42984B141CDB0542004F00D5 /* UIView+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B131CDB0542004F00D5 /* UIView+JOExtend.m */; };
 		42984B151CDB0542004F00D5 /* UIView+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B131CDB0542004F00D5 /* UIView+JOExtend.m */; };
-		42984B201CDB14E1004F00D5 /* MIABaseCellHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B1F1CDB14E1004F00D5 /* MIABaseCellHeadView.m */; };
-		42984B211CDB14E1004F00D5 /* MIABaseCellHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B1F1CDB14E1004F00D5 /* MIABaseCellHeadView.m */; };
-		42984B241CDB18EF004F00D5 /* MIAMeAttentionPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B231CDB18EF004F00D5 /* MIAMeAttentionPromptView.m */; };
-		42984B251CDB18EF004F00D5 /* MIAMeAttentionPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B231CDB18EF004F00D5 /* MIAMeAttentionPromptView.m */; };
-		42984B281CDB19F8004F00D5 /* MIAMeAttentionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B271CDB19F8004F00D5 /* MIAMeAttentionContainerView.m */; };
-		42984B291CDB19F8004F00D5 /* MIAMeAttentionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B271CDB19F8004F00D5 /* MIAMeAttentionContainerView.m */; };
-		42984B301CDB3845004F00D5 /* MIAMeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B2F1CDB3845004F00D5 /* MIAMeContainerViewController.m */; };
-		42984B311CDB3845004F00D5 /* MIAMeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B2F1CDB3845004F00D5 /* MIAMeContainerViewController.m */; };
-		42984B381CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B371CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.m */; };
-		42984B391CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B371CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.m */; };
-		42984B3C1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B3B1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.m */; };
-		42984B3D1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B3B1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.m */; };
-		42984B401CDC28D7004F00D5 /* MIABaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B3F1CDC28D7004F00D5 /* MIABaseTableViewCell.m */; };
-		42984B411CDC28D7004F00D5 /* MIABaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B3F1CDC28D7004F00D5 /* MIABaseTableViewCell.m */; };
 		42984B441CDC48E7004F00D5 /* MIAProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B431CDC48E7004F00D5 /* MIAProfileHeadView.m */; };
 		42984B451CDC48E7004F00D5 /* MIAProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B431CDC48E7004F00D5 /* MIAProfileHeadView.m */; };
 		42984B481CDC6137004F00D5 /* JOUIManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B471CDC6137004F00D5 /* JOUIManage.m */; };
@@ -86,6 +70,16 @@
 		42984B691CDCAB9A004F00D5 /* MIAProfileVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B671CDCAB9A004F00D5 /* MIAProfileVideoCell.m */; };
 		42984B6C1CDCAFEA004F00D5 /* MIAProfileReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B6B1CDCAFEA004F00D5 /* MIAProfileReplayCell.m */; };
 		42984B6D1CDCAFEA004F00D5 /* MIAProfileReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B6B1CDCAFEA004F00D5 /* MIAProfileReplayCell.m */; };
+		429CC1DE1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1DD1CE034D4004BCC0C /* MIAProfileViewModel.m */; };
+		429CC1DF1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1DD1CE034D4004BCC0C /* MIAProfileViewModel.m */; };
+		429CC1E31CE03D0B004BCC0C /* MIABaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1E21CE03D0B004BCC0C /* MIABaseTableViewCell.m */; };
+		429CC1E41CE03D0B004BCC0C /* MIABaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1E21CE03D0B004BCC0C /* MIABaseTableViewCell.m */; };
+		429CC1E91CE03D39004BCC0C /* MIABaseCellHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1E61CE03D39004BCC0C /* MIABaseCellHeadView.m */; };
+		429CC1EA1CE03D39004BCC0C /* MIABaseCellHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1E61CE03D39004BCC0C /* MIABaseCellHeadView.m */; };
+		429CC1EB1CE03D39004BCC0C /* MIABaseShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1E81CE03D39004BCC0C /* MIABaseShowView.m */; };
+		429CC1EC1CE03D39004BCC0C /* MIABaseShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1E81CE03D39004BCC0C /* MIABaseShowView.m */; };
+		429CC1F01CE03ECC004BCC0C /* MIAViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1EF1CE03ECC004BCC0C /* MIAViewModel.m */; };
+		429CC1F11CE03ECC004BCC0C /* MIAViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1EF1CE03ECC004BCC0C /* MIAViewModel.m */; };
 		CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */; };
 		CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */; };
 		CD160F9A1CD05CD700DF4164 /* HXDiscoveryLiveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */; };
@@ -490,8 +484,6 @@
 		398451F01CAD05DB009018C6 /* UserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetting.m; sourceTree = "<group>"; };
 		398A6D0F1CAB77D6001A68B1 /* HXGuestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXGuestModel.h; sourceTree = "<group>"; };
 		398A6D101CAB77D6001A68B1 /* HXGuestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGuestModel.m; sourceTree = "<group>"; };
-		42984AD51CDAED7D004F00D5 /* MIABaseShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIABaseShowView.h; sourceTree = "<group>"; };
-		42984AD61CDAED7D004F00D5 /* MIABaseShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIABaseShowView.m; sourceTree = "<group>"; };
 		42984ADB1CDAEF84004F00D5 /* NSObject+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JOExtend.h"; sourceTree = "<group>"; };
 		42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JOExtend.m"; sourceTree = "<group>"; };
 		42984ADD1CDAEF84004F00D5 /* NSString+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JOExtend.h"; sourceTree = "<group>"; };
@@ -519,20 +511,6 @@
 		42984B111CDAF1A3004F00D5 /* JOBaseSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOBaseSDK.h; sourceTree = "<group>"; };
 		42984B121CDB0542004F00D5 /* UIView+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JOExtend.h"; sourceTree = "<group>"; };
 		42984B131CDB0542004F00D5 /* UIView+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JOExtend.m"; sourceTree = "<group>"; };
-		42984B1E1CDB14E1004F00D5 /* MIABaseCellHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIABaseCellHeadView.h; sourceTree = "<group>"; };
-		42984B1F1CDB14E1004F00D5 /* MIABaseCellHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIABaseCellHeadView.m; sourceTree = "<group>"; };
-		42984B221CDB18EF004F00D5 /* MIAMeAttentionPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAMeAttentionPromptView.h; sourceTree = "<group>"; };
-		42984B231CDB18EF004F00D5 /* MIAMeAttentionPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAMeAttentionPromptView.m; sourceTree = "<group>"; };
-		42984B261CDB19F8004F00D5 /* MIAMeAttentionContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAMeAttentionContainerView.h; sourceTree = "<group>"; };
-		42984B271CDB19F8004F00D5 /* MIAMeAttentionContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAMeAttentionContainerView.m; sourceTree = "<group>"; };
-		42984B2E1CDB3845004F00D5 /* MIAMeContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAMeContainerViewController.h; sourceTree = "<group>"; };
-		42984B2F1CDB3845004F00D5 /* MIAMeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAMeContainerViewController.m; sourceTree = "<group>"; };
-		42984B361CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAMeAttentionPromptCell.h; sourceTree = "<group>"; };
-		42984B371CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAMeAttentionPromptCell.m; sourceTree = "<group>"; };
-		42984B3A1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAMeAttentionContainerCell.h; sourceTree = "<group>"; };
-		42984B3B1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAMeAttentionContainerCell.m; sourceTree = "<group>"; };
-		42984B3E1CDC28D7004F00D5 /* MIABaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIABaseTableViewCell.h; sourceTree = "<group>"; };
-		42984B3F1CDC28D7004F00D5 /* MIABaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIABaseTableViewCell.m; sourceTree = "<group>"; };
 		42984B421CDC48E7004F00D5 /* MIAProfileHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAProfileHeadView.h; sourceTree = "<group>"; };
 		42984B431CDC48E7004F00D5 /* MIAProfileHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAProfileHeadView.m; sourceTree = "<group>"; };
 		42984B461CDC6137004F00D5 /* JOUIManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOUIManage.h; sourceTree = "<group>"; };
@@ -555,6 +533,16 @@
 		42984B671CDCAB9A004F00D5 /* MIAProfileVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAProfileVideoCell.m; sourceTree = "<group>"; };
 		42984B6A1CDCAFEA004F00D5 /* MIAProfileReplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAProfileReplayCell.h; sourceTree = "<group>"; };
 		42984B6B1CDCAFEA004F00D5 /* MIAProfileReplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAProfileReplayCell.m; sourceTree = "<group>"; };
+		429CC1DC1CE034D4004BCC0C /* MIAProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAProfileViewModel.h; sourceTree = "<group>"; };
+		429CC1DD1CE034D4004BCC0C /* MIAProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAProfileViewModel.m; sourceTree = "<group>"; };
+		429CC1E11CE03D0B004BCC0C /* MIABaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIABaseTableViewCell.h; sourceTree = "<group>"; };
+		429CC1E21CE03D0B004BCC0C /* MIABaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIABaseTableViewCell.m; sourceTree = "<group>"; };
+		429CC1E51CE03D39004BCC0C /* MIABaseCellHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIABaseCellHeadView.h; sourceTree = "<group>"; };
+		429CC1E61CE03D39004BCC0C /* MIABaseCellHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIABaseCellHeadView.m; sourceTree = "<group>"; };
+		429CC1E71CE03D39004BCC0C /* MIABaseShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIABaseShowView.h; sourceTree = "<group>"; };
+		429CC1E81CE03D39004BCC0C /* MIABaseShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIABaseShowView.m; sourceTree = "<group>"; };
+		429CC1EE1CE03ECC004BCC0C /* MIAViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAViewModel.h; sourceTree = "<group>"; };
+		429CC1EF1CE03ECC004BCC0C /* MIAViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAViewModel.m; sourceTree = "<group>"; };
 		4704094A70120BB39E18C473 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B1BFCF29A3BF4A6DA2007B29 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD01F1C11CCE2007006BF4BF /* HXCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCollectionViewLayout.h; sourceTree = "<group>"; };
@@ -1143,6 +1131,28 @@
 			path = Log;
 			sourceTree = "<group>";
 		};
+		429CC1E01CE03CD2004BCC0C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				429CC1E51CE03D39004BCC0C /* MIABaseCellHeadView.h */,
+				429CC1E61CE03D39004BCC0C /* MIABaseCellHeadView.m */,
+				429CC1E71CE03D39004BCC0C /* MIABaseShowView.h */,
+				429CC1E81CE03D39004BCC0C /* MIABaseShowView.m */,
+				429CC1E11CE03D0B004BCC0C /* MIABaseTableViewCell.h */,
+				429CC1E21CE03D0B004BCC0C /* MIABaseTableViewCell.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		429CC1ED1CE03EA2004BCC0C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				429CC1EE1CE03ECC004BCC0C /* MIAViewModel.h */,
+				429CC1EF1CE03ECC004BCC0C /* MIAViewModel.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1206,12 +1216,6 @@
 				CD2367A41CA93B91002C8233 /* HXMeAttentionPromptCell.m */,
 				CD2367AD1CA93D51002C8233 /* HXMeAttentionContainerCell.h */,
 				CD2367AE1CA93D51002C8233 /* HXMeAttentionContainerCell.m */,
-				42984B3E1CDC28D7004F00D5 /* MIABaseTableViewCell.h */,
-				42984B3F1CDC28D7004F00D5 /* MIABaseTableViewCell.m */,
-				42984B361CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.h */,
-				42984B371CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.m */,
-				42984B3A1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.h */,
-				42984B3B1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1515,14 +1519,6 @@
 			isa = PBXGroup;
 			children = (
 				CD23677D1CA91A3B002C8233 /* Cells */,
-				42984AD51CDAED7D004F00D5 /* MIABaseShowView.h */,
-				42984AD61CDAED7D004F00D5 /* MIABaseShowView.m */,
-				42984B1E1CDB14E1004F00D5 /* MIABaseCellHeadView.h */,
-				42984B1F1CDB14E1004F00D5 /* MIABaseCellHeadView.m */,
-				42984B221CDB18EF004F00D5 /* MIAMeAttentionPromptView.h */,
-				42984B231CDB18EF004F00D5 /* MIAMeAttentionPromptView.m */,
-				42984B261CDB19F8004F00D5 /* MIAMeAttentionContainerView.h */,
-				42984B271CDB19F8004F00D5 /* MIAMeAttentionContainerView.m */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1847,6 +1843,7 @@
 		CD7408A21C9950C500950A50 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				429CC1ED1CE03EA2004BCC0C /* Common */,
 				CDC063181CB3E53200E66F2A /* Discovery */,
 				CD2367931CA9211F002C8233 /* Me */,
 				CD294A001CA294AA00CA3C3F /* Login */,
@@ -1860,6 +1857,7 @@
 		CD7408A31C9950C500950A50 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				429CC1E01CE03CD2004BCC0C /* Common */,
 				CDC063041CB3E41000E66F2A /* Discovery */,
 				CD2E728F1CA11DF8003CDB77 /* Publish */,
 				CD5CDF861CA919F700D2162C /* Me */,
@@ -2184,6 +2182,8 @@
 			children = (
 				CDE2FC821CABD43700476968 /* HXProfileViewModel.h */,
 				CDE2FC831CABD43700476968 /* HXProfileViewModel.m */,
+				429CC1DC1CE034D4004BCC0C /* MIAProfileViewModel.h */,
+				429CC1DD1CE034D4004BCC0C /* MIAProfileViewModel.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2359,8 +2359,6 @@
 				CDED8F391CA14E74003867B8 /* HXMeViewController.m */,
 				CD2367901CA91DF9002C8233 /* HXMeContainerViewController.h */,
 				CD2367911CA91DF9002C8233 /* HXMeContainerViewController.m */,
-				42984B2E1CDB3845004F00D5 /* MIAMeContainerViewController.h */,
-				42984B2F1CDB3845004F00D5 /* MIAMeContainerViewController.m */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -2720,8 +2718,6 @@
 				CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */,
 				CD7960B11CBE594C004CC661 /* HXLiveCommentViewController.m in Sources */,
 				CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */,
-				42984B311CDB3845004F00D5 /* MIAMeContainerViewController.m in Sources */,
-				42984B411CDC28D7004F00D5 /* MIABaseTableViewCell.m in Sources */,
 				CD7960B31CBE594C004CC661 /* MBProgressHUDHelp.m in Sources */,
 				42984B511CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */,
 				CD7960B41CBE594C004CC661 /* UIImage+ColorToImage.m in Sources */,
@@ -2749,6 +2745,7 @@
 				CD7960C71CBE594C004CC661 /* HXVideoModel.m in Sources */,
 				CD7960C81CBE594C004CC661 /* HXWatchLiveViewModel.m in Sources */,
 				CD7960C91CBE594C004CC661 /* HXDiscoveryViewModel.m in Sources */,
+				429CC1EC1CE03D39004BCC0C /* MIABaseShowView.m in Sources */,
 				CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */,
 				CD7960CA1CBE594C004CC661 /* HXAlertBanner.m in Sources */,
 				CD7960CB1CBE594C004CC661 /* HXProfileAlbumContainerCell.m in Sources */,
@@ -2769,6 +2766,7 @@
 				CD7960D81CBE594C004CC661 /* HXNavigationController.m in Sources */,
 				42984B061CDAEF84004F00D5 /* JOFCrash.m in Sources */,
 				CD7960D91CBE594C004CC661 /* HXWatcherCell.m in Sources */,
+				429CC1E41CE03D0B004BCC0C /* MIABaseTableViewCell.m in Sources */,
 				CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */,
 				CD7960DB1CBE594C004CC661 /* LocationMgr.m in Sources */,
 				CD7960DC1CBE594C004CC661 /* HXProfileLiveCell.m in Sources */,
@@ -2798,14 +2796,12 @@
 				CD7960F41CBE594C004CC661 /* HXProfileContainerViewController.m in Sources */,
 				CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */,
 				42984B5D1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */,
-				42984B211CDB14E1004F00D5 /* MIABaseCellHeadView.m in Sources */,
 				CD7960F61CBE594C004CC661 /* HXAttentionModel.m in Sources */,
 				CD7960F71CBE594C004CC661 /* NSTimer+BlockSupport.m in Sources */,
 				CD7960F81CBE594C004CC661 /* HXReplayViewModel.m in Sources */,
 				CD7960F91CBE594C004CC661 /* HXPathManager.m in Sources */,
 				CD7960FA1CBE594C004CC661 /* MIAButton.m in Sources */,
 				42984B4D1CDC7711004F00D5 /* MIAProfileViewController.m in Sources */,
-				42984B291CDB19F8004F00D5 /* MIAMeAttentionContainerView.m in Sources */,
 				CD7960FB1CBE594C004CC661 /* HXReplayViewController.m in Sources */,
 				42984B651CDC9E0B004F00D5 /* MIAProfileAlbumCell.m in Sources */,
 				CD7960FC1CBE594C004CC661 /* HXAlbumsCommentViewModel.m in Sources */,
@@ -2823,12 +2819,13 @@
 				CD7961061CBE594C004CC661 /* HXDiscoveryLiveCell.m in Sources */,
 				CD7961071CBE594C004CC661 /* HXAlbumModel.m in Sources */,
 				CD7961081CBE594C004CC661 /* HXProfileHeaderCell.m in Sources */,
-				42984B3D1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.m in Sources */,
 				CD7961091CBE594C004CC661 /* HXPlayBottomBar.m in Sources */,
 				CD79610A1CBE594C004CC661 /* HXWatcherModel.m in Sources */,
 				CD79610B1CBE594C004CC661 /* UILabel+HXIBnsepectable.m in Sources */,
 				CD79610C1CBE594C004CC661 /* HXDiscoveryModel.m in Sources */,
 				CD79610E1CBE594C004CC661 /* HXLoginViewModel.m in Sources */,
+				429CC1DF1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */,
+				429CC1F11CE03ECC004BCC0C /* MIAViewModel.m in Sources */,
 				CD79610F1CBE594C004CC661 /* HXMeAttentionPromptCell.m in Sources */,
 				CD7961101CBE594C004CC661 /* HXPreviewLiveViewController.m in Sources */,
 				42984B691CDCAB9A004F00D5 /* MIAProfileVideoCell.m in Sources */,
@@ -2837,23 +2834,21 @@
 				CD7961131CBE594C004CC661 /* HXWatcherBoard.m in Sources */,
 				42984B491CDC6137004F00D5 /* JOUIManage.m in Sources */,
 				CD7961141CBE594C004CC661 /* HXPlayTopBar.m in Sources */,
+				429CC1EA1CE03D39004BCC0C /* MIABaseCellHeadView.m in Sources */,
 				CD7961151CBE594C004CC661 /* NSString+IsNull.m in Sources */,
 				CD7961161CBE594C004CC661 /* main.m in Sources */,
 				CD7961171CBE594C004CC661 /* HXThemeManager.m in Sources */,
 				CD7961181CBE594C004CC661 /* HXVersion.m in Sources */,
-				42984B251CDB18EF004F00D5 /* MIAMeAttentionPromptView.m in Sources */,
 				CD7961191CBE594C004CC661 /* HXZegoAVKitManager.m in Sources */,
 				CD79611A1CBE594C004CC661 /* HXProfileVideoContainerCell.m in Sources */,
 				CD79611B1CBE594C004CC661 /* HXAnchorModel.m in Sources */,
 				CD79611C1CBE594C004CC661 /* HXDiscoveryNormalCell.m in Sources */,
-				42984B391CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.m in Sources */,
 				CD79611D1CBE594C004CC661 /* HXSettingSession.m in Sources */,
 				CD79611E1CBE594C004CC661 /* FormatTimeHelper.m in Sources */,
 				42984AFE1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */,
 				CD79611F1CBE594C004CC661 /* HXActivityIndicator.m in Sources */,
 				CD7961201CBE594C004CC661 /* HXDiscoveryContainerViewController.m in Sources */,
 				CD7961211CBE594C004CC661 /* HXAccountModel.m in Sources */,
-				42984AD81CDAED7D004F00D5 /* MIABaseShowView.m in Sources */,
 				CD7961221CBE594C004CC661 /* HXCommentModel.m in Sources */,
 				CD7961231CBE594C004CC661 /* HXAlbumsCommentViewController.m in Sources */,
 			);
@@ -2888,11 +2883,8 @@
 				42984B6C1CDCAFEA004F00D5 /* MIAProfileReplayCell.m in Sources */,
 				CD7960861CBE39A6004CC661 /* UIViewController+LoginAction.m in Sources */,
 				CD5F215D1CAD2E8B0067A1DA /* HXLiveAnchorView.m in Sources */,
-				42984B301CDB3845004F00D5 /* MIAMeContainerViewController.m in Sources */,
 				42984B0B1CDAEF84004F00D5 /* JOFFileManage.m in Sources */,
-				42984AD71CDAED7D004F00D5 /* MIABaseShowView.m in Sources */,
 				CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */,
-				42984B241CDB18EF004F00D5 /* MIAMeAttentionPromptView.m in Sources */,
 				42984B581CDC8021004F00D5 /* MIAProfileVideoView.m in Sources */,
 				CD23679C1CA93B2F002C8233 /* HXMeRechargeCell.m in Sources */,
 				CD2367961CA9212B002C8233 /* HXMeViewModel.m in Sources */,
@@ -2900,6 +2892,7 @@
 				CD5DD8B01CA912790077A17B /* HXAlbumsSongCell.m in Sources */,
 				CD2949F71CA2919B00CA3C3F /* HXForgotPWViewController.m in Sources */,
 				CDF301071CA8D4ED00C19C32 /* HXAlbumsViewController.m in Sources */,
+				429CC1F01CE03ECC004BCC0C /* MIAViewModel.m in Sources */,
 				CD858D9C1CAE6B24007441E9 /* HXProfileReplayContainerCell.m in Sources */,
 				CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */,
 				CD6C19411CA4E4AE00849B39 /* HXLiveCommentContainerViewController.m in Sources */,
@@ -2922,8 +2915,6 @@
 				CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */,
 				CD5F21661CAD2F6A0067A1DA /* HXWatcherContainerViewController.m in Sources */,
 				398A6D111CAB77D6001A68B1 /* HXGuestModel.m in Sources */,
-				42984B401CDC28D7004F00D5 /* MIABaseTableViewCell.m in Sources */,
-				42984B3C1CDB5EB7004F00D5 /* MIAMeAttentionContainerCell.m in Sources */,
 				CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */,
 				CD5D02771CB60189000285DC /* HXCountDownViewController.m in Sources */,
 				CD91676B1CAE528D000A12DC /* GenderPickerView.m in Sources */,
@@ -2945,6 +2936,7 @@
 				398451ED1CAD0543009018C6 /* SongPreloader.m in Sources */,
 				CDCB46921CB788FD00ED3A8B /* UIView+Image.m in Sources */,
 				CD5F21721CAD4C3F0067A1DA /* HXProfileModel.m in Sources */,
+				429CC1E91CE03D39004BCC0C /* MIABaseCellHeadView.m in Sources */,
 				CD2367AC1CA93D19002C8233 /* HXMeAttentionCell.m in Sources */,
 				CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */,
 				CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */,
@@ -2967,7 +2959,6 @@
 				398451F11CAD05DB009018C6 /* UserSetting.m in Sources */,
 				398451E31CAD0300009018C6 /* NSObject+BlockSupport.m in Sources */,
 				CD6C194B1CA4E7AD00849B39 /* HXReplayBottomBar.m in Sources */,
-				42984B201CDB14E1004F00D5 /* MIABaseCellHeadView.m in Sources */,
 				42984B501CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */,
 				CD5D02811CB60624000285DC /* HXPreviewLiveEidtView.m in Sources */,
 				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
@@ -2977,6 +2968,7 @@
 				CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */,
 				CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */,
 				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
+				429CC1E31CE03D0B004BCC0C /* MIABaseTableViewCell.m in Sources */,
 				CD858DA51CAE6BBD007441E9 /* HXProfileVideoCell.m in Sources */,
 				CD5D02841CB60632000285DC /* HXPreviewLiveControlView.m in Sources */,
 				CD9167681CAE524C000A12DC /* HXFeedBackViewController.m in Sources */,
@@ -3007,7 +2999,6 @@
 				CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */,
 				CD6C19891CA519A900849B39 /* HXPlayBottomBar.m in Sources */,
 				42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */,
-				42984B281CDB19F8004F00D5 /* MIAMeAttentionContainerView.m in Sources */,
 				CDE2FC871CABF3F000476968 /* HXWatcherModel.m in Sources */,
 				42984B681CDCAB9A004F00D5 /* MIAProfileVideoCell.m in Sources */,
 				CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */,
@@ -3023,13 +3014,14 @@
 				395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */,
 				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
 				CDED8F2E1CA13BB4003867B8 /* HXThemeManager.m in Sources */,
-				42984B381CDB4F0A004F00D5 /* MIAMeAttentionPromptCell.m in Sources */,
 				42984AFF1CDAEF84004F00D5 /* UIColor+JOExtend.m in Sources */,
 				CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */,
+				429CC1DE1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */,
 				CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */,
 				CD858D991CAE6B14007441E9 /* HXProfileVideoContainerCell.m in Sources */,
 				CD5F21791CAD4C930067A1DA /* HXAnchorModel.m in Sources */,
 				42984B031CDAEF84004F00D5 /* JOAutoLayout.m in Sources */,
+				429CC1EB1CE03D39004BCC0C /* MIABaseShowView.m in Sources */,
 				CDC063111CB3E41000E66F2A /* HXDiscoveryNormalCell.m in Sources */,
 				CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */,
 				CD546D011CAE9A63009FB2FD /* FormatTimeHelper.m in Sources */,
