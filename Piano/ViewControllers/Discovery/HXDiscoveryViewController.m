@@ -38,8 +38,6 @@ HXDiscoveryContainerViewControllerDelegate
     
     NSInteger _itemCount;
     HXLoadingView *_loadingView;
-    
-    BOOL _shouldHiddenNavigationBar;
 }
 
 #pragma mark - Segue Methods
@@ -156,7 +154,12 @@ HXDiscoveryContainerViewControllerDelegate
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
-            ;
+            [self hiddenNavigationBar];
+            
+            UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+            watchLiveViewController.roomID = model.roomID;
+            [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowStation: {
@@ -170,7 +173,7 @@ HXDiscoveryContainerViewControllerDelegate
     }
 }
 
-- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
+//- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
 ////    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
 ////        return;
 ////    }
@@ -208,6 +211,6 @@ HXDiscoveryContainerViewControllerDelegate
 //            }
 //        }
 //    }
-}
+//}
 
 @end
