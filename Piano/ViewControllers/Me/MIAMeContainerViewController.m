@@ -7,15 +7,14 @@
 //
 
 #import "MIAMeContainerViewController.h"
+#import "MIABaseTableViewCell.h"
 #import "MIAMeAttentionPromptCell.h"
 #import "MIAMeAttentionContainerCell.h"
 #import "MIABaseCellHeadView.h"
-#import "NSString+JOExtend.h"
 #import "JOBaseSDK.h"
 
 static CGFloat const kMeHeadViewHeight = 360.;
 static CGFloat const kMeHeadImageViewWidth = 200.;
-static CGFloat const kMeSectionHeadNormalHeight = 55.;
 
 @interface MIAMeContainerViewController()<UITableViewDataSource, UITableViewDelegate>
 
@@ -48,7 +47,6 @@ static CGFloat const kMeSectionHeadNormalHeight = 55.;
     [self createHeadView];
     [self createMeTableView];
     
-    JOConvertStringToNormalString(@"test");
 }
 
 #pragma mark - Create View
@@ -142,27 +140,27 @@ static CGFloat const kMeSectionHeadNormalHeight = 55.;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MIABaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
         
         if (indexPath.section == 0) {
-             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+             cell = [[MIABaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }else if (indexPath.section == 1){
         
             cell = [[MIAMeAttentionPromptCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
             [(MIAMeAttentionPromptCell *)cell setCellWidth:View_Width(self.view)];
-            [(MIAMeAttentionPromptCell *)cell setMeAttentionPromptData:@[@"",@"",@"",@""]];
+//            [(MIAMeAttentionPromptCell *)cell setCellData:@[@"",@"",@"",@""]];
         }else if (indexPath.section == 2){
         
 //            MIAMeAttentionContainerCell
             cell = [[MIAMeAttentionContainerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
             [(MIAMeAttentionContainerCell *)cell setCellWidth:View_Width(self.view)];
-            [(MIAMeAttentionContainerCell *)cell setMeAttentionConatinerData:@[@"",@"",@"",@""]];
+//            [(MIAMeAttentionContainerCell *)cell setCellData:@[@"",@"",@"",@""]];
         }
         else{
         
-             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+             cell = [[MIABaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
        
     }
@@ -172,7 +170,7 @@ static CGFloat const kMeSectionHeadNormalHeight = 55.;
     
     if (indexPath.section == 0 ) {
         
-        
+        [cell.contentView setBackgroundColor:JOConvertRGBToColor(21., 21., 21., 1.)];
         if (indexPath.row == 0) {
             NSMutableAttributedString *string = [@"我的M币(充值)" JOAttributedStringwithMarkString:@"(充值)"
                                                                                      markFont:[UIFont systemFontOfSize:16]
@@ -181,6 +179,8 @@ static CGFloat const kMeSectionHeadNormalHeight = 55.;
             [[cell textLabel] setAttributedText:string];
         }
       
+    }else{
+    
     }
    
     return cell;
@@ -210,7 +210,7 @@ static CGFloat const kMeSectionHeadNormalHeight = 55.;
         return kMeHeadViewHeight;
     }else{
         
-        return kMeSectionHeadNormalHeight;
+        return kBaseCellHeadViewHeight;
     }
 }
 
@@ -224,15 +224,15 @@ static CGFloat const kMeSectionHeadNormalHeight = 55.;
         return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PL-PlayIcon"]
                                                     title:@"关注"
                                                  tipTitle:nil
-                                                    frame:CGRectMake(0., 0., View_Width(self.view), kMeSectionHeadNormalHeight)
-                                            cellColorType:BaseCellHeadColorTypeWhiter];
+                                                    frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)
+                                            cellColorType:BaseCellHeadColorTypeBlack];
     }else if (section == 2){
     
         return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PL-PlayIcon"]
                                                     title:@"打赏的专辑"
                                                  tipTitle:nil
-                                                    frame:CGRectMake(0., 0., View_Width(self.view), kMeSectionHeadNormalHeight)
-                                            cellColorType:BaseCellHeadColorTypeWhiter];
+                                                    frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)
+                                            cellColorType:BaseCellHeadColorTypeBlack];
     }else{
     
         return nil;

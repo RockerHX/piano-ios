@@ -37,18 +37,18 @@
     [_showTitleLabel setTextColor:[UIColor whiteColor]];
     [self addSubview:_showTitleLabel];
     
-    self.showTipLabe = [UILabel newAutoLayoutView];
-    [_showTipLabe setBackgroundColor:[UIColor clearColor]];
-    [_showTipLabe setTextAlignment:NSTextAlignmentCenter];
-    [_showTipLabe setTextColor:[UIColor whiteColor]];
-    [self addSubview:_showTipLabe];
+    self.showTipLabel = [UILabel newAutoLayoutView];
+    [_showTipLabel setBackgroundColor:[UIColor clearColor]];
+//    [_showTipLabe setTextAlignment:NSTextAlignmentCenter];
+    [_showTipLabel setTextColor:[UIColor whiteColor]];
+    [self addSubview:_showTipLabel];
 }
 
 - (void)updateViewLayout{
 
     [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showImageView superView:self];
     [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showTitleLabel superView:self];
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showTipLabe superView:self];
+    [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showTipLabel superView:self];
 }
 
 - (void)setShowData:(id)data{}

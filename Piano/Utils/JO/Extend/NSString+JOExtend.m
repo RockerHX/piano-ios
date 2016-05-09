@@ -224,14 +224,23 @@ BOOL JOStringIsValidIDCardNum(NSString *string){
                                                     markColor:(UIColor *)markColor{
     
     NSMutableAttributedString *contentAttributedString = [[NSMutableAttributedString alloc] initWithString:self];
-    for(NSTextCheckingResult *result in [self regularCheckingString:markString]){
+    
+    [self JOEnumerateMatchesWithRegex:[NSString stringWithFormat:@"[%@]",markString] options:NSRegularExpressionCaseInsensitive usingBlock:^(NSString *matchString, NSRange matchRange, BOOL *stop) {
         
-        NSRange matchRange = [result range];
         [contentAttributedString addAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                 markColor,NSForegroundColorAttributeName,
                                                 markFont,NSFontAttributeName,nil]
                                          range:matchRange];
-    }
+    }];
+    
+//    for(NSTextCheckingResult *result in [self regularCheckingString:markString]){
+//        
+//        NSRange matchRange = [result range];
+//        [contentAttributedString addAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                markColor,NSForegroundColorAttributeName,
+//                                                markFont,NSFontAttributeName,nil]
+//                                         range:matchRange];
+//    }
     
     return contentAttributedString;
 }

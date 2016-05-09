@@ -6,12 +6,8 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MIABaseTableViewCell.h"
 
-@interface MIAMeAttentionPromptCell : UITableViewCell
-
-- (void)setCellWidth:(CGFloat )width;
-
-- (void)setMeAttentionPromptData:(NSArray *)dataArray;
+@interface MIAMeAttentionPromptCell : MIABaseTableViewCell
 
 @end

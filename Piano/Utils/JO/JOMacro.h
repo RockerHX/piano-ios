@@ -41,6 +41,8 @@
 #define View_X(v)           v.frame.origin.x
 #define View_Y(v)           v.frame.origin.y
 
+#define JOMAXSize       CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+
 
 #define JOArgumentsCAssertNotNil(condition, description, ...) NSCAssert((condition), (description), ##__VA_ARGS__)
 

@@ -9,73 +9,59 @@
 #import "MIAMeAttentionContainerCell.h"
 #import "MIAMeAttentionContainerView.h"
 
-static CGFloat const kContentViewLeftSpaceDistance = 20.;
-static CGFloat const kContentViewTopSpaceDistance = 10.;
-static CGFloat const kContentViewItemSpaceDistance = 25.;
+static CGFloat const kContentViewItemSpaceDistance = 25.; //每个元素间的间距
 
 @interface MIAMeAttentionContainerCell(){
     
     CGFloat cellWidth;
 }
 
-@property (nonatomic, strong) UIView *cellContentView;
-
 @end
 
 @implementation MIAMeAttentionContainerCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
-    if (self) {
-        
-        [self createContentView];
-    }
-    return self;
-}
-
-- (void)createContentView{
-    
-    self.cellContentView = [UIView newAutoLayoutView];
-    [self.contentView addSubview:_cellContentView];
-    
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewLeftSpaceDistance selfView:_cellContentView superView:self.contentView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kContentViewLeftSpaceDistance selfView:_cellContentView superView:self.contentView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewTopSpaceDistance selfView:_cellContentView superView:self.contentView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewTopSpaceDistance selfView:_cellContentView superView:self.contentView];
-}
 
 - (void)setCellWidth:(CGFloat )width{
     
     cellWidth = width;
+    [self.contentView setBackgroundColor:JOConvertRGBToColor(21., 21., 21., 1.)];
+    [self.cellContentView setBackgroundColor:JOConvertRGBToColor(21., 21., 21., 1.)];
+    [self createAttentionContainerCellContentView];
 }
 
-- (void)setMeAttentionConatinerData:(NSArray *)dataArray{
+- (void)createAttentionContainerCellContentView{
+
+    CGFloat viewWidth = (cellWidth - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - 2*kContentViewItemSpaceDistance)/3.;
     
-    if ([dataArray count] > 4 || [dataArray count] < 1) {
-        [JOFException exceptionWithName:@"MIAMeAttentionPromptCell exception" reason:@"DataArray 数据源有问题,count只能在1~4的之间"];
-    }else{
+    for (int i = 0; i < 3; i++) {
         
-        CGFloat viewWidth = (cellWidth - 2*kContentViewLeftSpaceDistance - 2*kContentViewItemSpaceDistance)/3.;
+        MIAMeAttentionContainerView *containerView = [self createAttentionPromptViewWithData:nil];
+        [containerView setTag:i+1];
+        [self.cellContentView addSubview:containerView];
         
-        for (int i = 0; i < [dataArray count]; i++) {
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:containerView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:containerView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:containerView superView:self.cellContentView];
+        
+        if (i == 0) {
+            [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:containerView superView:self.cellContentView];
+        }else{
             
-            MIAMeAttentionContainerView *containerView = [self createAttentionPromptViewWithData:nil];
-            [containerView setTag:i+1];
-            [_cellContentView addSubview:containerView];
+            UIView *lastView = [self.cellContentView viewWithTag:i];
+            [JOAutoLayout autoLayoutWithLeftView:lastView distance:kContentViewItemSpaceDistance selfView:containerView superView:self.cellContentView];
+        }
+    }
+}
+
+- (void)setCellData:(id)data{
+    
+    if ([data isKindOfClass:[NSArray class]]) {
+        
+        if ([data count] > 4 || [data count] < 1) {
+            [JOFException exceptionWithName:@"MIAMeAttentionPromptCell exception" reason:@"DataArray 数据源有问题,count只能在1~3的之间"];
+        }else{
             
-            [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:containerView superView:_cellContentView];
-            [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:containerView superView:_cellContentView];
-            [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:containerView superView:_cellContentView];
             
-            if (i == 0) {
-                [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:containerView superView:_cellContentView];
-            }else{
-                
-                UIView *lastView = [_cellContentView viewWithTag:i];
-                [JOAutoLayout autoLayoutWithLeftView:lastView distance:kContentViewItemSpaceDistance selfView:containerView superView:_cellContentView];
-            }
         }
     }
 }

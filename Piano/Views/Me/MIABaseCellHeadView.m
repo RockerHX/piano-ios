@@ -9,6 +9,8 @@
 #import "MIABaseCellHeadView.h"
 #import "JOBaseSDK.h"
 
+CGFloat const kBaseCellHeadViewHeight = 45.;
+
 @interface MIABaseCellHeadView()
 
 @end
@@ -17,8 +19,16 @@
 
 - (void)createView{
     
+    self.backgroundView = [UIView newAutoLayoutView];
+    [_backgroundView setBackgroundColor:[UIColor blackColor]];
+    [self addSubview:_backgroundView];
+    
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_backgroundView superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_backgroundView superView:self];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_backgroundView superView:self];
+    [JOAutoLayout autoLayoutWithHeight:kBaseCellHeadViewHeight-10. selfView:_backgroundView superView:self];
+    
     self.maskView = [UIView newAutoLayoutView];
-    [_maskView setBackgroundColor:JOConvertRGBToColor(21., 21., 21., 1.)];
     [self addSubview:_maskView];
     
     self.headImageView = [UIImageView newAutoLayoutView];
@@ -34,7 +44,8 @@
     self.headTipLabel = [UILabel newAutoLayoutView];
     [_headTipLabel setBackgroundColor:[UIColor clearColor]];
     [_headTipLabel setTextAlignment:NSTextAlignmentLeft];
-//    [_headTipLabel setTextColor:[UIColor grayColor]];
+    [_headTipLabel setTextColor:[UIColor grayColor]];
+    [_headTipLabel setFont:[UIFont systemFontOfSize:13.]];
     [_maskView addSubview:_headTipLabel];
 }
 
@@ -48,10 +59,23 @@
     }else{
         [self createView];
         if (colorType == BaseCellHeadColorTypeWhiter) {
-            [_headLabel setTextColor:[UIColor whiteColor]];
-        }else{
-        
+            [_maskView setBackgroundColor:[UIColor whiteColor]];
             [_headLabel setTextColor:[UIColor blackColor]];
+            [self setBackgroundColor:[UIColor blackColor]];
+        }else if(colorType == BaseCellHeadColorTypeBlack){
+            [_maskView setBackgroundColor:JOConvertRGBToColor(21., 21., 21., 1.)];
+            [_backgroundView setBackgroundColor:JOConvertRGBToColor(21., 21., 21., 1.)];
+            [_headLabel setTextColor:[UIColor whiteColor]];
+            [self setBackgroundColor:[UIColor blackColor]];
+            
+        }else if(colorType == BaseCellHeadColorTypeSpecial){
+        
+            [self setBackgroundColor:[UIColor clearColor]];
+            [_maskView setBackgroundColor:[UIColor whiteColor]];
+            [_headLabel setTextColor:[UIColor blackColor]];
+            
+            [JOAutoLayout removeAutoLayoutWithHeightSelfView:_backgroundView superView:self];
+            [JOAutoLayout autoLayoutWithHeight:kBaseCellHeadViewHeight selfView:_backgroundView superView:self];
         }
         
         objc_setAssociatedObject(self, _cmd, @"only", OBJC_ASSOCIATION_RETAIN);
@@ -62,11 +86,15 @@
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_headLabel superView:_maskView];
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_headTipLabel superView:_maskView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(10., 0., 0., 0.) selfView:_maskView superView:self];
+//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(10., 0., 0., 0.) selfView:_maskView superView:self];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_maskView superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_maskView superView:self];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_maskView superView:self];
+    [JOAutoLayout autoLayoutWithHeight:kBaseCellHeadViewHeight-10 selfView:_maskView superView:self];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:20. selfView:_headImageView superView:_maskView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_headImageView superView:_maskView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:10. selfView:_headImageView superView:_maskView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-10. selfView:_headImageView superView:_maskView];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_headImageView superView:_maskView];
     if (image) {
         [_headImageView setImage:image];
         [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_headImageView superView:_maskView];
@@ -76,14 +104,15 @@
         [_headImageView setHidden:YES];
     }
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_headTipLabel superView:_maskView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_headTipLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithTopYView:_headImageView selfView:_headTipLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithBottomYView:_headImageView selfView:_headTipLabel superView:_maskView];
     
     if (headTipTitle && [headTipTitle length]) {
         [_headTipLabel setText:headTipTitle];
-        CGFloat width = [_headTipLabel sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)].width;
+        CGFloat width = [_headTipLabel sizeThatFits:JOMAXSize].width;
         [JOAutoLayout autoLayoutWithWidth:width selfView:_headTipLabel superView:_maskView];
+        [_headTipLabel setHidden:NO];
     }else{
         
         [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_headTipLabel superView:_maskView];

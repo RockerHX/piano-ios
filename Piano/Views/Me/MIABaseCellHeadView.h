@@ -12,18 +12,18 @@ typedef NS_ENUM(NSInteger,BaseCellHeadColorType){
 
     BaseCellHeadColorTypeWhiter,
     BaseCellHeadColorTypeBlack,
+    BaseCellHeadColorTypeSpecial, //针对于个人页的特殊情况
 };
+
+UIKIT_EXTERN CGFloat const kBaseCellHeadViewHeight;
 
 @interface MIABaseCellHeadView : UIView
 
 @property (nonatomic, strong) UIImageView *headImageView;
+@property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, strong) UILabel *headLabel;
 @property (nonatomic, strong) UILabel *headTipLabel;
-//
-//- (void)setHeadImage:(UIImage *)image
-//           headTitle:(NSString *)headTitle
-//        headTipTitle:(NSString *)headTipTitle;
 
 + (MIABaseCellHeadView *)cellHeadViewWithImage:(UIImage *)image
                                          title:(NSString *)title

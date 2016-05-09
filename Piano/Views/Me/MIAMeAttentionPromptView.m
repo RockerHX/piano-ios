@@ -22,7 +22,7 @@ static CGFloat const kLiveTipLableHeight = 18.;
 
     [super updateViewLayout];
     
-    [self.showTipLabe setHidden:YES];
+    [self.showTipLabel setHidden:YES];
     [self.showImageView setBackgroundColor:[UIColor orangeColor]];
     [self.showTitleLabel setText:@"于文文"];
     [self.showTitleLabel setTextAlignment:NSTextAlignmentCenter];

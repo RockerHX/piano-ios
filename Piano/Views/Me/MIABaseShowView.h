@@ -13,10 +13,18 @@
 
 @property (nonatomic, strong) UIImageView *showImageView;
 @property (nonatomic, strong) UILabel *showTitleLabel;
-@property (nonatomic, strong) UILabel *showTipLabe;
+@property (nonatomic, strong) UILabel *showTipLabel;
 
+/**
+ *  需要在该方法里面自己去添加布局
+ */
 - (void)updateViewLayout;
 
+/**
+ *  设置该视图显示需要的数据
+ *
+ *  @param data 显示需要的数据模型
+ */
 - (void)setShowData:(id)data;
 
 @end

@@ -15,6 +15,7 @@
 #import "UIImageView+WebCache.h"
 
 #import "MIAMeContainerViewController.h"
+#import "MIAProfileViewController.h"
 
 
 @interface HXMeContainerViewController () <
@@ -65,7 +66,8 @@ HXMeAttentionContainerCellDelegate
 #pragma mark - Event Response
 - (IBAction)settingButtonPressed {
     
-    MIAMeContainerViewController *meContainerViewController = [MIAMeContainerViewController new];
+    //MIAProfileViewController MIAMeContainerViewController
+    MIAProfileViewController *meContainerViewController = [MIAProfileViewController new];
     [self.navigationController pushViewController:meContainerViewController animated:YES];
 }
 

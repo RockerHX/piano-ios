@@ -10,6 +10,7 @@
 //#define JOBaseSDK_h
 
 #import "JOMacro.h"
+#import "JOUIManage.h"
 #import "JOFunctionDefine.h"
 #import "NSObject+JOExtend.h"
 #import "NSString+JOExtend.h"
