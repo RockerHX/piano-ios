@@ -10,4 +10,6 @@
 
 @interface MIAProfileViewController : UIViewController
 
+@property (nonatomic, copy) NSString *uid;
+
 @end

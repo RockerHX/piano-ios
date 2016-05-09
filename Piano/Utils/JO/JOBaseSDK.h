@@ -16,5 +16,6 @@
 #import "NSString+JOExtend.h"
 #import "UIColor+JOExtend.h"
 #import "UIView+JOExtend.h"
+#import "NSArray+JOExtend.h"
 
 //#endif /* JOBaseSDK_h */

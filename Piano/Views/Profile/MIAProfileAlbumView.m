@@ -7,6 +7,13 @@
 //
 
 #import "MIAProfileAlbumView.h"
+#import "MIAAlbumModel.h"
+
+@interface MIAProfileAlbumView()
+
+@property (nonatomic, strong) MIAAlbumModel *albumModel;
+
+@end
 
 @implementation MIAProfileAlbumView
 
@@ -14,14 +21,14 @@
     
     [super updateViewLayout];
     
-    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
+//    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
     [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setFont:[UIFont systemFontOfSize:15.]];
     [self.showTitleLabel setTextColor:[UIColor blackColor]];
-    [self.showTitleLabel setText:@"小和尚"];
+    
     [self.showTipLabel setTextColor:[UIColor grayColor]];
     [self.showTipLabel setFont:[UIFont systemFontOfSize:10.]];
-    [self.showTipLabel setText:@"1234人打赏"];
+    
 
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
@@ -42,7 +49,21 @@
 
 - (void)setShowData:(id)data{
     
-    [self updateViewLayout];
+    
+    if ([data isKindOfClass:[MIAAlbumModel class]]) {
+        self.albumModel = nil;
+        self.albumModel = data;
+        [self.showTitleLabel setText:_albumModel.title];
+        [self.showImageView sd_setImageWithURL:[NSURL URLWithString:_albumModel.coverUrl] placeholderImage:nil];
+        [self.showTipLabel setText:[NSString stringWithFormat:@"%@人打赏",_albumModel.backTotal]];
+        
+        [self updateViewLayout];
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAProfileAlbumView exception" reason:@"data不是MIAAlbumModel类型的"];
+    }
+    
+    
 }
 
 @end

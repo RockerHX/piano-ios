@@ -7,6 +7,7 @@
 //
 
 #import "MIAProfileHeadView.h"
+#import "UIImageView+WebCache.h"
 #import "JOBaseSDK.h"
 
 static CGFloat const kLeftSpaceDistance = 10.; // 需要显示的内容与左边的间距
@@ -167,6 +168,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
 
 - (void)setProfileHeadImageURL:(NSString *)imageURL name:(NSString *)name summary:(NSString *)summary{
 
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:nil];
     [_nameLabel setText:JOConvertStringToNormalString(name)];
     [_summayLabel setText:JOConvertStringToNormalString(summary)];
     
