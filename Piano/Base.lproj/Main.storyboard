@@ -88,7 +88,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhj-ng-Ohe" userLabel="Mask Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QIL-l8-kiV" userLabel="Cover View">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QIL-l8-kiV" userLabel="Cover View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PR-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-fu-0tZ" userLabel="Mask View">
