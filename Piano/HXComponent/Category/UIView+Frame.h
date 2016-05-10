@@ -36,4 +36,9 @@
 @property (nonatomic, assign) CGPoint origin;
 @property (nonatomic, assign)  CGSize size;
 
+@property (nonatomic, assign, readonly) CGPoint topCenterPoint;
+@property (nonatomic, assign, readonly) CGPoint bottomCenterPoint;
+@property (nonatomic, assign, readonly) CGPoint leftCenterPoint;
+@property (nonatomic, assign, readonly) CGPoint rightCenterPoint;
+
 @end

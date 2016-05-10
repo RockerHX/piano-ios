@@ -171,4 +171,20 @@
     self.frame = frame;
 }
 
+- (CGPoint)topCenterPoint {
+    return CGPointMake(self.width/2, self.y);
+}
+
+- (CGPoint)bottomCenterPoint {
+    return CGPointMake(self.width/2, self.height);
+}
+
+- (CGPoint)leftCenterPoint {
+    return CGPointMake(self.x, self.height/2);
+}
+
+- (CGPoint)rightCenterPoint {
+    return CGPointMake(self.width, self.height/2);
+}
+
 @end

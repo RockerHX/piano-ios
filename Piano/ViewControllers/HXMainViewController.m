@@ -212,7 +212,7 @@ HXLoginViewControllerDelegate
     }
     
     _discoveryLeftConstraint.constant = _menuOffset;
-    [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.8f initialSpringVelocity:5.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:10.0f initialSpringVelocity:5.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
 }
