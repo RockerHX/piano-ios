@@ -355,7 +355,9 @@ HXLiveAlbumViewDelegate
             break;
         }
         case HXWatchBottomBarActionGift: {
-            [self presentViewController:[HXLiveGiftViewController instance] animated:YES completion:nil];
+            HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
+            [self addChildViewController:giftViewController];
+            [self.view addSubview:giftViewController.view];
             break;
         }
         case HXWatchBottomBarActionAlbum: {

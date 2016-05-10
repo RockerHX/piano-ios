@@ -11,4 +11,8 @@
 
 @interface HXLiveGiftViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+
 @end

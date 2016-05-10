@@ -246,6 +246,10 @@
                             <constraint firstAttribute="trailing" secondItem="LmT-3h-2jm" secondAttribute="trailing" id="vwV-p1-3M6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="loH-TQ-Dxl" id="pn8-ks-7mu"/>
+                        <outlet property="containerView" destination="LmT-3h-2jm" id="IEe-ud-27v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="El6-Kk-KV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
