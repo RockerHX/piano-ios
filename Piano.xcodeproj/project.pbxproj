@@ -326,6 +326,10 @@
 		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
 		CDB099EF1CB520C000C47EA0 /* HXRecordAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */; };
 		CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */; };
+		CDBCFAF51CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
+		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
+		CDBCFAF81CE1D6020045946F /* HXLiveAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */; };
+		CDBCFAF91CE1D6020045946F /* HXLiveAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */; };
 		CDC063021CB3E32700E66F2A /* HXDiscoveryContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC062FF1CB3E32700E66F2A /* HXDiscoveryContainerViewController.m */; };
 		CDC063031CB3E32700E66F2A /* HXDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063011CB3E32700E66F2A /* HXDiscoveryViewController.m */; };
 		CDC0630F1CB3E41000E66F2A /* HXDiscoveryLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063061CB3E41000E66F2A /* HXDiscoveryLiveCell.m */; };
@@ -656,6 +660,9 @@
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
+		CDBCFAF31CE1D5F90045946F /* HXLiveAlbumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveAlbumView.h; sourceTree = "<group>"; };
+		CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveAlbumView.m; sourceTree = "<group>"; };
+		CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLiveAlbumView.xib; sourceTree = "<group>"; };
 		CDC062FE1CB3E32700E66F2A /* HXDiscoveryContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryContainerViewController.h; sourceTree = "<group>"; };
 		CDC062FF1CB3E32700E66F2A /* HXDiscoveryContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryContainerViewController.m; sourceTree = "<group>"; };
 		CDC063001CB3E32700E66F2A /* HXDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -1372,6 +1379,7 @@
 		CD65815F1CA3E97200E2EF19 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CDBCFAF21CE1D5DA0045946F /* AlbumsView */,
 				CD5F21581CAD2E8B0067A1DA /* AnchorView */,
 				CD19794F1CA4E1A900303D27 /* WatcherBoard */,
 				CD5F21671CAD34710067A1DA /* HXWatcherCell.h */,
@@ -1838,6 +1846,16 @@
 			path = AnchorView;
 			sourceTree = "<group>";
 		};
+		CDBCFAF21CE1D5DA0045946F /* AlbumsView */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCFAF31CE1D5F90045946F /* HXLiveAlbumView.h */,
+				CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */,
+				CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */,
+			);
+			path = AlbumsView;
+			sourceTree = "<group>";
+		};
 		CDC062FD1CB3E32700E66F2A /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
@@ -2219,6 +2237,7 @@
 				CD79612F1CBE594C004CC661 /* HXWatchLiveBottomBar.xib in Resources */,
 				CD7961301CBE594C004CC661 /* HXLiveAnchorView.xib in Resources */,
 				CD7961321CBE594C004CC661 /* HXWatcherBoard.xib in Resources */,
+				CDBCFAF91CE1D6020045946F /* HXLiveAlbumView.xib in Resources */,
 				CD7961331CBE594C004CC661 /* HXRecordAnchorView.xib in Resources */,
 				CD7961341CBE594C004CC661 /* HXPreviewLiveTopBar.xib in Resources */,
 				CD7961351CBE594C004CC661 /* Albums.storyboard in Resources */,
@@ -2253,6 +2272,7 @@
 				CD5F215E1CAD2E8B0067A1DA /* HXLiveAnchorView.xib in Resources */,
 				CD1979541CA4E1A900303D27 /* HXWatcherBoard.xib in Resources */,
 				CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */,
+				CDBCFAF81CE1D6020045946F /* HXLiveAlbumView.xib in Resources */,
 				CD5D02861CB60682000285DC /* HXPreviewLiveTopBar.xib in Resources */,
 				3979CFFD1CBF340C0036ED65 /* Info-Beta.plist in Resources */,
 				CDF9504C1CA558E300BDB586 /* Albums.storyboard in Resources */,
@@ -2507,6 +2527,7 @@
 				CD7961101CBE594C004CC661 /* HXPreviewLiveViewController.m in Sources */,
 				CD7961111CBE594C004CC661 /* FileLog.m in Sources */,
 				CD7961121CBE594C004CC661 /* HXMeViewController.m in Sources */,
+				CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */,
 				CD7961131CBE594C004CC661 /* HXWatcherBoard.m in Sources */,
 				CD7961141CBE594C004CC661 /* HXPlayTopBar.m in Sources */,
 				CD7961151CBE594C004CC661 /* NSString+IsNull.m in Sources */,
@@ -2533,6 +2554,7 @@
 			files = (
 				CD2E728B1CA11DE0003CDB77 /* HXSettingViewController.m in Sources */,
 				CD2E729C1CA11E02003CDB77 /* HXLiveModel.m in Sources */,
+				CDBCFAF51CE1D5F90045946F /* HXLiveAlbumView.m in Sources */,
 				CD2949D61CA28A3500CA3C3F /* UIView+HXIBnspectable.m in Sources */,
 				CDED8F2D1CA13BB4003867B8 /* HXStoryBoardManager.m in Sources */,
 				CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */,

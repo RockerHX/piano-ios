@@ -19,6 +19,7 @@
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
+#import "HXLiveAlbumView.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -28,7 +29,8 @@ HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
 HXWatcherContainerViewControllerDelegate,
 HXLiveCommentContainerViewControllerDelegate,
-HXLiveEndViewControllerDelegate
+HXLiveEndViewControllerDelegate,
+HXLiveAlbumViewDelegate
 >
 @end
 
@@ -381,6 +383,11 @@ HXLiveEndViewControllerDelegate
 #pragma mark - HXLiveEndViewControllerDelegate Methods
 - (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - HXLiveAlbumViewDelegate Methods
+- (void)liveAlbumsViewTaped:(HXLiveAlbumView *)albumsView {
+    ;
 }
 
 @end
