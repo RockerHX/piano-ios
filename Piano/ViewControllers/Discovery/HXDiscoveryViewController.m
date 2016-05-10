@@ -39,7 +39,7 @@ HXDiscoveryContainerViewControllerDelegate
     NSInteger _itemCount;
     HXLoadingView *_loadingView;
     
-    BOOL _shouldHiddenNavigationBar;
+    BOOL _fetchLoaded;
 }
 
 #pragma mark - Segue Methods
@@ -49,11 +49,23 @@ HXDiscoveryContainerViewControllerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (_fetchLoaded) {
+        [self startFetchList];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self loadConfigure];
     [self viewConfigure];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 #pragma mark - Configure Methods
@@ -62,6 +74,8 @@ HXDiscoveryContainerViewControllerDelegate
     
     _viewModel = [[HXDiscoveryViewModel alloc] init];
     _containerViewController.viewModel = _viewModel;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFetchList) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
  
 - (void)viewConfigure {
@@ -71,6 +85,7 @@ HXDiscoveryContainerViewControllerDelegate
 
 #pragma mark - Public Methods
 - (void)startFetchList {
+    _fetchLoaded = YES;
     @weakify(self)
     RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
     [requestSiganl subscribeError:^(NSError *error) {
@@ -146,6 +161,10 @@ HXDiscoveryContainerViewControllerDelegate
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
 - (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model {
     switch (action) {
+        case HXDiscoveryContainerActionRefresh: {
+            [self startFetchList];
+            break;
+        }
         case HXDiscoveryContainerActionScroll: {
             [self showCoverWithCoverUrl:model.coverUrl];
             break;
@@ -156,7 +175,12 @@ HXDiscoveryContainerViewControllerDelegate
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
-            ;
+            [self hiddenNavigationBar];
+            
+            UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+            watchLiveViewController.roomID = model.roomID;
+            [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowStation: {
@@ -170,7 +194,7 @@ HXDiscoveryContainerViewControllerDelegate
     }
 }
 
-- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
+//- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
 ////    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
 ////        return;
 ////    }
@@ -208,6 +232,6 @@ HXDiscoveryContainerViewControllerDelegate
 //            }
 //        }
 //    }
-}
+//}
 
 @end
