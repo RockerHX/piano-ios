@@ -7,6 +7,7 @@
 //
 
 #import "MIAProfileReplayView.h"
+#import "MIAReplayModel.h"
 
 @interface MIAProfileReplayView()
 
@@ -21,18 +22,14 @@
     
     [super updateViewLayout];
     
-    [self createTipNumberView];
-    
-    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
+//    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
     [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setFont:[UIFont systemFontOfSize:15.]];
     [self.showTitleLabel setTextColor:[UIColor blackColor]];
-    [self.showTitleLabel setText:@"我就是静静"];
+    
     [self.showTipLabel setTextColor:[UIColor grayColor]];
     [self.showTipLabel setFont:[UIFont systemFontOfSize:10.]];
-    [self.showTipLabel setText:@"几天前"];
     
-    [_numberlabel setText:@"3455"];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showImageView superView:self];
@@ -79,7 +76,22 @@
 
 - (void)setShowData:(id)data{
     
-    [self updateViewLayout];
+    if ([data isKindOfClass:[MIAReplayModel class]]) {
+    
+        [self createTipNumberView];
+        
+        MIAReplayModel *replayModel = data;
+        [self.showImageView sd_setImageWithURL:[NSURL URLWithString:replayModel.coverUrl] placeholderImage:nil];
+        [self.showTitleLabel setText:replayModel.title];
+        [self.showTipLabel setText:replayModel.createTime];
+        [_numberlabel setText:replayModel.viewCnt];
+        
+        [self updateViewLayout];
+        
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAProfileReplayView exception" reason:@"data 不是MIAReplayModel类型"];
+    }
 }
 
 @end

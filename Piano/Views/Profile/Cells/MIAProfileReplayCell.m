@@ -16,7 +16,8 @@ static CGFloat const kProfileReplayItemSpaceDistance = 20.;
     CGFloat cellWidth;
 }
 
-@property (nonatomic, strong) MIAProfileReplayView *profileReplayView;
+@property (nonatomic, strong) MIAProfileReplayView *leftReplayView;
+@property (nonatomic, strong) MIAProfileReplayView *rightReplayView;
 
 @end
 
@@ -33,37 +34,49 @@ static CGFloat const kProfileReplayItemSpaceDistance = 20.;
     
     CGFloat viewWidth = (cellWidth - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - kProfileReplayItemSpaceDistance)/2.;
     
-    for (int i = 0; i < 2; i++) {
-        
-        MIAProfileReplayView *replayView = [self createProfileReplayViewWithData:nil];
-        [replayView setTag:i+1];
-        [self.cellContentView addSubview:replayView];
-        
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:replayView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:replayView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:replayView superView:self.cellContentView];
-        
-        if (i == 0) {
-            [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:replayView superView:self.cellContentView];
-        }else{
-            
-            UIView *lastView = [self.cellContentView viewWithTag:i];
-            [JOAutoLayout autoLayoutWithLeftView:lastView distance:kProfileReplayItemSpaceDistance selfView:replayView superView:self.cellContentView];
-        }
-    }
+    if (!self.leftReplayView) {
     
+        self.leftReplayView = [MIAProfileReplayView newAutoLayoutView];
+        [_leftReplayView setTag:1];
+        [self.cellContentView addSubview:_leftReplayView];
+        
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_leftReplayView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_leftReplayView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_leftReplayView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_leftReplayView superView:self.cellContentView];
+        
+        self.rightReplayView = [MIAProfileReplayView newAutoLayoutView];
+        [_rightReplayView setTag:2];
+        [self.cellContentView addSubview:_rightReplayView];
+        
+        [JOAutoLayout autoLayoutWithSizeWithView:_leftReplayView selfView:_rightReplayView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_rightReplayView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithLeftView:_leftReplayView distance:kProfileReplayItemSpaceDistance selfView:_rightReplayView superView:self.cellContentView];
+    }
 }
 
 
 - (void)setCellData:(id)data{
     
+    if ([data isKindOfClass:[NSArray class]]) {
+        
+        [self createProfileReplayCellContentView];
+        
+        [_leftReplayView setHidden:YES];
+        [_rightReplayView setHidden:YES];
+        
+        for (int i = 0; i < [data count]; i++) {
+            
+            MIAProfileReplayView *replayView = [self.cellContentView viewWithTag:i+1];
+            [replayView setHidden:NO];
+            [replayView setShowData:[data objectAtIndex:i]];
+        }
+        
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAProfileReplayCell exception" reason:@"data必须是NSArray类型"];
+    }
 }
 
-- (MIAProfileReplayView *)createProfileReplayViewWithData:(id)data{
-    
-    MIAProfileReplayView *profileReplayView = [MIAProfileReplayView newAutoLayoutView];
-    [profileReplayView setShowData:nil];
-    return profileReplayView;
-}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ReactiveCocoa.h"
+#import "JOBaseSDK.h"
 #import "MiaAPIHelper.h"
 
 @interface MIAViewModel : NSObject
