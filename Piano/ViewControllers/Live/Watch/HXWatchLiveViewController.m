@@ -20,6 +20,7 @@
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
 #import "HXLiveAlbumView.h"
+#import "HXLiveGiftViewController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -354,7 +355,7 @@ HXLiveAlbumViewDelegate
             break;
         }
         case HXWatchBottomBarActionGift: {
-            ;
+            [self presentViewController:[HXLiveGiftViewController instance] animated:YES completion:nil];
             break;
         }
         case HXWatchBottomBarActionAlbum: {
