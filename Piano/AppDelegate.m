@@ -153,7 +153,6 @@
 
 	[JPUSHService resetBadge];
 	[application setApplicationIconBadgeNumber:0];
-
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

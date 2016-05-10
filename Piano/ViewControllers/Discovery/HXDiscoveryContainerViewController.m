@@ -60,6 +60,12 @@ HXDiscoveryLiveCellDelegate
     if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
         [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[layout.indexPath.row]];
     }
+    
+    if (scrollView.contentOffset.x == 0.0f) {
+        if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+            [_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[layout.indexPath.row]];
+        }
+    }
 }
 
 #pragma mark - Collection View Data Source Methods
