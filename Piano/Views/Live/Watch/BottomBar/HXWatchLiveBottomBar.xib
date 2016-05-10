@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,9 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXWatchLiveBottomBar">
             <connections>
-                <outlet property="albumButton" destination="DCW-hx-hwF" id="eKj-iz-D2u"/>
                 <outlet property="commentButton" destination="PeU-ya-QOq" id="9UC-2E-eVz"/>
-                <outlet property="freeGiftButton" destination="RdE-1s-nQg" id="Erp-qG-dbH"/>
                 <outlet property="giftButton" destination="NBb-uy-x54" id="VjH-Oy-f6P"/>
                 <outlet property="shareButton" destination="RTn-f4-zfa" id="fvV-us-S9f"/>
             </connections>
@@ -33,20 +31,6 @@
                         <action selector="shareButtonPressed" destination="-1" eventType="touchUpInside" id="ZWz-eD-cN8"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCW-hx-hwF">
-                    <rect key="frame" x="123" y="9" width="31" height="31"/>
-                    <state key="normal" image="L-AlbumIcon"/>
-                    <connections>
-                        <action selector="albumButtonPressed" destination="-1" eventType="touchUpInside" id="9Nq-Wp-XhB"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdE-1s-nQg">
-                    <rect key="frame" x="264" y="4" width="36" height="36"/>
-                    <state key="normal" image="L-FreeGiftIcon"/>
-                    <connections>
-                        <action selector="freeGiftButtonPressed" destination="-1" eventType="touchUpInside" id="ajY-bg-bEK"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBb-uy-x54">
                     <rect key="frame" x="82" y="9" width="31" height="31"/>
                     <state key="normal" image="L-GiftIcon"/>
@@ -57,15 +41,11 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="DCW-hx-hwF" firstAttribute="centerY" secondItem="NBb-uy-x54" secondAttribute="centerY" id="1TZ-Yw-fvO"/>
                 <constraint firstItem="NBb-uy-x54" firstAttribute="centerY" secondItem="RTn-f4-zfa" secondAttribute="centerY" id="3cB-3Q-7Na"/>
                 <constraint firstItem="RTn-f4-zfa" firstAttribute="centerY" secondItem="PeU-ya-QOq" secondAttribute="centerY" id="3ss-xD-nuZ"/>
-                <constraint firstAttribute="trailing" secondItem="RdE-1s-nQg" secondAttribute="trailing" id="V5N-yJ-zzd"/>
-                <constraint firstItem="DCW-hx-hwF" firstAttribute="leading" secondItem="NBb-uy-x54" secondAttribute="trailing" constant="10" id="c9T-oF-zV8"/>
                 <constraint firstAttribute="bottom" secondItem="PeU-ya-QOq" secondAttribute="bottom" id="d66-o1-mYE"/>
                 <constraint firstItem="PeU-ya-QOq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dWa-9L-FlL"/>
                 <constraint firstItem="NBb-uy-x54" firstAttribute="leading" secondItem="RTn-f4-zfa" secondAttribute="trailing" constant="10" id="iWG-cn-HsT"/>
-                <constraint firstAttribute="bottom" secondItem="RdE-1s-nQg" secondAttribute="bottom" id="pW7-zj-V6j"/>
                 <constraint firstItem="RTn-f4-zfa" firstAttribute="leading" secondItem="PeU-ya-QOq" secondAttribute="trailing" constant="10" id="t2S-9c-OJI"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -74,9 +54,7 @@
         </view>
     </objects>
     <resources>
-        <image name="L-AlbumIcon" width="31" height="31"/>
         <image name="L-CommentIcon" width="31" height="31"/>
-        <image name="L-FreeGiftIcon" width="36" height="36"/>
         <image name="L-GiftIcon" width="31" height="31"/>
         <image name="L-ShareIcon" width="31" height="31"/>
     </resources>
