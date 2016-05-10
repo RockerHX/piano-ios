@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "UIFont+JOExtend.h"
 
 @interface JOUIManage : NSObject
 
@@ -17,6 +18,7 @@
  *  创建一个UILabel
  *
  */
++ (UILabel *)createLabelWithJOFont:(JOFont)joFont;
 + (UILabel *)createLabelWithTextColor:(UIColor *)textColor;
 + (UILabel *)createLabelWithTextColor:(UIColor *)textColor textFont:(UIFont *)font;
 + (UILabel *)createLabelWithTextColor:(UIColor *)textColor

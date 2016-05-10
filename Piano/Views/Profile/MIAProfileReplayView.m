@@ -22,13 +22,13 @@
     
     [super updateViewLayout];
     
-//    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
+    [self.showImageView setBackgroundColor:JORGBCreate(230., 230., 230., 1.)];
+//    [[self.showImageView layer] setBorderWidth:0.5];
+//    [[self.showImageView layer] setBorderColor:[UIColor grayColor].CGColor];
     [[self.showImageView layer] setCornerRadius:3.];
-    [self.showTitleLabel setFont:[UIFont systemFontOfSize:15.]];
-    [self.showTitleLabel setTextColor:[UIColor blackColor]];
+    [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Replay_Name]];
     
-    [self.showTipLabel setTextColor:[UIColor grayColor]];
-    [self.showTipLabel setFont:[UIFont systemFontOfSize:10.]];
+    [self.showTipLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Replay_Date]];
     
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
@@ -48,10 +48,10 @@
     
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_numberlabel superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_numberlabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_numberlabel sizeThatFits:JOMAXSize].height selfView:_numberlabel superView:self];
+    [JOAutoLayout autoLayoutWithHeight:[_numberlabel sizeThatFits:JOMAXSize].height+4. selfView:_numberlabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_numberlabel sizeThatFits:JOMAXSize].width + 8. selfView:_numberlabel superView:self];
     
-    [JOAutoLayout autoLayoutWithRightView:_numberlabel distance:0. selfView:_videoImageView superView:self];
+    [JOAutoLayout autoLayoutWithRightView:_numberlabel distance:-5. selfView:_videoImageView superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_numberlabel selfView:_videoImageView superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_numberlabel selfView:_videoImageView superView:self];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_videoImageView superView:self];
@@ -66,12 +66,9 @@
         [_videoImageView setBackgroundColor:[UIColor orangeColor]];
         [self addSubview:_videoImageView];
         
-        self.numberlabel = [JOUIManage createLabelWithTextColor:[UIColor whiteColor] textFont:[UIFont systemFontOfSize:12.]];
+        self.numberlabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Replay_ViweCount]];
         [self addSubview:_numberlabel];
     }
-    
-    
-    
 }
 
 - (void)setShowData:(id)data{
@@ -83,7 +80,7 @@
         MIAReplayModel *replayModel = data;
         [self.showImageView sd_setImageWithURL:[NSURL URLWithString:replayModel.coverUrl] placeholderImage:nil];
         [self.showTitleLabel setText:replayModel.title];
-        [self.showTipLabel setText:replayModel.createTime];
+        [self.showTipLabel setText:[replayModel.createTime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonthDay]];
         [_numberlabel setText:replayModel.viewCnt];
         
         [self updateViewLayout];

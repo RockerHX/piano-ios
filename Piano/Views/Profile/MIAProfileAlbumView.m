@@ -23,11 +23,9 @@
     
 //    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
     [[self.showImageView layer] setCornerRadius:3.];
-    [self.showTitleLabel setFont:[UIFont systemFontOfSize:15.]];
-    [self.showTitleLabel setTextColor:[UIColor blackColor]];
+    [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_Name]];
     
-    [self.showTipLabel setTextColor:[UIColor grayColor]];
-    [self.showTipLabel setFont:[UIFont systemFontOfSize:10.]];
+    [self.showTipLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_BackTotal]];
     
 
     

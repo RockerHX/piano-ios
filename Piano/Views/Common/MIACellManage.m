@@ -16,16 +16,12 @@
     
     if (type == MIACellTypeLive) {
         return [MIACellManage createCellWithClass:[MIAProfileLiveCell class]];
-//        cell = [[MIAProfileLiveCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"profileLiveCell"];
     }else if(type == MIACellTypeAlbum){
        return [MIACellManage createCellWithClass:[MIAProfileAlbumCell class]];
-//        cell = [[MIAProfileAlbumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"profileAlbumCell"];
     }else if (type == MIACellTypeVideo){
         return [MIACellManage createCellWithClass:[MIAProfileVideoCell class]];
-//        cell = [[MIAProfileVideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"profileVideoCell"];
     }else if (type == MIACellTypeReplay){
         return [MIACellManage createCellWithClass:[MIAProfileReplayCell class]];
-//        cell = [[MIAProfileReplayCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"profileReplayCell"];
     }
     
     if (type == MIACellTypeNormal) {

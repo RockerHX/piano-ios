@@ -54,6 +54,9 @@ typedef NS_ENUM(NSUInteger, MIAProfileCellType) {
 
 @interface MIAProfileViewModel : MIAViewModel
 
+@property (nonatomic, strong, readonly) RACCommand *attentionCommand;
+@property (nonatomic, strong, readonly) RACCommand *unAttentionCommand;
+
 @property (nonatomic, assign, readonly) NSInteger sections;
 @property (nonatomic, strong, readonly) NSMutableArray *cellTypes;
 

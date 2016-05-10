@@ -11,6 +11,11 @@
 
 @implementation JOUIManage
 
++ (UILabel *)createLabelWithJOFont:(JOFont)joFont{
+
+    return [JOUIManage createLabelWithTextColor:joFont.color textFont:joFont.font];
+}
+
 + (UILabel *)createLabelWithTextColor:(UIColor *)textColor{
 
     UILabel *label = [UILabel newAutoLayoutView];

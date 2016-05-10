@@ -17,10 +17,10 @@ typedef NS_ENUM(NSUInteger, MIACellType){
 
     MIACellTypeNormal,
     //主播的Profile
-    MIACellTypeLive,
-    MIACellTypeAlbum,
-    MIACellTypeVideo,
-    MIACellTypeReplay,
+    MIACellTypeLive, //直播
+    MIACellTypeAlbum,//专辑
+    MIACellTypeVideo, //视频
+    MIACellTypeReplay, //回放
 };
 
 @interface MIACellManage : NSObject

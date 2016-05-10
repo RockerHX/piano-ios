@@ -7,9 +7,10 @@
 //
 
 #import "MIABaseCellHeadView.h"
+#import "MIAFontManage.h"
 #import "JOBaseSDK.h"
 
-CGFloat const kBaseCellHeadViewHeight = 45.;
+CGFloat const kBaseCellHeadViewHeight = 35.;
 
 @interface MIABaseCellHeadView()
 
@@ -35,17 +36,14 @@ CGFloat const kBaseCellHeadViewHeight = 45.;
     [_headImageView setContentMode:UIViewContentModeScaleAspectFit];
     [_maskView addSubview:_headImageView];
     
-    self.headLabel = [UILabel newAutoLayoutView];
+    self.headLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Cell_Title]];
     [_headLabel setBackgroundColor:[UIColor clearColor]];
     [_headLabel setTextAlignment:NSTextAlignmentLeft];
-    [_headLabel setTextColor:[UIColor whiteColor]];
     [_maskView addSubview:_headLabel];
     
-    self.headTipLabel = [UILabel newAutoLayoutView];
+    self.headTipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Cell_Tip]];
     [_headTipLabel setBackgroundColor:[UIColor clearColor]];
     [_headTipLabel setTextAlignment:NSTextAlignmentLeft];
-    [_headTipLabel setTextColor:[UIColor grayColor]];
-    [_headTipLabel setFont:[UIFont systemFontOfSize:13.]];
     [_maskView addSubview:_headTipLabel];
 }
 
@@ -119,13 +117,18 @@ CGFloat const kBaseCellHeadViewHeight = 45.;
         [_headTipLabel setHidden:YES];
     }
     
-    [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:0. selfView:_headLabel superView:_maskView];
+    [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:5. selfView:_headLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithTopYView:_headImageView selfView:_headLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithBottomYView:_headImageView selfView:_headLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithRightView:_headTipLabel distance:0. selfView:_headLabel superView:_maskView];
     
     [_headLabel setText:JOConvertStringToNormalString(headTitle)];
 }
+
+//- (nullable UIView *)hitTest:(CGPoint)point withEvent:(nullable UIEvent *)event{
+//
+//    return
+//}
 
 + (MIABaseCellHeadView *)cellHeadViewWithImage:(UIImage *)image
                                          title:(NSString *)title

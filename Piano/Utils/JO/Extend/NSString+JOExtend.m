@@ -8,6 +8,26 @@
 
 #import "NSString+JOExtend.h"
 
+static NSString *const kDateFormatterComplete           = @"yyyy-MM-dd HH:mm:ss";
+static NSString *const kDateFormatterYear               = @"yyyy";
+static NSString *const kDateFormatterMonth              = @"MM";
+static NSString *const kDateFormatterDay                = @"dd";
+static NSString *const kDateFormatterHour               = @"HH";
+static NSString *const kDateFormatterMinute             = @"mm";
+static NSString *const kDateFormatterSecond             = @"ss";
+
+static NSString *const kDateFormatterYearMonthDay       = @"yyyy-MM-dd";
+static NSString *const kDateFormatterYearMonth          = @"yyyy-MM";
+static NSString *const kDateFormatterMonthDay           = @"MM-dd";
+
+static NSString *const kDateFormatterHourMinuteSecond   = @"HH:mm:ss";
+static NSString *const kDateFormatterHourMinute         = @"HH:mm";
+static NSString *const kDateFormatterMinuteSecond       = @"mm:ss";
+
+//static NSString *const kDateFormatterDayHourMinute      = @"dd HH:mm";
+
+
+
 @implementation NSString(Extend)
 
 NSString *JOConvertStringToNormalString(NSString *string){
@@ -350,6 +370,83 @@ BOOL JOStringIsValidIDCardNum(NSString *string){
         return self;
     }
     return [pattern stringByReplacingMatchesInString:self options:0 range:NSMakeRange(0, [self length]) withTemplate:replacement];
+}
+
+#pragma mark - 
+
+- (NSString *)JOChangeDateStringWithFormatter:(NSString *)formatter{
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:kDateFormatterComplete];
+    NSDate *date = [dateFormatter dateFromString:self];
+    
+    NSDateFormatter *finailFormatter = [[NSDateFormatter alloc] init];
+    [finailFormatter setDateFormat:formatter];
+    return [finailFormatter stringFromDate:date];
+}
+
+- (NSString *)JOChangeDateStringWithFormatterType:(JODateFormatterType)type{
+
+    NSString *formatterString = nil;
+    
+    switch (type) {
+        case JODateFormatterComplete:
+            formatterString = kDateFormatterComplete;
+            break;
+        case JODateFormatterYear:
+            formatterString = kDateFormatterYear;
+            break;
+        case JODateFormatterMonth:
+            formatterString = kDateFormatterMonth;
+            break;
+        case JODateFormatterDay:
+            formatterString = kDateFormatterDay;
+            break;
+        case JODateFormatterHour:
+            formatterString = kDateFormatterHour;
+            break;
+        case JODateFormatterMin:
+            formatterString = kDateFormatterMinute;
+            break;
+        case JODateFormatterSec:
+            formatterString = kDateFormatterSecond;
+            break;
+        case JODateFormatterYearMonth:
+            formatterString = kDateFormatterYearMonth;
+            break;
+        case JODateFormatterYearMonthDay:
+            formatterString = kDateFormatterYearMonthDay;
+            break;
+        case JODateFormatterMonthDay:
+            formatterString = kDateFormatterMonthDay;
+            break;
+        case JODateFormatterHourMin:
+            formatterString = kDateFormatterHourMinute;
+            break;
+        case JODateFormatterHourMinSec:
+            formatterString = kDateFormatterHourMinuteSecond;
+            break;
+        case JODateFormatterMinSec:
+            formatterString = kDateFormatterMinuteSecond;
+            break;
+        default:
+            break;
+    }
+    
+    return [self JOChangeDateStringWithFormatter:formatterString];
+}
+
+- (NSString *)JOConvertTimelineToDateStringWithFormatterType:(JODateFormatterType)type{
+
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self longLongValue]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:kDateFormatterComplete];
+    return [[dateFormatter stringFromDate:date] JOChangeDateStringWithFormatterType:type];
+}
+
+- (NSString *)JOCovertToTimeLineWithDate:(NSDate *)date{
+
+    return [NSString stringWithFormat:@"%.f",[date timeIntervalSince1970]];
 }
 
 @end

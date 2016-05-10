@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"
+#import "MIAFontManage.h"
 #import "JOBaseSDK.h"
 
 @interface MIABaseShowView : UIView

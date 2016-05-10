@@ -41,7 +41,12 @@
 #define View_X(v)           v.frame.origin.x
 #define View_Y(v)           v.frame.origin.y
 
-#define JOMAXSize       CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+#define JOMAXSize           CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+#define JOMAXWidthSize(h)   CGSizeMake(CGFLOAT_MAX, h)
+#define JOMAXHeightSize(w)  CGSizeMake(w, CGFLOAT_MAX)
+#define JOSize(w,h)         CGSizeMake(w, h)
+
+#define JOScreenSize        [UIScreen mainScreen].bounds.size   
 
 
 #define JOArgumentsCAssertNotNil(condition, description, ...) NSCAssert((condition), (description), ##__VA_ARGS__)

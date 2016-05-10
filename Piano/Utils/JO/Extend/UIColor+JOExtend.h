@@ -48,6 +48,10 @@ JO_STATIC_INLINE JORGB JORGBColorMake(CGFloat r, CGFloat g, CGFloat b, CGFloat a
     JORGB RGBColor;RGBColor.r = fabs(r);RGBColor.g = fabs(g);RGBColor.b = fabs(b);RGBColor.a = fabs(a); return RGBColor;
 }
 
+
+#define JORGBCreate(r,g,b,a) [UIColor colorWithRed:r/255.f green:g/255.f blue:b/255.f alpha:a]
+#define JORGBSameCreate(r)   [UIColor colorWithRed:r/255.f green:r/255.f blue:r/255.f alpha:1.]
+
 @interface UIColor(Extend)
 
 /**

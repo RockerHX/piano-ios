@@ -49,6 +49,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
     self.profileLiveModel = [MIAProfileLiveModel new];
     
     [self fetchProfileDataCommand];
+    [self attentionOperationCommand];
 }
 
 - (void)fetchProfileDataCommand{
@@ -64,7 +65,66 @@ CGFloat const kProfileReplayCellHeight = 210.;
     }];
 }
 
+- (void)attentionOperationCommand{
+
+    _attentionCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            
+            [self attentionRequestWithSubscriber:subscriber];
+            return nil;
+        }];
+    }];
+    
+    _unAttentionCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+       
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+           
+            [self unAttentionRequestWithSubscriber:subscriber];
+            return nil;
+        }];
+    }];
+}
+
 #pragma mark - Data Operation
+
+- (void)attentionRequestWithSubscriber:(id<RACSubscriber>)subscriber{
+    
+    [MiaAPIHelper followWithUID:_uid
+                  completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                  
+                      if (success) {
+                          
+                          [subscriber sendNext:@(YES)];
+                          [subscriber sendCompleted];
+                      }else{
+                         
+                          [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+                      }
+                  }
+                   timeoutBlock:^(MiaRequestItem *requestItem) {
+                       [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+                   }];
+}
+
+- (void)unAttentionRequestWithSubscriber:(id<RACSubscriber>)subscriber{
+
+    [MiaAPIHelper unfollowWithUID:_uid
+                    completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                        
+                        if (success) {
+                            
+                            [subscriber sendNext:@(NO)];
+                            [subscriber sendCompleted];
+                        }else{
+                            
+                            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+                        }
+                        
+                    } timeoutBlock:^(MiaRequestItem *requestItem) {
+                        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+                    }];
+}
 
 - (void)fetchProfileRequestWithSubscriber:(id<RACSubscriber>)subscriber{
 

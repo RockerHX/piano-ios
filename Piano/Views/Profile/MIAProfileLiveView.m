@@ -20,14 +20,13 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
     
     [self.showImageView setBackgroundColor:[UIColor purpleColor]];
     [[self.showImageView layer] setCornerRadius:3.];
-    [self.showTitleLabel setFont:[UIFont systemFontOfSize:15.]];
+    [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Live_Title]];
     [self.showTitleLabel setText:@"小和尚正在直播"];
-    [self.showTitleLabel setTextColor:[UIColor blackColor]];
     [self.showTitleLabel setTextAlignment:NSTextAlignmentLeft];
-    [self.showTipLabel setTextColor:[UIColor grayColor]];
+    
     [self.showTipLabel setTextAlignment:NSTextAlignmentLeft];
     [self.showTipLabel setText:@"说说小和尚的故事"];
-    [self.showTipLabel setFont:[UIFont systemFontOfSize:13.]];
+    [self.showTipLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Live_Summary]];
     
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];

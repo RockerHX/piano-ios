@@ -27,8 +27,7 @@ static CGFloat const kTitleLabelHeight = 20.;
     
     [self.showImageView setBackgroundColor:[UIColor purpleColor]];
     [[self.showImageView layer] setCornerRadius:3.];
-    [self.showTitleLabel setFont:[UIFont systemFontOfSize:15.]];
-    [self.showTitleLabel setTextColor:[UIColor blackColor]];
+    [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_Name]];
     [self.showTitleLabel setText:@"小和尚"];
     [self.showTipLabel setHidden:YES];
     
@@ -64,7 +63,7 @@ static CGFloat const kTitleLabelHeight = 20.;
         [_videoImageView setBackgroundColor:[UIColor orangeColor]];
         [self addSubview:_videoImageView];
         
-        self.numberlabel = [JOUIManage createLabelWithTextColor:[UIColor whiteColor] textFont:[UIFont systemFontOfSize:12.]];
+        self.numberlabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_ViweCount]];
         [self addSubview:_numberlabel];
     }
     

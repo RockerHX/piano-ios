@@ -27,7 +27,7 @@
 - (void)createBaseShowView{
 
     self.showImageView = [UIImageView newAutoLayoutView];
-    [_showImageView setContentMode:UIViewContentModeScaleAspectFit];
+    [_showImageView setContentMode:UIViewContentModeScaleAspectFill];
     [[_showImageView layer] setMasksToBounds:YES];
     [self addSubview:_showImageView];
     

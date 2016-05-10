@@ -9,6 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "JOMacro.h"
 
+typedef NS_ENUM(NSUInteger, JODateFormatterType) {
+
+    JODateFormatterComplete, //yyyy-MM-dd HH:mm:ss
+    JODateFormatterYear,    //yyyy
+    JODateFormatterMonth,   //MM
+    JODateFormatterDay,     //dd
+    JODateFormatterHour,    //HH
+    JODateFormatterMin,     //mm
+    JODateFormatterSec,     //ss
+    JODateFormatterYearMonth, //yyyy-MM
+    JODateFormatterYearMonthDay, //yyyy-MM-dd
+    JODateFormatterMonthDay, //MM-dd
+    JODateFormatterHourMin, //HH:mm
+    JODateFormatterHourMinSec,  //HH:mm:ss
+    JODateFormatterMinSec,  //mm:ss
+};
+
 @interface NSString(Extend)
 
 /**
@@ -254,6 +271,35 @@ JO_EXTERN BOOL JOStringIsValidIDCardNum(NSString *string);
 - (NSString *)JOStringByReplacingWithRegex:(NSString *)regex
                                    options:(NSRegularExpressionOptions)options
                                 withString:(NSString *)replacement;
+
+
+#pragma mark - 时间字符串的转换
+
+/**
+ *  将dateString转换为指定的格式.
+ *
+ *  @param formatter 格式.
+ *
+ *  @return 转换后的格式.
+ */
+- (NSString *)JOChangeDateStringWithFormatter:(NSString *)formatter;
+
+/**
+ *  将时间戳转换为指定的时间格式.
+ *
+ *  @param type 时间格式的类型.
+ *
+ *  @return 转换后的时间.
+ */
+- (NSString *)JOConvertTimelineToDateStringWithFormatterType:(JODateFormatterType)type;
+
+/**
+ *  将date转换为时间戳字符串.
+ *
+ *  @return 时间戳.
+ */
+- (NSString *)JOCovertToTimeLineWithDate:(NSDate *)date;
+
 //TODO: 将URL的字符串中的中文做转化
 //TODO: HTML文件中某些字符的转化
 
