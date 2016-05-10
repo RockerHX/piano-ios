@@ -19,6 +19,8 @@
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
+#import "HXLiveAlbumView.h"
+#import "HXLiveGiftViewController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -28,7 +30,8 @@ HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
 HXWatcherContainerViewControllerDelegate,
 HXLiveCommentContainerViewControllerDelegate,
-HXLiveEndViewControllerDelegate
+HXLiveEndViewControllerDelegate,
+HXLiveAlbumViewDelegate
 >
 @end
 
@@ -352,7 +355,9 @@ HXLiveEndViewControllerDelegate
             break;
         }
         case HXWatchBottomBarActionGift: {
-            ;
+            HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
+            [self addChildViewController:giftViewController];
+            [self.view addSubview:giftViewController.view];
             break;
         }
         case HXWatchBottomBarActionAlbum: {
@@ -381,6 +386,11 @@ HXLiveEndViewControllerDelegate
 #pragma mark - HXLiveEndViewControllerDelegate Methods
 - (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - HXLiveAlbumViewDelegate Methods
+- (void)liveAlbumsViewTaped:(HXLiveAlbumView *)albumsView {
+    ;
 }
 
 @end

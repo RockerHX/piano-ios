@@ -10,6 +10,7 @@
 
 
 @class HXLiveAnchorView;
+@class HXLiveAlbumView;
 
 
 @interface HXWatchLiveViewController : UIViewController
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet           UIView *endCountContainer;
 
 @property (weak, nonatomic) IBOutlet HXLiveAnchorView *anchorView;
+@property (weak, nonatomic) IBOutlet  HXLiveAlbumView *albumView;
 
 @property (nonatomic, strong) NSString *roomID;
 
