@@ -1405,7 +1405,7 @@
                                                     <constraint firstItem="rd7-PN-NVe" firstAttribute="centerY" secondItem="w03-uc-aI3" secondAttribute="centerY" id="gDK-nH-p0T"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ah-ll-ePo" userLabel="Slider View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ah-ll-ePo" userLabel="Slider View" customClass="HXSectorSlider">
                                                 <rect key="frame" x="0.0" y="86" width="320" height="80"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
