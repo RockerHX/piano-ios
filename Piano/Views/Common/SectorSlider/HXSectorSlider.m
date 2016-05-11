@@ -167,19 +167,30 @@ static NSTimeInterval AnimationDuration = 0.2f;
     CGFloat midpoint4_5 = (_point4.x + _point5.x) / 2;
     
     CGPoint endPoint;
+    HXSectorSliderLevel level;
     if (point.x < midpoint1_2) {
         endPoint = _point1;
+        level = HXSectorSliderLevelLow;
     } else if ((point.x >= midpoint1_2) && (point.x < midpoint2_3)) {
         endPoint = _point2;
+        level = HXSectorSliderLevelNormal;
     } else if ((point.x >= midpoint2_3) && (point.x < midpoint3_4)) {
         endPoint = _point3;
+        level = HXSectorSliderLevelMedium;
     } else if ((point.x >= midpoint3_4) && (point.x < midpoint4_5)) {
         endPoint = _point4;
+        level = HXSectorSliderLevelHigh;
     } else {
         endPoint = _point5;
+        level = HXSectorSliderLevelVeryHigh;
     }
+    
     [UIView animateWithDuration:_animationDuration animations:^{
         _sliderView.center = endPoint;
+    } completion:^(BOOL finished) {
+        if (_delegate && [_delegate respondsToSelector:@selector(sectorSlider:selectedLevel:)]) {
+            [_delegate sectorSlider:self selectedLevel:level];
+        }
     }];
 }
 
