@@ -12,7 +12,7 @@ typedef NS_ENUM(NSInteger,BaseCellHeadColorType){
 
     BaseCellHeadColorTypeWhiter,
     BaseCellHeadColorTypeBlack,
-    BaseCellHeadColorTypeSpecial, //针对于个人页的特殊情况
+    BaseCellHeadColorTypeSpecial, //针对主播Profile页的特殊情况
 };
 
 UIKIT_EXTERN CGFloat const kBaseCellHeadViewHeight;

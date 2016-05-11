@@ -64,6 +64,36 @@ static NSString *kMIAFontLight = @"Helvetica";
     }else if (type == MIAFontType_Profile_Replay_ViweCount){
         //观看的人数
         return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 12.);
+    }else if (type == MIAFontType_Album_PayDownloadButtonTitle){
+        //打赏下载按钮
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 16.);
+    }else if (type == MIAFontType_Album_Reward_Tip){
+        //已打赏的人数
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 14.);
+    }else if (type == MIAFontType_Album_Play_Time){
+        //播放进度条提示的时间
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 12.);
+    }else if (type == MIAFontType_Album_Song_Title){
+        //音乐的标题
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
+    }else if (type == MIAFontType_Album_Song_Time){
+        //音乐的时长
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 13.);
+    }else if (type == MIAFontType_Album_Comment_Name){
+        //评论人的名字
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 18.);
+    }else if (type == MIAFontType_Album_Comment_Content){
+        //评论的类容
+        return JOFontMake(kMIAFontRegular, [UIColor grayColor], 14.);
+    }else if (type == MIAFontType_Album_Comment_Time){
+        //评论的时间
+        return JOFontMake(kMIAFontRegular, [UIColor grayColor], 12.);
+    }else if (type == MIAFontType_Album_Comment_Enter){
+        //评论输入框
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
+    }else if (type == MIAFontType_Album_Comment_Send){
+        //发送评论的按钮
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }
     
     return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);

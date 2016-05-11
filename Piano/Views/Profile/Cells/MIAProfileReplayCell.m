@@ -27,7 +27,6 @@ static CGFloat const kProfileReplayItemSpaceDistance = 20.;
     
     [self.cellContentView setBackgroundColor:[UIColor whiteColor]];
     cellWidth = width;
-    [self createProfileReplayCellContentView];
 }
 
 - (void)createProfileReplayCellContentView{

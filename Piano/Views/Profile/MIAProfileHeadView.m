@@ -18,10 +18,8 @@ static NSString *const kUNnAttentiontipTitle = @"关注";
 
 static CGFloat const kLeftSpaceDistance = 10.; // 需要显示的内容与左边的间距
 static CGFloat const kRightSpaceDistance = 10.; // 与右边的间距
-static CGFloat const kTopSpaceDistance = 230.;  //与上面的间距
-static CGFloat const kFansTopSpaceDistance = 380.;//粉丝与上面的距离
-static CGFloat const kNameLabelHeight = 35.; //名字的label的高度
-static CGFloat const kSummayLabelHeight = 35.;//描述的Label的高度
+static CGFloat const kNameToBottomSpaceDistance = 180.;//名字距离底部的间距
+static CGFloat const kFansToBottomSpaceDistance = 40.;//粉丝部分与底部的间距
 static CGFloat const kNameToSummaySpaceDistance = 5.; //名字与描述间的距离
 static CGFloat const kFansToSeparateLineSpaceDistance = 6.;//粉丝数与分隔线之间的距离
 static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
@@ -63,7 +61,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
 - (void)createHeadImageView{
 
     self.headImageView = [UIImageView newAutoLayoutView];
-    [_headImageView setBackgroundColor:[UIColor orangeColor]];
+    [_headImageView setBackgroundColor:[UIColor clearColor]];
     [self addSubview:_headImageView];
     
     self.maskImageView = [UIImageView newAutoLayoutView];
@@ -94,14 +92,14 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [self addSubview:_summayLabel];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_nameLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_nameLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:kNameLabelHeight selfView:_nameLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:50. selfView:_nameLabel superView:self];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kNameToBottomSpaceDistance selfView:_nameLabel superView:self];
+    [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_nameLabel superView:self];
+    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_nameLabel superView:self];
     
     [JOAutoLayout autoLayoutWithLeftXView:_nameLabel selfView:_summayLabel superView:self];
     [JOAutoLayout autoLayoutWithTopView:_nameLabel distance:kNameToSummaySpaceDistance selfView:_summayLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:kSummayLabelHeight selfView:_summayLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:50. selfView:_summayLabel superView:self];
+    [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_summayLabel superView:self];
+    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_summayLabel superView:self];
     
 }
 
@@ -112,8 +110,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [self addSubview:_fansView];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_fansView superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kFansTopSpaceDistance selfView:_fansView superView:self];
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_fansView superView:self];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kFansToBottomSpaceDistance selfView:_fansView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-kRightSpaceDistance selfView:_fansView superView:self];
     [JOAutoLayout autoLayoutWithHeight:kFansViewHeight selfView:_fansView superView:self];
     

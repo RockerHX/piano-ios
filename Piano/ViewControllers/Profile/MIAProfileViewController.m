@@ -20,17 +20,15 @@
 
 #import "MIAProfileViewModel.h"
 
-static CGFloat const kProfileTableHeadViewHeight = 440.;
-
-static NSInteger const kTableViewTag = 10001;
-static NSInteger const kHeadViewTag = 10002;
+//用于选择性的向下传递事件链的左右
+static NSInteger const kTableViewTag = 10001;//tableView的tag值
+static NSInteger const kHeadViewTag = 10002; //headView的tag值
 
 @interface MIAProfileView : UIView
 
 @end
 
 @implementation MIAProfileView
-
 
 - (nullable UIView *)hitTest:(CGPoint)point withEvent:(nullable UIEvent *)event{
 
@@ -53,7 +51,10 @@ static NSInteger const kHeadViewTag = 10002;
 
 @end
 
-@interface MIAProfileViewController()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface MIAProfileViewController()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>{
+
+    CGFloat profileTableHeadViewHeight;
+}
 
 @property (nonatomic, strong) MIAProfileViewModel *profileViewModel;
 
@@ -77,6 +78,10 @@ static NSInteger const kHeadViewTag = 10002;
 
     [super loadView];
     
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    profileTableHeadViewHeight = View_Height(self.view)*(2./3.);
+    
     self.profileView = [MIAProfileView newAutoLayoutView];
     [_profileView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_profileView];
@@ -87,7 +92,7 @@ static NSInteger const kHeadViewTag = 10002;
     [self createProfileTableView];
     [self createPopButton];
     
-     self.profileViewModel = [[MIAProfileViewModel alloc] initWithUID:@"112"];
+     self.profileViewModel = [[MIAProfileViewModel alloc] initWithUID:_uid];
     [self loadViewModels];
 }
 
@@ -125,7 +130,7 @@ static NSInteger const kHeadViewTag = 10002;
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
-    [JOAutoLayout autoLayoutWithHeight:kProfileHeadViewHeight selfView:_profileHeadView superView:_profileView];
+    [JOAutoLayout autoLayoutWithHeight:profileTableHeadViewHeight selfView:_profileHeadView superView:_profileView];
 }
 
 - (void)createProfileTableView{
@@ -146,12 +151,13 @@ static NSInteger const kHeadViewTag = 10002;
 - (void)createPopButton{
 
     UIButton *popButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [popButton setTitle:@"《" forState:UIControlStateNormal];
+    [popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [popButton addTarget:self action:@selector(popClick) forControlEvents:UIControlEventTouchUpInside];
     [popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [popButton setBackgroundColor:[UIColor purpleColor]];
     [_profileView addSubview:popButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:20. selfView:popButton superView:_profileView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:popButton superView:_profileView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:30. selfView:popButton superView:_profileView];
     [JOAutoLayout autoLayoutWithSize:JOSize(30., 30.) selfView:popButton superView:_profileView];
 }
@@ -243,7 +249,7 @@ static NSInteger const kHeadViewTag = 10002;
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
     if (section == 0) {
-        return kProfileTableHeadViewHeight + kBaseCellHeadViewHeight;
+        return profileTableHeadViewHeight + kBaseCellHeadViewHeight;
     }
     return kBaseCellHeadViewHeight ;
 }
@@ -265,8 +271,8 @@ static NSInteger const kHeadViewTag = 10002;
         
         return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-AlbumIcon"]
                                                     title:@"正在直播"
-                                                 tipTitle:@"12124235人观看"
-                                                    frame:CGRectMake(0., 0., View_Width(self.view), kProfileHeadViewHeight + kBaseCellHeadViewHeight)
+                                                 tipTitle:[NSString stringWithFormat:@"%@人观看",_profileViewModel.profileLiveModel.liveViewCount]
+                                                    frame:CGRectMake(0., 0., View_Width(self.view), profileTableHeadViewHeight + kBaseCellHeadViewHeight)
                                             cellColorType:headColorType];
         
     }else if (profileCellType == MIAProfileCellTypeAlbum){
@@ -328,9 +334,9 @@ static NSInteger const kHeadViewTag = 10002;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-    [_profileHeadView setProfileMaskAlpha:(scrollView.contentOffset.y/kProfileTableHeadViewHeight)*2.];
+    [_profileHeadView setProfileMaskAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)*2.];
     
-    if (scrollView.contentOffset.y > kProfileTableHeadViewHeight +10) {
+    if (scrollView.contentOffset.y > profileTableHeadViewHeight +10) {
         [_profileTableView setBackgroundColor:[UIColor blackColor]];
     }else{
     

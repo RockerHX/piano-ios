@@ -7,7 +7,6 @@
 //
 
 #import "MIABaseTableViewCell.h"
-#import "JOBaseSDK.h"
 
 CGFloat const kContentViewLeftSpaceDistance = 10.;
 CGFloat const kContentViewRightSpaceDistance = 10.;

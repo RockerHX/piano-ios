@@ -10,4 +10,18 @@
 
 @interface MIAAlbumRewardView : UIView
 
+/**
+ *  设置视图的高度.
+ *
+ *  @param height 高度.
+ */
+- (void)setRewardViewHeight:(CGFloat)height;
+
+/**
+ *  设置数据.
+ *
+ *  @param rewardData 数据.
+ */
+- (void)setRewardData:(id)rewardData;
+
 @end

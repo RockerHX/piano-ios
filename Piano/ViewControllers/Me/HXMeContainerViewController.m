@@ -67,6 +67,7 @@ HXMeAttentionContainerCellDelegate
     
     //MIAProfileViewController MIAMeContainerViewController
     MIAProfileViewController *meContainerViewController = [MIAProfileViewController new];
+    [meContainerViewController setUid:@"3"];
     [self.navigationController pushViewController:meContainerViewController animated:YES];
 }
 

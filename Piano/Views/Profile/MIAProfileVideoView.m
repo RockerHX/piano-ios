@@ -7,11 +7,13 @@
 //
 
 #import "MIAProfileVideoView.h"
+#import "MIAVideoModel.h"
 
 static CGFloat const kTitleLabelHeight = 20.;
 
 @interface MIAProfileVideoView()
 
+@property (nonatomic, strong) MIAVideoModel *videoModel;
 @property (nonatomic, strong) UIImageView *videoImageView;
 @property (nonatomic, strong) UILabel *numberlabel;
 
@@ -23,15 +25,11 @@ static CGFloat const kTitleLabelHeight = 20.;
     
     [super updateViewLayout];
     
-    [self createTipNumberView];
-    
-    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
+    [self.showImageView setBackgroundColor:JORGBSameCreate(230.)];
     [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_Name]];
-    [self.showTitleLabel setText:@"小和尚"];
+   
     [self.showTipLabel setHidden:YES];
-    
-    [_numberlabel setText:@"3455"];
     
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:self.showTitleLabel superView:self];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showTitleLabel superView:self];
@@ -48,7 +46,7 @@ static CGFloat const kTitleLabelHeight = 20.;
     [JOAutoLayout autoLayoutWithHeight:[_numberlabel sizeThatFits:JOMAXSize].height selfView:_numberlabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_numberlabel sizeThatFits:JOMAXSize].width + 8. selfView:_numberlabel superView:self];
     
-    [JOAutoLayout autoLayoutWithRightView:_numberlabel distance:0. selfView:_videoImageView superView:self];
+    [JOAutoLayout autoLayoutWithRightView:_numberlabel distance:-5. selfView:_videoImageView superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_numberlabel selfView:_videoImageView superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_numberlabel selfView:_videoImageView superView:self];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_videoImageView superView:self];
@@ -66,14 +64,31 @@ static CGFloat const kTitleLabelHeight = 20.;
         self.numberlabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_ViweCount]];
         [self addSubview:_numberlabel];
     }
-    
-    
-    
 }
 
 - (void)setShowData:(id)data{
     
-    [self updateViewLayout];
+    
+    if ([data isKindOfClass:[MIAVideoModel class]]) {
+        
+        self.videoModel = nil;
+        self.videoModel = data;
+        
+        [self createTipNumberView];
+        
+        NSString *viewCount = JOConvertStringToNormalString(_videoModel.viewCnt);
+        
+        [self.showImageView sd_setImageWithURL:[NSURL URLWithString:_videoModel.coverUrl] placeholderImage:nil];
+        [self.showTitleLabel setText:_videoModel.title];
+        [_numberlabel setText:[viewCount length]?viewCount:@"0"];
+        
+        [self updateViewLayout];
+        
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAProfileVideoView exception!" reason:@"data需要为MIAVideoModel类型"];
+    }
+    
 }
 
 @end
