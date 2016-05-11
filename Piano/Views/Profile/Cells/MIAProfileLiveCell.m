@@ -8,6 +8,7 @@
 
 #import "MIAProfileLiveCell.h"
 #import "MIAProfileLiveView.h"
+#import "MIAProfileViewModel.h"
 
 @interface MIAProfileLiveCell()
 
@@ -20,24 +21,34 @@
 - (void)setCellWidth:(CGFloat)width{
 
     [self.cellContentView setBackgroundColor:[UIColor whiteColor]];
-    [self createLiveView];
 }
 
 - (void)createLiveView{
 
-    self.liveView = [MIAProfileLiveView newAutoLayoutView];
-    [self.cellContentView addSubview:_liveView];
-    
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_liveView superView:self.cellContentView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_liveView superView:self.cellContentView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kContentViewInsideRightSpaceDistance selfView:_liveView superView:self.cellContentView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_liveView superView:self.cellContentView];
+    if (!self.liveView) {
 
+        self.liveView = [MIAProfileLiveView newAutoLayoutView];
+        [self.cellContentView addSubview:_liveView];
+        
+        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_liveView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_liveView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-kContentViewInsideRightSpaceDistance selfView:_liveView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_liveView superView:self.cellContentView];
+
+        }
 }
 
 - (void)setCellData:(id)data{
 
-    [_liveView setShowData:nil];
+    if ([data isKindOfClass:[MIAProfileLiveModel class]]) {
+        [self createLiveView];
+        [_liveView setShowData:data];
+        
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAProfileLiveCell exception!" reason:@"data需要是MIAProfileLiveModel类型"];
+    }
+    
 }
 
 @end

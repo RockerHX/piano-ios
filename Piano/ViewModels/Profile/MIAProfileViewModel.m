@@ -9,11 +9,9 @@
 #import "MIAProfileViewModel.h"
 #import "MIAProfileModel.h"
 
-CGFloat const kProfileHeadViewHeight = 500.;
-
 CGFloat const kProfileLiveCellHeight = 100.;
 CGFloat const kProfileAlbumCellHeight = 150.;
-CGFloat const kProfileVideoCellHeight = 120.;
+CGFloat const kProfileVideoCellHeight = 140.;
 CGFloat const kProfileReplayCellHeight = 210.;
 
 @implementation MIAProfileHeadModel
@@ -168,6 +166,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
 - (void)updateLiveModelData{
 
     _profileLiveModel.liveState = _profileModel.live;
+    _profileLiveModel.nickName = _profileModel.nick;
     _profileLiveModel.liveViewCount = _profileModel.liveViewCnt;
     _profileLiveModel.liveOnlineCount = _profileModel.liveOnlineCnt;
     _profileLiveModel.liveRoomID = _profileModel.liveRoomID;

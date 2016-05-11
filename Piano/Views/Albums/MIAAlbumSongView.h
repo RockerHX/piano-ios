@@ -10,4 +10,6 @@
 
 @interface MIAAlbumSongView : UIView
 
+- (void)changeSongPlayState:(BOOL)state;
+
 @end

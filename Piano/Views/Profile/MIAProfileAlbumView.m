@@ -7,6 +7,8 @@
 //
 
 #import "MIAProfileAlbumView.h"
+#import "AppDelegate.h"
+#import "MIAAlbumViewController.h"
 #import "MIAAlbumModel.h"
 
 @interface MIAProfileAlbumView()
@@ -17,18 +19,40 @@
 
 @implementation MIAProfileAlbumView
 
+#pragma mark - tap gesture
+
+- (void)addTapGesture{
+
+    if (objc_getAssociatedObject(self, _cmd)) {
+        //
+    }else{
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [self addGestureRecognizer:tapGesture];
+        objc_setAssociatedObject(self, _cmd, @"only", OBJC_ASSOCIATION_RETAIN);
+    }
+}
+
+- (void)tapAction:(UIGestureRecognizer *)gesture{
+    
+    MIAAlbumViewController *albumViewController = [MIAAlbumViewController new];
+
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [(UINavigationController *)[[delegate window] rootViewController] pushViewController:albumViewController animated:YES];
+}
+
+#pragma mark - date  view layout
+
 - (void)updateViewLayout{
     
     [super updateViewLayout];
     
-//    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
+    [self addTapGesture];
+    
     [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_Name]];
-    
     [self.showTipLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_BackTotal]];
-    
 
-    
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showImageView superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];

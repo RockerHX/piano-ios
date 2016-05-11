@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JOBaseSDK.h"
 
 UIKIT_EXTERN CGFloat const kContentViewLeftSpaceDistance; //cell中的contentView与左边的间距
 UIKIT_EXTERN CGFloat const kContentViewRightSpaceDistance; //cell中的contentView与右边的间距

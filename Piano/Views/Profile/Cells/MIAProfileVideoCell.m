@@ -16,7 +16,8 @@ static CGFloat const kProfileVideoItemSpaceDistance = 20.;
     CGFloat cellWidth;
 }
 
-@property (nonatomic, strong) MIAProfileVideoView *profileVideoView;
+@property (nonatomic, strong) MIAProfileVideoView *leftVideoView;
+@property (nonatomic, strong) MIAProfileVideoView *rightVideoView;
 
 @end
 
@@ -26,44 +27,53 @@ static CGFloat const kProfileVideoItemSpaceDistance = 20.;
     
     [self.cellContentView setBackgroundColor:[UIColor whiteColor]];
     cellWidth = width;
-    [self createProfileVideoCellContentView];
+    
 }
-
 - (void)createProfileVideoCellContentView{
     
     CGFloat viewWidth = (cellWidth - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - kProfileVideoItemSpaceDistance)/2.;
     
-    for (int i = 0; i < 2; i++) {
-        
-        MIAProfileVideoView *albumView = [self createProfileVideoViewWithData:nil];
-        [albumView setTag:i+1];
-        [self.cellContentView addSubview:albumView];
-        
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:albumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:albumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:albumView superView:self.cellContentView];
-        
-        if (i == 0) {
-            [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:albumView superView:self.cellContentView];
-        }else{
-            
-            UIView *lastView = [self.cellContentView viewWithTag:i];
-            [JOAutoLayout autoLayoutWithLeftView:lastView distance:kProfileVideoItemSpaceDistance selfView:albumView superView:self.cellContentView];
-        }
-    }
+    if (!self.leftVideoView) {
     
+        self.leftVideoView = [MIAProfileVideoView newAutoLayoutView];
+        [_leftVideoView setTag:1];
+        [self.cellContentView addSubview:_leftVideoView];
+        
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_leftVideoView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_leftVideoView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_leftVideoView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_leftVideoView superView:self.cellContentView];
+        
+        self.rightVideoView = [MIAProfileVideoView newAutoLayoutView];
+        [_rightVideoView setTag:2];
+        [self.cellContentView addSubview:_rightVideoView];
+        
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_rightVideoView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_rightVideoView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithLeftView:_leftVideoView distance:kProfileVideoItemSpaceDistance selfView:_rightVideoView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_rightVideoView superView:self.cellContentView];
+    
+    }
 }
 
 
 - (void)setCellData:(id)data{
     
-}
-
-- (MIAProfileVideoView *)createProfileVideoViewWithData:(id)data{
+    if ([data isKindOfClass:[NSArray class]]) {
+        
+        [self createProfileVideoCellContentView];
+        [_leftVideoView setHidden:YES];
+        [_rightVideoView setHidden:YES];
+        
+        for (int i = 0; i < [data count]; i++) {
+            MIAProfileVideoView *videoView = [self.cellContentView viewWithTag:i+1];
+            [videoView setHidden:NO];
+            [videoView setShowData:[data objectAtIndex:i]];
+        }
+    }else{
     
-    MIAProfileVideoView *profileVideoView = [MIAProfileVideoView newAutoLayoutView];
-    [profileVideoView setShowData:nil];
-    return profileVideoView;
+        [JOFException exceptionWithName:@"MIAProfileVideoCell exception!" reason:@"data需要为NSArray,里面的元素要为MIAVideoModel类型"];
+    }
 }
 
 @end

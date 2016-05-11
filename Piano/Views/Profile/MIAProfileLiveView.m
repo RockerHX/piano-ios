@@ -7,10 +7,17 @@
 //
 
 #import "MIAProfileLiveView.h"
+#import "MIAProfileViewModel.h"
 
 static CGFloat const kShowImageToTitleDistanceSpace = 10.;
 static CGFloat const kTitleTopDistanceSpace = 15.;
 static CGFloat const kTitleToTipDistanceSpace = 5.;
+
+@interface MIAProfileLiveView()
+
+@property (nonatomic, strong) MIAProfileLiveModel *liveModel;
+
+@end
 
 @implementation MIAProfileLiveView
 
@@ -18,14 +25,12 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
     
     [super updateViewLayout];
     
-    [self.showImageView setBackgroundColor:[UIColor purpleColor]];
+    [self.showImageView setBackgroundColor:[UIColor grayColor]];
     [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Live_Title]];
-    [self.showTitleLabel setText:@"小和尚正在直播"];
     [self.showTitleLabel setTextAlignment:NSTextAlignmentLeft];
     
     [self.showTipLabel setTextAlignment:NSTextAlignmentLeft];
-    [self.showTipLabel setText:@"说说小和尚的故事"];
     [self.showTipLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Live_Summary]];
     
     
@@ -47,7 +52,22 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
 
 - (void)setShowData:(id)data{
     
-    [self updateViewLayout];
+    if ([data isKindOfClass:[MIAProfileLiveModel class]]) {
+        
+        self.liveModel = nil;
+        self.liveModel = data;
+        
+        [self.showImageView sd_setImageWithURL:[NSURL URLWithString:_liveModel.liveCoverURL] placeholderImage:nil];
+         [self.showTitleLabel setText:[NSString stringWithFormat:@"%@正在直播",_liveModel.nickName]];
+         [self.showTipLabel setText:_liveModel.liveTitle];
+        
+        [self updateViewLayout];
+        
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAProfileLiveView exception!" reason:@"data类型需要为LiveModel"];
+    }
+    
 }
 
 @end
