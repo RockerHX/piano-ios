@@ -1,21 +1,24 @@
 //
-//  HXLiveGiftViewController.m
+//  HXLiveRewardViewController.m
 //  Piano
 //
-//  Created by miaios on 16/5/10.
+//  Created by miaios on 16/5/11.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveGiftViewController.h"
+#import "HXLiveRewardViewController.h"
 #import "BlocksKit+UIKit.h"
 #import "UIView+Frame.h"
+#import "HXSectorSlider.h"
 
 
-@interface HXLiveGiftViewController ()
+@interface HXLiveRewardViewController () <
+HXSectorSliderDelegate
+>
 @end
 
 
-@implementation HXLiveGiftViewController
+@implementation HXLiveRewardViewController
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
@@ -50,7 +53,7 @@
 }
 
 #pragma mark - Event Response
-- (IBAction)giveGiftButtonPressed {
+- (IBAction)rewardButtonPressed {
     ;
 }
 
@@ -70,6 +73,34 @@
         [self.view removeFromSuperview];
         [self removeFromParentViewController];
     }];
+}
+
+#pragma mark - HXSectorSliderDelegate Methods
+- (void)sectorSlider:(HXSectorSlider *)slider selectedLevel:(HXSectorSliderLevel)level {
+    NSInteger rewardCount = 0;
+    switch (level) {
+        case HXSectorSliderLevelLow: {
+            rewardCount = 10;
+            break;
+        }
+        case HXSectorSliderLevelNormal: {
+            rewardCount = 20;
+            break;
+        }
+        case HXSectorSliderLevelMedium: {
+            rewardCount = 30;
+            break;
+        }
+        case HXSectorSliderLevelHigh: {
+            rewardCount = 50;
+            break;
+        }
+        case HXSectorSliderLevelVeryHigh: {
+            rewardCount = 100;
+            break;
+        }
+    }
+    _rewardCountLabel.text = @(rewardCount).stringValue;
 }
 
 @end

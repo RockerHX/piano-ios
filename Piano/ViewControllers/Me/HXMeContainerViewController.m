@@ -14,8 +14,6 @@
 #import "HXMeAttentionContainerCell.h"
 #import "UIImageView+WebCache.h"
 
-#import "MIAProfileViewController.h"
-
 
 @interface HXMeContainerViewController () <
 HXMeAttentionContainerCellDelegate
@@ -64,11 +62,7 @@ HXMeAttentionContainerCellDelegate
 
 #pragma mark - Event Response
 - (IBAction)settingButtonPressed {
-    
-    //MIAProfileViewController MIAMeContainerViewController
-    MIAProfileViewController *meContainerViewController = [MIAProfileViewController new];
-    [meContainerViewController setUid:@"3"];
-    [self.navigationController pushViewController:meContainerViewController animated:YES];
+    ;
 }
 
 #pragma mark - Public Methods

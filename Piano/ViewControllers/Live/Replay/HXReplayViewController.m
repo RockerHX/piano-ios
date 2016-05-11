@@ -168,7 +168,10 @@ HXReplayBottomBarDelegate
 
 - (void)readPlayTime {
     CMTime time = [_player currentTime];
-    CGFloat currentTime = time.value / time.timescale;
+    CGFloat currentTime = 0.0f;
+    if (time.timescale > 0.0f) {
+        currentTime = time.value / time.timescale;
+    }
     _bottomBar.currentTime = currentTime;
     
     if ((currentTime >= _viewModel.timeNode) && _play) {

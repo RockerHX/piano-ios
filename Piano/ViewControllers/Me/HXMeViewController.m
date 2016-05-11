@@ -10,10 +10,10 @@
 #import "HXMeContainerViewController.h"
 #import "HXSettingViewController.h"
 #import "HXWatchLiveViewController.h"
-#import "HXProfileViewController.h"
 #import "HXUserSession.h"
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
+#import "MIAProfileViewController.h"
 
 
 @interface HXMeViewController () <
@@ -102,8 +102,8 @@ HXMeContainerViewControllerDelegate
         [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
     } else {
         _shouldHideNavigationBar = YES;
-        HXProfileViewController *profileViewController = [HXProfileViewController instance];
-        profileViewController.uid = model.uID;
+        MIAProfileViewController *profileViewController = [MIAProfileViewController new];
+        [profileViewController setUid:model.uID];
         [self.navigationController pushViewController:profileViewController animated:YES];
     }
 }
@@ -113,8 +113,8 @@ HXMeContainerViewControllerDelegate
         case HXMeContainerActionAvatarTaped: {
             if ([HXUserSession session].role == HXUserRoleAnchor) {
                 _shouldHideNavigationBar = YES;
-                HXProfileViewController *profileViewController = [HXProfileViewController instance];
-                profileViewController.uid = _viewModel.model.uid;
+                MIAProfileViewController *profileViewController = [MIAProfileViewController new];
+                [profileViewController setUid:_viewModel.model.uid];
                 [self.navigationController pushViewController:profileViewController animated:YES];
             }
             break;

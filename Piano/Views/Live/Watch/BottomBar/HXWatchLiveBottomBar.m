@@ -33,16 +33,4 @@ HXXibImplementation
     }
 }
 
-- (IBAction)albumButtonPressed {
-    if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
-        [_delegate bottomBar:self takeAction:HXWatchBottomBarActionAlbum];
-    }
-}
-
-- (IBAction)freeGiftButtonPressed {
-    if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
-        [_delegate bottomBar:self takeAction:HXWatchBottomBarActionFreeGift];
-    }
-}
-
 @end

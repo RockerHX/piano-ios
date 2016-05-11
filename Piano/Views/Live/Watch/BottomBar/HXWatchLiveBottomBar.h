@@ -13,8 +13,6 @@ typedef NS_ENUM(NSUInteger, HXWatchBottomBarAction) {
     HXWatchBottomBarActionComment,
     HXWatchBottomBarActionShare,
     HXWatchBottomBarActionGift,
-    HXWatchBottomBarActionAlbum,
-    HXWatchBottomBarActionFreeGift,
 };
 
 
@@ -36,13 +34,9 @@ typedef NS_ENUM(NSUInteger, HXWatchBottomBarAction) {
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *giftButton;
-@property (weak, nonatomic) IBOutlet UIButton *albumButton;
-@property (weak, nonatomic) IBOutlet UIButton *freeGiftButton;
 
 - (IBAction)commentButtonPressed;
 - (IBAction)shareButtonPressed;
 - (IBAction)giftButtonPressed;
-- (IBAction)albumButtonPressed;
-- (IBAction)freeGiftButtonPressed;
 
 @end
