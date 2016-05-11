@@ -14,6 +14,8 @@
 #import "HXMeAttentionContainerCell.h"
 #import "UIImageView+WebCache.h"
 
+#import "MIAProfileViewController.h"
+
 
 @interface HXMeContainerViewController () <
 HXMeAttentionContainerCellDelegate
@@ -29,6 +31,26 @@ HXMeAttentionContainerCellDelegate
     
     [self loadConfigure];
     [self viewConfigure];
+    
+//    MIAAttentionPromptView *attentionPromptView = [MIAAttentionPromptView newAutoLayoutView];
+//    [attentionPromptView setShowData:nil];
+//    [attentionPromptView setAttentionPromptViewWidth:80.];
+//    [self.view addSubview:attentionPromptView];
+//    
+//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:50. selfView:attentionPromptView superView:self.view];
+//    [JOAutoLayout autoLayoutWithTopSpaceDistance:200. selfView:attentionPromptView superView:self.view];
+//    [JOAutoLayout autoLayoutWithWidth:80. selfView:attentionPromptView superView:self.view];
+//    [JOAutoLayout autoLayoutWithHeight:110. selfView:attentionPromptView superView:self.view];
+//    
+//    MIAAttentionContainerView *attentionContainerView = [MIAAttentionContainerView newAutoLayoutView];
+//    [attentionContainerView setShowData:nil];
+//    [self.view addSubview:attentionContainerView];
+//    
+//    [JOAutoLayout autoLayoutWithTopView:attentionPromptView distance:20. selfView:attentionContainerView superView:self.view];
+//    [JOAutoLayout autoLayoutWithLeftXView:attentionPromptView selfView:attentionContainerView superView:self.view];
+//    [JOAutoLayout autoLayoutWithWidth:100. selfView:attentionContainerView superView:self.view];
+//    [JOAutoLayout autoLayoutWithHeight:130. selfView:attentionContainerView superView:self.view];
+
 }
 
 #pragma mark - Configure Methods
@@ -42,7 +64,10 @@ HXMeAttentionContainerCellDelegate
 
 #pragma mark - Event Response
 - (IBAction)settingButtonPressed {
-    ;
+    
+    //MIAProfileViewController MIAMeContainerViewController
+    MIAProfileViewController *meContainerViewController = [MIAProfileViewController new];
+    [self.navigationController pushViewController:meContainerViewController animated:YES];
 }
 
 #pragma mark - Public Methods
