@@ -35,8 +35,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a15-lh-srE" userLabel="Tap View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmT-3h-2jm" userLabel="Container">
-                                <rect key="frame" x="0.0" y="341" width="320" height="227"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="227"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuN-gT-mBq" userLabel="Gift Container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
@@ -241,14 +245,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="LmT-3h-2jm" secondAttribute="bottom" id="Dcq-3C-e07"/>
+                            <constraint firstAttribute="bottom" secondItem="LmT-3h-2jm" secondAttribute="top" id="Dcq-3C-e07"/>
+                            <constraint firstAttribute="trailing" secondItem="a15-lh-srE" secondAttribute="trailing" id="NdA-eG-2xe"/>
+                            <constraint firstItem="LmT-3h-2jm" firstAttribute="top" secondItem="a15-lh-srE" secondAttribute="bottom" id="Nnb-PH-dEq"/>
+                            <constraint firstItem="a15-lh-srE" firstAttribute="leading" secondItem="Y13-pl-63U" secondAttribute="leading" id="PIq-Mm-ANz"/>
+                            <constraint firstItem="a15-lh-srE" firstAttribute="top" secondItem="Y13-pl-63U" secondAttribute="top" id="Y4m-WY-EDX"/>
                             <constraint firstItem="LmT-3h-2jm" firstAttribute="leading" secondItem="Y13-pl-63U" secondAttribute="leading" id="foR-md-F0V"/>
                             <constraint firstAttribute="trailing" secondItem="LmT-3h-2jm" secondAttribute="trailing" id="vwV-p1-3M6"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomConstraint" destination="loH-TQ-Dxl" id="pn8-ks-7mu"/>
+                        <outlet property="bottomConstraint" destination="Dcq-3C-e07" id="uG2-Lm-6PD"/>
                         <outlet property="containerView" destination="LmT-3h-2jm" id="IEe-ud-27v"/>
+                        <outlet property="tapView" destination="a15-lh-srE" id="WXp-Ab-K9b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="El6-Kk-KV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -912,7 +921,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAv-at-bm5" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-Zz-ND4">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-Zz-ND4">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K18-QZ-PAu" userLabel="Top Bar">
@@ -1149,7 +1158,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dU-lx-FmV" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt2-bD-MKs" userLabel="Top Bar">

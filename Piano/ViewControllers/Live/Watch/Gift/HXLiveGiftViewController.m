@@ -29,15 +29,28 @@
     __weak __typeof__(self)weakSelf = self;
     [self.view bk_whenTapped:^{
         __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf.view removeFromSuperview];
-        [strongSelf removeFromParentViewController];
+        [strongSelf dismiss];
     }];
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     _bottomConstraint.constant = _containerView.height;
+    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
+
+#pragma mark - Private Methods
+- (void)dismiss {
+    _bottomConstraint.constant = 0.0f;
+    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+    }];
 }
 
 @end
