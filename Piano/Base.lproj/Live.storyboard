@@ -1339,11 +1339,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbk-pn-fEo" userLabel="Tap View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="148"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEi-et-LNY" userLabel="Container">
-                                <rect key="frame" x="0.0" y="148" width="320" height="420"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="420"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gND-GF-DKQ" userLabel="Album Container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
@@ -1375,6 +1375,7 @@
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uhp-P8-bZO">
                                                                 <rect key="frame" x="41" y="27" width="30" height="30"/>
+                                                                <color key="backgroundColor" red="0.61568627450000002" green="0.47843137250000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Uhp-P8-bZO" secondAttribute="height" multiplier="1:1" id="meQ-58-Tfd"/>
                                                                     <constraint firstAttribute="width" constant="30" id="zbJ-Qf-5kD"/>
@@ -1547,7 +1548,7 @@
                             <constraint firstAttribute="trailing" secondItem="xbk-pn-fEo" secondAttribute="trailing" id="UYy-Cw-lex"/>
                             <constraint firstItem="XEi-et-LNY" firstAttribute="top" secondItem="xbk-pn-fEo" secondAttribute="bottom" id="Y3E-ZH-jmM"/>
                             <constraint firstAttribute="trailing" secondItem="XEi-et-LNY" secondAttribute="trailing" id="dMr-2V-GOb"/>
-                            <constraint firstAttribute="bottom" secondItem="XEi-et-LNY" secondAttribute="bottom" id="ltQ-d6-5lp"/>
+                            <constraint firstAttribute="bottom" secondItem="XEi-et-LNY" secondAttribute="top" id="ltQ-d6-5lp"/>
                             <constraint firstItem="XEi-et-LNY" firstAttribute="leading" secondItem="3FR-IW-rin" secondAttribute="leading" id="nlU-2B-Mw3"/>
                         </constraints>
                     </view>

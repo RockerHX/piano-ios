@@ -26,7 +26,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-//    [self popUp];
+    [self popUp];
 }
 
 - (void)viewDidLoad {
