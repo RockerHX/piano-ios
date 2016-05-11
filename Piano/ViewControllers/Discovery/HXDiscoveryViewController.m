@@ -13,7 +13,6 @@
 #import "HXReplayViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
-#import "HXProfileViewController.h"
 #import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
@@ -22,6 +21,7 @@
 #import "HXDiscoveryViewModel.h"
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
+#import "MIAProfileViewController.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -186,8 +186,8 @@ HXDiscoveryContainerViewControllerDelegate
         case HXDiscoveryContainerActionShowStation: {
             [self hiddenNavigationBar];
             
-            HXProfileViewController *profileViewController = [HXProfileViewController instance];
-            profileViewController.uid = model.uID;
+            MIAProfileViewController *profileViewController = [MIAProfileViewController new];
+            [profileViewController setUid:model.uID];
             [self.navigationController pushViewController:profileViewController animated:YES];
             break;
         }
