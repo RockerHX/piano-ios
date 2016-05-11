@@ -11,12 +11,13 @@
 
 @interface HXLiveGiftViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *tapView;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (weak, nonatomic) IBOutlet UIView *lowGiftContainer;
-@property (weak, nonatomic) IBOutlet UIView *normalGiftContainer;
-@property (weak, nonatomic) IBOutlet UIView *mediumGiftContainer;
-@property (weak, nonatomic) IBOutlet UIView *highGiftContainer;
+@property (weak, nonatomic) IBOutlet  UIView *tapView;
+@property (weak, nonatomic) IBOutlet  UIView *containerView;
+@property (weak, nonatomic) IBOutlet  UIView *lowGiftContainer;
+@property (weak, nonatomic) IBOutlet  UIView *normalGiftContainer;
+@property (weak, nonatomic) IBOutlet  UIView *mediumGiftContainer;
+@property (weak, nonatomic) IBOutlet  UIView *highGiftContainer;
+@property (weak, nonatomic) IBOutlet UILabel *balanceCountLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
