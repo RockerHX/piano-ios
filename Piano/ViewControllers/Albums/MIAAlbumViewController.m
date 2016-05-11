@@ -7,12 +7,14 @@
 //
 
 #import "MIAAlbumViewController.h"
+#import "MIAAlbumDetailView.h"
 #import "MIACellManage.h"
 #import "JOBaseSDK.h"
 
 @interface MIAAlbumViewController()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *albumTableView;
+@property (nonatomic, strong) MIAAlbumDetailView *albumTableHeadView;
 
 @end
 
@@ -29,6 +31,7 @@
     [super loadView];
     [self.view setBackgroundColor:[UIColor blackColor]];
     
+    [self createAlbumTableHeadView];
     [self createAlbumTableView];
 }
 
@@ -44,6 +47,13 @@
     [self.view addSubview:_albumTableView];
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_albumTableView superView:self.view];
+}
+
+- (void)createAlbumTableHeadView{
+
+    self.albumTableHeadView = [[MIAAlbumDetailView alloc] init];
+    [_albumTableHeadView setFrame:CGRectMake(0., 0., View_Width(self.view), [_albumTableHeadView albumDetailViewHeight])];
+    
 }
 
 #pragma mark - table data source
@@ -64,7 +74,7 @@
     
     if (!cell) {
         
-        cell = [MIACellManage getCellWithType:MIACellTypeAlbumDetail];
+        cell = [MIACellManage getCellWithType:MIACellTypeAlbumSong];
         [cell setCellWidth:View_Width(self.view)];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -73,9 +83,30 @@
     return cell;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+
+    if (section == 0) {
+        
+        return _albumTableHeadView;
+    }
+    
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+
+    if (section == 0) {
+        
+        return [_albumTableHeadView albumDetailViewHeight];
+    }else{
+    
+        return 20.;
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 800.;
+    return 100.;
 }
 
 #pragma mark - table delegate

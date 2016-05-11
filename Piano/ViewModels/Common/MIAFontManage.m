@@ -75,7 +75,7 @@ static NSString *kMIAFontLight = @"Helvetica";
         return JOFontMake(kMIAFontRegular, [UIColor blackColor], 12.);
     }else if (type == MIAFontType_Album_Song_Title){
         //音乐的标题
-        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
+        return JOFontMake(kMIAFontRegular,[UIColor grayColor], 17.);
     }else if (type == MIAFontType_Album_Song_Time){
         //音乐的时长
         return JOFontMake(kMIAFontRegular, [UIColor blackColor], 13.);

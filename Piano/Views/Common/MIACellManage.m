@@ -28,6 +28,10 @@
         return [MIACellManage createCellWithClass:[MIAAlbumDetailCell class]];
     }
     
+    if (type == MIACellTypeAlbumSong) {
+        return [MIACellManage createCellWithClass:[MIAAlbumSongCell class]];
+    }
+    
     if (type == MIACellTypeNormal) {
         return [MIACellManage createCellWithClass:[MIABaseTableViewCell class]];
     }

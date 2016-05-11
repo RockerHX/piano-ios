@@ -28,6 +28,7 @@ static CGFloat const kIndexLabelWidth = 40.;
     self = [super init];
     if (self) {
         
+        [self setBackgroundColor:[UIColor whiteColor]];
         [self createSongView];
     }
     return self;
@@ -36,6 +37,7 @@ static CGFloat const kIndexLabelWidth = 40.;
 - (void)createSongView{
 
     self.indexLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]];
+    [_indexLabel setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:_indexLabel];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_indexLabel superView:self];
@@ -86,7 +88,7 @@ static CGFloat const kIndexLabelWidth = 40.;
     [_indexLabel setHidden:state];
     [_playStateImageView setHidden:!state];
     
-    UIColor *textColor = nil;
+    UIColor *textColor = [UIColor whiteColor];
     if (state) {
         textColor = [UIColor blackColor];
     }else{
@@ -95,6 +97,9 @@ static CGFloat const kIndexLabelWidth = 40.;
     }
     
     [_songNameLabel setTextColor:textColor];
+    
+    [_songNameLabel setText:@"狂喜狂悲"];
+    [_indexLabel setText:@"1"];
     
     [JOAutoLayout removeAutoLayoutWithWidthSelfView:_timeLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_timeLabel sizeThatFits:JOMAXSize].width selfView:_timeLabel superView:self];

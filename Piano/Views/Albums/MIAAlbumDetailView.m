@@ -13,12 +13,7 @@
 #import "MIAAlbumPlayView.h"
 #import "MIAAlbumSongView.h"
 
-static CGFloat const kLeftSpaceDistance = 10.; //视图左空隙大小
-static CGFloat const kRightSpaceDistance = 10.; //视图右空隙大小
-
-static CGFloat const kRewardDownloadViewHeight = 60.; //打赏下载按钮视图的高度
-static CGFloat const kRewardViewHeight = 70.; //打赏视图的高度
-static CGFloat const kPlayViewHeight = 50.; //播放视图的高度
+#import "MIAAlbumDetailModel.h"
 
 static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
@@ -37,7 +32,7 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
     self = [super init];
     if (self) {
-        [self setBackgroundColor:[UIColor whiteColor]];
+        [self setBackgroundColor:[UIColor clearColor]];
         [self createAlbumDetailView];
     }
     return self;
@@ -47,6 +42,12 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
 - (void)createAlbumDetailView{
 
+    UIView *backView = [UIView newAutoLayoutView];
+    [backView setBackgroundColor:[UIColor whiteColor]];
+    [self addSubview:backView];
+    
+    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., kLeftSpaceDistance, 0., -kRightSpaceDistance) selfView:backView superView:self];
+    
     [self createCoverImageView];
     [self createRewardDownloadView];
     [self createRewardView];
@@ -61,8 +62,8 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         [self addSubview:_albumCoverImageView];
         
         [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_albumCoverImageView superView:self];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumCoverImageView superView:self];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumCoverImageView superView:self];
+        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_albumCoverImageView superView:self];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-kRightSpaceDistance selfView:_albumCoverImageView superView:self];
         [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_albumCoverImageView superView:self];
     }
 }
@@ -76,8 +77,8 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         [self addSubview:_rewardForDownloadView];
         
         [JOAutoLayout autoLayoutWithTopView:_albumCoverImageView distance:0. selfView:_rewardForDownloadView superView:self];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_rewardForDownloadView superView:self];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-kRightSpaceDistance selfView:_rewardForDownloadView superView:self];
+        [JOAutoLayout autoLayoutWithLeftXView:_albumCoverImageView distance:kLeftInsideSpaceDistance selfView:_rewardForDownloadView superView:self];
+        [JOAutoLayout autoLayoutWithRightXView:_albumCoverImageView distance:-kRightInsideSpaceDistance selfView:_rewardForDownloadView superView:self];
         [JOAutoLayout autoLayoutWithHeight:kRewardDownloadViewHeight selfView:_rewardForDownloadView superView:self];
         
         CGFloat topSpaceDistance = 10.;
@@ -93,7 +94,7 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         [JOAutoLayout autoLayoutWithTopSpaceDistance:topSpaceDistance selfView:rewardButton superView:_rewardForDownloadView];
         [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:rewardButton superView:_rewardForDownloadView];
         [JOAutoLayout autoLayoutWithBottomSpaceDistance:-topSpaceDistance selfView:rewardButton superView:_rewardForDownloadView];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:.0 selfView:rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:rewardButton superView:_rewardForDownloadView];
         
     }
 }
@@ -107,8 +108,8 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         [self addSubview:_rewardView];
         
         [JOAutoLayout autoLayoutWithTopView:_rewardForDownloadView distance:0. selfView:_rewardView superView:self];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_rewardView superView:self];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-kRightSpaceDistance selfView:_rewardView superView:self];
+        [JOAutoLayout autoLayoutWithLeftXView:_albumCoverImageView distance:kLeftInsideSpaceDistance selfView:_rewardView superView:self];
+        [JOAutoLayout autoLayoutWithRightXView:_albumCoverImageView distance:-kRightInsideSpaceDistance selfView:_rewardView superView:self];
         [JOAutoLayout autoLayoutWithHeight:kRewardViewHeight selfView:_rewardView superView:self];
     }
 }
@@ -121,15 +122,15 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         [self addSubview:_playView];
         
         [JOAutoLayout autoLayoutWithTopView:_rewardView distance:0. selfView:_playView superView:self];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_playView superView:self];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-kRightSpaceDistance selfView:_playView superView:self];
+        [JOAutoLayout autoLayoutWithLeftXView:_albumCoverImageView distance:kLeftInsideSpaceDistance selfView:_playView superView:self];
+        [JOAutoLayout autoLayoutWithRightXView:_albumCoverImageView distance:-kRightInsideSpaceDistance selfView:_playView superView:self];
         [JOAutoLayout autoLayoutWithHeight:kPlayViewHeight selfView:_playView superView:self];
     }
 }
 
 - (CGFloat)albumDetailViewHeight{
 
-    return kPlayViewHeight + kRewardViewHeight + kRewardDownloadViewHeight;
+    return kPlayViewHeight + kRewardViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
 }
 
 @end
