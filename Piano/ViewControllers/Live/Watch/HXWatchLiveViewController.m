@@ -21,6 +21,7 @@
 #import "HXUserSession.h"
 #import "HXLiveAlbumView.h"
 #import "HXLiveGiftViewController.h"
+#import "HXLiveRewardViewController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -360,14 +361,6 @@ HXLiveAlbumViewDelegate
             [self.view addSubview:giftViewController.view];
             break;
         }
-        case HXWatchBottomBarActionAlbum: {
-            ;
-            break;
-        }
-        case HXWatchBottomBarActionFreeGift: {
-            ;
-            break;
-        }
     }
 }
 
@@ -390,7 +383,9 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - HXLiveAlbumViewDelegate Methods
 - (void)liveAlbumsViewTaped:(HXLiveAlbumView *)albumsView {
-    ;
+    HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
+    [self addChildViewController:rewardViewController];
+    [self.view addSubview:rewardViewController.view];
 }
 
 @end
