@@ -11,8 +11,8 @@
 
 @interface HXLiveRewardViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *tapView;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet  UIView *tapView;
+@property (weak, nonatomic) IBOutlet  UIView *containerView;
 
 @property (weak, nonatomic) IBOutlet UILabel *rewardCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *balanceCountLabel;

@@ -19,14 +19,7 @@ typedef NS_ENUM(NSUInteger, HXSectorSliderLevel) {
 
 
 @class HXSectorSlider;
-
-
-@protocol HXSectorSliderDelegate <NSObject>
-
-@optional
-- (void)sectorSlider:(HXSectorSlider *)slider selectedLevel:(HXSectorSliderLevel)level;
-
-@end
+@protocol HXSectorSliderDelegate;
 
 
 @interface HXSectorSlider : UIControl
@@ -39,5 +32,13 @@ typedef NS_ENUM(NSUInteger, HXSectorSliderLevel) {
 
 @property (nonatomic, strong) UIColor *arcColor;
 @property (nonatomic, strong) UIColor *sliderColor;
+
+@end
+
+
+@protocol HXSectorSliderDelegate <NSObject>
+
+@optional
+- (void)sectorSlider:(HXSectorSlider *)slider selectedLevel:(HXSectorSliderLevel)level;
 
 @end
