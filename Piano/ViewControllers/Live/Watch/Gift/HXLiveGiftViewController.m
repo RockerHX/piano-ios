@@ -23,26 +23,45 @@
 }
 
 #pragma mark - View Controller Life Cycle
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self popUp];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadConfigure];
+    [self viewConfigure];
+}
+
+#pragma mark - Configure Methods
+- (void)loadConfigure {
     __weak __typeof__(self)weakSelf = self;
-    [self.view bk_whenTapped:^{
+    [_tapView bk_whenTapped:^{
         __strong __typeof__(self)strongSelf = weakSelf;
         [strongSelf dismiss];
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
+- (void)viewConfigure {
+    ;
+}
+
+#pragma mark - Event Response
+- (IBAction)giveGiftButtonPressed {
+    ;
+}
+
+#pragma mark - Private Methods
+- (void)popUp {
     _bottomConstraint.constant = _containerView.height;
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
 }
 
-#pragma mark - Private Methods
 - (void)dismiss {
     _bottomConstraint.constant = 0.0f;
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{

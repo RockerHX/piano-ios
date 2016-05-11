@@ -45,7 +45,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuN-gT-mBq" userLabel="Gift Container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhp-Mj-aH4">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhp-Mj-aH4" userLabel="Low Gift Container">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="107"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -60,7 +60,7 @@
                                                     <constraint firstAttribute="height" constant="60" id="Nlt-Sx-Azk"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFG-dv-gKv">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFG-dv-gKv" userLabel="Normal Gift Container">
                                                 <rect key="frame" x="80" y="0.0" width="80" height="107"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -68,7 +68,7 @@
                                                 <rect key="frame" x="160" y="24" width="0.0" height="60"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXW-0e-Vn9">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXW-0e-Vn9" userLabel="Medium Gift Container">
                                                 <rect key="frame" x="160" y="0.0" width="80" height="107"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -76,7 +76,7 @@
                                                 <rect key="frame" x="240" y="24" width="0.0" height="60"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1jk-sA-Jua">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1jk-sA-Jua" userLabel="High Gift Container">
                                                 <rect key="frame" x="240" y="0.0" width="80" height="107"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -138,6 +138,9 @@
                                                         <real key="value" value="22"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="giveGiftButtonPressed" destination="n6E-5k-PTu" eventType="touchUpInside" id="6fU-Xu-qiD"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-Ka-B8f" userLabel="Label Container">
                                                 <rect key="frame" x="0.0" y="60" width="320" height="60"/>
@@ -257,6 +260,10 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="Dcq-3C-e07" id="uG2-Lm-6PD"/>
                         <outlet property="containerView" destination="LmT-3h-2jm" id="IEe-ud-27v"/>
+                        <outlet property="highGiftContainer" destination="1jk-sA-Jua" id="fVl-X1-Vh4"/>
+                        <outlet property="lowGiftContainer" destination="hhp-Mj-aH4" id="Dtc-Xc-Ug5"/>
+                        <outlet property="mediumGiftContainer" destination="wXW-0e-Vn9" id="hAA-uG-Ysg"/>
+                        <outlet property="normalGiftContainer" destination="bFG-dv-gKv" id="ecp-79-bms"/>
                         <outlet property="tapView" destination="a15-lh-srE" id="WXp-Ab-K9b"/>
                     </connections>
                 </viewController>
