@@ -9,9 +9,12 @@
 #import "HXLiveRewardViewController.h"
 #import "BlocksKit+UIKit.h"
 #import "UIView+Frame.h"
+#import "HXSectorSlider.h"
 
 
-@interface HXLiveRewardViewController ()
+@interface HXLiveRewardViewController () <
+HXSectorSliderDelegate
+>
 @end
 
 
@@ -70,6 +73,34 @@
         [self.view removeFromSuperview];
         [self removeFromParentViewController];
     }];
+}
+
+#pragma mark - HXSectorSliderDelegate Methods
+- (void)sectorSlider:(HXSectorSlider *)slider selectedLevel:(HXSectorSliderLevel)level {
+    NSInteger rewardCount = 0;
+    switch (level) {
+        case HXSectorSliderLevelLow: {
+            rewardCount = 10;
+            break;
+        }
+        case HXSectorSliderLevelNormal: {
+            rewardCount = 20;
+            break;
+        }
+        case HXSectorSliderLevelMedium: {
+            rewardCount = 30;
+            break;
+        }
+        case HXSectorSliderLevelHigh: {
+            rewardCount = 50;
+            break;
+        }
+        case HXSectorSliderLevelVeryHigh: {
+            rewardCount = 100;
+            break;
+        }
+    }
+    _rewardCountLabel.text = @(rewardCount).stringValue;
 }
 
 @end
