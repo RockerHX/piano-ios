@@ -154,6 +154,9 @@ static NSTimeInterval AnimationDuration = 0.2f;
     _point5 = [self pointOnArcWithX:sectionWidth*5];
     
     _sliderView.center = _point1;
+    if (_delegate && [_delegate respondsToSelector:@selector(sectorSlider:selectedLevel:)]) {
+        [_delegate sectorSlider:self selectedLevel:HXSectorSliderLevelLow];
+    }
 }
 
 - (void)moveHandleWithPoint:(CGPoint)point {
