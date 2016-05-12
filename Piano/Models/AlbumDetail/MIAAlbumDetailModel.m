@@ -10,4 +10,9 @@
 
 @implementation MIAAlbumDetailModel
 
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"song": @"MIASongModel",
+             @"commentList": @"MIACommentModel"};
+}
+
 @end

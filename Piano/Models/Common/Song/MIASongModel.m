@@ -10,4 +10,10 @@
 
 @implementation MIASongModel
 
+- (void)mj_keyValuesDidFinishConvertingToObject {
+    NSInteger second = [_duration doubleValue] / 1000;
+    NSInteger minute = second / 60;
+    _songTime = [NSString stringWithFormat:@"%02zd:%02zd", minute, (second % 60)];
+}
+
 @end

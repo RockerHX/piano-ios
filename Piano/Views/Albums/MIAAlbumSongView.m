@@ -9,6 +9,7 @@
 #import "MIAAlbumSongView.h"
 #import "MIAFontManage.h"
 #import "JOBaseSDK.h"
+#import "MIASongModel.h"
 
 static CGFloat const kIndexLabelWidth = 40.;
 
@@ -18,6 +19,7 @@ static CGFloat const kIndexLabelWidth = 40.;
 @property (nonatomic, strong) UILabel *songNameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UIImageView *playStateImageView;
+@property (nonatomic, strong) MIASongModel *songModel;
 
 @end
 
@@ -46,11 +48,13 @@ static CGFloat const kIndexLabelWidth = 40.;
     [JOAutoLayout autoLayoutWithWidth:kIndexLabelWidth selfView:_indexLabel superView:self];
     
     self.playStateImageView = [UIImageView newAutoLayoutView];
-    [_playStateImageView setImage:[UIImage imageNamed:@"AD-PauseIcon-L"]];
+    [_playStateImageView setContentMode:UIViewContentModeScaleAspectFit];
+    [_playStateImageView setImage:[UIImage imageNamed:@"AD-PauseIcon-S"]];
     [_playStateImageView setHidden:YES];
     [self addSubview:_playStateImageView];
     
-    [JOAutoLayout autoLayoutWithSameView:_indexLabel selfView:_playStateImageView superView:self];
+    [JOAutoLayout autoLayoutWithSize:JOSize(kIndexLabelWidth-15., kIndexLabelWidth-15.) selfView:_playStateImageView superView:self];
+    [JOAutoLayout autoLayoutWithCenterWithView:_indexLabel selfView:_playStateImageView superView:self];
     
     self.timeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Time]];
     [_timeLabel setHidden:YES];
@@ -70,19 +74,17 @@ static CGFloat const kIndexLabelWidth = 40.;
     [JOAutoLayout autoLayoutWithRightView:_timeLabel distance:5. selfView:_songNameLabel superView:self];
     
     UIView *separateLineView = [UIView newAutoLayoutView];
-    [separateLineView setBackgroundColor:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title].color];
+    [separateLineView setBackgroundColor:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]->color];
     [self addSubview:separateLineView];
     
     [JOAutoLayout autoLayoutWithLeftXView:_songNameLabel selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-1. selfView:separateLineView superView:self];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:separateLineView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:1. selfView:separateLineView superView:self];
+    [JOAutoLayout autoLayoutWithHeight:0.5 selfView:separateLineView superView:self];
     
 }
 
 - (void)changeSongPlayState:(BOOL)state{
-
-    [_timeLabel setText:@"4:34"];
     
     [_timeLabel setHidden:!state];
     [_indexLabel setHidden:state];
@@ -93,17 +95,32 @@ static CGFloat const kIndexLabelWidth = 40.;
         textColor = [UIColor blackColor];
     }else{
     
-        textColor = [MIAFontManage getFontWithType:MIAFontType_Album_Song_Title].color;
+        textColor = [MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]->color;
     }
     
     [_songNameLabel setTextColor:textColor];
     
-    [_songNameLabel setText:@"狂喜狂悲"];
-    [_indexLabel setText:@"1"];
-    
-    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:[_timeLabel sizeThatFits:JOMAXSize].width selfView:_timeLabel superView:self];
+}
 
+- (void)setSongData:(id)data{
+
+    if ([data isKindOfClass:[MIASongModel class]]) {
+        
+        self.songModel = nil;
+        self.songModel = data;
+        
+        [_timeLabel setText:_songModel.songTime];
+        
+        [_songNameLabel setText:_songModel.title];
+        [_indexLabel setText:@"1"];
+        
+        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_timeLabel superView:self];
+        [JOAutoLayout autoLayoutWithWidth:[_timeLabel sizeThatFits:JOMAXSize].width selfView:_timeLabel superView:self];
+        
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAAlbumSongView exception!" reason:@"data必须是MIASongModel类型"];
+    }
 }
 
 @end

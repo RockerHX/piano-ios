@@ -17,6 +17,6 @@ UIKIT_EXTERN CGFloat const kRewardDownloadViewHeight ; //打赏下载按钮视�
 UIKIT_EXTERN CGFloat const kRewardViewHeight ; //打赏视图的高度
 UIKIT_EXTERN CGFloat const kPlayViewHeight ; //播放视图的高度
 
-@interface MIAAlbumDetailModel : MIAViewModel
+@interface MIAAlbumHeadDetailViewModel : MIAViewModel
 
 @end

@@ -7,13 +7,15 @@
 //
 
 #import "MIAAlbumDetailView.h"
+#import "UIImageView+WebCache.h"
 #import "MIAFontManage.h"
 #import "JOBaseSDK.h"
 #import "MIAAlbumRewardView.h"
 #import "MIAAlbumPlayView.h"
-#import "MIAAlbumSongView.h"
 
-#import "MIAAlbumDetailModel.h"
+#import "MIAAlbumModel.h"
+
+#import "MIAAlbumHeadDetailViewModel.h"
 
 static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
@@ -23,6 +25,8 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 @property (nonatomic, strong) UIView *rewardForDownloadView;
 @property (nonatomic, strong) MIAAlbumRewardView *rewardView;
 @property (nonatomic, strong) MIAAlbumPlayView *playView;
+
+@property (nonatomic, strong) MIAAlbumModel *albumModel;
 
 @end
 
@@ -58,7 +62,7 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
     if (!self.albumCoverImageView) {
         self.albumCoverImageView = [UIImageView newAutoLayoutView];
-        [_albumCoverImageView setBackgroundColor:[UIColor purpleColor]];
+        [_albumCoverImageView setBackgroundColor:[UIColor grayColor]];
         [self addSubview:_albumCoverImageView];
         
         [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_albumCoverImageView superView:self];
@@ -131,6 +135,23 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 - (CGFloat)albumDetailViewHeight{
 
     return kPlayViewHeight + kRewardViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+}
+
+#pragma mark - Data 
+
+- (void)setAlbumHeadDetailData:(id)data{
+
+    if ([data isKindOfClass:[MIAAlbumModel class]]) {
+        
+        self.albumModel = nil;
+        self.albumModel = data;
+        
+        [_albumCoverImageView sd_setImageWithURL:[NSURL URLWithString:_albumModel.coverUrl] placeholderImage:nil];
+        
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAAlbumDetailView exception!" reason:@"data必须是MIAAlbumModel类型"];
+    }
 }
 
 @end

@@ -9,29 +9,46 @@
 #import <UIKit/UIKit.h>
 #import "JOMacro.h"
 
-#ifndef JOFont
-#define JOFont struct JOFontStruct
-JOFont
-{
-    
-    __unsafe_unretained NSString *name;
-    __unsafe_unretained UIColor *color;
-    __unsafe_unretained UIFont  *font;
-    CGFloat size;
-    
-};
-#endif
+//#ifndef JOFontx
+//#define JOFontx struct JOFontStruct
+//JOFontx
+//{
+//    
+//     NSString __unsafe_unretained*name;
+//     UIColor __unsafe_unretained*color;
+//     UIFont  __unsafe_unretained*font;
+//    CFStringRef *cname;
+//    CGFontRef *cFont;
+//    CGColorRef *ccolor;
+//    CGFloat size;
+//    
+//};
+//#endif
+//
+//JO_STATIC_INLINE JOFontx JOFontMake( NSString *fontName,UIColor *fontColor,CGFloat fontSize){
+//    
+//    JOFontx Font;
+//    
+//    Font.name =  CFBridgingRelease(CFBridgingRetain(fontName));//fontName;
+//    Font.color = CFBridgingRelease(CFBridgingRetain(fontColor));//fontColor;
+//    Font.size = fontSize;
+//    Font.font = CFBridgingRelease(CFBridgingRetain([UIFont fontWithName:fontName size:fontSize]));
+//    return Font;
+//}
 
-JO_STATIC_INLINE JOFont JOFontMake(NSString *fontName,UIColor *fontColor,CGFloat fontSize){
+@interface JOFont : NSObject{
     
-    JOFont Font;
-    Font.name = fontName;
-    Font.color = fontColor;
-    Font.size = fontSize;
-    Font.font = [UIFont fontWithName:fontName size:fontSize];
-    return Font;
+    @public
+    NSString *name;
+    UIColor *color;
+    UIFont *font;
+    CGFloat size;
 }
 
+@end
+
 @interface UIFont(Extend)
+
+JO_EXTERN JOFont * JOFontMake(NSString *fontName,UIColor *fontColor,CGFloat fontSize);
 
 @end

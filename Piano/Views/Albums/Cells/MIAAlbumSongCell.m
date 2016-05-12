@@ -35,8 +35,15 @@
 - (void)setCellData:(id)data{
     
     [self createAlbumDetailView];
+    [_albumSongView setSongData:data];
     
-    [_albumSongView changeSongPlayState:NO];
+    if (arc4random()%2) {
+        [_albumSongView changeSongPlayState:YES];
+    }else{
+    
+        [_albumSongView changeSongPlayState:NO];
+    }
+    
 }
 
 @end

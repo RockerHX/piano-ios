@@ -18,4 +18,6 @@ typedef NS_ENUM(NSUInteger, AlbumDetailType) {
 
 - (CGFloat)albumDetailViewHeight;
 
+- (void)setAlbumHeadDetailData:(id)data;
+
 @end

@@ -35,6 +35,8 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
     MIAFontType_Profile_Replay_ViweCount,//观看的人数
     
     //MARK: 专辑详情页
+    MIAFontType_Album_Bar_Title,//Bar的标题
+    MIAFontType_Album_Bar_Name,//Bar的名字
     MIAFontType_Album_PayDownloadButtonTitle,//打赏下载按钮
     MIAFontType_Album_Reward_Tip,//已打赏的人数
     MIAFontType_Album_Play_Time,//播放进度条提示的时间
@@ -51,6 +53,6 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
 
 @interface MIAFontManage : NSObject
 
-+ (JOFont)getFontWithType:(MIAFontType)type;
++ (JOFont *)getFontWithType:(MIAFontType)type;
 
 @end

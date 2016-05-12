@@ -19,5 +19,6 @@
 @property (nonatomic, copy) NSString *backTotal;//打赏的人数
 @property (nonatomic, copy) NSString *uID; //用户的id
 @property (nonatomic, copy) NSString *coverUrl; //专辑图片的地址
+@property (nonatomic, copy) NSString *nick;//昵称
 
 @end

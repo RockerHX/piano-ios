@@ -11,6 +11,6 @@
 
 @interface UILabel(Extend)
 
-- (void)setJOFont:(JOFont)font;
+- (void)setJOFont:(JOFont *)font;
 
 @end

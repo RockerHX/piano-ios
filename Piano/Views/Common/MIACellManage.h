@@ -13,7 +13,7 @@
 #import "MIAProfileVideoCell.h"
 #import "MIAProfileReplayCell.h"
 #import "MIAAlbumSongCell.h"
-#import "MIAAlbumDetailCell.h"
+#import "MIAAlbumCommentCell.h"
 
 typedef NS_ENUM(NSUInteger, MIACellType){
 
@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, MIACellType){
     MIACellTypeReplay, //回放
     //专辑详情页
     MIACellTypeAlbumSong,//歌曲
-    MIACellTypeAlbumDetail,//专辑详情页
+    MIACellTypeAlbumComment,//评论
 };
 
 @interface MIACellManage : NSObject

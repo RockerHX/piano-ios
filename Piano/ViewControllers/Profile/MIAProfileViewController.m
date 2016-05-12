@@ -216,13 +216,16 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 
 - (void)updateViews{
 
+    [UIColor whiteColor];
+    [UIColor  colorWithRed:0.2 green:0.4 blue:0.5 alpha:0.1];
+    
     MIAProfileHeadModel *headModel = _profileViewModel.profileHeadModel;
     
-    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-       
-        NSLog(@"W:%f, h:%f",image.size.width,image.size.height);
-    }];
-//    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil];
+//    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//       
+//        NSLog(@"W:%f, h:%f",image.size.width,image.size.height);
+//    }];
+    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
     [_profileHeadView setAttentionButtonState:[headModel.followState boolValue]];

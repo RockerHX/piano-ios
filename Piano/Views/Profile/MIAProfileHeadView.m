@@ -160,8 +160,8 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [JOAutoLayout autoLayoutWithWidthWithView:_attentionLabel selfView:_attentionTipLabel superView:_fansView];
     
     self.attentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_attentionButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle].color forState:UIControlStateNormal];
-    [[_attentionButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle].font];
+    [_attentionButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle]->color forState:UIControlStateNormal];
+    [[_attentionButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle]->font];
     [_attentionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_attentionButton addTarget:self action:@selector(attentionButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_attentionButton setTag:kAttentionButtonTag];
@@ -206,12 +206,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     
     [JOAutoLayout removeAutoLayoutWithSizeSelfView:_nameLabel superView:self];
     [JOAutoLayout removeAutoLayoutWithSizeSelfView:_summayLabel superView:self];
-    
-//    CGFloat nameWidth = [_nameLabel sizeThatFits:JOMAXSize].width + 30.;
-//    CGFloat nameHeight = [_nameLabel sizeThatFits:JOMAXSize].height + 10.;
-//    CGFloat summaryWidth = [_summayLabel sizeThatFits:JOMAXSize].width +30.;
-//    CGFloat summaryHeight = [_summayLabel sizeThatFits:JOMAXSize].height +10.;
-    
+
     [JOAutoLayout autoLayoutWithSize:JOSize(nameWidth, nameHeight) selfView:_nameLabel superView:self];
     [JOAutoLayout autoLayoutWithSize:JOSize(summaryWidth, summaryHeight) selfView:_summayLabel superView:self];
 }
