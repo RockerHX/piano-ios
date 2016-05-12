@@ -16,6 +16,7 @@
 #import "MIAProfileHeadView.h"
 #import "MIABaseCellHeadView.h"
 #import "MBProgressHUDHelp.h"
+#import "UIImageView+WebCache.h"
 #import "JOBaseSDK.h"
 
 #import "MIAProfileViewModel.h"
@@ -23,6 +24,8 @@
 //用于选择性的向下传递事件链的左右
 static NSInteger const kTableViewTag = 10001;//tableView的tag值
 static NSInteger const kHeadViewTag = 10002; //headView的tag值
+
+static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 
 @interface MIAProfileView : UIView
 
@@ -60,11 +63,15 @@ static NSInteger const kHeadViewTag = 10002; //headView的tag值
 
 @property (nonatomic, strong) MIAProfileView *profileView;
 
+@property (nonatomic, strong) UIImageView *coverImageView;
+@property (nonatomic, strong) UIImageView *maskImageView;
+
 @property (nonatomic, strong) MIAProfileHeadView *profileHeadView;
 @property (nonatomic, strong) UITableView *profileTableView;
 
 @end
 
+//16:9 高/宽
 @implementation MIAProfileViewController
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -78,9 +85,27 @@ static NSInteger const kHeadViewTag = 10002; //headView的tag值
 
     [super loadView];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[UIColor blackColor]];
     
-    profileTableHeadViewHeight = View_Height(self.view)*(2./3.);
+    CGFloat coverImageHeight = View_Width(self.view)/kCoverImageWidthHeightRaito;
+    profileTableHeadViewHeight = View_Height(self.view) - kProfileAlbumCellHeight - kBaseCellHeadViewHeight;
+    
+    self.coverImageView = [UIImageView newAutoLayoutView];
+    [self.view addSubview:_coverImageView];
+    
+    
+    
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_coverImageView superView:self.view];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_coverImageView superView:self.view];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_coverImageView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:coverImageHeight selfView:_coverImageView superView:self.view];
+    
+    self.maskImageView = [UIImageView newAutoLayoutView];
+    [_maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
+    [_maskImageView setAlpha:0.];
+    [self.view addSubview:_maskImageView];
+
+    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self.view];
     
     self.profileView = [MIAProfileView newAutoLayoutView];
     [_profileView setBackgroundColor:[UIColor clearColor]];
@@ -192,6 +217,12 @@ static NSInteger const kHeadViewTag = 10002; //headView的tag值
 - (void)updateViews{
 
     MIAProfileHeadModel *headModel = _profileViewModel.profileHeadModel;
+    
+    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+       
+        NSLog(@"W:%f, h:%f",image.size.width,image.size.height);
+    }];
+//    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
     [_profileHeadView setAttentionButtonState:[headModel.followState boolValue]];
@@ -334,14 +365,16 @@ static NSInteger const kHeadViewTag = 10002; //headView的tag值
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-    [_profileHeadView setProfileMaskAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)*2.];
+//    [_profileHeadView setProfileMaskAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)*2.];
     
-    if (scrollView.contentOffset.y > profileTableHeadViewHeight +10) {
-        [_profileTableView setBackgroundColor:[UIColor blackColor]];
-    }else{
+    [_maskImageView setAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)*2.];
     
-        [_profileTableView setBackgroundColor:[UIColor clearColor]];
-    }
+//    if (scrollView.contentOffset.y > profileTableHeadViewHeight +10) {
+//        [_profileTableView setBackgroundColor:[UIColor blackColor]];
+//    }else{
+//    
+//        [_profileTableView setBackgroundColor:[UIColor clearColor]];
+//    }
 //    NSLog(@"Scoffset.y:%f",scrollView.contentOffset.y);
 }
 
