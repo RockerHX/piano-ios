@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXDiscoveryCell.h"
+#import "HXDiscoveryPreviewCell.h"
 #import "HXDiscoveryModel.h"
 
 
@@ -21,7 +21,7 @@
 @end
 
 
-@interface HXDiscoveryLiveCell : HXDiscoveryCell
+@interface HXDiscoveryLiveCell : HXDiscoveryPreviewCell
 
 @property (weak, nonatomic) IBOutlet          id  <HXDiscoveryLiveCellDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *cover;

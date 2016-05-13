@@ -186,23 +186,32 @@
                                                 <action selector="startLiveButtonPressed" destination="taU-uU-gI8" eventType="touchUpInside" id="Dtr-R7-6MP"/>
                                             </connections>
                                         </button>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eG-wd-mXx">
+                                            <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="fch-1c-3Tw" secondAttribute="bottom" id="1Ax-O6-JyO"/>
+                                    <constraint firstAttribute="bottom" secondItem="9eG-wd-mXx" secondAttribute="bottom" id="JLW-LB-Ksa"/>
                                     <constraint firstAttribute="trailing" secondItem="Rxy-wK-F8D" secondAttribute="trailing" constant="50" id="LUC-bf-Y2A"/>
                                     <constraint firstAttribute="trailing" secondItem="fch-1c-3Tw" secondAttribute="trailing" id="Pwy-F3-P6W"/>
+                                    <constraint firstAttribute="trailing" secondItem="9eG-wd-mXx" secondAttribute="trailing" id="RXQ-mM-xzp"/>
                                     <constraint firstItem="fch-1c-3Tw" firstAttribute="top" secondItem="taU-uU-gI8" secondAttribute="top" id="bR0-RH-0hl"/>
                                     <constraint firstItem="fch-1c-3Tw" firstAttribute="leading" secondItem="taU-uU-gI8" secondAttribute="leading" id="fRT-OA-QUq"/>
                                     <constraint firstAttribute="bottom" secondItem="Rxy-wK-F8D" secondAttribute="bottom" constant="40" id="iOC-Bu-B9i"/>
                                     <constraint firstItem="Rxy-wK-F8D" firstAttribute="leading" secondItem="taU-uU-gI8" secondAttribute="leading" constant="50" id="loZ-gq-fgZ"/>
+                                    <constraint firstItem="9eG-wd-mXx" firstAttribute="top" secondItem="taU-uU-gI8" secondAttribute="top" id="tUB-2Y-PwL"/>
+                                    <constraint firstItem="9eG-wd-mXx" firstAttribute="leading" secondItem="taU-uU-gI8" secondAttribute="leading" id="zD3-IF-fRc"/>
                                 </constraints>
                                 <size key="customSize" width="218" height="200"/>
                                 <connections>
                                     <outlet property="cover" destination="fch-1c-3Tw" id="dNh-hm-S71"/>
                                     <outlet property="delegate" destination="dI6-ag-QYF" id="Ute-1z-6OE"/>
+                                    <outlet property="previewView" destination="9eG-wd-mXx" id="N6Q-dC-MCN"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXDiscoveryShowCell" id="leI-sW-e4A" userLabel="HXDiscoveryShowCell" customClass="HXDiscoveryShowCell">
@@ -321,6 +330,10 @@
                                                 <constraint firstItem="fOs-g1-dVf" firstAttribute="centerY" secondItem="f1e-XA-vow" secondAttribute="centerY" id="z56-Q9-NhX"/>
                                             </constraints>
                                         </view>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-8E-EwO">
+                                            <rect key="frame" x="0.0" y="0.0" width="218" height="249"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -329,10 +342,14 @@
                                     <constraint firstAttribute="bottom" secondItem="hU6-CA-4zu" secondAttribute="bottom" id="F01-hI-zhZ"/>
                                     <constraint firstAttribute="trailing" secondItem="f1e-XA-vow" secondAttribute="trailing" id="K7V-0d-eA9"/>
                                     <constraint firstItem="f1e-XA-vow" firstAttribute="top" secondItem="leI-sW-e4A" secondAttribute="top" constant="30" id="L34-ix-MqZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="bZ6-8E-EwO" secondAttribute="bottom" id="LEm-xh-fP2"/>
                                     <constraint firstAttribute="trailing" secondItem="GP7-g1-lsn" secondAttribute="trailing" constant="10" id="Mvc-uR-BUL"/>
+                                    <constraint firstAttribute="trailing" secondItem="bZ6-8E-EwO" secondAttribute="trailing" id="Q9J-3L-c7n"/>
+                                    <constraint firstItem="bZ6-8E-EwO" firstAttribute="leading" secondItem="leI-sW-e4A" secondAttribute="leading" id="d8U-7E-jUt"/>
                                     <constraint firstItem="GP7-g1-lsn" firstAttribute="leading" secondItem="leI-sW-e4A" secondAttribute="leading" constant="10" id="ebE-5W-9U1"/>
                                     <constraint firstAttribute="trailing" secondItem="hU6-CA-4zu" secondAttribute="trailing" id="gbP-ck-16n"/>
                                     <constraint firstItem="hU6-CA-4zu" firstAttribute="leading" secondItem="leI-sW-e4A" secondAttribute="leading" id="ttp-xR-FyK"/>
+                                    <constraint firstItem="bZ6-8E-EwO" firstAttribute="top" secondItem="leI-sW-e4A" secondAttribute="top" id="xdQ-eC-vbY"/>
                                     <constraint firstItem="GP7-g1-lsn" firstAttribute="top" secondItem="leI-sW-e4A" secondAttribute="centerY" id="z8E-0c-zmv"/>
                                     <constraint firstItem="hU6-CA-4zu" firstAttribute="top" secondItem="leI-sW-e4A" secondAttribute="top" id="zSU-7Y-MfJ"/>
                                 </constraints>
@@ -341,6 +358,7 @@
                                     <outlet property="countLabel" destination="S1J-8M-uut" id="Nep-Q4-n5I"/>
                                     <outlet property="cover" destination="hU6-CA-4zu" id="Pgt-kW-Vpb"/>
                                     <outlet property="nickNameLabel" destination="PaR-ln-0ju" id="ehE-EO-5X2"/>
+                                    <outlet property="previewView" destination="bZ6-8E-EwO" id="2rA-w2-SNn"/>
                                     <outlet property="titleLabel" destination="r0T-ac-1X8" id="onY-66-LI9"/>
                                 </connections>
                             </collectionViewCell>
