@@ -63,7 +63,7 @@
         
         NSData *data = [NSData dataWithContentsOfURL:location];
         NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
-        if (!cachedResponse.data) {
+        if ((!cachedResponse) && response && data) {
             NSCachedURLResponse *cachedURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
             [[NSURLCache sharedURLCache] storeCachedResponse:cachedURLResponse forRequest:request];
         }
