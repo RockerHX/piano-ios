@@ -167,6 +167,10 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fch-1c-3Tw">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
                                         </imageView>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eG-wd-mXx">
+                                            <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rxy-wK-F8D" customClass="HXIBButton">
                                             <rect key="frame" x="50" y="116" width="118" height="44"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,10 +190,6 @@
                                                 <action selector="startLiveButtonPressed" destination="taU-uU-gI8" eventType="touchUpInside" id="Dtr-R7-6MP"/>
                                             </connections>
                                         </button>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eG-wd-mXx">
-                                            <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -224,6 +224,10 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hU6-CA-4zu">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="249"/>
                                         </imageView>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-8E-EwO">
+                                            <rect key="frame" x="0.0" y="0.0" width="218" height="249"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-g1-lsn" userLabel="Label Container">
                                             <rect key="frame" x="10" y="125" width="198" height="75"/>
                                             <subviews>
@@ -329,10 +333,6 @@
                                                 <constraint firstItem="hVy-Aa-HZ0" firstAttribute="leading" secondItem="f1e-XA-vow" secondAttribute="leading" constant="10" id="v3l-bS-2Xz"/>
                                                 <constraint firstItem="fOs-g1-dVf" firstAttribute="centerY" secondItem="f1e-XA-vow" secondAttribute="centerY" id="z56-Q9-NhX"/>
                                             </constraints>
-                                        </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-8E-EwO">
-                                            <rect key="frame" x="0.0" y="0.0" width="218" height="249"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
