@@ -38,8 +38,6 @@ HXDiscoveryContainerViewControllerDelegate
     
     NSInteger _itemCount;
     HXLoadingView *_loadingView;
-    
-    BOOL _fetchLoaded;
 }
 
 #pragma mark - Segue Methods
@@ -49,14 +47,6 @@ HXDiscoveryContainerViewControllerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (_fetchLoaded) {
-        [self startFetchList];
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -85,7 +75,6 @@ HXDiscoveryContainerViewControllerDelegate
 
 #pragma mark - Public Methods
 - (void)startFetchList {
-    _fetchLoaded = YES;
     @weakify(self)
     RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
     [requestSiganl subscribeError:^(NSError *error) {
