@@ -52,18 +52,29 @@ HXDiscoveryLiveCellDelegate
     [self.collectionView reloadData];
 }
 
+- (void)previewAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[HXDiscoveryPreviewCell class]]) {
+        HXDiscoveryPreviewCell *previewCell = (HXDiscoveryPreviewCell *)cell;
+        [previewCell playWithURL:_viewModel.discoveryList[indexPath.row].videoUrl];
+    }
+}
+
 #pragma mark - Scroll View Delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
 //    NSLog(@"%@", @(layout.indexPath.row));
     
-    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-        [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[layout.indexPath.row]];
-    }
+    NSIndexPath *indexPath = layout.indexPath;
+    [self previewAtIndexPath:indexPath];
     
+    NSInteger index = indexPath.row;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+        [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[index]];
+    }
     if (scrollView.contentOffset.x == 0.0f) {
         if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-            [_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[layout.indexPath.row]];
+            [_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[index]];
         }
     }
 }
