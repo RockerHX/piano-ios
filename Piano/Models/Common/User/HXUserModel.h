@@ -18,6 +18,8 @@
 @property (nonatomic, strong)   NSString *token;
 @property (nonatomic, strong)   NSString *nickName;
 @property (nonatomic, strong)   NSString *avatarUrl;
+@property (nonatomic, strong)   NSString *coverUrl;
+@property (nonatomic, strong)   NSString *videoUrl;
 @property (nonatomic, strong)   NSString *notifyAvatar;
 
 @end
