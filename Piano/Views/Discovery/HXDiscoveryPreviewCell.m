@@ -51,6 +51,8 @@
 
 #pragma mark - Private Methods
 - (void)startPlayWithURL:(NSURL *)url data:(NSData *)data {
+    _previewView.hidden = NO;
+    
     NSString *fileName = [url.absoluteString lastPathComponent];
     NSString *tempDirectory = NSTemporaryDirectory();
     NSString *filePath = [tempDirectory stringByAppendingFormat:@"/%@", fileName];
@@ -59,10 +61,19 @@
     }
     
     NSURL *videoURL = [NSURL fileURLWithPath:filePath];
-    _player = [AVPlayer playerWithURL:videoURL];
+    AVPlayerItem *videoItem = [[AVPlayerItem alloc] initWithURL:videoURL];
+    NSNotificationCenter *noteCenter = [NSNotificationCenter defaultCenter];
+    [noteCenter addObserverForName:AVPlayerItemDidPlayToEndTimeNotification
+                            object:nil
+                             queue:nil
+                        usingBlock:^(NSNotification *note) {
+                            [videoItem seekToTime:kCMTimeZero];
+                            [_player play];
+                        }];
+    
+    _player = [AVPlayer playerWithPlayerItem:videoItem];
     _previewLayer.player = _player;
     [_player play];
-    _previewView.hidden = NO;
 }
 
 - (void)stopPlay {
