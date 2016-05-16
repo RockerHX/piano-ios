@@ -88,19 +88,19 @@ HXPreviewLiveControlViewDelegate
 
 #pragma mark - Private Methods
 - (void)startPreview {
-    [[HXZegoAVKitManager manager].zegoAVApi setFrontCam:_frontCamera];
+    [[HXZegoAVKitManager manager].zegoLiveApi setFrontCam:_frontCamera];
     
-    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-    [zegoAVApi setAVConfig:[HXSettingSession session].configure];
-    [zegoAVApi setLocalView:_preview];
-    [zegoAVApi setLocalViewMode:ZegoVideoViewModeScaleAspectFill];
-    [zegoAVApi startPreview];
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
+    [zegoLiveApi setLocalView:_preview];
+    [zegoLiveApi setLocalViewMode:ZegoVideoViewModeScaleAspectFill];
+    [zegoLiveApi startPreview];
 }
 
 - (void)stopPreview {
-    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-    [zegoAVApi stopPreview];
-    [zegoAVApi setLocalView:nil];
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    [zegoLiveApi stopPreview];
+    [zegoLiveApi setLocalView:nil];
 }
 
 - (void)startUpdatingLocation {
@@ -178,7 +178,7 @@ HXPreviewLiveControlViewDelegate
         }
         case HXPreviewLiveTopBarActionChange: {
             _frontCamera = !_frontCamera;
-            [[HXZegoAVKitManager manager].zegoAVApi setFrontCam:_frontCamera];
+            [[HXZegoAVKitManager manager].zegoLiveApi setFrontCam:_frontCamera];
             break;
         }
         case HXPreviewLiveTopBarActionColse: {

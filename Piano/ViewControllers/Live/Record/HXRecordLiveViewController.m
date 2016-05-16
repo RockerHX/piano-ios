@@ -8,7 +8,6 @@
 
 #import "HXRecordLiveViewController.h"
 #import "HXZegoAVKitManager.h"
-#import <ZegoAVKit/ZegoMoviePlayer.h>
 #import "HXSettingSession.h"
 #import "HXUserSession.h"
 #import "HXRecordAnchorView.h"
@@ -25,8 +24,7 @@
 
 
 @interface HXRecordLiveViewController () <
-ZegoChatDelegate,
-ZegoVideoDelegate,
+ZegoLiveApiDelegate,
 HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate,
 HXPreviewLiveViewControllerDelegate,
@@ -111,10 +109,8 @@ HXLiveCommentContainerViewControllerDelegate
 }
 
 - (void)viewConfigure {
-    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
     //设置回调代理
-    [zegoAVApi setChatDelegate:self callbackQueue:dispatch_get_main_queue()];
-    [zegoAVApi setVideoDelegate:self callbackQueue:dispatch_get_main_queue()];
+    [[HXZegoAVKitManager manager].zegoLiveApi setDelegate:self];
     
     [self updateAnchorView];
 }
@@ -122,7 +118,7 @@ HXLiveCommentContainerViewControllerDelegate
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
     [_anchorView stopRecordTime];
-    [[HXZegoAVKitManager manager].zegoAVApi takeLocalViewSnapshot];
+    [[HXZegoAVKitManager manager].zegoLiveApi takeLocalViewSnapshot];
 }
 
 #pragma mark - Private Methods
@@ -130,15 +126,16 @@ HXLiveCommentContainerViewControllerDelegate
     [[UIApplication sharedApplication] setIdleTimerDisabled:steady];
 }
 
-- (void)startLive {
-    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-    //进入聊天室
+- (void)startPublish {
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    //进入频道
     ZegoUser *user = [ZegoUser new];
     user.userID = [HXUserSession session].uid;
     user.userName = [HXUserSession session].nickName;
     
-    [zegoAVApi getInChatRoom:user zegoToken:0 zegoId:0];
-    [zegoAVApi setAVConfig:[HXSettingSession session].configure];
+    bool ret = [zegoLiveApi loginChannel:user.userID user:user];
+    assert(ret);
+    NSLog(@"%s, ret: %d", __func__, ret);
 }
 
 - (void)endLiveWithSnapShotImage:(UIImage *)image {
@@ -150,7 +147,7 @@ HXLiveCommentContainerViewControllerDelegate
 
 - (void)leaveRoom {
     [_viewModel.leaveRoomCommand execute:nil];
-    [[HXZegoAVKitManager manager].zegoAVApi leaveChatRoom];
+    [[HXZegoAVKitManager manager].zegoLiveApi logoutChannel];
 }
 
 - (void)signalLink {
@@ -173,107 +170,69 @@ HXLiveCommentContainerViewControllerDelegate
     [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal];
 }
 
-#pragma mark - ZegoChatDelegate
-- (void)onGetInChatRoomResult:(uint32)result zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId {
-    if (result == 0) {
-        NSLog(@"进入聊天室成功，开始启动直播...");
-    } else {
-        NSLog(@"进入聊天室失败!");
-        return;
-    }
-    
-    ZegoAVApi *zegoApi = [HXZegoAVKitManager manager].zegoAVApi;
-    [zegoApi setLocalView:_liveView];
-    [zegoApi startPreview];
-    [zegoApi startPublishInChatRoom:_roomTitle];
-    NSLog(@"直播中!");
-}
-
-- (void)onChatRoomDisconnected:(uint32)err {
-    NSLog(@"已经从聊天室断开了:%u", err);
-    NSLog(@"直播终止");
-}
-
-- (void)onKickOut:(uint32) reason msg:(NSString*)msg {
-    NSLog(@"\n已经被踢出聊天室 （%d:%@）", reason, msg);
-}
-
-- (void)onPlayListUpdate:(PlayListUpdateFlag)flag playList:(NSArray*)list {
-    ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-    
-    if (flag == PlayListUpdateFlag_Error || list.count <= 0) {
-        NSLog(@"直播出错");
-        NSLog(@"无法拉取到直播信息！请退出重进！");
-        return;
-    }
-    
-    if (flag == PlayListUpdateFlag_Remove) {
-        NSDictionary * dictStream = list[0];
-        if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:[HXUserSession session].uid]) {
-            return;     //是自己停止直播的消息，应该在停止时处理过相关逻辑，这里不再处理
-        }
-    } else {
-        if (flag == PlayListUpdateFlag_UpdateAll) {
-//            [[HXZegoAVKitManager manager].zegoAVApi stopPlayInChatRoom:streamID];
-        }
+#pragma mark - ZegoLiveApiDelegate
+- (void)onLoginChannel:(uint32)error {
+    NSLog(@"%s, err: %u", __func__, error);
+    if (error == 0) {
+        ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
         
-        for (NSUInteger i = 0; i < list.count; i++) {
-            NSDictionary *dictStream = list[i];
-            if ([[dictStream objectForKey:PUBLISHER_ID] isEqualToString:[HXUserSession session].uid]) {
-                continue;     //是自己发布直播的消息，应该在发布时处理过相关逻辑，这里不再处理
-            }
-            
-            //有新流加入，找到一个空闲的view来播放，如果已经有两路播放，则停止比较老的流，播放新流
-            NSInteger newStreamID = [[dictStream objectForKey:STREAM_ID] longLongValue];
-            [zegoAVApi startPlayInChatRoom:RemoteViewIndex_First streamID:newStreamID];
-        }
-    }
-}
-
-#pragma mark - ZegoVideoDelegate
-- (void)onPublishSucc:(uint32)zegoToken zegoId:(uint32)zegoId title:(NSString *)title {
-    NSLog(@"启动直播成功，直播进行中...");
-    [_anchorView starRecordTime];
-}
-
-- (void)onPublishStop:(ShowErrCode)err zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId title:(NSString *)title {
-    if (err == ShowErrCode_Temp_Broken) {
-        NSLog(@"网络优化中...");
-        NSLog(@"直播已经被停止！");
+        [zegoLiveApi stopPublishing];
+        [zegoLiveApi setLocalView:_liveView];
         
-        //临时中断，尝试重新启动发布直播
-        ZegoAVApi *zegoAVApi = [HXZegoAVKitManager manager].zegoAVApi;
-        [zegoAVApi startPreview];
-    } else if (err == ShowErrCode_End) {
-        //发布流正常结束
+        int ret = [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
+        assert(ret == 0);
+        
+        bool b = [zegoLiveApi setFrontCam:_frontCamera];
+        assert(b);
+        
+        b = [zegoLiveApi enableMic:_microEnable];
+        assert(b);
+        
+        b = [zegoLiveApi enableBeautifying:true];
+        assert(b);
+        
+        b = [zegoLiveApi setFilter:ZEGO_FILTER_NONE];
+        assert(b);
+        
+        b = [zegoLiveApi startPublishingWithTitle:@"Andy-Live" streamID:nil];
+        assert(b);
+        NSLog(@"%s, ret: %d", __func__, ret);
     }
 }
 
-- (void)onPlaySucc:(long long)streamID zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId title:(NSString *)title {
-    NSLog(@"直播中...");
+- (void)onDisconnected:(uint32)err channel:(NSString *)channel {
+    NSString *msg = [NSString stringWithFormat:@"Channel %@ Connection Broken, ERROR: %u.", channel, err];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Disconnected!" message:msg delegate:nil cancelButtonTitle:@"YES" otherButtonTitles:nil];
+    [alert show];
 }
 
-- (void)onPlayStop:(uint32)err streamID:(long long)streamID zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId title:(NSString *)title {
-    if (err == ShowErrCode_Temp_Broken) {
-        NSLog(@"网络优化中...");
-    } else if (err == ShowErrCode_End) {
-        NSLog(@"直播结束");
-    }
+- (void)onReconnected:(NSString *)channel {
+    NSString *msg = [NSString stringWithFormat:@"Channel %@ Reconnected.", channel];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reconnected!" message:msg delegate:nil cancelButtonTitle:@"YES" otherButtonTitles:nil];
+    [alert show];
 }
 
-- (void)onVideoSizeChanged:(long long)streamID width:(uint32)width height:(uint32)height{
-    NSLog(@"%@ onVideoSizeChanged width: %u height:%u", self, width, height);
+- (void)onPublishSucc:(NSString *)streamID {
+    NSLog(@"%s, stream: %@", __func__, streamID);
 }
 
-- (void)onPlayerCountUpdate:(uint32)userCount {
-    NSLog(@"观看直播的人数:%@", @(userCount));
+- (void)onPublishStop:(uint32)err stream:(NSString *)streamID {
+    NSLog(@"%s, stream: %@, err: %u", __func__, streamID, err);
 }
 
-- (void)onSetPublishExtraDataResult:(uint32)errCode zegoToken:(uint32)zegoToken zegoId:(uint32)zegoId dataKey:(NSString*)strDataKey {
-    ;
+- (void)onPlaySucc:(NSString *)streamID {
+    NSLog(@"%s, stream: %@", __func__, streamID);
 }
 
-- (void)onTakeRemoteViewSnapshot:(CGImageRef)img {
+- (void)onPlayStop:(uint32)err streamID:(NSString *)streamID {
+    NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
+}
+
+- (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {
+    NSLog(@"%s", __func__);
+}
+
+- (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {
     ;
 }
 
@@ -308,12 +267,12 @@ HXLiveCommentContainerViewControllerDelegate
         }
         case HXRecordBottomBarActionChange: {
             _frontCamera = !_frontCamera;
-            [[HXZegoAVKitManager manager].zegoAVApi setFrontCam:_frontCamera];
+            [[HXZegoAVKitManager manager].zegoLiveApi setFrontCam:_frontCamera];
             break;
         }
         case HXRecordBottomBarActionMute: {
             _microEnable = !_microEnable;
-            [[HXZegoAVKitManager manager].zegoAVApi enableMic:_microEnable];
+            [[HXZegoAVKitManager manager].zegoLiveApi enableMic:_microEnable];
             break;
         }
         case HXRecordBottomBarActionGift: {
@@ -335,7 +294,7 @@ HXLiveCommentContainerViewControllerDelegate
     _shareUrl = shareUrl;
     _frontCamera = frontCamera;
     
-    [self startLive];
+    [self startPublish];
     
     _viewModel = [[HXRecordLiveViewModel alloc] initWithRoomID:roomID];
     [self signalLink];
