@@ -99,11 +99,17 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 
 + (void)enterRoom:(NSString *)roomID
 	completeBlock:(MiaRequestCompleteBlock)completeBlock
-	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)leaveRoom:(NSString *)roomID
-	completeBlock:(MiaRequestCompleteBlock)completeBlock
-	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+    completeBlock:(MiaRequestCompleteBlock)completeBlock
+     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)liveGetAlbumListWithUID:(NSString *)UID
+                          start:(NSInteger)start
+                          limit:(NSInteger)limit
+                  completeBlock:(MiaRequestCompleteBlock)completeBlock
+                   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)commentRoom:(NSString *)roomID
 			content:(NSString *)content

@@ -86,6 +86,7 @@ static NSString * const MiaAPICommand_Channel_GetMusician	= @"Channel.Get.Musici
 // Live
 static NSString * const MiaAPICommand_Live_EnterRoom		= @"Live.Room.Post.Enter";
 static NSString * const MiaAPICommand_Live_LeaveRoom		= @"Live.Room.Post.Leave";
+static NSString * const MiaAPICommand_Live_GetAlbumList     = @"Musician.Get.Albumlist";
 static NSString * const MiaAPICommand_Live_CommentRoom		= @"Live.Room.Post.Comment";
 static NSString * const MiaAPICommand_Live_PostCreate		= @"Live.Room.Post.Create";
 static NSString * const MiaAPICommand_Live_PutTitle			= @"Live.Room.Put.Title";
