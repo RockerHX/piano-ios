@@ -145,7 +145,7 @@
             [JOAutoLayout removeAutoLayoutWithHeightSelfView:self.enterCommentView superView:self.view];
             [JOAutoLayout autoLayoutWithHeight:kAlbumEnterCommentViewHeight+addHeight selfView:self.enterCommentView superView:self.view];
         
-        [self.enterCommentView updateTextViewWithEnableState:YES];
+        [self.enterCommentView updateTextViewWithEnableState:enableState];
         
     }];
     [self.view addSubview:_enterCommentView];

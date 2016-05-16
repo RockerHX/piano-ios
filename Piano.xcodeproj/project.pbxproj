@@ -28,6 +28,10 @@
 		4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
 		4204445D1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
 		4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
+		420BBB491CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */; };
+		420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */; };
+		420BBB4D1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */; };
+		420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */; };
 		42984AFB1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
@@ -550,6 +554,10 @@
 		420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewController.m; sourceTree = "<group>"; };
 		4204445B1CE5863B00F6B303 /* MIAAlbumRewardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewModel.h; sourceTree = "<group>"; };
 		4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewModel.m; sourceTree = "<group>"; };
+		420BBB471CE99C9D00F52AB2 /* MIAPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentViewController.h; sourceTree = "<group>"; };
+		420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentViewController.m; sourceTree = "<group>"; };
+		420BBB4B1CE99D0E00F52AB2 /* MIAPayHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryViewController.h; sourceTree = "<group>"; };
+		420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryViewController.m; sourceTree = "<group>"; };
 		42984ADB1CDAEF84004F00D5 /* NSObject+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JOExtend.h"; sourceTree = "<group>"; };
 		42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JOExtend.m"; sourceTree = "<group>"; };
 		42984ADD1CDAEF84004F00D5 /* NSString+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JOExtend.h"; sourceTree = "<group>"; };
@@ -1145,6 +1153,17 @@
 				398451F01CAD05DB009018C6 /* UserSetting.m */,
 			);
 			path = UserSetting;
+			sourceTree = "<group>";
+		};
+		420BBB461CE99C3E00F52AB2 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				420BBB471CE99C9D00F52AB2 /* MIAPaymentViewController.h */,
+				420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */,
+				420BBB4B1CE99D0E00F52AB2 /* MIAPayHistoryViewController.h */,
+				420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 		42984AD91CDAEF84004F00D5 /* JO */ = {
@@ -1978,6 +1997,7 @@
 				CD2E72771CA11DE0003CDB77 /* Live */,
 				CD6C19581CA5193B00849B39 /* Play */,
 				CDF300F61CA8D0AE00C19C32 /* Albums */,
+				420BBB461CE99C3E00F52AB2 /* Payment */,
 				CD2E72751CA11DE0003CDB77 /* HXMainViewController.h */,
 				CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */,
 			);
@@ -3004,6 +3024,7 @@
 				42A0DAEC1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */,
 				42984B061CDAEF84004F00D5 /* JOFCrash.m in Sources */,
 				CD7960D91CBE594C004CC661 /* HXWatcherCell.m in Sources */,
+				420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */,
 				CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */,
 				CD7960DB1CBE594C004CC661 /* LocationMgr.m in Sources */,
 				CD7960DC1CBE594C004CC661 /* HXProfileLiveCell.m in Sources */,
@@ -3036,6 +3057,7 @@
 				CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */,
 				42984B5D1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */,
 				CD7960F61CBE594C004CC661 /* HXAttentionModel.m in Sources */,
+				420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */,
 				CD7960F71CBE594C004CC661 /* NSTimer+BlockSupport.m in Sources */,
 				CD7960F81CBE594C004CC661 /* HXReplayViewModel.m in Sources */,
 				CD7960F91CBE594C004CC661 /* HXPathManager.m in Sources */,
@@ -3120,6 +3142,7 @@
 				42984B481CDC6137004F00D5 /* JOUIManage.m in Sources */,
 				398451EC1CAD0543009018C6 /* SingleSongPlayer.m in Sources */,
 				CD2367AF1CA93D51002C8233 /* HXMeAttentionContainerCell.m in Sources */,
+				420BBB491CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */,
 				CDE2FC841CABD43700476968 /* HXProfileViewModel.m in Sources */,
 				CD2949FA1CA2919B00CA3C3F /* HXRegisterViewController.m in Sources */,
 				CD5D027B1CB60608000285DC /* HXPreviewLiveTopBar.m in Sources */,
@@ -3296,6 +3319,7 @@
 				429CC1DE1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */,
 				CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */,
 				CD858D991CAE6B14007441E9 /* HXProfileVideoContainerCell.m in Sources */,
+				420BBB4D1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */,
 				CD5F21791CAD4C930067A1DA /* HXAnchorModel.m in Sources */,
 				42984B031CDAEF84004F00D5 /* JOAutoLayout.m in Sources */,
 				CDE0171C1CE489AC005645D5 /* HXDownLoadCache.m in Sources */,
