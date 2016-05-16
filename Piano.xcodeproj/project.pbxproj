@@ -195,7 +195,6 @@
 		CD5F21531CAD1D850067A1DA /* HXLiveCommentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21521CAD1D850067A1DA /* HXLiveCommentViewModel.m */; };
 		CD5F215D1CAD2E8B0067A1DA /* HXLiveAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F215A1CAD2E8B0067A1DA /* HXLiveAnchorView.m */; };
 		CD5F215E1CAD2E8B0067A1DA /* HXLiveAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5F215B1CAD2E8B0067A1DA /* HXLiveAnchorView.xib */; };
-		CD5F21661CAD2F6A0067A1DA /* HXWatcherContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21651CAD2F6A0067A1DA /* HXWatcherContainerViewController.m */; };
 		CD5F21691CAD34710067A1DA /* HXWatcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21681CAD34710067A1DA /* HXWatcherCell.m */; };
 		CD5F21721CAD4C3F0067A1DA /* HXProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21711CAD4C3F0067A1DA /* HXProfileModel.m */; };
 		CD5F21751CAD4C560067A1DA /* HXAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21741CAD4C560067A1DA /* HXAlbumModel.m */; };
@@ -268,7 +267,6 @@
 		CD7960B91CBE594C004CC661 /* MiaRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FC1C9AB0E800ED0454 /* MiaRequestItem.m */; };
 		CD7960BA1CBE594C004CC661 /* HXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F071CA13BB4003867B8 /* HXLabel.m */; };
 		CD7960BB1CBE594C004CC661 /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */; };
-		CD7960BC1CBE594C004CC661 /* HXWatcherContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21651CAD2F6A0067A1DA /* HXWatcherContainerViewController.m */; };
 		CD7960BD1CBE594C004CC661 /* HXGuestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A6D101CAB77D6001A68B1 /* HXGuestModel.m */; };
 		CD7960BE1CBE594C004CC661 /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */; };
 		CD7960BF1CBE594C004CC661 /* HXCountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02761CB60189000285DC /* HXCountDownViewController.m */; };
@@ -775,8 +773,6 @@
 		CD5F21591CAD2E8B0067A1DA /* HXLiveAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveAnchorView.h; sourceTree = "<group>"; };
 		CD5F215A1CAD2E8B0067A1DA /* HXLiveAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveAnchorView.m; sourceTree = "<group>"; };
 		CD5F215B1CAD2E8B0067A1DA /* HXLiveAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLiveAnchorView.xib; sourceTree = "<group>"; };
-		CD5F21641CAD2F6A0067A1DA /* HXWatcherContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherContainerViewController.h; sourceTree = "<group>"; };
-		CD5F21651CAD2F6A0067A1DA /* HXWatcherContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherContainerViewController.m; sourceTree = "<group>"; };
 		CD5F21671CAD34710067A1DA /* HXWatcherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherCell.h; sourceTree = "<group>"; };
 		CD5F21681CAD34710067A1DA /* HXWatcherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherCell.m; sourceTree = "<group>"; };
 		CD5F21701CAD4C3F0067A1DA /* HXProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileModel.h; sourceTree = "<group>"; };
@@ -1801,8 +1797,6 @@
 		CD6C193E1CA4E4AE00849B39 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CD5F21641CAD2F6A0067A1DA /* HXWatcherContainerViewController.h */,
-				CD5F21651CAD2F6A0067A1DA /* HXWatcherContainerViewController.m */,
 				CD6C193F1CA4E4AE00849B39 /* HXLiveCommentContainerViewController.h */,
 				CD6C19401CA4E4AE00849B39 /* HXLiveCommentContainerViewController.m */,
 				CD5F214D1CAD10B80067A1DA /* HXLiveCommentViewController.h */,
@@ -2941,7 +2935,6 @@
 				CD7960B91CBE594C004CC661 /* MiaRequestItem.m in Sources */,
 				CD7960BA1CBE594C004CC661 /* HXLabel.m in Sources */,
 				CD7960BB1CBE594C004CC661 /* HXAlbumsControlCell.m in Sources */,
-				CD7960BC1CBE594C004CC661 /* HXWatcherContainerViewController.m in Sources */,
 				CD7960BD1CBE594C004CC661 /* HXGuestModel.m in Sources */,
 				CD7960BE1CBE594C004CC661 /* HXAlbumsCommentCountCell.m in Sources */,
 				CD7960BF1CBE594C004CC661 /* HXCountDownViewController.m in Sources */,
@@ -3159,7 +3152,6 @@
 				429CC1FD1CE04AD3004BCC0C /* MIAViewModel.m in Sources */,
 				CDED8F271CA13BB4003867B8 /* HXLabel.m in Sources */,
 				CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */,
-				CD5F21661CAD2F6A0067A1DA /* HXWatcherContainerViewController.m in Sources */,
 				398A6D111CAB77D6001A68B1 /* HXGuestModel.m in Sources */,
 				CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */,
 				429CC2181CE08F47004BCC0C /* MIAAlbumModel.m in Sources */,

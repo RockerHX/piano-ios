@@ -14,7 +14,6 @@
 #import "HXRecordBottomBar.h"
 #import "HXPreviewLiveViewController.h"
 #import "HXLiveEndViewController.h"
-#import "HXWatcherContainerViewController.h"
 #import "HXLiveCommentContainerViewController.h"
 #import "HXLiveCommentViewController.h"
 #import "HXRecordLiveViewModel.h"
@@ -29,7 +28,6 @@ HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate,
 HXPreviewLiveViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
-HXWatcherContainerViewControllerDelegate,
 HXLiveCommentContainerViewControllerDelegate
 >
 @end
@@ -38,7 +36,6 @@ HXLiveCommentContainerViewControllerDelegate
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
     HXLiveEndViewController *_endViewController;
-    HXWatcherContainerViewController *_watcherContianer;
     HXLiveCommentContainerViewController *_commentContainer;
     
     NSString *_roomID;
@@ -67,9 +64,6 @@ HXLiveCommentContainerViewControllerDelegate
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
         _endViewController = segue.destinationViewController;
         _endViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXWatcherContainerViewController class])]) {
-        _watcherContianer = segue.destinationViewController;
-        _watcherContianer.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
         _commentContainer = segue.destinationViewController;
         _commentContainer.delegate = self;
@@ -154,7 +148,7 @@ HXLiveCommentContainerViewControllerDelegate
     @weakify(self)
     [_viewModel.enterSignal subscribeNext:^(NSArray *watchers) {
         @strongify(self)
-        self->_watcherContianer.watchers = watchers;
+#warning TODO
         self.anchorView.countLabel.text = _viewModel.onlineCount;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
@@ -194,7 +188,7 @@ HXLiveCommentContainerViewControllerDelegate
         b = [zegoLiveApi setFilter:ZEGO_FILTER_NONE];
         assert(b);
         
-        b = [zegoLiveApi startPublishingWithTitle:@"Andy-Live" streamID:nil];
+        b = [zegoLiveApi startPublishingWithTitle:_roomTitle streamID:nil];
         assert(b);
         NSLog(@"%s, ret: %d", __func__, ret);
     }
@@ -309,22 +303,22 @@ HXLiveCommentContainerViewControllerDelegate
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - HXWatcherContainerViewControllerDelegate Methods
-- (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
-    [HXWatcherBoard showWithWatcher:watcher gaged:^{
-        [MiaAPIHelper forbidUser:watcher.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-            if (success) {
-                [self showBannerWithPrompt:[watcher.nickName stringByAppendingString:@"已禁言！"]];
-            } else {
-                [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-            }
-        } timeoutBlock:^(MiaRequestItem *requestItem) {
-            [self showBannerWithPrompt:TimtOutPrompt];
-        }];
-    } closed:^{
-        ;
-    }];
-}
+//#pragma mark - HXWatcherContainerViewControllerDelegate Methods
+//- (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
+//    [HXWatcherBoard showWithWatcher:watcher gaged:^{
+//        [MiaAPIHelper forbidUser:watcher.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+//            if (success) {
+//                [self showBannerWithPrompt:[watcher.nickName stringByAppendingString:@"已禁言！"]];
+//            } else {
+//                [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
+//            }
+//        } timeoutBlock:^(MiaRequestItem *requestItem) {
+//            [self showBannerWithPrompt:TimtOutPrompt];
+//        }];
+//    } closed:^{
+//        ;
+//    }];
+//}
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {

@@ -8,7 +8,6 @@
 
 #import "HXWatchLiveViewController.h"
 #import "HXZegoAVKitManager.h"
-#import "HXWatcherContainerViewController.h"
 #import "HXLiveCommentContainerViewController.h"
 #import "HXLiveEndViewController.h"
 #import "HXLiveCommentViewController.h"
@@ -28,7 +27,6 @@
 ZegoLiveApiDelegate,
 HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
-HXWatcherContainerViewControllerDelegate,
 HXLiveCommentContainerViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
 HXLiveAlbumViewDelegate
@@ -37,7 +35,6 @@ HXLiveAlbumViewDelegate
 
 
 @implementation HXWatchLiveViewController {
-    HXWatcherContainerViewController *_watcherContianer;
     HXLiveCommentContainerViewController *_commentContainer;
     HXLiveEndViewController *_endViewController;
     HXWatchLiveViewModel *_viewModel;
@@ -55,10 +52,7 @@ HXLiveAlbumViewDelegate
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *identifier = segue.identifier;
-    if ([identifier isEqualToString:NSStringFromClass([HXWatcherContainerViewController class])]) {
-        _watcherContianer = segue.destinationViewController;
-        _watcherContianer.delegate = self;
-    } else if ([identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
+    if ([identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
         _commentContainer = segue.destinationViewController;
         _commentContainer.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
@@ -114,16 +108,12 @@ HXLiveAlbumViewDelegate
 
 - (void)signalLink {
     @weakify(self)
-    [_viewModel.enterSignal subscribeNext:^(NSArray *watchers) {
+    [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         @strongify(self)
-        self->_watcherContianer.watchers = watchers;
+        self->_commentContainer.comments = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
-    }];
-    [_viewModel.commentSignal subscribeNext:^(NSArray *comments) {
-        @strongify(self)
-        self->_commentContainer.comments = comments;
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
@@ -316,13 +306,6 @@ HXLiveAlbumViewDelegate
             break;
         }
     }
-}
-
-#pragma mark - HXWatcherContainerViewControllerDelegate Methods
-- (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
-    [HXWatcherBoard showWithWatcher:watcher closed:^{
-        ;
-    }];
 }
 
 #pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
