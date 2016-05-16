@@ -58,12 +58,12 @@ HXLiveCommentCellDelegate
 #pragma mark - Table View Delegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [tableView fd_heightForCellWithIdentifier:NSStringFromClass([HXLiveCommentCell class]) cacheByIndexPath:indexPath configuration:^(HXLiveCommentCell *cell) {
-        [cell updateWithComment:_comments[indexPath.row]];
+        [cell updateWithModel:_comments[indexPath.row]];
     }];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [(HXLiveCommentCell *)cell updateWithComment:_comments[indexPath.row]];
+    [(HXLiveCommentCell *)cell updateWithModel:_comments[indexPath.row]];
 }
 
 #pragma mark - HXLiveCommentCellDelegate Methods

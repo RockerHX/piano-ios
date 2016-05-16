@@ -38,14 +38,22 @@
 }
 
 #pragma mark - Public Methods
-- (void)updateWithComment:(HXCommentModel *)comment {
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:comment.avatarUrl]];
-    
-    NSString *nickName = [comment.nickName stringByAppendingString:@":"];
-    _contentLabel.text = [nickName stringByAppendingString:comment.content];
-    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:_contentLabel.attributedText];
-    [content addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[_contentLabel.text rangeOfString:nickName]];
-    _contentLabel.attributedText = content;
+- (void)updateWithModel:(id)model {
+    if ([model isKindOfClass:[HXWatcherModel class]]) {
+        HXWatcherModel *watcher = model;
+        
+        [_avatar sd_setImageWithURL:[NSURL URLWithString:watcher.avatarUrl]];
+        _contentLabel.text = [watcher.nickName stringByAppendingString:@"来了"];
+    } else if ([model isKindOfClass:[HXCommentModel class]]) {
+        HXCommentModel *comment = model;
+        
+        [_avatar sd_setImageWithURL:[NSURL URLWithString:comment.avatarUrl]];
+        NSString *nickName = [comment.nickName stringByAppendingString:@":"];
+        _contentLabel.text = [nickName stringByAppendingString:comment.content];
+        NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:_contentLabel.attributedText];
+        [content addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[_contentLabel.text rangeOfString:nickName]];
+        _contentLabel.attributedText = content;
+    }
 }
 
 @end

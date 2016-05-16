@@ -11,9 +11,6 @@
 #import "WebSocketMgr.h"
 
 
-static NSUInteger WatcherMAX = 20;
-
-
 @implementation HXWatchLiveViewModel {
     NSMutableArray *_watchersContainer;
     NSMutableArray *_commentsContainer;
@@ -33,6 +30,7 @@ static NSUInteger WatcherMAX = 20;
 - (void)initConfigure {
     _watchers = @[];
     _comments = @[];
+    _barrages = @[];
     
     [self signalLink];
     [self notificationConfigure];
@@ -43,9 +41,13 @@ static NSUInteger WatcherMAX = 20;
 }
 
 - (void)signalLink {
-    _enterSignal = RACObserve(self, watchers);
+    _barragesSignal = [RACSubject subject];
+    @weakify(self)
+    [[RACObserve(self, watchers) merge:RACObserve(self, comments)] subscribeNext:^(id x) {
+        @strongify(self)
+        [self.barragesSignal sendNext:self.barrages];
+    }];
     _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
-    _commentSignal = RACObserve(self, comments);
 }
 
 - (void)notificationConfigure {
@@ -130,26 +132,23 @@ static NSUInteger WatcherMAX = 20;
 #pragma mark - Public Methods
 - (void)addWatcher:(NSDictionary *)data {
     NSMutableArray *watchers = _watchers.mutableCopy;
-    if (watchers.count >= WatcherMAX) {
-        [watchers removeLastObject];
-    }
+    NSMutableArray *barrages = _barrages.mutableCopy;
+    HXWatcherModel *watcher = [HXWatcherModel mj_objectWithKeyValues:data];
+    [barrages addObject:watcher];
+    [watchers addObject:watcher];
     
-    HXWatcherModel *model = [HXWatcherModel mj_objectWithKeyValues:data];
-    for (HXWatcherModel *watcher in _watchers) {
-        if ([model.uID isEqualToString:watcher.uID]) {
-            return;
-        }
-    }
-    
-    [watchers insertObject:model atIndex:0];
+    self.barrages = [barrages copy];
     self.watchers = [watchers copy];
 }
 
 - (void)addComment:(NSDictionary *)data {
     NSMutableArray *comments = _comments.mutableCopy;
-    HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:data];
-    [comments addObject:model];
+    NSMutableArray *barrages = _barrages.mutableCopy;
+    HXCommentModel *comment = [HXCommentModel mj_objectWithKeyValues:data];
+    [barrages addObject:comment];
+    [comments addObject:comment];
     
+    self.barrages = [barrages copy];
     self.comments = [comments copy];
 }
 

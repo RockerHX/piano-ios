@@ -14,9 +14,8 @@
 
 @interface HXWatchLiveViewModel : NSObject
 
-@property (nonatomic, strong, readonly)  RACSignal *enterSignal;
+@property (nonatomic, strong, readonly) RACSubject *barragesSignal;
 @property (nonatomic, strong, readonly)  RACSignal *exitSignal;
-@property (nonatomic, strong, readonly)  RACSignal *commentSignal;
 
 @property (nonatomic, strong, readonly) RACCommand *enterRoomCommand;
 @property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
@@ -34,6 +33,7 @@
 
 @property (nonatomic, strong) NSArray<HXWatcherModel *> *watchers;
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
+@property (nonatomic, strong)                   NSArray *barrages;
 
 
 - (instancetype)initWithRoomID:(NSString *)roomID;
