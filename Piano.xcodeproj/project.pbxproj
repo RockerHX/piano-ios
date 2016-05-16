@@ -2672,9 +2672,6 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
-					CD79608B1CBE594C004CC661 = {
-						DevelopmentTeam = H2JE2CWJS7;
-					};
 					CD8A9A6B1C9906CA00698DE9 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = PQE2NCR38L;
@@ -3371,8 +3368,8 @@
 			baseConfigurationReference = F16C66128D5E0919759ABA18 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3383,7 +3380,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ac1b5bfb-300b-41e2-adf0-52d586e30630";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -3392,8 +3389,8 @@
 			baseConfigurationReference = 4704094A70120BB39E18C473 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3404,7 +3401,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5a18aecf-fbfd-4290-bd13-e05b06bc8ef0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
