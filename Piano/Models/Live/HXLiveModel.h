@@ -22,6 +22,8 @@
 @property (nonatomic, assign) NSInteger  zegoID;
 @property (nonatomic, assign) NSInteger  zegoToken;
 @property (nonatomic, assign) NSInteger  streamID;
+@property (nonatomic, strong)  NSString *channelID;
+@property (nonatomic, strong)  NSString *streamAlias;
 
 @property (nonatomic, assign) NSInteger  onlineCount;
 @property (nonatomic, assign) NSInteger  viewCount;
