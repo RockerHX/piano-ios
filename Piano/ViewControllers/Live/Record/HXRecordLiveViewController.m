@@ -146,17 +146,12 @@ HXLiveCommentContainerViewControllerDelegate
 
 - (void)signalLink {
     @weakify(self)
-    [_viewModel.enterSignal subscribeNext:^(NSArray *watchers) {
+    [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         @strongify(self)
-#warning TODO
-        self.anchorView.countLabel.text = _viewModel.onlineCount;
+        self->_commentContainer.comments = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         ;
-    }];
-    [_viewModel.commentSignal subscribeNext:^(NSArray *comments) {
-        @strongify(self)
-        self->_commentContainer.comments = comments;
     }];
 }
 

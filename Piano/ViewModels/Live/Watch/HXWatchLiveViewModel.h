@@ -33,7 +33,7 @@
 
 @property (nonatomic, strong) NSArray<HXWatcherModel *> *watchers;
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
-@property (nonatomic, strong)                   NSArray *barrages;
+@property (nonatomic, strong, readonly)         NSArray *barrages;
 
 
 - (instancetype)initWithRoomID:(NSString *)roomID;

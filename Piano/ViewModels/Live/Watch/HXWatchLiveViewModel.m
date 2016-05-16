@@ -137,7 +137,7 @@
     [barrages addObject:watcher];
     [watchers addObject:watcher];
     
-    self.barrages = [barrages copy];
+    _barrages = [barrages copy];
     self.watchers = [watchers copy];
 }
 
@@ -148,7 +148,7 @@
     [barrages addObject:comment];
     [comments addObject:comment];
     
-    self.barrages = [barrages copy];
+    _barrages = [barrages copy];
     self.comments = [comments copy];
 }
 
