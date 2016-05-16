@@ -7,6 +7,7 @@
 //
 
 #import "MIAAlbumViewController.h"
+#import "MIAAlbumRewardViewController.h"
 #import "UIImageView+WebCache.h"
 #import "UIViewController+HXClass.h"
 #import "MIAAlbumBarView.h"
@@ -113,7 +114,7 @@
     [JOAutoLayout autoLayoutWithTopSpaceDistance:20. selfView:_albumBarView superView:self.view];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumBarView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:50. selfView:_albumBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:kAlbumBarViewHeight selfView:_albumBarView superView:self.view];
 }
 
 - (void)createAlbumEnterCommentView{
@@ -132,8 +133,19 @@
         }];
     }];
     
-    [_enterCommentView textViewHeightChangeHandler:^(CGFloat textViewHeight) {
-//    @strongify(self);
+    [_enterCommentView textViewHeightChangeHandler:^(CGFloat textViewHeight,BOOL enableState) {
+    @strongify(self);
+        
+        CGFloat tempHeight = 36.;
+        
+        CGFloat addHeight = textViewHeight - tempHeight;
+//        NSLog(@"addHeight:%f",addHeight);
+        
+//        [self.enterCommentView updateTextViewWithEnableState:enableState];
+            [JOAutoLayout removeAutoLayoutWithHeightSelfView:self.enterCommentView superView:self.view];
+            [JOAutoLayout autoLayoutWithHeight:kAlbumEnterCommentViewHeight+addHeight selfView:self.enterCommentView superView:self.view];
+        
+        [self.enterCommentView updateTextViewWithEnableState:YES];
         
     }];
     [self.view addSubview:_enterCommentView];
@@ -141,7 +153,7 @@
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_enterCommentView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_enterCommentView superView:self.view];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_enterCommentView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:50. selfView:_enterCommentView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:kAlbumEnterCommentViewHeight selfView:_enterCommentView superView:self.view];
 }
 
 - (void)createAlbumTableView{
@@ -164,6 +176,15 @@
 - (void)createAlbumTableHeadView{
 
     self.albumTableHeadView = [[MIAAlbumDetailView alloc] init];
+    @weakify(self);
+    [_albumTableHeadView rewardAlbumButtonClickHanlder:^{
+    @strongify(self);
+        MIAAlbumRewardViewController *rewardViewController = [MIAAlbumRewardViewController new];
+        [rewardViewController setAlbumModel:self.albumViewModel.albumModel];
+        [self.navigationController presentViewController:rewardViewController animated:YES completion:^{
+            
+        }];
+    }];
     [_albumTableHeadView setFrame:CGRectMake(0., 0., View_Width(self.view), [_albumTableHeadView albumDetailViewHeight])];
     
 }

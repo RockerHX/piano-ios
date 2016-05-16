@@ -12,7 +12,7 @@
 
 CGFloat const kAlbumSongCellHeight = 50.;//歌曲的cell的高度
 CGFloat const kAlbumBarViewHeight = 50.;//头部Bar的高度
-CGFloat const kAlbumEnterCommentViewHeight = 50.;//底部输入评论的框的高度
+CGFloat const kAlbumEnterCommentViewHeight = 55.;//底部输入评论的框的高度
 
 @interface MIAAlbumViewModel(){
 
@@ -95,6 +95,11 @@ CGFloat const kAlbumEnterCommentViewHeight = 50.;//底部输入评论的框的�
     if ([_albumDetailModel.commentList count]) {
         [_cellDataArray addObject:_albumDetailModel.commentList];
     }
+}
+
+- (CGFloat)albumDetailViewHeight{
+
+    return albumDetailViewHeight;
 }
 
 @end

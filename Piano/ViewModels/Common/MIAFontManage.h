@@ -48,6 +48,14 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
     MIAFontType_Album_Comment_Enter,//评论输入框
     MIAFontType_Album_Comment_Send,//发送评论的按钮
     
+    //MARK: 专辑打赏页面
+    MIAFontType_AlbumReward_Title,//专辑的标题
+    MIAFontType_AlbumReward_Singer,//演唱者
+    MIAFontType_AlbumReward_Tip,//提示
+    MIAFontType_AlbumReward_RewardButtonTitle,//打赏的按钮的标题
+    MIAFontType_AlbumReward_Account,//M币的账户余额
+    MIAFontType_AlbumReward_Recharge,//充值
+    
 };
 
 

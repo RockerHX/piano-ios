@@ -24,6 +24,10 @@
 		398451ED1CAD0543009018C6 /* SongPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451EA1CAD0543009018C6 /* SongPreloader.m */; };
 		398451F11CAD05DB009018C6 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451F01CAD05DB009018C6 /* UserSetting.m */; };
 		398A6D111CAB77D6001A68B1 /* HXGuestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A6D101CAB77D6001A68B1 /* HXGuestModel.m */; };
+		420444591CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
+		4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
+		4204445D1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
+		4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
 		42984AFB1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
@@ -538,6 +542,10 @@
 		398451F01CAD05DB009018C6 /* UserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetting.m; sourceTree = "<group>"; };
 		398A6D0F1CAB77D6001A68B1 /* HXGuestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXGuestModel.h; sourceTree = "<group>"; };
 		398A6D101CAB77D6001A68B1 /* HXGuestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGuestModel.m; sourceTree = "<group>"; };
+		420444571CE56DCF00F6B303 /* MIAAlbumRewardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewController.h; sourceTree = "<group>"; };
+		420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewController.m; sourceTree = "<group>"; };
+		4204445B1CE5863B00F6B303 /* MIAAlbumRewardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewModel.h; sourceTree = "<group>"; };
+		4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewModel.m; sourceTree = "<group>"; };
 		42984ADB1CDAEF84004F00D5 /* NSObject+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JOExtend.h"; sourceTree = "<group>"; };
 		42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JOExtend.m"; sourceTree = "<group>"; };
 		42984ADD1CDAEF84004F00D5 /* NSString+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JOExtend.h"; sourceTree = "<group>"; };
@@ -2549,6 +2557,8 @@
 				CDF087E61CBB41C900147DAA /* HXAlbumsCommentViewController.m */,
 				42A0DAE91CE2CC2400F1FCEF /* MIAAlbumViewController.h */,
 				42A0DAEA1CE2CC2400F1FCEF /* MIAAlbumViewController.m */,
+				420444571CE56DCF00F6B303 /* MIAAlbumRewardViewController.h */,
+				420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -2588,6 +2598,8 @@
 				42A0DAFA1CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.m */,
 				429E500E1CE46DDE0008CA85 /* MIAAlbumViewModel.h */,
 				429E500F1CE46DDE0008CA85 /* MIAAlbumViewModel.m */,
+				4204445B1CE5863B00F6B303 /* MIAAlbumRewardViewModel.h */,
+				4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -3018,6 +3030,7 @@
 				CD7961011CBE594C004CC661 /* AppDelegate.m in Sources */,
 				CD7961021CBE594C004CC661 /* MiaAPIHelper.m in Sources */,
 				42A0DAFF1CE2E07300F1FCEF /* MIAAlbumPlayView.m in Sources */,
+				4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */,
 				CD7961031CBE594C004CC661 /* HXReplaySlider.m in Sources */,
 				CD7961041CBE594C004CC661 /* CacheHelper.m in Sources */,
 				CD7961051CBE594C004CC661 /* HXReplayModel.m in Sources */,
@@ -3044,6 +3057,7 @@
 				CD7961131CBE594C004CC661 /* HXWatcherBoard.m in Sources */,
 				42984B491CDC6137004F00D5 /* JOUIManage.m in Sources */,
 				CD7961141CBE594C004CC661 /* HXPlayTopBar.m in Sources */,
+				4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */,
 				CD7961151CBE594C004CC661 /* NSString+IsNull.m in Sources */,
 				42A0DAFE1CE2E07100F1FCEF /* MIAAlbumSongView.m in Sources */,
 				CD7961161CBE594C004CC661 /* main.m in Sources */,
@@ -3189,6 +3203,7 @@
 				398451EB1CAD0543009018C6 /* MusicMgr.m in Sources */,
 				398451F11CAD05DB009018C6 /* UserSetting.m in Sources */,
 				429CC1FA1CE04AC5004BCC0C /* MIABaseTableViewCell.m in Sources */,
+				420444591CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */,
 				398451E31CAD0300009018C6 /* NSObject+BlockSupport.m in Sources */,
 				CD6C194B1CA4E7AD00849B39 /* HXReplayBottomBar.m in Sources */,
 				42984B501CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */,
@@ -3237,6 +3252,7 @@
 				CDE2FC871CABF3F000476968 /* HXWatcherModel.m in Sources */,
 				429CC2001CE0689C004BCC0C /* NSArray+JOExtend.m in Sources */,
 				42984B681CDCAB9A004F00D5 /* MIAProfileVideoCell.m in Sources */,
+				4204445D1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */,
 				CDE016DF1CE2D8D8005645D5 /* HXLiveRewardViewController.m in Sources */,
 				CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */,
 				CDC063171CB3E4B600E66F2A /* HXDiscoveryModel.m in Sources */,
