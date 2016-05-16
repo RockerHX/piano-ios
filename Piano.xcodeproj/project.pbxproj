@@ -408,6 +408,7 @@
 		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
 		CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */; };
 		CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
+		CD8AC6801CE974AD00CD1DC4 /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD8F86A91CD099EA00D8C8A4 /* HXDiscoveryShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8F86A81CD099EA00D8C8A4 /* HXDiscoveryShowCell.m */; };
 		CD9167671CAE524C000A12DC /* ChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167641CAE524C000A12DC /* ChangePwdViewController.m */; };
 		CD9167681CAE524C000A12DC /* HXFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167661CAE524C000A12DC /* HXFeedBackViewController.m */; };
@@ -429,7 +430,6 @@
 		CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */; };
 		CDB456F71CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
-		CDB456F91CE5E94600F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDBCFAF51CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
@@ -492,6 +492,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				CD8AC6801CE974AD00CD1DC4 /* ZegoAVKit2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -981,7 +982,6 @@
 				CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */,
 				CD7961281CBE594C004CC661 /* libPods.a in Frameworks */,
 				CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */,
-				CDB456F91CE5E94600F4450B /* ZegoAVKit2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
