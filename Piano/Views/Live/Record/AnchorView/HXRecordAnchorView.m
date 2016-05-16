@@ -25,7 +25,7 @@ HXXibImplementation
 }
 
 #pragma mark - Public Methods
-- (void)starRecordTime {
+- (void)startRecordTime {
     uint64_t interval = NSEC_PER_SEC;
     dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);

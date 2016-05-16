@@ -203,6 +203,7 @@ HXLiveCommentContainerViewControllerDelegate
 
 - (void)onPublishSucc:(NSString *)streamID {
     NSLog(@"%s, stream: %@", __func__, streamID);
+    [_anchorView startRecordTime];
 }
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID {
