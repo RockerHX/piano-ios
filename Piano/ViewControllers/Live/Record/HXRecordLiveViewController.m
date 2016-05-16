@@ -45,6 +45,7 @@ HXLiveCommentContainerViewControllerDelegate
     HXRecordLiveViewModel *_viewModel;
     BOOL _frontCamera;
     BOOL _microEnable;
+    BOOL _beauty;
 }
 
 #pragma mark - Class Methods
@@ -99,6 +100,7 @@ HXLiveCommentContainerViewControllerDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    _frontCamera = YES;
     _microEnable = YES;
 }
 
@@ -107,15 +109,27 @@ HXLiveCommentContainerViewControllerDelegate
     [[HXZegoAVKitManager manager].zegoLiveApi setDelegate:self];
     
     [self updateAnchorView];
+    [self startPreview];
 }
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
     [_anchorView stopRecordTime];
-    [[HXZegoAVKitManager manager].zegoLiveApi takeLocalViewSnapshot];
+    
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    [zegoLiveApi takeLocalViewSnapshot];
 }
 
 #pragma mark - Private Methods
+- (void)startPreview {
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
+    [zegoLiveApi setLocalView:_liveView];
+    [zegoLiveApi setLocalViewMode:ZegoVideoViewModeScaleAspectFill];
+    [zegoLiveApi setFrontCam:_frontCamera];
+    [zegoLiveApi startPreview];
+}
+
 - (void)shouldSteady:(BOOL)steady {
     [[UIApplication sharedApplication] setIdleTimerDisabled:steady];
 }
@@ -165,19 +179,13 @@ HXLiveCommentContainerViewControllerDelegate
     if (error == 0) {
         ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
         
-        [zegoLiveApi stopPublishing];
-        [zegoLiveApi setLocalView:_liveView];
-        
         int ret = [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
         assert(ret == 0);
         
-        bool b = [zegoLiveApi setFrontCam:_frontCamera];
+        bool b = [zegoLiveApi enableMic:_microEnable];
         assert(b);
         
-        b = [zegoLiveApi enableMic:_microEnable];
-        assert(b);
-        
-        b = [zegoLiveApi enableBeautifying:true];
+        b = [zegoLiveApi enableBeautifying:_beauty];
         assert(b);
         
         b = [zegoLiveApi setFilter:ZEGO_FILTER_NONE];
@@ -222,13 +230,11 @@ HXLiveCommentContainerViewControllerDelegate
     NSLog(@"%s", __func__);
 }
 
-- (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {
-    ;
-}
+- (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {}
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {
-    UIImage *snapShotImage = [UIImage imageWithCGImage:img];
-    [self endLiveWithSnapShotImage:snapShotImage];
+//    UIImage *snapShotImage = [UIImage imageWithCGImage:img];
+//    [self endLiveWithSnapShotImage:snapShotImage];
 }
 
 #pragma mark - HXRecordAnchorViewDelegate Methods
@@ -277,12 +283,13 @@ HXLiveCommentContainerViewControllerDelegate
 }
 
 #pragma mark - HXPreviewLiveViewControllerDelegate Methods
-- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl frontCamera:(BOOL)frontCamera {
+- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl frontCamera:(BOOL)frontCamera beauty:(BOOL)beauty {
     
     _roomID = roomID;
     _roomTitle = roomTitle;
     _shareUrl = shareUrl;
     _frontCamera = frontCamera;
+    _beauty = beauty;
     
     [self startPublish];
     
@@ -290,6 +297,9 @@ HXLiveCommentContainerViewControllerDelegate
     [self signalLink];
     
     _previewContainer.hidden = YES;
+    _topBar.hidden = NO;
+    _barragesView.hidden = NO;
+    _bottomBar.hidden = NO;
     [_previewContainer removeFromSuperview];
     _previewContainer = nil;
 }

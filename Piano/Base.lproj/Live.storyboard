@@ -986,10 +986,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsK-Vm-4cd" userLabel="Preview">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWK-H3-FKn" userLabel="Mask View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
@@ -1048,24 +1044,20 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4xH-8K-Dnn" firstAttribute="top" secondItem="HXX-bM-dit" secondAttribute="top" id="10f-FX-nvr"/>
                             <constraint firstItem="WWK-H3-FKn" firstAttribute="leading" secondItem="HXX-bM-dit" secondAttribute="leading" id="1sj-Gc-TDE"/>
                             <constraint firstItem="4xH-8K-Dnn" firstAttribute="leading" secondItem="HXX-bM-dit" secondAttribute="leading" id="1wS-rV-SqD"/>
                             <constraint firstAttribute="bottom" secondItem="4xH-8K-Dnn" secondAttribute="bottom" id="835-Jc-4vG"/>
-                            <constraint firstAttribute="bottom" secondItem="bsK-Vm-4cd" secondAttribute="bottom" id="9fQ-rC-eGr"/>
-                            <constraint firstAttribute="trailing" secondItem="bsK-Vm-4cd" secondAttribute="trailing" id="AAg-67-D50"/>
                             <constraint firstItem="an9-wJ-Woj" firstAttribute="top" secondItem="HXX-bM-dit" secondAttribute="top" id="AZu-bY-h0z"/>
                             <constraint firstItem="an9-wJ-Woj" firstAttribute="leading" secondItem="HXX-bM-dit" secondAttribute="leading" id="GIZ-HW-BzZ"/>
-                            <constraint firstItem="bsK-Vm-4cd" firstAttribute="top" secondItem="HXX-bM-dit" secondAttribute="top" id="HLW-b7-q5J"/>
                             <constraint firstAttribute="trailing" secondItem="4xH-8K-Dnn" secondAttribute="trailing" id="PyG-CA-6ez"/>
                             <constraint firstItem="WWK-H3-FKn" firstAttribute="top" secondItem="HXX-bM-dit" secondAttribute="top" id="gjj-vF-Waz"/>
                             <constraint firstAttribute="trailing" secondItem="an9-wJ-Woj" secondAttribute="trailing" id="iKR-T8-dbC"/>
                             <constraint firstAttribute="bottom" secondItem="WWK-H3-FKn" secondAttribute="bottom" id="kQQ-PA-UU6"/>
                             <constraint firstAttribute="trailing" secondItem="WWK-H3-FKn" secondAttribute="trailing" id="m8y-2t-NoO"/>
                             <constraint firstAttribute="bottom" secondItem="an9-wJ-Woj" secondAttribute="bottom" id="y0A-m8-qdB"/>
-                            <constraint firstItem="bsK-Vm-4cd" firstAttribute="leading" secondItem="HXX-bM-dit" secondAttribute="leading" id="zjI-p7-ZGl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WGD-4I-NgM"/>
@@ -1075,7 +1067,6 @@
                         <outlet property="controlContainerView" destination="an9-wJ-Woj" id="de5-m1-nEy"/>
                         <outlet property="countDownContainerView" destination="4xH-8K-Dnn" id="jjC-62-Tvh"/>
                         <outlet property="editView" destination="MXs-zs-zya" id="U4b-zx-6V8"/>
-                        <outlet property="preview" destination="bsK-Vm-4cd" id="hNn-UH-jYR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tJE-rL-4Sa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1101,10 +1092,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dU-lx-FmV" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt2-bD-MKs" userLabel="Top Bar">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt2-bD-MKs" userLabel="Top Bar">
                                         <rect key="frame" x="10" y="15" width="300" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="153" placeholderIntrinsicHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="xC5-yV-giV" userLabel="Anchor Container" customClass="HXRecordAnchorView">
@@ -1134,7 +1125,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Etk-iH-YCy" secondAttribute="trailing" id="oXY-mC-HA7"/>
                                         </constraints>
                                     </view>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE0-wM-lMe" userLabel="Comment Container">
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE0-wM-lMe" userLabel="Comment Container">
                                         <rect key="frame" x="10" y="338" width="300" height="160"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="ghU-RT-gfi"/>
@@ -1143,7 +1134,7 @@
                                             <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXLiveCommentContainerViewController" id="HeX-r3-laS"/>
                                         </connections>
                                     </containerView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ea-F8-wyq" userLabel="Bottom Bar" customClass="HXRecordBottomBar">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ea-F8-wyq" userLabel="Bottom Bar" customClass="HXRecordBottomBar">
                                         <rect key="frame" x="10" y="508" width="300" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="9j7-5G-fua"/>
@@ -1207,9 +1198,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="anchorView" destination="xC5-yV-giV" id="lEV-Tk-gdx"/>
+                        <outlet property="barragesView" destination="tE0-wM-lMe" id="cIa-K2-e9G"/>
+                        <outlet property="bottomBar" destination="6ea-F8-wyq" id="Dyg-XJ-EZT"/>
                         <outlet property="endCountContainer" destination="N5r-4n-Pmd" id="zQ8-77-Tmp"/>
                         <outlet property="liveView" destination="Agg-0j-dp2" id="xrG-iF-yvF"/>
                         <outlet property="previewContainer" destination="gBE-eG-6gh" id="JkK-rD-9uM"/>
+                        <outlet property="topBar" destination="zt2-bD-MKs" id="kx0-wi-wuB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E11-tB-DEb" userLabel="First Responder" sceneMemberID="firstResponder"/>

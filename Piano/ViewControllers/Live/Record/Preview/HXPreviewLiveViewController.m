@@ -39,6 +39,7 @@ HXPreviewLiveControlViewDelegate
     NSString *_roomTitle;
     NSString *_shareUrl;
     BOOL _frontCamera;
+    BOOL _beauty;
 }
 
 #pragma mark - Segue
@@ -81,26 +82,10 @@ HXPreviewLiveControlViewDelegate
 }
 
 - (void)viewConfigure {
-    [self startPreview];
+    ;
 }
 
 #pragma mark - Private Methods
-- (void)startPreview {
-    [[HXZegoAVKitManager manager].zegoLiveApi setFrontCam:_frontCamera];
-    
-    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
-    [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
-    [zegoLiveApi setLocalView:_preview];
-    [zegoLiveApi setLocalViewMode:ZegoVideoViewModeScaleAspectFill];
-    [zegoLiveApi startPreview];
-}
-
-- (void)stopPreview {
-    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
-    [zegoLiveApi stopPreview];
-    [zegoLiveApi setLocalView:nil];
-}
-
 - (void)startCountDown {
     _countDownContainerView.hidden = NO;
     [_countDownViewController startCountDown];
@@ -142,25 +127,26 @@ HXPreviewLiveControlViewDelegate
     [_countDownContainerView removeFromSuperview];
     _countDownContainerView = nil;
     
-    if (_delegate && [_delegate respondsToSelector:@selector(previewControllerHandleFinishedShouldStartLive:roomID:roomTitle:shareUrl:frontCamera:)]) {
-        [_delegate previewControllerHandleFinishedShouldStartLive:self roomID:_roomID roomTitle:_roomTitle shareUrl:_shareUrl frontCamera:_frontCamera];
+    if (_delegate && [_delegate respondsToSelector:@selector(previewControllerHandleFinishedShouldStartLive:roomID:roomTitle:shareUrl:frontCamera:beauty:)]) {
+        [_delegate previewControllerHandleFinishedShouldStartLive:self roomID:_roomID roomTitle:_roomTitle shareUrl:_shareUrl frontCamera:_frontCamera beauty:_beauty];
     }
 }
 
 #pragma mark - HXPreviewLiveTopBarDelegate Methods
 - (void)topBar:(HXPreviewLiveTopBar *)bar takeAction:(HXPreviewLiveTopBarAction)action {
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     switch (action) {
         case HXPreviewLiveTopBarActionBeauty: {
-            ;
+            _beauty = !_beauty;
+            [zegoLiveApi enableBeautifying:_beauty];
             break;
         }
         case HXPreviewLiveTopBarActionChange: {
             _frontCamera = !_frontCamera;
-            [[HXZegoAVKitManager manager].zegoLiveApi setFrontCam:_frontCamera];
+            [zegoLiveApi setFrontCam:_frontCamera];
             break;
         }
         case HXPreviewLiveTopBarActionColse: {
-            [self stopPreview];
             [self dismissViewControllerAnimated:YES completion:nil];
             break;
         }

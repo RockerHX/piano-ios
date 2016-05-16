@@ -149,6 +149,7 @@ HXDiscoveryContainerViewControllerDelegate
 
 #pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
 - (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model {
+    [container stopPreviewVideo];
     switch (action) {
         case HXDiscoveryContainerActionRefresh: {
             [self startFetchList];
