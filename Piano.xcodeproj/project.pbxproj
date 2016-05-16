@@ -176,8 +176,6 @@
 		CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */; };
 		CD4156C71CB39C890060CBE9 /* HXSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4156C61CB39C890060CBE9 /* HXSongModel.m */; };
 		CD4156CA1CB39CA30060CBE9 /* HXCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4156C91CB39CA30060CBE9 /* HXCommentModel.m */; };
-		CD4492E61CAAA504005F36B3 /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; };
-		CD4492E71CAAA504005F36B3 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD45673A1CAE13B800837DFF /* HXMeMyStationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */; };
 		CD546D011CAE9A63009FB2FD /* FormatTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */; };
 		CD5D02701CB5FB2D000285DC /* HXRecordLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D026F1CB5FB2D000285DC /* HXRecordLiveViewModel.m */; };
@@ -370,7 +368,6 @@
 		CD7961231CBE594C004CC661 /* HXAlbumsCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF087E61CBB41C900147DAA /* HXAlbumsCommentViewController.m */; };
 		CD7961251CBE594C004CC661 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD92AF831CBB9F1000106A89 /* AVFoundation.framework */; };
 		CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */; };
-		CD7961271CBE594C004CC661 /* ZegoAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; };
 		CD7961281CBE594C004CC661 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BFCF29A3BF4A6DA2007B29 /* libPods.a */; };
 		CD79612B1CBE594C004CC661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
 		CD79612C1CBE594C004CC661 /* HXAlbumsBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2367841CA91CFB002C8233 /* HXAlbumsBottomBar.xib */; };
@@ -398,7 +395,6 @@
 		CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
 		CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19511CA4EE8700849B39 /* HXRecordBottomBar.xib */; };
 		CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */; };
-		CD79614B1CBE594C004CC661 /* ZegoAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */; };
 		CD858D901CAE68CA007441E9 /* HXProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */; };
 		CD858D961CAE69AD007441E9 /* HXProfileAlbumContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */; };
@@ -431,6 +427,10 @@
 		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
 		CDB099EF1CB520C000C47EA0 /* HXRecordAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */; };
 		CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */; };
+		CDB456F71CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
+		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
+		CDB456F91CE5E94600F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
+		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDBCFAF51CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
 		CDBCFAF81CE1D6020045946F /* HXLiveAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */; };
@@ -492,7 +492,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD4492E71CAAA504005F36B3 /* ZegoAVKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,7 +502,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD79614B1CBE594C004CC661 /* ZegoAVKit.framework in Embed Frameworks */,
+				CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,7 +740,6 @@
 		CD4156C61CB39C890060CBE9 /* HXSongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSongModel.m; sourceTree = "<group>"; };
 		CD4156C81CB39CA30060CBE9 /* HXCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCommentModel.h; sourceTree = "<group>"; };
 		CD4156C91CB39CA30060CBE9 /* HXCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCommentModel.m; sourceTree = "<group>"; };
-		CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit.framework; path = Piano/Frameworks/ZegoAVKit.framework; sourceTree = "<group>"; };
 		CD4567381CAE13B800837DFF /* HXMeMyStationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeMyStationCell.h; sourceTree = "<group>"; };
 		CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeMyStationCell.m; sourceTree = "<group>"; };
 		CD546CFF1CAE9A63009FB2FD /* FormatTimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormatTimeHelper.h; sourceTree = "<group>"; };
@@ -884,6 +882,7 @@
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
+		CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZegoAVKit2.framework; path = Piano/Frameworks/ZegoAVKit2.framework; sourceTree = "<group>"; };
 		CDBCFAF31CE1D5F90045946F /* HXLiveAlbumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveAlbumView.h; sourceTree = "<group>"; };
 		CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveAlbumView.m; sourceTree = "<group>"; };
 		CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXLiveAlbumView.xib; sourceTree = "<group>"; };
@@ -980,8 +979,9 @@
 			files = (
 				CD7961251CBE594C004CC661 /* AVFoundation.framework in Frameworks */,
 				CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */,
-				CD7961271CBE594C004CC661 /* ZegoAVKit.framework in Frameworks */,
 				CD7961281CBE594C004CC661 /* libPods.a in Frameworks */,
+				CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */,
+				CDB456F91CE5E94600F4450B /* ZegoAVKit2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,8 +991,8 @@
 			files = (
 				CD92AF841CBB9F1000106A89 /* AVFoundation.framework in Frameworks */,
 				CDE416FC1CB7D672005F8901 /* MediaPlayer.framework in Frameworks */,
-				CD4492E61CAAA504005F36B3 /* ZegoAVKit.framework in Frameworks */,
 				124CB626904D3CA3E11516EC /* libPods.a in Frameworks */,
+				CDB456F71CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,9 +1286,9 @@
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */,
 				CD92AF831CBB9F1000106A89 /* AVFoundation.framework */,
 				CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */,
-				CD4492E41CAAA4EA005F36B3 /* ZegoAVKit.framework */,
 				B1BFCF29A3BF4A6DA2007B29 /* libPods.a */,
 			);
 			name = Frameworks;
