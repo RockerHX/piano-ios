@@ -24,7 +24,7 @@ HXXibImplementation
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    [_locationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(locationViewTaped)]];
+    ;
 }
 
 - (void)viewConfigure {
@@ -34,22 +34,10 @@ HXXibImplementation
 }
 
 #pragma mark - Event Response
-- (IBAction)cameraButtonPressed {
+- (IBAction)addAlbumButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(editView:takeAction:)]) {
-        [_delegate editView:self takeAction:HXPreviewLiveEidtViewActionCamera];
+        [_delegate editView:self takeAction:HXPreviewLiveEidtViewActionAddAlbum];
     }
-}
-
-- (void)locationViewTaped {
-    if (_delegate && [_delegate respondsToSelector:@selector(editView:takeAction:)]) {
-        [_delegate editView:self takeAction:HXPreviewLiveEidtViewActionLocation];
-    }
-}
-
-#pragma mark - Public Methods
-- (void)updateCameraIconWithImage:(UIImage *)image {
-    [_cameraButton setImage:image forState:UIControlStateNormal];
-    [_cameraButton setTitle:@"更换封面图片" forState:UIControlStateNormal];
 }
 
 #pragma mark - UITextFieldDelegate Methods

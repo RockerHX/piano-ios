@@ -292,7 +292,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvH-Rw-RfM" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="YcW-dJ-C8a">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="YcW-dJ-C8a">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGF-DP-Xhn" userLabel="Top Bar">
@@ -864,7 +864,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAv-at-bm5" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-Zz-ND4">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-Zz-ND4">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K18-QZ-PAu" userLabel="Top Bar">
@@ -1008,20 +1008,20 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXs-zs-zya" userLabel="Edit View" customClass="HXPreviewLiveEidtView">
-                                        <rect key="frame" x="25" y="204" width="270" height="160"/>
+                                        <rect key="frame" x="25" y="144" width="270" height="280"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="jeh-bw-b7r"/>
+                                            <constraint firstAttribute="height" constant="280" id="jeh-bw-b7r"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="delegate" destination="lMF-gb-QbS" id="ULf-Rj-l6E"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLU-Bt-fMA" userLabel="Control View" customClass="HXPreviewLiveControlView">
-                                        <rect key="frame" x="40" y="388" width="240" height="120"/>
+                                        <rect key="frame" x="40" y="418" width="240" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="lGr-mw-2X2"/>
+                                            <constraint firstAttribute="height" constant="100" id="lGr-mw-2X2"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="delegate" destination="lMF-gb-QbS" id="XoV-hH-yYl"/>
@@ -1037,7 +1037,7 @@
                                     <constraint firstItem="MXs-zs-zya" firstAttribute="leading" secondItem="an9-wJ-Woj" secondAttribute="leading" constant="25" id="Lwi-mj-rdZ"/>
                                     <constraint firstAttribute="trailing" secondItem="MXs-zs-zya" secondAttribute="trailing" constant="25" id="ZhW-z7-x0B"/>
                                     <constraint firstItem="dcp-Ze-HtY" firstAttribute="leading" secondItem="an9-wJ-Woj" secondAttribute="leading" constant="15" id="hTb-vI-mNq"/>
-                                    <constraint firstAttribute="bottom" secondItem="GLU-Bt-fMA" secondAttribute="bottom" constant="60" id="uwm-b0-n22"/>
+                                    <constraint firstAttribute="bottom" secondItem="GLU-Bt-fMA" secondAttribute="bottom" constant="50" id="uwm-b0-n22"/>
                                     <constraint firstAttribute="trailing" secondItem="GLU-Bt-fMA" secondAttribute="trailing" constant="40" id="zjs-6Q-Ody"/>
                                 </constraints>
                             </view>
@@ -1101,7 +1101,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dU-lx-FmV" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt2-bD-MKs" userLabel="Top Bar">

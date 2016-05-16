@@ -14,7 +14,6 @@
 #import "HXPreviewLiveEidtView.h"
 #import "HXPreviewLiveControlView.h"
 #import "MiaAPIHelper.h"
-#import "LocationMgr.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUDHelp.h"
 #import "UIImage+Extrude.h"
@@ -83,7 +82,6 @@ HXPreviewLiveControlViewDelegate
 
 - (void)viewConfigure {
     [self startPreview];
-    [self startUpdatingLocation];
 }
 
 #pragma mark - Private Methods
@@ -101,15 +99,6 @@ HXPreviewLiveControlViewDelegate
     ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi stopPreview];
     [zegoLiveApi setLocalView:nil];
-}
-
-- (void)startUpdatingLocation {
-	[[LocationMgr standard] initLocationMgr];
-    [[LocationMgr standard] startUpdatingLocationWithOnceBlock:^(CLLocationCoordinate2D coordinate, NSString *address) {
-        if (address.length) {
-            _editView.locationLabel.text = address;
-        }
-    }];
 }
 
 - (void)startCountDown {
@@ -144,17 +133,6 @@ HXPreviewLiveControlViewDelegate
 
 - (void)closeKeyBoard {
     [self.view endEditing:YES];
-}
-
-- (void)coverTouchAction {
-	UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-		imagePickerController.sourceType =  UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-		imagePickerController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePickerController.sourceType];
-	}
-	imagePickerController.delegate = self;
-	imagePickerController.allowsEditing = YES;
-	[self presentViewController:imagePickerController animated:YES completion:nil];
 }
 
 #pragma mark - HXCountDownViewControllerDelegate Methods
@@ -196,12 +174,8 @@ HXPreviewLiveControlViewDelegate
             ;
             break;
         }
-        case HXPreviewLiveEidtViewActionCamera: {
-			[self coverTouchAction];
-            break;
-        }
-        case HXPreviewLiveEidtViewActionLocation: {
-            _editView.locationView.hidden = YES;
+        case HXPreviewLiveEidtViewActionAddAlbum: {
+            ;
             break;
         }
     }
@@ -228,106 +202,6 @@ HXPreviewLiveControlViewDelegate
             break;
         }
     }
-}
-
-#pragma mark - UIImagePickerControllerDelegate Methods
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-	[picker dismissViewControllerAnimated:YES completion:nil];
-	if (_uploadPictureProgressHUD) {
-		NSLog(@"Last uploading is still running!!");
-		return;
-	}
-
-	//获得编辑过的图片
-	_uploadingImage = [info objectForKey: @"UIImagePickerControllerEditedImage"];
-    
-	_uploadPictureProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"直播封面上传中..."];
-	[MiaAPIHelper getUploadAuthWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-		if (success) {
-			NSString *uploadUrl = userInfo[MiaAPIKey_Values][@"data"][@"url"];
-			NSString *auth = userInfo[MiaAPIKey_Values][@"data"][@"auth"];
-			NSString *contentType = userInfo[MiaAPIKey_Values][@"data"][@"ctype"];
-			NSString *filename = userInfo[MiaAPIKey_Values][@"data"][@"fname"];
-			NSString *fileID = [NSString stringWithFormat:@"%@", userInfo[MiaAPIKey_Values][@"data"][@"fileID"]];
-
-			[self uploadPictureWithUrl:uploadUrl
-								 auth:auth
-						  contentType:contentType
-							 filename:filename
-							   fileID:fileID
-								image:_uploadingImage];
-		} else {
-			id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
-            [self showBannerWithPrompt:[NSString stringWithFormat:@"%@", error]];
-			[_uploadPictureProgressHUD removeFromSuperview];
-			_uploadPictureProgressHUD = nil;
-		}
-	} timeoutBlock:^(MiaRequestItem *requestItem) {
-		[_uploadPictureProgressHUD removeFromSuperview];
-        _uploadPictureProgressHUD = nil;
-        [self showBannerWithPrompt:@"上传直播封面失败，网络请求超时"];
-	}];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-	[picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)uploadPictureWithUrl:(NSString *)url
-					   auth:(NSString *)auth
-				contentType:(NSString *)contentType
-				   filename:(NSString *)filename
-					 fileID:(NSString *)fileID
-					  image:(UIImage *)image {
-	// 压缩图片，放线程中进行
-	dispatch_queue_t queue = dispatch_queue_create("RequestUploadPhoto", NULL);
-	dispatch_async(queue, ^(){
-		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url ]];
-		request.HTTPMethod = @"PUT";
-		[request setValue:auth forHTTPHeaderField:@"Authorization"];
-		[request setValue:contentType forHTTPHeaderField:@"Content-Type"];
-
-		float compressionQuality = 0.9f;
-		NSData *imageData;
-
-		const static CGFloat kImageMaxSize = 320;
-		UIImage *squareImage = [UIImage imageWithCutImage:image moduleSize:CGSizeMake(kImageMaxSize, kImageMaxSize)];
-		imageData = UIImageJPEGRepresentation(squareImage, compressionQuality);
-		[request setValue:[NSString stringWithFormat:@"%ld", (unsigned long)imageData.length] forHTTPHeaderField:@"Content-Length"];
-
-		NSURLSession *session = [NSURLSession sharedSession];
-		[[session uploadTaskWithRequest:request
-							   fromData:imageData
-					  completionHandler:
-		  ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-			  BOOL success = (!error && [data length] == 0);
-			  dispatch_async(dispatch_get_main_queue(), ^{
-				  [self updatePictureWith:squareImage success:success url:url fileID:fileID];
-			  });
-		  }] resume];
-	});
-}
-
-- (void)updatePictureWith:(UIImage *)image success:(BOOL)success url:(NSString *)url fileID:(NSString *)fileID {
-	if (_uploadPictureProgressHUD) {
-		[_uploadPictureProgressHUD removeFromSuperview];
-		_uploadPictureProgressHUD = nil;
-	}
-	if (!success) {
-		return;
-	}
-
-	[MiaAPIHelper setRoomCover:fileID roomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-		if (success) {
-            NSLog(@"notify after upload pic success");
-            UIImage *squareImage = [UIImage imageWithCutImage:image moduleSize:CGSizeMake(11.0f, 11.0f)];
-            [_editView updateCameraIconWithImage:squareImage];
-		} else {
-			NSLog(@"notify after upload pic failed:%@", userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
-		}
-	} timeoutBlock:^(MiaRequestItem *requestItem) {
-		NSLog(@"notify after upload pic timeout");
-	}];
 }
 
 @end

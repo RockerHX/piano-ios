@@ -11,8 +11,7 @@
 
 typedef NS_ENUM(NSUInteger, HXPreviewLiveEidtViewAction) {
     HXPreviewLiveEidtViewActionEdit,
-    HXPreviewLiveEidtViewActionCamera,
-    HXPreviewLiveEidtViewActionLocation,
+    HXPreviewLiveEidtViewActionAddAlbum,
 };
 
 
@@ -33,12 +32,8 @@ typedef NS_ENUM(NSUInteger, HXPreviewLiveEidtViewAction) {
 
 @property (weak, nonatomic) IBOutlet      UIView *container;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (weak, nonatomic) IBOutlet    UIButton *cameraButton;
-@property (weak, nonatomic) IBOutlet      UIView *locationView;
-@property (weak, nonatomic) IBOutlet     UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet    UIButton *addAlbumButton;
 
-- (IBAction)cameraButtonPressed;
-
-- (void)updateCameraIconWithImage:(UIImage *)image;
+- (IBAction)addAlbumButtonPressed;
 
 @end
