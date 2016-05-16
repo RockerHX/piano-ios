@@ -11,6 +11,7 @@
 #import "HXDiscoveryLiveCell.h"
 #import "HXDiscoveryShowCell.h"
 #import "HXDiscoveryNormalCell.h"
+#import "ReactiveCocoa.h"
 
 
 @interface HXDiscoveryContainerViewController () <
@@ -20,9 +21,17 @@ HXDiscoveryLiveCellDelegate
 @end
 
 
-@implementation HXDiscoveryContainerViewController
+@implementation HXDiscoveryContainerViewController {
+    HXDiscoveryPreviewCell *_previewCell;
+}
 
 #pragma mark - View Controller Life Cycle
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [_previewCell stopPlay];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -50,6 +59,25 @@ HXDiscoveryLiveCellDelegate
 #pragma mark - Private Methods
 - (void)endLoad {
     [self.collectionView reloadData];
+    [self performSelector:@selector(previewFirstCell) withObject:nil afterDelay:1.0f];
+}
+
+- (void)previewFirstCell {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[HXDiscoveryPreviewCell class]] && ![_previewCell isEqual:cell]) {
+        [self previewAtIndexPath:indexPath];
+    }
+}
+
+- (void)previewAtIndexPath:(NSIndexPath *)indexPath {
+    [_previewCell stopPlay];
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[HXDiscoveryPreviewCell class]]) {
+        HXDiscoveryPreviewCell *previewCell = (HXDiscoveryPreviewCell *)cell;
+        [previewCell playWithURL:_viewModel.discoveryList[indexPath.row].videoUrl];
+        _previewCell = previewCell;
+    }
 }
 
 #pragma mark - Scroll View Delegate
@@ -57,13 +85,16 @@ HXDiscoveryLiveCellDelegate
     HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
 //    NSLog(@"%@", @(layout.indexPath.row));
     
-    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-        [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[layout.indexPath.row]];
-    }
+    NSIndexPath *indexPath = layout.indexPath;
+    [self previewAtIndexPath:indexPath];
     
+    NSInteger index = indexPath.row;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+        [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[index]];
+    }
     if (scrollView.contentOffset.x == 0.0f) {
         if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-            [_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[layout.indexPath.row]];
+            [_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[index]];
         }
     }
 }
