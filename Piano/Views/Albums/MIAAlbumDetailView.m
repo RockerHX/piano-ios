@@ -28,6 +28,8 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
 @property (nonatomic, strong) MIAAlbumModel *albumModel;
 
+@property (nonatomic, copy) RewardAlbumActionBlock rewardAlbumActionBlock;
+
 @end
 
 @implementation MIAAlbumDetailView
@@ -93,6 +95,7 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         [rewardButton setBackgroundColor:JORGBSameCreate(30.)];
         [[rewardButton layer] setCornerRadius:(kRewardDownloadViewHeight-2*topSpaceDistance)/2.];
         [[rewardButton layer] setMasksToBounds:YES];
+        [rewardButton addTarget:self action:@selector(rewardButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [_rewardForDownloadView addSubview:rewardButton];
         
         [JOAutoLayout autoLayoutWithTopSpaceDistance:topSpaceDistance selfView:rewardButton superView:_rewardForDownloadView];
@@ -137,6 +140,15 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
     return kPlayViewHeight + kRewardViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
 }
 
+#pragma mark - Button click
+
+- (void)rewardButtonClick{
+
+    if (_rewardAlbumActionBlock) {
+        _rewardAlbumActionBlock();
+    }
+}
+
 #pragma mark - Data 
 
 - (void)setAlbumHeadDetailData:(id)data{
@@ -152,6 +164,12 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
     
         [JOFException exceptionWithName:@"MIAAlbumDetailView exception!" reason:@"data必须是MIAAlbumModel类型"];
     }
+}
+
+- (void)rewardAlbumButtonClickHanlder:(RewardAlbumActionBlock)block{
+
+    self.rewardAlbumActionBlock = nil;
+    self.rewardAlbumActionBlock = block;
 }
 
 @end

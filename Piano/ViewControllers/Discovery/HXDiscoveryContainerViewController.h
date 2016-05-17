@@ -36,5 +36,6 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryContainerAction) {
 @property (weak, nonatomic) HXDiscoveryViewModel *viewModel;
 
 - (void)displayDiscoveryList;
+- (void)stopPreviewVideo;
 
 @end

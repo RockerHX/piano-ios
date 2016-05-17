@@ -29,7 +29,7 @@ HXDiscoveryLiveCellDelegate
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [_previewCell stopPlay];
+    [self stopPreviewVideo];
 }
 
 - (void)viewDidLoad {
@@ -56,6 +56,10 @@ HXDiscoveryLiveCellDelegate
     [self endLoad];
 }
 
+- (void)stopPreviewVideo {
+    [_previewCell stopPlay];
+}
+
 #pragma mark - Private Methods
 - (void)endLoad {
     [self.collectionView reloadData];
@@ -71,7 +75,7 @@ HXDiscoveryLiveCellDelegate
 }
 
 - (void)previewAtIndexPath:(NSIndexPath *)indexPath {
-    [_previewCell stopPlay];
+    [self stopPreviewVideo];
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
     if ([cell isKindOfClass:[HXDiscoveryPreviewCell class]]) {
         HXDiscoveryPreviewCell *previewCell = (HXDiscoveryPreviewCell *)cell;

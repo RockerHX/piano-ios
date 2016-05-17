@@ -20,7 +20,7 @@ typedef void(^KeyBoardShowBlcok) (CGFloat height);
  *
  *  @param textViewHeight textView的高度
  */
-typedef void(^TextViewHeightChangeBlock) (CGFloat textViewHeight);
+typedef void(^TextViewHeightChangeBlock) (CGFloat textViewHeight, BOOL enableState);
 
 @interface MIAAlbumEnterCommentView : UIView
 
@@ -29,5 +29,7 @@ typedef void(^TextViewHeightChangeBlock) (CGFloat textViewHeight);
 - (void)textViewHeightChangeHandler:(TextViewHeightChangeBlock)block;
 
 - (void)resignTextViewFirstResponder;
+
+- (void)updateTextViewWithEnableState:(BOOL)state;
 
 @end

@@ -9,9 +9,7 @@
 #import "HXZegoAVKitManager.h"
 
 
-@interface HXZegoAVKitManager () <
-ZegoShowListDelegate
->
+@interface HXZegoAVKitManager ()
 @end
 
 
@@ -44,9 +42,9 @@ ZegoShowListDelegate
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
-    _zegoAVApi = [ZegoAVApi new];
-//    [_zegoAVApi initSDK:1 appSignature:[self zegoAppSignFromServer]];
-    [_zegoAVApi initSDK:1533641591 appSignature:[self zegoAppSignFromServer]];
+//    _zegoLiveApi = [[ZegoLiveApi alloc] initWithAppID:1 appSignature:[self zegoAppSignFromServer]];
+    _zegoLiveApi = [[ZegoLiveApi alloc] initWithAppID:1533641591 appSignature:[self zegoAppSignFromServer]];
+    [ZegoLiveApi setLogLevel:4];
 }
 
 #pragma mark - Public Methods
@@ -85,15 +83,6 @@ ZegoShowListDelegate
     NSData * appSign = [[NSData alloc] initWithBytes:signkey length:32];
     
     return appSign;
-}
-
-#pragma mark - ZegoShowListDelegate Methods
-- (void)onGetShowListResult:(uint32)result totalCount:(uint32)totalCount beginIndex:(uint32)beginIndex showList:(NSArray *)list {
-    ;
-}
-
-- (void)onGetReplayListResult:(uint32)result totalCount:(uint32)totalCount beginIndex:(uint32)beginIndex replayList:(NSArray *)list {
-    ;
 }
 
 @end

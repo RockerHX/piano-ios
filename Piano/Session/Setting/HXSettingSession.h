@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <ZegoAVKit/ZegoAVConfig.h>
+#import <ZegoAVKit2/ZegoAVConfig.h>
 
 
 @interface HXSettingSession : NSObject

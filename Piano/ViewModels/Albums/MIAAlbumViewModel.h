@@ -23,4 +23,6 @@ UIKIT_EXTERN CGFloat const kAlbumEnterCommentViewHeight;//底部输入评论的�
 
 - (instancetype)initWithUid:(NSString *)uid;
 
+- (CGFloat)albumDetailViewHeight;
+
 @end

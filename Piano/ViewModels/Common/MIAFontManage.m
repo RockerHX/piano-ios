@@ -108,6 +108,27 @@ static NSString *kMIAFontLight = @"Helvetica";
         return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }
     
+    //MARK: 专辑打赏页面
+    if (type == MIAFontType_AlbumReward_Title) {
+        //专辑的标题
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
+    }else if (type == MIAFontType_AlbumReward_Singer){
+        //演唱者
+        return JOFontMake(kMIAFontRegular, JORGBSameCreate(220.), 13.);
+    }else if (type == MIAFontType_AlbumReward_Tip){
+        //提示
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
+    }else if (type == MIAFontType_AlbumReward_RewardButtonTitle){
+        //打赏的按钮的标题
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
+    }else if (type == MIAFontType_AlbumReward_Account){
+        //M币的账户余额
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 15.);
+    }else if (type == MIAFontType_AlbumReward_Recharge){
+        //充值
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 15.);
+    }
+    
     return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ZegoAVKit/ZegoAVApi.h>
+#import <ZegoAVKit2/ZegoLiveApi.h>
 
 
 @interface HXZegoAVKitManager : NSObject
@@ -19,7 +19,7 @@
 @property (nonatomic, strong, readonly) NSString *port;
 @property (nonatomic, strong, readonly) NSString *url;
 
-@property (nonatomic, strong, readonly) ZegoAVApi *zegoAVApi;
+@property (nonatomic, strong, readonly) ZegoLiveApi *zegoLiveApi;
 
 + (instancetype)manager;
 + (instancetype)shareWithAppID:(NSString *)appID signKey:(NSData *)signKey;

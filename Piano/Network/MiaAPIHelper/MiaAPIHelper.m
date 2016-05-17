@@ -311,6 +311,23 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)liveGetAlbumListWithUID:(NSString *)UID
+                          start:(NSInteger)start
+                          limit:(NSInteger)limit
+                  completeBlock:(MiaRequestCompleteBlock)completeBlock
+                   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:UID forKey:MiaAPIKey_UID];
+    [dictValues setValue:@(start) forKey:MiaAPIKey_Start];
+    [dictValues setValue:@(limit) forKey:MiaAPIKey_Limit];
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_GetAlbumList
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 + (void)commentRoom:(NSString *)roomID
 			content:(NSString *)content
 	completeBlock:(MiaRequestCompleteBlock)completeBlock
@@ -335,6 +352,21 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 															completeBlock:completeBlock
 															 timeoutBlock:timeoutBlock];
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)liveRelatedAlbum:(NSString *)albumID
+                  roomID:(NSString *)roomID
+           completeBlock:(MiaRequestCompleteBlock)completeBlock
+            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:albumID forKey:MiaAPIKey_AlbumID];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_RelatedAlbum
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
 + (void)setRoomTitle:(NSString *)title

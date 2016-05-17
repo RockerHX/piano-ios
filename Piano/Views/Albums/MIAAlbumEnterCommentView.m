@@ -18,6 +18,7 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
 
 @interface MIAAlbumEnterCommentView()<UITextViewDelegate>
 
+@property (nonatomic, strong) UITextView *tempTextView;
 @property (nonatomic, strong) UITextView *commentTextView;
 @property (nonatomic, strong) UIButton *sendButton;
 
@@ -46,7 +47,7 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
 }
 
 - (void)createCommentView{
-    
+
     self.sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_sendButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
@@ -64,13 +65,18 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     [_commentTextView setDelegate:self];
     [[_commentTextView layer] setCornerRadius:4.];
     [[_commentTextView layer] setMasksToBounds:YES];
+//    [_commentTextView setScrollEnabled:NO];
+//    [_commentTextView setContentInset:UIEdgeInsetsMake(-2., 0., 0., 0.)];
+//    [_commentTextView setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:_commentTextView];
-        
+    
+//    [_commentTextView scrollRectToVisible:CGRectMake(0., 0., 300., 1.) animated:YES];
+    
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_commentTextView superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_commentTextView superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_commentTextView superView:self];
     [JOAutoLayout autoLayoutWithRightView:_sendButton distance:0. selfView:_commentTextView superView:self];
-    
+
 }
 
 #pragma mark - keyboard
@@ -123,10 +129,88 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     [_commentTextView resignFirstResponder];
 }
 
+- (void)updateTextViewWithEnableState:(BOOL)state{
+
+    
+//    CGRect rect = _commentTextView.frame;
+//    rect.size.height = _commentTextView.contentSize.height;
+//    _commentTextView.frame = rect;
+//    [_commentTextView setScrollEnabled:state];
+//    if (state) {
+//        [_commentTextView setContentInset:UIEdgeInsetsMake(4., 0., 0., 0.)];
+//    }else{
+//    
+//        [_commentTextView setContentInset:UIEdgeInsetsMake(0., 0., 0., 0)];
+//    }
+    
+//    NSLog(@"contentHeight:%f",_commentTextView.contentSize.height);
+//    [_commentTextView scrollRectToVisible:CGRectMake(0, _commentTextView.contentSize.height - 5, 300, 5.) animated:YES];
+//    [_commentTextView scrollRangeToVisible:NSMakeRange(_commentTextView.text.length - 1, 1)];
+//    [_commentTextView setContentOffset:CGPointMake(0., _commentTextView.text.length) animated:YES];
+}
+
 - (void)textViewDidChange:(UITextView *)textView{
 
-    CGFloat textViewContentHeight = textView.contentSize.height;
-    NSLog(@"height:%f",textViewContentHeight);
+    NSRange range = NSMakeRange(textView.text.length -1,1);
+    [textView scrollRangeToVisible:range];//NSMakeRange(0,0)
+//    [_commentTextView setContentInset:UIEdgeInsetsMake(0., 0., 0., 0)];
+//    [textView scrollRectToVisible:CGRectMake(0, textView.contentSize.height - 5, 300, 5.) animated:YES];
+    CGFloat height = textView.contentSize.height;
+    
+    [_commentTextView setContentOffset:CGPointMake(0., height-36.)];
+    
+    if (height > 114.) {
+        height = 114.;
+    }
+    
+    if (_textViewHeightChangeBlock) {
+        _textViewHeightChangeBlock(height,YES);
+    }
+    
+    
+//    if ([textView isEqual:_commentTextView]) {
+//        CGFloat textViewContentHeight = textView.contentSize.height;
+//        NSLog(@"height:%f",textViewContentHeight);
+//        
+//        if (_textViewHeightChangeBlock) {
+//            BOOL state;
+//            CGFloat height;
+//            NSInteger line = MAX([self numberOfLinesForMessage:textView.text], [self lineWithString:textView.text]);
+//            if (line == 1) {
+//                height = 36.;
+//            }else if (line == 2) {
+//                height = 56;
+//            }else if (line == 3) {
+//                height = 75;
+//            }else if (line == 4) {
+//                height = 95;
+//            }else if (line == 5) {
+//                height = 114;
+//            }else{
+//                state = YES;
+//                height = 114;
+//            }
+//            _textViewHeightChangeBlock(height,state);
+//        }
+//    }
+    
+    
+//    [textView scrollsToTop];
+}
+
+- (NSInteger)lineWithString:(NSString *)text{
+
+    return [text componentsSeparatedByString:@"\n"].count;
+}
+
+- (NSInteger )maxCharactersPerLine
+{
+    return ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) ? 35 : 109;
+}
+
+- (NSInteger)numberOfLinesForMessage:(NSString *)txt
+{
+    return (txt.length / [self maxCharactersPerLine]) + 1;
 }
 
 @end

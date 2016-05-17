@@ -21,7 +21,8 @@
                                                 roomID:(NSString *)roomID
                                              roomTitle:(NSString *)roomTitle
                                               shareUrl:(NSString *)shareUrl
-                                           frontCamera:(BOOL)frontCamera;
+                                           frontCamera:(BOOL)frontCamera
+                                                beauty:(BOOL)beauty;
 
 @end
 
@@ -30,7 +31,6 @@
 
 @property (weak, nonatomic) IBOutlet                       id  <HXPreviewLiveViewControllerDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet                   UIView *preview;
 @property (weak, nonatomic) IBOutlet                   UIView *controlContainerView;
 @property (weak, nonatomic) IBOutlet    HXPreviewLiveEidtView *editView;
 @property (weak, nonatomic) IBOutlet HXPreviewLiveControlView *countDownContainerView;
