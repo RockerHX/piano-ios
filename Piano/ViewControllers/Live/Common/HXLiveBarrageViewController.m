@@ -1,18 +1,18 @@
 //
-//  HXLiveCommentViewController.m
+//  HXLiveBarrageViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/31.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveCommentViewController.h"
+#import "HXLiveBarrageViewController.h"
 #import "HXLiveCommentViewModel.h"
 
-@interface HXLiveCommentViewController ()
+@interface HXLiveBarrageViewController ()
 @end
 
-@implementation HXLiveCommentViewController {
+@implementation HXLiveBarrageViewController {
     HXLiveCommentViewModel *_viewModel;
 }
 

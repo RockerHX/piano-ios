@@ -8,7 +8,6 @@
 
 #import "HXWatcherBoard.h"
 #import "AppDelegate.h"
-#import "HXWatcherModel.h"
 #import "UIImageView+WebCache.h"
 
 typedef void(^BLOCK)(void);
@@ -98,9 +97,9 @@ typedef void(^BLOCK)(void);
 - (void)updateWithWatcher:(HXWatcherModel *)watcher {
     _watcher = watcher;
     
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:watcher.avatarUrl]];
-    _nickNameLabel.text = watcher.nickName;
-    _signatureLabel.text = watcher.signature;
+//    [_avatar sd_setImageWithURL:[NSURL URLWithString:watcher.avatarUrl]];
+//    _nickNameLabel.text = watcher.nickName;
+//    _signatureLabel.text = watcher.signature;
 }
 
 - (void)dismiss {

@@ -8,14 +8,13 @@
 
 #import "ReactiveCocoa.h"
 #import "HXLiveModel.h"
-#import "HXWatcherModel.h"
-#import "HXCommentModel.h"
+#import "HXBarrageModel.h"
 
 
 @interface HXWatchLiveViewModel : NSObject
 
-@property (nonatomic, strong, readonly) RACSubject *barragesSignal;
-@property (nonatomic, strong, readonly)  RACSignal *exitSignal;
+@property (nonatomic, strong, readonly) RACSignal *barragesSignal;
+@property (nonatomic, strong, readonly) RACSignal *exitSignal;
 
 @property (nonatomic, strong, readonly) RACCommand *enterRoomCommand;
 @property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
@@ -31,13 +30,10 @@
 @property (nonatomic, strong, readonly) NSString *anchorNickName;
 @property (nonatomic, strong, readonly) NSString *viewCount;
 
-@property (nonatomic, strong) NSArray<HXWatcherModel *> *watchers;
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
-@property (nonatomic, strong, readonly)         NSArray *barrages;
+@property (nonatomic, strong) NSArray<HXBarrageModel *> *barrages;
 
 
 - (instancetype)initWithRoomID:(NSString *)roomID;
-- (void)addWatcher:(NSDictionary *)data;
-- (void)addComment:(NSDictionary *)data;
 
 @end
