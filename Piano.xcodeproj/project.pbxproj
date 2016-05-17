@@ -2667,6 +2667,7 @@
 				CD79614A1CBE594C004CC661 /* Embed Frameworks */,
 				0F17882D0F1F5EC1062961FA /* 📦 Embed Pods Frameworks */,
 				D84C9AFF2426607C2A08B209 /* 📦 Copy Pods Resources */,
+				C05ED3FE761358A45E8E118F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2688,6 +2689,7 @@
 				CD74089C1C9946D800950A50 /* Embed Frameworks */,
 				DB5E56F4D8AAB1FF2407F57B /* 📦 Embed Pods Frameworks */,
 				CE673A569B920EA39F011B35 /* 📦 Copy Pods Resources */,
+				AB3C80A8910BB503F757EFD6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2826,6 +2828,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AB3C80A8910BB503F757EFD6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano/Pods-Piano-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BA2AA430CF2D33A70D11A7DD /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2839,6 +2856,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C05ED3FE761358A45E8E118F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CCEEB16AC0C0ED8CF77D0E89 /* 📦 Check Pods Manifest.lock */ = {
