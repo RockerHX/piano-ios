@@ -18,6 +18,8 @@
 #import "MBProgressHUDHelp.h"
 #import "UIImage+Extrude.h"
 #import "HXSelectedAlbumViewController.h"
+#import "HXAlbumModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface HXPreviewLiveViewController () <
 UIImagePickerControllerDelegate,
@@ -25,7 +27,8 @@ UINavigationControllerDelegate,
 HXCountDownViewControllerDelegate,
 HXPreviewLiveTopBarDelegate,
 HXPreviewLiveEidtViewDelegate,
-HXPreviewLiveControlViewDelegate
+HXPreviewLiveControlViewDelegate,
+HXSelectedAlbumViewControllerDelegate
 >
 @end
 
@@ -41,6 +44,8 @@ HXPreviewLiveControlViewDelegate
     NSString *_shareUrl;
     BOOL _frontCamera;
     BOOL _beauty;
+    
+    HXAlbumModel *_album;
 }
 
 #pragma mark - Segue
@@ -163,6 +168,7 @@ HXPreviewLiveControlViewDelegate
         }
         case HXPreviewLiveEidtViewActionAddAlbum: {
             HXSelectedAlbumViewController *selctedAlbumViewController = [HXSelectedAlbumViewController instance];
+            selctedAlbumViewController.delegate = self;
             [selctedAlbumViewController showOnViewController:self];
             break;
         }
@@ -190,6 +196,12 @@ HXPreviewLiveControlViewDelegate
             break;
         }
     }
+}
+
+#pragma mark - HXSelectedAlbumViewControllerDelegate Methods
+- (void)selectedAlbumViewController:(HXSelectedAlbumViewController *)viewController selectedAlbum:(HXAlbumModel *)album {
+    _album = album;
+    [_editView.albumCoverView sd_setImageWithURL:[NSURL URLWithString:album.coverUrl]];
 }
 
 @end

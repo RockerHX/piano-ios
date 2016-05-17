@@ -120,8 +120,9 @@ static NSInteger FetchLimit = 10;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_delegate && [_delegate respondsToSelector:@selector(selectedAlbumViewController:selectedAlbum:)]) {
-        [_delegate selectedAlbumViewController:self selectedAlbum:nil];
+        [_delegate selectedAlbumViewController:self selectedAlbum:_albumList[indexPath.row]];
     }
+    [self dismiss];
 }
 
 @end

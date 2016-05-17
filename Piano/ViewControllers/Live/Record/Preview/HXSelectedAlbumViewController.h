@@ -10,6 +10,7 @@
 
 
 @protocol HXSelectedAlbumViewControllerDelegate;
+@class HXAlbumModel;
 
 
 @interface HXSelectedAlbumViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
@@ -30,6 +31,6 @@
 @protocol HXSelectedAlbumViewControllerDelegate <NSObject>
 
 @required
-- (void)selectedAlbumViewController:(HXSelectedAlbumViewController *)viewController selectedAlbum:(id)album;
+- (void)selectedAlbumViewController:(HXSelectedAlbumViewController *)viewController selectedAlbum:(HXAlbumModel *)album;
 
 @end
