@@ -14,6 +14,8 @@
 #import "MIAProfileReplayCell.h"
 #import "MIAAlbumSongCell.h"
 #import "MIAAlbumCommentCell.h"
+#import "MIAPaymentCell.h"
+#import "MIAPayHistoryCell.h"
 
 typedef NS_ENUM(NSUInteger, MIACellType){
 
@@ -26,6 +28,9 @@ typedef NS_ENUM(NSUInteger, MIACellType){
     //专辑详情页
     MIACellTypeAlbumSong,//歌曲
     MIACellTypeAlbumComment,//评论
+    //充值页面
+    MIACellTypePayment,//充值
+    MIACellTypePayHistory,//消费记录
 };
 
 @interface MIACellManage : NSObject

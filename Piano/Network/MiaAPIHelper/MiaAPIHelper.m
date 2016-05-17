@@ -598,4 +598,51 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
+#pragma mark - 充值相关
+
++ (void)getRechargeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Recharge_GetList
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)getMCoinBalancesWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                             timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_MCoin_GetBalance
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)getSendGiftListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Gift_SendList
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
+
++ (void)getOrderListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                         timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Order_GetList
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 @end

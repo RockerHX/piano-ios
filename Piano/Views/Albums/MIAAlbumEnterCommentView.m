@@ -93,6 +93,7 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+
 - (void)keyBoardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
     //获取当前显示的键盘高度
@@ -131,10 +132,11 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
 
 - (void)updateTextViewWithEnableState:(BOOL)state{
 
-    
-//    CGRect rect = _commentTextView.frame;
-//    rect.size.height = _commentTextView.contentSize.height;
-//    _commentTextView.frame = rect;
+    if (state) {
+        CGRect rect = _commentTextView.frame;
+        rect.size.height = _commentTextView.contentSize.height;
+        _commentTextView.frame = rect;
+    }
 //    [_commentTextView setScrollEnabled:state];
 //    if (state) {
 //        [_commentTextView setContentInset:UIEdgeInsetsMake(4., 0., 0., 0.)];
@@ -147,24 +149,23 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
 //    [_commentTextView scrollRectToVisible:CGRectMake(0, _commentTextView.contentSize.height - 5, 300, 5.) animated:YES];
 //    [_commentTextView scrollRangeToVisible:NSMakeRange(_commentTextView.text.length - 1, 1)];
 //    [_commentTextView setContentOffset:CGPointMake(0., _commentTextView.text.length) animated:YES];
+    
+//    NSRange range = NSMakeRange(_commentTextView.text.length -1,1);
+//    [_commentTextView setContentInset:UIEdgeInsetsMake(0., 0., 0., 0)];
+
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
 
-    NSRange range = NSMakeRange(textView.text.length -1,1);
-    [textView scrollRangeToVisible:range];//NSMakeRange(0,0)
-//    [_commentTextView setContentInset:UIEdgeInsetsMake(0., 0., 0., 0)];
-//    [textView scrollRectToVisible:CGRectMake(0, textView.contentSize.height - 5, 300, 5.) animated:YES];
     CGFloat height = textView.contentSize.height;
-    
-    [_commentTextView setContentOffset:CGPointMake(0., height-36.)];
-    
+    BOOL state = YES;
     if (height > 114.) {
         height = 114.;
+        state = NO;
     }
     
     if (_textViewHeightChangeBlock) {
-        _textViewHeightChangeBlock(height,YES);
+        _textViewHeightChangeBlock(height,state);
     }
     
     

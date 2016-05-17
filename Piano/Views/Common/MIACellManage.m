@@ -30,6 +30,12 @@
         return [MIACellManage createCellWithClass:[MIAAlbumCommentCell class]];
     }
     
+    if (type == MIACellTypePayment) {
+        return [MIACellManage createCellWithClass:[MIAPaymentCell class]];
+    }else if (type == MIACellTypePayHistory){
+        return [MIACellManage createCellWithClass:[MIAPayHistoryCell class]];
+    }
+    
     if (type == MIACellTypeNormal) {
         return [MIACellManage createCellWithClass:[MIABaseTableViewCell class]];
     }
