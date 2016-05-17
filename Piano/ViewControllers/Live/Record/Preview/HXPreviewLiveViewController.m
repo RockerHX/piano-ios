@@ -17,6 +17,7 @@
 #import "MBProgressHUD.h"
 #import "MBProgressHUDHelp.h"
 #import "UIImage+Extrude.h"
+#import "HXSelectedAlbumViewController.h"
 
 @interface HXPreviewLiveViewController () <
 UIImagePickerControllerDelegate,
@@ -161,7 +162,8 @@ HXPreviewLiveControlViewDelegate
             break;
         }
         case HXPreviewLiveEidtViewActionAddAlbum: {
-            ;
+            HXSelectedAlbumViewController *selctedAlbumViewController = [HXSelectedAlbumViewController instance];
+            [selctedAlbumViewController showOnViewController:self];
             break;
         }
     }
