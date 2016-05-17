@@ -12,4 +12,6 @@
 
 - (void)changeSongPlayState:(BOOL)state;
 
+- (void)setSongData:(id)data;
+
 @end

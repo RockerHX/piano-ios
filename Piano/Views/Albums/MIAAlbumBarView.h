@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  按钮的pop事件
+ */
+typedef void(^PopActionBlock)();
+
 @interface MIAAlbumBarView : UIView
+
+- (void)popActionHandler:(PopActionBlock)block;
 
 @end

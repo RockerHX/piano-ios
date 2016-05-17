@@ -51,6 +51,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     self = [super init];
     if (self) {
         
+        [self setBackgroundColor:[UIColor clearColor]];
         [self createHeadImageView];
         [self createHeadLabel];
         [self createFansView];
@@ -62,6 +63,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
 
     self.headImageView = [UIImageView newAutoLayoutView];
     [_headImageView setBackgroundColor:[UIColor clearColor]];
+    [_headImageView setHidden:YES];
     [self addSubview:_headImageView];
     
     self.maskImageView = [UIImageView newAutoLayoutView];
@@ -158,8 +160,8 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [JOAutoLayout autoLayoutWithWidthWithView:_attentionLabel selfView:_attentionTipLabel superView:_fansView];
     
     self.attentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_attentionButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle].color forState:UIControlStateNormal];
-    [[_attentionButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle].font];
+    [_attentionButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle]->color forState:UIControlStateNormal];
+    [[_attentionButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle]->font];
     [_attentionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_attentionButton addTarget:self action:@selector(attentionButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_attentionButton setTag:kAttentionButtonTag];
@@ -190,18 +192,21 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
 
 - (void)setProfileHeadImageURL:(NSString *)imageURL name:(NSString *)name summary:(NSString *)summary{
 
+    NSString *nameString =JOConvertStringToNormalString(name);
+    NSString *summaryString = JOConvertStringToNormalString(summary);
+    
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:nil];
-    [_nameLabel setText:JOConvertStringToNormalString(name)];
-    [_summayLabel setText:JOConvertStringToNormalString(summary)];
+    [_nameLabel setText:nameString];
+    [_summayLabel setText:summaryString];
+    
+    CGFloat nameWidth = [nameString length]?([_nameLabel sizeThatFits:JOMAXSize].width + 30.):CGFLOAT_MIN;
+    CGFloat nameHeight = [nameString length]?([_nameLabel sizeThatFits:JOMAXSize].height + 10.):CGFLOAT_MIN;
+    CGFloat summaryWidth = [summaryString length]?([_summayLabel sizeThatFits:JOMAXSize].width +30.):CGFLOAT_MIN;
+    CGFloat summaryHeight = [summaryString length]?([_summayLabel sizeThatFits:JOMAXSize].height +10.):CGFLOAT_MIN;
     
     [JOAutoLayout removeAutoLayoutWithSizeSelfView:_nameLabel superView:self];
     [JOAutoLayout removeAutoLayoutWithSizeSelfView:_summayLabel superView:self];
-    
-    CGFloat nameWidth = [_nameLabel sizeThatFits:JOMAXSize].width + 30.;
-    CGFloat nameHeight = [_nameLabel sizeThatFits:JOMAXSize].height + 10.;
-    CGFloat summaryWidth = [_summayLabel sizeThatFits:JOMAXSize].width +30.;
-    CGFloat summaryHeight = [_summayLabel sizeThatFits:JOMAXSize].height +10.;
-    
+
     [JOAutoLayout autoLayoutWithSize:JOSize(nameWidth, nameHeight) selfView:_nameLabel superView:self];
     [JOAutoLayout autoLayoutWithSize:JOSize(summaryWidth, summaryHeight) selfView:_summayLabel superView:self];
 }
@@ -240,7 +245,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
 
 - (void)setProfileMaskAlpha:(CGFloat)alpha{
 
-    [_maskImageView setAlpha:alpha];
+//    [_maskImageView setAlpha:alpha];
 
 }
 

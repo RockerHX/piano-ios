@@ -18,7 +18,7 @@
  *  创建一个UILabel
  *
  */
-+ (UILabel *)createLabelWithJOFont:(JOFont)joFont;
++ (UILabel *)createLabelWithJOFont:(JOFont *)joFont;
 + (UILabel *)createLabelWithTextColor:(UIColor *)textColor;
 + (UILabel *)createLabelWithTextColor:(UIColor *)textColor textFont:(UIFont *)font;
 + (UILabel *)createLabelWithTextColor:(UIColor *)textColor

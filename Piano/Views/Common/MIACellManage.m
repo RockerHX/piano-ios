@@ -24,8 +24,10 @@
         return [MIACellManage createCellWithClass:[MIAProfileReplayCell class]];
     }
     
-    if (type == MIACellTypeAlbumDetail) {
-        return [MIACellManage createCellWithClass:[MIAAlbumDetailCell class]];
+    if (type == MIACellTypeAlbumSong) {
+        return [MIACellManage createCellWithClass:[MIAAlbumSongCell class]];
+    }else if (type == MIACellTypeAlbumComment){
+        return [MIACellManage createCellWithClass:[MIAAlbumCommentCell class]];
     }
     
     if (type == MIACellTypeNormal) {

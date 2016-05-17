@@ -36,6 +36,7 @@
 - (void)tapAction:(UIGestureRecognizer *)gesture{
     
     MIAAlbumViewController *albumViewController = [MIAAlbumViewController new];
+    [albumViewController setAlbumUID:_albumModel.id];
 
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [(UINavigationController *)[[delegate window] rootViewController] pushViewController:albumViewController animated:YES];

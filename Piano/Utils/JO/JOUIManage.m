@@ -11,9 +11,9 @@
 
 @implementation JOUIManage
 
-+ (UILabel *)createLabelWithJOFont:(JOFont)joFont{
++ (UILabel *)createLabelWithJOFont:(JOFont *)joFont{
 
-    return [JOUIManage createLabelWithTextColor:joFont.color textFont:joFont.font];
+    return [JOUIManage createLabelWithTextColor:joFont->color textFont:joFont->font];
 }
 
 + (UILabel *)createLabelWithTextColor:(UIColor *)textColor{

@@ -58,7 +58,7 @@ static CGFloat const kTitleLabelHeight = 20.;
     if (!self.videoImageView) {
         
         self.videoImageView = [UIImageView newAutoLayoutView];
-        [_videoImageView setBackgroundColor:[UIColor orangeColor]];
+        [_videoImageView setBackgroundColor:JORGBCreate(230., 230., 230., 0.7)];
         [self addSubview:_videoImageView];
         
         self.numberlabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_ViweCount]];

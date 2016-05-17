@@ -10,4 +10,6 @@
 
 @interface MIAAlbumCommentView : UIView
 
+- (void)setAlbumCommentData:(id)data;
+
 @end

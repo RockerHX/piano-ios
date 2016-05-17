@@ -10,10 +10,10 @@
 
 @implementation UILabel(Extend)
 
-- (void)setJOFont:(JOFont)font{
+- (void)setJOFont:(JOFont *)font{
 
-    [self setFont:font.font];
-    [self setTextColor:font.color];
+    [self setFont:font->font];
+    [self setTextColor:font->color];
 }
 
 @end

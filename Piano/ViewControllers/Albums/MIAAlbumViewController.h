@@ -10,4 +10,6 @@
 
 @interface MIAAlbumViewController : UIViewController
 
+@property (nonatomic, copy) NSString *albumUID;
+
 @end
