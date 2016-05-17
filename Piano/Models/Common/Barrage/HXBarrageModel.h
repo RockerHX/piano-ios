@@ -10,9 +10,9 @@
 
 
 typedef NS_ENUM(NSUInteger, HXBarrageType) {
+    HXBarrageTypeEnter,
     HXBarrageTypeAttention,
     HXBarrageTypeShare,
-    HXBarrageTypeEnter,
     HXBarrageTypeGift,
     HXBarrageTypeReward,
     HXBarrageTypeComment,
