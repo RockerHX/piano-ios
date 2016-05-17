@@ -10,6 +10,4 @@
 
 @interface MIAPayHistoryCell : MIABaseTableViewCell
 
-- (void)setPayHistoryCellTag:(NSInteger )tag;
-
 @end

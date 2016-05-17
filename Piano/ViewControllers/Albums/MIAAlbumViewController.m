@@ -96,6 +96,7 @@
                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             self.coverImageView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
         }];
+        [self.albumBarView setAlbumName:self.albumViewModel.albumModel.title singerName:self.albumViewModel.albumModel.nick];
 //        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.albumViewModel.albumModel.coverUrl] placeholderImage:nil];
         [self.albumTableHeadView setAlbumHeadDetailData:self.albumViewModel.albumModel];
     }];

@@ -8,6 +8,8 @@
 
 #import "MIAPayHistoryCellView.h"
 #import "UIImageView+WebCache.h"
+#import "MIASendGiftModel.h"
+#import "MIAOrderModel.h"
 #import "JOBaseSDK.h"
 #import "MIAFontManage.h"
 
@@ -20,6 +22,9 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 15.;//礼物与名�
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UILabel *mCountLabel;
+
+@property (nonatomic, strong) MIASendGiftModel *sendGiftModel;
+@property (nonatomic, strong) MIAOrderModel *orderModel;
 
 @end
 
@@ -73,29 +78,47 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 15.;//礼物与名�
     
 }
 
-- (void)setPayHistoryFlag:(NSInteger)flag{
 
+- (void)setPayHistoryData:(id)data{
 
-    if (flag == 0) {
+    if ([data isKindOfClass:[MIASendGiftModel class]]) {
         //礼物
-        [_nameLabel setText:@"礼物A x 3"];
-        [_mCountLabel setText:@"-100M"];
-        [_dateLabel setText:@"3月23日"];
+        
+        self.sendGiftModel = nil;
+        self.sendGiftModel = data;
+        
+        [_giftImageView sd_setImageWithURL:[NSURL URLWithString:_sendGiftModel.iconUrl] placeholderImage:nil];
+        
+        [_nameLabel setText:_sendGiftModel.giftName];
+        [_mCountLabel setText:[NSString stringWithFormat:@"-%@M",_sendGiftModel.mcoin]];
+        NSString *month = [_sendGiftModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonth];
+        NSString *day = [_sendGiftModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterDay];
+        [_dateLabel setText:[NSString stringWithFormat:@"%@月%@日",month,day]];
         
         [JOAutoLayout removeAutoLayoutWithSizeSelfView:_mCountLabel superView:self];
         [JOAutoLayout autoLayoutWithWidth:[_mCountLabel sizeThatFits:JOMAXSize].width+1 selfView:_mCountLabel superView:self];
         
-    }else {
+    }else if([data isKindOfClass:[MIAOrderModel class]]){
         //充值记录
-        [_nameLabel setText:@"充值 100元"];
-        [_mCountLabel setText:@"+100M"];
-        [_dateLabel setText:@"3月23日"];
         
+        self.orderModel = nil;
+        self.orderModel = data;
+        
+        [_nameLabel setText:[NSString stringWithFormat:@"充值 %@元",_orderModel.amount]];
+        [_mCountLabel setText:[NSString stringWithFormat:@"+%@",_orderModel.body]];
+        NSString *month = [_orderModel.createdTime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonth];
+        NSString *day = [_orderModel.createdTime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterDay];
+        [_dateLabel setText:[NSString stringWithFormat:@"%@月%@日",month,day]];
+    
         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_giftImageView superView:self];
         [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_giftImageView superView:self];
         
         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_mCountLabel superView:self];
         [JOAutoLayout autoLayoutWithWidth:[_mCountLabel sizeThatFits:JOMAXSize].width+1 selfView:_mCountLabel superView:self];
+        
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAPayHistoryCellView exception!" reason:@"data必须为MIASendGiftModel 或者 MIAOrderModel 类型"];
     }
 }
 

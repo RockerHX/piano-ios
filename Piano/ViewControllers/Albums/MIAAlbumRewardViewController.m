@@ -213,9 +213,11 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
 
 - (void)popAction{
 
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        
+//    }];
 }
 
 - (void)rechangeAction{

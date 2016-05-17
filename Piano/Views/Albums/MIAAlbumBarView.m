@@ -42,7 +42,7 @@ static CGFloat const kBottomSpaceDistance = 5.;//底部的间距大小
 
     self.songNameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Bar_Title]];
     [_songNameLabel setTextAlignment:NSTextAlignmentCenter];
-    [_songNameLabel setText:@"狂喜狂悲"];
+    [_songNameLabel setText:@" "];
     [self addSubview:_songNameLabel];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_songNameLabel superView:self];
@@ -52,7 +52,7 @@ static CGFloat const kBottomSpaceDistance = 5.;//底部的间距大小
     
     self.nameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Bar_Name]];
     [_nameLabel setTextAlignment:NSTextAlignmentCenter];
-    [_nameLabel setText:@"游鸿明"];
+    [_nameLabel setText:@" "];
     [self addSubview:_nameLabel];
     
     [JOAutoLayout autoLayoutWithLeftXView:_songNameLabel selfView:_nameLabel superView:self];
@@ -83,6 +83,12 @@ static CGFloat const kBottomSpaceDistance = 5.;//底部的间距大小
 
     self.popActionBlock = nil;
     self.popActionBlock = block;
+}
+
+- (void)setAlbumName:(NSString *)albumName singerName:(NSString *)singerName{
+
+    [_songNameLabel setText:albumName];
+    [_nameLabel setText:singerName];
 }
 
 @end
