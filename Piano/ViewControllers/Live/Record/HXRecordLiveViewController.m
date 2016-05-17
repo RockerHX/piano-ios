@@ -233,8 +233,8 @@ HXLiveCommentContainerViewControllerDelegate
 - (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {}
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {
-//    UIImage *snapShotImage = [UIImage imageWithCGImage:img];
-//    [self endLiveWithSnapShotImage:snapShotImage];
+    UIImage *snapShotImage = [UIImage imageWithCGImage:img];
+    [self endLiveWithSnapShotImage:snapShotImage];
 }
 
 #pragma mark - HXRecordAnchorViewDelegate Methods
