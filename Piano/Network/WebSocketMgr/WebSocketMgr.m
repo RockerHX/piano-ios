@@ -28,6 +28,10 @@ NSString * const WebSocketMgrNotificationDidReceivePong				= @"WebSocketMgrNotif
 NSString * const WebSocketMgrNotificationPushUnread					= @"WebSocketMgrNotificationPushUnread";
 NSString * const WebSocketMgrNotificationPushRoomEnter				= @"WebSocketMgrNotificationPushRoomEnter";
 NSString * const WebSocketMgrNotificationPushRoomClose				= @"WebSocketMgrNotificationPushRoomClose";
+NSString * const WebSocketMgrNotificationPushRoomAttention			= @"WebSocketMgrNotificationPushRoomAttention";
+NSString * const WebSocketMgrNotificationPushRoomShare              = @"WebSocketMgrNotificationPushRoomShare";
+NSString * const WebSocketMgrNotificationPushRoomGift               = @"WebSocketMgrNotificationPushRoomGift";
+NSString * const WebSocketMgrNotificationPushRoomReward             = @"WebSocketMgrNotificationPushRoomReward";
 NSString * const WebSocketMgrNotificationPushRoomComment			= @"WebSocketMgrNotificationPushRoomComment";
 
 
@@ -348,10 +352,22 @@ const static NSTimeInterval kAutoReconnectTimeout_Loop				= 30.0;
 	} else if ([command isEqualToString:MiaAPICommand_Push_RoomClose]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomClose object:self userInfo:userInfo];
 		return;
-	} else if ([command isEqualToString:MiaAPICommand_Push_RoomComment]) {
-		[[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomComment object:self userInfo:userInfo];
-		return;
-	}
+    }/* else if ([command isEqualToString:MiaAPICommand_Push_RoomComment]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomAttention object:self userInfo:userInfo];
+        return;
+    } else if ([command isEqualToString:MiaAPICommand_Push_RoomComment]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomShare object:self userInfo:userInfo];
+        return;
+    }*/ else if ([command isEqualToString:MiaAPICommand_Push_RoomGift]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomGift object:self userInfo:userInfo];
+        return;
+    } else if ([command isEqualToString:MiaAPICommand_Push_RoomReward]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomReward object:self userInfo:userInfo];
+        return;
+    } else if ([command isEqualToString:MiaAPICommand_Push_RoomComment]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomComment object:self userInfo:userInfo];
+        return;
+    }
 
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		// 使用GDC同步锁保证读写同步
