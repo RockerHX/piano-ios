@@ -185,4 +185,43 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 			   completeBlock:(MiaRequestCompleteBlock)completeBlock
 				timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
+#pragma mark - 充值相关
+
+/**
+ *  获取充值的列表数据
+ *
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)getRechargeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+
+/**
+ *  获取我的M币余额.
+ *
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)getMCoinBalancesWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                             timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+/**
+ *  获取送出的礼物列表.
+ *
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)getSendGiftListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+/**
+ *  获取充值的记录列表.
+ *
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)getOrderListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                         timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end

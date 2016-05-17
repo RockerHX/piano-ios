@@ -181,9 +181,10 @@
     @strongify(self);
         MIAAlbumRewardViewController *rewardViewController = [MIAAlbumRewardViewController new];
         [rewardViewController setAlbumModel:self.albumViewModel.albumModel];
-        [self.navigationController presentViewController:rewardViewController animated:YES completion:^{
-            
-        }];
+//        [self.navigationController presentViewController:rewardViewController animated:YES completion:^{
+//            
+//        }];
+        [self.navigationController pushViewController:rewardViewController animated:YES];
     }];
     [_albumTableHeadView setFrame:CGRectMake(0., 0., View_Width(self.view), [_albumTableHeadView albumDetailViewHeight])];
     

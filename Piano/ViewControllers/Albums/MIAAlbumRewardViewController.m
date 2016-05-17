@@ -7,6 +7,7 @@
 //
 
 #import "MIAAlbumRewardViewController.h"
+#import "MIAPaymentViewController.h"
 #import "UIImageView+WebCache.h"
 #import "UIViewController+HXClass.h"
 #import "MIAAlbumRewardViewModel.h"
@@ -178,6 +179,7 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     self.rechargeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_rechargeButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_rechargeButton setTitle:@"充值>" forState:UIControlStateNormal];
+    [_rechargeButton addTarget:self action:@selector(rechangeAction) forControlEvents:UIControlEventTouchUpInside];
     [[_rechargeButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_AlbumReward_Recharge]->font];
     [_rechargeButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_AlbumReward_Recharge]->color forState:UIControlStateNormal];
     [_accountView addSubview:_rechargeButton];
@@ -214,6 +216,12 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+- (void)rechangeAction{
+
+    MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
+    [self.navigationController pushViewController:paymentViewController animated:YES];
 }
 
 @end

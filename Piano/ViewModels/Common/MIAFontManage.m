@@ -129,6 +129,54 @@ static NSString *kMIAFontLight = @"Helvetica";
         return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 15.);
     }
     
+    //MARK: 充值页面
+    if (type == MIAFontType_Payment_Bar_Title) {
+        //Bar视图的标题
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 20.);
+    }else if (type == MIAFontType_Payment_Bar_RightButton){
+        //Bar视图右边的按钮(消费记录)
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
+    }else if (type == MIAFontType_Payment_Bar_M_Tip){
+        //Bar视图的M币的剩余提示
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 15.);
+    }else if (type == MIAFontType_Payment_Bar_M){
+        //Bar视图的M币
+        return JOFontMake(kMIAFontBold, [UIColor whiteColor], 32.);
+    }else if (type == MIAFontType_Payment_Pay_M){
+        //充值的M币
+        return JOFontMake(kMIAFontBold, [UIColor blackColor], 16.);
+    }else if (type == MIAFontType_Payment_Pay_Money){
+        //充值的金额
+        return JOFontMake(kMIAFontBold, JORGBCreate(153., 100., 0., 1.), 15.);
+    }else if (type == MIAFontType_Payment_Pay_Head){
+        //充值的head提示
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 15.);
+    }else if (type == MIAFontType_Payment_Alert_Title){
+        //提示的标题
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 15.);
+    }else if (type == MIAFontType_Payment_Alert_Content){
+        //提示的内容
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 13.);
+    }else if (type == MIAFontType_Payment_Alert_Button){
+        //提示的按钮
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 13.);
+    }
+    
+    //MARK: 消费的记录
+    if (type == MIAFontType_PayHistory_HeadTip) {
+        //头部的提示模块标题
+        return JOFontMake(kMIAFontRegular, JORGBSameCreate(160.), 19.);
+    }else if (type == MIAFontType_PayHistory_Title){
+        //标题
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
+    }else if (type == MIAFontType_PayHistory_Time){
+        //时间
+        return JOFontMake(kMIAFontRegular, JORGBSameCreate(210.), 13.);
+    }else if (type == MIAFontType_PayHistory_Amount){
+        //余额
+        return JOFontMake(kMIAFontRegular, JORGBCreate(171., 143., 71., 1.), 17.);
+    }
+    
     return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
 }
 

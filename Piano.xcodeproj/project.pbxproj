@@ -32,6 +32,22 @@
 		420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */; };
 		420BBB4D1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */; };
 		420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */; };
+		420BBB541CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB531CE9A85F00F52AB2 /* MIAPaymentCell.m */; };
+		420BBB551CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB531CE9A85F00F52AB2 /* MIAPaymentCell.m */; };
+		420BBB581CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB571CE9A88D00F52AB2 /* MIAPaymentCellView.m */; };
+		420BBB591CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB571CE9A88D00F52AB2 /* MIAPaymentCellView.m */; };
+		420BBB5C1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */; };
+		420BBB5D1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */; };
+		420BBB601CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */; };
+		420BBB611CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */; };
+		420BBB641CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */; };
+		420BBB651CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */; };
+		420BBB681CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB671CE9B63400F52AB2 /* MIAPayHistoryCell.m */; };
+		420BBB691CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB671CE9B63400F52AB2 /* MIAPayHistoryCell.m */; };
+		420BBB6C1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */; };
+		420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */; };
+		420BBB701CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
+		420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
 		42984AFB1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
@@ -122,6 +138,8 @@
 		42A0DB011CE2E07900F1FCEF /* MIAAlbumCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E11CE1FEFB00B80753 /* MIAAlbumCommentView.m */; };
 		42A0DB021CE2E07F00F1FCEF /* MIAAlbumCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612F11CE1FF0900B80753 /* MIAAlbumCommentCell.m */; };
 		42A0DB031CE2E08200F1FCEF /* MIAAlbumSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612FB1CE1FF0900B80753 /* MIAAlbumSongCell.m */; };
+		42B6A0E21CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E11CEB08EE00BDF8E8 /* MIARechargeModel.m */; };
+		42B6A0E31CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E11CEB08EE00BDF8E8 /* MIARechargeModel.m */; };
 		42D612D61CE1FDD600B80753 /* MIAFontManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D51CE1FDD600B80753 /* MIAFontManage.m */; };
 		42D612DB1CE1FDE700B80753 /* UIFont+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D81CE1FDE700B80753 /* UIFont+JOExtend.m */; };
 		42D612DC1CE1FDE700B80753 /* UILabel+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DA1CE1FDE700B80753 /* UILabel+JOExtend.m */; };
@@ -558,6 +576,22 @@
 		420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentViewController.m; sourceTree = "<group>"; };
 		420BBB4B1CE99D0E00F52AB2 /* MIAPayHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryViewController.h; sourceTree = "<group>"; };
 		420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryViewController.m; sourceTree = "<group>"; };
+		420BBB521CE9A85F00F52AB2 /* MIAPaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentCell.h; sourceTree = "<group>"; };
+		420BBB531CE9A85F00F52AB2 /* MIAPaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentCell.m; sourceTree = "<group>"; };
+		420BBB561CE9A88D00F52AB2 /* MIAPaymentCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentCellView.h; sourceTree = "<group>"; };
+		420BBB571CE9A88D00F52AB2 /* MIAPaymentCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentCellView.m; sourceTree = "<group>"; };
+		420BBB5A1CE9A8AD00F52AB2 /* MIAPaymentBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentBarView.h; sourceTree = "<group>"; };
+		420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentBarView.m; sourceTree = "<group>"; };
+		420BBB5E1CE9A90800F52AB2 /* MIAPaymentAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentAlertView.h; sourceTree = "<group>"; };
+		420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentAlertView.m; sourceTree = "<group>"; };
+		420BBB621CE9A94B00F52AB2 /* MIAPayHistoryCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryCellView.h; sourceTree = "<group>"; };
+		420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryCellView.m; sourceTree = "<group>"; };
+		420BBB661CE9B63400F52AB2 /* MIAPayHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryCell.h; sourceTree = "<group>"; };
+		420BBB671CE9B63400F52AB2 /* MIAPayHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryCell.m; sourceTree = "<group>"; };
+		420BBB6A1CE9CD4200F52AB2 /* MIAPaymentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentViewModel.h; sourceTree = "<group>"; };
+		420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentViewModel.m; sourceTree = "<group>"; };
+		420BBB6E1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryViewModel.h; sourceTree = "<group>"; };
+		420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryViewModel.m; sourceTree = "<group>"; };
 		42984ADB1CDAEF84004F00D5 /* NSObject+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JOExtend.h"; sourceTree = "<group>"; };
 		42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JOExtend.m"; sourceTree = "<group>"; };
 		42984ADD1CDAEF84004F00D5 /* NSString+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JOExtend.h"; sourceTree = "<group>"; };
@@ -643,6 +677,8 @@
 		42A0DAF21CE2D2B100F1FCEF /* MIAAlbumDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumDetailView.m; sourceTree = "<group>"; };
 		42A0DAF91CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumHeadDetailViewModel.h; sourceTree = "<group>"; };
 		42A0DAFA1CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumHeadDetailViewModel.m; sourceTree = "<group>"; };
+		42B6A0E01CEB08EE00BDF8E8 /* MIARechargeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIARechargeModel.h; sourceTree = "<group>"; };
+		42B6A0E11CEB08EE00BDF8E8 /* MIARechargeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIARechargeModel.m; sourceTree = "<group>"; };
 		42D612D41CE1FDD600B80753 /* MIAFontManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAFontManage.h; sourceTree = "<group>"; };
 		42D612D51CE1FDD600B80753 /* MIAFontManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAFontManage.m; sourceTree = "<group>"; };
 		42D612D71CE1FDE700B80753 /* UIFont+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+JOExtend.h"; sourceTree = "<group>"; };
@@ -1166,6 +1202,44 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		420BBB4F1CE9A6D500F52AB2 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				420BBB511CE9A79500F52AB2 /* Cell */,
+				420BBB561CE9A88D00F52AB2 /* MIAPaymentCellView.h */,
+				420BBB571CE9A88D00F52AB2 /* MIAPaymentCellView.m */,
+				420BBB621CE9A94B00F52AB2 /* MIAPayHistoryCellView.h */,
+				420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */,
+				420BBB5A1CE9A8AD00F52AB2 /* MIAPaymentBarView.h */,
+				420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */,
+				420BBB5E1CE9A90800F52AB2 /* MIAPaymentAlertView.h */,
+				420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		420BBB501CE9A6FA00F52AB2 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				420BBB6A1CE9CD4200F52AB2 /* MIAPaymentViewModel.h */,
+				420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */,
+				420BBB6E1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.h */,
+				420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		420BBB511CE9A79500F52AB2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				420BBB521CE9A85F00F52AB2 /* MIAPaymentCell.h */,
+				420BBB531CE9A85F00F52AB2 /* MIAPaymentCell.m */,
+				420BBB661CE9B63400F52AB2 /* MIAPayHistoryCell.h */,
+				420BBB671CE9B63400F52AB2 /* MIAPayHistoryCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		42984AD91CDAEF84004F00D5 /* JO */ = {
 			isa = PBXGroup;
 			children = (
@@ -1314,6 +1388,15 @@
 				429E501C1CE47EBE0008CA85 /* MIAAlbumDetailModel.m */,
 			);
 			path = AlbumDetail;
+			sourceTree = "<group>";
+		};
+		42B6A0DF1CEB082900BDF8E8 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				42B6A0E01CEB08EE00BDF8E8 /* MIARechargeModel.h */,
+				42B6A0E11CEB08EE00BDF8E8 /* MIARechargeModel.m */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
@@ -1982,6 +2065,7 @@
 				CD2E72961CA11E02003CDB77 /* Live */,
 				CD294A041CA294CF00CA3C3F /* Login */,
 				429E501A1CE47E6B0008CA85 /* AlbumDetail */,
+				42B6A0DF1CEB082900BDF8E8 /* Payment */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2014,6 +2098,7 @@
 				CDE2FC811CABD42600476968 /* Profile */,
 				CD3199811CAA6173006C845F /* Live */,
 				CDF300F81CA8D0C600C19C32 /* Albums */,
+				420BBB501CE9A6FA00F52AB2 /* Payment */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2029,6 +2114,7 @@
 				CDAA8DB11CA3CA8A0048C526 /* Live */,
 				CD6C19791CA519A900849B39 /* Play */,
 				CDF300F71CA8D0B900C19C32 /* Albums */,
+				420BBB4F1CE9A6D500F52AB2 /* Payment */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2911,6 +2997,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				420BBB551CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */,
 				42984B021CDAEF84004F00D5 /* JOFAppInfo.m in Sources */,
 				CD79608E1CBE594C004CC661 /* HXSettingViewController.m in Sources */,
 				CD79608F1CBE594C004CC661 /* HXLiveModel.m in Sources */,
@@ -2919,6 +3006,7 @@
 				42984B151CDB0542004F00D5 /* UIView+JOExtend.m in Sources */,
 				42A0DB011CE2E07900F1FCEF /* MIAAlbumCommentView.m in Sources */,
 				CD7960921CBE594C004CC661 /* HXUserSession.m in Sources */,
+				420BBB611CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */,
 				CD7960931CBE594C004CC661 /* HXIBImageView.m in Sources */,
 				CD7960941CBE594C004CC661 /* HXProfileReplayCell.m in Sources */,
 				CD7960951CBE594C004CC661 /* HXRecordAnchorView.m in Sources */,
@@ -2932,6 +3020,7 @@
 				CD79609C1CBE594C004CC661 /* UIViewController+HXClass.m in Sources */,
 				429CC2041CE06C48004BCC0C /* MIABaseShowView.m in Sources */,
 				CD79609D1CBE594C004CC661 /* HXIBView.m in Sources */,
+				420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */,
 				CD79609E1CBE594C004CC661 /* HXIBButton.m in Sources */,
 				42984B0C1CDAEF84004F00D5 /* JOFFileManage.m in Sources */,
 				CD79609F1CBE594C004CC661 /* HXRecordBottomBar.m in Sources */,
@@ -2940,6 +3029,7 @@
 				CD7960A11CBE594C004CC661 /* HXLiveCommentViewModel.m in Sources */,
 				CD7960A21CBE594C004CC661 /* WebSocketMgr.m in Sources */,
 				CDE017211CE48D4B005645D5 /* HXDiscoveryPreviewCell.m in Sources */,
+				420BBB691CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */,
 				CD7960A31CBE594C004CC661 /* UIViewController+LoginAction.m in Sources */,
 				42984B591CDC8021004F00D5 /* MIAProfileVideoView.m in Sources */,
 				CDE016E51CE309C6005645D5 /* HXSectorSlider.m in Sources */,
@@ -2961,6 +3051,7 @@
 				CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */,
 				CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */,
 				CD7960B11CBE594C004CC661 /* HXLiveCommentViewController.m in Sources */,
+				42B6A0E31CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */,
 				CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */,
 				CD7960B31CBE594C004CC661 /* MBProgressHUDHelp.m in Sources */,
 				42984B511CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */,
@@ -2985,6 +3076,7 @@
 				CD7960C01CBE594C004CC661 /* GenderPickerView.m in Sources */,
 				429E50191CE47D0B0008CA85 /* MIACommentModel.m in Sources */,
 				CD7960C11CBE594C004CC661 /* NSObject+LoginAction.m in Sources */,
+				420BBB5D1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */,
 				CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */,
 				CD7960C31CBE594C004CC661 /* HXAlbumsNavigationBar.m in Sources */,
 				CD7960C41CBE594C004CC661 /* ChangePwdViewController.m in Sources */,
@@ -3040,6 +3132,7 @@
 				CD7960E41CBE594C004CC661 /* HXPreviewLiveEidtView.m in Sources */,
 				CD7960E51CBE594C004CC661 /* PathHelper.m in Sources */,
 				CD7960E61CBE594C004CC661 /* HXLiveEndViewController.m in Sources */,
+				420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */,
 				42984B611CDC878E004F00D5 /* MIAProfileLiveCell.m in Sources */,
 				CD7960E71CBE594C004CC661 /* HXRecordLiveViewModel.m in Sources */,
 				429E50111CE46DDE0008CA85 /* MIAAlbumViewModel.m in Sources */,
@@ -3060,6 +3153,7 @@
 				420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */,
 				CD7960F71CBE594C004CC661 /* NSTimer+BlockSupport.m in Sources */,
 				CD7960F81CBE594C004CC661 /* HXReplayViewModel.m in Sources */,
+				420BBB591CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */,
 				CD7960F91CBE594C004CC661 /* HXPathManager.m in Sources */,
 				CD7960FA1CBE594C004CC661 /* MIAButton.m in Sources */,
 				42984B4D1CDC7711004F00D5 /* MIAProfileViewController.m in Sources */,
@@ -3071,6 +3165,7 @@
 				42984B6D1CDCAFEA004F00D5 /* MIAProfileReplayCell.m in Sources */,
 				CD7960FF1CBE594C004CC661 /* HXLoginViewController.m in Sources */,
 				CD7961001CBE594C004CC661 /* MIALabel.m in Sources */,
+				420BBB651CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */,
 				CD7961011CBE594C004CC661 /* AppDelegate.m in Sources */,
 				CD7961021CBE594C004CC661 /* MiaAPIHelper.m in Sources */,
 				42A0DAFF1CE2E07300F1FCEF /* MIAAlbumPlayView.m in Sources */,
@@ -3172,11 +3267,13 @@
 				CD2367961CA9212B002C8233 /* HXMeViewModel.m in Sources */,
 				42D612ED1CE1FEFB00B80753 /* MIAAlbumPlayView.m in Sources */,
 				42984B0F1CDAEF84004F00D5 /* JOFLog.m in Sources */,
+				420BBB581CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */,
 				CD5DD8B01CA912790077A17B /* HXAlbumsSongCell.m in Sources */,
 				CD2949F71CA2919B00CA3C3F /* HXForgotPWViewController.m in Sources */,
 				CDF301071CA8D4ED00C19C32 /* HXAlbumsViewController.m in Sources */,
 				429CC1F91CE04AC5004BCC0C /* MIABaseShowView.m in Sources */,
 				42D612DB1CE1FDE700B80753 /* UIFont+JOExtend.m in Sources */,
+				420BBB5C1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */,
 				CD858D9C1CAE6B24007441E9 /* HXProfileReplayContainerCell.m in Sources */,
 				CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */,
 				CD6C19411CA4E4AE00849B39 /* HXLiveCommentContainerViewController.m in Sources */,
@@ -3215,6 +3312,7 @@
 				CD5F217D1CAD4E3B0067A1DA /* HXVideoModel.m in Sources */,
 				CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */,
 				CDC0631B1CB3E53200E66F2A /* HXDiscoveryViewModel.m in Sources */,
+				420BBB701CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */,
 				42D613011CE1FF0900B80753 /* MIAAlbumSongCell.m in Sources */,
 				CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */,
 				CD858D961CAE69AD007441E9 /* HXProfileAlbumContainerCell.m in Sources */,
@@ -3235,7 +3333,9 @@
 				42984B4C1CDC7711004F00D5 /* MIAProfileViewController.m in Sources */,
 				CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */,
 				CD2949FF1CA292ED00CA3C3F /* HXNavigationController.m in Sources */,
+				420BBB6C1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */,
 				CD5F21691CAD34710067A1DA /* HXWatcherCell.m in Sources */,
+				420BBB641CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */,
 				42984B051CDAEF84004F00D5 /* JOFCrash.m in Sources */,
 				CD9167891CAE5E6D000A12DC /* HXProfileNavigationBar.m in Sources */,
 				429E501D1CE47EBE0008CA85 /* MIAAlbumDetailModel.m in Sources */,
@@ -3283,6 +3383,7 @@
 				CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */,
 				CD2949F81CA2919B00CA3C3F /* HXLoginViewController.m in Sources */,
 				CD9167721CAE52E7000A12DC /* MIALabel.m in Sources */,
+				42B6A0E21CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */,
 				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
 				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
 				CD92AF8B1CBBAF3300106A89 /* HXReplaySlider.m in Sources */,
@@ -3291,6 +3392,7 @@
 				42984AFB1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */,
 				CDC0630F1CB3E41000E66F2A /* HXDiscoveryLiveCell.m in Sources */,
 				CD5F21751CAD4C560067A1DA /* HXAlbumModel.m in Sources */,
+				420BBB541CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */,
 				CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */,
 				CD6C19891CA519A900849B39 /* HXPlayBottomBar.m in Sources */,
 				42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */,
@@ -3318,8 +3420,10 @@
 				CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */,
 				429CC1DE1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */,
 				CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */,
+				420BBB681CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */,
 				CD858D991CAE6B14007441E9 /* HXProfileVideoContainerCell.m in Sources */,
 				420BBB4D1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */,
+				420BBB601CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */,
 				CD5F21791CAD4C930067A1DA /* HXAnchorModel.m in Sources */,
 				42984B031CDAEF84004F00D5 /* JOAutoLayout.m in Sources */,
 				CDE0171C1CE489AC005645D5 /* HXDownLoadCache.m in Sources */,
