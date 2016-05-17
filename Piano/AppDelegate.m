@@ -10,7 +10,7 @@
 #import "HXAppConstants.h"
 
 // UMeng SDK
-#import "MobClick.h"
+#import <UMMobClick/MobClick.h>
 #import "HXVersion.h"
 
 // Share SDK
@@ -48,11 +48,15 @@
     // 启动[友盟统计]
     [MobClick setCrashReportEnabled:NO];
     
+    UMAnalyticsConfig *analyticsConfigure = [UMAnalyticsConfig sharedInstance];
+    analyticsConfigure.appKey = UMengAPPKEY;
+    analyticsConfigure.ePolicy = BATCH;
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APPSTORE_BUNDLE_ID]) {
-        [MobClick startWithAppkey:UMengAPPKEY reportPolicy:BATCH channelId:CHANNEL_APPSTORE];
+        analyticsConfigure.channelId = CHANNEL_APPSTORE;
     } else {
-        [MobClick startWithAppkey:UMengAPPKEY reportPolicy:BATCH channelId:CHANNEL_FIRIM];
+        analyticsConfigure.channelId = CHANNEL_FIRIM;
     }
+    [MobClick startWithConfigure:analyticsConfigure];
     
 //#pragma mark - Testin Crash SDK
 //    [TestinAgent init:TestinAPPKEY channel:FirimChannel config:[TestinConfig defaultConfig]];
