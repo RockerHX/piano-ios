@@ -93,8 +93,6 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     self.coverImageView = [UIImageView newAutoLayoutView];
     [self.view addSubview:_coverImageView];
     
-    
-    
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_coverImageView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_coverImageView superView:self.view];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_coverImageView superView:self.view];
@@ -221,16 +219,20 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     
     MIAProfileHeadModel *headModel = _profileViewModel.profileHeadModel;
     
-//    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//       
-//        NSLog(@"W:%f, h:%f",image.size.width,image.size.height);
-//    }];
-    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil];
+    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_coverImageView superView:self.view];
+        [JOAutoLayout autoLayoutWithHeight:View_Width(self.view)/(image.size.width/image.size.height) selfView:_coverImageView superView:self.view];
+        
+    }];
+//    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
     [_profileHeadView setAttentionButtonState:[headModel.followState boolValue]];
     
     [_profileTableView reloadData];
+    
+    
 }
 
 #pragma mark - table data source

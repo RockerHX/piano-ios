@@ -56,6 +56,25 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
     MIAFontType_AlbumReward_Account,//M币的账户余额
     MIAFontType_AlbumReward_Recharge,//充值
     
+    //MARK: 充值页面
+    MIAFontType_Payment_Bar_Title, //Bar视图的标题
+    MIAFontType_Payment_Bar_RightButton, //Bar视图右边的按钮(消费记录)
+    MIAFontType_Payment_Bar_M_Tip, //Bar视图的M币的剩余提示
+    MIAFontType_Payment_Bar_M,//Bar视图的M币
+    MIAFontType_Payment_Pay_M, //充值的M币
+    MIAFontType_Payment_Pay_Money, //充值的金额
+    MIAFontType_Payment_Pay_Head, //充值的head提示
+    MIAFontType_Payment_Alert_Title,//提示的标题
+    MIAFontType_Payment_Alert_Content,//提示的内容
+    MIAFontType_Payment_Alert_Button,//提示的按钮
+    
+    //MARK: 消费的记录
+    MIAFontType_PayHistory_HeadTip,//头部的提示模块标题
+    MIAFontType_PayHistory_Title, //标题
+    MIAFontType_PayHistory_Time,  //时间
+    MIAFontType_PayHistory_Amount, //余额
+    
+    
 };
 
 
