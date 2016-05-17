@@ -18,7 +18,6 @@
 @property(nonatomic, strong)  NSString *content;
 
 @property(nonatomic, assign) NSInteger  createDate;
-
 @property(nonatomic, strong)  NSString *date;
 
 @end
