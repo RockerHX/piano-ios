@@ -119,6 +119,11 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)createRoomWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 					   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)liveRelatedAlbum:(NSString *)albumID
+                  roomID:(NSString *)roomID
+           completeBlock:(MiaRequestCompleteBlock)completeBlock
+            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 + (void)setRoomTitle:(NSString *)title
 			  roomID:(NSString *)roomID
 	   completeBlock:(MiaRequestCompleteBlock)completeBlock
