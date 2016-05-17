@@ -88,8 +88,10 @@ static NSInteger FetchLimit = 10;
 - (void)fetchAlbumList {
     [MiaAPIHelper liveGetAlbumListWithUID:[HXUserSession session].uid start:_start limit:FetchLimit completeBlock:
      ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-         _start += FetchLimit;
-         [self parseList:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+         if (success) {
+             _start += FetchLimit;
+             [self parseList:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+         }
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         ;
     }];

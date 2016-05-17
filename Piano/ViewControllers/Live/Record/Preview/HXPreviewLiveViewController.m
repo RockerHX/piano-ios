@@ -93,6 +93,7 @@ HXSelectedAlbumViewControllerDelegate
 
 #pragma mark - Private Methods
 - (void)startCountDown {
+    self.controlContainerView.hidden = YES;
     _countDownContainerView.hidden = NO;
     [_countDownViewController startCountDown];
 }
@@ -108,7 +109,6 @@ HXSelectedAlbumViewControllerDelegate
                      completeBlock:
          ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
              if (success) {
-                 self.controlContainerView.hidden = YES;
                  [self startCountDown];
              }
              [self hiddenHUD];
@@ -200,8 +200,19 @@ HXSelectedAlbumViewControllerDelegate
 
 #pragma mark - HXSelectedAlbumViewControllerDelegate Methods
 - (void)selectedAlbumViewController:(HXSelectedAlbumViewController *)viewController selectedAlbum:(HXAlbumModel *)album {
-    _album = album;
     [_editView.albumCoverView sd_setImageWithURL:[NSURL URLWithString:album.coverUrl]];
+    
+    [self showHUD];
+    [MiaAPIHelper liveRelatedAlbum:album.ID roomID:_roomID completeBlock:
+     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+         [self hiddenHUD];
+         if (!success) {
+             _editView.albumCoverView.image = nil;
+         }
+     } timeoutBlock:^(MiaRequestItem *requestItem) {
+         [self hiddenHUD];
+         _editView.albumCoverView.image = nil;
+    }];
 }
 
 @end
