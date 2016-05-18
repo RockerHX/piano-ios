@@ -50,7 +50,8 @@
 
 - (void)setComment:(HXCommentModel *)comment {
     _comment = comment;
-    _prompt = [_comment.nickName stringByAppendingFormat:@":%@", _comment.content];
+    _type = HXBarrageTypeComment;
+    _avatarUrl = comment.avatarUrl;
 }
 
 @end

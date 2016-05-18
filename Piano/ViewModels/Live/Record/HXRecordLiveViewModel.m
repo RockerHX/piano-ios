@@ -143,7 +143,6 @@
     NSMutableArray *comments = _comments.mutableCopy;
     HXBarrageModel *barrage = [HXBarrageModel new];
     HXCommentModel *comment = [HXCommentModel mj_objectWithKeyValues:data];
-    barrage.type = HXBarrageTypeComment;
     barrage.comment = comment;
     
     [comments addObject:comment];
