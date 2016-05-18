@@ -206,6 +206,7 @@
 - (void)enterRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper enterRoom:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
+            [self parseData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             [subscriber sendCompleted];
         } else {
             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
@@ -225,6 +226,10 @@
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
     }];
+}
+
+- (void)parseData:(NSDictionary *)data {
+    _model = [HXLiveModel mj_objectWithKeyValues:data];
 }
 
 - (void)checkAttentionStateRequestWithSubscriber:(id<RACSubscriber>)subscriber {
