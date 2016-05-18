@@ -139,6 +139,7 @@ HXLiveAlbumViewDelegate
 }
 
 - (void)dismiss {
+    [_albumView stopAlbumAnmation];
     [self leaveRoom];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -161,6 +162,7 @@ HXLiveAlbumViewDelegate
 - (void)fetchDataFinfished {
     [self roomConfigure];
     [self updateAnchorView];
+    [self updateAlbumView];
 }
 
 - (void)roomConfigure {
@@ -197,6 +199,11 @@ HXLiveAlbumViewDelegate
     }
 }
 
+- (void)updateAlbumView {
+    HXAlbumModel *album = _viewModel.model.album;
+    _albumView.hidden = album ? NO : YES;
+    [_albumView updateWithAlbum:album];
+}
 
 #pragma mark - ZegoLiveApiDelegate
 - (void)onLoginChannel:(uint32)error {

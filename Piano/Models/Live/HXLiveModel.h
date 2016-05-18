@@ -7,6 +7,7 @@
 //
 
 #import "MJExtension.h"
+#import "HXAlbumModel.h"
 
 
 @interface HXLiveModel : NSObject
@@ -27,5 +28,7 @@
 
 @property (nonatomic, assign) NSInteger  onlineCount;
 @property (nonatomic, assign) NSInteger  viewCount;
+
+@property (nonatomic, strong) HXAlbumModel *album;
 
 @end
