@@ -28,40 +28,59 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
-    _watchers = @[];
     _comments = @[];
     _barrages = @[];
     _onlineCount = @"0";
     
-    [self notificationConfigure];
     [self signalLink];
+    [self notificationConfigure];
     [self leaveRoomCommandConfigure];
 }
 
+- (void)signalLink {
+    _barragesSignal = RACObserve(self, barrages);
+    _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
+}
+
 - (void)notificationConfigure {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     @weakify(self)
-    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomEnter object:nil] subscribeNext:^(NSNotification *notification) {
+    [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomEnter object:nil] subscribeNext:^(NSNotification *notification) {
         @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self updateOnlineCount:[data[@"onlineCnt"] integerValue]];
-        [self addWatcher:data];
+        [self addEnterBarrage:data];
     }];
-    [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
-    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomComment object:nil] subscribeNext:^(NSNotification *notification) {
+    
+    [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomAttention object:nil] subscribeNext:^(NSNotification *notification) {
+        @strongify(self)
+        NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+        [self addAttentionBarrage:data];
+    }];
+    
+    [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomShare object:nil] subscribeNext:^(NSNotification *notification) {
+        @strongify(self)
+        NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+        [self addShareBarrage:data];
+    }];
+    
+    [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomGift object:nil] subscribeNext:^(NSNotification *notification) {
+        @strongify(self)
+        NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+        [self addGiftBarrage:data];
+    }];
+    
+    [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomReward object:nil] subscribeNext:^(NSNotification *notification) {
+        @strongify(self)
+        NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+        [self addRewardBarrage:data];
+    }];
+    
+    [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomComment object:nil] subscribeNext:^(NSNotification *notification) {
         @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addComment:data];
     }];
-}
-
-- (void)signalLink {
-    _barragesSignal = [RACSubject subject];
-    @weakify(self)
-    [[RACObserve(self, watchers) merge:RACObserve(self, comments)] subscribeNext:^(id x) {
-        @strongify(self)
-        [self.barragesSignal sendNext:self.barrages];
-    }];
-    _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
 }
 
 - (void)leaveRoomCommandConfigure {
@@ -89,41 +108,56 @@
     return @(_model.viewCount).stringValue;
 }
 
-#pragma mark - Public Methods
-- (void)addWatcher:(NSDictionary *)data {
-    NSMutableArray *watchers = _watchers.mutableCopy;
-    NSMutableArray *barrages = _barrages.mutableCopy;
-    HXWatcherModel *watcher = [HXWatcherModel mj_objectWithKeyValues:data];
-    [barrages addObject:watcher];
-    [watchers addObject:watcher];
-    
-    _barrages = [barrages copy];
-    self.watchers = [watchers copy];
+#pragma mark - Private Methods
+- (void)addEnterBarrage:(NSDictionary *)data {
+    HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
+    barrage.type = HXBarrageTypeEnter;
+    [self addBarrage:barrage];
+}
+
+- (void)addAttentionBarrage:(NSDictionary *)data {
+    HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
+    barrage.type = HXBarrageTypeAttention;
+    [self addBarrage:barrage];
+}
+
+- (void)addShareBarrage:(NSDictionary *)data {
+    HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
+    barrage.type = HXBarrageTypeShare;
+    [self addBarrage:barrage];
+}
+
+- (void)addGiftBarrage:(NSDictionary *)data {
+    HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
+    barrage.type = HXBarrageTypeGift;
+    [self addBarrage:barrage];
+}
+
+- (void)addRewardBarrage:(NSDictionary *)data {
+    HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
+    barrage.type = HXBarrageTypeReward;
+    [self addBarrage:barrage];
 }
 
 - (void)addComment:(NSDictionary *)data {
     NSMutableArray *comments = _comments.mutableCopy;
-    NSMutableArray *barrages = _barrages.mutableCopy;
+    HXBarrageModel *barrage = [HXBarrageModel new];
     HXCommentModel *comment = [HXCommentModel mj_objectWithKeyValues:data];
-    [barrages addObject:comment];
-    [comments addObject:comment];
+    barrage.comment = comment;
     
-    _barrages = [barrages copy];
+    [comments addObject:comment];
     self.comments = [comments copy];
+    [self addBarrage:barrage];
 }
 
-#pragma mark - Private Methods
-- (void)enterRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper enterRoom:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        if (success) {
-            [self parseData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-            [subscriber sendCompleted];
-        } else {
-            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
-        }
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
-    }];
+- (void)addBarrage:(HXBarrageModel *)barrage {
+    NSMutableArray *barrages = _barrages.mutableCopy;
+    [barrages addObject:barrage];
+    self.barrages = [barrages copy];
+}
+
+- (void)updateOnlineCount:(NSInteger)count {
+    _onlineCount = @(count).stringValue;
 }
 
 - (void)leaveRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
@@ -136,19 +170,6 @@
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
     }];
-}
-
-- (void)parseData:(NSDictionary *)data {
-    _model = [HXLiveModel mj_objectWithKeyValues:data];
-    
-    NSArray *onlineList = data[@"online"];
-    for (NSDictionary *watcher in onlineList) {
-        [self addWatcher:watcher];
-    }
-}
-
-- (void)updateOnlineCount:(NSInteger)count {
-    _onlineCount = @(count).stringValue;
 }
 
 @end

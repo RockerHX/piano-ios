@@ -8,9 +8,9 @@
 
 #import "HXWatchLiveViewController.h"
 #import "HXZegoAVKitManager.h"
-#import "HXLiveCommentContainerViewController.h"
+#import "HXLiveBarrageContainerViewController.h"
 #import "HXLiveEndViewController.h"
-#import "HXLiveCommentViewController.h"
+#import "HXLiveBarrageViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
@@ -27,7 +27,7 @@
 ZegoLiveApiDelegate,
 HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
-HXLiveCommentContainerViewControllerDelegate,
+HXLiveBarrageContainerViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
 HXLiveAlbumViewDelegate
 >
@@ -35,7 +35,7 @@ HXLiveAlbumViewDelegate
 
 
 @implementation HXWatchLiveViewController {
-    HXLiveCommentContainerViewController *_commentContainer;
+    HXLiveBarrageContainerViewController *_commentContainer;
     HXLiveEndViewController *_endViewController;
     HXWatchLiveViewModel *_viewModel;
 }
@@ -52,7 +52,7 @@ HXLiveAlbumViewDelegate
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *identifier = segue.identifier;
-    if ([identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
+    if ([identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
         _commentContainer = segue.destinationViewController;
         _commentContainer.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
@@ -110,7 +110,7 @@ HXLiveAlbumViewDelegate
     @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         @strongify(self)
-        self->_commentContainer.comments = barrages;
+        self->_commentContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
@@ -289,7 +289,7 @@ HXLiveAlbumViewDelegate
     
     switch (action) {
         case HXWatchBottomBarActionComment: {
-            HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
+            HXLiveBarrageViewController *commentViewController = [HXLiveBarrageViewController instance];
             commentViewController.roomID = _roomID;
             [self addChildViewController:commentViewController];
             [self.view addSubview:commentViewController.view];
@@ -308,8 +308,8 @@ HXLiveAlbumViewDelegate
     }
 }
 
-#pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+#pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
+- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
     ;
 }
 

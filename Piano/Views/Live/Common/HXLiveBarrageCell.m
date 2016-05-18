@@ -1,17 +1,17 @@
 //
-//  HXLiveCommentCell.m
+//  HXLiveBarrageCell.m
 //  Piano
 //
 //  Created by miaios on 16/3/24.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveCommentCell.h"
+#import "HXLiveBarrageCell.h"
 #import "UIConstants.h"
 #import "UIImageView+WebCache.h"
 
 
-@implementation HXLiveCommentCell
+@implementation HXLiveBarrageCell
 
 #pragma mark - Load Methods
 - (void)awakeFromNib {
@@ -38,16 +38,11 @@
 }
 
 #pragma mark - Public Methods
-- (void)updateWithModel:(id)model {
-    if ([model isKindOfClass:[HXWatcherModel class]]) {
-        HXWatcherModel *watcher = model;
-        
-        [_avatar sd_setImageWithURL:[NSURL URLWithString:watcher.avatarUrl]];
-        _contentLabel.text = [watcher.nickName stringByAppendingString:@"来了"];
-    } else if ([model isKindOfClass:[HXCommentModel class]]) {
-        HXCommentModel *comment = model;
-        
-        [_avatar sd_setImageWithURL:[NSURL URLWithString:comment.avatarUrl]];
+- (void)updateWithBarrage:(HXBarrageModel *)barrage {
+    _contentLabel.text = barrage.prompt;
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:barrage.avatarUrl]];
+    if (barrage.type == HXBarrageTypeComment) {
+        HXCommentModel *comment = barrage.comment;
         NSString *nickName = [comment.nickName stringByAppendingString:@":"];
         _contentLabel.text = [nickName stringByAppendingString:comment.content];
         NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:_contentLabel.attributedText];

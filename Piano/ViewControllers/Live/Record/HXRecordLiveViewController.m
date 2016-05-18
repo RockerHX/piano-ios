@@ -14,8 +14,8 @@
 #import "HXRecordBottomBar.h"
 #import "HXPreviewLiveViewController.h"
 #import "HXLiveEndViewController.h"
-#import "HXLiveCommentContainerViewController.h"
-#import "HXLiveCommentViewController.h"
+#import "HXLiveBarrageContainerViewController.h"
+#import "HXLiveBarrageViewController.h"
 #import "HXRecordLiveViewModel.h"
 #import "UIButton+WebCache.h"
 #import "HXWatcherBoard.h"
@@ -28,7 +28,7 @@ HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate,
 HXPreviewLiveViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
-HXLiveCommentContainerViewControllerDelegate
+HXLiveBarrageContainerViewControllerDelegate
 >
 @end
 
@@ -36,7 +36,7 @@ HXLiveCommentContainerViewControllerDelegate
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
     HXLiveEndViewController *_endViewController;
-    HXLiveCommentContainerViewController *_commentContainer;
+    HXLiveBarrageContainerViewController *_commentContainer;
     
     NSString *_roomID;
     NSString *_roomTitle;
@@ -65,7 +65,7 @@ HXLiveCommentContainerViewControllerDelegate
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
         _endViewController = segue.destinationViewController;
         _endViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveCommentContainerViewController class])]) {
+    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
         _commentContainer = segue.destinationViewController;
         _commentContainer.delegate = self;
     }
@@ -162,7 +162,7 @@ HXLiveCommentContainerViewControllerDelegate
     @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         @strongify(self)
-        self->_commentContainer.comments = barrages;
+        self->_commentContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         ;
@@ -251,7 +251,7 @@ HXLiveCommentContainerViewControllerDelegate
 - (void)bottomBar:(HXRecordBottomBar *)bar takeAction:(HXRecordBottomBarAction)action {
     switch (action) {
         case HXRecordBottomBarActionComment: {
-            HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
+            HXLiveBarrageViewController *commentViewController = [HXLiveBarrageViewController instance];
             commentViewController.roomID = _roomID;
             [self addChildViewController:commentViewController];
             [self.view addSubview:commentViewController.view];
@@ -326,8 +326,8 @@ HXLiveCommentContainerViewControllerDelegate
 //    }];
 //}
 
-#pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+#pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
+- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
     ;
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "HXReplayViewController.h"
-#import "HXLiveCommentContainerViewController.h"
+#import "HXLiveBarrageContainerViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXReplayBottomBar.h"
 #import <AVFoundation/AVFoundation.h>
@@ -18,7 +18,7 @@
 
 
 @interface HXReplayViewController () <
-HXLiveCommentContainerViewControllerDelegate,
+HXLiveBarrageContainerViewControllerDelegate,
 HXLiveAnchorViewDelegate,
 HXReplayBottomBarDelegate
 >
@@ -26,7 +26,7 @@ HXReplayBottomBarDelegate
 
 
 @implementation HXReplayViewController {
-    HXLiveCommentContainerViewController *_containerViewController;
+    HXLiveBarrageContainerViewController *_containerViewController;
     
     HXReplayViewModel *_viewModel;
     AVPlayer *_player;
@@ -189,7 +189,7 @@ HXReplayBottomBarDelegate
         }
     } completed:^{
         @strongify(self)
-        self->_containerViewController.comments = self->_viewModel.comments;
+        self->_containerViewController.barrages = self->_viewModel.comments;
     }];
 }
 
@@ -200,8 +200,8 @@ HXReplayBottomBarDelegate
     _anchorView.ownside = [[HXUserSession session].uid isEqualToString:_viewModel.model.uID];
 }
 
-#pragma mark - HXLiveCommentContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXLiveCommentContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+#pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
+- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
     ;
 }
 
