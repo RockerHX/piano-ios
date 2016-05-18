@@ -604,6 +604,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
                             timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
 
     NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:@"APPLE" forKey:MiaAPIKey_Type];
     MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Recharge_GetList
                                                                parameters:dictValues
                                                             completeBlock:completeBlock
@@ -638,7 +639,26 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
                          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
 
     NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:@"APPLE" forKey:MiaAPIKey_TradeType];
     MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Order_GetList
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)verifyPurchaseWithRechargeID:(NSString *)rechargeID
+                             orderID:(NSString *)orderID
+                                auth:(NSString *)auth
+                       completeBlock:(MiaRequestCompleteBlock)completeBlock
+                        timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:@"APPLE" forKey:MiaAPIKey_TradeType];
+    [dictValues setValue:rechargeID forKey:MiaAPIKey_RechargeID];
+    [dictValues setValue:orderID forKey:MiaAPIKey_AppleOrderID];
+    [dictValues setValue:auth forKey:MiaAPIKey_Auth];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Verify
                                                                parameters:dictValues
                                                             completeBlock:completeBlock
                                                              timeoutBlock:timeoutBlock];
