@@ -19,4 +19,7 @@ UIKIT_EXTERN CGFloat const kPaymentCellHeight; //cell的高度
 
 @property (nonatomic, strong, readonly) RACCommand *fetchMCoinBalanceCommand;
 
+
+- (RACSignal *)purchaseWithProductID:(NSString *)productID;
+
 @end

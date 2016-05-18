@@ -13,3 +13,4 @@
 #import "JOAutoLayout.h"
 #import "JOFDeviceInfo.h"
 #import "JOFException.h"
+#import "JOPurchaseManage.h"

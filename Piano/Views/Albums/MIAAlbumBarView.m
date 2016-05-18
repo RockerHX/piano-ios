@@ -13,7 +13,7 @@
 static CGFloat const kTopSpaceDistance = 5.;//上部的间距大小
 static CGFloat const kLeftSpaceDistance = 10.;//左边的间距大小
 static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
-static CGFloat const kBottomSpaceDistance = 5.;//底部的间距大小
+//static CGFloat const kBottomSpaceDistance = 5.;//底部的间距大小
 
 @interface MIAAlbumBarView()
 
