@@ -47,6 +47,7 @@
 		420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */; };
 		420BBB701CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
 		420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
+		420FCD0B1CEC0DD600BE5217 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */; };
 		42984AFB1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
@@ -145,6 +146,8 @@
 		42B6A0EB1CEB1D3800BDF8E8 /* MIASendGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E91CEB1D3800BDF8E8 /* MIASendGiftModel.m */; };
 		42B6A0EE1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */; };
 		42B6A0EF1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */; };
+		42D15F931CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */; };
+		42D15F941CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */; };
 		42D612D61CE1FDD600B80753 /* MIAFontManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D51CE1FDD600B80753 /* MIAFontManage.m */; };
 		42D612DB1CE1FDE700B80753 /* UIFont+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D81CE1FDE700B80753 /* UIFont+JOExtend.m */; };
 		42D612DC1CE1FDE700B80753 /* UILabel+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DA1CE1FDE700B80753 /* UILabel+JOExtend.m */; };
@@ -602,6 +605,7 @@
 		420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentViewModel.m; sourceTree = "<group>"; };
 		420BBB6E1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryViewModel.h; sourceTree = "<group>"; };
 		420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryViewModel.m; sourceTree = "<group>"; };
+		420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		42984ADB1CDAEF84004F00D5 /* NSObject+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JOExtend.h"; sourceTree = "<group>"; };
 		42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JOExtend.m"; sourceTree = "<group>"; };
 		42984ADD1CDAEF84004F00D5 /* NSString+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JOExtend.h"; sourceTree = "<group>"; };
@@ -695,6 +699,8 @@
 		42B6A0E91CEB1D3800BDF8E8 /* MIASendGiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASendGiftModel.m; sourceTree = "<group>"; };
 		42B6A0EC1CEB1D4900BDF8E8 /* MIAOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAOrderModel.h; sourceTree = "<group>"; };
 		42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAOrderModel.m; sourceTree = "<group>"; };
+		42D15F911CEC2A5C00EC74E7 /* JOPurchaseManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOPurchaseManage.h; sourceTree = "<group>"; };
+		42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOPurchaseManage.m; sourceTree = "<group>"; };
 		42D612D41CE1FDD600B80753 /* MIAFontManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAFontManage.h; sourceTree = "<group>"; };
 		42D612D51CE1FDD600B80753 /* MIAFontManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAFontManage.m; sourceTree = "<group>"; };
 		42D612D71CE1FDE700B80753 /* UIFont+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+JOExtend.h"; sourceTree = "<group>"; };
@@ -1046,6 +1052,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				420FCD0B1CEC0DD600BE5217 /* StoreKit.framework in Frameworks */,
 				CD7961251CBE594C004CC661 /* AVFoundation.framework in Frameworks */,
 				CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */,
 				CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */,
@@ -1296,6 +1303,7 @@
 		42984AE11CDAEF84004F00D5 /* Function */ = {
 			isa = PBXGroup;
 			children = (
+				42D15F901CEC2A2700EC74E7 /* Purchas */,
 				42984AE21CDAEF84004F00D5 /* AppInfo */,
 				42984AE51CDAEF84004F00D5 /* AutoLayout */,
 				42984AE81CDAEF84004F00D5 /* Crash */,
@@ -1424,9 +1432,19 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		42D15F901CEC2A2700EC74E7 /* Purchas */ = {
+			isa = PBXGroup;
+			children = (
+				42D15F911CEC2A5C00EC74E7 /* JOPurchaseManage.h */,
+				42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */,
+			);
+			path = Purchas;
+			sourceTree = "<group>";
+		};
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */,
 				CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */,
 				CD92AF831CBB9F1000106A89 /* AVFoundation.framework */,
 				CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */,
@@ -2841,6 +2859,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
+					CD79608B1CBE594C004CC661 = {
+						DevelopmentTeam = PQE2NCR38L;
+					};
 					CD8A9A6B1C9906CA00698DE9 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = PQE2NCR38L;
@@ -3271,6 +3292,7 @@
 				42984B691CDCAB9A004F00D5 /* MIAProfileVideoCell.m in Sources */,
 				CD7961111CBE594C004CC661 /* FileLog.m in Sources */,
 				CD7961121CBE594C004CC661 /* HXMeViewController.m in Sources */,
+				42D15F941CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */,
 				CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */,
 				CD7961131CBE594C004CC661 /* HXWatcherBoard.m in Sources */,
 				42984B491CDC6137004F00D5 /* JOUIManage.m in Sources */,
@@ -3347,6 +3369,7 @@
 				42D612ED1CE1FEFB00B80753 /* MIAAlbumPlayView.m in Sources */,
 				42984B0F1CDAEF84004F00D5 /* JOFLog.m in Sources */,
 				420BBB581CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */,
+				42D15F931CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */,
 				CD5DD8B01CA912790077A17B /* HXAlbumsSongCell.m in Sources */,
 				CD2949F71CA2919B00CA3C3F /* HXForgotPWViewController.m in Sources */,
 				CDF301071CA8D4ED00C19C32 /* HXAlbumsViewController.m in Sources */,
@@ -3610,7 +3633,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3621,8 +3644,8 @@
 			baseConfigurationReference = 57BC6D5C1D05B8F6C2BCD2CA /* Pods-Piano-Beta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3631,7 +3654,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3654,7 +3677,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 刘 维 (9PCXAM3UZW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 刘 维 (9PCXAM3UZW)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3697,7 +3721,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 刘 维 (9PCXAM3UZW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 刘 维 (9PCXAM3UZW)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;

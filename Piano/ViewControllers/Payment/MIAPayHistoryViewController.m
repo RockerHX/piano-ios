@@ -185,6 +185,8 @@
     @strongify(self);
         
 //        [self hiddenHUD];
+        
+        NSLog(@"orderListArray:%@",self.payHistoryViewModel.orderListArray);
         [self hiddenHUDWithView:self.paymentHistoryTableView];
         [self.paymentHistoryTableView reloadData];
     }];
@@ -229,8 +231,6 @@
     if (!cell) {
         cell = [MIACellManage getCellWithType:MIACellTypePayHistory];
         [cell setCellWidth:View_Width(self.view)];
-        
-        NSLog(@"row:%d",indexPath.row);
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
@@ -238,11 +238,11 @@
     
     if ([tableView isEqual:_sendGiftTableView]) {
         
-        data = [_payHistoryViewModel.sendGiftLsitArray objectAtIndex:indexPath.row];
+        data = [_payHistoryViewModel.sendGiftLsitArray objectAtIndex:indexPath.section];
         
     }else if([tableView isEqual:_paymentHistoryTableView]){
         
-        data =  [_payHistoryViewModel.orderListArray objectAtIndex:indexPath.row];
+        data =  [_payHistoryViewModel.orderListArray objectAtIndex:indexPath.section];
     }
     
     [cell setCellData:data];

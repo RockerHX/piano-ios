@@ -235,4 +235,19 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)getOrderListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
                          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
+/**
+ *  内购成功后向服务器发起验证
+ *
+ *  @param rechargeID    内购产品的id PS:是由自己服务器给定的那个id
+ *  @param orderID       苹果返回的订单号
+ *  @param auth          需要拿去验证的base64的字符串.
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)verifyPurchaseWithRechargeID:(NSString *)rechargeID
+                             orderID:(NSString *)orderID
+                                auth:(NSString *)auth
+                       completeBlock:(MiaRequestCompleteBlock)completeBlock
+                        timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end

@@ -10,6 +10,7 @@
 
 @interface MIARechargeModel : NSObject
 
+@property (nonatomic, copy) NSString *appleProductID; //苹果每个内购的id
 @property (nonatomic, copy) NSString *id; //id
 @property (nonatomic, copy) NSString *mcoin; //M币
 @property (nonatomic, copy) NSString *name; //名字
