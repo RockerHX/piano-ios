@@ -96,7 +96,7 @@ static CGFloat const kPaymentTipToMSpacedistance = 10.; //tip到M的间距大小
     [JOAutoLayout autoLayoutWithHeight:[_mTipLabel sizeThatFits:JOMAXSize].height+1 selfView:_mTipLabel superView:self];
     
     self.mLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Payment_Bar_M]];
-    [_mLabel setText:@"9"];
+    [_mLabel setText:@" "];
     [_mLabel setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:_mLabel];
     

@@ -15,6 +15,14 @@ typedef void(^PopActionBlock)();
 
 @interface MIAAlbumBarView : UIView
 
+/**
+ *  设置相关的数据.
+ *
+ *  @param albumName  专辑名称
+ *  @param singerName 作者
+ */
+- (void)setAlbumName:(NSString *)albumName singerName:(NSString *)singerName;
+
 - (void)popActionHandler:(PopActionBlock)block;
 
 @end

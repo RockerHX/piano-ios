@@ -90,6 +90,13 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
+- (void)showHUDWithView:(UIView *)view{
+    [MBProgressHUD showHUDAddedTo:view animated:YES];
+}
+
+- (void)hiddenHUDWithView:(UIView *)view{
+    [MBProgressHUD hideAllHUDsForView:view animated:YES];
+}
 
 - (void)showBannerWithPrompt:(NSString *)prompt {
     if (prompt.length) {

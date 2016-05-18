@@ -38,14 +38,7 @@
 - (void)setCellData:(id)data{
     
     [self createpayHistoryView];
-    //    [_paymentCellView set:data];
-    
-//    [_payHistoryCellView setPayHistoryFlag:arc4random()%2];
-}
-
-- (void)setPayHistoryCellTag:(NSInteger )tag{
-
-    [_payHistoryCellView setPayHistoryFlag:tag];
+    [_payHistoryCellView setPayHistoryData:data];
 }
 
 @end

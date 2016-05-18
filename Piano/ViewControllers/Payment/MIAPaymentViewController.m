@@ -61,8 +61,23 @@
         
     } completed:^{
     @strongify(self);
-        
+        [self hiddenHUD];
         [self.paymentTableView reloadData];
+    }];
+    
+    //获取M币的余额
+    RACSignal *fetchMCoinSignal = [_paymentViewModel.fetchMCoinBalanceCommand execute:nil];
+    [fetchMCoinSignal subscribeError:^(NSError *error) {
+     @strongify(self);
+        
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
+        
+    } completed:^{
+    @strongify(self);
+        
+        [self.paymentBarView setMAmount:_paymentViewModel.mCoin];
     }];
 }
 
@@ -121,7 +136,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    MIABaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MIABaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MIAPaymentCell"];
     
     if (!cell) {
         cell =[MIACellManage getCellWithType:MIACellTypePayment];

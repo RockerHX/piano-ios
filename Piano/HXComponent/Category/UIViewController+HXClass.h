@@ -28,6 +28,9 @@
 - (void)showHUD;
 - (void)hiddenHUD;
 
+- (void)showHUDWithView:(UIView *)view;
+- (void)hiddenHUDWithView:(UIView *)view;
+
 - (void)showBannerWithPrompt:(NSString *)prompt;
 
 @end

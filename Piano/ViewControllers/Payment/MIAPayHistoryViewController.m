@@ -7,6 +7,7 @@
 //
 
 #import "MIAPayHistoryViewController.h"
+#import "UIViewController+HXClass.h"
 #import "MIAPayHistoryViewModel.h"
 #import "MIACellManage.h"
 #import "MIAFontManage.h"
@@ -21,6 +22,8 @@
 @property (nonatomic, strong) UIScrollView *payHistoryScrollView;
 @property (nonatomic, strong) UITableView *sendGiftTableView;
 @property (nonatomic, strong) UITableView *paymentHistoryTableView;
+
+@property (nonatomic, strong) MIAPayHistoryViewModel *payHistoryViewModel;
 
 @end
 
@@ -41,6 +44,8 @@
     
     [self createItemView];
     [self createTableView];
+    
+    [self loadViewModel];
 }
 
 - (void)createItemView{
@@ -142,6 +147,49 @@
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:offsetx selfView:_animationView superView:_itemView];
 }
 
+- (void)loadViewModel{
+
+    self.payHistoryViewModel = [MIAPayHistoryViewModel new];
+    [self showHUDWithView:_sendGiftTableView];
+    [self showHUDWithView:_paymentHistoryTableView];
+    
+    @weakify(self);
+    RACSignal *fetchSendGiftListSignal = [_payHistoryViewModel.fetchCommand execute:nil];
+    [fetchSendGiftListSignal subscribeError:^(NSError *error) {
+    @strongify(self);
+        
+        [self hiddenHUDWithView:self.sendGiftTableView];
+        
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
+        
+    } completed:^{
+    @strongify(self);
+        
+        [self hiddenHUDWithView:self.sendGiftTableView];
+        
+        [self.sendGiftTableView reloadData];
+        
+    }];
+    
+    RACSignal *fetchOrderListSignal = [_payHistoryViewModel.fetchOrderListCommand execute:nil];
+    [fetchOrderListSignal subscribeError:^(NSError *error) {
+    @strongify(self);
+        [self hiddenHUDWithView:self.paymentHistoryTableView];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
+        
+    } completed:^{
+    @strongify(self);
+        
+//        [self hiddenHUD];
+        [self hiddenHUDWithView:self.paymentHistoryTableView];
+        [self.paymentHistoryTableView reloadData];
+    }];
+}
+
 #pragma mark - Button action
 
 - (void)leftItemButtonClick{
@@ -158,7 +206,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 10;
+    if ([tableView isEqual:_sendGiftTableView]) {
+        
+        return _payHistoryViewModel.sendGiftLsitArray.count;
+        
+    }else if([tableView isEqual:_paymentHistoryTableView]){
+    
+        return _payHistoryViewModel.orderListArray.count;
+    }
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -168,19 +224,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    MIABaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MIABaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MIAPayHistoryCell"];
     
     if (!cell) {
         cell = [MIACellManage getCellWithType:MIACellTypePayHistory];
         [cell setCellWidth:View_Width(self.view)];
+        
+        NSLog(@"row:%d",indexPath.row);
     }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-    [cell setCellData:nil];
-    if ([tableView isEqual:_paymentHistoryTableView]) {
-        [(MIAPayHistoryCell *)cell setPayHistoryCellTag:1];
-    }else if ([tableView isEqual:_sendGiftTableView]){
-        [(MIAPayHistoryCell *)cell setPayHistoryCellTag:0];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    id data = nil;
+    
+    if ([tableView isEqual:_sendGiftTableView]) {
+        
+        data = [_payHistoryViewModel.sendGiftLsitArray objectAtIndex:indexPath.row];
+        
+    }else if([tableView isEqual:_paymentHistoryTableView]){
+        
+        data =  [_payHistoryViewModel.orderListArray objectAtIndex:indexPath.row];
     }
+    
+    [cell setCellData:data];
     return cell;
 }
 

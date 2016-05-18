@@ -10,6 +10,11 @@
 
 @interface MIAPayHistoryCellView : UIView
 
-- (void)setPayHistoryFlag:(NSInteger)flag;
+/**
+ *  设置消费记录的数据.
+ *
+ *  @param data 数据
+ */
+- (void)setPayHistoryData:(id)data;
 
 @end
