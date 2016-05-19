@@ -327,9 +327,12 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - HXLiveAlbumViewDelegate Methods
 - (void)liveAlbumsViewTaped:(HXLiveAlbumView *)albumsView {
-    HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
-    [self addChildViewController:rewardViewController];
-    [self.view addSubview:rewardViewController.view];
+    HXAlbumModel *album = _viewModel.model.album;
+    if (album) {
+        HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
+        rewardViewController.album = album;
+        [rewardViewController showOnViewController:self];
+    }
 }
 
 @end

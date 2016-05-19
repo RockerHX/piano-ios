@@ -10,6 +10,8 @@
 #import "BlocksKit+UIKit.h"
 #import "UIView+Frame.h"
 #import "HXSectorSlider.h"
+#import "HXAlbumModel.h"
+#import "UIImageView+WebCache.h"
 
 
 @interface HXLiveRewardViewController () <
@@ -49,7 +51,7 @@ HXSectorSliderDelegate
 }
 
 - (void)viewConfigure {
-    ;
+    [self updateAlbumContainer];
 }
 
 #pragma mark - Event Response
@@ -57,7 +59,20 @@ HXSectorSliderDelegate
     ;
 }
 
+#pragma mark - Public Methods
+- (void)showOnViewController:(UIViewController *)viewController {
+    [viewController addChildViewController:self];
+    [viewController.view addSubview:self.view];
+}
+
 #pragma mark - Private Methods
+- (void)updateAlbumContainer {
+    [_albumCover sd_setImageWithURL:[NSURL URLWithString:_album.coverUrl]];
+    _albumTitleLabel.text = _album.title;
+    _artistNameLabel.text = _album.nickName;
+    _rewardPersonCountLabel.text = @(_album.rewardCount).stringValue;
+}
+
 - (void)popUp {
     _bottomConstraint.constant = _containerView.height;
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{

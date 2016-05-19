@@ -1272,13 +1272,98 @@
                                                     <constraint firstAttribute="height" constant="0.5" id="ONq-kt-2VF"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beQ-Dw-FRJ" userLabel="Cover Container">
+                                                <rect key="frame" x="10" y="10" width="100" height="100"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y5g-iV-fEG" userLabel="Album Cover">
+                                                        <rect key="frame" x="2" y="2" width="96" height="96"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="y5g-iV-fEG" secondAttribute="bottom" constant="2" id="FQI-Ng-vxP"/>
+                                                    <constraint firstItem="y5g-iV-fEG" firstAttribute="leading" secondItem="beQ-Dw-FRJ" secondAttribute="leading" constant="2" id="Jtf-lh-8T2"/>
+                                                    <constraint firstItem="y5g-iV-fEG" firstAttribute="top" secondItem="beQ-Dw-FRJ" secondAttribute="top" constant="2" id="R8S-Jv-4fv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="y5g-iV-fEG" secondAttribute="trailing" constant="2" id="cyD-zh-odd"/>
+                                                    <constraint firstAttribute="width" secondItem="beQ-Dw-FRJ" secondAttribute="height" multiplier="1:1" id="hFT-KT-rRX"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ux-jF-ihL">
+                                                <rect key="frame" x="0.0" y="120" width="320" height="0.0"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="4eC-Tg-QvG"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8w-qT-Slo" userLabel="Label Container">
+                                                <rect key="frame" x="122" y="19" width="186" height="82"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专辑名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqI-a3-ZKK" userLabel="Album Title Label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="186" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="艺术家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scN-2L-HSU" userLabel="Artist Name Label">
+                                                        <rect key="frame" x="0.0" y="28" width="186" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q3v-rU-eyU" userLabel="Reward Logo">
+                                                        <rect key="frame" x="0.0" y="52" width="30" height="30"/>
+                                                        <color key="backgroundColor" red="0.61568627450000002" green="0.47843137250000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="q3v-rU-eyU" secondAttribute="height" multiplier="1:1" id="RLy-ag-2b8"/>
+                                                            <constraint firstAttribute="width" constant="30" id="THM-wN-Eqw"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq8-tz-C8z" userLabel="Reward Count Label">
+                                                        <rect key="frame" x="34" y="57" width="10" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" red="0.61568627450000002" green="0.47843137250000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人打赏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYG-VC-vC0">
+                                                        <rect key="frame" x="44" y="57" width="48" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" red="0.61568627450000002" green="0.47843137250000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="Jq8-tz-C8z" firstAttribute="centerY" secondItem="q3v-rU-eyU" secondAttribute="centerY" id="2kb-B9-kMc"/>
+                                                    <constraint firstItem="rYG-VC-vC0" firstAttribute="leading" secondItem="Jq8-tz-C8z" secondAttribute="trailing" id="2xz-6s-yib"/>
+                                                    <constraint firstItem="sqI-a3-ZKK" firstAttribute="top" secondItem="v8w-qT-Slo" secondAttribute="top" id="3A6-p9-I0Q"/>
+                                                    <constraint firstAttribute="trailing" secondItem="scN-2L-HSU" secondAttribute="trailing" id="3eE-fX-07t"/>
+                                                    <constraint firstItem="sqI-a3-ZKK" firstAttribute="leading" secondItem="v8w-qT-Slo" secondAttribute="leading" id="9Cm-j5-v5W"/>
+                                                    <constraint firstItem="Jq8-tz-C8z" firstAttribute="leading" secondItem="q3v-rU-eyU" secondAttribute="trailing" constant="4" id="AAd-Lr-2bh"/>
+                                                    <constraint firstAttribute="bottom" secondItem="q3v-rU-eyU" secondAttribute="bottom" id="DA5-ML-JXd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sqI-a3-ZKK" secondAttribute="trailing" id="HLb-nN-yK7"/>
+                                                    <constraint firstItem="rYG-VC-vC0" firstAttribute="centerY" secondItem="q3v-rU-eyU" secondAttribute="centerY" id="QiJ-qb-DPK"/>
+                                                    <constraint firstItem="q3v-rU-eyU" firstAttribute="top" secondItem="scN-2L-HSU" secondAttribute="bottom" constant="4" id="Zet-Ee-yrK"/>
+                                                    <constraint firstItem="scN-2L-HSU" firstAttribute="top" secondItem="sqI-a3-ZKK" secondAttribute="bottom" constant="4" id="b5Y-PR-mrl"/>
+                                                    <constraint firstItem="q3v-rU-eyU" firstAttribute="leading" secondItem="v8w-qT-Slo" secondAttribute="leading" id="o2Z-Ro-Ybz"/>
+                                                    <constraint firstItem="scN-2L-HSU" firstAttribute="leading" secondItem="v8w-qT-Slo" secondAttribute="leading" id="wKt-Wa-7VO"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="4MS-xC-qbr" secondAttribute="trailing" id="5qo-xG-gLb"/>
+                                            <constraint firstAttribute="trailing" secondItem="v8w-qT-Slo" secondAttribute="trailing" constant="12" id="CeC-V3-aDW"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Ux-jF-ihL" secondAttribute="trailing" id="Sfe-qy-yBs"/>
+                                            <constraint firstItem="v8w-qT-Slo" firstAttribute="centerY" secondItem="beQ-Dw-FRJ" secondAttribute="centerY" id="SgD-FK-j9L"/>
+                                            <constraint firstItem="beQ-Dw-FRJ" firstAttribute="top" secondItem="gND-GF-DKQ" secondAttribute="top" constant="10" id="U9j-WQ-ZhV"/>
+                                            <constraint firstAttribute="bottom" secondItem="9Ux-jF-ihL" secondAttribute="bottom" id="UzP-pA-6GB"/>
                                             <constraint firstAttribute="height" constant="120" id="VIh-aA-JdT"/>
+                                            <constraint firstItem="v8w-qT-Slo" firstAttribute="leading" secondItem="beQ-Dw-FRJ" secondAttribute="trailing" constant="12" id="W9Q-Pd-fWy"/>
                                             <constraint firstAttribute="bottom" secondItem="4MS-xC-qbr" secondAttribute="bottom" id="q6P-wg-CTb"/>
+                                            <constraint firstItem="beQ-Dw-FRJ" firstAttribute="leading" secondItem="gND-GF-DKQ" secondAttribute="leading" constant="10" id="sdq-bz-YX7"/>
                                             <constraint firstItem="4MS-xC-qbr" firstAttribute="leading" secondItem="gND-GF-DKQ" secondAttribute="leading" id="tJg-KR-GCg"/>
+                                            <constraint firstItem="4MS-xC-qbr" firstAttribute="top" secondItem="beQ-Dw-FRJ" secondAttribute="bottom" constant="10" id="tvI-Re-1Wf"/>
+                                            <constraint firstItem="9Ux-jF-ihL" firstAttribute="leading" secondItem="gND-GF-DKQ" secondAttribute="leading" id="xwH-RD-qrl"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8z5-93-Gn2" userLabel="Control Container">
@@ -1296,7 +1381,7 @@
                                                                 <color key="textColor" red="0.61568627450000002" green="0.47843137250000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uhp-P8-bZO">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uhp-P8-bZO" userLabel="M Coin Logo">
                                                                 <rect key="frame" x="41" y="27" width="30" height="30"/>
                                                                 <color key="backgroundColor" red="0.61568627450000002" green="0.47843137250000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
@@ -1428,7 +1513,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="3Ah-ll-ePo" firstAttribute="top" secondItem="w03-uc-aI3" secondAttribute="bottom" id="2u1-Ph-U0Q"/>
                                             <constraint firstAttribute="trailing" secondItem="Icx-20-L31" secondAttribute="trailing" constant="60" id="DdV-sB-9CD"/>
@@ -1473,10 +1558,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="albumCover" destination="y5g-iV-fEG" id="Tmo-g3-ZI5"/>
+                        <outlet property="albumTitleLabel" destination="sqI-a3-ZKK" id="iGR-m2-4TL"/>
+                        <outlet property="artistNameLabel" destination="scN-2L-HSU" id="VBt-ur-xrG"/>
                         <outlet property="balanceCountLabel" destination="Eho-RA-uBK" id="dhO-fk-dy2"/>
                         <outlet property="bottomConstraint" destination="ltQ-d6-5lp" id="SCA-gZ-T6w"/>
                         <outlet property="containerView" destination="XEi-et-LNY" id="ZSo-V0-8xq"/>
                         <outlet property="rewardCountLabel" destination="yLK-DC-Jqn" id="so9-ce-n4j"/>
+                        <outlet property="rewardPersonCountLabel" destination="Jq8-tz-C8z" id="ufg-rX-aFD"/>
                         <outlet property="tapView" destination="xbk-pn-fEo" id="bNU-Xm-V57"/>
                     </connections>
                 </viewController>
