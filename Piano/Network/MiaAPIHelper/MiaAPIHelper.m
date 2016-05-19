@@ -474,16 +474,26 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 }
 
 + (void)getRoomStat:(NSString *)roomID
-	  completeBlock:(MiaRequestCompleteBlock)completeBlock
-	   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
-	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
-	[dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+      completeBlock:(MiaRequestCompleteBlock)completeBlock
+       timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_GetStat
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
 
-	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_GetStat
-															   parameters:dictValues
-															completeBlock:completeBlock
-															 timeoutBlock:timeoutBlock];
-	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
++ (void)getGiftListCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                    timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_GetGiftList
+                                                               parameters:nil
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
 #pragma mark - profile
