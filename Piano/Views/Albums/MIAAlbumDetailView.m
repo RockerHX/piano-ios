@@ -111,7 +111,6 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
     if (!self.rewardView) {
         self.rewardView = [MIAAlbumRewardView newAutoLayoutView];
         [_rewardView setRewardViewHeight:kRewardViewHeight];
-        [_rewardView setRewardData:@[@"1",@"2",@"1",@"1",@"1",@"1",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""]];
         [self addSubview:_rewardView];
         
         [JOAutoLayout autoLayoutWithTopView:_rewardForDownloadView distance:0. selfView:_rewardView superView:self];
@@ -159,6 +158,7 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         self.albumModel = data;
         
         [_albumCoverImageView sd_setImageWithURL:[NSURL URLWithString:_albumModel.coverUrl] placeholderImage:nil];
+        [_rewardView setRewardData:_albumModel.backList];
         
     }else{
     

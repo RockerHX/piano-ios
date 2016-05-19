@@ -63,7 +63,7 @@ CGFloat const kAlbumEnterCommentViewHeight = 55.;//底部输入评论的框的�
                    completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                        
                        if (success) {
-//                           NSLog(@"专辑页面数据:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+                           NSLog(@"专辑页面数据:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                            [self parseAlbumWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                            [subscriber sendCompleted];
                        }else{

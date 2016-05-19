@@ -8,6 +8,7 @@
 
 #import "MIAAlbumRewardView.h"
 #import "UIImageView+WebCache.h"
+#import "MIAAlbumModel.h"
 #import "MIAFontManage.h"
 #import "JOBaseSDK.h"
 
@@ -49,7 +50,7 @@ static CGFloat const kAlbumUserItemSpaceDistance = 10.;//每个元素之间的�
 - (void)createRewardView{
 
     self.tipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Reward_Tip]];
-    [_tipLabel setText:@"已打赏:5人"];
+    [_tipLabel setText:@" "];
     [self addSubview:_tipLabel];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_tipLabel superView:self];
@@ -81,33 +82,42 @@ static CGFloat const kAlbumUserItemSpaceDistance = 10.;//每个元素之间的�
         
         rewardContentWidth = 0.;
         [self removeAllRewardScrollSubViews];
+        [_tipLabel setText:[NSString stringWithFormat:@"已打赏:%lu人",(unsigned long)[rewardData count]]];
+        
         for (int i = 0; i < [rewardData count]; i++) {
 
-            UIImageView *userImageView = [UIImageView newAutoLayoutView];
-            [userImageView setBackgroundColor:[UIColor purpleColor]];
-            [[userImageView layer] setCornerRadius:rewardSrcollHeight/2.];
-            [[userImageView layer] setMasksToBounds:YES];
-            [[userImageView layer] setBorderWidth:1.];
-            [[userImageView layer] setBorderColor:JORGBSameCreate(220.).CGColor];
-            [userImageView setTag:i+1];
-            [_rewardContentView addSubview:userImageView];
-            
-            [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
-            [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
-            [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:userImageView superView:_rewardContentView];
-            
-            if (i == 0) {
-                [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
-            }else{
-                UIView *lastView = [_rewardContentView viewWithTag:i];
-                [JOAutoLayout autoLayoutWithLeftView:lastView distance:kAlbumUserItemSpaceDistance selfView:userImageView superView:_rewardContentView];
+            if ([[rewardData objectAtIndex:i] isKindOfClass:[MIARewardAlbumModel class]]) {
+                
+                MIARewardAlbumModel *rewardAlbumModel = [rewardData objectAtIndex:i];
+                
+                UIImageView *userImageView = [UIImageView newAutoLayoutView];
+                [userImageView setBackgroundColor:[UIColor grayColor]];
+                [[userImageView layer] setCornerRadius:rewardSrcollHeight/2.];
+                [[userImageView layer] setMasksToBounds:YES];
+                [[userImageView layer] setBorderWidth:1.];
+                [[userImageView layer] setBorderColor:JORGBSameCreate(220.).CGColor];
+                [userImageView setTag:i+1];
+                [userImageView sd_setImageWithURL:[NSURL URLWithString:rewardAlbumModel.userpic] placeholderImage:nil];
+                [_rewardContentView addSubview:userImageView];
+                
+                [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
+                [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
+                [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:userImageView superView:_rewardContentView];
+                
+                if (i == 0) {
+                    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
+                }else{
+                    UIView *lastView = [_rewardContentView viewWithTag:i];
+                    [JOAutoLayout autoLayoutWithLeftView:lastView distance:kAlbumUserItemSpaceDistance selfView:userImageView superView:_rewardContentView];
+                }
+                
+                rewardContentWidth += rewardSrcollHeight;
+                rewardContentWidth += kAlbumUserItemSpaceDistance;
+                [_rewardScrollView setContentSize:JOSize(rewardContentWidth, rewardSrcollHeight)];
+                [JOAutoLayout removeAutoLayoutWithSizeSelfView:_rewardContentView superView:_rewardScrollView];
+                [JOAutoLayout autoLayoutWithSize:JOSize(rewardContentWidth, rewardSrcollHeight) selfView:_rewardContentView superView:_rewardScrollView];
+                
             }
-            
-            rewardContentWidth += rewardSrcollHeight;
-            rewardContentWidth += kAlbumUserItemSpaceDistance;
-            [_rewardScrollView setContentSize:JOSize(rewardContentWidth, rewardSrcollHeight)];
-            [JOAutoLayout removeAutoLayoutWithSizeSelfView:_rewardContentView superView:_rewardScrollView];
-            [JOAutoLayout autoLayoutWithSize:JOSize(rewardContentWidth, rewardSrcollHeight) selfView:_rewardContentView superView:_rewardScrollView];
         }
         
     }else{

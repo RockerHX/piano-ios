@@ -11,11 +11,17 @@
 #import "MiaAPIHelper.h"
 #import "JOBaseSDK.h"
 
+static NSString *const kVerifyPurchaseCacheKey = @"kVerifyPurchaseCacheKey";
+static NSString *const kVerifyPurchaseTransactionIDKey = @"TransactionIDKey";
+static NSString *const kVerifyPuurchaseProductIDKey = @"ProductIDKey";
+static NSString *const kVerifyPurchaseVerifyKey = @"VerifyKey";
+
 @interface MIAMCoinManage()
 
 @property (nonatomic, copy) NSString *mCoinBalance;
 
 @property (nonatomic, copy) NSString *productID;
+@property (nonatomic, copy) NSString *transactionID;
 
 @property (nonatomic, copy) MCoinManageSuccess success;
 @property (nonatomic, copy) MCoinManageFailed failed;
@@ -41,6 +47,13 @@
 
     self = [super init];
     if (self) {
+        
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:kVerifyPurchaseCacheKey]) {
+            //第一次初始化的时候
+            NSMutableArray *verifyPurchaseArray = [NSMutableArray array];
+            NSData *verifyPurchaseData = [NSKeyedArchiver archivedDataWithRootObject:verifyPurchaseArray];
+            [[NSUserDefaults standardUserDefaults] setValue:verifyPurchaseData forKey:kVerifyPurchaseCacheKey];
+        }
         
         self.mCoinBalance = nil;
         self.mCoinBalance = @"0";
@@ -104,6 +117,55 @@
     }
 }
 
+- (void)checkLocalVerifyPurchaseWithSuccess:(MCoinManageSuccess)success
+                                     failed:(MCoinManageFailed)failed
+                               mCoinSuccess:(MCoinManageSuccess)mCoinSuccess
+                                mCoinFailed:(MCoinManageFailed)mCoinFailed{
+    
+    [self setSuccess:success failed:failed];
+    [self setMCoinSuccess:mCoinSuccess mCoinFailed:mCoinFailed];
+
+    NSMutableArray *localVerifyPurchaseArray = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kVerifyPurchaseCacheKey]];
+    
+    for (int i = 0; i < [localVerifyPurchaseArray count]; i++) {
+        //将本地存放的还未到服务器验证的的数据发送到服务器验证
+        NSDictionary *dic = [localVerifyPurchaseArray objectAtIndex:i];
+        [self verifyPurchaseWithProductID:[dic objectForKey:kVerifyPuurchaseProductIDKey]
+                            transactionID:[dic objectForKey:kVerifyPurchaseTransactionIDKey]
+                             verifyString:[dic objectForKey:kVerifyPurchaseVerifyKey]];
+    }
+}
+
+- (void)addVerifyPurchaseToLocalWithProductID:(NSString *)productID transactionID:(NSString *)transactionID verifyString:(NSString *)verifyString{
+
+    NSDictionary *dic = @{kVerifyPuurchaseProductIDKey:productID,kVerifyPurchaseTransactionIDKey:transactionID, kVerifyPurchaseVerifyKey:verifyString};
+    NSMutableArray *localVerifyPurchaseArray = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kVerifyPurchaseCacheKey]];
+    
+    if (![localVerifyPurchaseArray containsObject:dic]) {
+     
+        [localVerifyPurchaseArray addObject:dic];
+    }
+    
+    NSData *verifyPurchaseData = [NSKeyedArchiver archivedDataWithRootObject:localVerifyPurchaseArray];
+    [[NSUserDefaults standardUserDefaults] setValue:verifyPurchaseData forKey:kVerifyPurchaseCacheKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)removeLocalVerifyPurchaseWithTransactionID:(NSString *)transactionID{
+
+    NSMutableArray *localVerifyPurchaseArray = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kVerifyPurchaseCacheKey]];
+    for (NSDictionary *dic in localVerifyPurchaseArray) {
+        
+        if ([[dic objectForKey:kVerifyPurchaseTransactionIDKey] isEqualToString:transactionID]) {
+            [localVerifyPurchaseArray removeObject:dic];
+            break;
+        }
+    }
+    NSData *verifyPurchaseData = [NSKeyedArchiver archivedDataWithRootObject:localVerifyPurchaseArray];
+    [[NSUserDefaults standardUserDefaults] setValue:verifyPurchaseData forKey:kVerifyPurchaseCacheKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void)rechargeMCoinWithProductID:(NSString *)productID
                         purchaseID:(NSString *)purchaseID
                            success:(MCoinManageSuccess)success
@@ -120,7 +182,14 @@
     [[JOPurchaseManage sharePurchaseManage] purchaseWithProductID:purchaseID
                                                    successHanlder:^(NSString *productID, NSString *transactionID, NSString *verifyString) {
                                                    
-                                                       [self verifyPurchaseWithTransactionID:transactionID verifyString:verifyString];
+                                                       //苹果返回支付结果后 需要将结果存放起来 只有在自己的服务器验证完之后才能删除
+                                                       [self addVerifyPurchaseToLocalWithProductID:_productID
+                                                                                     transactionID:transactionID
+                                                                                      verifyString:verifyString];
+                                                       
+                                                       [self verifyPurchaseWithProductID:_productID
+                                                                           transactionID:transactionID
+                                                                            verifyString:verifyString];
                                                        
                                                    }
                                                     failedHanlder:^(NSString *failed) {
@@ -145,22 +214,19 @@
                                   roomID:roomID
                                    mCoin:mCoin
                            completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-                           
 //                               JOLog(@"打赏专辑userInfo:%@",userInfo);
-                               
                                if (success) {
                                    
                                    [self successHandler];
                                    [self updateMCoin];
-                                   
                                }else{
                                
                                    [self failedHandlerWithReason:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
                                }
                             
                            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                               
                                [self failedHandlerWithReason:TimtOutPrompt];
-//                               [NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil];
                            }];
 }
 
@@ -201,9 +267,7 @@
 - (void)updateMCoinWithMCoinSuccess:(MCoinManageSuccess)mCoinSuccess
                         mCoinFailed:(MCoinManageFailed)mCoinFailed{
     
-    
     [self setMCoinSuccess:mCoinSuccess mCoinFailed:mCoinFailed];
-    
     [self updateMCoin];
 }
 
@@ -219,55 +283,50 @@
     [MiaAPIHelper getMCoinBalancesWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         
         if (success) {
-            //            NSLog(@"M币余额:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
-            [self parseMCoinBalanceWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             
+            [self parseMCoinBalanceWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
             [self mCoinSuccessHandler];
-
         }else{
             
             [self mCoinFailedHandlerWithReason:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-//            [NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil];
         }
         
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         
         [self mCoinFailedHandlerWithReason:TimtOutPrompt];
-//        [NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil];
     }];
 }
 
-- (void)verifyPurchaseWithTransactionID:(NSString *)transactionID verifyString:(NSString *)verifyString{
+- (void)verifyPurchaseWithProductID:(NSString *)productID transactionID:(NSString *)transactionID verifyString:(NSString *)verifyString{
 
-    [MiaAPIHelper verifyPurchaseWithRechargeID:_productID
+    
+    [MiaAPIHelper verifyPurchaseWithRechargeID:productID
                                        orderID:transactionID
                                           auth:verifyString
                                  completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                                      
                                      if (success) {
                                          
-                                         
                                          if ([userInfo[MiaAPIKey_Values][MiaAPIKey_Return] integerValue] == 0) {
                                              //验证成功
                                              [self updateMCoin];
-                                             
                                              [self successHandler];
                                          }else{
                                              //验证失败
                                              [self failedHandlerWithReason:@"充值验证结果失败"];
-//                                             [NSError errorWithDomain:@"充值验证结果失败" code:-1 userInfo:nil];
                                          }
                                          
                                      }else{
                                          
                                          [self failedHandlerWithReason:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-//                                         [NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil];
                                      }
+                                     
+                                     //服务器验证完之后 需要删除本地的数据
+                                     [self removeLocalVerifyPurchaseWithTransactionID:transactionID];
                                      
                                  } timeoutBlock:^(MiaRequestItem *requestItem) {
                                      
                                      [self failedHandlerWithReason:TimtOutPrompt];
-//                                     [NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil];
                                  }];
 }
 

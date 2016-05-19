@@ -8,6 +8,13 @@
 
 #import "MIAAlbumModel.h"
 
+@implementation MIARewardAlbumModel
+@end
+
 @implementation MIAAlbumModel
+
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"backList": @"MIARewardAlbumModel"};
+}
 
 @end
