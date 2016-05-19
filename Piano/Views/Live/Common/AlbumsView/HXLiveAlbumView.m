@@ -94,8 +94,13 @@ HXXibImplementation
 
 - (void)albumAnimation {
     _front = !_front;
+    
     UIViewAnimationOptions animationOptions = _front ? UIViewAnimationOptionTransitionFlipFromLeft : UIViewAnimationOptionTransitionFlipFromRight;
-    [UIView transitionFromView:(_front ? _coverContainer : _blurContainer) toView:(_front ? _blurContainer : _coverContainer) duration:1.0f options:animationOptions completion:nil];
+    [UIView transitionFromView:(_front ? _coverContainer : _blurContainer)
+                        toView:(_front ? _blurContainer : _coverContainer)
+                      duration:1.0f
+                       options:(animationOptions | UIViewAnimationOptionShowHideTransitionViews)
+                    completion:nil];
 }
 
 @end
