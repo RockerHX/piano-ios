@@ -15,6 +15,8 @@ typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
     HXMeContainerActionAvatarTaped,
     HXMeContainerActionNickNameTaped,
     HXMeContainerActionSignatureTaped,
+    HXMeContainerActionRecharge,
+    HXMeContainerActionPurchaseHistory,
 };
 
 

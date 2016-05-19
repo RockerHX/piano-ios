@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
+#import "MIAPaymentViewController.h"
 
 
 @interface HXMeViewController () <
@@ -25,8 +26,6 @@ HXMeContainerViewControllerDelegate
 @implementation HXMeViewController {
     HXMeContainerViewController *_containerViewController;
     HXMeViewModel *_viewModel;
-    
-    BOOL _shouldHideNavigationBar;
 }
 
 #pragma mark - Segue
@@ -101,7 +100,6 @@ HXMeContainerViewControllerDelegate
         watchLiveViewController.roomID = model.roomID;
         [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
     } else {
-        _shouldHideNavigationBar = YES;
         MIAProfileViewController *profileViewController = [MIAProfileViewController new];
         [profileViewController setUid:model.uID];
         [self.navigationController pushViewController:profileViewController animated:YES];
@@ -112,7 +110,6 @@ HXMeContainerViewControllerDelegate
     switch (action) {
         case HXMeContainerActionAvatarTaped: {
             if ([HXUserSession session].role == HXUserRoleAnchor) {
-                _shouldHideNavigationBar = YES;
                 MIAProfileViewController *profileViewController = [MIAProfileViewController new];
                 [profileViewController setUid:_viewModel.model.uid];
                 [self.navigationController pushViewController:profileViewController animated:YES];
@@ -124,6 +121,18 @@ HXMeContainerViewControllerDelegate
             break;
         }
         case HXMeContainerActionSignatureTaped: {
+            ;
+            break;
+        }
+        case HXMeContainerActionRecharge: {
+            if (_delegate && [_delegate respondsToSelector:@selector(meViewControllerHiddenNavigationBar:)]) {
+                [_delegate meViewControllerHiddenNavigationBar:self];
+            }
+            MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
+            [self.navigationController pushViewController:paymentViewController animated:YES];
+            break;
+        }
+        case HXMeContainerActionPurchaseHistory: {
             ;
             break;
         }
