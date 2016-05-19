@@ -354,6 +354,7 @@ HXShowRechargeDelegate
 #pragma mark - HXShowRechargeDelegate Methods
 - (void)shouldShowRechargeSence {
     MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
+    paymentViewController.present = YES;
     [self presentViewController:paymentViewController animated:YES completion:nil];
 }
 
