@@ -10,6 +10,7 @@
 #import "MIARechargeModel.h"
 #import "MIAMCoinModel.h"
 #import "JOBaseSDK.h"
+#import "MIAMCoinManage.h"
 
 CGFloat const kPaymentBarViewHeight = 150.;
 CGFloat const kPaymentCellHeadViewHeight = 30.;
@@ -48,15 +49,15 @@ CGFloat const kPaymentCellHeight = 60.;
 
 - (void)fetchMCoinBalanceDataCommand{
 
-    @weakify(self);
-    _fetchMCoinBalanceCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-    @strongify(self);
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            
-            [self fetchMCoinBalanceRequestWithSubscriber:subscriber];
-            return nil;
-        }];
-    }];
+//    @weakify(self);
+//    _fetchMCoinBalanceCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+//    @strongify(self);
+//        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+//            
+//            [self fetchMCoinBalanceRequestWithSubscriber:subscriber];
+//            return nil;
+//        }];
+//    }];
 }
 
 - (void)fetchVerifyPurchaseCommand{
@@ -136,37 +137,48 @@ CGFloat const kPaymentCellHeight = 60.;
         
     }
     
-    [[JOPurchaseManage sharePurchaseManage] purchaseWithProductID:appleProductID
-                                                   successHanlder:^(NSString *productID, NSString *transactionID, NSString *verifyString) {
-                                                   
-                                                       [MiaAPIHelper verifyPurchaseWithRechargeID:_productIdString orderID:transactionID auth:verifyString completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-                                                           
-                                                           if (success) {
-                                                               
-                                                               
-                                                               if ([userInfo[MiaAPIKey_Values][MiaAPIKey_Return] integerValue] == 0) {
-                                                                   //验证成功
-                                                                   [subscriber sendCompleted];
-                                                               }else{
-                                                                   //验证失败
-                                                                   [subscriber sendError:[NSError errorWithDomain:@"充值验证结果失败" code:-1 userInfo:nil]];
-                                                               }
-                                                               
-                                                           }else{
-                                                           
-                                                               [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
-                                                           }
-                                                           
-                                                       } timeoutBlock:^(MiaRequestItem *requestItem) {
-                                                          
-                                                           [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
-                                                       }];
-                                                       
-                                                   }
-                                                failedHanlder:^(NSString *failed) {
-        
-                                                        [subscriber sendError:[NSError errorWithDomain:failed code:-1 userInfo:nil]];
-    }];
+//    [[MIAMCoinManage shareMCoinManage] rechargeMCoinWithProductID:_productIdString
+//                                                       purchaseID:appleProductID
+//                                                          success:^{
+//                                                          [subscriber sendCompleted];
+//                                                          }
+//                                                           failed:^(NSString *failed) {
+//                                                           
+//                                                           [subscriber sendError:[NSError errorWithDomain:failed code:-1 userInfo:nil]];
+//                                                               
+//                                                           }];
+    
+//    [[JOPurchaseManage sharePurchaseManage] purchaseWithProductID:appleProductID
+//                                                   successHanlder:^(NSString *productID, NSString *transactionID, NSString *verifyString) {
+//                                                   
+//                                                       [MiaAPIHelper verifyPurchaseWithRechargeID:_productIdString orderID:transactionID auth:verifyString completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+//                                                           
+//                                                           if (success) {
+//                                                               
+//                                                               
+//                                                               if ([userInfo[MiaAPIKey_Values][MiaAPIKey_Return] integerValue] == 0) {
+//                                                                   //验证成功
+//                                                                   [subscriber sendCompleted];
+//                                                               }else{
+//                                                                   //验证失败
+//                                                                   [subscriber sendError:[NSError errorWithDomain:@"充值验证结果失败" code:-1 userInfo:nil]];
+//                                                               }
+//                                                               
+//                                                           }else{
+//                                                           
+//                                                               [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+//                                                           }
+//                                                           
+//                                                       } timeoutBlock:^(MiaRequestItem *requestItem) {
+//                                                          
+//                                                           [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+//                                                       }];
+//                                                       
+//                                                   }
+//                                                failedHanlder:^(NSString *failed) {
+//        
+//                                                        [subscriber sendError:[NSError errorWithDomain:failed code:-1 userInfo:nil]];
+//    }];
 
 }
 
@@ -181,8 +193,8 @@ CGFloat const kPaymentCellHeight = 60.;
 
 - (void)parseMCoinBalanceWithData:(NSDictionary *)dic{
 
-    MIAMCoinModel *mCoinModel = [MIAMCoinModel mj_objectWithKeyValues:dic];
-    _mCoin = [mCoinModel.mcoinApple copy];
+//    MIAMCoinModel *mCoinModel = [MIAMCoinModel mj_objectWithKeyValues:dic];
+//    _mCoin = [mCoinModel.mcoinApple copy];
 }
 
 @end

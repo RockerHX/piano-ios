@@ -15,11 +15,11 @@ UIKIT_EXTERN CGFloat const kPaymentCellHeight; //cell的高度
 @interface MIAPaymentViewModel : MIAViewModel
 
 @property (nonatomic, strong, readonly) NSMutableArray *rechargeListArray;
-@property (nonatomic, copy, readonly) NSString *mCoin;
+//@property (nonatomic, copy, readonly) NSString *mCoin;
+//
+//@property (nonatomic, strong, readonly) RACCommand *fetchMCoinBalanceCommand;
 
-@property (nonatomic, strong, readonly) RACCommand *fetchMCoinBalanceCommand;
 
-
-- (RACSignal *)purchaseWithProductID:(NSString *)productID;
+//- (RACSignal *)purchaseWithProductID:(NSString *)productID;
 
 @end

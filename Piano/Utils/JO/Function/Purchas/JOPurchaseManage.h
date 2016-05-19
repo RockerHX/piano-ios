@@ -28,6 +28,13 @@ typedef void(^PurchaseFailedBlock) (NSString *failed);
 
 + (JOPurchaseManage *)sharePurchaseManage;
 
+/**
+ *  内购
+ *
+ *  @param productId 产品的id(苹果那设置的)
+ *  @param success   成功的block
+ *  @param failed    失败的block
+ */
 - (void)purchaseWithProductID:(NSString *)productId
                successHanlder:(PurchaseSuccessBlock)success
                 failedHanlder:(PurchaseFailedBlock)failed;

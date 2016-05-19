@@ -665,4 +665,41 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
+#pragma mark - M币消费相关
+
++ (void)rewardAlbumWithAlbumID:(NSString *)albumID
+                        roomID:(NSString *)roomID
+                         mCoin:(NSString *)mCoin
+                 completeBlock:(MiaRequestCompleteBlock)completeBlock
+                  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:@"APPLE" forKey:MiaAPIKey_TradeType];
+    [dictValues setValue:albumID forKey:MiaAPIKey_AlbumID];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+    [dictValues setValue:mCoin forKey:MiaAPIKey_MCoin];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_RewardAlbum
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
+
++ (void)sendGiftWithGiftID:(NSString *)giftID
+                    roomID:(NSString *)roomID
+             completeBlock:(MiaRequestCompleteBlock)completeBlock
+              timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:@"APPLE" forKey:MiaAPIKey_TradeType];
+    [dictValues setValue:giftID forKey:MiaAPIKey_GiftID];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_SendGift
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 @end

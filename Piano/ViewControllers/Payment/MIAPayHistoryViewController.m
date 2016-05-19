@@ -184,9 +184,6 @@
     } completed:^{
     @strongify(self);
         
-//        [self hiddenHUD];
-        
-        NSLog(@"orderListArray:%@",self.payHistoryViewModel.orderListArray);
         [self hiddenHUDWithView:self.paymentHistoryTableView];
         [self.paymentHistoryTableView reloadData];
     }];

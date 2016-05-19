@@ -15,6 +15,7 @@
 #import "FXBlurView.h"
 #import "MIAFontManage.h"
 #import "JOBaseSDK.h"
+#import "MIAMCoinManage.h"
 
 static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音质版";
 
@@ -66,7 +67,22 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     [self createCoverMaskView];
     [self createAlbumInfoView];
     [self createRewardView];
-    
+
+    [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
+       
+        [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
+        CGFloat accountLabelWidth = [_accountLabel sizeThatFits:JOMAXSize].width+1;
+        
+        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountLabel superView:_accountView];
+        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountView superView:_baseView];
+        
+        [JOAutoLayout autoLayoutWithWidth:accountLabelWidth selfView:_accountLabel superView:_accountView];
+        [JOAutoLayout autoLayoutWithWidth:accountLabelWidth+kRechargeButtonWidth selfView:_accountView superView:_baseView];
+        
+    } mCoinFailed:^(NSString *failed) {
+        
+        [self showBannerWithPrompt:failed];
+    }];
 }
 
 #pragma mark - view create
@@ -165,7 +181,7 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     [_baseView addSubview:_accountView];
     
     self.accountLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_AlbumReward_Account]];
-    [_accountLabel setText:@"账户余额:1000M币"];
+    [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
     [_accountView addSubview:_accountLabel];
     
     CGFloat accountLabelHeight = [_accountLabel sizeThatFits:JOMAXSize].height+2;
@@ -202,6 +218,7 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     [[_rewardButton layer] setMasksToBounds:YES];
     [[_rewardButton layer] setBorderWidth:1.];
     [[_rewardButton layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [_rewardButton addTarget:self action:@selector(rewardAction) forControlEvents:UIControlEventTouchUpInside];
     [_baseView addSubview:_rewardButton];
     
     [JOAutoLayout autoLayoutWithBottomView:_accountView distance:-kRewardButtonToAccountViewSpaceDistance selfView:_rewardButton superView:_baseView];
@@ -224,6 +241,35 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
 
     MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
     [self.navigationController pushViewController:paymentViewController animated:YES];
+}
+
+- (void)rewardAction{
+
+    [self showHUD];
+    [[MIAMCoinManage shareMCoinManage] rewardAlbumWithMCoin:@"100"
+                                                    albumID:_albumModel.id
+                                                     roomID:@"0" success:^{
+                                                     
+                                                         [self hiddenHUD];
+                                                         JOLog(@"打赏成功");
+                                                     }
+                                                     failed:^(NSString *failed) {
+                                                     
+                                                         [self hiddenHUD];
+                                                         [self showBannerWithPrompt:failed];
+                                                     } mCoinSuccess:^{
+                                                         [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
+                                                         CGFloat accountLabelWidth = [_accountLabel sizeThatFits:JOMAXSize].width+1;
+                                                         
+                                                         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountLabel superView:_accountView];
+                                                         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountView superView:_baseView];
+                                                         
+                                                         [JOAutoLayout autoLayoutWithWidth:accountLabelWidth selfView:_accountLabel superView:_accountView];
+                                                         [JOAutoLayout autoLayoutWithWidth:accountLabelWidth+kRechargeButtonWidth selfView:_accountView superView:_baseView];
+                                                         
+                                                     } mCoinFailed:^(NSString *failed) {
+                                                         [self showBannerWithPrompt:failed];
+                                                     }];
 }
 
 @end
