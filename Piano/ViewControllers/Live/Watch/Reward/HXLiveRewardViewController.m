@@ -53,7 +53,9 @@ HXSectorSliderDelegate
 
 - (void)viewConfigure {
     [self updateAlbumContainer];
-    [self updateControlContainer];
+    [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
+        [self updateControlContainer];
+    } mCoinFailed:nil];
 }
 
 #pragma mark - Event Response
@@ -65,9 +67,13 @@ HXSectorSliderDelegate
         return;
     }
     
+    [self showHUD];
     [[MIAMCoinManage shareMCoinManage] rewardAlbumWithMCoin:_rewardCountLabel.text albumID:_album.ID roomID:_roomID success:^{
+        [self hiddenHUD];
         [self showBannerWithPrompt:@"打赏成功！"];
+        [self dismiss];
     } failed:^(NSString *failed) {
+        [self hiddenHUD];
         [self showBannerWithPrompt:@"打赏失败，请检查网络！"];
     } mCoinSuccess:nil mCoinFailed:nil];
 }
