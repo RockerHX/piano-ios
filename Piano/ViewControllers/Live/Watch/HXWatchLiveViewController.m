@@ -331,6 +331,11 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - HXLiveAlbumViewDelegate Methods
 - (void)liveAlbumsViewTaped:(HXLiveAlbumView *)albumsView {
+    if ([HXUserSession session].state == HXUserStateLogout) {
+        [self showLoginSence];
+        return;
+    }
+    
     HXAlbumModel *album = _viewModel.model.album;
     if (album) {
         HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
