@@ -49,6 +49,11 @@
         __strong __typeof__(self)strongSelf = weakSelf;
         [strongSelf dismiss];
     }];
+    
+    [_rechargeContainer bk_whenTapped:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [strongSelf showRechargeSence];
+    }];
 }
 
 - (void)viewConfigure {
@@ -131,6 +136,12 @@
         [self.view removeFromSuperview];
         [self removeFromParentViewController];
     }];
+}
+
+- (void)showRechargeSence {
+    if (_rechargeDelegate && [_rechargeDelegate respondsToSelector:@selector(shouldShowRechargeSence)]) {
+        [_rechargeDelegate shouldShowRechargeSence];
+    }
 }
 
 @end

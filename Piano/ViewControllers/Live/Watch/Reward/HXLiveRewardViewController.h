@@ -7,12 +7,15 @@
 //
 
 #import "UIViewController+HXClass.h"
+#import "HXShowRechargeDelegate.h"
 
 
 @class HXAlbumModel;
 
 
 @interface HXLiveRewardViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet      id  <HXShowRechargeDelegate>rechargeDelegate;
 
 @property (weak, nonatomic) IBOutlet  UIView *tapView;
 @property (weak, nonatomic) IBOutlet  UIView *containerView;
@@ -24,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *rewardCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *balanceCountLabel;
+@property (weak, nonatomic) IBOutlet  UIView *rechargeContainer;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 

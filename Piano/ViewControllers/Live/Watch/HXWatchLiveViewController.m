@@ -21,6 +21,8 @@
 #import "HXLiveAlbumView.h"
 #import "HXLiveGiftViewController.h"
 #import "HXLiveRewardViewController.h"
+#import "HXShowRechargeDelegate.h"
+#import "MIAPaymentViewController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -29,7 +31,8 @@ HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
 HXLiveBarrageContainerViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
-HXLiveAlbumViewDelegate
+HXLiveAlbumViewDelegate,
+HXShowRechargeDelegate
 >
 @end
 
@@ -312,6 +315,7 @@ HXLiveAlbumViewDelegate
         }
         case HXWatchBottomBarActionGift: {
             HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
+            giftViewController.rechargeDelegate = self;
             giftViewController.roomID = _roomID;
             [self addChildViewController:giftViewController];
             [self.view addSubview:giftViewController.view];
@@ -340,10 +344,17 @@ HXLiveAlbumViewDelegate
     HXAlbumModel *album = _viewModel.model.album;
     if (album) {
         HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
+        rewardViewController.rechargeDelegate = self;
         rewardViewController.roomID = _roomID;
         rewardViewController.album = album;
         [rewardViewController showOnViewController:self];
     }
+}
+
+#pragma mark - HXShowRechargeDelegate Methods
+- (void)shouldShowRechargeSence {
+    MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
+    [self presentViewController:paymentViewController animated:YES completion:nil];
 }
 
 @end

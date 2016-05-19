@@ -378,7 +378,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-Ka-B8f" userLabel="Balance Container">
                                                 <rect key="frame" x="0.0" y="60" width="320" height="60"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-pg-wDD">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-pg-wDD" userLabel="Balance Container">
                                                         <rect key="frame" x="72" y="20" width="177" height="21"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd5-YP-l90">
@@ -399,7 +399,7 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iw5-Ya-Dhy">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iw5-Ya-Dhy" userLabel="Recharge Container">
                                                                 <rect key="frame" x="122" y="0.0" width="55" height="21"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ju-sr-Ddh">
@@ -498,6 +498,7 @@
                         <outlet property="lowGiftContainer" destination="hhp-Mj-aH4" id="Dtc-Xc-Ug5"/>
                         <outlet property="mediumGiftContainer" destination="wXW-0e-Vn9" id="hAA-uG-Ysg"/>
                         <outlet property="normalGiftContainer" destination="bFG-dv-gKv" id="ecp-79-bms"/>
+                        <outlet property="rechargeContainer" destination="Iw5-Ya-Dhy" id="ghC-RG-Qij"/>
                         <outlet property="tapView" destination="a15-lh-srE" id="WXp-Ab-K9b"/>
                     </connections>
                 </viewController>
@@ -1670,7 +1671,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZ3-nc-epd" userLabel="Balance Container">
                                                 <rect key="frame" x="0.0" y="210" width="320" height="90"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqr-VV-kLV">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqr-VV-kLV" userLabel="Balance Container">
                                                         <rect key="frame" x="72" y="35" width="177" height="21"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXk-Ud-3OZ">
@@ -1691,7 +1692,7 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTw-CI-1mr">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTw-CI-1mr" userLabel="Recharge Container">
                                                                 <rect key="frame" x="122" y="0.0" width="55" height="21"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="och-ol-dA6">
@@ -1796,6 +1797,7 @@
                         <outlet property="balanceCountLabel" destination="Eho-RA-uBK" id="dhO-fk-dy2"/>
                         <outlet property="bottomConstraint" destination="ltQ-d6-5lp" id="SCA-gZ-T6w"/>
                         <outlet property="containerView" destination="XEi-et-LNY" id="ZSo-V0-8xq"/>
+                        <outlet property="rechargeContainer" destination="rTw-CI-1mr" id="Zfg-YN-1TG"/>
                         <outlet property="rewardCountLabel" destination="yLK-DC-Jqn" id="so9-ce-n4j"/>
                         <outlet property="rewardPersonCountLabel" destination="Jq8-tz-C8z" id="ufg-rX-aFD"/>
                         <outlet property="tapView" destination="xbk-pn-fEo" id="bNU-Xm-V57"/>
