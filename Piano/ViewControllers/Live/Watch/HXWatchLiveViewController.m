@@ -339,6 +339,7 @@ HXLiveAlbumViewDelegate
     HXAlbumModel *album = _viewModel.model.album;
     if (album) {
         HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
+        rewardViewController.roomID = _roomID;
         rewardViewController.album = album;
         [rewardViewController showOnViewController:self];
     }

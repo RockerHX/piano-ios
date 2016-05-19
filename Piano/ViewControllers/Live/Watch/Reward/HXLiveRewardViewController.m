@@ -12,6 +12,7 @@
 #import "HXSectorSlider.h"
 #import "HXAlbumModel.h"
 #import "UIImageView+WebCache.h"
+#import "MIAMCoinManage.h"
 
 
 @interface HXLiveRewardViewController () <
@@ -52,11 +53,23 @@ HXSectorSliderDelegate
 
 - (void)viewConfigure {
     [self updateAlbumContainer];
+    [self updateControlContainer];
 }
 
 #pragma mark - Event Response
 - (IBAction)rewardButtonPressed {
-    ;
+    NSInteger rewardCount = _rewardCountLabel.text.integerValue;
+    NSInteger balanceCount = [MIAMCoinManage shareMCoinManage].mCoin.integerValue;
+    if (balanceCount < rewardCount) {
+        [self showBannerWithPrompt:@"余额不足，请充值！"];
+        return;
+    }
+    
+    [[MIAMCoinManage shareMCoinManage] rewardAlbumWithMCoin:_rewardCountLabel.text albumID:_album.ID roomID:_roomID success:^{
+        [self showBannerWithPrompt:@"打赏成功！"];
+    } failed:^(NSString *failed) {
+        [self showBannerWithPrompt:@"打赏失败，请检查网络！"];
+    } mCoinSuccess:nil mCoinFailed:nil];
 }
 
 #pragma mark - Public Methods
@@ -71,6 +84,10 @@ HXSectorSliderDelegate
     _albumTitleLabel.text = _album.title;
     _artistNameLabel.text = _album.nickName;
     _rewardPersonCountLabel.text = @(_album.rewardTotal).stringValue;
+}
+
+- (void)updateControlContainer {
+    _balanceCountLabel.text = [MIAMCoinManage shareMCoinManage].mCoin;
 }
 
 - (void)popUp {
