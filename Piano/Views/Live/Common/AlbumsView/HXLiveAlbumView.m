@@ -65,7 +65,7 @@ HXXibImplementation
 #pragma mark - Public Methods
 - (void)updateWithAlbum:(HXAlbumModel *)album {
     if (album) {
-        _countLabel.text = @(album.rewardCount).stringValue;
+        _countLabel.text = @(album.rewardTotal).stringValue;
         __weak __typeof__(self)weakSelf = self;
         [_albumCover sd_setImageWithURL:[NSURL URLWithString:album.coverUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             __strong __typeof__(self)strongSelf = weakSelf;

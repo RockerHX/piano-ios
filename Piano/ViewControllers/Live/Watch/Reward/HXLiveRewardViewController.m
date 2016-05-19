@@ -70,7 +70,7 @@ HXSectorSliderDelegate
     [_albumCover sd_setImageWithURL:[NSURL URLWithString:_album.coverUrl]];
     _albumTitleLabel.text = _album.title;
     _artistNameLabel.text = _album.nickName;
-    _rewardPersonCountLabel.text = @(_album.rewardCount).stringValue;
+    _rewardPersonCountLabel.text = @(_album.rewardTotal).stringValue;
 }
 
 - (void)popUp {

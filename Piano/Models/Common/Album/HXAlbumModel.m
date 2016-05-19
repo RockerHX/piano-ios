@@ -14,7 +14,7 @@
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"ID": @"id",
        @"nickName": @"nick",
-    @"rewardCount": @"backTotal"};
+    @"rewardTotal": @"backTotal"};
 }
 
 @end

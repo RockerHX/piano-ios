@@ -17,6 +17,6 @@
 @property (nonatomic, strong)  NSString *title;
 @property (nonatomic, strong)  NSString *summary;
 @property (nonatomic, strong)  NSString *coverUrl;
-@property (nonatomic, assign) NSInteger  rewardCount;
+@property (nonatomic, assign) NSInteger  rewardTotal;
 
 @end
