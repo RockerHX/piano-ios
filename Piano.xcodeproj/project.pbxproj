@@ -457,6 +457,8 @@
 		CD92AF8F1CBCD8B400106A89 /* HXReplayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD92AF8E1CBCD8B400106A89 /* HXReplayViewModel.m */; };
 		CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
 		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
+		CDAB160C1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
+		CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
 		CDB099EF1CB520C000C47EA0 /* HXRecordAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */; };
 		CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */; };
 		CDB456F71CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
@@ -948,6 +950,8 @@
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
 		CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewController.m; sourceTree = "<group>"; };
+		CDAB160A1CEDC11D00949769 /* HXGiftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXGiftModel.h; sourceTree = "<group>"; };
+		CDAB160B1CEDC11D00949769 /* HXGiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGiftModel.m; sourceTree = "<group>"; };
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
@@ -1601,6 +1605,7 @@
 		CD2949DC1CA28B2200CA3C3F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CDAB16091CEDC11100949769 /* Gift */,
 				CDDC38361CEB1B3500328A17 /* Barrage */,
 				CD4156C31CB39C7C0060CBE9 /* Comment */,
 				CD4156C41CB39C7C0060CBE9 /* Song */,
@@ -2415,6 +2420,15 @@
 			path = Watch;
 			sourceTree = "<group>";
 		};
+		CDAB16091CEDC11100949769 /* Gift */ = {
+			isa = PBXGroup;
+			children = (
+				CDAB160A1CEDC11D00949769 /* HXGiftModel.h */,
+				CDAB160B1CEDC11D00949769 /* HXGiftModel.m */,
+			);
+			path = Gift;
+			sourceTree = "<group>";
+		};
 		CDB099EB1CB520C000C47EA0 /* AnchorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3210,6 +3224,7 @@
 				CD7960D81CBE594C004CC661 /* HXNavigationController.m in Sources */,
 				429CC20D1CE08BAF004BCC0C /* MIAProfileModel.m in Sources */,
 				42A0DAEC1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */,
+				CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */,
 				42984B061CDAEF84004F00D5 /* JOFCrash.m in Sources */,
 				420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */,
 				CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */,
@@ -3483,6 +3498,7 @@
 				CDDC38391CEB1B3500328A17 /* HXBarrageModel.m in Sources */,
 				CD9167731CAE52E7000A12DC /* MIAButton.m in Sources */,
 				CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */,
+				CDAB160C1CEDC11D00949769 /* HXGiftModel.m in Sources */,
 				CDECFF921CBB7F48001EF9DC /* HXAlbumsCommentViewModel.m in Sources */,
 				CD2367921CA91DF9002C8233 /* HXMeContainerViewController.m in Sources */,
 				CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */,
