@@ -13,6 +13,7 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"nickName": @"nick",
+             @"giftName": @"name",
             @"avatarUrl": @"userpic",
           @"rewardTotal": @"total",
       @"rewardCoinCount": @"mcoin"};
@@ -35,7 +36,7 @@
                 break;
             }
             case HXBarrageTypeGift: {
-                actionString = [NSString stringWithFormat:@"赠送给主播%@", nil];
+                actionString = [NSString stringWithFormat:@"赠送给主播%@", _giftName];
                 break;
             }
             case HXBarrageTypeReward: {
