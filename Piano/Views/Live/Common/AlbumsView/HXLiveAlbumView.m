@@ -64,6 +64,7 @@ HXXibImplementation
 
 #pragma mark - Public Methods
 - (void)updateWithAlbum:(HXAlbumModel *)album {
+    [self stopAlbumAnmation];
     if (album) {
         _countLabel.text = @(album.rewardTotal).stringValue;
         __weak __typeof__(self)weakSelf = self;
