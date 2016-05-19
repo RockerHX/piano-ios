@@ -139,3 +139,9 @@ static NSString * const MiaAPIKey_TradeType                 = @"tradeType"; // �
 static NSString * const MiaAPIKey_RechargeID                = @"rechargeID"; // 购买产品的id
 static NSString * const MiaAPIKey_AppleOrderID              = @"appleOrderID"; //苹果生成的订单号
 static NSString * const MiaAPIKey_Auth                      = @"auth"; //验证的串
+
+static NSString * const MiaAPICommand_RewardAlbum           = @"User.Album.Post.Back";//打赏专辑
+static NSString * const MiaAPICommand_SendGift              = @"User.Gift.Post.Back";//送礼物
+
+static NSString * const MiaAPIKey_MCoin                     = @"mcoin";//M币
+static NSString * const MiaAPIKey_GiftID                    = @"giftID";//礼物的id

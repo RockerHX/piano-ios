@@ -146,6 +146,8 @@
 		42B6A0EB1CEB1D3800BDF8E8 /* MIASendGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E91CEB1D3800BDF8E8 /* MIASendGiftModel.m */; };
 		42B6A0EE1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */; };
 		42B6A0EF1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */; };
+		42CC372B1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */; };
+		42CC372C1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */; };
 		42D15F931CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */; };
 		42D15F941CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */; };
 		42D612D61CE1FDD600B80753 /* MIAFontManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D51CE1FDD600B80753 /* MIAFontManage.m */; };
@@ -697,6 +699,8 @@
 		42B6A0E91CEB1D3800BDF8E8 /* MIASendGiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASendGiftModel.m; sourceTree = "<group>"; };
 		42B6A0EC1CEB1D4900BDF8E8 /* MIAOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAOrderModel.h; sourceTree = "<group>"; };
 		42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAOrderModel.m; sourceTree = "<group>"; };
+		42CC37291CED57AD00BEEBAE /* MIAMCoinManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAMCoinManage.h; sourceTree = "<group>"; };
+		42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAMCoinManage.m; sourceTree = "<group>"; };
 		42D15F911CEC2A5C00EC74E7 /* JOPurchaseManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOPurchaseManage.h; sourceTree = "<group>"; };
 		42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOPurchaseManage.m; sourceTree = "<group>"; };
 		42D612D41CE1FDD600B80753 /* MIAFontManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAFontManage.h; sourceTree = "<group>"; };
@@ -1247,6 +1251,8 @@
 				420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */,
 				420BBB6E1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.h */,
 				420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */,
+				42CC37291CED57AD00BEEBAE /* MIAMCoinManage.h */,
+				42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -3264,6 +3270,7 @@
 				42A0DAFF1CE2E07300F1FCEF /* MIAAlbumPlayView.m in Sources */,
 				4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */,
 				CD7961031CBE594C004CC661 /* HXReplaySlider.m in Sources */,
+				42CC372C1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */,
 				CD7961041CBE594C004CC661 /* CacheHelper.m in Sources */,
 				CD7961051CBE594C004CC661 /* HXReplayModel.m in Sources */,
 				429E50151CE47A3A0008CA85 /* MIASongModel.m in Sources */,
@@ -3455,6 +3462,7 @@
 				CDED8F231CA13BB4003867B8 /* HXAppConstants.m in Sources */,
 				CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */,
 				42D612EA1CE1FEFB00B80753 /* MIAAlbumBarView.m in Sources */,
+				42CC372B1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */,
 				42D612DC1CE1FDE700B80753 /* UILabel+JOExtend.m in Sources */,
 				42A0DAEB1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */,
 				CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */,

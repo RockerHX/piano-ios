@@ -250,4 +250,34 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
                        completeBlock:(MiaRequestCompleteBlock)completeBlock
                         timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
+#pragma mark - M币消费相关
+
+/**
+ *  打赏专辑
+ *
+ *  @param albumID       专辑的id
+ *  @param roomID        房间的id
+ *  @param mCoin         M的数量
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)rewardAlbumWithAlbumID:(NSString *)albumID
+                        roomID:(NSString *)roomID
+                         mCoin:(NSString *)mCoin
+                 completeBlock:(MiaRequestCompleteBlock)completeBlock
+                  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+/**
+ *  送礼物
+ *
+ *  @param giftID        礼物的id
+ *  @param roomID        房间的id
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)sendGiftWithGiftID:(NSString *)giftID
+                    roomID:(NSString *)roomID
+             completeBlock:(MiaRequestCompleteBlock)completeBlock
+              timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end
