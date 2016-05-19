@@ -10,14 +10,14 @@
 #import "JOBaseSDK.h"
 #import "MIAFontManage.h"
 
-static CGFloat const kPaymentAlertHeight = 100.;
-static CGFloat const kPaymentAlertInsideTopSpaceDistance = 15.;
-static CGFloat const kPaymentAlertInsideBottomSpacedistance = 10.;
-static CGFloat const kPaymentAlertInsiderLeftRightSpaceDistance = 20.;
-static CGFloat const kPaymentAlertHeadHeight = 30.;
-static CGFloat const kPaymentAlertHeadImageToTitleSpaceDistance = 10.;
-static CGFloat const kPaymentAlertTitleToContentSpaceDistance = 10.;
-static CGFloat const kPaymentAlertContentToButtonSpaceDistance = 15.;
+//static CGFloat const kPaymentAlertHeight = 100.;
+//static CGFloat const kPaymentAlertInsideTopSpaceDistance = 15.;
+//static CGFloat const kPaymentAlertInsideBottomSpacedistance = 10.;
+//static CGFloat const kPaymentAlertInsiderLeftRightSpaceDistance = 20.;
+//static CGFloat const kPaymentAlertHeadHeight = 30.;
+//static CGFloat const kPaymentAlertHeadImageToTitleSpaceDistance = 10.;
+//static CGFloat const kPaymentAlertTitleToContentSpaceDistance = 10.;
+//static CGFloat const kPaymentAlertContentToButtonSpaceDistance = 15.;
 
 @interface MIAPaymentAlertView()
 
@@ -91,13 +91,13 @@ static CGFloat const kPaymentAlertContentToButtonSpaceDistance = 15.;
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_paymentAlertView superView:_backMaskView];
 
     //AlertHead
-    CGFloat titleLabelWidth = [_alertTitleLabel sizeThatFits:JOMAXSize].width+1;
+//    CGFloat titleLabelWidth = [_alertTitleLabel sizeThatFits:JOMAXSize].width+1;
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_alertTitleLabel superView:_alertHeadView];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_alertTitleLabel superView:_alertHeadView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_alertTitleLabel superView:_alertHeadView];
 //    []
     
-    [JOAutoLayout autoLayoutWithHeight:kPaymentAlertHeadHeight selfView:_alertHeadView superView:_paymentAlertView];
+//    [JOAutoLayout autoLayoutWithHeight:kPaymentAlertHeadHeight selfView:_alertHeadView superView:_paymentAlertView];
 //    [JOAutoLayout autolayout]
 }
 
