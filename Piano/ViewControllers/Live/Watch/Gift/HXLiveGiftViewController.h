@@ -19,8 +19,16 @@
 @property (weak, nonatomic) IBOutlet  UIView *highGiftContainer;
 @property (weak, nonatomic) IBOutlet UILabel *balanceCountLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *lowGiftButton;
+@property (weak, nonatomic) IBOutlet UIButton *normalGiftButton;
+@property (weak, nonatomic) IBOutlet UIButton *mediumGiftButton;
+@property (weak, nonatomic) IBOutlet UIButton *highGiftButton;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
+@property (nonatomic, strong) NSString *roomID;
+
+- (IBAction)giftButtonPressed:(UIButton *)button;
 - (IBAction)giveGiftButtonPressed;
 
 @end

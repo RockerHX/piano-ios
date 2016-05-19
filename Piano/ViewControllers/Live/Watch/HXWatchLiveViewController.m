@@ -312,6 +312,7 @@ HXLiveAlbumViewDelegate
         }
         case HXWatchBottomBarActionGift: {
             HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
+            giftViewController.roomID = _roomID;
             [self addChildViewController:giftViewController];
             [self.view addSubview:giftViewController.view];
             break;
