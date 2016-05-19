@@ -31,7 +31,7 @@
     _comments = @[];
     _barrages = @[];
     
-    [self signalLink];
+    [self signalConfigure];
     [self notificationConfigure];
     [self enterRoomCommandConfigure];
     [self leaveRoomCommandConfigure];
@@ -39,9 +39,10 @@
     [self takeAttentionCommandConfigure];
 }
 
-- (void)signalLink {
+- (void)signalConfigure {
     _barragesSignal = RACObserve(self, barrages);
     _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
+    _rewardSignal = [RACSubject subject];
 }
 
 - (void)notificationConfigure {
@@ -179,6 +180,9 @@
     HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
     barrage.type = HXBarrageTypeReward;
     [self addBarrage:barrage];
+    
+    _model.album.rewardTotal = barrage.rewardTotal;
+    [_rewardSignal sendNext:nil];
 }
 
 - (void)addComment:(NSDictionary *)data {

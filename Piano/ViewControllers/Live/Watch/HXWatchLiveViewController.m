@@ -115,6 +115,10 @@ HXLiveAlbumViewDelegate
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
     }];
+    [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
+        @strongify(self)
+        [self updateAlbumView];
+    }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
