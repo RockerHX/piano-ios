@@ -133,8 +133,8 @@ HXSelectedAlbumViewControllerDelegate
     [_countDownContainerView removeFromSuperview];
     _countDownContainerView = nil;
     
-    if (_delegate && [_delegate respondsToSelector:@selector(previewControllerHandleFinishedShouldStartLive:roomID:roomTitle:shareUrl:frontCamera:beauty:)]) {
-        [_delegate previewControllerHandleFinishedShouldStartLive:self roomID:_roomID roomTitle:_roomTitle shareUrl:_shareUrl frontCamera:_frontCamera beauty:_beauty];
+    if (_delegate && [_delegate respondsToSelector:@selector(previewControllerHandleFinishedShouldStartLive:album:roomID:roomTitle:shareUrl:frontCamera:beauty:)]) {
+        [_delegate previewControllerHandleFinishedShouldStartLive:self album:_album roomID:_roomID roomTitle:_roomTitle shareUrl:_shareUrl frontCamera:_frontCamera beauty:_beauty];
     }
 }
 
@@ -206,7 +206,9 @@ HXSelectedAlbumViewControllerDelegate
     [MiaAPIHelper liveRelatedAlbum:album.ID roomID:_roomID completeBlock:
      ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
          [self hiddenHUD];
-         if (!success) {
+         if (success) {
+             _album = album;
+         } else {
              _editView.albumCoverView.image = nil;
          }
      } timeoutBlock:^(MiaRequestItem *requestItem) {

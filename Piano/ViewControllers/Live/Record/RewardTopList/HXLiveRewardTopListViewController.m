@@ -53,15 +53,12 @@ UITableViewDelegate
 }
 
 - (void)viewConfigure {
-    [self showHUD];
-    
     switch (_type) {
         case HXLiveRewardTopListTypeGift: {
             [MiaAPIHelper getGiftTopListWithRoomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                 if (success) {
                     [self parseLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                 }
-                [self hiddenHUD];
             } timeoutBlock:^(MiaRequestItem *requestItem) {
                 [self timeOutPrompt];
             }];
@@ -72,7 +69,6 @@ UITableViewDelegate
                 if (success) {
                     [self parseLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                 }
-                [self hiddenHUD];
             } timeoutBlock:^(MiaRequestItem *requestItem) {
                 [self timeOutPrompt];
             }];
@@ -118,7 +114,6 @@ UITableViewDelegate
 
 - (void)timeOutPrompt {
     [self showBannerWithPrompt:TimtOutPrompt];
-    [self hiddenHUD];
 }
 
 #pragma mark - Table View Data Source Methods

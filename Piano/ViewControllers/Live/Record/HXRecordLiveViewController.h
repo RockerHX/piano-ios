@@ -10,6 +10,7 @@
 
 
 @class HXRecordAnchorView;
+@class HXLiveAlbumView;
 
 
 @interface HXRecordLiveViewController : UIViewController
@@ -22,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet HXRecordAnchorView *anchorView;
 @property (weak, nonatomic) IBOutlet             UIView *barragesView;
 @property (weak, nonatomic) IBOutlet             UIView *bottomBar;
+@property (weak, nonatomic) IBOutlet    HXLiveAlbumView *albumView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewWidthConstraint;
 
 - (IBAction)closeButtonPressed;
 

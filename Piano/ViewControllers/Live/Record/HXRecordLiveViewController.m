@@ -21,6 +21,7 @@
 #import "HXWatcherBoard.h"
 #import "MiaAPIHelper.h"
 #import "HXLiveRewardTopListViewController.h"
+#import "HXLiveAlbumView.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -29,7 +30,8 @@ HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate,
 HXPreviewLiveViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
-HXLiveBarrageContainerViewControllerDelegate
+HXLiveBarrageContainerViewControllerDelegate,
+HXLiveAlbumViewDelegate
 >
 @end
 
@@ -116,6 +118,7 @@ HXLiveBarrageContainerViewControllerDelegate
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
     [_anchorView stopRecordTime];
+    [_albumView stopAlbumAnmation];
     
     ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi takeLocalViewSnapshot];
@@ -168,10 +171,22 @@ HXLiveBarrageContainerViewControllerDelegate
     [_viewModel.exitSignal subscribeNext:^(id x) {
         ;
     }];
+    [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
+        @strongify(self)
+        [self updateAlbumView];
+    }];
 }
 
 - (void)updateAnchorView {
-    [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal];
+    [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:_viewModel.anchorAvatar] forState:UIControlStateNormal];
+}
+
+static CGFloat AlbumViewWidth = 60.0f;
+- (void)updateAlbumView {
+    HXAlbumModel *album = _viewModel.model.album;
+    _albumView.hidden = album ? NO : YES;
+    _albumViewWidthConstraint.constant = album ? AlbumViewWidth : 0.0f;
+    [_albumView updateWithAlbum:album];
 }
 
 #pragma mark - ZegoLiveApiDelegate
@@ -287,7 +302,7 @@ HXLiveBarrageContainerViewControllerDelegate
 }
 
 #pragma mark - HXPreviewLiveViewControllerDelegate Methods
-- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl frontCamera:(BOOL)frontCamera beauty:(BOOL)beauty {
+- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController album:(HXAlbumModel *)album roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl frontCamera:(BOOL)frontCamera beauty:(BOOL)beauty {
     
     _roomID = roomID;
     _roomTitle = roomTitle;
@@ -298,6 +313,7 @@ HXLiveBarrageContainerViewControllerDelegate
     [self startPublish];
     
     _viewModel = [[HXRecordLiveViewModel alloc] initWithRoomID:roomID];
+    _viewModel.model.album = album;
     [self signalLink];
     
     _previewContainer.hidden = YES;
@@ -306,6 +322,8 @@ HXLiveBarrageContainerViewControllerDelegate
     _bottomBar.hidden = NO;
     [_previewContainer removeFromSuperview];
     _previewContainer = nil;
+    
+    [self updateAlbumView];
 }
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods
@@ -333,6 +351,14 @@ HXLiveBarrageContainerViewControllerDelegate
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
 #warning TODO
+}
+
+#pragma mark - HXLiveAlbumViewDelegate Methods
+- (void)liveAlbumsViewTaped:(HXLiveAlbumView *)albumsView {
+    HXLiveRewardTopListViewController *rewardTopListViewController = [HXLiveRewardTopListViewController instance];
+    rewardTopListViewController.type = HXLiveRewardTopListTypeAlbum;
+    rewardTopListViewController.roomID = _viewModel.roomID;
+    [rewardTopListViewController showOnViewController:self];
 }
 
 @end
