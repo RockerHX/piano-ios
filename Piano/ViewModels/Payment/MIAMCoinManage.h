@@ -25,6 +25,11 @@ typedef void(^MCoinManageFailed)(NSString *failed);
 
 + (MIAMCoinManage *)shareMCoinManage;
 
+- (void)checkLocalVerifyPurchaseWithSuccess:(MCoinManageSuccess)success
+                                     failed:(MCoinManageFailed)failed
+                               mCoinSuccess:(MCoinManageSuccess)mCoinSuccess
+                                mCoinFailed:(MCoinManageFailed)mCoinFailed;
+
 /**
  *  充值M币
  *

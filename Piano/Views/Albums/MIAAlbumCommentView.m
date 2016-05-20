@@ -54,7 +54,7 @@ static CGFloat const kImageWidth = 40.;//图片的宽度
     [JOAutoLayout autoLayoutWithSize:JOSize(kImageWidth, kImageWidth) selfView:_headImageView superView:self];
     
     self.nickNameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Name]];
-    [_nickNameLabel setText:@"小和尚"];
+    [_nickNameLabel setText:@" "];
     [self addSubview:_nickNameLabel];
     
     [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:kImageToLabelSpaceDistance selfView:_nickNameLabel superView:self];
@@ -63,7 +63,7 @@ static CGFloat const kImageWidth = 40.;//图片的宽度
     [JOAutoLayout autoLayoutWithHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height+4. selfView:_nickNameLabel superView:self];
     
     self.commentLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Content]];
-    [_commentLabel setText:@"色?空:色"];
+    [_commentLabel setText:@" "];
     [self addSubview:_commentLabel];
     
     [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_commentLabel superView:self];
@@ -72,7 +72,7 @@ static CGFloat const kImageWidth = 40.;//图片的宽度
     [JOAutoLayout autoLayoutWithHeight:[_commentLabel sizeThatFits:JOMAXSize].height+4 selfView:_commentLabel superView:self];
     
     self.timeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Time]];
-    [_timeLabel setText:@"12-29"];
+    [_timeLabel setText:@" "];
     [self addSubview:_timeLabel];
     
     [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_timeLabel superView:self];

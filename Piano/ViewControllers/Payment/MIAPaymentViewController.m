@@ -48,6 +48,16 @@
     [self createTableView];
     
     
+    [[MIAMCoinManage shareMCoinManage] checkLocalVerifyPurchaseWithSuccess:^{
+        
+    } failed:^(NSString *failed) {
+        
+    } mCoinSuccess:^{
+        [_paymentBarView setMAmount:[[MIAMCoinManage shareMCoinManage] mCoin]];
+    } mCoinFailed:^(NSString *failed) {
+        
+    }];
+    
     [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
         
         [_paymentBarView setMAmount:[[MIAMCoinManage shareMCoinManage] mCoin]];
