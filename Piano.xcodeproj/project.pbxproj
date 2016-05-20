@@ -81,6 +81,8 @@
 		CB30166BF73B12934F5E7330 /* libPods-Piano-Beta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0545AA33DD4F8C0CFAB1AEA /* libPods-Piano-Beta.a */; };
 		CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */; };
 		CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */; };
+		CD07B2C31CEEE9AD00B5AB87 /* HXLiveGiftListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2BF1CEEE9AD00B5AB87 /* HXLiveGiftListViewController.m */; };
+		CD07B2C41CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2C21CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m */; };
 		CD160F9A1CD05CD700DF4164 /* HXDiscoveryLiveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */; };
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
@@ -467,6 +469,10 @@
 		CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCollectionViewLayout.m; sourceTree = "<group>"; };
 		CD01F1C71CCF0611006BF4BF /* HXDiscoveryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryCell.h; sourceTree = "<group>"; };
 		CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryCell.m; sourceTree = "<group>"; };
+		CD07B2BE1CEEE9AD00B5AB87 /* HXLiveGiftListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveGiftListViewController.h; sourceTree = "<group>"; };
+		CD07B2BF1CEEE9AD00B5AB87 /* HXLiveGiftListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveGiftListViewController.m; sourceTree = "<group>"; };
+		CD07B2C11CEEE9AD00B5AB87 /* HXLiveRewardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveRewardListViewController.h; sourceTree = "<group>"; };
+		CD07B2C21CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveRewardListViewController.m; sourceTree = "<group>"; };
 		CD160F941CD05CD700DF4164 /* HXDiscoveryLiveBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryLiveBar.h; sourceTree = "<group>"; };
 		CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryLiveBar.m; sourceTree = "<group>"; };
 		CD160F971CD05CD700DF4164 /* HXDiscoveryTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryTopBar.h; sourceTree = "<group>"; };
@@ -1192,6 +1198,24 @@
 			path = Layout;
 			sourceTree = "<group>";
 		};
+		CD07B2BD1CEEE9AD00B5AB87 /* GiftList */ = {
+			isa = PBXGroup;
+			children = (
+				CD07B2BE1CEEE9AD00B5AB87 /* HXLiveGiftListViewController.h */,
+				CD07B2BF1CEEE9AD00B5AB87 /* HXLiveGiftListViewController.m */,
+			);
+			path = GiftList;
+			sourceTree = "<group>";
+		};
+		CD07B2C01CEEE9AD00B5AB87 /* RewardList */ = {
+			isa = PBXGroup;
+			children = (
+				CD07B2C11CEEE9AD00B5AB87 /* HXLiveRewardListViewController.h */,
+				CD07B2C21CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m */,
+			);
+			path = RewardList;
+			sourceTree = "<group>";
+		};
 		CD160F931CD05CD700DF4164 /* LiveBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1737,6 +1761,8 @@
 		CD6C19541CA5126400849B39 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				CD07B2BD1CEEE9AD00B5AB87 /* GiftList */,
+				CD07B2C01CEEE9AD00B5AB87 /* RewardList */,
 				CD5D02711CB5FE31000285DC /* Preview */,
 				CD6C19551CA5133300849B39 /* HXRecordLiveViewController.h */,
 				CD6C19561CA5133300849B39 /* HXRecordLiveViewController.m */,
@@ -2729,10 +2755,12 @@
 				CD79609E1CBE594C004CC661 /* HXIBButton.m in Sources */,
 				42984B0C1CDAEF84004F00D5 /* JOFFileManage.m in Sources */,
 				CD79609F1CBE594C004CC661 /* HXRecordBottomBar.m in Sources */,
+				CD07B2C41CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m in Sources */,
 				42A0DB031CE2E08200F1FCEF /* MIAAlbumSongCell.m in Sources */,
 				CD7960A01CBE594C004CC661 /* UIButton+HXIBnspectable.m in Sources */,
 				CD7960A11CBE594C004CC661 /* HXLiveCommentViewModel.m in Sources */,
 				CD7960A21CBE594C004CC661 /* WebSocketMgr.m in Sources */,
+				CD07B2C31CEEE9AD00B5AB87 /* HXLiveGiftListViewController.m in Sources */,
 				CDE017211CE48D4B005645D5 /* HXDiscoveryPreviewCell.m in Sources */,
 				420BBB691CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */,
 				CD7960A31CBE594C004CC661 /* UIViewController+LoginAction.m in Sources */,
