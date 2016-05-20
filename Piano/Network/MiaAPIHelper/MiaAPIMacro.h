@@ -101,6 +101,7 @@ static NSString * const MiaAPICommand_User_GetFollow		= @"User.Get.Follow";
 static NSString * const MiaAPICommand_Live_GetStat			= @"Live.Room.Get.Stat";
 static NSString * const MiaAPICommand_Live_GetGiftList      = @"Live.Room.Get.Gift";
 static NSString * const MiaAPICommand_Live_GetGiftTopList   = @"Live.Room.Top.Gift";
+static NSString * const MiaAPICommand_Live_GetAlbumTopList  = @"Live.Room.Top.Album";
 static NSString * const MiaAPIKey_RoomID					= @"roomID";
 static NSString * const MiaAPIKey_Content					= @"content";
 static NSString * const MiaAPIKey_Title						= @"title";
