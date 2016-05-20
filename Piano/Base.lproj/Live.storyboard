@@ -1368,7 +1368,7 @@
                                         </connections>
                                     </containerView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ea-F8-wyq" userLabel="Bottom Bar" customClass="HXRecordBottomBar">
-                                        <rect key="frame" x="10" y="508" width="240" height="40"/>
+                                        <rect key="frame" x="10" y="508" width="230" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="9j7-5G-fua"/>
                                         </constraints>
@@ -1402,7 +1402,7 @@
                                     <constraint firstItem="6ea-F8-wyq" firstAttribute="top" secondItem="tE0-wM-lMe" secondAttribute="bottom" constant="10" id="hkS-uz-Dks"/>
                                     <constraint firstItem="j3f-nz-ApT" firstAttribute="leading" secondItem="9dU-lx-FmV" secondAttribute="leading" id="jnJ-1E-THm"/>
                                     <constraint firstAttribute="trailing" secondItem="zt2-bD-MKs" secondAttribute="trailing" constant="10" id="suK-ZB-UmA"/>
-                                    <constraint firstItem="GV0-0C-RQ2" firstAttribute="leading" secondItem="6ea-F8-wyq" secondAttribute="trailing" id="w1Q-uq-U1N"/>
+                                    <constraint firstItem="GV0-0C-RQ2" firstAttribute="leading" secondItem="6ea-F8-wyq" secondAttribute="trailing" constant="10" id="w1Q-uq-U1N"/>
                                     <constraint firstItem="GV0-0C-RQ2" firstAttribute="bottom" secondItem="6ea-F8-wyq" secondAttribute="bottom" id="zif-8i-twT"/>
                                 </constraints>
                             </view>
@@ -1444,6 +1444,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="albumView" destination="GV0-0C-RQ2" id="Ori-e8-XFd"/>
+                        <outlet property="albumViewLeftConstraint" destination="w1Q-uq-U1N" id="QgH-AX-56O"/>
                         <outlet property="albumViewWidthConstraint" destination="moN-if-fPX" id="78r-FK-4Re"/>
                         <outlet property="anchorView" destination="xC5-yV-giV" id="lEV-Tk-gdx"/>
                         <outlet property="barragesView" destination="tE0-wM-lMe" id="cIa-K2-e9G"/>

@@ -181,12 +181,20 @@ HXLiveAlbumViewDelegate
     [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:_viewModel.anchorAvatar] forState:UIControlStateNormal];
 }
 
+static CGFloat AlbumViewLeftSpace = 10.0f;
 static CGFloat AlbumViewWidth = 60.0f;
 - (void)updateAlbumView {
     HXAlbumModel *album = _viewModel.model.album;
-    _albumView.hidden = album ? NO : YES;
-    _albumViewWidthConstraint.constant = album ? AlbumViewWidth : 0.0f;
-    [_albumView updateWithAlbum:album];
+    if (album) {
+        _albumView.hidden = NO;
+        _albumViewLeftConstraint.constant = AlbumViewLeftSpace;
+        _albumViewWidthConstraint.constant = AlbumViewWidth;
+        [_albumView updateWithAlbum:album];
+    } else {
+        _albumView.hidden = YES;
+        _albumViewLeftConstraint.constant = 0.0f;
+        _albumViewWidthConstraint.constant = 0.0f;
+    }
 }
 
 #pragma mark - ZegoLiveApiDelegate

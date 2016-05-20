@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet             UIView *bottomBar;
 @property (weak, nonatomic) IBOutlet    HXLiveAlbumView *albumView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewWidthConstraint;
 
 - (IBAction)closeButtonPressed;
