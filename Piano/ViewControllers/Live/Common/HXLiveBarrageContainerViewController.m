@@ -69,8 +69,8 @@ HXLiveBarrageCellDelegate
 #pragma mark - HXLiveBarrageCellDelegate Methods
 - (void)commentCellShouldShowCommenter:(HXLiveBarrageCell *)cell {
     NSInteger row = [self.tableView indexPathForCell:cell].row;
-    if (_delegate && [_delegate respondsToSelector:@selector(commentContainer:shouldShowComment:)]) {
-        [_delegate commentContainer:self shouldShowComment:_barrages[row]];
+    if (_delegate && [_delegate respondsToSelector:@selector(barrageContainer:shouldShowBarrage:)]) {
+        [_delegate barrageContainer:self shouldShowBarrage:_barrages[row]];
     }
 }
 

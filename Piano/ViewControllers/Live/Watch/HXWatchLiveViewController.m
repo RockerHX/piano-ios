@@ -38,7 +38,7 @@ HXShowRechargeDelegate
 
 
 @implementation HXWatchLiveViewController {
-    HXLiveBarrageContainerViewController *_commentContainer;
+    HXLiveBarrageContainerViewController *_barrageContainer;
     HXLiveEndViewController *_endViewController;
     HXWatchLiveViewModel *_viewModel;
 }
@@ -56,8 +56,8 @@ HXShowRechargeDelegate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *identifier = segue.identifier;
     if ([identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
-        _commentContainer = segue.destinationViewController;
-        _commentContainer.delegate = self;
+        _barrageContainer = segue.destinationViewController;
+        _barrageContainer.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
         _endViewController = segue.destinationViewController;
         _endViewController.delegate = self;
@@ -113,7 +113,7 @@ HXShowRechargeDelegate
     @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         @strongify(self)
-        self->_commentContainer.barrages = barrages;
+        self->_barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
@@ -325,7 +325,7 @@ HXShowRechargeDelegate
 }
 
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+- (void)barrageContainer:(HXLiveBarrageContainerViewController *)container shouldShowBarrage:(HXBarrageModel *)barrage {
     ;
 }
 

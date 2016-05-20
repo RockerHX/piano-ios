@@ -39,7 +39,7 @@ HXLiveAlbumViewDelegate
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
     HXLiveEndViewController *_endViewController;
-    HXLiveBarrageContainerViewController *_commentContainer;
+    HXLiveBarrageContainerViewController *_barrageContainer;
     
     NSString *_roomID;
     NSString *_roomTitle;
@@ -69,8 +69,8 @@ HXLiveAlbumViewDelegate
         _endViewController = segue.destinationViewController;
         _endViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
-        _commentContainer = segue.destinationViewController;
-        _commentContainer.delegate = self;
+        _barrageContainer = segue.destinationViewController;
+        _barrageContainer.delegate = self;
     }
 }
 
@@ -165,7 +165,7 @@ HXLiveAlbumViewDelegate
     @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         @strongify(self)
-        self->_commentContainer.barrages = barrages;
+        self->_barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         ;
@@ -358,8 +358,8 @@ static CGFloat AlbumViewWidth = 60.0f;
 //}
 
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-#warning TODO
+- (void)barrageContainer:(HXLiveBarrageContainerViewController *)container shouldShowBarrage:(HXBarrageModel *)barrage {
+    ;
 }
 
 #pragma mark - HXLiveAlbumViewDelegate Methods
