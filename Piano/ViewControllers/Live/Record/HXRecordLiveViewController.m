@@ -20,6 +20,7 @@
 #import "UIButton+WebCache.h"
 #import "HXWatcherBoard.h"
 #import "MiaAPIHelper.h"
+#import "HXLiveJoinKingListViewController.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -258,7 +259,7 @@ HXLiveBarrageContainerViewControllerDelegate
             break;
         }
         case HXRecordBottomBarActionBeauty: {
-            ;
+#warning TODO
             break;
         }
         case HXRecordBottomBarActionChange: {
@@ -272,7 +273,9 @@ HXLiveBarrageContainerViewControllerDelegate
             break;
         }
         case HXRecordBottomBarActionGift: {
-            ;
+            HXLiveJoinKingListViewController *joinKingListViewController = [HXLiveJoinKingListViewController instance];
+            joinKingListViewController.roomID = _viewModel.roomID;
+            [joinKingListViewController showOnViewController:self];
             break;
         }
         case HXRecordBottomBarActionShare: {
@@ -328,7 +331,7 @@ HXLiveBarrageContainerViewControllerDelegate
 
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
 - (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
-    ;
+#warning TODO
 }
 
 @end

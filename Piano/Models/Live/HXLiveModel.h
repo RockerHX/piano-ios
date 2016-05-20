@@ -12,13 +12,13 @@
 
 @interface HXLiveModel : NSObject
 
-@property(nonatomic, strong) NSString *uID;
-@property(nonatomic, strong) NSString *title;
-@property(nonatomic, strong) NSString *nickName;
-@property(nonatomic, strong) NSString *avatarUrl;
+@property (nonatomic, strong)  NSString *uID;
+@property (nonatomic, strong)  NSString *title;
+@property (nonatomic, strong)  NSString *nickName;
+@property (nonatomic, strong)  NSString *avatarUrl;
 
-@property(nonatomic, strong) NSString *hlsUrl;
-@property(nonatomic, strong) NSString *rtmpUrl;
+@property (nonatomic, strong)  NSString *hlsUrl;
+@property (nonatomic, strong)  NSString *rtmpUrl;
 
 @property (nonatomic, assign) NSInteger  zegoID;
 @property (nonatomic, assign) NSInteger  zegoToken;
