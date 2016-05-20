@@ -111,7 +111,6 @@ HXLiveAlbumViewDelegate
     //设置回调代理
     [[HXZegoAVKitManager manager].zegoLiveApi setDelegate:self];
     
-    [self updateAnchorView];
     [self startPreview];
 }
 
@@ -324,14 +323,15 @@ static CGFloat AlbumViewWidth = 60.0f;
     _viewModel.model.album = album;
     [self signalLink];
     
+    [self updateAnchorView];
+    [self updateAlbumView];
+    
     _previewContainer.hidden = YES;
     _topBar.hidden = NO;
     _barragesView.hidden = NO;
     _bottomBar.hidden = NO;
     [_previewContainer removeFromSuperview];
     _previewContainer = nil;
-    
-    [self updateAlbumView];
 }
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods
