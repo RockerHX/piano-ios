@@ -81,10 +81,9 @@
 		CB30166BF73B12934F5E7330 /* libPods-Piano-Beta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0545AA33DD4F8C0CFAB1AEA /* libPods-Piano-Beta.a */; };
 		CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */; };
 		CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */; };
-		CD07B2C31CEEE9AD00B5AB87 /* HXLiveJoinKingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2BF1CEEE9AD00B5AB87 /* HXLiveJoinKingListViewController.m */; };
-		CD07B2C41CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2C21CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m */; };
-		CD07B2C81CEEF39300B5AB87 /* HXLiveJoinKingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2C71CEEF39300B5AB87 /* HXLiveJoinKingCell.m */; };
-		CD07B2CC1CEEF51E00B5AB87 /* HXLiveJoinKingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2CB1CEEF51E00B5AB87 /* HXLiveJoinKingModel.m */; };
+		CD07B2C81CEEF39300B5AB87 /* HXLiveRewardTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2C71CEEF39300B5AB87 /* HXLiveRewardTopCell.m */; };
+		CD07B2CC1CEEF51E00B5AB87 /* HXLiveRewardTopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2CB1CEEF51E00B5AB87 /* HXLiveRewardTopModel.m */; };
+		CD07B2D01CEF021B00B5AB87 /* HXLiveRewardTopListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2CF1CEF021B00B5AB87 /* HXLiveRewardTopListViewController.m */; };
 		CD160F9A1CD05CD700DF4164 /* HXDiscoveryLiveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */; };
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
@@ -471,14 +470,12 @@
 		CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCollectionViewLayout.m; sourceTree = "<group>"; };
 		CD01F1C71CCF0611006BF4BF /* HXDiscoveryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryCell.h; sourceTree = "<group>"; };
 		CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryCell.m; sourceTree = "<group>"; };
-		CD07B2BE1CEEE9AD00B5AB87 /* HXLiveJoinKingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveJoinKingListViewController.h; sourceTree = "<group>"; };
-		CD07B2BF1CEEE9AD00B5AB87 /* HXLiveJoinKingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveJoinKingListViewController.m; sourceTree = "<group>"; };
-		CD07B2C11CEEE9AD00B5AB87 /* HXLiveRewardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveRewardListViewController.h; sourceTree = "<group>"; };
-		CD07B2C21CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveRewardListViewController.m; sourceTree = "<group>"; };
-		CD07B2C61CEEF39300B5AB87 /* HXLiveJoinKingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveJoinKingCell.h; sourceTree = "<group>"; };
-		CD07B2C71CEEF39300B5AB87 /* HXLiveJoinKingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveJoinKingCell.m; sourceTree = "<group>"; };
-		CD07B2CA1CEEF51E00B5AB87 /* HXLiveJoinKingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveJoinKingModel.h; sourceTree = "<group>"; };
-		CD07B2CB1CEEF51E00B5AB87 /* HXLiveJoinKingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveJoinKingModel.m; sourceTree = "<group>"; };
+		CD07B2C61CEEF39300B5AB87 /* HXLiveRewardTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveRewardTopCell.h; sourceTree = "<group>"; };
+		CD07B2C71CEEF39300B5AB87 /* HXLiveRewardTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveRewardTopCell.m; sourceTree = "<group>"; };
+		CD07B2CA1CEEF51E00B5AB87 /* HXLiveRewardTopModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveRewardTopModel.h; sourceTree = "<group>"; };
+		CD07B2CB1CEEF51E00B5AB87 /* HXLiveRewardTopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveRewardTopModel.m; sourceTree = "<group>"; };
+		CD07B2CE1CEF021B00B5AB87 /* HXLiveRewardTopListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveRewardTopListViewController.h; sourceTree = "<group>"; };
+		CD07B2CF1CEF021B00B5AB87 /* HXLiveRewardTopListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveRewardTopListViewController.m; sourceTree = "<group>"; };
 		CD160F941CD05CD700DF4164 /* HXDiscoveryLiveBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryLiveBar.h; sourceTree = "<group>"; };
 		CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryLiveBar.m; sourceTree = "<group>"; };
 		CD160F971CD05CD700DF4164 /* HXDiscoveryTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryTopBar.h; sourceTree = "<group>"; };
@@ -1204,29 +1201,11 @@
 			path = Layout;
 			sourceTree = "<group>";
 		};
-		CD07B2BD1CEEE9AD00B5AB87 /* GiftList */ = {
-			isa = PBXGroup;
-			children = (
-				CD07B2BE1CEEE9AD00B5AB87 /* HXLiveJoinKingListViewController.h */,
-				CD07B2BF1CEEE9AD00B5AB87 /* HXLiveJoinKingListViewController.m */,
-			);
-			path = GiftList;
-			sourceTree = "<group>";
-		};
-		CD07B2C01CEEE9AD00B5AB87 /* RewardList */ = {
-			isa = PBXGroup;
-			children = (
-				CD07B2C11CEEE9AD00B5AB87 /* HXLiveRewardListViewController.h */,
-				CD07B2C21CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m */,
-			);
-			path = RewardList;
-			sourceTree = "<group>";
-		};
 		CD07B2C51CEEF37B00B5AB87 /* GiftList */ = {
 			isa = PBXGroup;
 			children = (
-				CD07B2C61CEEF39300B5AB87 /* HXLiveJoinKingCell.h */,
-				CD07B2C71CEEF39300B5AB87 /* HXLiveJoinKingCell.m */,
+				CD07B2C61CEEF39300B5AB87 /* HXLiveRewardTopCell.h */,
+				CD07B2C71CEEF39300B5AB87 /* HXLiveRewardTopCell.m */,
 			);
 			path = GiftList;
 			sourceTree = "<group>";
@@ -1234,10 +1213,19 @@
 		CD07B2C91CEEF50D00B5AB87 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				CD07B2CA1CEEF51E00B5AB87 /* HXLiveJoinKingModel.h */,
-				CD07B2CB1CEEF51E00B5AB87 /* HXLiveJoinKingModel.m */,
+				CD07B2CA1CEEF51E00B5AB87 /* HXLiveRewardTopModel.h */,
+				CD07B2CB1CEEF51E00B5AB87 /* HXLiveRewardTopModel.m */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		CD07B2CD1CEF021B00B5AB87 /* RewardTopList */ = {
+			isa = PBXGroup;
+			children = (
+				CD07B2CE1CEF021B00B5AB87 /* HXLiveRewardTopListViewController.h */,
+				CD07B2CF1CEF021B00B5AB87 /* HXLiveRewardTopListViewController.m */,
+			);
+			path = RewardTopList;
 			sourceTree = "<group>";
 		};
 		CD160F931CD05CD700DF4164 /* LiveBar */ = {
@@ -1787,8 +1775,7 @@
 		CD6C19541CA5126400849B39 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				CD07B2BD1CEEE9AD00B5AB87 /* GiftList */,
-				CD07B2C01CEEE9AD00B5AB87 /* RewardList */,
+				CD07B2CD1CEF021B00B5AB87 /* RewardTopList */,
 				CD5D02711CB5FE31000285DC /* Preview */,
 				CD6C19551CA5133300849B39 /* HXRecordLiveViewController.h */,
 				CD6C19561CA5133300849B39 /* HXRecordLiveViewController.m */,
@@ -2756,7 +2743,7 @@
 			files = (
 				420BBB551CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */,
 				42984B021CDAEF84004F00D5 /* JOFAppInfo.m in Sources */,
-				CD07B2CC1CEEF51E00B5AB87 /* HXLiveJoinKingModel.m in Sources */,
+				CD07B2CC1CEEF51E00B5AB87 /* HXLiveRewardTopModel.m in Sources */,
 				CD79608E1CBE594C004CC661 /* HXSettingViewController.m in Sources */,
 				CD79608F1CBE594C004CC661 /* HXLiveModel.m in Sources */,
 				CD7960901CBE594C004CC661 /* UIView+HXIBnspectable.m in Sources */,
@@ -2782,12 +2769,11 @@
 				CD79609E1CBE594C004CC661 /* HXIBButton.m in Sources */,
 				42984B0C1CDAEF84004F00D5 /* JOFFileManage.m in Sources */,
 				CD79609F1CBE594C004CC661 /* HXRecordBottomBar.m in Sources */,
-				CD07B2C41CEEE9AD00B5AB87 /* HXLiveRewardListViewController.m in Sources */,
+				CD07B2D01CEF021B00B5AB87 /* HXLiveRewardTopListViewController.m in Sources */,
 				42A0DB031CE2E08200F1FCEF /* MIAAlbumSongCell.m in Sources */,
 				CD7960A01CBE594C004CC661 /* UIButton+HXIBnspectable.m in Sources */,
 				CD7960A11CBE594C004CC661 /* HXLiveCommentViewModel.m in Sources */,
 				CD7960A21CBE594C004CC661 /* WebSocketMgr.m in Sources */,
-				CD07B2C31CEEE9AD00B5AB87 /* HXLiveJoinKingListViewController.m in Sources */,
 				CDE017211CE48D4B005645D5 /* HXDiscoveryPreviewCell.m in Sources */,
 				420BBB691CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */,
 				CD7960A31CBE594C004CC661 /* UIViewController+LoginAction.m in Sources */,
@@ -2968,7 +2954,7 @@
 				CD7961161CBE594C004CC661 /* main.m in Sources */,
 				CD7961171CBE594C004CC661 /* HXThemeManager.m in Sources */,
 				CD7961181CBE594C004CC661 /* HXVersion.m in Sources */,
-				CD07B2C81CEEF39300B5AB87 /* HXLiveJoinKingCell.m in Sources */,
+				CD07B2C81CEEF39300B5AB87 /* HXLiveRewardTopCell.m in Sources */,
 				CD7961191CBE594C004CC661 /* HXZegoAVKitManager.m in Sources */,
 				CD79611A1CBE594C004CC661 /* HXProfileVideoContainerCell.m in Sources */,
 				CD79611B1CBE594C004CC661 /* HXAnchorModel.m in Sources */,

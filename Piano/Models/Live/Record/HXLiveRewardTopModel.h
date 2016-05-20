@@ -1,5 +1,5 @@
 //
-//  HXLiveJoinKingModel.h
+//  HXLiveRewardTopModel.h
 //  Piano
 //
 //  Created by miaios on 16/5/20.
@@ -9,7 +9,7 @@
 #import "MJExtension.h"
 
 
-@interface HXLiveJoinKingModel : NSObject
+@interface HXLiveRewardTopModel : NSObject
 
 @property (nonatomic, strong)  NSString *ID;
 @property (nonatomic, strong)  NSString *roomID;

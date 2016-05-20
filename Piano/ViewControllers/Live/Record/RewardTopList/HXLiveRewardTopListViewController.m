@@ -1,27 +1,27 @@
 //
-//  HXLiveJoinKingListViewController.m
+//  HXLiveRewardTopListViewController.m
 //  Piano
 //
 //  Created by miaios on 16/5/10.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveJoinKingListViewController.h"
+#import "HXLiveRewardTopListViewController.h"
 #import "BlocksKit+UIKit.h"
 #import "UIView+Frame.h"
 #import "MiaAPIHelper.h"
-#import "HXLiveJoinKingCell.h"
+#import "HXLiveRewardTopCell.h"
 
 
-@interface HXLiveJoinKingListViewController () <
+@interface HXLiveRewardTopListViewController () <
 UITableViewDataSource,
 UITableViewDelegate
 >
 @end
 
 
-@implementation HXLiveJoinKingListViewController {
-    NSArray *_kingList;
+@implementation HXLiveRewardTopListViewController {
+    NSArray *_topList;
 }
 
 #pragma mark - Class Methods
@@ -54,23 +54,31 @@ UITableViewDelegate
 
 - (void)viewConfigure {
     [self showHUD];
-    [MiaAPIHelper getGiftTopListWithRoomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        if (success) {
-            NSMutableArray *kingList = @[].mutableCopy;
-            NSArray *lists = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
-            [lists enumerateObjectsUsingBlock:^(NSDictionary *data, NSUInteger idx, BOOL * _Nonnull stop) {
-                HXLiveJoinKingModel *king = [HXLiveJoinKingModel mj_objectWithKeyValues:data];
-                king.index = (idx + 1);
-                [kingList addObject:king];
+    
+    switch (_type) {
+        case HXLiveRewardTopListTypeGift: {
+            [MiaAPIHelper getGiftTopListWithRoomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                if (success) {
+                    [self parseLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+                }
+                [self hiddenHUD];
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                [self timeOutPrompt];
             }];
-            _kingList = [kingList copy];
-            [_tableView reloadData];
+            break;
         }
-        [self hiddenHUD];
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        [self showBannerWithPrompt:TimtOutPrompt];
-        [self hiddenHUD];
-    }];
+        case HXLiveRewardTopListTypeAlbum: {
+            [MiaAPIHelper getAlbumTopListWithRoomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                if (success) {
+                    [self parseLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+                }
+                [self hiddenHUD];
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                [self timeOutPrompt];
+            }];
+            break;
+        }
+    }
 }
 
 #pragma mark - Public Methods
@@ -97,19 +105,35 @@ UITableViewDelegate
     } completion:nil];
 }
 
+- (void)parseLists:(NSArray *)lists {
+    NSMutableArray *topList = @[].mutableCopy;
+    [lists enumerateObjectsUsingBlock:^(NSDictionary *data, NSUInteger idx, BOOL * _Nonnull stop) {
+        HXLiveRewardTopModel *top = [HXLiveRewardTopModel mj_objectWithKeyValues:data];
+        top.index = (idx + 1);
+        [topList addObject:top];
+    }];
+    _topList = [topList copy];
+    [_tableView reloadData];
+}
+
+- (void)timeOutPrompt {
+    [self showBannerWithPrompt:TimtOutPrompt];
+    [self hiddenHUD];
+}
+
 #pragma mark - Table View Data Source Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _kingList.count;
+    return _topList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXLiveJoinKingCell class]) forIndexPath:indexPath];
+    return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXLiveRewardTopCell class]) forIndexPath:indexPath];
 }
 
 #pragma mark - Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXLiveJoinKingCell *joinKingCell = (HXLiveJoinKingCell *)cell;
-    [joinKingCell updateWithKing:_kingList[indexPath.row]];
+    HXLiveRewardTopCell *rewardTopCell = (HXLiveRewardTopCell *)cell;
+    [rewardTopCell updateWithTop:_topList[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

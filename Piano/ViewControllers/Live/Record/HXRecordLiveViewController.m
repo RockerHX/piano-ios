@@ -20,7 +20,7 @@
 #import "UIButton+WebCache.h"
 #import "HXWatcherBoard.h"
 #import "MiaAPIHelper.h"
-#import "HXLiveJoinKingListViewController.h"
+#import "HXLiveRewardTopListViewController.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -273,9 +273,10 @@ HXLiveBarrageContainerViewControllerDelegate
             break;
         }
         case HXRecordBottomBarActionGift: {
-            HXLiveJoinKingListViewController *joinKingListViewController = [HXLiveJoinKingListViewController instance];
-            joinKingListViewController.roomID = _viewModel.roomID;
-            [joinKingListViewController showOnViewController:self];
+            HXLiveRewardTopListViewController *rewardTopListViewController = [HXLiveRewardTopListViewController instance];
+            rewardTopListViewController.type = HXLiveRewardTopListTypeGift;
+            rewardTopListViewController.roomID = _viewModel.roomID;
+            [rewardTopListViewController showOnViewController:self];
             break;
         }
         case HXRecordBottomBarActionShare: {

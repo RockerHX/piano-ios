@@ -1,5 +1,5 @@
 //
-//  HXLiveJoinKingCell.h
+//  HXLiveRewardTopCell.h
 //  Piano
 //
 //  Created by miaios on 16/5/20.
@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HXLiveJoinKingModel.h"
+#import "HXLiveRewardTopModel.h"
 
 
-@interface HXLiveJoinKingCell : UITableViewCell
+@interface HXLiveRewardTopCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet     UILabel *indexLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *coinTotalLabel;
 
-- (void)updateWithKing:(HXLiveJoinKingModel *)king;
+- (void)updateWithTop:(HXLiveRewardTopModel *)top;
 
 @end
