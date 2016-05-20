@@ -281,7 +281,8 @@ static CGFloat AlbumViewWidth = 60.0f;
             break;
         }
         case HXRecordBottomBarActionBeauty: {
-#warning TODO
+            _beauty = !_beauty;
+            [[HXZegoAVKitManager manager].zegoLiveApi enableBeautifying:_beauty];
             break;
         }
         case HXRecordBottomBarActionChange: {
