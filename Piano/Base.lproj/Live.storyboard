@@ -2084,6 +2084,7 @@
                         <outlet property="containerView" destination="z2T-sf-MtJ" id="OL0-0y-Dn1"/>
                         <outlet property="tableView" destination="Uri-bH-9Dz" id="pjf-wA-79E"/>
                         <outlet property="tapView" destination="BlD-cH-YpF" id="3m2-KR-vEg"/>
+                        <outlet property="titleLabel" destination="6iC-if-nkL" id="6zy-eZ-XQu"/>
                     </connections>
                 </viewController>
             </objects>

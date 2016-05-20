@@ -55,6 +55,7 @@ UITableViewDelegate
 - (void)viewConfigure {
     switch (_type) {
         case HXLiveRewardTopListTypeGift: {
+            _titleLabel.text = @"本场10大捧场王";
             [MiaAPIHelper getGiftTopListWithRoomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                 if (success) {
                     [self parseLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
@@ -65,6 +66,7 @@ UITableViewDelegate
             break;
         }
         case HXLiveRewardTopListTypeAlbum: {
+            _titleLabel.text = @"本场专辑打赏排行";
             [MiaAPIHelper getAlbumTopListWithRoomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                 if (success) {
                     [self parseLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];

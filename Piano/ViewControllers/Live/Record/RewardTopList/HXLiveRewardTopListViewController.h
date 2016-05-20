@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, HXLiveRewardTopListType) {
 
 @property (weak, nonatomic) IBOutlet      UIView *tapView;
 @property (weak, nonatomic) IBOutlet      UIView *containerView;
+@property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
