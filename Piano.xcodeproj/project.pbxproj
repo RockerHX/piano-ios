@@ -7,129 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66F81C9AB0E800ED0454 /* MiaAPIHelper.m */; };
-		395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FC1C9AB0E800ED0454 /* MiaRequestItem.m */; };
-		395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D66FE1C9AB0E800ED0454 /* WebSocketMgr.m */; };
-		395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67061C9AB15000ED0454 /* NSTimer+BlockSupport.m */; };
-		395D670B1C9AB16B00ED0454 /* FileLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D670A1C9AB16B00ED0454 /* FileLog.m */; };
-		395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D670E1C9AB19D00ED0454 /* PathHelper.m */; };
-		395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67121C9AB1B700ED0454 /* NSString+IsNull.m */; };
-		395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D67161C9AB1C500ED0454 /* NSString+MD5.m */; };
-		395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */; };
-		3979CFFD1CBF340C0036ED65 /* Info-Beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */; };
-		398451E31CAD0300009018C6 /* NSObject+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */; };
-		398451EB1CAD0543009018C6 /* MusicMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E61CAD0543009018C6 /* MusicMgr.m */; };
-		398451EC1CAD0543009018C6 /* SingleSongPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451E81CAD0543009018C6 /* SingleSongPlayer.m */; };
-		398451ED1CAD0543009018C6 /* SongPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451EA1CAD0543009018C6 /* SongPreloader.m */; };
-		398451F11CAD05DB009018C6 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 398451F01CAD05DB009018C6 /* UserSetting.m */; };
-		398A6D111CAB77D6001A68B1 /* HXGuestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A6D101CAB77D6001A68B1 /* HXGuestModel.m */; };
-		420444591CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
 		4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
-		4204445D1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
 		4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
-		420BBB491CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */; };
 		420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */; };
-		420BBB4D1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */; };
 		420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */; };
-		420BBB541CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB531CE9A85F00F52AB2 /* MIAPaymentCell.m */; };
 		420BBB551CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB531CE9A85F00F52AB2 /* MIAPaymentCell.m */; };
-		420BBB581CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB571CE9A88D00F52AB2 /* MIAPaymentCellView.m */; };
 		420BBB591CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB571CE9A88D00F52AB2 /* MIAPaymentCellView.m */; };
-		420BBB5C1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */; };
 		420BBB5D1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */; };
-		420BBB601CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */; };
 		420BBB611CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */; };
-		420BBB641CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */; };
 		420BBB651CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */; };
-		420BBB681CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB671CE9B63400F52AB2 /* MIAPayHistoryCell.m */; };
 		420BBB691CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB671CE9B63400F52AB2 /* MIAPayHistoryCell.m */; };
-		420BBB6C1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */; };
 		420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */; };
-		420BBB701CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
 		420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
 		420FCD0B1CEC0DD600BE5217 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */; };
-		42984AFB1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
-		42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
 		42984AFE1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
-		42984AFF1CDAEF84004F00D5 /* UIColor+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE01CDAEF84004F00D5 /* UIColor+JOExtend.m */; };
 		42984B001CDAEF84004F00D5 /* UIColor+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE01CDAEF84004F00D5 /* UIColor+JOExtend.m */; };
-		42984B011CDAEF84004F00D5 /* JOFAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE41CDAEF84004F00D5 /* JOFAppInfo.m */; };
 		42984B021CDAEF84004F00D5 /* JOFAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE41CDAEF84004F00D5 /* JOFAppInfo.m */; };
-		42984B031CDAEF84004F00D5 /* JOAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE71CDAEF84004F00D5 /* JOAutoLayout.m */; };
 		42984B041CDAEF84004F00D5 /* JOAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE71CDAEF84004F00D5 /* JOAutoLayout.m */; };
-		42984B051CDAEF84004F00D5 /* JOFCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AEA1CDAEF84004F00D5 /* JOFCrash.m */; };
 		42984B061CDAEF84004F00D5 /* JOFCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AEA1CDAEF84004F00D5 /* JOFCrash.m */; };
-		42984B071CDAEF84004F00D5 /* JOFDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AED1CDAEF84004F00D5 /* JOFDeviceInfo.m */; };
 		42984B081CDAEF84004F00D5 /* JOFDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AED1CDAEF84004F00D5 /* JOFDeviceInfo.m */; };
-		42984B091CDAEF84004F00D5 /* JOFException.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF01CDAEF84004F00D5 /* JOFException.m */; };
 		42984B0A1CDAEF84004F00D5 /* JOFException.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF01CDAEF84004F00D5 /* JOFException.m */; };
-		42984B0B1CDAEF84004F00D5 /* JOFFileManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF31CDAEF84004F00D5 /* JOFFileManage.m */; };
 		42984B0C1CDAEF84004F00D5 /* JOFFileManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF31CDAEF84004F00D5 /* JOFFileManage.m */; };
-		42984B0D1CDAEF84004F00D5 /* JOFunctionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF61CDAEF84004F00D5 /* JOFunctionObject.m */; };
 		42984B0E1CDAEF84004F00D5 /* JOFunctionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF61CDAEF84004F00D5 /* JOFunctionObject.m */; };
-		42984B0F1CDAEF84004F00D5 /* JOFLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF91CDAEF84004F00D5 /* JOFLog.m */; };
 		42984B101CDAEF84004F00D5 /* JOFLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AF91CDAEF84004F00D5 /* JOFLog.m */; };
-		42984B141CDB0542004F00D5 /* UIView+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B131CDB0542004F00D5 /* UIView+JOExtend.m */; };
 		42984B151CDB0542004F00D5 /* UIView+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B131CDB0542004F00D5 /* UIView+JOExtend.m */; };
-		42984B441CDC48E7004F00D5 /* MIAProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B431CDC48E7004F00D5 /* MIAProfileHeadView.m */; };
 		42984B451CDC48E7004F00D5 /* MIAProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B431CDC48E7004F00D5 /* MIAProfileHeadView.m */; };
-		42984B481CDC6137004F00D5 /* JOUIManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B471CDC6137004F00D5 /* JOUIManage.m */; };
 		42984B491CDC6137004F00D5 /* JOUIManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B471CDC6137004F00D5 /* JOUIManage.m */; };
-		42984B4C1CDC7711004F00D5 /* MIAProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B4B1CDC7711004F00D5 /* MIAProfileViewController.m */; };
 		42984B4D1CDC7711004F00D5 /* MIAProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B4B1CDC7711004F00D5 /* MIAProfileViewController.m */; };
-		42984B501CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B4F1CDC7FEB004F00D5 /* MIAProfileLiveView.m */; };
 		42984B511CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B4F1CDC7FEB004F00D5 /* MIAProfileLiveView.m */; };
-		42984B541CDC800D004F00D5 /* MIAProfileAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B531CDC800D004F00D5 /* MIAProfileAlbumView.m */; };
 		42984B551CDC800D004F00D5 /* MIAProfileAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B531CDC800D004F00D5 /* MIAProfileAlbumView.m */; };
-		42984B581CDC8021004F00D5 /* MIAProfileVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B571CDC8021004F00D5 /* MIAProfileVideoView.m */; };
 		42984B591CDC8021004F00D5 /* MIAProfileVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B571CDC8021004F00D5 /* MIAProfileVideoView.m */; };
-		42984B5C1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B5B1CDC8040004F00D5 /* MIAProfileReplayView.m */; };
 		42984B5D1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B5B1CDC8040004F00D5 /* MIAProfileReplayView.m */; };
-		42984B601CDC878E004F00D5 /* MIAProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B5F1CDC878E004F00D5 /* MIAProfileLiveCell.m */; };
 		42984B611CDC878E004F00D5 /* MIAProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B5F1CDC878E004F00D5 /* MIAProfileLiveCell.m */; };
-		42984B641CDC9E0B004F00D5 /* MIAProfileAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B631CDC9E0B004F00D5 /* MIAProfileAlbumCell.m */; };
 		42984B651CDC9E0B004F00D5 /* MIAProfileAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B631CDC9E0B004F00D5 /* MIAProfileAlbumCell.m */; };
-		42984B681CDCAB9A004F00D5 /* MIAProfileVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B671CDCAB9A004F00D5 /* MIAProfileVideoCell.m */; };
 		42984B691CDCAB9A004F00D5 /* MIAProfileVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B671CDCAB9A004F00D5 /* MIAProfileVideoCell.m */; };
-		42984B6C1CDCAFEA004F00D5 /* MIAProfileReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B6B1CDCAFEA004F00D5 /* MIAProfileReplayCell.m */; };
 		42984B6D1CDCAFEA004F00D5 /* MIAProfileReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984B6B1CDCAFEA004F00D5 /* MIAProfileReplayCell.m */; };
-		429CC1DE1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1DD1CE034D4004BCC0C /* MIAProfileViewModel.m */; };
 		429CC1DF1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1DD1CE034D4004BCC0C /* MIAProfileViewModel.m */; };
-		429CC1F81CE04AC5004BCC0C /* MIABaseCellHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1F31CE04AC5004BCC0C /* MIABaseCellHeadView.m */; };
-		429CC1F91CE04AC5004BCC0C /* MIABaseShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1F51CE04AC5004BCC0C /* MIABaseShowView.m */; };
-		429CC1FA1CE04AC5004BCC0C /* MIABaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1F71CE04AC5004BCC0C /* MIABaseTableViewCell.m */; };
-		429CC1FD1CE04AD3004BCC0C /* MIAViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1FC1CE04AD3004BCC0C /* MIAViewModel.m */; };
-		429CC2001CE0689C004BCC0C /* NSArray+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1FF1CE0689C004BCC0C /* NSArray+JOExtend.m */; };
 		429CC2011CE0689C004BCC0C /* NSArray+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1FF1CE0689C004BCC0C /* NSArray+JOExtend.m */; };
 		429CC2021CE06C39004BCC0C /* MIAViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1FC1CE04AD3004BCC0C /* MIAViewModel.m */; };
 		429CC2031CE06C46004BCC0C /* MIABaseCellHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1F31CE04AC5004BCC0C /* MIABaseCellHeadView.m */; };
 		429CC2041CE06C48004BCC0C /* MIABaseShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1F51CE04AC5004BCC0C /* MIABaseShowView.m */; };
 		429CC2051CE06C4A004BCC0C /* MIABaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC1F71CE04AC5004BCC0C /* MIABaseTableViewCell.m */; };
-		429CC2081CE07577004BCC0C /* MIACellManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC2071CE07577004BCC0C /* MIACellManage.m */; };
 		429CC2091CE07577004BCC0C /* MIACellManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC2071CE07577004BCC0C /* MIACellManage.m */; };
-		429CC20C1CE08BAF004BCC0C /* MIAProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC20B1CE08BAF004BCC0C /* MIAProfileModel.m */; };
 		429CC20D1CE08BAF004BCC0C /* MIAProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC20B1CE08BAF004BCC0C /* MIAProfileModel.m */; };
-		429CC2101CE08EC3004BCC0C /* MIAReplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC20F1CE08EC3004BCC0C /* MIAReplayModel.m */; };
 		429CC2111CE08EC3004BCC0C /* MIAReplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC20F1CE08EC3004BCC0C /* MIAReplayModel.m */; };
-		429CC2141CE08F22004BCC0C /* MIAVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC2131CE08F22004BCC0C /* MIAVideoModel.m */; };
 		429CC2151CE08F22004BCC0C /* MIAVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC2131CE08F22004BCC0C /* MIAVideoModel.m */; };
-		429CC2181CE08F47004BCC0C /* MIAAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC2171CE08F47004BCC0C /* MIAAlbumModel.m */; };
 		429CC2191CE08F47004BCC0C /* MIAAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CC2171CE08F47004BCC0C /* MIAAlbumModel.m */; };
 		429E500D1CE45D000008CA85 /* MIAAlbumBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DF1CE1FEFB00B80753 /* MIAAlbumBarView.m */; };
-		429E50101CE46DDE0008CA85 /* MIAAlbumViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429E500F1CE46DDE0008CA85 /* MIAAlbumViewModel.m */; };
 		429E50111CE46DDE0008CA85 /* MIAAlbumViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429E500F1CE46DDE0008CA85 /* MIAAlbumViewModel.m */; };
-		429E50141CE47A3A0008CA85 /* MIASongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429E50131CE47A3A0008CA85 /* MIASongModel.m */; };
 		429E50151CE47A3A0008CA85 /* MIASongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429E50131CE47A3A0008CA85 /* MIASongModel.m */; };
-		429E50181CE47D0B0008CA85 /* MIACommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429E50171CE47D0B0008CA85 /* MIACommentModel.m */; };
 		429E50191CE47D0B0008CA85 /* MIACommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429E50171CE47D0B0008CA85 /* MIACommentModel.m */; };
-		429E501D1CE47EBE0008CA85 /* MIAAlbumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429E501C1CE47EBE0008CA85 /* MIAAlbumDetailModel.m */; };
 		429E501E1CE47EBE0008CA85 /* MIAAlbumDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 429E501C1CE47EBE0008CA85 /* MIAAlbumDetailModel.m */; };
-		42A0DAEB1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A0DAEA1CE2CC2400F1FCEF /* MIAAlbumViewController.m */; };
 		42A0DAEC1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A0DAEA1CE2CC2400F1FCEF /* MIAAlbumViewController.m */; };
-		42A0DAF31CE2D2B100F1FCEF /* MIAAlbumDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A0DAF21CE2D2B100F1FCEF /* MIAAlbumDetailView.m */; };
 		42A0DAF41CE2D2B100F1FCEF /* MIAAlbumDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A0DAF21CE2D2B100F1FCEF /* MIAAlbumDetailView.m */; };
-		42A0DAFB1CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A0DAFA1CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.m */; };
 		42A0DAFC1CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A0DAFA1CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.m */; };
 		42A0DAFD1CE2E06D00F1FCEF /* MIAAlbumRewardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E71CE1FEFB00B80753 /* MIAAlbumRewardView.m */; };
 		42A0DAFE1CE2E07100F1FCEF /* MIAAlbumSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E91CE1FEFB00B80753 /* MIAAlbumSongView.m */; };
@@ -138,125 +69,21 @@
 		42A0DB011CE2E07900F1FCEF /* MIAAlbumCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E11CE1FEFB00B80753 /* MIAAlbumCommentView.m */; };
 		42A0DB021CE2E07F00F1FCEF /* MIAAlbumCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612F11CE1FF0900B80753 /* MIAAlbumCommentCell.m */; };
 		42A0DB031CE2E08200F1FCEF /* MIAAlbumSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612FB1CE1FF0900B80753 /* MIAAlbumSongCell.m */; };
-		42B6A0E21CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E11CEB08EE00BDF8E8 /* MIARechargeModel.m */; };
 		42B6A0E31CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E11CEB08EE00BDF8E8 /* MIARechargeModel.m */; };
-		42B6A0E61CEB173900BDF8E8 /* MIAMCoinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E51CEB173900BDF8E8 /* MIAMCoinModel.m */; };
 		42B6A0E71CEB173900BDF8E8 /* MIAMCoinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E51CEB173900BDF8E8 /* MIAMCoinModel.m */; };
-		42B6A0EA1CEB1D3800BDF8E8 /* MIASendGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E91CEB1D3800BDF8E8 /* MIASendGiftModel.m */; };
 		42B6A0EB1CEB1D3800BDF8E8 /* MIASendGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E91CEB1D3800BDF8E8 /* MIASendGiftModel.m */; };
-		42B6A0EE1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */; };
 		42B6A0EF1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */; };
-		42CC372B1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */; };
 		42CC372C1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */; };
-		42D15F931CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */; };
 		42D15F941CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */; };
-		42D612D61CE1FDD600B80753 /* MIAFontManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D51CE1FDD600B80753 /* MIAFontManage.m */; };
-		42D612DB1CE1FDE700B80753 /* UIFont+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D81CE1FDE700B80753 /* UIFont+JOExtend.m */; };
-		42D612DC1CE1FDE700B80753 /* UILabel+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DA1CE1FDE700B80753 /* UILabel+JOExtend.m */; };
 		42D612DD1CE1FDFB00B80753 /* MIAFontManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D51CE1FDD600B80753 /* MIAFontManage.m */; };
-		42D612EA1CE1FEFB00B80753 /* MIAAlbumBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DF1CE1FEFB00B80753 /* MIAAlbumBarView.m */; };
-		42D612EB1CE1FEFB00B80753 /* MIAAlbumCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E11CE1FEFB00B80753 /* MIAAlbumCommentView.m */; };
-		42D612EC1CE1FEFB00B80753 /* MIAAlbumEnterCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E31CE1FEFB00B80753 /* MIAAlbumEnterCommentView.m */; };
-		42D612ED1CE1FEFB00B80753 /* MIAAlbumPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E51CE1FEFB00B80753 /* MIAAlbumPlayView.m */; };
-		42D612EE1CE1FEFB00B80753 /* MIAAlbumRewardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E71CE1FEFB00B80753 /* MIAAlbumRewardView.m */; };
-		42D612EF1CE1FEFB00B80753 /* MIAAlbumSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612E91CE1FEFB00B80753 /* MIAAlbumSongView.m */; };
-		42D612FC1CE1FF0900B80753 /* MIAAlbumCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612F11CE1FF0900B80753 /* MIAAlbumCommentCell.m */; };
-		42D613011CE1FF0900B80753 /* MIAAlbumSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612FB1CE1FF0900B80753 /* MIAAlbumSongCell.m */; };
 		42D613021CE2016300B80753 /* UILabel+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DA1CE1FDE700B80753 /* UILabel+JOExtend.m */; };
 		42D613031CE2016900B80753 /* UIFont+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D81CE1FDE700B80753 /* UIFont+JOExtend.m */; };
-		B074DF459E3BD4BE39EAD286 /* libPods-Piano.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2E70ABB0C246D442D00635 /* libPods-Piano.a */; };
 		CB30166BF73B12934F5E7330 /* libPods-Piano-Beta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0545AA33DD4F8C0CFAB1AEA /* libPods-Piano-Beta.a */; };
 		CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */; };
 		CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */; };
 		CD160F9A1CD05CD700DF4164 /* HXDiscoveryLiveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */; };
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
-		CD1979531CA4E1A900303D27 /* HXWatcherBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1979511CA4E1A900303D27 /* HXWatcherBoard.m */; };
-		CD1979541CA4E1A900303D27 /* HXWatcherBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1979521CA4E1A900303D27 /* HXWatcherBoard.xib */; };
-		CD1B84171CAA90C200B9B1E8 /* HXAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B84161CAA90C200B9B1E8 /* HXAttentionModel.m */; };
-		CD2367891CA91CFB002C8233 /* HXAlbumsBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367831CA91CFB002C8233 /* HXAlbumsBottomBar.m */; };
-		CD23678A1CA91CFB002C8233 /* HXAlbumsBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2367841CA91CFB002C8233 /* HXAlbumsBottomBar.xib */; };
-		CD23678B1CA91CFB002C8233 /* HXAlbumsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367871CA91CFB002C8233 /* HXAlbumsNavigationBar.m */; };
-		CD23678C1CA91CFB002C8233 /* HXAlbumsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2367881CA91CFB002C8233 /* HXAlbumsNavigationBar.xib */; };
-		CD2367921CA91DF9002C8233 /* HXMeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367911CA91DF9002C8233 /* HXMeContainerViewController.m */; };
-		CD2367961CA9212B002C8233 /* HXMeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367951CA9212B002C8233 /* HXMeViewModel.m */; };
-		CD23679C1CA93B2F002C8233 /* HXMeRechargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD23679B1CA93B2F002C8233 /* HXMeRechargeCell.m */; };
-		CD2367A21CA93B6B002C8233 /* HXMePurchaseHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367A11CA93B6B002C8233 /* HXMePurchaseHistoryCell.m */; };
-		CD2367A51CA93B91002C8233 /* HXMeAttentionPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367A41CA93B91002C8233 /* HXMeAttentionPromptCell.m */; };
-		CD2367AC1CA93D19002C8233 /* HXMeAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367AB1CA93D19002C8233 /* HXMeAttentionCell.m */; };
-		CD2367AF1CA93D51002C8233 /* HXMeAttentionContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367AE1CA93D51002C8233 /* HXMeAttentionContainerCell.m */; };
-		CD2949D41CA28A3500CA3C3F /* UIButton+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C31CA28A3500CA3C3F /* UIButton+HXIBnspectable.m */; };
-		CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m */; };
-		CD2949D61CA28A3500CA3C3F /* UIView+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C71CA28A3500CA3C3F /* UIView+HXIBnspectable.m */; };
-		CD2949D71CA28A3500CA3C3F /* HXIBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CA1CA28A3500CA3C3F /* HXIBButton.m */; };
-		CD2949D81CA28A3500CA3C3F /* HXIBImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CC1CA28A3500CA3C3F /* HXIBImageView.m */; };
-		CD2949D91CA28A3500CA3C3F /* HXIBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949CE1CA28A3500CA3C3F /* HXIBLabel.m */; };
-		CD2949DA1CA28A3500CA3C3F /* HXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949D01CA28A3500CA3C3F /* HXIBView.m */; };
-		CD2949DB1CA28A3500CA3C3F /* HXIBnsepectableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949D31CA28A3500CA3C3F /* HXIBnsepectableManager.m */; };
-		CD2949E41CA28D8400CA3C3F /* HXUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949E31CA28D8400CA3C3F /* HXUserModel.m */; };
-		CD2949EA1CA290CB00CA3C3F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2949E81CA290CB00CA3C3F /* Login.storyboard */; };
-		CD2949F71CA2919B00CA3C3F /* HXForgotPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949ED1CA2919B00CA3C3F /* HXForgotPWViewController.m */; };
-		CD2949F81CA2919B00CA3C3F /* HXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949EF1CA2919B00CA3C3F /* HXLoginViewController.m */; };
-		CD2949F91CA2919B00CA3C3F /* HXRegisterContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949F21CA2919B00CA3C3F /* HXRegisterContainerViewController.m */; };
-		CD2949FA1CA2919B00CA3C3F /* HXRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949F41CA2919B00CA3C3F /* HXRegisterViewController.m */; };
-		CD2949FB1CA2919B00CA3C3F /* HXUserTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949F61CA2919B00CA3C3F /* HXUserTermsViewController.m */; };
-		CD2949FF1CA292ED00CA3C3F /* HXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949FE1CA292ED00CA3C3F /* HXNavigationController.m */; };
-		CD294A031CA294B900CA3C3F /* HXLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD294A021CA294B900CA3C3F /* HXLoginViewModel.m */; };
-		CD294A071CA294EA00CA3C3F /* HXAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD294A061CA294EA00CA3C3F /* HXAccountModel.m */; };
-		CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72761CA11DE0003CDB77 /* HXMainViewController.m */; };
-		CD2E728B1CA11DE0003CDB77 /* HXSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */; };
-		CD2E729C1CA11E02003CDB77 /* HXLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72981CA11E02003CDB77 /* HXLiveModel.m */; };
-		CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72A31CA11E13003CDB77 /* HXSettingSession.m */; };
-		CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72A61CA11E13003CDB77 /* HXZegoAVKitManager.m */; };
-		CD2E72F11CA11E75003CDB77 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72E71CA11E75003CDB77 /* Live.storyboard */; };
-		CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */; };
-		CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */; };
-		CD4156C71CB39C890060CBE9 /* HXSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4156C61CB39C890060CBE9 /* HXSongModel.m */; };
-		CD4156CA1CB39CA30060CBE9 /* HXCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4156C91CB39CA30060CBE9 /* HXCommentModel.m */; };
-		CD45673A1CAE13B800837DFF /* HXMeMyStationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */; };
-		CD546D011CAE9A63009FB2FD /* FormatTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */; };
-		CD5D02701CB5FB2D000285DC /* HXRecordLiveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D026F1CB5FB2D000285DC /* HXRecordLiveViewModel.m */; };
-		CD5D02741CB5FE49000285DC /* HXPreviewLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02731CB5FE49000285DC /* HXPreviewLiveViewController.m */; };
-		CD5D02771CB60189000285DC /* HXCountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02761CB60189000285DC /* HXCountDownViewController.m */; };
-		CD5D027B1CB60608000285DC /* HXPreviewLiveTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D027A1CB60608000285DC /* HXPreviewLiveTopBar.m */; };
-		CD5D02811CB60624000285DC /* HXPreviewLiveEidtView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02801CB60624000285DC /* HXPreviewLiveEidtView.m */; };
-		CD5D02841CB60632000285DC /* HXPreviewLiveControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02831CB60632000285DC /* HXPreviewLiveControlView.m */; };
-		CD5D02861CB60682000285DC /* HXPreviewLiveTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5D02851CB60682000285DC /* HXPreviewLiveTopBar.xib */; };
-		CD5D02881CB6069B000285DC /* HXPreviewLiveEidtView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5D02871CB6069B000285DC /* HXPreviewLiveEidtView.xib */; };
-		CD5D028A1CB606AC000285DC /* HXPreviewLiveControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5D02891CB606AC000285DC /* HXPreviewLiveControlView.xib */; };
-		CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */; };
-		CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A81CA912790077A17B /* HXAlbumsCommentCountCell.m */; };
-		CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */; };
-		CD5DD8B01CA912790077A17B /* HXAlbumsSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AC1CA912790077A17B /* HXAlbumsSongCell.m */; };
-		CD5F214F1CAD10B80067A1DA /* HXLiveBarrageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F214E1CAD10B80067A1DA /* HXLiveBarrageViewController.m */; };
-		CD5F21531CAD1D850067A1DA /* HXLiveCommentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21521CAD1D850067A1DA /* HXLiveCommentViewModel.m */; };
-		CD5F215D1CAD2E8B0067A1DA /* HXLiveAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F215A1CAD2E8B0067A1DA /* HXLiveAnchorView.m */; };
-		CD5F215E1CAD2E8B0067A1DA /* HXLiveAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5F215B1CAD2E8B0067A1DA /* HXLiveAnchorView.xib */; };
-		CD5F21721CAD4C3F0067A1DA /* HXProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21711CAD4C3F0067A1DA /* HXProfileModel.m */; };
-		CD5F21751CAD4C560067A1DA /* HXAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21741CAD4C560067A1DA /* HXAlbumModel.m */; };
-		CD5F21791CAD4C930067A1DA /* HXAnchorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21781CAD4C930067A1DA /* HXAnchorModel.m */; };
-		CD5F217D1CAD4E3B0067A1DA /* HXVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F217C1CAD4E3B0067A1DA /* HXVideoModel.m */; };
-		CD5F21811CAD4EE50067A1DA /* HXReplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F21801CAD4EE50067A1DA /* HXReplayModel.m */; };
-		CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */; };
-		CD6581651CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */; };
-		CD6C19411CA4E4AE00849B39 /* HXLiveBarrageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19401CA4E4AE00849B39 /* HXLiveBarrageContainerViewController.m */; };
-		CD6C19461CA4E78000849B39 /* HXLiveBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19451CA4E78000849B39 /* HXLiveBarrageCell.m */; };
-		CD6C194B1CA4E7AD00849B39 /* HXReplayBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19491CA4E7AD00849B39 /* HXReplayBottomBar.m */; };
-		CD6C194C1CA4E7AD00849B39 /* HXReplayBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C194A1CA4E7AD00849B39 /* HXReplayBottomBar.xib */; };
-		CD6C19521CA4EE8700849B39 /* HXRecordBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19501CA4EE8700849B39 /* HXRecordBottomBar.m */; };
-		CD6C19531CA4EE8700849B39 /* HXRecordBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19511CA4EE8700849B39 /* HXRecordBottomBar.xib */; };
-		CD6C19571CA5133300849B39 /* HXRecordLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19561CA5133300849B39 /* HXRecordLiveViewController.m */; };
-		CD6C195E1CA5193B00849B39 /* HXPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C195C1CA5193B00849B39 /* HXPlayViewController.m */; };
-		CD6C19611CA5196A00849B39 /* Play.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6C195F1CA5196A00849B39 /* Play.storyboard */; };
-		CD6C19891CA519A900849B39 /* HXPlayBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C197C1CA519A900849B39 /* HXPlayBottomBar.m */; };
-		CD6C198A1CA519A900849B39 /* HXPlayBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C197D1CA519A900849B39 /* HXPlayBottomBar.xib */; };
-		CD6C198B1CA519A900849B39 /* HXPlaySummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19801CA519A900849B39 /* HXPlaySummaryView.m */; };
-		CD6C198C1CA519A900849B39 /* HXPlaySummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19811CA519A900849B39 /* HXPlaySummaryView.xib */; };
-		CD6C198E1CA519A900849B39 /* HXPlayTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19871CA519A900849B39 /* HXPlayTopBar.m */; };
-		CD6C198F1CA519A900849B39 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
-		CD7960831CBDE7FD004CC661 /* HXLiveEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */; };
-		CD7960861CBE39A6004CC661 /* UIViewController+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */; };
-		CD79608A1CBE4BA1004CC661 /* LocationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7960891CBE4BA1004CC661 /* LocationMgr.m */; };
 		CD79608E1CBE594C004CC661 /* HXSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */; };
 		CD79608F1CBE594C004CC661 /* HXLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72981CA11E02003CDB77 /* HXLiveModel.m */; };
 		CD7960901CBE594C004CC661 /* UIView+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C71CA28A3500CA3C3F /* UIView+HXIBnspectable.m */; };
@@ -426,115 +253,23 @@
 		CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
 		CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19511CA4EE8700849B39 /* HXRecordBottomBar.xib */; };
 		CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */; };
-		CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */; };
-		CD858D901CAE68CA007441E9 /* HXProfileLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D8F1CAE68CA007441E9 /* HXProfileLiveCell.m */; };
-		CD858D961CAE69AD007441E9 /* HXProfileAlbumContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D951CAE69AD007441E9 /* HXProfileAlbumContainerCell.m */; };
-		CD858D991CAE6B14007441E9 /* HXProfileVideoContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D981CAE6B14007441E9 /* HXProfileVideoContainerCell.m */; };
-		CD858D9C1CAE6B24007441E9 /* HXProfileReplayContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D9B1CAE6B24007441E9 /* HXProfileReplayContainerCell.m */; };
-		CD858DA21CAE6BB0007441E9 /* HXProfileAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858DA11CAE6BB0007441E9 /* HXProfileAlbumCell.m */; };
-		CD858DA51CAE6BBD007441E9 /* HXProfileVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858DA41CAE6BBD007441E9 /* HXProfileVideoCell.m */; };
-		CD858DA81CAE6BCC007441E9 /* HXProfileReplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858DA71CAE6BCC007441E9 /* HXProfileReplayCell.m */; };
-		CD8A9A711C9906CA00698DE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A701C9906CA00698DE9 /* main.m */; };
-		CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8A9A731C9906CA00698DE9 /* AppDelegate.m */; };
-		CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A781C9906CA00698DE9 /* Main.storyboard */; };
-		CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */; };
-		CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */; };
-		CD8AC6801CE974AD00CD1DC4 /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD8F86A91CD099EA00D8C8A4 /* HXDiscoveryShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8F86A81CD099EA00D8C8A4 /* HXDiscoveryShowCell.m */; };
-		CD9167671CAE524C000A12DC /* ChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167641CAE524C000A12DC /* ChangePwdViewController.m */; };
-		CD9167681CAE524C000A12DC /* HXFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167661CAE524C000A12DC /* HXFeedBackViewController.m */; };
-		CD91676B1CAE528D000A12DC /* GenderPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91676A1CAE528D000A12DC /* GenderPickerView.m */; };
-		CD9167721CAE52E7000A12DC /* MIALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91676E1CAE52E7000A12DC /* MIALabel.m */; };
-		CD9167731CAE52E7000A12DC /* MIAButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167711CAE52E7000A12DC /* MIAButton.m */; };
-		CD9167771CAE5304000A12DC /* MBProgressHUDHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167761CAE5304000A12DC /* MBProgressHUDHelp.m */; };
-		CD91677B1CAE534B000A12DC /* UIImage+ColorToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91677A1CAE534B000A12DC /* UIImage+ColorToImage.m */; };
-		CD91677F1CAE5399000A12DC /* CacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91677E1CAE5399000A12DC /* CacheHelper.m */; };
-		CD9167831CAE5437000A12DC /* UIImage+Extrude.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167821CAE5437000A12DC /* UIImage+Extrude.m */; };
-		CD9167891CAE5E6D000A12DC /* HXProfileNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167871CAE5E6D000A12DC /* HXProfileNavigationBar.m */; };
-		CD91678A1CAE5E6D000A12DC /* HXProfileNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */; };
-		CD92AF841CBB9F1000106A89 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD92AF831CBB9F1000106A89 /* AVFoundation.framework */; };
-		CD92AF8B1CBBAF3300106A89 /* HXReplaySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CD92AF8A1CBBAF3300106A89 /* HXReplaySlider.m */; };
-		CD92AF8F1CBCD8B400106A89 /* HXReplayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD92AF8E1CBCD8B400106A89 /* HXReplayViewModel.m */; };
-		CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */; };
-		CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */; };
-		CDAB160C1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
 		CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
-		CDB099EF1CB520C000C47EA0 /* HXRecordAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */; };
-		CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */; };
-		CDB456F71CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CDBCFAF51CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
-		CDBCFAF81CE1D6020045946F /* HXLiveAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */; };
 		CDBCFAF91CE1D6020045946F /* HXLiveAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */; };
-		CDBCFAFD1CE1E35A0045946F /* HXLiveGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAFC1CE1E35A0045946F /* HXLiveGiftViewController.m */; };
 		CDBCFAFE1CE1E35A0045946F /* HXLiveGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAFC1CE1E35A0045946F /* HXLiveGiftViewController.m */; };
-		CDC063021CB3E32700E66F2A /* HXDiscoveryContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC062FF1CB3E32700E66F2A /* HXDiscoveryContainerViewController.m */; };
-		CDC063031CB3E32700E66F2A /* HXDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063011CB3E32700E66F2A /* HXDiscoveryViewController.m */; };
-		CDC0630F1CB3E41000E66F2A /* HXDiscoveryLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063061CB3E41000E66F2A /* HXDiscoveryLiveCell.m */; };
-		CDC063111CB3E41000E66F2A /* HXDiscoveryNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0630A1CB3E41000E66F2A /* HXDiscoveryNormalCell.m */; };
-		CDC063171CB3E4B600E66F2A /* HXDiscoveryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC063161CB3E4B600E66F2A /* HXDiscoveryModel.m */; };
-		CDC0631B1CB3E53200E66F2A /* HXDiscoveryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0631A1CB3E53200E66F2A /* HXDiscoveryViewModel.m */; };
-		CDCB46921CB788FD00ED3A8B /* UIView+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB46911CB788FD00ED3A8B /* UIView+Image.m */; };
-		CDDC38281CEAF0EC00328A17 /* HXSelectedAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC38271CEAF0EC00328A17 /* HXSelectedAlbumViewController.m */; };
 		CDDC38291CEAF0EC00328A17 /* HXSelectedAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC38271CEAF0EC00328A17 /* HXSelectedAlbumViewController.m */; };
-		CDDC382D1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC382C1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m */; };
 		CDDC382E1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC382C1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m */; };
-		CDDC38391CEB1B3500328A17 /* HXBarrageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC38381CEB1B3500328A17 /* HXBarrageModel.m */; };
 		CDDC383A1CEB1B3500328A17 /* HXBarrageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC38381CEB1B3500328A17 /* HXBarrageModel.m */; };
-		CDE016DF1CE2D8D8005645D5 /* HXLiveRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE016DE1CE2D8D8005645D5 /* HXLiveRewardViewController.m */; };
 		CDE016E01CE2D8D8005645D5 /* HXLiveRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE016DE1CE2D8D8005645D5 /* HXLiveRewardViewController.m */; };
-		CDE016E41CE309C6005645D5 /* HXSectorSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE016E31CE309C6005645D5 /* HXSectorSlider.m */; };
 		CDE016E51CE309C6005645D5 /* HXSectorSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE016E31CE309C6005645D5 /* HXSectorSlider.m */; };
-		CDE0171C1CE489AC005645D5 /* HXDownLoadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE0171B1CE489AC005645D5 /* HXDownLoadCache.m */; };
 		CDE0171D1CE489AC005645D5 /* HXDownLoadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE0171B1CE489AC005645D5 /* HXDownLoadCache.m */; };
-		CDE017201CE48D4B005645D5 /* HXDiscoveryPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE0171F1CE48D4B005645D5 /* HXDiscoveryPreviewCell.m */; };
 		CDE017211CE48D4B005645D5 /* HXDiscoveryPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE0171F1CE48D4B005645D5 /* HXDiscoveryPreviewCell.m */; };
-		CDE2FC801CABD3D200476968 /* HXProfileContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC7F1CABD3D200476968 /* HXProfileContainerViewController.m */; };
-		CDE2FC841CABD43700476968 /* HXProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC831CABD43700476968 /* HXProfileViewModel.m */; };
-		CDE416FC1CB7D672005F8901 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */; };
-		CDECFF921CBB7F48001EF9DC /* HXAlbumsCommentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDECFF911CBB7F48001EF9DC /* HXAlbumsCommentViewModel.m */; };
-		CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF21CA13BB4003867B8 /* NSObject+LoginAction.m */; };
-		CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF41CA13BB4003867B8 /* UIView+FindUIViewController.m */; };
-		CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF61CA13BB4003867B8 /* UIView+Frame.m */; };
-		CDED8F221CA13BB4003867B8 /* UIViewController+HXClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EF81CA13BB4003867B8 /* UIViewController+HXClass.m */; };
-		CDED8F231CA13BB4003867B8 /* HXAppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8EFB1CA13BB4003867B8 /* HXAppConstants.m */; };
-		CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F001CA13BB4003867B8 /* HXAlertBanner.m */; };
-		CDED8F251CA13BB4003867B8 /* HXAlertBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F011CA13BB4003867B8 /* HXAlertBanner.xib */; };
-		CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F041CA13BB4003867B8 /* HXCaptchButton.m */; };
-		CDED8F271CA13BB4003867B8 /* HXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F071CA13BB4003867B8 /* HXLabel.m */; };
-		CDED8F281CA13BB4003867B8 /* HXActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F0A1CA13BB4003867B8 /* HXActivityIndicator.m */; };
-		CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F0C1CA13BB4003867B8 /* HXLoadingView.m */; };
-		CDED8F2A1CA13BB4003867B8 /* HXLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F0D1CA13BB4003867B8 /* HXLoadingView.xib */; };
-		CDED8F2B1CA13BB4003867B8 /* HXTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F101CA13BB4003867B8 /* HXTextView.m */; };
-		CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F151CA13BB4003867B8 /* HXPathManager.m */; };
-		CDED8F2D1CA13BB4003867B8 /* HXStoryBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F181CA13BB4003867B8 /* HXStoryBoardManager.m */; };
-		CDED8F2E1CA13BB4003867B8 /* HXThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F1B1CA13BB4003867B8 /* HXThemeManager.m */; };
-		CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F1E1CA13BB4003867B8 /* HXVersion.m */; };
-		CDED8F321CA13EFD003867B8 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDED8F301CA13EFD003867B8 /* Profile.storyboard */; };
-		CDED8F3A1CA14E74003867B8 /* HXMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F391CA14E74003867B8 /* HXMeViewController.m */; };
-		CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F3C1CA14F26003867B8 /* HXProfileViewController.m */; };
-		CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F401CA15181003867B8 /* HXUserSession.m */; };
-		CDF087E71CBB41C900147DAA /* HXAlbumsCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF087E61CBB41C900147DAA /* HXAlbumsCommentViewController.m */; };
-		CDF301071CA8D4ED00C19C32 /* HXAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301061CA8D4ED00C19C32 /* HXAlbumsViewController.m */; };
-		CDF3010A1CA8D50E00C19C32 /* HXAlbumsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301091CA8D50E00C19C32 /* HXAlbumsContainerViewController.m */; };
-		CDF3010D1CA8D74700C19C32 /* HXAlbumsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF3010C1CA8D74700C19C32 /* HXAlbumsViewModel.m */; };
-		CDF9504C1CA558E300BDB586 /* Albums.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF9504A1CA558E300BDB586 /* Albums.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CD74089C1C9946D800950A50 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CD8AC6801CE974AD00CD1DC4 /* ZegoAVKit2.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CD79614A1CBE594C004CC661 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,7 +305,7 @@
 		395D67161C9AB1C500ED0454 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		395D67191C9AB1D700ED0454 /* UserDefaultsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtils.h; sourceTree = "<group>"; };
 		395D671A1C9AB1D700ED0454 /* UserDefaultsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtils.m; sourceTree = "<group>"; };
-		3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Beta.plist"; sourceTree = "<group>"; };
+		3979CFFC1CBF340C0036ED65 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		398451E11CAD0300009018C6 /* NSObject+BlockSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BlockSupport.h"; sourceTree = "<group>"; };
 		398451E21CAD0300009018C6 /* NSObject+BlockSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BlockSupport.m"; sourceTree = "<group>"; };
 		398451E51CAD0543009018C6 /* MusicMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicMgr.h; sourceTree = "<group>"; };
@@ -892,7 +627,7 @@
 		CD7960851CBE39A6004CC661 /* UIViewController+LoginAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LoginAction.m"; sourceTree = "<group>"; };
 		CD7960881CBE4BA1004CC661 /* LocationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMgr.h; sourceTree = "<group>"; };
 		CD7960891CBE4BA1004CC661 /* LocationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMgr.m; sourceTree = "<group>"; };
-		CD79614F1CBE594C004CC661 /* Piano-Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Piano-Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD79614F1CBE594C004CC661 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD858D8B1CAE68A1007441E9 /* HXProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileHeaderCell.h; sourceTree = "<group>"; };
 		CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileHeaderCell.m; sourceTree = "<group>"; };
 		CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileLiveCell.h; sourceTree = "<group>"; };
@@ -909,14 +644,12 @@
 		CD858DA41CAE6BBD007441E9 /* HXProfileVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileVideoCell.m; sourceTree = "<group>"; };
 		CD858DA61CAE6BCC007441E9 /* HXProfileReplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileReplayCell.h; sourceTree = "<group>"; };
 		CD858DA71CAE6BCC007441E9 /* HXProfileReplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileReplayCell.m; sourceTree = "<group>"; };
-		CD8A9A6C1C9906CA00698DE9 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A9A701C9906CA00698DE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD8A9A721C9906CA00698DE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD8A9A731C9906CA00698DE9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CD8A9A791C9906CA00698DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD8A9A7B1C9906CA00698DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD8A9A7E1C9906CA00698DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CD8A9A801C9906CA00698DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD8F86A71CD099E900D8C8A4 /* HXDiscoveryShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryShowCell.h; sourceTree = "<group>"; };
 		CD8F86A81CD099EA00D8C8A4 /* HXDiscoveryShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryShowCell.m; sourceTree = "<group>"; };
 		CD9167631CAE524C000A12DC /* ChangePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePwdViewController.h; sourceTree = "<group>"; };
@@ -1062,17 +795,6 @@
 				CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */,
 				CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */,
 				CB30166BF73B12934F5E7330 /* libPods-Piano-Beta.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD8A9A691C9906CA00698DE9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD92AF841CBB9F1000106A89 /* AVFoundation.framework in Frameworks */,
-				CDE416FC1CB7D672005F8901 /* MediaPlayer.framework in Frameworks */,
-				CDB456F71CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */,
-				B074DF459E3BD4BE39EAD286 /* libPods-Piano.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2246,8 +1968,7 @@
 		CD8A9A6D1C9906CA00698DE9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD8A9A6C1C9906CA00698DE9 /* Piano.app */,
-				CD79614F1CBE594C004CC661 /* Piano-Beta.app */,
+				CD79614F1CBE594C004CC661 /* Piano.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2274,9 +1995,8 @@
 		CD8A9A6F1C9906CA00698DE9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3979CFFC1CBF340C0036ED65 /* Info-Beta.plist */,
+				3979CFFC1CBF340C0036ED65 /* Info.plist */,
 				CD8A9A701C9906CA00698DE9 /* main.m */,
-				CD8A9A801C9906CA00698DE9 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2822,9 +2542,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CD79608B1CBE594C004CC661 /* Piano-Beta */ = {
+		CD79608B1CBE594C004CC661 /* Piano */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD79614C1CBE594C004CC661 /* Build configuration list for PBXNativeTarget "Piano-Beta" */;
+			buildConfigurationList = CD79614C1CBE594C004CC661 /* Build configuration list for PBXNativeTarget "Piano" */;
 			buildPhases = (
 				BA2AA430CF2D33A70D11A7DD /* 📦 Check Pods Manifest.lock */,
 				CD79608D1CBE594C004CC661 /* Sources */,
@@ -2839,31 +2559,9 @@
 			);
 			dependencies = (
 			);
-			name = "Piano-Beta";
-			productName = Piano;
-			productReference = CD79614F1CBE594C004CC661 /* Piano-Beta.app */;
-			productType = "com.apple.product-type.application";
-		};
-		CD8A9A6B1C9906CA00698DE9 /* Piano */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CD8A9A831C9906CA00698DE9 /* Build configuration list for PBXNativeTarget "Piano" */;
-			buildPhases = (
-				CCEEB16AC0C0ED8CF77D0E89 /* 📦 Check Pods Manifest.lock */,
-				CD8A9A681C9906CA00698DE9 /* Sources */,
-				CD8A9A691C9906CA00698DE9 /* Frameworks */,
-				CD8A9A6A1C9906CA00698DE9 /* Resources */,
-				CD74089C1C9946D800950A50 /* Embed Frameworks */,
-				DB5E56F4D8AAB1FF2407F57B /* 📦 Embed Pods Frameworks */,
-				CE673A569B920EA39F011B35 /* 📦 Copy Pods Resources */,
-				AB3C80A8910BB503F757EFD6 /* Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
 			name = Piano;
 			productName = Piano;
-			productReference = CD8A9A6C1C9906CA00698DE9 /* Piano.app */;
+			productReference = CD79614F1CBE594C004CC661 /* Piano.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2876,16 +2574,7 @@
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
 					CD79608B1CBE594C004CC661 = {
-						DevelopmentTeam = PQE2NCR38L;
-					};
-					CD8A9A6B1C9906CA00698DE9 = {
-						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = PQE2NCR38L;
-						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-						};
+						DevelopmentTeam = H2JE2CWJS7;
 					};
 				};
 			};
@@ -2902,8 +2591,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD8A9A6B1C9906CA00698DE9 /* Piano */,
-				CD79608B1CBE594C004CC661 /* Piano-Beta */,
+				CD79608B1CBE594C004CC661 /* Piano */,
 			);
 		};
 /* End PBXProject section */
@@ -2944,41 +2632,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD8A9A6A1C9906CA00698DE9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD8A9A7F1C9906CA00698DE9 /* LaunchScreen.storyboard in Resources */,
-				CD23678A1CA91CFB002C8233 /* HXAlbumsBottomBar.xib in Resources */,
-				CD6C198A1CA519A900849B39 /* HXPlayBottomBar.xib in Resources */,
-				CDED8F321CA13EFD003867B8 /* Profile.storyboard in Resources */,
-				CD6581651CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib in Resources */,
-				CD5F215E1CAD2E8B0067A1DA /* HXLiveAnchorView.xib in Resources */,
-				CD1979541CA4E1A900303D27 /* HXWatcherBoard.xib in Resources */,
-				CDB099F01CB520C000C47EA0 /* HXRecordAnchorView.xib in Resources */,
-				CDBCFAF81CE1D6020045946F /* HXLiveAlbumView.xib in Resources */,
-				CD5D02861CB60682000285DC /* HXPreviewLiveTopBar.xib in Resources */,
-				3979CFFD1CBF340C0036ED65 /* Info-Beta.plist in Resources */,
-				CDF9504C1CA558E300BDB586 /* Albums.storyboard in Resources */,
-				CD2E72F11CA11E75003CDB77 /* Live.storyboard in Resources */,
-				CD8A9A7C1C9906CA00698DE9 /* Assets.xcassets in Resources */,
-				CDED8F251CA13BB4003867B8 /* HXAlertBanner.xib in Resources */,
-				CD5D02881CB6069B000285DC /* HXPreviewLiveEidtView.xib in Resources */,
-				CD6C198C1CA519A900849B39 /* HXPlaySummaryView.xib in Resources */,
-				CD6C19611CA5196A00849B39 /* Play.storyboard in Resources */,
-				CD23678C1CA91CFB002C8233 /* HXAlbumsNavigationBar.xib in Resources */,
-				CDED8F2A1CA13BB4003867B8 /* HXLoadingView.xib in Resources */,
-				CD5D028A1CB606AC000285DC /* HXPreviewLiveControlView.xib in Resources */,
-				CD2949EA1CA290CB00CA3C3F /* Login.storyboard in Resources */,
-				CD2E72F51CA11E75003CDB77 /* Setting.storyboard in Resources */,
-				CD6C194C1CA4E7AD00849B39 /* HXReplayBottomBar.xib in Resources */,
-				CD8A9A7A1C9906CA00698DE9 /* Main.storyboard in Resources */,
-				CD6C198F1CA519A900849B39 /* HXPlayTopBar.xib in Resources */,
-				CD6C19531CA4EE8700849B39 /* HXRecordBottomBar.xib in Resources */,
-				CD91678A1CAE5E6D000A12DC /* HXProfileNavigationBar.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -2995,21 +2648,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AB3C80A8910BB503F757EFD6 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano/Pods-Piano-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BA2AA430CF2D33A70D11A7DD /* 📦 Check Pods Manifest.lock */ = {
@@ -3042,36 +2680,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CCEEB16AC0C0ED8CF77D0E89 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CE673A569B920EA39F011B35 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano/Pods-Piano-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D84C9AFF2426607C2A08B209 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3085,21 +2693,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB5E56F4D8AAB1FF2407F57B /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano/Pods-Piano-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3338,234 +2931,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD8A9A681C9906CA00698DE9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD2E728B1CA11DE0003CDB77 /* HXSettingViewController.m in Sources */,
-				CD2E729C1CA11E02003CDB77 /* HXLiveModel.m in Sources */,
-				CDBCFAF51CE1D5F90045946F /* HXLiveAlbumView.m in Sources */,
-				42A0DAFB1CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.m in Sources */,
-				CD2949D61CA28A3500CA3C3F /* UIView+HXIBnspectable.m in Sources */,
-				CDED8F2D1CA13BB4003867B8 /* HXStoryBoardManager.m in Sources */,
-				CDED8F411CA15181003867B8 /* HXUserSession.m in Sources */,
-				CD2949D81CA28A3500CA3C3F /* HXIBImageView.m in Sources */,
-				CD858DA81CAE6BCC007441E9 /* HXProfileReplayCell.m in Sources */,
-				CDB099EF1CB520C000C47EA0 /* HXRecordAnchorView.m in Sources */,
-				42984B481CDC6137004F00D5 /* JOUIManage.m in Sources */,
-				398451EC1CAD0543009018C6 /* SingleSongPlayer.m in Sources */,
-				CD2367AF1CA93D51002C8233 /* HXMeAttentionContainerCell.m in Sources */,
-				420BBB491CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */,
-				CDE2FC841CABD43700476968 /* HXProfileViewModel.m in Sources */,
-				CD2949FA1CA2919B00CA3C3F /* HXRegisterViewController.m in Sources */,
-				CD5D027B1CB60608000285DC /* HXPreviewLiveTopBar.m in Sources */,
-				CD6C198B1CA519A900849B39 /* HXPlaySummaryView.m in Sources */,
-				CDED8F221CA13BB4003867B8 /* UIViewController+HXClass.m in Sources */,
-				CD2949DA1CA28A3500CA3C3F /* HXIBView.m in Sources */,
-				CD2949D71CA28A3500CA3C3F /* HXIBButton.m in Sources */,
-				42D612EE1CE1FEFB00B80753 /* MIAAlbumRewardView.m in Sources */,
-				CD6C19521CA4EE8700849B39 /* HXRecordBottomBar.m in Sources */,
-				CD2949D41CA28A3500CA3C3F /* UIButton+HXIBnspectable.m in Sources */,
-				CD5F21531CAD1D850067A1DA /* HXLiveCommentViewModel.m in Sources */,
-				429CC20C1CE08BAF004BCC0C /* MIAProfileModel.m in Sources */,
-				395D67011C9AB0E800ED0454 /* WebSocketMgr.m in Sources */,
-				42984B6C1CDCAFEA004F00D5 /* MIAProfileReplayCell.m in Sources */,
-				429CC2101CE08EC3004BCC0C /* MIAReplayModel.m in Sources */,
-				CD7960861CBE39A6004CC661 /* UIViewController+LoginAction.m in Sources */,
-				CD5F215D1CAD2E8B0067A1DA /* HXLiveAnchorView.m in Sources */,
-				42984B0B1CDAEF84004F00D5 /* JOFFileManage.m in Sources */,
-				42D612EB1CE1FEFB00B80753 /* MIAAlbumCommentView.m in Sources */,
-				CDED8F261CA13BB4003867B8 /* HXCaptchButton.m in Sources */,
-				429CC2141CE08F22004BCC0C /* MIAVideoModel.m in Sources */,
-				42D612FC1CE1FF0900B80753 /* MIAAlbumCommentCell.m in Sources */,
-				42984B581CDC8021004F00D5 /* MIAProfileVideoView.m in Sources */,
-				429E50141CE47A3A0008CA85 /* MIASongModel.m in Sources */,
-				42D612EC1CE1FEFB00B80753 /* MIAAlbumEnterCommentView.m in Sources */,
-				CD23679C1CA93B2F002C8233 /* HXMeRechargeCell.m in Sources */,
-				CD2367961CA9212B002C8233 /* HXMeViewModel.m in Sources */,
-				42D612ED1CE1FEFB00B80753 /* MIAAlbumPlayView.m in Sources */,
-				42984B0F1CDAEF84004F00D5 /* JOFLog.m in Sources */,
-				420BBB581CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */,
-				42D15F931CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */,
-				CD5DD8B01CA912790077A17B /* HXAlbumsSongCell.m in Sources */,
-				CD2949F71CA2919B00CA3C3F /* HXForgotPWViewController.m in Sources */,
-				CDF301071CA8D4ED00C19C32 /* HXAlbumsViewController.m in Sources */,
-				429CC1F91CE04AC5004BCC0C /* MIABaseShowView.m in Sources */,
-				42D612DB1CE1FDE700B80753 /* UIFont+JOExtend.m in Sources */,
-				420BBB5C1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */,
-				CD858D9C1CAE6B24007441E9 /* HXProfileReplayContainerCell.m in Sources */,
-				CD5DD8AD1CA912790077A17B /* HXAlbumsCommentCell.m in Sources */,
-				CD6C19411CA4E4AE00849B39 /* HXLiveBarrageContainerViewController.m in Sources */,
-				CD4156C71CB39C890060CBE9 /* HXSongModel.m in Sources */,
-				CDDC382D1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m in Sources */,
-				42984B601CDC878E004F00D5 /* MIAProfileLiveCell.m in Sources */,
-				CD6C195E1CA5193B00849B39 /* HXPlayViewController.m in Sources */,
-				42984B011CDAEF84004F00D5 /* JOFAppInfo.m in Sources */,
-				CDF3010A1CA8D50E00C19C32 /* HXAlbumsContainerViewController.m in Sources */,
-				CD5F214F1CAD10B80067A1DA /* HXLiveBarrageViewController.m in Sources */,
-				CDF3010D1CA8D74700C19C32 /* HXAlbumsViewModel.m in Sources */,
-				CD9167771CAE5304000A12DC /* MBProgressHUDHelp.m in Sources */,
-				42984B441CDC48E7004F00D5 /* MIAProfileHeadView.m in Sources */,
-				429CC1F81CE04AC5004BCC0C /* MIABaseCellHeadView.m in Sources */,
-				CD91677B1CAE534B000A12DC /* UIImage+ColorToImage.m in Sources */,
-				CDC063031CB3E32700E66F2A /* HXDiscoveryViewController.m in Sources */,
-				CD2367891CA91CFB002C8233 /* HXAlbumsBottomBar.m in Sources */,
-				42D612D61CE1FDD600B80753 /* MIAFontManage.m in Sources */,
-				CD45673A1CAE13B800837DFF /* HXMeMyStationCell.m in Sources */,
-				42A0DAF31CE2D2B100F1FCEF /* MIAAlbumDetailView.m in Sources */,
-				CD2E72861CA11DE0003CDB77 /* HXMainViewController.m in Sources */,
-				395D67001C9AB0E800ED0454 /* MiaRequestItem.m in Sources */,
-				429CC1FD1CE04AD3004BCC0C /* MIAViewModel.m in Sources */,
-				CDED8F271CA13BB4003867B8 /* HXLabel.m in Sources */,
-				CD5DD8AF1CA912790077A17B /* HXAlbumsControlCell.m in Sources */,
-				398A6D111CAB77D6001A68B1 /* HXGuestModel.m in Sources */,
-				CD5DD8AE1CA912790077A17B /* HXAlbumsCommentCountCell.m in Sources */,
-				429CC2181CE08F47004BCC0C /* MIAAlbumModel.m in Sources */,
-				CD5D02771CB60189000285DC /* HXCountDownViewController.m in Sources */,
-				CD91676B1CAE528D000A12DC /* GenderPickerView.m in Sources */,
-				CDED8F1F1CA13BB4003867B8 /* NSObject+LoginAction.m in Sources */,
-				CD23678B1CA91CFB002C8233 /* HXAlbumsNavigationBar.m in Sources */,
-				CD9167671CAE524C000A12DC /* ChangePwdViewController.m in Sources */,
-				42984B091CDAEF84004F00D5 /* JOFException.m in Sources */,
-				CD9167831CAE5437000A12DC /* UIImage+Extrude.m in Sources */,
-				CD5F217D1CAD4E3B0067A1DA /* HXVideoModel.m in Sources */,
-				CD3199851CAA6182006C845F /* HXWatchLiveViewModel.m in Sources */,
-				CDC0631B1CB3E53200E66F2A /* HXDiscoveryViewModel.m in Sources */,
-				420BBB701CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */,
-				42D613011CE1FF0900B80753 /* MIAAlbumSongCell.m in Sources */,
-				CDED8F241CA13BB4003867B8 /* HXAlertBanner.m in Sources */,
-				CD858D961CAE69AD007441E9 /* HXProfileAlbumContainerCell.m in Sources */,
-				42984B541CDC800D004F00D5 /* MIAProfileAlbumView.m in Sources */,
-				CD858DA21CAE6BB0007441E9 /* HXProfileAlbumCell.m in Sources */,
-				42984B141CDB0542004F00D5 /* UIView+JOExtend.m in Sources */,
-				42B6A0E61CEB173900BDF8E8 /* MIAMCoinModel.m in Sources */,
-				CD2949F91CA2919B00CA3C3F /* HXRegisterContainerViewController.m in Sources */,
-				398451ED1CAD0543009018C6 /* SongPreloader.m in Sources */,
-				CDCB46921CB788FD00ED3A8B /* UIView+Image.m in Sources */,
-				CD5F21721CAD4C3F0067A1DA /* HXProfileModel.m in Sources */,
-				CD2367AC1CA93D19002C8233 /* HXMeAttentionCell.m in Sources */,
-				429E50101CE46DDE0008CA85 /* MIAAlbumViewModel.m in Sources */,
-				CD6581641CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m in Sources */,
-				CDED8F211CA13BB4003867B8 /* UIView+Frame.m in Sources */,
-				CD2949E41CA28D8400CA3C3F /* HXUserModel.m in Sources */,
-				395D671B1C9AB1D700ED0454 /* UserDefaultsUtils.m in Sources */,
-				CD2367A21CA93B6B002C8233 /* HXMePurchaseHistoryCell.m in Sources */,
-				42B6A0EA1CEB1D3800BDF8E8 /* MIASendGiftModel.m in Sources */,
-				42984B4C1CDC7711004F00D5 /* MIAProfileViewController.m in Sources */,
-				CDAA8DAB1CA3C7DB0048C526 /* HXWatchLiveViewController.m in Sources */,
-				CD2949FF1CA292ED00CA3C3F /* HXNavigationController.m in Sources */,
-				420BBB6C1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */,
-				420BBB641CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */,
-				42984B051CDAEF84004F00D5 /* JOFCrash.m in Sources */,
-				CD9167891CAE5E6D000A12DC /* HXProfileNavigationBar.m in Sources */,
-				429E501D1CE47EBE0008CA85 /* MIAAlbumDetailModel.m in Sources */,
-				CD79608A1CBE4BA1004CC661 /* LocationMgr.m in Sources */,
-				42984B5C1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */,
-				CD858D901CAE68CA007441E9 /* HXProfileLiveCell.m in Sources */,
-				CD6C19571CA5133300849B39 /* HXRecordLiveViewController.m in Sources */,
-				CD2949D91CA28A3500CA3C3F /* HXIBLabel.m in Sources */,
-				CDED8F2B1CA13BB4003867B8 /* HXTextView.m in Sources */,
-				398451EB1CAD0543009018C6 /* MusicMgr.m in Sources */,
-				398451F11CAD05DB009018C6 /* UserSetting.m in Sources */,
-				429CC1FA1CE04AC5004BCC0C /* MIABaseTableViewCell.m in Sources */,
-				420444591CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */,
-				398451E31CAD0300009018C6 /* NSObject+BlockSupport.m in Sources */,
-				CD6C194B1CA4E7AD00849B39 /* HXReplayBottomBar.m in Sources */,
-				42984B501CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */,
-				CD5D02811CB60624000285DC /* HXPreviewLiveEidtView.m in Sources */,
-				395D670F1C9AB19D00ED0454 /* PathHelper.m in Sources */,
-				CD7960831CBDE7FD004CC661 /* HXLiveEndViewController.m in Sources */,
-				CD5D02701CB5FB2D000285DC /* HXRecordLiveViewModel.m in Sources */,
-				CDED8F231CA13BB4003867B8 /* HXAppConstants.m in Sources */,
-				CDED8F201CA13BB4003867B8 /* UIView+FindUIViewController.m in Sources */,
-				42D612EA1CE1FEFB00B80753 /* MIAAlbumBarView.m in Sources */,
-				42CC372B1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */,
-				42D612DC1CE1FDE700B80753 /* UILabel+JOExtend.m in Sources */,
-				42A0DAEB1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */,
-				CDED8F291CA13BB4003867B8 /* HXLoadingView.m in Sources */,
-				395D67171C9AB1C500ED0454 /* NSString+MD5.m in Sources */,
-				CD858DA51CAE6BBD007441E9 /* HXProfileVideoCell.m in Sources */,
-				CD5D02841CB60632000285DC /* HXPreviewLiveControlView.m in Sources */,
-				429CC2081CE07577004BCC0C /* MIACellManage.m in Sources */,
-				CD9167681CAE524C000A12DC /* HXFeedBackViewController.m in Sources */,
-				CD6C19461CA4E78000849B39 /* HXLiveBarrageCell.m in Sources */,
-				CD2949DB1CA28A3500CA3C3F /* HXIBnsepectableManager.m in Sources */,
-				42984B071CDAEF84004F00D5 /* JOFDeviceInfo.m in Sources */,
-				CDE2FC801CABD3D200476968 /* HXProfileContainerViewController.m in Sources */,
-				CD2949FB1CA2919B00CA3C3F /* HXUserTermsViewController.m in Sources */,
-				CD1B84171CAA90C200B9B1E8 /* HXAttentionModel.m in Sources */,
-				395D67071C9AB15000ED0454 /* NSTimer+BlockSupport.m in Sources */,
-				CD92AF8F1CBCD8B400106A89 /* HXReplayViewModel.m in Sources */,
-				CDED8F2C1CA13BB4003867B8 /* HXPathManager.m in Sources */,
-				CDDC38391CEB1B3500328A17 /* HXBarrageModel.m in Sources */,
-				CD9167731CAE52E7000A12DC /* MIAButton.m in Sources */,
-				CDAA8DAA1CA3C7DB0048C526 /* HXReplayViewController.m in Sources */,
-				CDAB160C1CEDC11D00949769 /* HXGiftModel.m in Sources */,
-				CDECFF921CBB7F48001EF9DC /* HXAlbumsCommentViewModel.m in Sources */,
-				CD2367921CA91DF9002C8233 /* HXMeContainerViewController.m in Sources */,
-				CDED8F3D1CA14F26003867B8 /* HXProfileViewController.m in Sources */,
-				CD2949F81CA2919B00CA3C3F /* HXLoginViewController.m in Sources */,
-				CD9167721CAE52E7000A12DC /* MIALabel.m in Sources */,
-				42B6A0E21CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */,
-				CD8A9A741C9906CA00698DE9 /* AppDelegate.m in Sources */,
-				395D66FF1C9AB0E800ED0454 /* MiaAPIHelper.m in Sources */,
-				CD92AF8B1CBBAF3300106A89 /* HXReplaySlider.m in Sources */,
-				CD91677F1CAE5399000A12DC /* CacheHelper.m in Sources */,
-				CD5F21811CAD4EE50067A1DA /* HXReplayModel.m in Sources */,
-				42984AFB1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */,
-				CDC0630F1CB3E41000E66F2A /* HXDiscoveryLiveCell.m in Sources */,
-				CD5F21751CAD4C560067A1DA /* HXAlbumModel.m in Sources */,
-				420BBB541CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */,
-				CD858D8D1CAE68A1007441E9 /* HXProfileHeaderCell.m in Sources */,
-				CD6C19891CA519A900849B39 /* HXPlayBottomBar.m in Sources */,
-				42984AFD1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */,
-				429CC2001CE0689C004BCC0C /* NSArray+JOExtend.m in Sources */,
-				42984B681CDCAB9A004F00D5 /* MIAProfileVideoCell.m in Sources */,
-				CDDC38281CEAF0EC00328A17 /* HXSelectedAlbumViewController.m in Sources */,
-				4204445D1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */,
-				CDE016DF1CE2D8D8005645D5 /* HXLiveRewardViewController.m in Sources */,
-				CD2949D51CA28A3500CA3C3F /* UILabel+HXIBnsepectable.m in Sources */,
-				CDC063171CB3E4B600E66F2A /* HXDiscoveryModel.m in Sources */,
-				42B6A0EE1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */,
-				42984B0D1CDAEF84004F00D5 /* JOFunctionObject.m in Sources */,
-				CD294A031CA294B900CA3C3F /* HXLoginViewModel.m in Sources */,
-				429E50181CE47D0B0008CA85 /* MIACommentModel.m in Sources */,
-				CDBCFAFD1CE1E35A0045946F /* HXLiveGiftViewController.m in Sources */,
-				CD2367A51CA93B91002C8233 /* HXMeAttentionPromptCell.m in Sources */,
-				CD5D02741CB5FE49000285DC /* HXPreviewLiveViewController.m in Sources */,
-				395D670B1C9AB16B00ED0454 /* FileLog.m in Sources */,
-				CDED8F3A1CA14E74003867B8 /* HXMeViewController.m in Sources */,
-				CD1979531CA4E1A900303D27 /* HXWatcherBoard.m in Sources */,
-				CD6C198E1CA519A900849B39 /* HXPlayTopBar.m in Sources */,
-				395D67131C9AB1B700ED0454 /* NSString+IsNull.m in Sources */,
-				CD8A9A711C9906CA00698DE9 /* main.m in Sources */,
-				CDED8F2E1CA13BB4003867B8 /* HXThemeManager.m in Sources */,
-				42984AFF1CDAEF84004F00D5 /* UIColor+JOExtend.m in Sources */,
-				CDED8F2F1CA13BB4003867B8 /* HXVersion.m in Sources */,
-				429CC1DE1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */,
-				CD2E72A91CA11E13003CDB77 /* HXZegoAVKitManager.m in Sources */,
-				420BBB681CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */,
-				CD858D991CAE6B14007441E9 /* HXProfileVideoContainerCell.m in Sources */,
-				420BBB4D1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */,
-				420BBB601CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */,
-				CD5F21791CAD4C930067A1DA /* HXAnchorModel.m in Sources */,
-				42984B031CDAEF84004F00D5 /* JOAutoLayout.m in Sources */,
-				CDE0171C1CE489AC005645D5 /* HXDownLoadCache.m in Sources */,
-				CDC063111CB3E41000E66F2A /* HXDiscoveryNormalCell.m in Sources */,
-				CD2E72A81CA11E13003CDB77 /* HXSettingSession.m in Sources */,
-				CD546D011CAE9A63009FB2FD /* FormatTimeHelper.m in Sources */,
-				CDE016E41CE309C6005645D5 /* HXSectorSlider.m in Sources */,
-				CDED8F281CA13BB4003867B8 /* HXActivityIndicator.m in Sources */,
-				42984B641CDC9E0B004F00D5 /* MIAProfileAlbumCell.m in Sources */,
-				CDE017201CE48D4B005645D5 /* HXDiscoveryPreviewCell.m in Sources */,
-				CDC063021CB3E32700E66F2A /* HXDiscoveryContainerViewController.m in Sources */,
-				CD294A071CA294EA00CA3C3F /* HXAccountModel.m in Sources */,
-				CD4156CA1CB39CA30060CBE9 /* HXCommentModel.m in Sources */,
-				CDF087E71CBB41C900147DAA /* HXAlbumsCommentViewController.m in Sources */,
-				42D612EF1CE1FEFB00B80753 /* MIAAlbumSongView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -3648,10 +3013,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Piano/Frameworks",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3662,19 +3027,19 @@
 			baseConfigurationReference = 57BC6D5C1D05B8F6C2BCD2CA /* Pods-Piano-Beta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mia Music Co.,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mia Music Co.,Ltd.";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Piano/Frameworks",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info-Beta.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5a18aecf-fbfd-4290-bd13-e05b06bc8ef0";
 			};
 			name = Release;
 		};
@@ -3760,52 +3125,10 @@
 			};
 			name = Release;
 		};
-		CD8A9A841C9906CA00698DE9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 334A62F0F6B5D0E23BE07896 /* Pods-Piano.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Piano/Frameworks",
-				);
-				INFOPLIST_FILE = Piano/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "91a8ec88-cae2-47a6-a3b0-c7be03e295c5";
-			};
-			name = Debug;
-		};
-		CD8A9A851C9906CA00698DE9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02E1795951E578F7F615A6B3 /* Pods-Piano.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Piano/Frameworks",
-				);
-				INFOPLIST_FILE = Piano/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "06d373d2-f79b-4feb-996d-469a1685196c";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD79614C1CBE594C004CC661 /* Build configuration list for PBXNativeTarget "Piano-Beta" */ = {
+		CD79614C1CBE594C004CC661 /* Build configuration list for PBXNativeTarget "Piano" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD79614D1CBE594C004CC661 /* Debug */,
@@ -3819,15 +3142,6 @@
 			buildConfigurations = (
 				CD8A9A811C9906CA00698DE9 /* Debug */,
 				CD8A9A821C9906CA00698DE9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CD8A9A831C9906CA00698DE9 /* Build configuration list for PBXNativeTarget "Piano" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CD8A9A841C9906CA00698DE9 /* Debug */,
-				CD8A9A851C9906CA00698DE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
