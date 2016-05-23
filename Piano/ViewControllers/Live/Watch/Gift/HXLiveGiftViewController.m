@@ -21,7 +21,6 @@
 
 @implementation HXLiveGiftViewController {
     NSArray *_giftList;
-    UIButton *_selectedButton;
     
     HXLiveGiftContainerViewController *_container;
 }
@@ -67,13 +66,7 @@
 - (void)viewConfigure {
     [MiaAPIHelper getGiftListCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            NSMutableArray *giftList = @[].mutableCopy;
-            NSArray *lists = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
-            for (NSDictionary *data in lists) {
-                HXGiftModel *gift = [HXGiftModel mj_objectWithKeyValues:data];
-                [giftList addObject:gift];
-            }
-            _giftList = [giftList copy];
+            [self parseGiftListWithLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
         }
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [self showBannerWithPrompt:TimtOutPrompt];
@@ -84,18 +77,9 @@
 }
 
 #pragma mark - Event Response
-- (IBAction)giftButtonPressed:(UIButton *)button {
-    if (_giftList.count == 4) {
-        BOOL selected = YES;
-        _selectedButton.selected = !selected;
-        button.selected = selected;
-        _selectedButton = button;
-    }
-}
-
 - (IBAction)giveGiftButtonPressed {
-    if (_selectedButton) {
-        HXGiftModel *gift = _giftList[_selectedButton.tag];
+    if (_giftList.count) {
+        HXGiftModel *gift = _giftList[_container.selectedIndex];
         NSInteger rewardCount = gift.mcoin;
         NSInteger balanceCount = [MIAMCoinManage shareMCoinManage].mCoin.integerValue;
         if (balanceCount < rewardCount) {
@@ -118,11 +102,15 @@
 }
 
 #pragma mark - Private Methods
-- (void)updateGiftList {
-    NSInteger count = _giftList.count;
-    if (count == 4) {
-        
+- (void)parseGiftListWithLists:(NSArray *)lists {
+    NSMutableArray *giftList = @[].mutableCopy;
+    for (NSDictionary *data in lists) {
+        HXGiftModel *gift = [HXGiftModel mj_objectWithKeyValues:data];
+        [giftList addObject:gift];
     }
+    _giftList = [giftList copy];
+    _conianerHeightConstraint.constant = _container.contianerHeight;
+    _container.gifts = _giftList;
 }
 
 - (void)updateControlContainer {
@@ -130,7 +118,7 @@
 }
 
 - (void)popUp {
-    _bottomConstraint.constant = _containerView.height;
+    _bottomConstraint.constant = _containerView.height + _container.contianerHeight - 200.0f;
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];

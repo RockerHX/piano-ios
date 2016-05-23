@@ -11,6 +11,7 @@
 
 @interface HXGiftModel : NSObject
 
+@property (nonatomic, assign)      BOOL  selected;
 @property (nonatomic, assign) NSInteger  status;
 @property (nonatomic, assign) NSInteger  mcoin;
 @property (nonatomic, strong)  NSString *ID;

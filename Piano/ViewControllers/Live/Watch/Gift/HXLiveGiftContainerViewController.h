@@ -11,4 +11,9 @@
 
 @interface HXLiveGiftContainerViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, strong) NSArray *gifts;
+
+@property (nonatomic, assign, readonly) NSInteger  selectedIndex;
+@property (nonatomic, assign, readonly)   CGFloat  contianerHeight;
+
 @end

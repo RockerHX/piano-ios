@@ -28,24 +28,89 @@
         <scene sceneID="UOY-Hp-asU">
             <objects>
                 <collectionViewController storyboardIdentifier="HXLiveGiftContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i08-UR-prh" userLabel="HXLiveGiftContainerViewController" customClass="HXLiveGiftContainerViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dLF-KS-Tsa">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="dLF-KS-Tsa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5JP-DB-x83">
-                            <size key="itemSize" width="141" height="136"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="5JP-DB-x83">
+                            <size key="itemSize" width="125" height="125"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ksA-uG-kxl">
-                                <rect key="frame" x="0.0" y="0.0" width="141" height="136"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXLiveGiftItemCell" id="ksA-uG-kxl" userLabel="HXLiveGiftItemCell" customClass="HXLiveGiftItemCell">
+                                <rect key="frame" x="0.0" y="38" width="125" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="141" height="136"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Nw-Ae-70X" userLabel="BG">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-rx-QZM" userLabel="Gift Contianer">
+                                            <rect key="frame" x="28" y="15" width="70" height="95"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="boh-Zw-Raw" userLabel="Gift Logo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="boh-Zw-Raw" secondAttribute="height" multiplier="1:1" id="6wG-tN-u1O"/>
+                                                        <constraint firstAttribute="width" constant="70" id="zaY-N6-Dgj"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-nA-KxF" userLabel="Coin Count Container">
+                                                    <rect key="frame" x="23" y="78" width="23" height="17"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-fU-qUw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="7" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.70980392160000005" green="0.60784313729999995" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="id9-nn-fuy">
+                                                            <rect key="frame" x="7" y="0.0" width="16" height="17"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="id9-nn-fuy" firstAttribute="leading" secondItem="pZr-fU-qUw" secondAttribute="trailing" id="15t-Ea-QwJ"/>
+                                                        <constraint firstItem="pZr-fU-qUw" firstAttribute="top" secondItem="Uce-nA-KxF" secondAttribute="top" id="W41-6O-4XI"/>
+                                                        <constraint firstAttribute="trailing" secondItem="id9-nn-fuy" secondAttribute="trailing" id="gJE-Rp-frv"/>
+                                                        <constraint firstItem="pZr-fU-qUw" firstAttribute="leading" secondItem="Uce-nA-KxF" secondAttribute="leading" id="mYB-16-emb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="id9-nn-fuy" secondAttribute="bottom" id="moL-S5-hxV"/>
+                                                        <constraint firstItem="id9-nn-fuy" firstAttribute="top" secondItem="Uce-nA-KxF" secondAttribute="top" id="wW0-14-Sfh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="pZr-fU-qUw" secondAttribute="bottom" id="zMz-ui-Sm7"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="boh-Zw-Raw" secondAttribute="trailing" id="7fs-xS-Kog"/>
+                                                <constraint firstAttribute="bottom" secondItem="Uce-nA-KxF" secondAttribute="bottom" id="9Ew-OM-ALF"/>
+                                                <constraint firstItem="boh-Zw-Raw" firstAttribute="leading" secondItem="lBV-rx-QZM" secondAttribute="leading" id="Clj-03-oVx"/>
+                                                <constraint firstItem="Uce-nA-KxF" firstAttribute="centerX" secondItem="lBV-rx-QZM" secondAttribute="centerX" id="OYh-zw-YVg"/>
+                                                <constraint firstItem="boh-Zw-Raw" firstAttribute="top" secondItem="lBV-rx-QZM" secondAttribute="top" id="hmB-CK-pUd"/>
+                                                <constraint firstItem="Uce-nA-KxF" firstAttribute="top" secondItem="boh-Zw-Raw" secondAttribute="bottom" constant="8" id="vHP-dT-e5H"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.16862745098039217" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lBV-rx-QZM" firstAttribute="centerX" secondItem="ksA-uG-kxl" secondAttribute="centerX" id="0xS-kE-5S5"/>
+                                    <constraint firstItem="6Nw-Ae-70X" firstAttribute="leading" secondItem="ksA-uG-kxl" secondAttribute="leading" id="9m5-Lc-L6T"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Nw-Ae-70X" secondAttribute="bottom" id="Ffb-SS-MgR"/>
+                                    <constraint firstItem="6Nw-Ae-70X" firstAttribute="top" secondItem="ksA-uG-kxl" secondAttribute="top" id="JfU-o4-psa"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Nw-Ae-70X" secondAttribute="trailing" id="Uzq-6k-zaR"/>
+                                    <constraint firstItem="lBV-rx-QZM" firstAttribute="centerY" secondItem="ksA-uG-kxl" secondAttribute="centerY" id="qqV-9k-4Lt"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="bgView" destination="6Nw-Ae-70X" id="q0u-fZ-hpr"/>
+                                    <outlet property="coinCountLabel" destination="pZr-fU-qUw" id="Fej-jE-3ii"/>
+                                    <outlet property="giftLogo" destination="boh-Zw-Raw" id="7N7-FU-6cU"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -74,8 +139,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmT-3h-2jm" userLabel="Container">
-                                <rect key="frame" x="0.0" y="100" width="320" height="276"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmT-3h-2jm" userLabel="Container">
+                                <rect key="frame" x="0.0" y="568" width="320" height="276"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LG-BG" translatesAutoresizingMaskIntoConstraints="NO" id="AwK-WF-LoI">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
@@ -248,7 +313,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="QdB-oD-v3q" firstAttribute="centerY" secondItem="pRT-81-lU3" secondAttribute="centerY" id="6ti-6c-tvd"/>
                                             <constraint firstAttribute="trailing" secondItem="QdB-oD-v3q" secondAttribute="trailing" constant="16" id="74x-O8-s2W"/>
