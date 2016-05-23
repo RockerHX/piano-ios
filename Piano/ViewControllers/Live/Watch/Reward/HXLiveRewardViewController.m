@@ -13,6 +13,7 @@
 #import "HXAlbumModel.h"
 #import "UIImageView+WebCache.h"
 #import "MIAMCoinManage.h"
+#import "HexColors.h"
 
 
 @interface HXLiveRewardViewController () <
@@ -57,6 +58,9 @@ HXSectorSliderDelegate
 }
 
 - (void)viewConfigure {
+    _sectorSlider.arcColor = [UIColor hx_colorWithHexRGBAString:@"272A2F"];
+    _sectorSlider.sliderColor = [UIColor hx_colorWithHexRGBAString:@"B59B7A"];
+    
     [self updateAlbumContainer];
     [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
         [self updateControlContainer];

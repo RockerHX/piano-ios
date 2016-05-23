@@ -11,6 +11,7 @@
 
 
 @class HXAlbumModel;
+@class HXSectorSlider;
 
 
 @interface HXLiveRewardViewController : UIViewController
@@ -28,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *rewardCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *balanceCountLabel;
 @property (weak, nonatomic) IBOutlet  UIView *rechargeContainer;
+
+@property (weak, nonatomic) IBOutlet HXSectorSlider *sectorSlider;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
