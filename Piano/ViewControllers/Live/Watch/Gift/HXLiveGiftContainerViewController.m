@@ -15,7 +15,19 @@
 
 #pragma mark - Property
 - (void)setGifts:(NSArray *)gifts {
-    _gifts = gifts;
+    NSMutableArray *array = gifts.mutableCopy;
+    [gifts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [array addObject:obj];
+    }];
+    [gifts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [array addObject:obj];
+    }];
+    [gifts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [array addObject:obj];
+    }];
+    _gifts = [array copy];
+    
+//    _gifts = gifts;
     
     _selectedIndex = 0;
     [self.collectionView reloadData];
@@ -38,10 +50,6 @@
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     HXLiveGiftItemCell *itemCell = (HXLiveGiftItemCell *)cell;
     [itemCell updateWithGift:_gifts[indexPath.row]];
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [self itemSize];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
