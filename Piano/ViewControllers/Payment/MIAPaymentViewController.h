@@ -10,4 +10,6 @@
 
 @interface MIAPaymentViewController : UIViewController
 
+@property (nonatomic, assign) BOOL present;
+
 @end

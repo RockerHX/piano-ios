@@ -9,6 +9,7 @@
 #import "HXRecordLiveViewModel.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
+#import "HXUserSession.h"
 
 
 @implementation HXRecordLiveViewModel {
@@ -30,7 +31,7 @@
 - (void)initConfigure {
     _comments = @[];
     _barrages = @[];
-    _onlineCount = @"0";
+    _model = [HXLiveModel new];
     
     [self signalLink];
     [self notificationConfigure];
@@ -40,6 +41,7 @@
 - (void)signalLink {
     _barragesSignal = RACObserve(self, barrages);
     _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
+    _rewardSignal = [RACSubject subject];
 }
 
 - (void)notificationConfigure {
@@ -97,14 +99,14 @@
 
 #pragma mark - Property
 - (NSString *)anchorAvatar {
-    return _model.avatarUrl;
+    return [HXUserSession session].user.avatarUrl;
 }
 
 - (NSString *)anchorNickName {
-    return _model.nickName;
+    return [HXUserSession session].user.nickName;
 }
 
-- (NSString *)viewCount {
+- (NSString *)onlineCount {
     return @(_model.viewCount).stringValue;
 }
 
@@ -137,6 +139,9 @@
     HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
     barrage.type = HXBarrageTypeReward;
     [self addBarrage:barrage];
+    
+    _model.album.rewardTotal = barrage.rewardTotal;
+    [_rewardSignal sendNext:nil];
 }
 
 - (void)addComment:(NSDictionary *)data {
@@ -157,7 +162,7 @@
 }
 
 - (void)updateOnlineCount:(NSInteger)count {
-    _onlineCount = @(count).stringValue;
+    _model.viewCount = count;
 }
 
 - (void)leaveRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {

@@ -81,7 +81,7 @@
 - (BOOL)checkShouldCreateDirectoryWithPath:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:path]) {
-        return [fileManager createDirectoryAtPath:path withIntermediateDirectories:nil attributes:nil error:nil];
+        return [fileManager createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
     }
     return NO;
 }

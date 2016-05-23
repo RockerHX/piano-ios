@@ -101,7 +101,11 @@
     @strongify(self);
         if (type == PaymentBarButtonItemType_Pop) {
             //POP
-            [self.navigationController popViewControllerAnimated:YES];
+            if (_present) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
             
         }else if(type == PaymentBarButtonItemType_PayHistory){
             //消费记录

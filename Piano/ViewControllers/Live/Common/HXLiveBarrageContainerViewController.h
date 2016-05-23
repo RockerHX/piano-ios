@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 
 
-@class HXCommentModel;
+@class HXBarrageModel;
 @class HXLiveBarrageContainerViewController;
 
 
 @protocol HXLiveBarrageContainerViewControllerDelegate <NSObject>
 
 @required
-- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment;
+- (void)barrageContainer:(HXLiveBarrageContainerViewController *)container shouldShowBarrage:(HXBarrageModel *)barrage;
 
 @end
 

@@ -13,14 +13,15 @@
 
 @interface HXRecordLiveViewModel : NSObject
 
-@property (nonatomic, strong, readonly) RACSignal *barragesSignal;
-@property (nonatomic, strong, readonly) RACSignal *exitSignal;
+@property (nonatomic, strong, readonly)  RACSignal *barragesSignal;
+@property (nonatomic, strong, readonly)  RACSignal *exitSignal;
+@property (nonatomic, strong, readonly) RACSubject *rewardSignal;
 
 @property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
 
 @property (nonatomic, strong) HXLiveModel *model;
 
-@property (nonatomic, strong, readonly)    NSString *roomID;
+@property (nonatomic, strong, readonly) NSString *roomID;
 
 @property (nonatomic, strong, readonly) NSString *anchorAvatar;
 @property (nonatomic, strong, readonly) NSString *anchorNickName;
@@ -28,7 +29,6 @@
 
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
 @property (nonatomic, strong) NSArray<HXBarrageModel *> *barrages;
-
 
 - (instancetype)initWithRoomID:(NSString *)roomID;
 

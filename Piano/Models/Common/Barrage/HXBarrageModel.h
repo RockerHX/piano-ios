@@ -23,8 +23,11 @@ typedef NS_ENUM(NSUInteger, HXBarrageType) {
 
 @property (nonatomic, strong) NSString *uID;
 @property (nonatomic, strong) NSString *nickName;
+@property (nonatomic, strong) NSString *giftName;
 @property (nonatomic, strong) NSString *avatarUrl;
-@property (nonatomic, strong) NSString *signature;
+
+@property (nonatomic, assign) NSInteger  rewardTotal;
+@property (nonatomic, assign) NSInteger  rewardCoinCount;
 
 @property (nonatomic, assign)  HXBarrageType  type;
 @property (nonatomic, strong)       NSString *prompt;

@@ -20,6 +20,8 @@
 #import "UIButton+WebCache.h"
 #import "HXWatcherBoard.h"
 #import "MiaAPIHelper.h"
+#import "HXLiveRewardTopListViewController.h"
+#import "HXLiveAlbumView.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -28,7 +30,8 @@ HXRecordAnchorViewDelegate,
 HXRecordBottomBarDelegate,
 HXPreviewLiveViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
-HXLiveBarrageContainerViewControllerDelegate
+HXLiveBarrageContainerViewControllerDelegate,
+HXLiveAlbumViewDelegate
 >
 @end
 
@@ -36,7 +39,7 @@ HXLiveBarrageContainerViewControllerDelegate
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
     HXLiveEndViewController *_endViewController;
-    HXLiveBarrageContainerViewController *_commentContainer;
+    HXLiveBarrageContainerViewController *_barrageContainer;
     
     NSString *_roomID;
     NSString *_roomTitle;
@@ -66,8 +69,8 @@ HXLiveBarrageContainerViewControllerDelegate
         _endViewController = segue.destinationViewController;
         _endViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
-        _commentContainer = segue.destinationViewController;
-        _commentContainer.delegate = self;
+        _barrageContainer = segue.destinationViewController;
+        _barrageContainer.delegate = self;
     }
 }
 
@@ -108,13 +111,13 @@ HXLiveBarrageContainerViewControllerDelegate
     //设置回调代理
     [[HXZegoAVKitManager manager].zegoLiveApi setDelegate:self];
     
-    [self updateAnchorView];
     [self startPreview];
 }
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
     [_anchorView stopRecordTime];
+    [_albumView stopAlbumAnmation];
     
     ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi takeLocalViewSnapshot];
@@ -155,22 +158,45 @@ HXLiveBarrageContainerViewControllerDelegate
 
 - (void)leaveRoom {
     [_viewModel.leaveRoomCommand execute:nil];
-    [[HXZegoAVKitManager manager].zegoLiveApi logoutChannel];
+    
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    [zegoLiveApi stopPreview];
+    [zegoLiveApi logoutChannel];
 }
 
 - (void)signalLink {
     @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         @strongify(self)
-        self->_commentContainer.barrages = barrages;
+        self->_barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         ;
     }];
+    [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
+        @strongify(self)
+        [self updateAlbumView];
+    }];
 }
 
 - (void)updateAnchorView {
-    [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal];
+    [_anchorView.avatar sd_setImageWithURL:[NSURL URLWithString:_viewModel.anchorAvatar] forState:UIControlStateNormal];
+}
+
+static CGFloat AlbumViewLeftSpace = 10.0f;
+static CGFloat AlbumViewWidth = 60.0f;
+- (void)updateAlbumView {
+    HXAlbumModel *album = _viewModel.model.album;
+    if (album) {
+        _albumView.hidden = NO;
+        _albumViewLeftConstraint.constant = AlbumViewLeftSpace;
+        _albumViewWidthConstraint.constant = AlbumViewWidth;
+        [_albumView updateWithAlbum:album];
+    } else {
+        _albumView.hidden = YES;
+        _albumViewLeftConstraint.constant = 0.0f;
+        _albumViewWidthConstraint.constant = 0.0f;
+    }
 }
 
 #pragma mark - ZegoLiveApiDelegate
@@ -258,7 +284,8 @@ HXLiveBarrageContainerViewControllerDelegate
             break;
         }
         case HXRecordBottomBarActionBeauty: {
-            ;
+            _beauty = !_beauty;
+            [[HXZegoAVKitManager manager].zegoLiveApi enableBeautifying:_beauty];
             break;
         }
         case HXRecordBottomBarActionChange: {
@@ -272,7 +299,10 @@ HXLiveBarrageContainerViewControllerDelegate
             break;
         }
         case HXRecordBottomBarActionGift: {
-            ;
+            HXLiveRewardTopListViewController *rewardTopListViewController = [HXLiveRewardTopListViewController instance];
+            rewardTopListViewController.type = HXLiveRewardTopListTypeGift;
+            rewardTopListViewController.roomID = _viewModel.roomID;
+            [rewardTopListViewController showOnViewController:self];
             break;
         }
         case HXRecordBottomBarActionShare: {
@@ -283,7 +313,7 @@ HXLiveBarrageContainerViewControllerDelegate
 }
 
 #pragma mark - HXPreviewLiveViewControllerDelegate Methods
-- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl frontCamera:(BOOL)frontCamera beauty:(BOOL)beauty {
+- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController album:(HXAlbumModel *)album roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl frontCamera:(BOOL)frontCamera beauty:(BOOL)beauty {
     
     _roomID = roomID;
     _roomTitle = roomTitle;
@@ -294,7 +324,11 @@ HXLiveBarrageContainerViewControllerDelegate
     [self startPublish];
     
     _viewModel = [[HXRecordLiveViewModel alloc] initWithRoomID:roomID];
+    _viewModel.model.album = album;
     [self signalLink];
+    
+    [self updateAnchorView];
+    [self updateAlbumView];
     
     _previewContainer.hidden = YES;
     _topBar.hidden = NO;
@@ -302,6 +336,10 @@ HXLiveBarrageContainerViewControllerDelegate
     _bottomBar.hidden = NO;
     [_previewContainer removeFromSuperview];
     _previewContainer = nil;
+}
+
+- (void)previewControllerClosed:(HXPreviewLiveViewController *)viewController {
+    [self closeButtonPressed];
 }
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods
@@ -327,8 +365,16 @@ HXLiveBarrageContainerViewControllerDelegate
 //}
 
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+- (void)barrageContainer:(HXLiveBarrageContainerViewController *)container shouldShowBarrage:(HXBarrageModel *)barrage {
     ;
+}
+
+#pragma mark - HXLiveAlbumViewDelegate Methods
+- (void)liveAlbumsViewTaped:(HXLiveAlbumView *)albumsView {
+    HXLiveRewardTopListViewController *rewardTopListViewController = [HXLiveRewardTopListViewController instance];
+    rewardTopListViewController.type = HXLiveRewardTopListTypeAlbum;
+    rewardTopListViewController.roomID = _viewModel.roomID;
+    [rewardTopListViewController showOnViewController:self];
 }
 
 @end

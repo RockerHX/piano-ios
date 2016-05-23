@@ -7,19 +7,23 @@
 //
 
 #import "UIViewController+HXClass.h"
+#import "HXShowRechargeDelegate.h"
 
 
 @interface HXLiveGiftViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet  UIView *tapView;
-@property (weak, nonatomic) IBOutlet  UIView *containerView;
-@property (weak, nonatomic) IBOutlet  UIView *lowGiftContainer;
-@property (weak, nonatomic) IBOutlet  UIView *normalGiftContainer;
-@property (weak, nonatomic) IBOutlet  UIView *mediumGiftContainer;
-@property (weak, nonatomic) IBOutlet  UIView *highGiftContainer;
-@property (weak, nonatomic) IBOutlet UILabel *balanceCountLabel;
+@property (weak, nonatomic) IBOutlet       id  <HXShowRechargeDelegate>rechargeDelegate;
 
+@property (weak, nonatomic) IBOutlet   UIView *tapView;
+@property (weak, nonatomic) IBOutlet   UIView *containerView;
+
+@property (weak, nonatomic) IBOutlet  UILabel *balanceCountLabel;
+@property (weak, nonatomic) IBOutlet   UIView *rechargeContainer;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *conianerHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+
+@property (nonatomic, strong) NSString *roomID;
 
 - (IBAction)giveGiftButtonPressed;
 

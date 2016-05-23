@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class HXAlbumModel;
 @class HXLiveAlbumView;
 
 
@@ -32,5 +32,8 @@
 
 @property (nonatomic, strong)  NSString *coverUrl;
 @property (nonatomic, assign) NSInteger  count;
+
+- (void)updateWithAlbum:(HXAlbumModel *)album;
+- (void)stopAlbumAnmation;
 
 @end

@@ -13,8 +13,10 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"nickName": @"nick",
-             @"avatarUrl": @"userpic",
-             @"signature": @"bio"};
+             @"giftName": @"name",
+            @"avatarUrl": @"userpic",
+          @"rewardTotal": @"total",
+      @"rewardCoinCount": @"mcoin"};
 }
 
 #pragma mark - Property
@@ -34,11 +36,11 @@
                 break;
             }
             case HXBarrageTypeGift: {
-                actionString = [NSString stringWithFormat:@"赠送给主播%@", nil];
+                actionString = [NSString stringWithFormat:@"赠送给主播%@", _giftName];
                 break;
             }
             case HXBarrageTypeReward: {
-                actionString = [NSString stringWithFormat:@"打赏了主播个人专辑%@M币", nil];
+                actionString = [NSString stringWithFormat:@"打赏了主播个人专辑%@M币", @(_rewardCoinCount).stringValue];
                 break;
             }
             default: {

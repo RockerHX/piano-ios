@@ -29,26 +29,6 @@ HXMeAttentionContainerCellDelegate
     
     [self loadConfigure];
     [self viewConfigure];
-    
-//    MIAAttentionPromptView *attentionPromptView = [MIAAttentionPromptView newAutoLayoutView];
-//    [attentionPromptView setShowData:nil];
-//    [attentionPromptView setAttentionPromptViewWidth:80.];
-//    [self.view addSubview:attentionPromptView];
-//    
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:50. selfView:attentionPromptView superView:self.view];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:200. selfView:attentionPromptView superView:self.view];
-//    [JOAutoLayout autoLayoutWithWidth:80. selfView:attentionPromptView superView:self.view];
-//    [JOAutoLayout autoLayoutWithHeight:110. selfView:attentionPromptView superView:self.view];
-//    
-//    MIAAttentionContainerView *attentionContainerView = [MIAAttentionContainerView newAutoLayoutView];
-//    [attentionContainerView setShowData:nil];
-//    [self.view addSubview:attentionContainerView];
-//    
-//    [JOAutoLayout autoLayoutWithTopView:attentionPromptView distance:20. selfView:attentionContainerView superView:self.view];
-//    [JOAutoLayout autoLayoutWithLeftXView:attentionPromptView selfView:attentionContainerView superView:self.view];
-//    [JOAutoLayout autoLayoutWithWidth:100. selfView:attentionContainerView superView:self.view];
-//    [JOAutoLayout autoLayoutWithHeight:130. selfView:attentionContainerView superView:self.view];
-
 }
 
 #pragma mark - Configure Methods
@@ -154,11 +134,15 @@ HXMeAttentionContainerCellDelegate
     HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
         case HXMeRowTypeRecharge: {
-            ;
+            if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
+                [_delegate container:self takeAction:HXMeContainerActionRecharge];
+            }
             break;
         }
         case HXMeRowTypePurchaseHistory: {
-            ;
+            if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
+                [_delegate container:self takeAction:HXMeContainerActionPurchaseHistory];
+            }
             break;
         }
         case HXMeRowTypeMyStation: {

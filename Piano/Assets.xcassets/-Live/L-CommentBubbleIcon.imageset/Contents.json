@@ -5,28 +5,25 @@
       "scale" : "1x"
     },
     {
-      "scale" : "2x",
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 33,
+          "top" : 28,
+          "left" : 40,
+          "right" : 31
+        }
+      },
       "idiom" : "universal",
       "filename" : "L-CommentBubbleIcon@2x.png",
-      "resizing" : {
-        "mode" : "9-part",
-        "center" : {
-          "mode" : "tile",
-          "width" : 1,
-          "height" : 1
-        },
-        "cap-insets" : {
-          "left" : 40,
-          "top" : 28,
-          "right" : 31,
-          "bottom" : 33
-        }
-      }
+      "scale" : "2x"
     },
     {
-      "scale" : "3x",
-      "idiom" : "universal",
-      "filename" : "L-CommentBubbleIcon@3x.png",
       "resizing" : {
         "mode" : "9-part",
         "center" : {
@@ -35,12 +32,15 @@
           "height" : 1
         },
         "cap-insets" : {
-          "left" : 60,
+          "bottom" : 47,
           "top" : 46,
-          "right" : 46,
-          "bottom" : 47
+          "left" : 60,
+          "right" : 46
         }
-      }
+      },
+      "idiom" : "universal",
+      "filename" : "L-CommentBubbleIcon@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

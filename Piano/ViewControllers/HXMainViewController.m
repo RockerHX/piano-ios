@@ -20,6 +20,7 @@
 
 @interface HXMainViewController () <
 HXDiscoveryViewControllerDelegate,
+HXMeViewControllerDelegate,
 HXLoginViewControllerDelegate
 >
 @end
@@ -44,6 +45,7 @@ HXLoginViewControllerDelegate
         _discoveryContainerViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXMeViewController class])]) {
         _meContainerViewController = segue.destinationViewController;
+        _meContainerViewController.delegate = self;
     }
 }
 
@@ -218,6 +220,11 @@ HXLoginViewControllerDelegate
 }
 
 - (void)discoveryViewControllerHiddenNavigationBar:(HXDiscoveryViewController *)viewController {
+    _shouldHiddenNavigationBar = YES;
+}
+
+#pragma mark - HXMeViewControllerDelegate Methods
+- (void)meViewControllerHiddenNavigationBar:(HXMeViewController *)viewController {
     _shouldHiddenNavigationBar = YES;
 }
 

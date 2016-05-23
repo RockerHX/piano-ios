@@ -201,7 +201,7 @@ HXReplayBottomBarDelegate
 }
 
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+- (void)barrageContainer:(HXLiveBarrageContainerViewController *)container shouldShowBarrage:(HXBarrageModel *)barrage {
     ;
 }
 

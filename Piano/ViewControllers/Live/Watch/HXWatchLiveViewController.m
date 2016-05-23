@@ -21,6 +21,8 @@
 #import "HXLiveAlbumView.h"
 #import "HXLiveGiftViewController.h"
 #import "HXLiveRewardViewController.h"
+#import "HXShowRechargeDelegate.h"
+#import "MIAPaymentViewController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -29,13 +31,14 @@ HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
 HXLiveBarrageContainerViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
-HXLiveAlbumViewDelegate
+HXLiveAlbumViewDelegate,
+HXShowRechargeDelegate
 >
 @end
 
 
 @implementation HXWatchLiveViewController {
-    HXLiveBarrageContainerViewController *_commentContainer;
+    HXLiveBarrageContainerViewController *_barrageContainer;
     HXLiveEndViewController *_endViewController;
     HXWatchLiveViewModel *_viewModel;
 }
@@ -53,8 +56,8 @@ HXLiveAlbumViewDelegate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *identifier = segue.identifier;
     if ([identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
-        _commentContainer = segue.destinationViewController;
-        _commentContainer.delegate = self;
+        _barrageContainer = segue.destinationViewController;
+        _barrageContainer.delegate = self;
     } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
         _endViewController = segue.destinationViewController;
         _endViewController.delegate = self;
@@ -110,10 +113,14 @@ HXLiveAlbumViewDelegate
     @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         @strongify(self)
-        self->_commentContainer.barrages = barrages;
+        self->_barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
+    }];
+    [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
+        @strongify(self)
+        [self updateAlbumView];
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
@@ -139,6 +146,7 @@ HXLiveAlbumViewDelegate
 }
 
 - (void)dismiss {
+    [_albumView stopAlbumAnmation];
     [self leaveRoom];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -161,6 +169,7 @@ HXLiveAlbumViewDelegate
 - (void)fetchDataFinfished {
     [self roomConfigure];
     [self updateAnchorView];
+    [self updateAlbumView];
 }
 
 - (void)roomConfigure {
@@ -197,6 +206,11 @@ HXLiveAlbumViewDelegate
     }
 }
 
+- (void)updateAlbumView {
+    HXAlbumModel *album = _viewModel.model.album;
+    _albumView.hidden = album ? NO : YES;
+    [_albumView updateWithAlbum:album];
+}
 
 #pragma mark - ZegoLiveApiDelegate
 - (void)onLoginChannel:(uint32)error {
@@ -301,6 +315,8 @@ HXLiveAlbumViewDelegate
         }
         case HXWatchBottomBarActionGift: {
             HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
+            giftViewController.rechargeDelegate = self;
+            giftViewController.roomID = _roomID;
             [self addChildViewController:giftViewController];
             [self.view addSubview:giftViewController.view];
             break;
@@ -309,7 +325,7 @@ HXLiveAlbumViewDelegate
 }
 
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
-- (void)commentContainer:(HXLiveBarrageContainerViewController *)container shouldShowComment:(HXCommentModel *)comment {
+- (void)barrageContainer:(HXLiveBarrageContainerViewController *)container shouldShowBarrage:(HXBarrageModel *)barrage {
     ;
 }
 
@@ -320,9 +336,26 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - HXLiveAlbumViewDelegate Methods
 - (void)liveAlbumsViewTaped:(HXLiveAlbumView *)albumsView {
-    HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
-    [self addChildViewController:rewardViewController];
-    [self.view addSubview:rewardViewController.view];
+    if ([HXUserSession session].state == HXUserStateLogout) {
+        [self showLoginSence];
+        return;
+    }
+    
+    HXAlbumModel *album = _viewModel.model.album;
+    if (album) {
+        HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
+        rewardViewController.rechargeDelegate = self;
+        rewardViewController.roomID = _roomID;
+        rewardViewController.album = album;
+        [rewardViewController showOnViewController:self];
+    }
+}
+
+#pragma mark - HXShowRechargeDelegate Methods
+- (void)shouldShowRechargeSence {
+    MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
+    paymentViewController.present = YES;
+    [self presentViewController:paymentViewController animated:YES completion:nil];
 }
 
 @end
