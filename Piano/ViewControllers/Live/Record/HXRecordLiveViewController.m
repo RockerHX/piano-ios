@@ -158,7 +158,10 @@ HXLiveAlbumViewDelegate
 
 - (void)leaveRoom {
     [_viewModel.leaveRoomCommand execute:nil];
-    [[HXZegoAVKitManager manager].zegoLiveApi logoutChannel];
+    
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    [zegoLiveApi stopPreview];
+    [zegoLiveApi logoutChannel];
 }
 
 - (void)signalLink {
