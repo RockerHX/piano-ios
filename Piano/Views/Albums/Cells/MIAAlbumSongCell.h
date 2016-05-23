@@ -10,4 +10,18 @@
 
 @interface MIAAlbumSongCell : MIABaseTableViewCell
 
+/**
+ *  设置歌曲播放的状态.
+ *
+ *  @param state YES:是播放 NO:未播放状态
+ */
+- (void)setSongPlayState:(BOOL)state;
+
+/**
+ *  设置cell的索引值.
+ *
+ *  @param cellIndex 索引值.
+ */
+- (void)setSongCellIndex:(NSInteger)cellIndex;
+
 @end

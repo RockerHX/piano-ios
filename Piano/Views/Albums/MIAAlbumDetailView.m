@@ -29,6 +29,7 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 @property (nonatomic, strong) MIAAlbumModel *albumModel;
 
 @property (nonatomic, copy) RewardAlbumActionBlock rewardAlbumActionBlock;
+@property (nonatomic, copy) PlaySongChangeBlock playSongChangeBlock;
 
 @end
 
@@ -102,7 +103,6 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:rewardButton superView:_rewardForDownloadView];
         [JOAutoLayout autoLayoutWithBottomSpaceDistance:-topSpaceDistance selfView:rewardButton superView:_rewardForDownloadView];
         [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:rewardButton superView:_rewardForDownloadView];
-        
     }
 }
 
@@ -125,6 +125,13 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
     if (!self.playView) {
         self.playView = [MIAAlbumPlayView newAutoLayoutView];
         [_playView setBackgroundColor:[UIColor whiteColor]];
+        @weakify(self);
+        [_playView songChangeHandler:^(HXSongModel *songModel, NSInteger songIndex) {
+        @strongify(self);
+            if (self.playSongChangeBlock) {
+                self.playSongChangeBlock(songModel, songIndex);
+            }
+        }];
         [self addSubview:_playView];
         
         [JOAutoLayout autoLayoutWithTopView:_rewardView distance:0. selfView:_playView superView:self];
@@ -159,17 +166,38 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         
         [_albumCoverImageView sd_setImageWithURL:[NSURL URLWithString:_albumModel.coverUrl] placeholderImage:nil];
         [_rewardView setRewardData:_albumModel.backList];
-        
     }else{
     
         [JOFException exceptionWithName:@"MIAAlbumDetailView exception!" reason:@"data必须是MIAAlbumModel类型"];
     }
 }
 
+- (void)setAlbumSongModelData:(id)data{
+
+    if ([data isKindOfClass:[NSArray class]]) {
+
+        [_playView setSongModelArray:data];
+    }else{
+    
+        [JOFException exceptionWithName:@"MIAAlbumDetailView exception!" reason:@"data必须是NSArray类型"];
+    }
+}
+
+- (void)playAlbumSongWithIndex:(NSInteger)songIndex{
+
+    [_playView playSongIndex:songIndex];
+}
+
 - (void)rewardAlbumButtonClickHanlder:(RewardAlbumActionBlock)block{
 
     self.rewardAlbumActionBlock = nil;
     self.rewardAlbumActionBlock = block;
+}
+
+- (void)playSongChangeHandler:(PlaySongChangeBlock)sendBlock{
+
+    self.playSongChangeBlock = nil;
+    self.playSongChangeBlock = sendBlock;
 }
 
 @end

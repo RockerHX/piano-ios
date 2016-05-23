@@ -31,6 +31,9 @@
 
 @property (nonatomic, strong) MIAAlbumViewModel *albumViewModel;
 
+@property (nonatomic, strong) HXSongModel *playSongModel;
+@property (nonatomic, assign) NSInteger playSongIndex;
+
 
 @end
 
@@ -99,6 +102,7 @@
         [self.albumBarView setAlbumName:self.albumViewModel.albumModel.title singerName:self.albumViewModel.albumModel.nick];
 //        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.albumViewModel.albumModel.coverUrl] placeholderImage:nil];
         [self.albumTableHeadView setAlbumHeadDetailData:self.albumViewModel.albumModel];
+        [self.albumTableHeadView setAlbumSongModelData:self.albumViewModel.cellDataArray.firstObject];
     }];
 }
 
@@ -187,6 +191,16 @@
 //        }];
         [self.navigationController pushViewController:rewardViewController animated:YES];
     }];
+    
+    [_albumTableHeadView playSongChangeHandler:^(HXSongModel *songModel, NSInteger songIndex) {
+    @strongify(self);
+        self.playSongModel = nil;
+        self.playSongModel = songModel;
+        
+        self.playSongIndex = songIndex;
+        
+        [self.albumTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    }];
     [_albumTableHeadView setFrame:CGRectMake(0., 0., View_Width(self.view), [_albumTableHeadView albumDetailViewHeight])];
     
 }
@@ -212,7 +226,6 @@
     if (indexPath.section == 0) {
         cellType = MIACellTypeAlbumSong;
     }else{
-    
         cellType = MIACellTypeAlbumComment;
     }
     
@@ -222,8 +235,19 @@
         [cell setCellWidth:View_Width(self.view)];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//    [[cell textLabel] setText:@"text"];
     [cell setCellData:[[_albumViewModel.cellDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+    
+    if (indexPath.section == 0) {
+        //歌曲Section
+        if (indexPath.row == _playSongIndex && _playSongModel && [_playSongModel isEqual:[[_albumViewModel.cellDataArray objectAtIndex:indexPath.section] objectAtIndex:_playSongIndex]]) {
+            [(MIAAlbumSongCell *)cell setSongPlayState:YES];
+        }else{
+        
+            [(MIAAlbumSongCell *)cell setSongPlayState:NO];
+        }
+        
+         [(MIAAlbumSongCell *)cell setSongCellIndex:indexPath.row+1];
+    }
     return cell;
 }
 
@@ -274,7 +298,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    if (indexPath.section == 0) {
+        //歌曲的section处理,播放当前的歌曲
+        [_albumTableHeadView playAlbumSongWithIndex:indexPath.row];
+    }
 }
 
 #pragma mark - Scroll delegate
