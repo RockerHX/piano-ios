@@ -26,6 +26,8 @@
                                            frontCamera:(BOOL)frontCamera
                                                 beauty:(BOOL)beauty;
 
+- (void)previewControllerClosed:(HXPreviewLiveViewController *)viewController;
+
 @end
 
 

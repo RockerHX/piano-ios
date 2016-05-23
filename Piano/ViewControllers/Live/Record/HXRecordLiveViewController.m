@@ -338,6 +338,10 @@ static CGFloat AlbumViewWidth = 60.0f;
     _previewContainer = nil;
 }
 
+- (void)previewControllerClosed:(HXPreviewLiveViewController *)viewController {
+    [self closeButtonPressed];
+}
+
 #pragma mark - HXLiveEndViewControllerDelegate Methods
 - (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -153,7 +153,9 @@ HXSelectedAlbumViewControllerDelegate
             break;
         }
         case HXPreviewLiveTopBarActionColse: {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            if (_delegate && [_delegate respondsToSelector:@selector(previewControllerClosed:)]) {
+                [_delegate previewControllerClosed:self];
+            }
             break;
         }
     }
