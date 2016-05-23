@@ -144,14 +144,10 @@
         CGFloat tempHeight = 36.;
         
         CGFloat addHeight = textViewHeight - tempHeight;
-//        NSLog(@"addHeight:%f",addHeight);
-        
-//        [self.enterCommentView updateTextViewWithEnableState:enableState];
-            [JOAutoLayout removeAutoLayoutWithHeightSelfView:self.enterCommentView superView:self.view];
-            [JOAutoLayout autoLayoutWithHeight:kAlbumEnterCommentViewHeight+addHeight selfView:self.enterCommentView superView:self.view];
+        [JOAutoLayout removeAutoLayoutWithHeightSelfView:self.enterCommentView superView:self.view];
+        [JOAutoLayout autoLayoutWithHeight:kAlbumEnterCommentViewHeight+addHeight selfView:self.enterCommentView superView:self.view];
         
         [self.enterCommentView updateTextViewWithEnableState:enableState];
-        
     }];
     [self.view addSubview:_enterCommentView];
     
@@ -175,7 +171,13 @@
     [JOAutoLayout autoLayoutWithTopView:_albumBarView distance:0. selfView:_albumTableView superView:self.view];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumTableView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithBottomView:_enterCommentView distance:0. selfView:_albumTableView superView:self.view];
+    
+    if (_rewardType == MIAAlbumRewardTypeNormal) {
+        [JOAutoLayout autoLayoutWithBottomView:_enterCommentView distance:0. selfView:_albumTableView superView:self.view];
+    }else{
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_albumTableView superView:self.view];
+        [_enterCommentView setHidden:YES];
+    }
 }
 
 - (void)createAlbumTableHeadView{
@@ -203,18 +205,35 @@
     }];
     [_albumTableHeadView setFrame:CGRectMake(0., 0., View_Width(self.view), [_albumTableHeadView albumDetailViewHeight])];
     
+    if (_rewardType == MIAAlbumRewardTypeMyReward) {
+        [_albumTableHeadView setAlbumRewardState:YES];
+    }
+    
 }
 
 #pragma mark - table data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return [_albumViewModel.cellDataArray count];
+    if (_rewardType == MIAAlbumRewardTypeNormal) {
+    
+        return [_albumViewModel.cellDataArray count];
+    }else{
+    
+        return 1;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [[_albumViewModel.cellDataArray objectAtIndex:section] count];
+    if ([_albumViewModel.cellDataArray count]) {
+        return [[_albumViewModel.cellDataArray objectAtIndex:section] count];
+    }else{
+    
+        return 0;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

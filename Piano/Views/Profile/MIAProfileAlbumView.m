@@ -37,7 +37,7 @@
     
     MIAAlbumViewController *albumViewController = [MIAAlbumViewController new];
     [albumViewController setAlbumUID:_albumModel.id];
-
+    [albumViewController setRewardType:MIAAlbumRewardTypeNormal];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [(UINavigationController *)[[delegate window] rootViewController] pushViewController:albumViewController animated:YES];
 }

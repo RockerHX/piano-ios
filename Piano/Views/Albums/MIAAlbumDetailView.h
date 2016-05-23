@@ -34,6 +34,13 @@ typedef void(^PlaySongChangeBlock)(HXSongModel *songModel, NSInteger songIndex);
 - (CGFloat)albumDetailViewHeight;
 
 /**
+ *  设置专辑的打赏状态.
+ *
+ *  @param state YES:为从我打赏过的专辑点击进入 NO:为可以打赏的专辑
+ */
+- (void)setAlbumRewardState:(BOOL)state;
+
+/**
  *  设置专辑的一些数据.
  *
  *  @param data 专辑的数据
@@ -67,5 +74,6 @@ typedef void(^PlaySongChangeBlock)(HXSongModel *songModel, NSInteger songIndex);
  *  @param sendBlock PlaySongChangeBlock.
  */
 - (void)playSongChangeHandler:(PlaySongChangeBlock)sendBlock;
+
 
 @end
