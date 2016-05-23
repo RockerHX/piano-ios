@@ -12,6 +12,7 @@
 #import "MIAMCoinManage.h"
 #import "MiaAPIHelper.h"
 #import "HXGiftModel.h"
+#import "HXLiveGiftContainerViewController.h"
 
 
 @interface HXLiveGiftViewController ()
@@ -21,11 +22,18 @@
 @implementation HXLiveGiftViewController {
     NSArray *_giftList;
     UIButton *_selectedButton;
+    
+    HXLiveGiftContainerViewController *_container;
 }
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
     return HXStoryBoardNameLive;
+}
+
+#pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    _container = segue.destinationViewController;
 }
 
 #pragma mark - View Controller Life Cycle

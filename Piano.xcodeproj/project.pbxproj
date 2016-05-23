@@ -256,6 +256,7 @@
 		CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */; };
 		CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6C19511CA4EE8700849B39 /* HXRecordBottomBar.xib */; };
 		CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9167881CAE5E6D000A12DC /* HXProfileNavigationBar.xib */; };
+		CD80F64C1CF2EFF3005115C1 /* HXLiveGiftContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD80F64B1CF2EFF3005115C1 /* HXLiveGiftContainerViewController.m */; };
 		CD8F86A91CD099EA00D8C8A4 /* HXDiscoveryShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8F86A81CD099EA00D8C8A4 /* HXDiscoveryShowCell.m */; };
 		CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
@@ -637,6 +638,8 @@
 		CD7960881CBE4BA1004CC661 /* LocationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMgr.h; sourceTree = "<group>"; };
 		CD7960891CBE4BA1004CC661 /* LocationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMgr.m; sourceTree = "<group>"; };
 		CD79614F1CBE594C004CC661 /* Piano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Piano.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD80F64A1CF2EFF3005115C1 /* HXLiveGiftContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveGiftContainerViewController.h; sourceTree = "<group>"; };
+		CD80F64B1CF2EFF3005115C1 /* HXLiveGiftContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveGiftContainerViewController.m; sourceTree = "<group>"; };
 		CD858D8B1CAE68A1007441E9 /* HXProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileHeaderCell.h; sourceTree = "<group>"; };
 		CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileHeaderCell.m; sourceTree = "<group>"; };
 		CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileLiveCell.h; sourceTree = "<group>"; };
@@ -2215,6 +2218,8 @@
 			children = (
 				CDBCFAFB1CE1E35A0045946F /* HXLiveGiftViewController.h */,
 				CDBCFAFC1CE1E35A0045946F /* HXLiveGiftViewController.m */,
+				CD80F64A1CF2EFF3005115C1 /* HXLiveGiftContainerViewController.h */,
+				CD80F64B1CF2EFF3005115C1 /* HXLiveGiftContainerViewController.m */,
 			);
 			path = Gift;
 			sourceTree = "<group>";
@@ -2877,6 +2882,7 @@
 				CD7960E31CBE594C004CC661 /* HXReplayBottomBar.m in Sources */,
 				CD7960E41CBE594C004CC661 /* HXPreviewLiveEidtView.m in Sources */,
 				CD7960E51CBE594C004CC661 /* PathHelper.m in Sources */,
+				CD80F64C1CF2EFF3005115C1 /* HXLiveGiftContainerViewController.m in Sources */,
 				CD7960E61CBE594C004CC661 /* HXLiveEndViewController.m in Sources */,
 				420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */,
 				42984B611CDC878E004F00D5 /* MIAProfileLiveCell.m in Sources */,
