@@ -19,7 +19,6 @@
 
 - (void)setCellWidth:(CGFloat)width{
     
-    
 }
 
 - (void)createAlbumDetailView{
@@ -36,14 +35,16 @@
     
     [self createAlbumDetailView];
     [_albumSongView setSongData:data];
-    
-    if (arc4random()%2) {
-        [_albumSongView changeSongPlayState:YES];
-    }else{
-    
-        [_albumSongView changeSongPlayState:NO];
-    }
-    
+}
+
+- (void)setSongPlayState:(BOOL)state{
+
+    [_albumSongView changeSongPlayState:state];
+}
+
+- (void)setSongCellIndex:(NSInteger)cellIndex{
+
+    [_albumSongView setSongIndex:cellIndex];
 }
 
 @end

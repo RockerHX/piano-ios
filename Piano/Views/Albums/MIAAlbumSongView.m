@@ -9,7 +9,7 @@
 #import "MIAAlbumSongView.h"
 #import "MIAFontManage.h"
 #import "JOBaseSDK.h"
-#import "MIASongModel.h"
+#import "HXSongModel.h"
 
 static CGFloat const kIndexLabelWidth = 40.;
 
@@ -19,7 +19,7 @@ static CGFloat const kIndexLabelWidth = 40.;
 @property (nonatomic, strong) UILabel *songNameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UIImageView *playStateImageView;
-@property (nonatomic, strong) MIASongModel *songModel;
+@property (nonatomic, strong) HXSongModel *songModel;
 
 @end
 
@@ -104,15 +104,15 @@ static CGFloat const kIndexLabelWidth = 40.;
 
 - (void)setSongData:(id)data{
 
-    if ([data isKindOfClass:[MIASongModel class]]) {
+    if ([data isKindOfClass:[HXSongModel class]]) {
         
         self.songModel = nil;
         self.songModel = data;
         
-        [_timeLabel setText:_songModel.songTime];
+        [_timeLabel setText:_songModel.durationPrompt];
         
         [_songNameLabel setText:_songModel.title];
-        [_indexLabel setText:@"1"];
+        
         
         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_timeLabel superView:self];
         [JOAutoLayout autoLayoutWithWidth:[_timeLabel sizeThatFits:JOMAXSize].width selfView:_timeLabel superView:self];
@@ -121,6 +121,11 @@ static CGFloat const kIndexLabelWidth = 40.;
     
         [JOFException exceptionWithName:@"MIAAlbumSongView exception!" reason:@"data必须是MIASongModel类型"];
     }
+}
+
+- (void)setSongIndex:(NSInteger)index{
+
+    [_indexLabel setText:[NSString stringWithFormat:@"%ld",(long)index]];
 }
 
 @end
