@@ -20,16 +20,46 @@ typedef void(^KeyBoardShowBlcok) (CGFloat height);
  *
  *  @param textViewHeight textView的高度
  */
-typedef void(^TextViewHeightChangeBlock) (CGFloat textViewHeight, BOOL enableState);
+typedef void(^TextViewHeightChangeBlock) (CGFloat textViewHeight);
+
+/**
+ *  发送评论.
+ *
+ *  @param commentConent 评论的内容
+ */
+typedef void(^SendCommentBlock) (NSString *commentConent);
 
 @interface MIAAlbumEnterCommentView : UIView
 
+/**
+ *  键盘出现的回调.
+ *
+ *  @param block KeyBoardShowBlcok,
+ */
 - (void)keyBoardShowHandler:(KeyBoardShowBlcok)block;
 
+/**
+ *  输入框里面的文字高度的变化的block.
+ *
+ *  @param block TextViewHeightChangeBlock,
+ */
 - (void)textViewHeightChangeHandler:(TextViewHeightChangeBlock)block;
 
+/**
+ *  发送评论的回调.
+ *
+ *  @param block SendCommentBlock.
+ */
+- (void)sendAlbumCommentHanlder:(SendCommentBlock)block;
+
+/**
+ *  收起键盘
+ */
 - (void)resignTextViewFirstResponder;
 
-- (void)updateTextViewWithEnableState:(BOOL)state;
+/**
+ *  清空TextView
+ */
+- (void)cleanTextView;
 
 @end

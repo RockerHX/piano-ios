@@ -16,7 +16,10 @@
 static CGFloat const kImageToLabelSpaceDistance = 15.;//图片与label之间的间距
 static CGFloat const kImageWidth = 40.;//图片的宽度
 
-@interface MIAAlbumCommentView()
+@interface MIAAlbumCommentView(){
+
+    CGFloat viewWidth;
+}
 
 @property (nonatomic, strong) UIImageView *headImageView;
 @property (nonatomic, strong) UILabel *nickNameLabel;
@@ -34,6 +37,7 @@ static CGFloat const kImageWidth = 40.;//图片的宽度
 
     self = [super init];
     if (self) {
+        viewWidth = 200.;
         [self createCommentView];
     }
     return self;
@@ -64,6 +68,7 @@ static CGFloat const kImageWidth = 40.;//图片的宽度
     
     self.commentLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Content]];
     [_commentLabel setText:@" "];
+    [_commentLabel setNumberOfLines:0];
     [self addSubview:_commentLabel];
     
     [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_commentLabel superView:self];
@@ -102,10 +107,18 @@ static CGFloat const kImageWidth = 40.;//图片的宽度
         [_commentLabel setText:_commentModel.content];
         [_timeLabel setText:[_commentModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonthDay]];
         
+        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_commentLabel superView:self];
+        [JOAutoLayout autoLayoutWithHeight:[_commentLabel sizeThatFits:JOSize(viewWidth, CGFLOAT_MAX)].height+4 selfView:_commentLabel superView:self];
+        
     }else{
     
         [JOFException exceptionWithName:@"MIAAlbumCommentView exception!" reason:@"data必须是MIACommentModel类型"];
     }
+}
+
+- (void)setCommentViewWidth:(CGFloat)width{
+
+    viewWidth = width - kImageWidth - kImageToLabelSpaceDistance;
 }
 
 @end
