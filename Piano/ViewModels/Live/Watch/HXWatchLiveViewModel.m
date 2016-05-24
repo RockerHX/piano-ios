@@ -251,7 +251,7 @@
 }
 
 - (void)followRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper followWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper followWithRoomID:_roomID uID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             _anchorAttented = YES;
             [subscriber sendNext:@(_anchorAttented)];
