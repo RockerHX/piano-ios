@@ -93,8 +93,13 @@
     _layoutAttributes = [itemAttributes copy];
 }
 
-//- (CGSize)collectionViewContentSize {
-//}
+- (CGSize)collectionViewContentSize {
+    NSInteger loop = 3;
+    NSInteger pageLoop = loop * 2;
+    CGFloat sizeWidth = ((_layoutAttributes.count / pageLoop) + 1) * self.controlWidth;
+    
+    return CGSizeMake(sizeWidth, self.controlHeight);
+}
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray *visibleAttributes = @[].mutableCopy;
@@ -105,52 +110,5 @@
     }];
     return visibleAttributes;
 }
-
-#pragma mark - Optional Methods
-//- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
-//    UICollectionViewLayoutAttributes *finialAttribute = [self layoutAttributesForElementsInPoint:proposedContentOffset];
-//    if (finialAttribute) {
-//        NSInteger itemIndex = [_layoutAttributes indexOfObject:finialAttribute];
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:itemIndex inSection:0];
-//        HXRewardGiftListLayoutStyle style = [_delegate collectionView:self.collectionView layout:self styleForItemAtIndexPath:indexPath];
-//        
-//        CGPoint finialPoint = CGPointMake(finialAttribute.frame.origin.x - _itemSpacing, proposedContentOffset.y);
-//        if (proposedContentOffset.x >= finialAttribute.center.x) {
-//            finialPoint.x += (finialAttribute.frame.size.width + _itemSpacing);
-//        }
-//        
-//        if (style == HXRewardGiftListLayoutStyleHeavy) {
-//            finialPoint.x -= _itemSpilled;
-//        }
-//        
-//        _indexPath = [self indexPathAtPoint:finialPoint];
-//        return finialPoint;
-//    } else {
-//        _indexPath = [self indexPathAtPoint:proposedContentOffset];
-//        return proposedContentOffset;
-//    }
-//}
-
-#pragma mark - Public Methods
-//- (NSIndexPath *)indexPathAtPoint:(CGPoint)point {
-//    UICollectionViewLayoutAttributes *finialAttribute = [self layoutAttributesForElementsInPoint:point];
-//    NSInteger itemIndex = [_layoutAttributes indexOfObject:finialAttribute];
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:itemIndex inSection:0];
-//    return indexPath;
-//}
-
-#pragma mark - Private Methods
-//- (UICollectionViewLayoutAttributes *)layoutAttributesForElementsInPoint:(CGPoint)point {
-//    CGFloat placeholder = _itemSpacing + _itemSpilled;
-//    __block UICollectionViewLayoutAttributes *visibleAttributes = nil;
-//    [_layoutAttributes enumerateObjectsUsingBlock:^(UICollectionViewLayoutAttributes * _Nonnull attributes, NSUInteger idx, BOOL * _Nonnull stop) {
-//        CGRect rect = (CGRect){attributes.frame.origin.x - placeholder, attributes.frame.origin.y, attributes.frame.size.width + placeholder, attributes.frame.size.height};
-//        if (CGRectContainsPoint(rect, point)) {
-//            visibleAttributes = attributes;
-//            return;
-//        }
-//    }];
-//    return visibleAttributes;
-//}
 
 @end
