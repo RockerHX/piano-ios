@@ -13,17 +13,15 @@ UIKIT_EXTERN CGFloat const kAlbumSongCellHeight;//歌曲的cell的高度
 UIKIT_EXTERN CGFloat const kAlbumBarViewHeight;//头部Bar的高度
 UIKIT_EXTERN CGFloat const kAlbumEnterCommentViewHeight;//底部输入评论的框的高度
 UIKIT_EXTERN CGFloat const kAlbumComentCellDefaultHeight;//默认的评论的cell的高度
-
 UIKIT_EXTERN NSInteger const kAlbumCommentLimitCount;//拉取评论的数量
-
 
 @interface MIAAlbumViewModel : MIAViewModel
 
 @property (nonatomic, copy, readonly) NSString *uid;
 
 @property (nonatomic, strong) MIAAlbumModel *albumModel;
-@property (nonatomic, strong, readonly) NSMutableArray *cellDataArray;
-@property (nonatomic, assign, readonly) NSInteger commentCount;
+@property (nonatomic, strong, readonly) NSMutableArray *cellDataArray; //table表的数据源
+@property (nonatomic, assign, readonly) NSInteger commentCount;//评论的条数
 
 /**
  *  初始化 uid.

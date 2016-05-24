@@ -47,4 +47,9 @@
     [_albumSongView setSongIndex:cellIndex];
 }
 
+- (void)openSongDownloadState{
+
+    [_albumSongView openAlbumSongDownloadState];
+}
+
 @end

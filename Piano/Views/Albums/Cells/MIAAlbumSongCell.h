@@ -24,4 +24,9 @@
  */
 - (void)setSongCellIndex:(NSInteger)cellIndex;
 
+/**
+ *  打开song cell下载状态的检查
+ */
+- (void)openSongDownloadState;
+
 @end

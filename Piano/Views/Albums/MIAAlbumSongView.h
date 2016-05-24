@@ -18,6 +18,12 @@
 - (void)changeSongPlayState:(BOOL)state;
 
 /**
+ *  打开歌曲下载状态的提示
+ *
+ */
+- (void)openAlbumSongDownloadState;
+
+/**
  *  设置歌曲的Model
  *
  *  @param data HXSongModel

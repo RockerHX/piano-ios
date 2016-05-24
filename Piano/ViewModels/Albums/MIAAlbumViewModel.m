@@ -16,7 +16,6 @@ CGFloat const kAlbumSongCellHeight = 50.;//歌曲的cell的高度
 CGFloat const kAlbumBarViewHeight = 50.;//头部Bar的高度
 CGFloat const kAlbumEnterCommentViewHeight = 55.;//底部输入评论的框的高度
 CGFloat const kAlbumComentCellDefaultHeight = 70.;//默认的评论的cell的高度
-
 NSInteger const kAlbumCommentLimitCount = 10;
 
 @interface MIAAlbumViewModel(){
@@ -207,10 +206,12 @@ NSInteger const kAlbumCommentLimitCount = 10;
         }
         [_cellDataArray addObject:[finalCommentArray copy]];
     }else{
+        //只是更新评论的数据  是在提交了评论之后需要更新的数据 所以需要将commentCount的值+1的操作
         if ([_cellDataArray count] == 2) {
             [_cellDataArray removeLastObject];
         }
         [_cellDataArray addObject:[commentArray copy]];
+        _commentCount ++;
     }
 }
 

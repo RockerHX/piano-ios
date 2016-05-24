@@ -37,7 +37,6 @@
 @property (nonatomic, strong) HXSongModel *playSongModel;
 @property (nonatomic, assign) NSInteger playSongIndex;
 
-
 @end
 
 @implementation MIAAlbumViewController
@@ -148,7 +147,9 @@
     [_albumTableView setDelegate:self];
     [_albumTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_albumTableView setSectionFooterHeight:CGFLOAT_MIN];
-    [_albumTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreCommentList)]];
+    if (_rewardType == MIAAlbumRewardTypeNormal) {
+        [_albumTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreCommentList)]];
+    }
     [self.view addSubview:_albumTableView];
     
     [JOAutoLayout autoLayoutWithTopView:_albumBarView distance:0. selfView:_albumTableView superView:self.view];
@@ -358,6 +359,12 @@
         }
         
          [(MIAAlbumSongCell *)cell setSongCellIndex:indexPath.row+1];
+        
+        if (_rewardType == MIAAlbumRewardTypeMyReward) {
+            //打开下载的状态提示
+            [(MIAAlbumSongCell *)cell openSongDownloadState];
+        }
+        
     }
     return cell;
 }
