@@ -79,7 +79,6 @@
 		42D612DD1CE1FDFB00B80753 /* MIAFontManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D51CE1FDD600B80753 /* MIAFontManage.m */; };
 		42D613021CE2016300B80753 /* UILabel+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DA1CE1FDE700B80753 /* UILabel+JOExtend.m */; };
 		42D613031CE2016900B80753 /* UIFont+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D81CE1FDE700B80753 /* UIFont+JOExtend.m */; };
-		CB30166BF73B12934F5E7330 /* libPods-Piano-Beta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0545AA33DD4F8C0CFAB1AEA /* libPods-Piano-Beta.a */; };
 		CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */; };
 		CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */; };
 		CD07B2C81CEEF39300B5AB87 /* HXLiveRewardTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2C71CEEF39300B5AB87 /* HXLiveRewardTopCell.m */; };
@@ -813,7 +812,6 @@
 				CD7961251CBE594C004CC661 /* AVFoundation.framework in Frameworks */,
 				CD7961261CBE594C004CC661 /* MediaPlayer.framework in Frameworks */,
 				CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */,
-				CB30166BF73B12934F5E7330 /* libPods-Piano-Beta.a in Frameworks */,
 				1A423448169F3173A788A67A /* libPods-Piano.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2749,7 +2747,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Piano/Pods-Piano-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D84C9AFF2426607C2A08B209 /* 📦 Copy Pods Resources */ = {
