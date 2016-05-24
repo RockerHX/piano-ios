@@ -19,7 +19,10 @@
 
 static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
-@interface MIAAlbumDetailView()
+@interface MIAAlbumDetailView(){
+
+    CGFloat albumDetailViewHeight;
+}
 
 @property (nonatomic, strong) UIImageView *albumCoverImageView;
 @property (nonatomic, strong) UIView *rewardForDownloadView;
@@ -41,6 +44,8 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
         [self createAlbumDetailView];
+        
+        albumDetailViewHeight = kPlayViewHeight + kRewardViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
     }
     return self;
 }
@@ -143,7 +148,7 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
 - (CGFloat)albumDetailViewHeight{
 
-    return kPlayViewHeight + kRewardViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+    return albumDetailViewHeight;
 }
 
 #pragma mark - Button click
@@ -156,6 +161,22 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 }
 
 #pragma mark - Data 
+
+- (void)setAlbumRewardState:(BOOL)state{
+
+    if (state == YES) {
+        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardForDownloadView superView:self];
+        [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardForDownloadView superView:self];
+        [_rewardForDownloadView setHidden:YES];
+        
+        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardView superView:self];
+        [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardView superView:self];
+        [_rewardView setHidden:YES];
+        
+        albumDetailViewHeight = kPlayViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+    }
+    
+}
 
 - (void)setAlbumHeadDetailData:(id)data{
 

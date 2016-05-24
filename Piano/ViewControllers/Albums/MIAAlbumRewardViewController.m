@@ -16,10 +16,12 @@
 #import "MIAFontManage.h"
 #import "JOBaseSDK.h"
 #import "MIAMCoinManage.h"
+#import "HXSectorSlider.h"
 
 static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音质版";
+static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
 
-@interface MIAAlbumRewardViewController()
+@interface MIAAlbumRewardViewController()<HXSectorSliderDelegate>
 
 @property (nonatomic, strong) UIView *baseView;
 
@@ -35,13 +37,16 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
 
 @property (nonatomic, strong) UILabel *rewardTipLabel;
 
-@property (nonatomic, strong) UIView *rewardView;
+@property (nonatomic, strong) UILabel *rewardMCoinLabel;
+@property (nonatomic, strong) HXSectorSlider *rewardSlider;
 
 @property (nonatomic, strong) UIButton *rewardButton;
 
 @property (nonatomic, strong) UIView *accountView;
 @property (nonatomic, strong) UILabel *accountLabel;
 @property (nonatomic, strong) UIButton *rechargeButton;
+
+@property (nonatomic, copy) NSString *rewardMCoin;
 
 @end
 
@@ -59,6 +64,9 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
+    
+    self.rewardMCoin = @"10";
+    
     self.baseView = [UIView newAutoLayoutView];
     [self.view addSubview:_baseView];
     
@@ -71,13 +79,7 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
        
         [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
-        CGFloat accountLabelWidth = [_accountLabel sizeThatFits:JOMAXSize].width+1;
-        
-        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountLabel superView:_accountView];
-        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountView superView:_baseView];
-        
-        [JOAutoLayout autoLayoutWithWidth:accountLabelWidth selfView:_accountLabel superView:_accountView];
-        [JOAutoLayout autoLayoutWithWidth:accountLabelWidth+kRechargeButtonWidth selfView:_accountView superView:_baseView];
+       [self updateMCoinAccountLabelLayout];
         
     } mCoinFailed:^(NSString *failed) {
         
@@ -210,6 +212,15 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     [JOAutoLayout autoLayoutWithCenterXWithView:_baseView selfView:_accountView superView:_baseView];
     [JOAutoLayout autoLayoutWithHeight:accountLabelHeight selfView:_accountView superView:_baseView];
     
+    self.rewardMCoinLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_AlbumReward_RewardMCoin]];
+    [_rewardMCoinLabel setText:[NSString stringWithFormat:@"%@M币",_rewardMCoin]];
+    [_rewardMCoinLabel setTextAlignment:NSTextAlignmentCenter];
+    [_baseView addSubview:_rewardMCoinLabel];
+    
+    self.rewardSlider = [HXSectorSlider newAutoLayoutView];
+    [_rewardSlider setDelegate:self];
+    [_baseView addSubview:_rewardSlider];
+    
     self.rewardButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_rewardButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_rewardButton setTitle:@"打赏" forState:UIControlStateNormal];
@@ -224,6 +235,30 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     [JOAutoLayout autoLayoutWithBottomView:_accountView distance:-kRewardButtonToAccountViewSpaceDistance selfView:_rewardButton superView:_baseView];
     [JOAutoLayout autoLayoutWithSize:JOSize(kRewardButtonWidth, kRewardButtonHeight) selfView:_rewardButton superView:_baseView];
     [JOAutoLayout autoLayoutWithCenterXWithView:_baseView selfView:_rewardButton superView:_baseView];
+    
+    //rewardMCoin
+    [JOAutoLayout autoLayoutWithBottomView:_rewardSlider distance:-10. selfView:_rewardMCoinLabel superView:_baseView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kAlbumRewardLeftSpaceDistance selfView:_rewardMCoinLabel superView:_baseView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kAlbumRewardRightSpaceDistance selfView:_rewardMCoinLabel superView:_baseView];
+    [JOAutoLayout autoLayoutWithHeight:[_rewardMCoinLabel sizeThatFits:JOMAXSize].height+2 selfView:_rewardMCoinLabel superView:_baseView];
+    
+    //rewardSlider
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_rewardSlider superView:_baseView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_rewardSlider superView:_baseView];
+    [JOAutoLayout autoLayoutWithBottomView:_rewardButton distance:-10. selfView:_rewardSlider superView:_baseView];
+    [JOAutoLayout autoLayoutWithHeight:kRewardSliderViewHeight selfView:_rewardSlider superView:_baseView];
+    
+}
+
+- (void)updateMCoinAccountLabelLayout{
+
+    CGFloat accountLabelWidth = [_accountLabel sizeThatFits:JOMAXSize].width+1;
+    
+    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountLabel superView:_accountView];
+    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountView superView:_baseView];
+    
+    [JOAutoLayout autoLayoutWithWidth:accountLabelWidth selfView:_accountLabel superView:_accountView];
+    [JOAutoLayout autoLayoutWithWidth:accountLabelWidth+kRechargeButtonWidth selfView:_accountView superView:_baseView];
 }
 
 #pragma mark - Button click
@@ -233,7 +268,7 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
     
     [self.navigationController popViewControllerAnimated:YES];
 //    [self dismissViewControllerAnimated:YES completion:^{
-//        
+//
 //    }];
 }
 
@@ -246,12 +281,12 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
 - (void)rewardAction{
 
     [self showHUD];
-    [[MIAMCoinManage shareMCoinManage] rewardAlbumWithMCoin:@"100"
+    [[MIAMCoinManage shareMCoinManage] rewardAlbumWithMCoin:_rewardMCoin
                                                     albumID:_albumModel.id
                                                      roomID:@"0" success:^{
                                                      
                                                          [self hiddenHUD];
-                                                         JOLog(@"打赏成功");
+//                                                         JOLog(@"打赏成功");
                                                      }
                                                      failed:^(NSString *failed) {
                                                      
@@ -259,17 +294,38 @@ static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音�
                                                          [self showBannerWithPrompt:failed];
                                                      } mCoinSuccess:^{
                                                          [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
-                                                         CGFloat accountLabelWidth = [_accountLabel sizeThatFits:JOMAXSize].width+1;
-                                                         
-                                                         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountLabel superView:_accountView];
-                                                         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_accountView superView:_baseView];
-                                                         
-                                                         [JOAutoLayout autoLayoutWithWidth:accountLabelWidth selfView:_accountLabel superView:_accountView];
-                                                         [JOAutoLayout autoLayoutWithWidth:accountLabelWidth+kRechargeButtonWidth selfView:_accountView superView:_baseView];
+                                                         [self updateMCoinAccountLabelLayout];
                                                          
                                                      } mCoinFailed:^(NSString *failed) {
                                                          [self showBannerWithPrompt:failed];
                                                      }];
+}
+
+#pragma mark - HXSectorSliderDelegate
+
+- (void)sectorSlider:(HXSectorSlider *)slider selectedLevel:(HXSectorSliderLevel)level{
+
+    self.rewardMCoin = nil;
+    
+    if (level == HXSectorSliderLevelLow) {
+        //10
+        self.rewardMCoin = @"10";
+        
+    }else if (level == HXSectorSliderLevelNormal){
+        //50
+        self.rewardMCoin = @"50";
+    }else if (level == HXSectorSliderLevelMedium){
+        //100
+        self.rewardMCoin = @"100";
+    }else if (level == HXSectorSliderLevelHigh){
+        //150
+        self.rewardMCoin = @"150";
+    }else if (level == HXSectorSliderLevelVeryHigh){
+        //200
+        self.rewardMCoin = @"200";
+    }
+    
+    [_rewardMCoinLabel setText:[NSString stringWithFormat:@"%@M币",_rewardMCoin]];
 }
 
 @end

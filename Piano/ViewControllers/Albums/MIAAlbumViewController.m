@@ -9,15 +9,18 @@
 #import "MIAAlbumViewController.h"
 #import "MIAAlbumRewardViewController.h"
 #import "UIImageView+WebCache.h"
+//#import "MJ"
 #import "UIViewController+HXClass.h"
 #import "MIAAlbumBarView.h"
 #import "MIAAlbumDetailView.h"
 #import "MIAAlbumEnterCommentView.h"
 #import "MIABaseCellHeadView.h"
 #import "MIAAlbumViewModel.h"
+#import "MIACommentModel.h"
 #import "MIACellManage.h"
 #import "FXBlurView.h"
 #import "JOBaseSDK.h"
+#import "MJRefresh.h"
 
 @interface MIAAlbumViewController()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
@@ -33,7 +36,6 @@
 
 @property (nonatomic, strong) HXSongModel *playSongModel;
 @property (nonatomic, assign) NSInteger playSongIndex;
-
 
 @end
 
@@ -76,34 +78,7 @@
 - (void)loadViewModel{
 
     self.albumViewModel = [[MIAAlbumViewModel alloc] initWithUid:_albumUID];
-    RACSignal *fetchSignal = [_albumViewModel.fetchCommand execute:nil];
-    
-    [self showHUD];
-    
-    @weakify(self);
-    [fetchSignal subscribeError:^(NSError *error) {
-    @strongify(self);
-        [self hiddenHUD];
-        
-        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
-            [self showBannerWithPrompt:error.domain];
-        }
-        
-    } completed:^{
-    @strongify(self);
-        [self hiddenHUD];
-        //更新视图的数据
-        [self.albumTableView reloadData];
-        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.albumViewModel.albumModel.coverUrl]
-                               placeholderImage:nil
-                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            self.coverImageView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
-        }];
-        [self.albumBarView setAlbumName:self.albumViewModel.albumModel.title singerName:self.albumViewModel.albumModel.nick];
-//        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.albumViewModel.albumModel.coverUrl] placeholderImage:nil];
-        [self.albumTableHeadView setAlbumHeadDetailData:self.albumViewModel.albumModel];
-        [self.albumTableHeadView setAlbumSongModelData:self.albumViewModel.cellDataArray.firstObject];
-    }];
+    [self fetchAlbumData];
 }
 
 - (void)createAlbumBarView{
@@ -126,6 +101,8 @@
 
     self.enterCommentView  = [MIAAlbumEnterCommentView newAutoLayoutView];
     @weakify(self);
+    
+    //键盘出现的Block
     [_enterCommentView keyBoardShowHandler:^(CGFloat height) {
     @strongify(self);
         
@@ -138,19 +115,19 @@
         }];
     }];
     
-    [_enterCommentView textViewHeightChangeHandler:^(CGFloat textViewHeight,BOOL enableState) {
+    //输入框高度发生变化
+    [_enterCommentView textViewHeightChangeHandler:^(CGFloat textViewHeight) {
     @strongify(self);
-        
-        CGFloat tempHeight = 36.;
-        
-        CGFloat addHeight = textViewHeight - tempHeight;
-//        NSLog(@"addHeight:%f",addHeight);
-        
-//        [self.enterCommentView updateTextViewWithEnableState:enableState];
-            [JOAutoLayout removeAutoLayoutWithHeightSelfView:self.enterCommentView superView:self.view];
-            [JOAutoLayout autoLayoutWithHeight:kAlbumEnterCommentViewHeight+addHeight selfView:self.enterCommentView superView:self.view];
-        
-        [self.enterCommentView updateTextViewWithEnableState:enableState];
+    
+        [JOAutoLayout removeAutoLayoutWithHeightSelfView:self.enterCommentView superView:self.view];
+        [JOAutoLayout autoLayoutWithHeight:textViewHeight+20. selfView:self.enterCommentView superView:self.view];
+
+    }];
+    
+    //发送按钮点击的Block
+    [_enterCommentView sendAlbumCommentHanlder:^(NSString *commentConent) {
+    @strongify(self);
+        [self sendAlbumCommentWithContent:commentConent];
         
     }];
     [self.view addSubview:_enterCommentView];
@@ -170,18 +147,28 @@
     [_albumTableView setDelegate:self];
     [_albumTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_albumTableView setSectionFooterHeight:CGFLOAT_MIN];
+    if (_rewardType == MIAAlbumRewardTypeNormal) {
+        [_albumTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreCommentList)]];
+    }
     [self.view addSubview:_albumTableView];
     
     [JOAutoLayout autoLayoutWithTopView:_albumBarView distance:0. selfView:_albumTableView superView:self.view];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumTableView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithBottomView:_enterCommentView distance:0. selfView:_albumTableView superView:self.view];
+    
+    if (_rewardType == MIAAlbumRewardTypeNormal) {
+        [JOAutoLayout autoLayoutWithBottomView:_enterCommentView distance:0. selfView:_albumTableView superView:self.view];
+    }else{
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_albumTableView superView:self.view];
+        [_enterCommentView setHidden:YES];
+    }
 }
 
 - (void)createAlbumTableHeadView{
 
     self.albumTableHeadView = [[MIAAlbumDetailView alloc] init];
     @weakify(self);
+    //打赏按钮点击Block
     [_albumTableHeadView rewardAlbumButtonClickHanlder:^{
     @strongify(self);
         MIAAlbumRewardViewController *rewardViewController = [MIAAlbumRewardViewController new];
@@ -192,6 +179,7 @@
         [self.navigationController pushViewController:rewardViewController animated:YES];
     }];
     
+    //播放歌曲发生改变的时候Block
     [_albumTableHeadView playSongChangeHandler:^(HXSongModel *songModel, NSInteger songIndex) {
     @strongify(self);
         self.playSongModel = nil;
@@ -203,18 +191,142 @@
     }];
     [_albumTableHeadView setFrame:CGRectMake(0., 0., View_Width(self.view), [_albumTableHeadView albumDetailViewHeight])];
     
+    if (_rewardType == MIAAlbumRewardTypeMyReward) {
+        [_albumTableHeadView setAlbumRewardState:YES];
+    }
+}
+
+//是否需要添加Footer的上拉拉取更过评论的事件
+- (void)addTableViewFooterRefersh{
+
+    if ([self.albumViewModel.cellDataArray count] == 2 && [[self.albumViewModel.cellDataArray lastObject] count] < self.albumViewModel.commentCount) {
+
+        [self.albumTableView.mj_footer resetNoMoreData];
+    }else{
+    
+        [self.albumTableView.mj_footer endRefreshingWithNoMoreData];
+    }
+}
+
+#pragma mark - RACSinger 
+
+//拉取专辑的数据
+- (void)fetchAlbumData{
+
+    RACSignal *fetchSignal = [_albumViewModel.fetchCommand execute:nil];
+    
+    [self showHUD];
+    @weakify(self);
+    [fetchSignal subscribeError:^(NSError *error) {
+        @strongify(self);
+        [self hiddenHUD];
+        
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
+        
+    } completed:^{
+        @strongify(self);
+        [self hiddenHUD];
+        //更新视图的数据
+        [self.albumTableView reloadData];
+        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.albumViewModel.albumModel.coverUrl]
+                               placeholderImage:nil
+                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                          self.coverImageView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
+                                      }];
+        [self.albumBarView setAlbumName:self.albumViewModel.albumModel.title singerName:self.albumViewModel.albumModel.nick];
+        [self.albumTableHeadView setAlbumHeadDetailData:self.albumViewModel.albumModel];
+        [self.albumTableHeadView setAlbumSongModelData:self.albumViewModel.cellDataArray.firstObject];
+        
+        [self addTableViewFooterRefersh];
+    }];
+}
+
+//发送评论
+- (void)sendAlbumCommentWithContent:(NSString *)content{
+
+    [self.enterCommentView resignTextViewFirstResponder];
+    
+    RACSignal *sendCommentSingnal = [self.albumViewModel sendCommentWithContent:content albumID:self.albumUID commentID:@""];
+    
+    [self showHUD];
+    [sendCommentSingnal subscribeError:^(NSError *error) {
+        
+        [self hiddenHUD];
+        
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
+    } completed:^{
+        
+        [self hiddenHUD];
+        [self showBannerWithPrompt:@"评论发送成功"];
+        [self.enterCommentView cleanTextView];
+        //从新拉取评论列表重新更新列表
+        [self fetchAlbumCommentList];
+    }];
+}
+
+- (void)fetchAlbumCommentList{
+
+    RACSignal *fetchCommentSingnal = [self.albumViewModel getCommentListWithAlbumID:self.albumUID lastCommentID:@""];
+    [self showHUD];
+    [fetchCommentSingnal subscribeError:^(NSError *error) {
+        [self hiddenHUD];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
+        
+    } completed:^{
+        [self hiddenHUD];
+        //更新评论的Section的数据
+        [self.albumTableView reloadData];
+        [self addTableViewFooterRefersh];
+    }];
+}
+
+- (void)fetchMoreCommentList{
+
+    RACSignal *fetchCommentSingnal = [self.albumViewModel getCommentListWithAlbumID:self.albumUID lastCommentID:[(MIACommentModel *)[[self.albumViewModel.cellDataArray lastObject] lastObject] id]];
+    [self showHUD];
+    [fetchCommentSingnal subscribeError:^(NSError *error) {
+        [self hiddenHUD];
+        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
+            [self showBannerWithPrompt:error.domain];
+        }
+        
+    } completed:^{
+        [self hiddenHUD];
+        //更新评论的Section的数据
+        [self.albumTableView reloadData];
+        [self addTableViewFooterRefersh];
+    }];
 }
 
 #pragma mark - table data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return [_albumViewModel.cellDataArray count];
+    if (_rewardType == MIAAlbumRewardTypeNormal) {
+    
+        return [_albumViewModel.cellDataArray count];
+    }else{
+    
+        return 1;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [[_albumViewModel.cellDataArray objectAtIndex:section] count];
+    if ([_albumViewModel.cellDataArray count]) {
+        return [[_albumViewModel.cellDataArray objectAtIndex:section] count];
+    }else{
+    
+        return 0;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -247,6 +359,12 @@
         }
         
          [(MIAAlbumSongCell *)cell setSongCellIndex:indexPath.row+1];
+        
+        if (_rewardType == MIAAlbumRewardTypeMyReward) {
+            //打开下载的状态提示
+            [(MIAAlbumSongCell *)cell openSongDownloadState];
+        }
+        
     }
     return cell;
 }
@@ -282,9 +400,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 0) {
-        return 50.;
+        return kAlbumSongCellHeight;
     }else{
-        return 70.;
+        
+        return MAX(kAlbumComentCellDefaultHeight, [_albumViewModel commentCellHeightWithIndex:indexPath.row viewWidth:View_Width(self.view)]);
     }
     return 50.;
 }
