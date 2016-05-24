@@ -79,7 +79,7 @@ static NSString * const MiaAPICommand_Push_RoomClose		= @"Rooms.Push.Close";
 static NSString * const MiaAPICommand_Push_RoomGift         = @"Rooms.Push.Gift";
 static NSString * const MiaAPICommand_Push_RoomReward		= @"Rooms.Push.Album";
 static NSString * const MiaAPICommand_Push_RoomComment		= @"Rooms.Push.Comment";
-static NSString * const MiaAPICommand_Push_Share            = @"Live.Room.Post.Share";
+static NSString * const MiaAPICommand_Push_Share            = @"Rooms.Push.Share";
 static NSString * const MiaAPICommand_Push_Attention        = @"Rooms.Push.Follow";
 
 // Home
@@ -104,6 +104,7 @@ static NSString * const MiaAPICommand_Live_GetStat			= @"Live.Room.Get.Stat";
 static NSString * const MiaAPICommand_Live_GetGiftList      = @"Live.Room.Get.Gift";
 static NSString * const MiaAPICommand_Live_GetGiftTopList   = @"Live.Room.Top.Gift";
 static NSString * const MiaAPICommand_Live_GetAlbumTopList  = @"Live.Room.Top.Album";
+static NSString * const MiaAPICommand_Live_SharePost        = @"Live.Room.Post.Share";
 static NSString * const MiaAPIKey_RoomID					= @"roomID";
 static NSString * const MiaAPIKey_Content					= @"content";
 static NSString * const MiaAPIKey_Title						= @"title";
