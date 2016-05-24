@@ -25,6 +25,7 @@
 #import "MIAPaymentViewController.h"
 #import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
+#import "MiaAPIHelper.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -330,6 +331,7 @@ HXShowRechargeDelegate
                  switch (state) {
                      case SSDKResponseStateSuccess: {
                          [UIAlertView bk_showAlertViewWithTitle:@"分享成功" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+                         [MiaAPIHelper sharePostWithRoomID:_viewModel.roomID completeBlock:nil timeoutBlock:nil];
                          break;
                      }
                      case SSDKResponseStateFail: {
