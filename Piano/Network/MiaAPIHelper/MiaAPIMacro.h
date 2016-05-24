@@ -79,6 +79,8 @@ static NSString * const MiaAPICommand_Push_RoomClose		= @"Rooms.Push.Close";
 static NSString * const MiaAPICommand_Push_RoomGift         = @"Rooms.Push.Gift";
 static NSString * const MiaAPICommand_Push_RoomReward		= @"Rooms.Push.Album";
 static NSString * const MiaAPICommand_Push_RoomComment		= @"Rooms.Push.Comment";
+static NSString * const MiaAPICommand_Push_Share            = @"Live.Room.Post.Share";
+static NSString * const MiaAPICommand_Push_Attention        = @"Rooms.Push.Follow";
 
 // Home
 static NSString * const MiaAPICommand_Room_GetList			= @"Live.Room.Get.Lists";
