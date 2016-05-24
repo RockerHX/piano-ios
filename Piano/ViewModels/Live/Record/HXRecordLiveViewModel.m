@@ -18,10 +18,9 @@
 }
 
 #pragma mark - Initialize Methods
-- (instancetype)initWithRoomID:(NSString *)roomID {
+- (instancetype)init {
     self = [super init];
     if (self) {
-        _roomID = roomID;
         [self initConfigure];
     }
     return self;
@@ -31,7 +30,6 @@
 - (void)initConfigure {
     _comments = @[];
     _barrages = @[];
-    _model = [HXLiveModel new];
     
     [self signalLink];
     [self notificationConfigure];
@@ -98,6 +96,10 @@
 }
 
 #pragma mark - Property
+- (NSString *)roomID {
+    return _model.roomID;
+}
+
 - (NSString *)anchorAvatar {
     return [HXUserSession session].user.avatarUrl;
 }
@@ -166,7 +168,7 @@
 }
 
 - (void)leaveRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper leaveRoom:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper leaveRoom:self.roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             [subscriber sendCompleted];
         } else {

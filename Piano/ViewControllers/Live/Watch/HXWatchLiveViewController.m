@@ -313,11 +313,11 @@ HXShowRechargeDelegate
             break;
         }
         case HXWatchBottomBarActionShare: {
-            HXLiveModel *model = _viewModel.model;
-            NSString *shareTitle = model.shareTitle;
+            HXLiveModel *model     = _viewModel.model;
+            NSString *shareTitle   = model.shareTitle;
             NSString *shareContent = model.shareContent;
-            NSURL *shareURL = [NSURL URLWithString:model.shareUrl];
-            UIImage *shareImage = [_anchorView.avatar imageForState:UIControlStateNormal];
+            NSURL *shareURL        = [NSURL URLWithString:model.shareUrl];
+            UIImage *shareImage    = [_anchorView.avatar imageForState:UIControlStateNormal];
             
             NSMutableDictionary *shareParams = @{}.mutableCopy;
             [shareParams SSDKSetupShareParamsByText:shareContent
