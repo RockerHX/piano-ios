@@ -8,9 +8,9 @@
 
 #import "UIViewController+HXClass.h"
 
+
 typedef NS_ENUM(NSUInteger, HXDiscoveryViewControllerAction) {
     HXDiscoveryViewControllerActionHiddenNavigationBar,
-    HXDiscoveryViewControllerActionShowMyProfile,
 };
 
 

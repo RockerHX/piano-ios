@@ -34,6 +34,10 @@ HXHostProfileContainerDelegate
     _containerViewController.delegate = self;
 }
 
++ (HXStoryBoardName)storyBoardName {
+    return HXStoryBoardNameProfile;
+}
+
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +49,8 @@ HXHostProfileContainerDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _containerViewController.viewModel = self.viewModel;
+    
+    [self fetchData];
 }
 
 - (void)viewConfigure {
@@ -59,8 +65,8 @@ HXHostProfileContainerDelegate
     return _viewModel;
 }
 
-#pragma mark - Public Methods
-- (void)refresh {
+#pragma mark - Private Methods
+- (void)fetchData {
     @weakify(self)
     RACSignal *fetchSignal = [self.viewModel.fetchCommand execute:nil];
     [fetchSignal subscribeError:^(NSError *error) {
@@ -74,7 +80,6 @@ HXHostProfileContainerDelegate
     }];
 }
 
-#pragma mark - Private Methods
 - (void)updateUI {
     [self hiddenHUD];
     

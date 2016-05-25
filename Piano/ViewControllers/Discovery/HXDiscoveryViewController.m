@@ -22,6 +22,7 @@
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
+#import "HXHostProfileViewController.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -106,11 +107,6 @@ HXDiscoveryContainerDelegate
      }];
 }
 
-- (void)startLive {
-    UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-    [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
-}
-
 - (void)hiddenNavigationBar {
     if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewController:takeAction:)]) {
         [_delegate discoveryViewController:self takeAction:HXDiscoveryViewControllerActionHiddenNavigationBar];
@@ -121,9 +117,7 @@ HXDiscoveryContainerDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     switch (action) {
         case HXDiscoveryTopBarActionProfile: {
-            if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewController:takeAction:)]) {
-                [_delegate discoveryViewController:self takeAction:HXDiscoveryViewControllerActionShowMyProfile];
-            }
+            [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }
         case HXDiscoveryTopBarActionMusic: {
@@ -150,7 +144,8 @@ HXDiscoveryContainerDelegate
         }
         case HXDiscoveryContainerActionStartLive: {
             [self hiddenNavigationBar];
-            [self startLive];
+            UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+            [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowLive: {

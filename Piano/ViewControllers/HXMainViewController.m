@@ -8,7 +8,6 @@
 
 #import "HXMainViewController.h"
 #import "HXDiscoveryViewController.h"
-#import "HXHostProfileViewController.h"
 #import "HXLoginViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
@@ -184,10 +183,6 @@ HXLoginViewControllerDelegate
     switch (action) {
         case HXDiscoveryViewControllerActionHiddenNavigationBar: {
             _shouldHiddenNavigationBar = YES;
-            break;
-        }
-        case HXDiscoveryViewControllerActionShowMyProfile: {
-            ;
             break;
         }
     }
