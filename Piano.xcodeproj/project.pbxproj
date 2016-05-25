@@ -2768,7 +2768,7 @@
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
 					CD79608B1CBE594C004CC661 = {
-						DevelopmentTeam = PQE2NCR38L;
+						DevelopmentTeam = H2JE2CWJS7;
 					};
 				};
 			};
@@ -2953,7 +2953,6 @@
 				CD7960AB1CBE594C004CC661 /* HXProfileReplayContainerCell.m in Sources */,
 				42984B0E1CDAEF84004F00D5 /* JOFunctionObject.m in Sources */,
 				CD7960AC1CBE594C004CC661 /* HXAlbumsCommentCell.m in Sources */,
-				CD7960AD1CBE594C004CC661 /* HXLiveBarrageContainerViewController.m in Sources */,
 				422497C51CF4663C008F8A55 /* JOManage.m in Sources */,
 				CD7960AE1CBE594C004CC661 /* HXSongModel.m in Sources */,
 				CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */,
