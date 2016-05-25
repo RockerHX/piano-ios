@@ -849,7 +849,6 @@
                                     <state key="normal" image="C-BackIcon-White"/>
                                     <connections>
                                         <action selector="backButtonPressed" destination="RUd-j5-cx4" eventType="touchUpInside" id="nh0-RC-KqC"/>
-                                        <action selector="settingButtonPressed" destination="RUd-j5-cx4" eventType="touchUpInside" id="vZ1-R1-1ZU"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHF-rX-6D5">
