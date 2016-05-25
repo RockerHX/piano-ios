@@ -1,13 +1,13 @@
 //
-//  HXMeViewController.m
+//  HXHostProfileViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/22.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXMeViewController.h"
-#import "HXMeContainerViewController.h"
+#import "HXHostProfileViewController.h"
+#import "HXHostProfileContainerViewController.h"
 #import "HXSettingViewController.h"
 #import "HXWatchLiveViewController.h"
 #import "HXUserSession.h"
@@ -17,14 +17,14 @@
 #import "MIAPaymentViewController.h"
 
 
-@interface HXMeViewController () <
-HXMeContainerViewControllerDelegate
+@interface HXHostProfileViewController () <
+HXHostProfileContainerViewControllerDelegate
 >
 @end
 
 
-@implementation HXMeViewController {
-    HXMeContainerViewController *_containerViewController;
+@implementation HXHostProfileViewController {
+    HXHostProfileContainerViewController *_containerViewController;
     HXMeViewModel *_viewModel;
 }
 
@@ -87,8 +87,8 @@ HXMeContainerViewControllerDelegate
     [self->_containerViewController refresh];
 }
 
-#pragma mark - HXMeContainerViewControllerDelegate Methods
-- (void)container:(HXMeContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model {
+#pragma mark - HXHostProfileContainerViewControllerDelegate Methods
+- (void)container:(HXHostProfileContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model {
     if (model.live) {
         if (!model.roomID) {
             [self showBannerWithPrompt:@"直播已结束"];
@@ -106,7 +106,7 @@ HXMeContainerViewControllerDelegate
     }
 }
 
-- (void)container:(HXMeContainerViewController *)container takeAction:(HXMeContainerAction)action {
+- (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXMeContainerAction)action {
     switch (action) {
         case HXMeContainerActionAvatarTaped: {
             if ([HXUserSession session].role == HXUserRoleAnchor) {

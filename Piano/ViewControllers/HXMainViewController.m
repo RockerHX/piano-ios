@@ -8,7 +8,7 @@
 
 #import "HXMainViewController.h"
 #import "HXDiscoveryViewController.h"
-#import "HXMeViewController.h"
+#import "HXHostProfileViewController.h"
 #import "HXLoginViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"

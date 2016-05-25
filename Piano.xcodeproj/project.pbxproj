@@ -259,8 +259,8 @@
 		CD8322D01CF5974000D7A254 /* HXProfileContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8322C61CF5974000D7A254 /* HXProfileContainerViewController.m */; };
 		CD8322D11CF5974000D7A254 /* HXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8322C81CF5974000D7A254 /* HXProfileViewController.m */; };
 		CD8322D21CF5974000D7A254 /* MIAProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8322CA1CF5974000D7A254 /* MIAProfileViewController.m */; };
-		CD8322D31CF5974000D7A254 /* HXMeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8322CD1CF5974000D7A254 /* HXMeContainerViewController.m */; };
-		CD8322D41CF5974000D7A254 /* HXMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8322CF1CF5974000D7A254 /* HXMeViewController.m */; };
+		CD8322D31CF5974000D7A254 /* HXHostProfileContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8322CD1CF5974000D7A254 /* HXHostProfileContainerViewController.m */; };
+		CD8322D41CF5974000D7A254 /* HXHostProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8322CF1CF5974000D7A254 /* HXHostProfileViewController.m */; };
 		CD8F86A91CD099EA00D8C8A4 /* HXDiscoveryShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8F86A81CD099EA00D8C8A4 /* HXDiscoveryShowCell.m */; };
 		CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
@@ -654,10 +654,10 @@
 		CD8322C81CF5974000D7A254 /* HXProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileViewController.m; sourceTree = "<group>"; };
 		CD8322C91CF5974000D7A254 /* MIAProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAProfileViewController.h; sourceTree = "<group>"; };
 		CD8322CA1CF5974000D7A254 /* MIAProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAProfileViewController.m; sourceTree = "<group>"; };
-		CD8322CC1CF5974000D7A254 /* HXMeContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeContainerViewController.h; sourceTree = "<group>"; };
-		CD8322CD1CF5974000D7A254 /* HXMeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeContainerViewController.m; sourceTree = "<group>"; };
-		CD8322CE1CF5974000D7A254 /* HXMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeViewController.h; sourceTree = "<group>"; };
-		CD8322CF1CF5974000D7A254 /* HXMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeViewController.m; sourceTree = "<group>"; };
+		CD8322CC1CF5974000D7A254 /* HXHostProfileContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXHostProfileContainerViewController.h; sourceTree = "<group>"; };
+		CD8322CD1CF5974000D7A254 /* HXHostProfileContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXHostProfileContainerViewController.m; sourceTree = "<group>"; };
+		CD8322CE1CF5974000D7A254 /* HXHostProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXHostProfileViewController.h; sourceTree = "<group>"; };
+		CD8322CF1CF5974000D7A254 /* HXHostProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXHostProfileViewController.m; sourceTree = "<group>"; };
 		CD858D8B1CAE68A1007441E9 /* HXProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileHeaderCell.h; sourceTree = "<group>"; };
 		CD858D8C1CAE68A1007441E9 /* HXProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXProfileHeaderCell.m; sourceTree = "<group>"; };
 		CD858D8E1CAE68CA007441E9 /* HXProfileLiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXProfileLiveCell.h; sourceTree = "<group>"; };
@@ -1994,10 +1994,10 @@
 		CD8322C41CF5974000D7A254 /* Guests */ = {
 			isa = PBXGroup;
 			children = (
-				CD8322C51CF5974000D7A254 /* HXProfileContainerViewController.h */,
-				CD8322C61CF5974000D7A254 /* HXProfileContainerViewController.m */,
 				CD8322C71CF5974000D7A254 /* HXProfileViewController.h */,
 				CD8322C81CF5974000D7A254 /* HXProfileViewController.m */,
+				CD8322C51CF5974000D7A254 /* HXProfileContainerViewController.h */,
+				CD8322C61CF5974000D7A254 /* HXProfileContainerViewController.m */,
 				CD8322C91CF5974000D7A254 /* MIAProfileViewController.h */,
 				CD8322CA1CF5974000D7A254 /* MIAProfileViewController.m */,
 			);
@@ -2007,10 +2007,10 @@
 		CD8322CB1CF5974000D7A254 /* Host */ = {
 			isa = PBXGroup;
 			children = (
-				CD8322CC1CF5974000D7A254 /* HXMeContainerViewController.h */,
-				CD8322CD1CF5974000D7A254 /* HXMeContainerViewController.m */,
-				CD8322CE1CF5974000D7A254 /* HXMeViewController.h */,
-				CD8322CF1CF5974000D7A254 /* HXMeViewController.m */,
+				CD8322CE1CF5974000D7A254 /* HXHostProfileViewController.h */,
+				CD8322CF1CF5974000D7A254 /* HXHostProfileViewController.m */,
+				CD8322CC1CF5974000D7A254 /* HXHostProfileContainerViewController.h */,
+				CD8322CD1CF5974000D7A254 /* HXHostProfileContainerViewController.m */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -2559,8 +2559,8 @@
 		CDED8F331CA13F32003867B8 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				CD8322C41CF5974000D7A254 /* Guests */,
 				CD8322CB1CF5974000D7A254 /* Host */,
+				CD8322C41CF5974000D7A254 /* Guests */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2917,7 +2917,7 @@
 				42984B451CDC48E7004F00D5 /* MIAProfileHeadView.m in Sources */,
 				42A0DAFD1CE2E06D00F1FCEF /* MIAAlbumRewardView.m in Sources */,
 				CD7960D21CBE594C004CC661 /* HXWatchLiveBottomBar.m in Sources */,
-				CD8322D31CF5974000D7A254 /* HXMeContainerViewController.m in Sources */,
+				CD8322D31CF5974000D7A254 /* HXHostProfileContainerViewController.m in Sources */,
 				CD7960D31CBE594C004CC661 /* UIView+Frame.m in Sources */,
 				429CC2151CE08F22004BCC0C /* MIAVideoModel.m in Sources */,
 				CD7960D41CBE594C004CC661 /* HXUserModel.m in Sources */,
@@ -2936,7 +2936,7 @@
 				CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */,
 				CD7960DB1CBE594C004CC661 /* LocationMgr.m in Sources */,
 				CD6887991CF54F660081B2BD /* HXLiveBarrageCell.m in Sources */,
-				CD8322D41CF5974000D7A254 /* HXMeViewController.m in Sources */,
+				CD8322D41CF5974000D7A254 /* HXHostProfileViewController.m in Sources */,
 				CD7960DC1CBE594C004CC661 /* HXProfileLiveCell.m in Sources */,
 				CD7960DD1CBE594C004CC661 /* HXRecordLiveViewController.m in Sources */,
 				42984B0A1CDAEF84004F00D5 /* JOFException.m in Sources */,

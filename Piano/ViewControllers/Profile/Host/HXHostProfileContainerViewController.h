@@ -1,5 +1,5 @@
 //
-//  HXMeContainerViewController.h
+//  HXHostProfileContainerViewController.h
 //  Piano
 //
 //  Created by miaios on 16/3/28.
@@ -20,21 +20,12 @@ typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
 };
 
 
-@class HXMeContainerViewController;
+@protocol HXHostProfileContainerViewControllerDelegate;
 
 
-@protocol HXMeContainerViewControllerDelegate <NSObject>
+@interface HXHostProfileContainerViewController : UITableViewController
 
-@required
-- (void)container:(HXMeContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model;
-- (void)container:(HXMeContainerViewController *)container takeAction:(HXMeContainerAction)action;
-
-@end
-
-
-@interface HXMeContainerViewController : UITableViewController
-
-@property (weak, nonatomic) IBOutlet          id  <HXMeContainerViewControllerDelegate>delegate;
+@property (weak, nonatomic) IBOutlet          id  <HXHostProfileContainerViewControllerDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet    UIButton *settingButton;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
@@ -46,5 +37,14 @@ typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
 - (IBAction)settingButtonPressed;
 
 - (void)refresh;
+
+@end
+
+
+@protocol HXHostProfileContainerViewControllerDelegate <NSObject>
+
+@required
+- (void)container:(HXHostProfileContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model;
+- (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXMeContainerAction)action;
 
 @end

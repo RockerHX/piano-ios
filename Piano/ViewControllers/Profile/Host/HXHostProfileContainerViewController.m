@@ -1,12 +1,12 @@
 //
-//  HXMeContainerViewController.m
+//  HXHostProfileContainerViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/28.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXMeContainerViewController.h"
+#import "HXHostProfileContainerViewController.h"
 #import "HXMeRechargeCell.h"
 #import "HXMePurchaseHistoryCell.h"
 #import "HXMeMyStationCell.h"
@@ -15,13 +15,13 @@
 #import "UIImageView+WebCache.h"
 
 
-@interface HXMeContainerViewController () <
+@interface HXHostProfileContainerViewController () <
 HXMeAttentionContainerCellDelegate
 >
 @end
 
 
-@implementation HXMeContainerViewController
+@implementation HXHostProfileContainerViewController
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {

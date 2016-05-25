@@ -741,10 +741,10 @@
             </objects>
             <point key="canvasLocation" x="654" y="308"/>
         </scene>
-        <!--HXMeViewController-->
+        <!--HXHostProfileViewController-->
         <scene sceneID="gz0-ek-18X">
             <objects>
-                <viewController storyboardIdentifier="HXMeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hbb-gf-6q2" userLabel="HXMeViewController" customClass="HXMeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXHostProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hbb-gf-6q2" userLabel="HXHostProfileViewController" customClass="HXHostProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K9U-jd-bMC"/>
                         <viewControllerLayoutGuide type="bottom" id="Wa5-WU-Dhv"/>
@@ -803,10 +803,10 @@
             </objects>
             <point key="canvasLocation" x="-635" y="308"/>
         </scene>
-        <!--HXMeContainerViewController-->
+        <!--HXHostProfileContainerViewController-->
         <scene sceneID="lFV-ta-pVW">
             <objects>
-                <tableViewController storyboardIdentifier="HXMeContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RUd-j5-cx4" userLabel="HXMeContainerViewController" customClass="HXMeContainerViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HXHostProfileContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RUd-j5-cx4" userLabel="HXHostProfileContainerViewController" customClass="HXHostProfileContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="112" sectionHeaderHeight="28" sectionFooterHeight="28" id="Me2-2L-yFB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
