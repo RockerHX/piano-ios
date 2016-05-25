@@ -9,7 +9,7 @@
 #import "UIViewController+HXClass.h"
 
 
-@class HXAlbumModel;
+@class HXLiveModel;
 @class HXPreviewLiveEidtView;
 @class HXPreviewLiveControlView;
 @class HXPreviewLiveViewController;
@@ -19,10 +19,7 @@
 
 @required
 - (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController
-                                                 album:(HXAlbumModel *)album
-                                                roomID:(NSString *)roomID
-                                             roomTitle:(NSString *)roomTitle
-                                              shareUrl:(NSString *)shareUrl
+                                             liveModel:(HXLiveModel *)model
                                            frontCamera:(BOOL)frontCamera
                                                 beauty:(BOOL)beauty;
 

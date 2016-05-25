@@ -23,6 +23,11 @@ CGFloat const kRewardButtonWidth = 150.; //打赏按钮的宽度
 CGFloat const kRewardButtonToAccountViewSpaceDistance = 30.; //打赏按钮与账户余额的间距大小
 CGFloat const kRechargeButtonWidth = 60.; //充值按钮的宽度
 
+@interface MIAAlbumRewardViewModel()
+
+
+@end
+
 @implementation MIAAlbumRewardViewModel
 
 - (void)initConfigure{

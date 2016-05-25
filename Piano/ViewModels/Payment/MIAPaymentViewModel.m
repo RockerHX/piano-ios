@@ -136,50 +136,6 @@ CGFloat const kPaymentCellHeight = 60.;
         }
         
     }
-    
-//    [[MIAMCoinManage shareMCoinManage] rechargeMCoinWithProductID:_productIdString
-//                                                       purchaseID:appleProductID
-//                                                          success:^{
-//                                                          [subscriber sendCompleted];
-//                                                          }
-//                                                           failed:^(NSString *failed) {
-//                                                           
-//                                                           [subscriber sendError:[NSError errorWithDomain:failed code:-1 userInfo:nil]];
-//                                                               
-//                                                           }];
-    
-//    [[JOPurchaseManage sharePurchaseManage] purchaseWithProductID:appleProductID
-//                                                   successHanlder:^(NSString *productID, NSString *transactionID, NSString *verifyString) {
-//                                                   
-//                                                       [MiaAPIHelper verifyPurchaseWithRechargeID:_productIdString orderID:transactionID auth:verifyString completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//                                                           
-//                                                           if (success) {
-//                                                               
-//                                                               
-//                                                               if ([userInfo[MiaAPIKey_Values][MiaAPIKey_Return] integerValue] == 0) {
-//                                                                   //验证成功
-//                                                                   [subscriber sendCompleted];
-//                                                               }else{
-//                                                                   //验证失败
-//                                                                   [subscriber sendError:[NSError errorWithDomain:@"充值验证结果失败" code:-1 userInfo:nil]];
-//                                                               }
-//                                                               
-//                                                           }else{
-//                                                           
-//                                                               [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
-//                                                           }
-//                                                           
-//                                                       } timeoutBlock:^(MiaRequestItem *requestItem) {
-//                                                          
-//                                                           [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
-//                                                       }];
-//                                                       
-//                                                   }
-//                                                failedHanlder:^(NSString *failed) {
-//        
-//                                                        [subscriber sendError:[NSError errorWithDomain:failed code:-1 userInfo:nil]];
-//    }];
-
 }
 
 - (void)parseRechargeListWithData:(NSArray *)array{

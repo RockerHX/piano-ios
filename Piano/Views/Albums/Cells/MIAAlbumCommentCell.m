@@ -19,7 +19,9 @@
 
 - (void)setCellWidth:(CGFloat)width{
     
+    [self createAlbumDetailView];
     
+    [_commmentView setCommentViewWidth:width - kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - kContentViewLeftSpaceDistance - kContentViewRightSpaceDistance];
 }
 
 - (void)createAlbumDetailView{
@@ -34,8 +36,6 @@
 }
 
 - (void)setCellData:(id)data{
-    
-    [self createAlbumDetailView];
     
     [_commmentView setAlbumCommentData:data];
 }

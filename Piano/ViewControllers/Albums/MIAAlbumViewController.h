@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger,MIAAlbumRewardType) {
-
+    
     MIAAlbumRewardTypeNormal,//从普通的专辑页面进入的类型
     MIAAlbumRewardTypeMyReward,//从我打赏过的专辑进入的类型
 };

@@ -9,32 +9,21 @@
 #import "HXLiveGiftContainerViewController.h"
 #import "HXLiveGiftItemCell.h"
 #import "UIConstants.h"
+#import "HXRewardGiftListLayout.h"
 
 
 @implementation HXLiveGiftContainerViewController
 
 #pragma mark - Property
 - (void)setGifts:(NSArray *)gifts {
-    NSMutableArray *array = gifts.mutableCopy;
-    [gifts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [array addObject:obj];
-    }];
-    [gifts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [array addObject:obj];
-    }];
-    [gifts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [array addObject:obj];
-    }];
-    _gifts = [array copy];
-    
-//    _gifts = gifts;
+    _gifts = gifts;
     
     _selectedIndex = 0;
     [self.collectionView reloadData];
 }
 
 - (CGFloat)contianerHeight {
-    return ([self itemSize].height * 2) + 3.0f;;
+    return ((HXRewardGiftListLayout *)self.collectionView.collectionViewLayout).controlHeight;
 }
 
 #pragma mark - UICollectionView Data Source Methods
@@ -61,12 +50,6 @@
     
     _selectedIndex = indexPath.row;
     [collectionView reloadData];
-}
-
-#pragma mark - Private Methods
-- (CGSize)itemSize {
-    CGFloat size = (SCREEN_WIDTH - 2.0f) / 3;
-    return CGSizeMake(size, size);
 }
 
 @end

@@ -149,9 +149,10 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
                 completeBlock:(MiaRequestCompleteBlock)completeBlock
                  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
-+ (void)followWithUID:(NSString *)uID
-		completeBlock:(MiaRequestCompleteBlock)completeBlock
-		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
++ (void)followWithRoomID:(NSString *)roomID
+                     uID:(NSString *)uID
+           completeBlock:(MiaRequestCompleteBlock)completeBlock
+            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)unfollowWithUID:(NSString *)uID
 		  completeBlock:(MiaRequestCompleteBlock)completeBlock
@@ -171,6 +172,10 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)getAlbumTopListWithRoomID:(NSString *)roomID
                     completeBlock:(MiaRequestCompleteBlock)completeBlock
                      timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)sharePostWithRoomID:(NSString *)roomID
+              completeBlock:(MiaRequestCompleteBlock)completeBlock
+               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)getUserProfileWithUID:(NSString *)uID
 				completeBlock:(MiaRequestCompleteBlock)completeBlock

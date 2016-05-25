@@ -35,26 +35,26 @@
                         <collectionViewLayout key="collectionViewLayout" id="wdI-wq-aZF" customClass="HXRewardGiftListLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXLiveGiftItemCell" id="ksA-uG-kxl" userLabel="HXLiveGiftItemCell" customClass="HXLiveGiftItemCell">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Nw-Ae-70X" userLabel="BG">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Nw-Ae-70X" userLabel="BG">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-rx-QZM" userLabel="Gift Contianer">
-                                            <rect key="frame" x="28" y="15" width="70" height="95"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-rx-QZM" userLabel="Gift Contianer">
+                                            <rect key="frame" x="25" y="13" width="70" height="95"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="boh-Zw-Raw" userLabel="Gift Logo">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="boh-Zw-Raw" userLabel="Gift Logo">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="boh-Zw-Raw" secondAttribute="height" multiplier="1:1" id="6wG-tN-u1O"/>
                                                         <constraint firstAttribute="width" constant="70" id="zaY-N6-Dgj"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-nA-KxF" userLabel="Coin Count Container">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-nA-KxF" userLabel="Coin Count Container">
                                                     <rect key="frame" x="23" y="78" width="23" height="17"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-fU-qUw">
@@ -101,6 +101,7 @@
                                     <constraint firstAttribute="trailing" secondItem="6Nw-Ae-70X" secondAttribute="trailing" id="Uzq-6k-zaR"/>
                                     <constraint firstItem="lBV-rx-QZM" firstAttribute="centerY" secondItem="ksA-uG-kxl" secondAttribute="centerY" id="qqV-9k-4Lt"/>
                                 </constraints>
+                                <size key="customSize" width="120" height="120"/>
                                 <connections>
                                     <outlet property="bgView" destination="6Nw-Ae-70X" id="q0u-fZ-hpr"/>
                                     <outlet property="coinCountLabel" destination="pZr-fU-qUw" id="Fej-jE-3ii"/>
@@ -134,8 +135,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmT-3h-2jm" userLabel="Container">
-                                <rect key="frame" x="0.0" y="568" width="320" height="276"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmT-3h-2jm" userLabel="Container">
+                                <rect key="frame" x="0.0" y="100" width="320" height="276"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LG-BG" translatesAutoresizingMaskIntoConstraints="NO" id="AwK-WF-LoI">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
@@ -352,6 +353,8 @@
                         <outlet property="bottomConstraint" destination="Dcq-3C-e07" id="uG2-Lm-6PD"/>
                         <outlet property="conianerHeightConstraint" destination="xd5-Mb-EGJ" id="w1u-Bt-PYm"/>
                         <outlet property="containerView" destination="LmT-3h-2jm" id="IEe-ud-27v"/>
+                        <outlet property="countContainer" destination="4x8-Uj-tnk" id="cOi-LQ-ay9"/>
+                        <outlet property="countLabel" destination="Q6A-H9-gbZ" id="cdM-gD-1Et"/>
                         <outlet property="rechargeContainer" destination="Iw5-Ya-Dhy" id="ghC-RG-Qij"/>
                         <outlet property="tapView" destination="a15-lh-srE" id="WXp-Ab-K9b"/>
                     </connections>

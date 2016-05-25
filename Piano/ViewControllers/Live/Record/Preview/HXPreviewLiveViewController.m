@@ -20,6 +20,7 @@
 #import "HXSelectedAlbumViewController.h"
 #import "HXAlbumModel.h"
 #import "UIImageView+WebCache.h"
+#import "HXLiveModel.h"
 
 @interface HXPreviewLiveViewController () <
 UIImagePickerControllerDelegate,
@@ -39,9 +40,7 @@ HXSelectedAlbumViewControllerDelegate
 	UIImage *_uploadingImage;
 	MBProgressHUD *_uploadPictureProgressHUD;
 
-    NSString *_roomID;
-    NSString *_roomTitle;
-    NSString *_shareUrl;
+    HXLiveModel *_model;
     BOOL _frontCamera;
     BOOL _beauty;
     
@@ -70,6 +69,7 @@ HXSelectedAlbumViewControllerDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _frontCamera = YES;
+    _model = [HXLiveModel new];
     
     [_controlContainerView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyBoard)]];
     
@@ -77,8 +77,8 @@ HXSelectedAlbumViewControllerDelegate
     [MiaAPIHelper createRoomWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
-            self->_roomID = data[@"roomID"];
-            self->_shareUrl = data[@"shareUrl"];
+            _model.roomID = data[@"roomID"];
+            _model.shareUrl = data[@"shareUrl"];
         }
         [self hiddenHUD];
     } timeoutBlock:^(MiaRequestItem *requestItem) {
@@ -101,14 +101,17 @@ HXSelectedAlbumViewControllerDelegate
 - (void)setRoomTitle {
     [self showHUD];
     
-    _roomTitle = _editView.textField.text;
+    _model.title = _editView.textField.text;
     
-    if (_roomTitle.length) {
-        [MiaAPIHelper setRoomTitle:_roomTitle
-                            roomID:_roomID
+    if (_model.title.length) {
+        [MiaAPIHelper setRoomTitle:_model.title
+                            roomID:_model.roomID
                      completeBlock:
          ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
              if (success) {
+                 NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+                 _model.shareTitle = data[@"shareTitle"];
+                 _model.shareContent = data[@"shareContent"];
                  [self startCountDown];
              }
              [self hiddenHUD];
@@ -133,8 +136,8 @@ HXSelectedAlbumViewControllerDelegate
     [_countDownContainerView removeFromSuperview];
     _countDownContainerView = nil;
     
-    if (_delegate && [_delegate respondsToSelector:@selector(previewControllerHandleFinishedShouldStartLive:album:roomID:roomTitle:shareUrl:frontCamera:beauty:)]) {
-        [_delegate previewControllerHandleFinishedShouldStartLive:self album:_album roomID:_roomID roomTitle:_roomTitle shareUrl:_shareUrl frontCamera:_frontCamera beauty:_beauty];
+    if (_delegate && [_delegate respondsToSelector:@selector(previewControllerHandleFinishedShouldStartLive:liveModel:frontCamera:beauty:)]) {
+        [_delegate previewControllerHandleFinishedShouldStartLive:self liveModel:_model frontCamera:_frontCamera beauty:_beauty];
     }
 }
 
@@ -205,7 +208,7 @@ HXSelectedAlbumViewControllerDelegate
     [_editView.albumCoverView sd_setImageWithURL:[NSURL URLWithString:album.coverUrl]];
     
     [self showHUD];
-    [MiaAPIHelper liveRelatedAlbum:album.ID roomID:_roomID completeBlock:
+    [MiaAPIHelper liveRelatedAlbum:album.ID roomID:_model.roomID completeBlock:
      ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
          [self hiddenHUD];
          if (success) {

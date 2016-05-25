@@ -118,6 +118,9 @@ static NSString *kMIAFontLight = @"Helvetica";
     }else if (type == MIAFontType_AlbumReward_Tip){
         //提示
         return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
+    }else if (type == MIAFontType_AlbumReward_RewardMCoin){
+        //打赏的M币数量
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 22.);
     }else if (type == MIAFontType_AlbumReward_RewardButtonTitle){
         //打赏的按钮的标题
         return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);

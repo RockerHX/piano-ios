@@ -30,11 +30,23 @@
 				<string>wxc9564c8f6dccdb39</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wb2506510146</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>12</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>weibosdk2.5</string>
+		<string>weibosdk</string>
+		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
 		<string>sinaweibohdsso</string>
 		<string>sinaweibosso</string>
 		<string>wechat</string>

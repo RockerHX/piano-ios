@@ -352,13 +352,13 @@ const static NSTimeInterval kAutoReconnectTimeout_Loop				= 30.0;
 	} else if ([command isEqualToString:MiaAPICommand_Push_RoomClose]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomClose object:self userInfo:userInfo];
 		return;
-    }/* else if ([command isEqualToString:MiaAPICommand_Push_RoomComment]) {
+    } else if ([command isEqualToString:MiaAPICommand_Push_Attention]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomAttention object:self userInfo:userInfo];
         return;
-    } else if ([command isEqualToString:MiaAPICommand_Push_RoomComment]) {
+    } else if ([command isEqualToString:MiaAPICommand_Push_Share]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomShare object:self userInfo:userInfo];
         return;
-    }*/ else if ([command isEqualToString:MiaAPICommand_Push_RoomGift]) {
+    } else if ([command isEqualToString:MiaAPICommand_Push_RoomGift]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomGift object:self userInfo:userInfo];
         return;
     } else if ([command isEqualToString:MiaAPICommand_Push_RoomReward]) {

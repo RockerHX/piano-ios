@@ -13,6 +13,7 @@
 #import "MiaAPIHelper.h"
 #import "HXGiftModel.h"
 #import "HXLiveGiftContainerViewController.h"
+#import "KxMenu.h"
 
 
 @interface HXLiveGiftViewController ()
@@ -61,6 +62,11 @@
         __strong __typeof__(self)strongSelf = weakSelf;
         [strongSelf showRechargeSence];
     }];
+    
+    [_countContainer bk_whenTapped:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [strongSelf popCountMenu];
+    }];
 }
 
 - (void)viewConfigure {
@@ -101,6 +107,10 @@
     }
 }
 
+- (void)countChanged:(KxMenuItem *)item {
+    NSLog(@"%@", item.title);
+}
+
 #pragma mark - Private Methods
 - (void)parseGiftListWithLists:(NSArray *)lists {
     NSMutableArray *giftList = @[].mutableCopy;
@@ -138,6 +148,41 @@
     if (_rechargeDelegate && [_rechargeDelegate respondsToSelector:@selector(shouldShowRechargeSence)]) {
         [_rechargeDelegate shouldShowRechargeSence];
     }
+}
+
+- (void)popCountMenu {
+    NSArray *countList = @[@99, @66, @20, @10, @1];
+    NSMutableArray *menuItems = @[].mutableCopy;
+    [countList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        KxMenuItem *item = [KxMenuItem menuItem:obj.stringValue image:nil target:self action:@selector(countChanged:)];
+        item.alignment = NSTextAlignmentCenter;
+        [menuItems addObject:item];
+    }];
+    CGRect frame = [_countContainer.superview convertRect:_countContainer.frame toView:self.view];
+    [KxMenu setTintColor:[UIColor colorWithWhite:0.2f alpha:0.6f]];
+    [KxMenu setTitleFont:[UIFont systemFontOfSize:15.0f]];
+    [KxMenu showMenuInView:self.view fromRect:frame menuItems:menuItems.copy];
+    
+    __block UIView *overlay = nil;
+    [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([NSStringFromClass([obj class]) isEqualToString:@"KxMenuOverlay"]) {
+            overlay = obj;
+            *stop = YES;
+        }
+    }];
+    UIView *menuView = [overlay.subviews firstObject];
+    [[menuView.subviews firstObject].subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
+        [view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull subView, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([subView isKindOfClass:[UIImageView class]]) {
+                UIImageView *imageView = (UIImageView *)subView;
+                imageView.image = nil;
+            } else if ([subView isKindOfClass:[UILabel class]]) {
+                CGPoint center = subView.center;
+                center.x = view.center.x;
+                subView.center = center;
+            }
+        }];
+    }];
 }
 
 @end
