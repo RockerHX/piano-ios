@@ -117,6 +117,7 @@ HXDiscoveryContainerDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     switch (action) {
         case HXDiscoveryTopBarActionProfile: {
+            [self hiddenNavigationBar];
             [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }
@@ -150,7 +151,6 @@ HXDiscoveryContainerDelegate
         }
         case HXDiscoveryContainerActionShowLive: {
             [self hiddenNavigationBar];
-            
             UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
             HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
             watchLiveViewController.roomID = model.roomID;
@@ -159,7 +159,6 @@ HXDiscoveryContainerDelegate
         }
         case HXDiscoveryContainerActionShowStation: {
             [self hiddenNavigationBar];
-            
             MIAProfileViewController *profileViewController = [MIAProfileViewController new];
             [profileViewController setUid:model.uID];
             [self.navigationController pushViewController:profileViewController animated:YES];
