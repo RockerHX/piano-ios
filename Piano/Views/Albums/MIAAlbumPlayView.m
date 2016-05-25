@@ -9,6 +9,7 @@
 #import "MIAAlbumPlayView.h"
 #import "JOBaseSDK.h"
 #import "MusicMgr.h"
+#import "MIASongManage.h"
 #import "MIAFontManage.h"
 
 #define SliderColor JORGBCreate(246., 28., 41., 1.)
@@ -324,7 +325,18 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
 - (void)setSongModelArray:(NSArray *)songModelArray{
 
     self.songArray = nil;
-    self.songArray = [songModelArray copy];
+    self.songArray = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:songModelArray]];;
+    
+    for (HXSongModel *songmModel in _songArray) {
+        
+        NSString *mp3URLString = songmModel.mp3Url;
+        if ([[MIASongManage shareSongManage] songIsExistWithURLString:mp3URLString]) {
+            //存在 则替换成本地的地址
+            
+            songmModel.mp3Url = [NSString stringWithFormat:@"file:/%@",[[MIASongManage shareSongManage] songPathWithURLString:mp3URLString]];
+        }
+        
+    }
     
     [self firstPlayUpdateState];
 }

@@ -18,6 +18,7 @@
 #import "MIAAlbumHeadDetailViewModel.h"
 
 static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
+static NSString *const kSongDownloadTitle = @"下载专辑";
 
 @interface MIAAlbumDetailView(){
 
@@ -26,6 +27,7 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 
 @property (nonatomic, strong) UIImageView *albumCoverImageView;
 @property (nonatomic, strong) UIView *rewardForDownloadView;
+@property (nonatomic, strong) UIButton *rewardButton;
 @property (nonatomic, strong) MIAAlbumRewardView *rewardView;
 @property (nonatomic, strong) MIAAlbumPlayView *playView;
 
@@ -94,20 +96,20 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
         [JOAutoLayout autoLayoutWithHeight:kRewardDownloadViewHeight selfView:_rewardForDownloadView superView:self];
         
         CGFloat topSpaceDistance = 10.;
-         UIButton *rewardButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [[rewardButton titleLabel] setJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_PayDownloadButtonTitle]];
-        [rewardButton setTitle:kRewardDownloadTitle forState:UIControlStateNormal];
-        [rewardButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [rewardButton setBackgroundColor:JORGBSameCreate(30.)];
-        [[rewardButton layer] setCornerRadius:(kRewardDownloadViewHeight-2*topSpaceDistance)/2.];
-        [[rewardButton layer] setMasksToBounds:YES];
-        [rewardButton addTarget:self action:@selector(rewardButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        [_rewardForDownloadView addSubview:rewardButton];
+        self.rewardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [[_rewardButton titleLabel] setJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_PayDownloadButtonTitle]];
+        [_rewardButton setTitle:kRewardDownloadTitle forState:UIControlStateNormal];
+        [_rewardButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_rewardButton setBackgroundColor:JORGBSameCreate(30.)];
+        [[_rewardButton layer] setCornerRadius:(kRewardDownloadViewHeight-2*topSpaceDistance)/2.];
+        [[_rewardButton layer] setMasksToBounds:YES];
+        [_rewardButton addTarget:self action:@selector(rewardButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        [_rewardForDownloadView addSubview:_rewardButton];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:topSpaceDistance selfView:rewardButton superView:_rewardForDownloadView];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:rewardButton superView:_rewardForDownloadView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-topSpaceDistance selfView:rewardButton superView:_rewardForDownloadView];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:topSpaceDistance selfView:_rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-topSpaceDistance selfView:_rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:_rewardButton superView:_rewardForDownloadView];
     }
 }
 
@@ -156,7 +158,14 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 - (void)rewardButtonClick{
 
     if (_rewardAlbumActionBlock) {
-        _rewardAlbumActionBlock();
+        
+        if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kRewardDownloadTitle]) {
+            //打赏
+            _rewardAlbumActionBlock(RewardAlbumActionType_Reward);
+        }else if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kSongDownloadTitle]){
+            //下载专辑
+            _rewardAlbumActionBlock(RewardAlbumActionType_DownloadAlbum);
+        }
     }
 }
 
@@ -165,15 +174,18 @@ static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
 - (void)setAlbumRewardState:(BOOL)state{
 
     if (state == YES) {
-        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardForDownloadView superView:self];
-        [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardForDownloadView superView:self];
-        [_rewardForDownloadView setHidden:YES];
+//        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardForDownloadView superView:self];
+//        [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardForDownloadView superView:self];
+//        [_rewardForDownloadView setHidden:YES];
+        
+        //kSongDownloadTitle
+        [_rewardButton setTitle:kSongDownloadTitle forState:UIControlStateNormal];
         
         [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardView superView:self];
         [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardView superView:self];
         [_rewardView setHidden:YES];
         
-        albumDetailViewHeight = kPlayViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+        albumDetailViewHeight = kPlayViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
     }
     
 }

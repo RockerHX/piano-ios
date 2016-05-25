@@ -15,10 +15,16 @@ typedef NS_ENUM(NSUInteger, AlbumDetailType) {
     AlbumDetailTypeReward, //进入已打赏过的专辑详情页
 };
 
+typedef NS_ENUM(NSUInteger, RewardAlbumActionType) {
+
+    RewardAlbumActionType_Reward,//打赏
+    RewardAlbumActionType_DownloadAlbum,//下载专辑
+};
+
 /**
  *  打赏下载的按钮的点击事件的block
  */
-typedef void(^RewardAlbumActionBlock)();
+typedef void(^RewardAlbumActionBlock)(RewardAlbumActionType type);
 
 /**
  *  播放歌曲发生改变的block.
