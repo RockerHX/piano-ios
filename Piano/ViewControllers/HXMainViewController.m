@@ -29,11 +29,6 @@ HXLoginViewControllerDelegate
     HXDiscoveryViewController *_discoveryContainerViewController;
 }
 
-#pragma mark - Status Bar
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:NSStringFromClass([HXDiscoveryViewController class])]) {
