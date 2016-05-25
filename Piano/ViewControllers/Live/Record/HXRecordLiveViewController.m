@@ -166,16 +166,13 @@ HXLiveAlbumViewDelegate
 }
 
 - (void)signalLink {
-    @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
-        @strongify(self)
         self->_barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         ;
     }];
     [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
-        @strongify(self)
         [self updateAlbumView];
     }];
 }

@@ -113,27 +113,22 @@ HXShowRechargeDelegate
 }
 
 - (void)signalLink {
-    @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
-        @strongify(self)
-        self->_barrageContainer.barrages = barrages;
+        _barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
     }];
     [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
-        @strongify(self)
         [self updateAlbumView];
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
-        @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
-        @strongify(self)
         [self fetchDataFinfished];
     }];
 }

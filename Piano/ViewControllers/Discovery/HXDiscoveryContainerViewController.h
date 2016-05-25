@@ -19,23 +19,23 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryContainerAction) {
 };
 
 
-@class HXDiscoveryContainerViewController;
-
-
-@protocol HXDiscoveryContainerViewControllerDelegate <NSObject>
-
-@required
-- (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model;
-
-@end
+@protocol HXDiscoveryContainerDelegate;
 
 
 @interface HXDiscoveryContainerViewController : UICollectionViewController
 
-@property (weak, nonatomic) IBOutlet id  <HXDiscoveryContainerViewControllerDelegate>delegate;
+@property (weak, nonatomic) IBOutlet id  <HXDiscoveryContainerDelegate>delegate;
 @property (weak, nonatomic) HXDiscoveryViewModel *viewModel;
 
 - (void)displayDiscoveryList;
 - (void)stopPreviewVideo;
+
+@end
+
+
+@protocol HXDiscoveryContainerDelegate <NSObject>
+
+@required
+- (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model;
 
 @end

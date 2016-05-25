@@ -189,20 +189,4 @@ HXDiscoveryLiveCellDelegate
     }
 }
 
-//#pragma mark - HXDiscoveryLiveCellDelegate Methods
-//- (void)discoveryLiveCellAnchorContainerTaped:(HXDiscoveryLiveCell *)cell {
-//    NSInteger row = [self.tableView indexPathForCell:cell].row;
-//    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
-//        [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];
-//    }
-//}
-//
-//#pragma mark - HXDiscoveryNormalCellDelegate Methods
-//- (void)discoveryNormalCellAnchorContainerTaped:(HXDiscoveryNormalCell *)cell {
-//    NSInteger row = [self.tableView indexPathForCell:cell].row;
-//    if (_delegate && [_delegate respondsToSelector:@selector(container:showAnchorByModel:)]) {
-//        [_delegate container:self showAnchorByModel:_viewModel.discoveryList[row]];
-//    }
-//}
-
 @end

@@ -1,27 +1,28 @@
 //
-//  HXMeContainerViewController.m
+//  HXHostProfileContainerViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/28.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXMeContainerViewController.h"
+#import "HXHostProfileContainerViewController.h"
 #import "HXMeRechargeCell.h"
 #import "HXMePurchaseHistoryCell.h"
 #import "HXMeMyStationCell.h"
 #import "HXMeAttentionPromptCell.h"
 #import "HXMeAttentionContainerCell.h"
 #import "UIImageView+WebCache.h"
+#import "HXSettingViewController.h"
 
 
-@interface HXMeContainerViewController () <
+@interface HXHostProfileContainerViewController () <
 HXMeAttentionContainerCellDelegate
 >
 @end
 
 
-@implementation HXMeContainerViewController
+@implementation HXHostProfileContainerViewController
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
@@ -41,8 +42,12 @@ HXMeAttentionContainerCellDelegate
 }
 
 #pragma mark - Event Response
+- (IBAction)backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)settingButtonPressed {
-    ;
+    [self.navigationController pushViewController:[HXSettingViewController instance] animated:YES];
 }
 
 #pragma mark - Public Methods
@@ -135,13 +140,13 @@ HXMeAttentionContainerCellDelegate
     switch (rowType) {
         case HXMeRowTypeRecharge: {
             if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
-                [_delegate container:self takeAction:HXMeContainerActionRecharge];
+                [_delegate container:self takeAction:HXHostProfileContainerActionRecharge];
             }
             break;
         }
         case HXMeRowTypePurchaseHistory: {
             if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
-                [_delegate container:self takeAction:HXMeContainerActionPurchaseHistory];
+                [_delegate container:self takeAction:HXHostProfileContainerActionPurchaseHistory];
             }
             break;
         }

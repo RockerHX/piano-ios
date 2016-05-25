@@ -1,13 +1,13 @@
 //
-//  HXMeViewController.m
+//  HXHostProfileViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/22.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXMeViewController.h"
-#import "HXMeContainerViewController.h"
+#import "HXHostProfileViewController.h"
+#import "HXHostProfileContainerViewController.h"
 #import "HXSettingViewController.h"
 #import "HXWatchLiveViewController.h"
 #import "HXUserSession.h"
@@ -17,14 +17,14 @@
 #import "MIAPaymentViewController.h"
 
 
-@interface HXMeViewController () <
-HXMeContainerViewControllerDelegate
+@interface HXHostProfileViewController () <
+HXHostProfileContainerDelegate
 >
 @end
 
 
-@implementation HXMeViewController {
-    HXMeContainerViewController *_containerViewController;
+@implementation HXHostProfileViewController {
+    HXHostProfileContainerViewController *_containerViewController;
     HXMeViewModel *_viewModel;
 }
 
@@ -32,6 +32,10 @@ HXMeContainerViewControllerDelegate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _containerViewController = segue.destinationViewController;
     _containerViewController.delegate = self;
+}
+
++ (HXStoryBoardName)storyBoardName {
+    return HXStoryBoardNameProfile;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -45,6 +49,8 @@ HXMeContainerViewControllerDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _containerViewController.viewModel = self.viewModel;
+    
+    [self fetchData];
 }
 
 - (void)viewConfigure {
@@ -59,8 +65,8 @@ HXMeContainerViewControllerDelegate
     return _viewModel;
 }
 
-#pragma mark - Public Methods
-- (void)refresh {
+#pragma mark - Private Methods
+- (void)fetchData {
     @weakify(self)
     RACSignal *fetchSignal = [self.viewModel.fetchCommand execute:nil];
     [fetchSignal subscribeError:^(NSError *error) {
@@ -74,7 +80,6 @@ HXMeContainerViewControllerDelegate
     }];
 }
 
-#pragma mark - Private Methods
 - (void)updateUI {
     [self hiddenHUD];
     
@@ -87,8 +92,8 @@ HXMeContainerViewControllerDelegate
     [self->_containerViewController refresh];
 }
 
-#pragma mark - HXMeContainerViewControllerDelegate Methods
-- (void)container:(HXMeContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model {
+#pragma mark - HXHostProfileContainerDelegate Methods
+- (void)container:(HXHostProfileContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model {
     if (model.live) {
         if (!model.roomID) {
             [self showBannerWithPrompt:@"直播已结束"];
@@ -106,9 +111,9 @@ HXMeContainerViewControllerDelegate
     }
 }
 
-- (void)container:(HXMeContainerViewController *)container takeAction:(HXMeContainerAction)action {
+- (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXHostProfileContainerAction)action {
     switch (action) {
-        case HXMeContainerActionAvatarTaped: {
+        case HXHostProfileContainerActionAvatarTaped: {
             if ([HXUserSession session].role == HXUserRoleAnchor) {
                 MIAProfileViewController *profileViewController = [MIAProfileViewController new];
                 [profileViewController setUid:_viewModel.model.uid];
@@ -116,23 +121,20 @@ HXMeContainerViewControllerDelegate
             }
             break;
         }
-        case HXMeContainerActionNickNameTaped: {
+        case HXHostProfileContainerActionNickNameTaped: {
             ;
             break;
         }
-        case HXMeContainerActionSignatureTaped: {
+        case HXHostProfileContainerActionSignatureTaped: {
             ;
             break;
         }
-        case HXMeContainerActionRecharge: {
-            if (_delegate && [_delegate respondsToSelector:@selector(meViewControllerHiddenNavigationBar:)]) {
-                [_delegate meViewControllerHiddenNavigationBar:self];
-            }
+        case HXHostProfileContainerActionRecharge: {
             MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
             [self.navigationController pushViewController:paymentViewController animated:YES];
             break;
         }
-        case HXMeContainerActionPurchaseHistory: {
+        case HXHostProfileContainerActionPurchaseHistory: {
             ;
             break;
         }

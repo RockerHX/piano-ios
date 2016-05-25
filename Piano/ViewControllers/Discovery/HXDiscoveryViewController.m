@@ -22,11 +22,12 @@
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
+#import "HXHostProfileViewController.h"
 
 
 @interface HXDiscoveryViewController () <
 HXDiscoveryTopBarDelegate,
-HXDiscoveryContainerViewControllerDelegate
+HXDiscoveryContainerDelegate
 >
 @end
 
@@ -89,10 +90,6 @@ HXDiscoveryContainerViewControllerDelegate
     }];
 }
 
-- (void)restoreDisplay {
-    [self showMaskContainer:YES];
-}
-
 #pragma mark - Private Methods
 - (void)fetchCompleted {
     [_containerViewController displayDiscoveryList];
@@ -110,19 +107,9 @@ HXDiscoveryContainerViewControllerDelegate
      }];
 }
 
-- (void)showMaskContainer:(BOOL)show {
-    _coverView.hidden = !show;
-    _maskView.hidden = !show;
-}
-
-- (void)startLive {
-    UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-    [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
-}
-
 - (void)hiddenNavigationBar {
-    if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewControllerHiddenNavigationBar:)]) {
-        [_delegate discoveryViewControllerHiddenNavigationBar:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewController:takeAction:)]) {
+        [_delegate discoveryViewController:self takeAction:HXDiscoveryViewControllerActionHiddenNavigationBar];
     }
 }
 
@@ -130,11 +117,8 @@ HXDiscoveryContainerViewControllerDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     switch (action) {
         case HXDiscoveryTopBarActionProfile: {
-            if (_delegate && [_delegate respondsToSelector:@selector(discoveryViewControllerHandleMenu:)]) {
-                
-                [self showMaskContainer:NO];
-                [_delegate discoveryViewControllerHandleMenu:self];
-            }
+            [self hiddenNavigationBar];
+            [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }
         case HXDiscoveryTopBarActionMusic: {
@@ -147,7 +131,7 @@ HXDiscoveryContainerViewControllerDelegate
     }
 }
 
-#pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
+#pragma mark - HXDiscoveryContainerDelegate Methods
 - (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model {
     [container stopPreviewVideo];
     switch (action) {
@@ -161,12 +145,12 @@ HXDiscoveryContainerViewControllerDelegate
         }
         case HXDiscoveryContainerActionStartLive: {
             [self hiddenNavigationBar];
-            [self startLive];
+            UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+            [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
             [self hiddenNavigationBar];
-            
             UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
             HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
             watchLiveViewController.roomID = model.roomID;
@@ -175,7 +159,6 @@ HXDiscoveryContainerViewControllerDelegate
         }
         case HXDiscoveryContainerActionShowStation: {
             [self hiddenNavigationBar];
-            
             MIAProfileViewController *profileViewController = [MIAProfileViewController new];
             [profileViewController setUid:model.uID];
             [self.navigationController pushViewController:profileViewController animated:YES];
@@ -183,45 +166,5 @@ HXDiscoveryContainerViewControllerDelegate
         }
     }
 }
-
-//- (void)container:(HXDiscoveryContainerViewController *)container showLiveByModel:(HXDiscoveryModel *)model {
-////    if ([model.uID isEqualToString:[HXUserSession session].uid]) {
-////        return;
-////    }
-//    
-//    _shouldHiddenNavigationBar = NO;
-//    if (model) {
-//        switch (model.type) {
-//            case HXDiscoveryTypeLive: {
-//                UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-//                HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
-//                watchLiveViewController.roomID = model.ID;
-//                [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
-//                break;
-//            }
-//            case HXDiscoveryTypeReplay: {
-//                UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
-//                HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
-//                replayViewController.model = model;
-//                [self presentViewController:replayNaviagtionController animated:YES completion:nil];
-//                break;
-//            }
-//            case HXDiscoveryTypeNewAlbum: {
-//                _shouldHiddenNavigationBar = YES;
-//                HXAlbumsViewController *albumsViewController = [HXAlbumsViewController instance];
-////                albumsViewController.albumID = model.ID;
-//                albumsViewController.albumID = @"1";
-//                [self.navigationController pushViewController:albumsViewController animated:YES];
-//                break;
-//            }
-//            case HXDiscoveryTypeVideo: {
-//                NSURL *url = [NSURL URLWithString:model.videoUrl];
-//                MPMoviePlayerViewController *videoViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
-//                [self presentViewController:videoViewController animated:YES completion:nil];
-//                break;
-//            }
-//        }
-//    }
-//}
 
 @end
