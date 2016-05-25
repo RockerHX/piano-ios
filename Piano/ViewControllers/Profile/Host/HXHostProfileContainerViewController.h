@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, HXHostProfileContainerAction) {
 
 @property (nonatomic, strong) HXMeViewModel *viewModel;
 
+- (IBAction)backButtonPressed;
 - (IBAction)settingButtonPressed;
 
 - (void)refresh;

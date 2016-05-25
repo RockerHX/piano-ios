@@ -41,6 +41,10 @@ HXMeAttentionContainerCellDelegate
 }
 
 #pragma mark - Event Response
+- (IBAction)backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)settingButtonPressed {
     ;
 }

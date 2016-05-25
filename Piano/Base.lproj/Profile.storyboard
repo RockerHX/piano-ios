@@ -841,25 +841,37 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ci3-nx-h4j">
-                                    <rect key="frame" x="12" y="12" width="44" height="44"/>
+                                    <rect key="frame" x="0.0" y="12" width="44" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Ci3-nx-h4j" secondAttribute="height" multiplier="1:1" id="kBd-ey-nbu"/>
                                         <constraint firstAttribute="width" constant="44" id="uU1-tP-GId"/>
                                     </constraints>
-                                    <state key="normal" image="PR-SettingIcon"/>
+                                    <state key="normal" image="C-BackIcon-White"/>
                                     <connections>
+                                        <action selector="backButtonPressed" destination="RUd-j5-cx4" eventType="touchUpInside" id="nh0-RC-KqC"/>
                                         <action selector="settingButtonPressed" destination="RUd-j5-cx4" eventType="touchUpInside" id="vZ1-R1-1ZU"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHF-rX-6D5">
+                                    <rect key="frame" x="276" y="12" width="44" height="44"/>
+                                    <state key="normal" image="PR-SettingIcon-White"/>
+                                    <connections>
+                                        <action selector="settingButtonPressed" destination="RUd-j5-cx4" eventType="touchUpInside" id="HpT-24-nwp"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="oHF-rX-6D5" firstAttribute="centerY" secondItem="Ci3-nx-h4j" secondAttribute="centerY" id="2v5-1R-EXf"/>
                                 <constraint firstItem="iFb-Yg-mfq" firstAttribute="top" secondItem="w2x-lo-RAO" secondAttribute="top" constant="60" id="Qpc-f6-fWD"/>
+                                <constraint firstItem="oHF-rX-6D5" firstAttribute="width" secondItem="oHF-rX-6D5" secondAttribute="height" multiplier="1:1" id="Shx-yL-NOO"/>
                                 <constraint firstItem="CIo-pa-bMU" firstAttribute="leading" secondItem="w2x-lo-RAO" secondAttribute="leading" constant="20" id="XNN-p3-Uh7"/>
+                                <constraint firstAttribute="trailing" secondItem="oHF-rX-6D5" secondAttribute="trailing" id="YFZ-W7-Mos"/>
+                                <constraint firstItem="oHF-rX-6D5" firstAttribute="width" secondItem="Ci3-nx-h4j" secondAttribute="width" id="d9H-C3-cpR"/>
                                 <constraint firstItem="Ci3-nx-h4j" firstAttribute="top" secondItem="w2x-lo-RAO" secondAttribute="top" constant="12" id="dfc-Z7-cMI"/>
                                 <constraint firstItem="Tfb-ys-mXI" firstAttribute="top" secondItem="CIo-pa-bMU" secondAttribute="bottom" constant="10" id="hfg-IK-dtx"/>
                                 <constraint firstItem="Tfb-ys-mXI" firstAttribute="leading" secondItem="CIo-pa-bMU" secondAttribute="leading" id="hk8-qW-WQv"/>
-                                <constraint firstItem="Ci3-nx-h4j" firstAttribute="leading" secondItem="w2x-lo-RAO" secondAttribute="leading" constant="12" id="qiU-EF-Dpw"/>
+                                <constraint firstItem="Ci3-nx-h4j" firstAttribute="leading" secondItem="w2x-lo-RAO" secondAttribute="leading" id="qiU-EF-Dpw"/>
                                 <constraint firstItem="CIo-pa-bMU" firstAttribute="top" secondItem="iFb-Yg-mfq" secondAttribute="bottom" constant="25" id="qrP-ae-6mP"/>
                                 <constraint firstAttribute="trailing" secondItem="CIo-pa-bMU" secondAttribute="trailing" constant="20" id="wQK-QR-bGq"/>
                                 <constraint firstItem="Tfb-ys-mXI" firstAttribute="trailing" secondItem="CIo-pa-bMU" secondAttribute="trailing" id="wym-ZV-3VR"/>
@@ -1003,24 +1015,19 @@
                                             <rect key="frame" x="0.0" y="6" width="320" height="50"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O63-X1-8D4" userLabel="Attention Prompt Label">
-                                                    <rect key="frame" x="50" y="15" width="34" height="21"/>
+                                                    <rect key="frame" x="40" y="15" width="34" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDG-VT-zBu" userLabel="Attention Count Label">
-                                                    <rect key="frame" x="86" y="15" width="11" height="21"/>
+                                                    <rect key="frame" x="76" y="15" width="11" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h50-4G-sve">
-                                                    <rect key="frame" x="15" y="11" width="30" height="27"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="h50-4G-sve" secondAttribute="height" multiplier="29:27" id="L3b-Px-jNe"/>
-                                                        <constraint firstAttribute="width" constant="30" id="M35-CX-c2r"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PH-AttentionIcon" translatesAutoresizingMaskIntoConstraints="NO" id="h50-4G-sve">
+                                                    <rect key="frame" x="15" y="15" width="20" height="20"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.15686274510000001" green="0.16862745100000001" blue="0.1960784314" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -1205,10 +1212,12 @@
     </scenes>
     <resources>
         <image name="C-ArrowIcon-Right-Gray" width="20" height="20"/>
+        <image name="C-BackIcon-White" width="25" height="25"/>
+        <image name="PH-AttentionIcon" width="20" height="20"/>
         <image name="PR-AlbumIcon" width="18" height="18"/>
         <image name="PR-MaskBG" width="375" height="667"/>
         <image name="PR-ReplayIcon" width="18" height="18"/>
-        <image name="PR-SettingIcon" width="20" height="20"/>
+        <image name="PR-SettingIcon-White" width="20" height="20"/>
         <image name="PR-VideoIcon" width="18" height="18"/>
     </resources>
 </document>
