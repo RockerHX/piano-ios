@@ -13,6 +13,7 @@
 #import "HXMeAttentionPromptCell.h"
 #import "HXMeAttentionContainerCell.h"
 #import "UIImageView+WebCache.h"
+#import "HXSettingViewController.h"
 
 
 @interface HXHostProfileContainerViewController () <
@@ -46,7 +47,7 @@ HXMeAttentionContainerCellDelegate
 }
 
 - (IBAction)settingButtonPressed {
-    ;
+    [self.navigationController pushViewController:[HXSettingViewController instance] animated:YES];
 }
 
 #pragma mark - Public Methods

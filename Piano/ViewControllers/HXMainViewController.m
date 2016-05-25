@@ -9,12 +9,12 @@
 #import "HXMainViewController.h"
 #import "HXDiscoveryViewController.h"
 #import "HXLoginViewController.h"
+#import "HXWatchLiveViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
 #import "HXUserSession.h"
 #import "FileLog.h"
 #import "UIView+Frame.h"
-#import "HXWatchLiveViewController.h"
 
 
 @interface HXMainViewController () <
@@ -42,6 +42,18 @@ HXLoginViewControllerDelegate
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    
+    switch ([HXUserSession session].state) {
+        case HXUserStateLogout: {
+            [self shouldShowLoginSence];
+            break;
+        }
+        case HXUserStateLogin: {
+            [self autoLogin];
+            break;
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -98,8 +110,10 @@ HXLoginViewControllerDelegate
 
 #pragma mark - Private Methods
 - (void)shouldShowLoginSence {
-    HXLoginViewController *loginViewController = [self showLoginSence];
+    UINavigationController *loginNavigationController = [HXLoginViewController navigationControllerInstance];
+    HXLoginViewController *loginViewController = loginNavigationController.viewControllers.firstObject;
     loginViewController.delegate = self;
+    [self presentViewController:loginNavigationController animated:NO completion:nil];
 }
 
 - (void)logoutCompleted {
@@ -140,33 +154,24 @@ HXLoginViewControllerDelegate
 }
 
 - (void)autoLogin {
-	HXUserSession *userSession = [HXUserSession session];
-    switch (userSession.state) {
-        case HXUserStateLogout: {
-            return;
-            break;
-        }
-        case HXUserStateLogin: {
-            [MiaAPIHelper loginWithSession:userSession.uid
-                                     token:userSession.token
-                             completeBlock:
-             ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-                 if (success) {
-                     NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
-                     HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
-                     [userSession updateUser:user];
-                     
-//                     [self updateNotificationBadge];
-                 } else {
-                     [[FileLog standard] log:@"autoLogin failed, logout"];
-                     [userSession logout];
-                 }
-             } timeoutBlock:^(MiaRequestItem *requestItem) {
-                 NSLog(@"audo login timeout!");
-             }];
-            break;
-        }
-    }
+    HXUserSession *userSession = [HXUserSession session];
+    [MiaAPIHelper loginWithSession:userSession.uid
+                             token:userSession.token
+                     completeBlock:
+     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+         if (success) {
+             NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+             HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
+             [userSession updateUser:user];
+             
+             //                     [self updateNotificationBadge];
+         } else {
+             [[FileLog standard] log:@"autoLogin failed, logout"];
+             [userSession logout];
+         }
+     } timeoutBlock:^(MiaRequestItem *requestItem) {
+         NSLog(@"audo login timeout!");
+     }];
 }
 
 - (void)autoReconnect {
