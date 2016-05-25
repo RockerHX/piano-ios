@@ -26,7 +26,7 @@
 
 @interface HXDiscoveryViewController () <
 HXDiscoveryTopBarDelegate,
-HXDiscoveryContainerViewControllerDelegate
+HXDiscoveryContainerDelegate
 >
 @end
 
@@ -136,7 +136,7 @@ HXDiscoveryContainerViewControllerDelegate
     }
 }
 
-#pragma mark - HXDiscoveryContainerViewControllerDelegate Methods
+#pragma mark - HXDiscoveryContainerDelegate Methods
 - (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model {
     [container stopPreviewVideo];
     switch (action) {
