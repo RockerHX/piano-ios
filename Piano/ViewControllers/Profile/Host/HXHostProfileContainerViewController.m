@@ -135,13 +135,13 @@ HXMeAttentionContainerCellDelegate
     switch (rowType) {
         case HXMeRowTypeRecharge: {
             if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
-                [_delegate container:self takeAction:HXMeContainerActionRecharge];
+                [_delegate container:self takeAction:HXHostProfileContainerActionRecharge];
             }
             break;
         }
         case HXMeRowTypePurchaseHistory: {
             if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
-                [_delegate container:self takeAction:HXMeContainerActionPurchaseHistory];
+                [_delegate container:self takeAction:HXHostProfileContainerActionPurchaseHistory];
             }
             break;
         }

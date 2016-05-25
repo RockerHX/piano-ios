@@ -18,7 +18,7 @@
 
 
 @interface HXHostProfileViewController () <
-HXHostProfileContainerViewControllerDelegate
+HXHostProfileContainerDelegate
 >
 @end
 
@@ -87,7 +87,7 @@ HXHostProfileContainerViewControllerDelegate
     [self->_containerViewController refresh];
 }
 
-#pragma mark - HXHostProfileContainerViewControllerDelegate Methods
+#pragma mark - HXHostProfileContainerDelegate Methods
 - (void)container:(HXHostProfileContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model {
     if (model.live) {
         if (!model.roomID) {
@@ -106,9 +106,9 @@ HXHostProfileContainerViewControllerDelegate
     }
 }
 
-- (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXMeContainerAction)action {
+- (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXHostProfileContainerAction)action {
     switch (action) {
-        case HXMeContainerActionAvatarTaped: {
+        case HXHostProfileContainerActionAvatarTaped: {
             if ([HXUserSession session].role == HXUserRoleAnchor) {
                 MIAProfileViewController *profileViewController = [MIAProfileViewController new];
                 [profileViewController setUid:_viewModel.model.uid];
@@ -116,23 +116,20 @@ HXHostProfileContainerViewControllerDelegate
             }
             break;
         }
-        case HXMeContainerActionNickNameTaped: {
+        case HXHostProfileContainerActionNickNameTaped: {
             ;
             break;
         }
-        case HXMeContainerActionSignatureTaped: {
+        case HXHostProfileContainerActionSignatureTaped: {
             ;
             break;
         }
-        case HXMeContainerActionRecharge: {
-            if (_delegate && [_delegate respondsToSelector:@selector(meViewControllerHiddenNavigationBar:)]) {
-                [_delegate meViewControllerHiddenNavigationBar:self];
-            }
+        case HXHostProfileContainerActionRecharge: {
             MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
             [self.navigationController pushViewController:paymentViewController animated:YES];
             break;
         }
-        case HXMeContainerActionPurchaseHistory: {
+        case HXHostProfileContainerActionPurchaseHistory: {
             ;
             break;
         }

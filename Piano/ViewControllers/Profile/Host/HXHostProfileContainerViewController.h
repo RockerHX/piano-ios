@@ -11,21 +11,21 @@
 #import "HXAttentionModel.h"
 
 
-typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
-    HXMeContainerActionAvatarTaped,
-    HXMeContainerActionNickNameTaped,
-    HXMeContainerActionSignatureTaped,
-    HXMeContainerActionRecharge,
-    HXMeContainerActionPurchaseHistory,
+typedef NS_ENUM(NSUInteger, HXHostProfileContainerAction) {
+    HXHostProfileContainerActionAvatarTaped,
+    HXHostProfileContainerActionNickNameTaped,
+    HXHostProfileContainerActionSignatureTaped,
+    HXHostProfileContainerActionRecharge,
+    HXHostProfileContainerActionPurchaseHistory,
 };
 
 
-@protocol HXHostProfileContainerViewControllerDelegate;
+@protocol HXHostProfileContainerDelegate;
 
 
 @interface HXHostProfileContainerViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet          id  <HXHostProfileContainerViewControllerDelegate>delegate;
+@property (weak, nonatomic) IBOutlet          id  <HXHostProfileContainerDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet    UIButton *settingButton;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
@@ -41,10 +41,10 @@ typedef NS_ENUM(NSUInteger, HXMeContainerAction) {
 @end
 
 
-@protocol HXHostProfileContainerViewControllerDelegate <NSObject>
+@protocol HXHostProfileContainerDelegate <NSObject>
 
 @required
 - (void)container:(HXHostProfileContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model;
-- (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXMeContainerAction)action;
+- (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXHostProfileContainerAction)action;
 
 @end
