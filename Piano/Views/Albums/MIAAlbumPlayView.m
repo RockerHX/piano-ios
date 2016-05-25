@@ -333,7 +333,7 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
         if ([[MIASongManage shareSongManage] songIsExistWithURLString:mp3URLString]) {
             //存在 则替换成本地的地址
             
-            songmModel.mp3Url = [NSString stringWithFormat:@"file:/%@",[[MIASongManage shareSongManage] songPathWithURLString:mp3URLString]];
+            songmModel.mp3Url = [NSString stringWithFormat:@"file://%@",[[MIASongManage shareSongManage] songPathWithURLString:mp3URLString]];
         }
         
     }

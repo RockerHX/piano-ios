@@ -204,7 +204,7 @@ static NSString *const kSongCachePath = @"/Song";//缓存的路径名
 
     if (![NSString isNull:urlString]) {
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSString *dirPath = [[self songFilePath] stringByAppendingString:[NSString stringWithFormat:@"/%@",[NSString md5HexDigest:urlString]]];
+        NSString *dirPath = [[self songFilePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[NSString md5HexDigest:urlString]]];
         
         return [fileManager fileExistsAtPath:dirPath];
     }else{
@@ -238,7 +238,7 @@ static NSString *const kSongCachePath = @"/Song";//缓存的路径名
 - (NSString *)songPathWithURLString:(NSString *)URLString{
 
     if ([self songIsExistWithURLString:URLString]) {
-        return [[self songFilePath] stringByAppendingString:[NSString md5HexDigest:URLString]];
+        return [[self songFilePath] stringByAppendingPathComponent:[NSString md5HexDigest:URLString]];
     }
     return @"";
 }
