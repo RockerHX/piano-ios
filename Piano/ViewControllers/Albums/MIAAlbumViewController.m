@@ -17,10 +17,14 @@
 #import "MIABaseCellHeadView.h"
 #import "MIAAlbumViewModel.h"
 #import "MIACommentModel.h"
+#import "HXSongModel.h"
 #import "MIACellManage.h"
 #import "FXBlurView.h"
 #import "JOBaseSDK.h"
 #import "MJRefresh.h"
+
+#import "MIASongManage.h"
+
 
 @interface MIAAlbumViewController()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
@@ -41,6 +45,13 @@
 
 @implementation MIAAlbumViewController
 
+- (void)dealloc{
+
+    if (_rewardType == MIAAlbumRewardTypeMyReward) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kMIASongDownloadFinishedNoticeKey object:nil];
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
@@ -59,6 +70,10 @@
     [self createAlbumEnterCommentView];
     [self createAlbumTableHeadView];
     [self createAlbumTableView];
+    
+    if (_rewardType == MIAAlbumRewardTypeMyReward) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSongSection) name:kMIASongDownloadFinishedNoticeKey object:nil];
+    }
 }
 
 - (void)createCoverImageView{
@@ -169,14 +184,28 @@
     self.albumTableHeadView = [[MIAAlbumDetailView alloc] init];
     @weakify(self);
     //打赏按钮点击Block
-    [_albumTableHeadView rewardAlbumButtonClickHanlder:^{
-    @strongify(self);
-        MIAAlbumRewardViewController *rewardViewController = [MIAAlbumRewardViewController new];
-        [rewardViewController setAlbumModel:self.albumViewModel.albumModel];
-//        [self.navigationController presentViewController:rewardViewController animated:YES completion:^{
-//            
-//        }];
-        [self.navigationController pushViewController:rewardViewController animated:YES];
+    [_albumTableHeadView rewardAlbumButtonClickHanlder:^(RewardAlbumActionType type) {
+     @strongify(self);
+        if (type == RewardAlbumActionType_Reward) {
+            
+            MIAAlbumRewardViewController *rewardViewController = [MIAAlbumRewardViewController new];
+            [rewardViewController setAlbumModel:self.albumViewModel.albumModel];
+            //        [self.navigationController presentViewController:rewardViewController animated:YES completion:^{
+            //
+            //        }];
+            [self.navigationController pushViewController:rewardViewController animated:YES];
+        }else{
+        
+            NSArray *songModelArray = [self.albumViewModel.cellDataArray firstObject];
+            NSMutableArray *songURLArray = [NSMutableArray array];
+            for(HXSongModel *model in songModelArray){
+                
+                [songURLArray addObject:model.mp3Url];
+            }
+            
+            [[MIASongManage shareSongManage] startDownloadSongWithURLArray:songURLArray];
+        }
+        
     }];
     
     //播放歌曲发生改变的时候Block
@@ -206,6 +235,14 @@
     
         [self.albumTableView.mj_footer endRefreshingWithNoMoreData];
     }
+}
+
+#pragma mark - song section update
+
+- (void)updateSongSection{
+
+    [_albumTableHeadView setAlbumSongModelData:self.albumViewModel.cellDataArray.firstObject];
+    [_albumTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - RACSinger 
