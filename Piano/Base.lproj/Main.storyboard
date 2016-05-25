@@ -10,7 +10,7 @@
         <!--Navigation Controller-->
         <scene sceneID="soC-v6-5cD">
             <objects>
-                <navigationController id="pUb-oz-zWN" sceneMemberID="viewController">
+                <navigationController id="pUb-oz-zWN" customClass="HXNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GP5-k9-7Cy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
