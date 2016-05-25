@@ -7,12 +7,12 @@
 //
 
 #import "HXLiveBarrageContainerViewController.h"
-#import "HXLiveBarrageCell.h"
+#import "HXLiveCommentBarrageCell.h"
+#import "HXLiveSettingBarrageCell.h"
+#import "UIView+Frame.h"
 
 
-@interface HXLiveBarrageContainerViewController () <
-HXLiveBarrageCellDelegate
->
+@interface HXLiveBarrageContainerViewController ()
 @end
 
 
@@ -51,13 +51,22 @@ HXLiveBarrageCellDelegate
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXLiveBarrageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXLiveBarrageCell class]) forIndexPath:indexPath];
-    return cell;
+    NSString *cellIdentifier = nil;
+    HXBarrageModel *barrage = _barrages[indexPath.row];
+    if (barrage.type == HXBarrageTypeComment) {
+        cellIdentifier = NSStringFromClass([HXLiveCommentBarrageCell class]);
+    } else {
+        cellIdentifier = NSStringFromClass([HXLiveSettingBarrageCell class]);
+    }
+    return [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 }
 
 #pragma mark - Table View Delegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView fd_heightForCellWithIdentifier:NSStringFromClass([HXLiveBarrageCell class]) cacheByIndexPath:indexPath configuration:^(HXLiveBarrageCell *cell) {
+    HXBarrageModel *barrage = _barrages[indexPath.row];
+    NSString *cellIdentifier = NSStringFromClass((barrage.type == HXBarrageTypeComment) ? [HXLiveCommentBarrageCell class] : [HXLiveSettingBarrageCell class]);
+    
+    return [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByIndexPath:indexPath configuration:^(HXLiveBarrageCell *cell) {
         [cell updateWithBarrage:_barrages[indexPath.row]];
     }];
 }
@@ -66,12 +75,8 @@ HXLiveBarrageCellDelegate
     [(HXLiveBarrageCell *)cell updateWithBarrage:_barrages[indexPath.row]];
 }
 
-#pragma mark - HXLiveBarrageCellDelegate Methods
-- (void)commentCellShouldShowCommenter:(HXLiveBarrageCell *)cell {
-    NSInteger row = [self.tableView indexPathForCell:cell].row;
-    if (_delegate && [_delegate respondsToSelector:@selector(barrageContainer:shouldShowBarrage:)]) {
-        [_delegate barrageContainer:self shouldShowBarrage:_barrages[row]];
-    }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ;
 }
 
 @end

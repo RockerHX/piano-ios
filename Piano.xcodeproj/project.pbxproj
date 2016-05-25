@@ -87,6 +87,11 @@
 		CD160F9A1CD05CD700DF4164 /* HXDiscoveryLiveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */; };
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
+		CD6887991CF54F660081B2BD /* HXLiveBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6887981CF54F660081B2BD /* HXLiveBarrageCell.m */; };
+		CD68879C1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD68879B1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.m */; };
+		CD68879F1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD68879E1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m */; };
+		CD6887A51CF551380081B2BD /* HXLiveBarrageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6887A21CF551380081B2BD /* HXLiveBarrageContainerViewController.m */; };
+		CD6887A61CF551380081B2BD /* HXLiveBarrageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6887A41CF551380081B2BD /* HXLiveBarrageViewController.m */; };
 		CD79608E1CBE594C004CC661 /* HXSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */; };
 		CD79608F1CBE594C004CC661 /* HXLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72981CA11E02003CDB77 /* HXLiveModel.m */; };
 		CD7960901CBE594C004CC661 /* UIView+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C71CA28A3500CA3C3F /* UIView+HXIBnspectable.m */; };
@@ -118,11 +123,9 @@
 		CD7960AA1CBE594C004CC661 /* HXAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301061CA8D4ED00C19C32 /* HXAlbumsViewController.m */; };
 		CD7960AB1CBE594C004CC661 /* HXProfileReplayContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D9B1CAE6B24007441E9 /* HXProfileReplayContainerCell.m */; };
 		CD7960AC1CBE594C004CC661 /* HXAlbumsCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8A61CA912790077A17B /* HXAlbumsCommentCell.m */; };
-		CD7960AD1CBE594C004CC661 /* HXLiveBarrageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19401CA4E4AE00849B39 /* HXLiveBarrageContainerViewController.m */; };
 		CD7960AE1CBE594C004CC661 /* HXSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4156C61CB39C890060CBE9 /* HXSongModel.m */; };
 		CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C195C1CA5193B00849B39 /* HXPlayViewController.m */; };
 		CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301091CA8D50E00C19C32 /* HXAlbumsContainerViewController.m */; };
-		CD7960B11CBE594C004CC661 /* HXLiveBarrageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F214E1CAD10B80067A1DA /* HXLiveBarrageViewController.m */; };
 		CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF3010C1CA8D74700C19C32 /* HXAlbumsViewModel.m */; };
 		CD7960B31CBE594C004CC661 /* MBProgressHUDHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167761CAE5304000A12DC /* MBProgressHUDHelp.m */; };
 		CD7960B41CBE594C004CC661 /* UIImage+ColorToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD91677A1CAE534B000A12DC /* UIImage+ColorToImage.m */; };
@@ -180,7 +183,6 @@
 		CD7960EE1CBE594C004CC661 /* HXProfileVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858DA41CAE6BBD007441E9 /* HXProfileVideoCell.m */; };
 		CD7960F01CBE594C004CC661 /* HXPreviewLiveControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5D02831CB60632000285DC /* HXPreviewLiveControlView.m */; };
 		CD7960F11CBE594C004CC661 /* HXFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9167661CAE524C000A12DC /* HXFeedBackViewController.m */; };
-		CD7960F21CBE594C004CC661 /* HXLiveBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6C19451CA4E78000849B39 /* HXLiveBarrageCell.m */; };
 		CD7960F31CBE594C004CC661 /* HXIBnsepectableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949D31CA28A3500CA3C3F /* HXIBnsepectableManager.m */; };
 		CD7960F41CBE594C004CC661 /* HXProfileContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE2FC7F1CABD3D200476968 /* HXProfileContainerViewController.m */; };
 		CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949F61CA2919B00CA3C3F /* HXUserTermsViewController.m */; };
@@ -589,8 +591,6 @@
 		CD5DD8AA1CA912790077A17B /* HXAlbumsControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsControlCell.m; sourceTree = "<group>"; };
 		CD5DD8AB1CA912790077A17B /* HXAlbumsSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsSongCell.h; sourceTree = "<group>"; };
 		CD5DD8AC1CA912790077A17B /* HXAlbumsSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsSongCell.m; sourceTree = "<group>"; };
-		CD5F214D1CAD10B80067A1DA /* HXLiveBarrageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveBarrageViewController.h; sourceTree = "<group>"; };
-		CD5F214E1CAD10B80067A1DA /* HXLiveBarrageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveBarrageViewController.m; sourceTree = "<group>"; };
 		CD5F21511CAD1D850067A1DA /* HXLiveCommentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveCommentViewModel.h; sourceTree = "<group>"; };
 		CD5F21521CAD1D850067A1DA /* HXLiveCommentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveCommentViewModel.m; sourceTree = "<group>"; };
 		CD5F21591CAD2E8B0067A1DA /* HXLiveAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveAnchorView.h; sourceTree = "<group>"; };
@@ -609,10 +609,16 @@
 		CD6581611CA3E99B00E2EF19 /* HXWatchLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveBottomBar.h; sourceTree = "<group>"; };
 		CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveBottomBar.m; sourceTree = "<group>"; };
 		CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatchLiveBottomBar.xib; sourceTree = "<group>"; };
-		CD6C193F1CA4E4AE00849B39 /* HXLiveBarrageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveBarrageContainerViewController.h; sourceTree = "<group>"; };
-		CD6C19401CA4E4AE00849B39 /* HXLiveBarrageContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveBarrageContainerViewController.m; sourceTree = "<group>"; };
-		CD6C19441CA4E78000849B39 /* HXLiveBarrageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveBarrageCell.h; sourceTree = "<group>"; };
-		CD6C19451CA4E78000849B39 /* HXLiveBarrageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveBarrageCell.m; sourceTree = "<group>"; };
+		CD6887971CF54F660081B2BD /* HXLiveBarrageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveBarrageCell.h; sourceTree = "<group>"; };
+		CD6887981CF54F660081B2BD /* HXLiveBarrageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveBarrageCell.m; sourceTree = "<group>"; };
+		CD68879A1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveSettingBarrageCell.h; sourceTree = "<group>"; };
+		CD68879B1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveSettingBarrageCell.m; sourceTree = "<group>"; };
+		CD68879D1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveCommentBarrageCell.h; sourceTree = "<group>"; };
+		CD68879E1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveCommentBarrageCell.m; sourceTree = "<group>"; };
+		CD6887A11CF551380081B2BD /* HXLiveBarrageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveBarrageContainerViewController.h; sourceTree = "<group>"; };
+		CD6887A21CF551380081B2BD /* HXLiveBarrageContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveBarrageContainerViewController.m; sourceTree = "<group>"; };
+		CD6887A31CF551380081B2BD /* HXLiveBarrageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveBarrageViewController.h; sourceTree = "<group>"; };
+		CD6887A41CF551380081B2BD /* HXLiveBarrageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveBarrageViewController.m; sourceTree = "<group>"; };
 		CD6C19481CA4E7AD00849B39 /* HXReplayBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayBottomBar.h; sourceTree = "<group>"; };
 		CD6C19491CA4E7AD00849B39 /* HXReplayBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayBottomBar.m; sourceTree = "<group>"; };
 		CD6C194A1CA4E7AD00849B39 /* HXReplayBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXReplayBottomBar.xib; sourceTree = "<group>"; };
@@ -1709,11 +1715,10 @@
 		CD65815F1CA3E97200E2EF19 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CD6887961CF54F660081B2BD /* Barrage */,
 				CDBCFAF21CE1D5DA0045946F /* AlbumsView */,
 				CD5F21581CAD2E8B0067A1DA /* AnchorView */,
 				CD19794F1CA4E1A900303D27 /* WatcherBoard */,
-				CD6C19441CA4E78000849B39 /* HXLiveBarrageCell.h */,
-				CD6C19451CA4E78000849B39 /* HXLiveBarrageCell.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1728,13 +1733,34 @@
 			path = BottomBar;
 			sourceTree = "<group>";
 		};
+		CD6887961CF54F660081B2BD /* Barrage */ = {
+			isa = PBXGroup;
+			children = (
+				CD6887971CF54F660081B2BD /* HXLiveBarrageCell.h */,
+				CD6887981CF54F660081B2BD /* HXLiveBarrageCell.m */,
+				CD68879D1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.h */,
+				CD68879E1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m */,
+				CD68879A1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.h */,
+				CD68879B1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.m */,
+			);
+			path = Barrage;
+			sourceTree = "<group>";
+		};
+		CD6887A01CF551380081B2BD /* Barrage */ = {
+			isa = PBXGroup;
+			children = (
+				CD6887A31CF551380081B2BD /* HXLiveBarrageViewController.h */,
+				CD6887A41CF551380081B2BD /* HXLiveBarrageViewController.m */,
+				CD6887A11CF551380081B2BD /* HXLiveBarrageContainerViewController.h */,
+				CD6887A21CF551380081B2BD /* HXLiveBarrageContainerViewController.m */,
+			);
+			path = Barrage;
+			sourceTree = "<group>";
+		};
 		CD6C193E1CA4E4AE00849B39 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CD6C193F1CA4E4AE00849B39 /* HXLiveBarrageContainerViewController.h */,
-				CD6C19401CA4E4AE00849B39 /* HXLiveBarrageContainerViewController.m */,
-				CD5F214D1CAD10B80067A1DA /* HXLiveBarrageViewController.h */,
-				CD5F214E1CAD10B80067A1DA /* HXLiveBarrageViewController.m */,
+				CD6887A01CF551380081B2BD /* Barrage */,
 				CD7960811CBDE7FD004CC661 /* HXLiveEndViewController.h */,
 				CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */,
 			);
@@ -2823,11 +2849,10 @@
 				CD7960AB1CBE594C004CC661 /* HXProfileReplayContainerCell.m in Sources */,
 				42984B0E1CDAEF84004F00D5 /* JOFunctionObject.m in Sources */,
 				CD7960AC1CBE594C004CC661 /* HXAlbumsCommentCell.m in Sources */,
-				CD7960AD1CBE594C004CC661 /* HXLiveBarrageContainerViewController.m in Sources */,
 				CD7960AE1CBE594C004CC661 /* HXSongModel.m in Sources */,
 				CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */,
 				CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */,
-				CD7960B11CBE594C004CC661 /* HXLiveBarrageViewController.m in Sources */,
+				CD6887A61CF551380081B2BD /* HXLiveBarrageViewController.m in Sources */,
 				42B6A0E31CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */,
 				CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */,
 				CD7960B31CBE594C004CC661 /* MBProgressHUDHelp.m in Sources */,
@@ -2889,6 +2914,7 @@
 				429E501E1CE47EBE0008CA85 /* MIAAlbumDetailModel.m in Sources */,
 				CD7960D61CBE594C004CC661 /* HXMePurchaseHistoryCell.m in Sources */,
 				CD7960D71CBE594C004CC661 /* HXWatchLiveViewController.m in Sources */,
+				CD68879C1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.m in Sources */,
 				CD7960D81CBE594C004CC661 /* HXNavigationController.m in Sources */,
 				429CC20D1CE08BAF004BCC0C /* MIAProfileModel.m in Sources */,
 				42A0DAEC1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */,
@@ -2897,6 +2923,7 @@
 				420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */,
 				CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */,
 				CD7960DB1CBE594C004CC661 /* LocationMgr.m in Sources */,
+				CD6887991CF54F660081B2BD /* HXLiveBarrageCell.m in Sources */,
 				CD7960DC1CBE594C004CC661 /* HXProfileLiveCell.m in Sources */,
 				CD7960DD1CBE594C004CC661 /* HXRecordLiveViewController.m in Sources */,
 				42984B0A1CDAEF84004F00D5 /* JOFException.m in Sources */,
@@ -2916,6 +2943,7 @@
 				CDDC383A1CEB1B3500328A17 /* HXBarrageModel.m in Sources */,
 				CD7960E71CBE594C004CC661 /* HXRecordLiveViewModel.m in Sources */,
 				429E50111CE46DDE0008CA85 /* MIAAlbumViewModel.m in Sources */,
+				CD68879F1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m in Sources */,
 				CD7960E81CBE594C004CC661 /* HXAppConstants.m in Sources */,
 				CD7960E91CBE594C004CC661 /* UIView+FindUIViewController.m in Sources */,
 				CD7960EA1CBE594C004CC661 /* HXLoadingView.m in Sources */,
@@ -2926,8 +2954,8 @@
 				42B6A0E71CEB173900BDF8E8 /* MIAMCoinModel.m in Sources */,
 				CD7960F01CBE594C004CC661 /* HXPreviewLiveControlView.m in Sources */,
 				CD7960F11CBE594C004CC661 /* HXFeedBackViewController.m in Sources */,
-				CD7960F21CBE594C004CC661 /* HXLiveBarrageCell.m in Sources */,
 				CD7960F31CBE594C004CC661 /* HXIBnsepectableManager.m in Sources */,
+				CD6887A51CF551380081B2BD /* HXLiveBarrageContainerViewController.m in Sources */,
 				CD7960F41CBE594C004CC661 /* HXProfileContainerViewController.m in Sources */,
 				CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */,
 				42984B5D1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */,
