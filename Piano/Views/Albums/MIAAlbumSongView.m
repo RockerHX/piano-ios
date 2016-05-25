@@ -7,6 +7,7 @@
 //
 
 #import "MIAAlbumSongView.h"
+#import "MIASongManage.h"
 #import "MIAFontManage.h"
 #import "JOBaseSDK.h"
 #import "HXSongModel.h"
@@ -131,6 +132,17 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
         
         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_timeLabel superView:self];
         [JOAutoLayout autoLayoutWithWidth:[_timeLabel sizeThatFits:JOMAXSize].width selfView:_timeLabel superView:self];
+        
+        //更改歌曲存在状态标记的图片
+        if ([[MIASongManage shareSongManage] songIsExistWithURLString:_songModel.mp3Url]) {
+            
+            [_downloadStateImageView setBackgroundColor:[UIColor blueColor]];
+            
+        }else{
+        
+            [_downloadStateImageView setBackgroundColor:[UIColor grayColor]];
+        }
+        
     }else{
     
         [JOFException exceptionWithName:@"MIAAlbumSongView exception!" reason:@"data必须是MIASongModel类型"];

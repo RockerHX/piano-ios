@@ -10,6 +10,7 @@
 		1A423448169F3173A788A67A /* libPods-Piano.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2E70ABB0C246D442D00635 /* libPods-Piano.a */; };
 		4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
 		4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
+		420A3D611CF551DA0081931E /* MIASongManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 420A3D601CF551DA0081931E /* MIASongManage.m */; };
 		420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */; };
 		420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */; };
 		420BBB551CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB531CE9A85F00F52AB2 /* MIAPaymentCell.m */; };
@@ -21,6 +22,13 @@
 		420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */; };
 		420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
 		420FCD0B1CEC0DD600BE5217 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */; };
+		422497C41CF4663C008F8A55 /* JOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497BE1CF4663C008F8A55 /* JOConfig.m */; };
+		422497C51CF4663C008F8A55 /* JOManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497C01CF4663C008F8A55 /* JOManage.m */; };
+		422497C61CF4663C008F8A55 /* JOMission.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497C31CF4663C008F8A55 /* JOMission.m */; };
+		422497D21CF4664A008F8A55 /* JONetRequestManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497CA1CF4664A008F8A55 /* JONetRequestManage.m */; };
+		422497D31CF4664A008F8A55 /* JODataRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497CD1CF4664A008F8A55 /* JODataRequestConfig.m */; };
+		422497D41CF4664A008F8A55 /* JOFileDownloadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497CF1CF4664A008F8A55 /* JOFileDownloadConfig.m */; };
+		422497D51CF4664A008F8A55 /* JOFileUploadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497D11CF4664A008F8A55 /* JOFileUploadConfig.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFE1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
 		42984B001CDAEF84004F00D5 /* UIColor+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE01CDAEF84004F00D5 /* UIColor+JOExtend.m */; };
@@ -328,6 +336,8 @@
 		420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewController.m; sourceTree = "<group>"; };
 		4204445B1CE5863B00F6B303 /* MIAAlbumRewardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewModel.h; sourceTree = "<group>"; };
 		4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewModel.m; sourceTree = "<group>"; };
+		420A3D5F1CF551DA0081931E /* MIASongManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASongManage.h; sourceTree = "<group>"; };
+		420A3D601CF551DA0081931E /* MIASongManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASongManage.m; sourceTree = "<group>"; };
 		420BBB471CE99C9D00F52AB2 /* MIAPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentViewController.h; sourceTree = "<group>"; };
 		420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentViewController.m; sourceTree = "<group>"; };
 		420BBB4B1CE99D0E00F52AB2 /* MIAPayHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryViewController.h; sourceTree = "<group>"; };
@@ -349,6 +359,21 @@
 		420BBB6E1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryViewModel.h; sourceTree = "<group>"; };
 		420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryViewModel.m; sourceTree = "<group>"; };
 		420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		422497BD1CF4663C008F8A55 /* JOConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOConfig.h; sourceTree = "<group>"; };
+		422497BE1CF4663C008F8A55 /* JOConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOConfig.m; sourceTree = "<group>"; };
+		422497BF1CF4663C008F8A55 /* JOManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOManage.h; sourceTree = "<group>"; };
+		422497C01CF4663C008F8A55 /* JOManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOManage.m; sourceTree = "<group>"; };
+		422497C21CF4663C008F8A55 /* JOMission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOMission.h; sourceTree = "<group>"; };
+		422497C31CF4663C008F8A55 /* JOMission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOMission.m; sourceTree = "<group>"; };
+		422497C91CF4664A008F8A55 /* JONetRequestManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JONetRequestManage.h; sourceTree = "<group>"; };
+		422497CA1CF4664A008F8A55 /* JONetRequestManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONetRequestManage.m; sourceTree = "<group>"; };
+		422497CC1CF4664A008F8A55 /* JODataRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JODataRequestConfig.h; sourceTree = "<group>"; };
+		422497CD1CF4664A008F8A55 /* JODataRequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JODataRequestConfig.m; sourceTree = "<group>"; };
+		422497CE1CF4664A008F8A55 /* JOFileDownloadConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOFileDownloadConfig.h; sourceTree = "<group>"; };
+		422497CF1CF4664A008F8A55 /* JOFileDownloadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOFileDownloadConfig.m; sourceTree = "<group>"; };
+		422497D01CF4664A008F8A55 /* JOFileUploadConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOFileUploadConfig.h; sourceTree = "<group>"; };
+		422497D11CF4664A008F8A55 /* JOFileUploadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOFileUploadConfig.m; sourceTree = "<group>"; };
+		422497D61CF468DF008F8A55 /* JOHttpRequestType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOHttpRequestType.h; sourceTree = "<group>"; };
 		42984ADB1CDAEF84004F00D5 /* NSObject+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JOExtend.h"; sourceTree = "<group>"; };
 		42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JOExtend.m"; sourceTree = "<group>"; };
 		42984ADD1CDAEF84004F00D5 /* NSString+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JOExtend.h"; sourceTree = "<group>"; };
@@ -852,6 +877,7 @@
 		395D67021C9AB15000ED0454 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				420A3D5E1CF551DA0081931E /* Song */,
 				42984AD91CDAEF84004F00D5 /* JO */,
 				CD7960871CBE4BA1004CC661 /* LocationMgr */,
 				395D67181C9AB1D700ED0454 /* UserDefaultsUtils */,
@@ -962,6 +988,15 @@
 			path = UserSetting;
 			sourceTree = "<group>";
 		};
+		420A3D5E1CF551DA0081931E /* Song */ = {
+			isa = PBXGroup;
+			children = (
+				420A3D5F1CF551DA0081931E /* MIASongManage.h */,
+				420A3D601CF551DA0081931E /* MIASongManage.m */,
+			);
+			path = Song;
+			sourceTree = "<group>";
+		};
 		420BBB461CE99C3E00F52AB2 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1013,9 +1048,63 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		422497BB1CF4663B008F8A55 /* Manage */ = {
+			isa = PBXGroup;
+			children = (
+				422497BC1CF4663B008F8A55 /* Config */,
+				422497BF1CF4663C008F8A55 /* JOManage.h */,
+				422497C01CF4663C008F8A55 /* JOManage.m */,
+				422497C11CF4663C008F8A55 /* Mission */,
+			);
+			path = Manage;
+			sourceTree = "<group>";
+		};
+		422497BC1CF4663B008F8A55 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				422497BD1CF4663C008F8A55 /* JOConfig.h */,
+				422497BE1CF4663C008F8A55 /* JOConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		422497C11CF4663C008F8A55 /* Mission */ = {
+			isa = PBXGroup;
+			children = (
+				422497C21CF4663C008F8A55 /* JOMission.h */,
+				422497C31CF4663C008F8A55 /* JOMission.m */,
+			);
+			path = Mission;
+			sourceTree = "<group>";
+		};
+		422497C71CF4664A008F8A55 /* NetRequest */ = {
+			isa = PBXGroup;
+			children = (
+				422497CB1CF4664A008F8A55 /* NetConfig */,
+				422497D61CF468DF008F8A55 /* JOHttpRequestType.h */,
+				422497C91CF4664A008F8A55 /* JONetRequestManage.h */,
+				422497CA1CF4664A008F8A55 /* JONetRequestManage.m */,
+			);
+			path = NetRequest;
+			sourceTree = "<group>";
+		};
+		422497CB1CF4664A008F8A55 /* NetConfig */ = {
+			isa = PBXGroup;
+			children = (
+				422497CC1CF4664A008F8A55 /* JODataRequestConfig.h */,
+				422497CD1CF4664A008F8A55 /* JODataRequestConfig.m */,
+				422497CE1CF4664A008F8A55 /* JOFileDownloadConfig.h */,
+				422497CF1CF4664A008F8A55 /* JOFileDownloadConfig.m */,
+				422497D01CF4664A008F8A55 /* JOFileUploadConfig.h */,
+				422497D11CF4664A008F8A55 /* JOFileUploadConfig.m */,
+			);
+			path = NetConfig;
+			sourceTree = "<group>";
+		};
 		42984AD91CDAEF84004F00D5 /* JO */ = {
 			isa = PBXGroup;
 			children = (
+				422497BB1CF4663B008F8A55 /* Manage */,
 				42984ADA1CDAEF84004F00D5 /* Extend */,
 				42984AE11CDAEF84004F00D5 /* Function */,
 				42984AFA1CDAEF84004F00D5 /* JOMacro.h */,
@@ -1050,6 +1139,7 @@
 		42984AE11CDAEF84004F00D5 /* Function */ = {
 			isa = PBXGroup;
 			children = (
+				422497C71CF4664A008F8A55 /* NetRequest */,
 				42D15F901CEC2A2700EC74E7 /* Purchas */,
 				42984AE21CDAEF84004F00D5 /* AppInfo */,
 				42984AE51CDAEF84004F00D5 /* AutoLayout */,
@@ -2644,7 +2734,7 @@
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
 					CD79608B1CBE594C004CC661 = {
-						DevelopmentTeam = H2JE2CWJS7;
+						DevelopmentTeam = PQE2NCR38L;
 					};
 				};
 			};
@@ -2784,6 +2874,8 @@
 				CD7960921CBE594C004CC661 /* HXUserSession.m in Sources */,
 				420BBB611CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */,
 				CD7960931CBE594C004CC661 /* HXIBImageView.m in Sources */,
+				422497C41CF4663C008F8A55 /* JOConfig.m in Sources */,
+				422497D51CF4664A008F8A55 /* JOFileUploadConfig.m in Sources */,
 				CD7960941CBE594C004CC661 /* HXProfileReplayCell.m in Sources */,
 				CD7960951CBE594C004CC661 /* HXRecordAnchorView.m in Sources */,
 				CD7960961CBE594C004CC661 /* SingleSongPlayer.m in Sources */,
@@ -2799,6 +2891,7 @@
 				420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */,
 				CD79609E1CBE594C004CC661 /* HXIBButton.m in Sources */,
 				42984B0C1CDAEF84004F00D5 /* JOFFileManage.m in Sources */,
+				420A3D611CF551DA0081931E /* MIASongManage.m in Sources */,
 				CD79609F1CBE594C004CC661 /* HXRecordBottomBar.m in Sources */,
 				CD07B2D01CEF021B00B5AB87 /* HXLiveRewardTopListViewController.m in Sources */,
 				42A0DB031CE2E08200F1FCEF /* MIAAlbumSongCell.m in Sources */,
@@ -2807,6 +2900,7 @@
 				CD7960A21CBE594C004CC661 /* WebSocketMgr.m in Sources */,
 				CDE017211CE48D4B005645D5 /* HXDiscoveryPreviewCell.m in Sources */,
 				420BBB691CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */,
+				422497D21CF4664A008F8A55 /* JONetRequestManage.m in Sources */,
 				CD7960A31CBE594C004CC661 /* UIViewController+LoginAction.m in Sources */,
 				42984B591CDC8021004F00D5 /* MIAProfileVideoView.m in Sources */,
 				CDE016E51CE309C6005645D5 /* HXSectorSlider.m in Sources */,
@@ -2824,6 +2918,7 @@
 				42984B0E1CDAEF84004F00D5 /* JOFunctionObject.m in Sources */,
 				CD7960AC1CBE594C004CC661 /* HXAlbumsCommentCell.m in Sources */,
 				CD7960AD1CBE594C004CC661 /* HXLiveBarrageContainerViewController.m in Sources */,
+				422497C51CF4663C008F8A55 /* JOManage.m in Sources */,
 				CD7960AE1CBE594C004CC661 /* HXSongModel.m in Sources */,
 				CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */,
 				CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */,
@@ -2884,6 +2979,8 @@
 				CD7960D31CBE594C004CC661 /* UIView+Frame.m in Sources */,
 				429CC2151CE08F22004BCC0C /* MIAVideoModel.m in Sources */,
 				CD7960D41CBE594C004CC661 /* HXUserModel.m in Sources */,
+				422497D31CF4664A008F8A55 /* JODataRequestConfig.m in Sources */,
+				422497C61CF4663C008F8A55 /* JOMission.m in Sources */,
 				429CC2011CE0689C004BCC0C /* NSArray+JOExtend.m in Sources */,
 				CD7960D51CBE594C004CC661 /* UserDefaultsUtils.m in Sources */,
 				429E501E1CE47EBE0008CA85 /* MIAAlbumDetailModel.m in Sources */,
@@ -2952,6 +3049,7 @@
 				CD7961011CBE594C004CC661 /* AppDelegate.m in Sources */,
 				CD7961021CBE594C004CC661 /* MiaAPIHelper.m in Sources */,
 				42A0DAFF1CE2E07300F1FCEF /* MIAAlbumPlayView.m in Sources */,
+				422497D41CF4664A008F8A55 /* JOFileDownloadConfig.m in Sources */,
 				4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */,
 				CD7961031CBE594C004CC661 /* HXReplaySlider.m in Sources */,
 				42CC372C1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */,

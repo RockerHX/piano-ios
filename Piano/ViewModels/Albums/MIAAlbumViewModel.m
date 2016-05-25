@@ -101,7 +101,7 @@ NSInteger const kAlbumCommentLimitCount = 10;
                    completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                        
                        if (success) {
-//                           NSLog(@"专辑页面数据:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+                           NSLog(@"专辑页面数据:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                            [self parseAlbumWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                            [subscriber sendCompleted];
                        }else{
