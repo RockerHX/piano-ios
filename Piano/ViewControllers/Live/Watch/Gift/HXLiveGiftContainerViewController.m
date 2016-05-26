@@ -9,6 +9,7 @@
 #import "HXLiveGiftContainerViewController.h"
 #import "HXLiveGiftItemCell.h"
 #import "UIConstants.h"
+#import "HXRewardGiftListLayout.h"
 
 
 @implementation HXLiveGiftContainerViewController
@@ -22,7 +23,7 @@
 }
 
 - (CGFloat)contianerHeight {
-    return ([self itemSize].height * 2) + 3.0f;;
+    return ((HXRewardGiftListLayout *)self.collectionView.collectionViewLayout).controlHeight;
 }
 
 #pragma mark - UICollectionView Data Source Methods
@@ -40,10 +41,6 @@
     [itemCell updateWithGift:_gifts[indexPath.row]];
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [self itemSize];
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     HXGiftModel *selectedGift = _gifts[_selectedIndex];
     selectedGift.selected = NO;
@@ -53,12 +50,6 @@
     
     _selectedIndex = indexPath.row;
     [collectionView reloadData];
-}
-
-#pragma mark - Private Methods
-- (CGSize)itemSize {
-    CGFloat size = (SCREEN_WIDTH - 2.0f) / 3;
-    return CGSizeMake(size, size);
 }
 
 @end

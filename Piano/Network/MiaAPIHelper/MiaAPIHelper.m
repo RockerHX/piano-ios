@@ -443,10 +443,12 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)followWithUID:(NSString *)uID
-		completeBlock:(MiaRequestCompleteBlock)completeBlock
-		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
-	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
++ (void)followWithRoomID:(NSString *)roomID
+                     uID:(NSString *)uID
+           completeBlock:(MiaRequestCompleteBlock)completeBlock
+            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
 	[dictValues setValue:uID forKey:MiaAPIKey_UID];
 	// "type": "1 关注， 2取消关注"
 	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_Type];
@@ -516,6 +518,19 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
     
     MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_GetAlbumTopList
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)sharePostWithRoomID:(NSString *)roomID
+              completeBlock:(MiaRequestCompleteBlock)completeBlock
+               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_SharePost
                                                                parameters:dictValues
                                                             completeBlock:completeBlock
                                                              timeoutBlock:timeoutBlock];

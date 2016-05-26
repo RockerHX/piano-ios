@@ -22,6 +22,8 @@
 #import "MiaAPIHelper.h"
 #import "HXLiveRewardTopListViewController.h"
 #import "HXLiveAlbumView.h"
+#import <ShareSDKUI/ShareSDKUI.h>
+#import "BlocksKit+UIKit.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -43,7 +45,6 @@ HXLiveAlbumViewDelegate
     
     NSString *_roomID;
     NSString *_roomTitle;
-    NSString *_shareUrl;
     
     HXRecordLiveViewModel *_viewModel;
     BOOL _frontCamera;
@@ -165,16 +166,13 @@ HXLiveAlbumViewDelegate
 }
 
 - (void)signalLink {
-    @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
-        @strongify(self)
         self->_barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         ;
     }];
     [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
-        @strongify(self)
         [self updateAlbumView];
     }];
 }
@@ -306,34 +304,57 @@ static CGFloat AlbumViewWidth = 60.0f;
             break;
         }
         case HXRecordBottomBarActionShare: {
-            ;
+            HXLiveModel *model     = _viewModel.model;
+            NSString *shareTitle   = model.shareTitle;
+            NSString *shareContent = model.shareContent;
+            NSURL *shareURL        = [NSURL URLWithString:model.shareUrl];
+            UIImage *shareImage    = [_anchorView.avatar imageForState:UIControlStateNormal];
+            
+            NSMutableDictionary *shareParams = @{}.mutableCopy;
+            [shareParams SSDKSetupShareParamsByText:shareContent
+                                             images:shareImage
+                                                url:shareURL
+                                              title:shareTitle
+                                               type:SSDKContentTypeAuto];
+//            [shareParams SSDKSetupWeChatParamsByText:shareContent title:shareTitle url:shareURL thumbImage:nil image:shareImage musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeAuto forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+//            [shareParams SSDKSetupSinaWeiboShareParamsByText:shareContent title:shareTitle image:shareImage url:shareURL latitude:0 longitude:0 objectID:nil type:SSDKContentTypeAuto];
+            [ShareSDK showShareActionSheet:self.view items:nil shareParams:shareParams onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                switch (state) {
+                    case SSDKResponseStateSuccess: {
+                        [UIAlertView bk_showAlertViewWithTitle:@"分享成功" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+                        break;
+                    }
+                    case SSDKResponseStateFail: {
+                        [UIAlertView bk_showAlertViewWithTitle:@"分享失败" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            }];
             break;
         }
     }
 }
 
 #pragma mark - HXPreviewLiveViewControllerDelegate Methods
-- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController album:(HXAlbumModel *)album roomID:(NSString *)roomID roomTitle:(NSString *)roomTitle shareUrl:(NSString *)shareUrl frontCamera:(BOOL)frontCamera beauty:(BOOL)beauty {
-    
-    _roomID = roomID;
-    _roomTitle = roomTitle;
-    _shareUrl = shareUrl;
+- (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController liveModel:(HXLiveModel *)model frontCamera:(BOOL)frontCamera beauty:(BOOL)beauty {
     _frontCamera = frontCamera;
-    _beauty = beauty;
+    _beauty      = beauty;
     
     [self startPublish];
     
-    _viewModel = [[HXRecordLiveViewModel alloc] initWithRoomID:roomID];
-    _viewModel.model.album = album;
+    _viewModel       = [HXRecordLiveViewModel new];
+    _viewModel.model = model;
     [self signalLink];
     
     [self updateAnchorView];
     [self updateAlbumView];
     
     _previewContainer.hidden = YES;
-    _topBar.hidden = NO;
-    _barragesView.hidden = NO;
-    _bottomBar.hidden = NO;
+    _topBar.hidden           = NO;
+    _barragesView.hidden     = NO;
+    _bottomBar.hidden        = NO;
     [_previewContainer removeFromSuperview];
     _previewContainer = nil;
 }

@@ -8,34 +8,25 @@
 
 #import "HXMainViewController.h"
 #import "HXDiscoveryViewController.h"
-#import "HXMeViewController.h"
 #import "HXLoginViewController.h"
+#import "HXWatchLiveViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
 #import "HXUserSession.h"
 #import "FileLog.h"
 #import "UIView+Frame.h"
-#import "HXWatchLiveViewController.h"
 
 
 @interface HXMainViewController () <
 HXDiscoveryViewControllerDelegate,
-HXMeViewControllerDelegate,
 HXLoginViewControllerDelegate
 >
 @end
 
 @implementation HXMainViewController {
     BOOL _shouldHiddenNavigationBar;
-    CGFloat _menuOffset;
     
     HXDiscoveryViewController *_discoveryContainerViewController;
-    HXMeViewController *_meContainerViewController;
-}
-
-#pragma mark - Status Bar
-- (BOOL)prefersStatusBarHidden {
-    return YES;
 }
 
 #pragma mark - Segue
@@ -43,9 +34,6 @@ HXLoginViewControllerDelegate
     if ([segue.identifier isEqualToString:NSStringFromClass([HXDiscoveryViewController class])]) {
         _discoveryContainerViewController = segue.destinationViewController;
         _discoveryContainerViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXMeViewController class])]) {
-        _meContainerViewController = segue.destinationViewController;
-        _meContainerViewController.delegate = self;
     }
 }
 
@@ -54,6 +42,18 @@ HXLoginViewControllerDelegate
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    
+    switch ([HXUserSession session].state) {
+        case HXUserStateLogout: {
+            [self shouldShowLoginSence];
+            break;
+        }
+        case HXUserStateLogin: {
+            [self autoLogin];
+            break;
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -110,8 +110,10 @@ HXLoginViewControllerDelegate
 
 #pragma mark - Private Methods
 - (void)shouldShowLoginSence {
-    HXLoginViewController *loginViewController = [self showLoginSence];
+    UINavigationController *loginNavigationController = [HXLoginViewController navigationControllerInstance];
+    HXLoginViewController *loginViewController = loginNavigationController.viewControllers.firstObject;
     loginViewController.delegate = self;
+    [self presentViewController:loginNavigationController animated:NO completion:nil];
 }
 
 - (void)logoutCompleted {
@@ -152,80 +154,38 @@ HXLoginViewControllerDelegate
 }
 
 - (void)autoLogin {
-	HXUserSession *userSession = [HXUserSession session];
-    switch (userSession.state) {
-        case HXUserStateLogout: {
-            return;
-            break;
-        }
-        case HXUserStateLogin: {
-            [MiaAPIHelper loginWithSession:userSession.uid
-                                     token:userSession.token
-                             completeBlock:
-             ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-                 if (success) {
-                     NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
-                     HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
-                     [userSession updateUser:user];
-                     
-                     [self fetchProfileData];
-//                     [self updateNotificationBadge];
-                 } else {
-                     [[FileLog standard] log:@"autoLogin failed, logout"];
-                     [userSession logout];
-                 }
-             } timeoutBlock:^(MiaRequestItem *requestItem) {
-                 NSLog(@"audo login timeout!");
-             }];
-            break;
-        }
-    }
+    HXUserSession *userSession = [HXUserSession session];
+    [MiaAPIHelper loginWithSession:userSession.uid
+                             token:userSession.token
+                     completeBlock:
+     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+         if (success) {
+             NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+             HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
+             [userSession updateUser:user];
+             
+             //                     [self updateNotificationBadge];
+         } else {
+             [[FileLog standard] log:@"autoLogin failed, logout"];
+             [userSession logout];
+         }
+     } timeoutBlock:^(MiaRequestItem *requestItem) {
+         NSLog(@"audo login timeout!");
+     }];
 }
 
 - (void)autoReconnect {
 	[[WebSocketMgr standard] reconnect];
 }
 
-- (void)fetchProfileData {
-    if ([HXUserSession session].state == HXUserStateLogin) {
-        [_meContainerViewController refresh];
-    }
-}
-
 #pragma mark - HXDiscoveryViewControllerDelegate
-- (void)discoveryViewControllerHandleMenu:(HXDiscoveryViewController *)viewController {
-    switch (_menuState) {
-        case HXMenuStateClose: {
-            if ([HXUserSession session].state == HXUserStateLogout) {
-                [self shouldShowLoginSence];
-                return;
-            }
-            
-            _menuOffset = self.view.width * 0.86f;
-            _menuState = HXMenuStateOpen;
-            break;
-        }
-        case HXMenuStateOpen: {
-            _menuOffset = 0.0f;
-            _menuState = HXMenuStateClose;
-            [_discoveryContainerViewController restoreDisplay];
+- (void)discoveryViewController:(HXDiscoveryViewController *)viewController takeAction:(HXDiscoveryViewControllerAction)action {
+    switch (action) {
+        case HXDiscoveryViewControllerActionHiddenNavigationBar: {
+            _shouldHiddenNavigationBar = YES;
             break;
         }
     }
-    
-    _discoveryLeftConstraint.constant = _menuOffset;
-    [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:10.0f initialSpringVelocity:5.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
-
-- (void)discoveryViewControllerHiddenNavigationBar:(HXDiscoveryViewController *)viewController {
-    _shouldHiddenNavigationBar = YES;
-}
-
-#pragma mark - HXMeViewControllerDelegate Methods
-- (void)meViewControllerHiddenNavigationBar:(HXMeViewController *)viewController {
-    _shouldHiddenNavigationBar = YES;
 }
 
 #pragma mark - HXLoginViewControllerDelegate Methods
@@ -235,7 +195,7 @@ HXLoginViewControllerDelegate
             break;
         }
         case HXLoginViewControllerActionLoginSuccess: {
-            [self fetchProfileData];
+            ;
             break;
         }
     }

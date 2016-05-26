@@ -26,6 +26,11 @@
 @property (nonatomic, strong)  NSString *channelID;
 @property (nonatomic, strong)  NSString *streamAlias;
 
+@property (nonatomic, strong)  NSString *roomID;
+@property (nonatomic, strong)  NSString *shareUrl;
+@property (nonatomic, strong)  NSString *shareTitle;
+@property (nonatomic, strong)  NSString *shareContent;
+
 @property (nonatomic, assign) NSInteger  onlineCount;
 @property (nonatomic, assign) NSInteger  viewCount;
 

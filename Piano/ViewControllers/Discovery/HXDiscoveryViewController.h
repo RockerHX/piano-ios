@@ -9,16 +9,12 @@
 #import "UIViewController+HXClass.h"
 
 
-@class HXDiscoveryViewController;
+typedef NS_ENUM(NSUInteger, HXDiscoveryViewControllerAction) {
+    HXDiscoveryViewControllerActionHiddenNavigationBar,
+};
 
 
-@protocol HXDiscoveryViewControllerDelegate <NSObject>
-
-@required
-- (void)discoveryViewControllerHandleMenu:(HXDiscoveryViewController *)viewController;
-- (void)discoveryViewControllerHiddenNavigationBar:(HXDiscoveryViewController *)viewController;
-
-@end
+@protocol HXDiscoveryViewControllerDelegate;
 
 
 @interface HXDiscoveryViewController : UIViewController
@@ -29,6 +25,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *maskView;
 
 - (void)startFetchList;
-- (void)restoreDisplay;
+
+@end
+
+
+@protocol HXDiscoveryViewControllerDelegate <NSObject>
+
+@required
+- (void)discoveryViewController:(HXDiscoveryViewController *)viewController takeAction:(HXDiscoveryViewControllerAction)action;
 
 @end

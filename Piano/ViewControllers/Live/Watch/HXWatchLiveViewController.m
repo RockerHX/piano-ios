@@ -23,6 +23,9 @@
 #import "HXLiveRewardViewController.h"
 #import "HXShowRechargeDelegate.h"
 #import "MIAPaymentViewController.h"
+#import <ShareSDKUI/ShareSDKUI.h>
+#import "BlocksKit+UIKit.h"
+#import "MiaAPIHelper.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -110,27 +113,22 @@ HXShowRechargeDelegate
 }
 
 - (void)signalLink {
-    @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
-        @strongify(self)
-        self->_barrageContainer.barrages = barrages;
+        _barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
     }];
     [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
-        @strongify(self)
         [self updateAlbumView];
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
-        @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
-        @strongify(self)
         [self fetchDataFinfished];
     }];
 }
@@ -310,7 +308,35 @@ HXShowRechargeDelegate
             break;
         }
         case HXWatchBottomBarActionShare: {
-            ;
+            HXLiveModel *model     = _viewModel.model;
+            NSString *shareTitle   = model.shareTitle;
+            NSString *shareContent = model.shareContent;
+            NSURL *shareURL        = [NSURL URLWithString:model.shareUrl];
+            UIImage *shareImage    = [_anchorView.avatar imageForState:UIControlStateNormal];
+            
+            NSMutableDictionary *shareParams = @{}.mutableCopy;
+            [shareParams SSDKSetupShareParamsByText:shareContent
+                                             images:shareImage
+                                                url:shareURL
+                                              title:shareTitle
+                                               type:SSDKContentTypeAuto];
+//            [shareParams SSDKSetupWeChatParamsByText:shareContent title:shareTitle url:shareURL thumbImage:nil image:shareImage musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeAuto forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+//            [shareParams SSDKSetupSinaWeiboShareParamsByText:shareContent title:shareTitle image:shareImage url:shareURL latitude:0 longitude:0 objectID:nil type:SSDKContentTypeAuto];
+            [ShareSDK showShareActionSheet:self.view items:nil shareParams:shareParams onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                 switch (state) {
+                     case SSDKResponseStateSuccess: {
+                         [UIAlertView bk_showAlertViewWithTitle:@"分享成功" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+                         [MiaAPIHelper sharePostWithRoomID:_viewModel.roomID completeBlock:nil timeoutBlock:nil];
+                         break;
+                     }
+                     case SSDKResponseStateFail: {
+                         [UIAlertView bk_showAlertViewWithTitle:@"分享失败" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+                         break;
+                     }
+                     default:
+                         break;
+                 }
+             }];
             break;
         }
         case HXWatchBottomBarActionGift: {

@@ -88,7 +88,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
 
 - (void)attentionRequestWithSubscriber:(id<RACSubscriber>)subscriber{
     
-    [MiaAPIHelper followWithUID:_uid
+    [MiaAPIHelper followWithRoomID:nil uID:_uid
                   completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                   
                       if (success) {

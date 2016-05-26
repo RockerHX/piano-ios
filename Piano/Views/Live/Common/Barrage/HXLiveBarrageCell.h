@@ -10,22 +10,8 @@
 #import "HXBarrageModel.h"
 
 
-@class HXLiveBarrageCell;
-
-
-@protocol HXLiveBarrageCellDelegate <NSObject>
-
-@required
-- (void)commentCellShouldShowCommenter:(HXLiveBarrageCell *)cell;
-
-@end
-
-
 @interface HXLiveBarrageCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet id  <HXLiveBarrageCellDelegate>delegate;
-
-@property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet     UILabel *contentLabel;
 
 - (void)updateWithBarrage:(HXBarrageModel *)barrage;
