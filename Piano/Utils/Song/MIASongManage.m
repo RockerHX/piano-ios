@@ -161,6 +161,7 @@ static NSString *const kSongCachePath = @"/Song";//缓存的路径名
                 //本地已经存在的时候
                 [_downloadURLArray removeObjectAtIndex:0];
                 [self sendSemaphore];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kMIASongDownloadFinishedNoticeKey object:nil userInfo:@{kMIASongDownloadFinishedNoticeKey:urlString}];
                 
             }else{
                 //本地不存在歌曲的时候 下载
