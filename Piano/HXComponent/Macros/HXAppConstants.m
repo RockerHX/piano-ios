@@ -8,7 +8,7 @@
 #import "HXAppConstants.h"
 
 #pragma mark - Third SDK Key
-NSString *const UMengAPPKEY                 = @"562730aee0f55ab9370019d8";
+NSString *const UMengAPPKEY                 = @"5746c00767e58ee878000317";
 NSString *const TestinAPPKEY                = @"341b2ac47c99919526cf833d6957a08b";
 NSString *const BaiDuMapKEY                 = @"wNZGKBVyuCobA8GcksWWx9xD";
 NSString *const ShareSDKKEY                 = @"111c94860f7c0";
