@@ -122,8 +122,8 @@ HXShowRechargeDelegate
     [_viewModel.rewardSignal subscribeNext:^(id x) {
         [self updateAlbumView];
     }];
-    [_viewModel.rewardSignal subscribeNext:^(NSString *giftID) {
-        ;
+    [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
+        [_giftView animationWithGift:gift];
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];

@@ -9,6 +9,7 @@
 #import "HXWatchLiveViewModel.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
+#import "HXGiftManager.h"
 
 
 @implementation HXWatchLiveViewModel {
@@ -176,7 +177,10 @@
     barrage.type = HXBarrageTypeGift;
     [self addBarrage:barrage];
     
-    [_giftSignal sendNext:barrage];
+    HXGiftModel *gift = [[HXGiftManager manager] giftWithID:barrage.giftID];
+    gift.nickName = barrage.nickName;
+    gift.avatarUrl = barrage.avatarUrl;
+    [_giftSignal sendNext:gift];
 }
 
 - (void)addRewardBarrage:(NSDictionary *)data {
