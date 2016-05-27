@@ -23,6 +23,7 @@
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
 #import "HXHostProfileViewController.h"
+#import "UIButton+WebCache.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -52,6 +53,7 @@ HXDiscoveryContainerDelegate
     [super viewWillAppear:animated];
     
     _topBar.musicButton.hidden = ![MusicMgr standard].playList.count;
+    [_topBar.profileButton sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal];
 }
 
 - (void)viewDidLoad {
