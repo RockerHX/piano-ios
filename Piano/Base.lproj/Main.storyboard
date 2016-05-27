@@ -130,6 +130,7 @@
                     <connections>
                         <outlet property="coverView" destination="QIL-l8-kiV" id="QhE-87-RcR"/>
                         <outlet property="maskView" destination="Wwd-fu-0tZ" id="VUT-zx-x9S"/>
+                        <outlet property="topBar" destination="GfG-ly-NxN" id="2uO-78-0hx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CgZ-mA-TwB" userLabel="First Responder" sceneMemberID="firstResponder"/>

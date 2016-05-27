@@ -48,6 +48,12 @@ HXDiscoveryContainerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    _topBar.musicButton.hidden = ![MusicMgr standard].playList.count;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -115,17 +121,15 @@ HXDiscoveryContainerDelegate
 
 #pragma mark - HXDiscoveryTopBarDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
+    [self hiddenNavigationBar];
     switch (action) {
         case HXDiscoveryTopBarActionProfile: {
-            [self hiddenNavigationBar];
             [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }
         case HXDiscoveryTopBarActionMusic: {
-            if ([MusicMgr standard].playList.count) {
-                UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
-                [self presentViewController:playNavigationController animated:YES completion:nil];
-            }
+            UINavigationController *playNavigationController = [HXPlayViewController navigationControllerInstance];
+            [self presentViewController:playNavigationController animated:YES completion:nil];
             break;
         }
     }

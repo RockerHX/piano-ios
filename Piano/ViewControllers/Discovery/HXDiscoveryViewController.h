@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryViewControllerAction) {
 };
 
 
+@class HXDiscoveryTopBar;
 @protocol HXDiscoveryViewControllerDelegate;
 
 
@@ -21,8 +22,9 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryViewControllerAction) {
 
 @property (weak, nonatomic) IBOutlet id  <HXDiscoveryViewControllerDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet UIImageView *coverView;
-@property (weak, nonatomic) IBOutlet UIImageView *maskView;
+@property (weak, nonatomic) IBOutlet       UIImageView *coverView;
+@property (weak, nonatomic) IBOutlet       UIImageView *maskView;
+@property (weak, nonatomic) IBOutlet HXDiscoveryTopBar *topBar;
 
 - (void)startFetchList;
 
