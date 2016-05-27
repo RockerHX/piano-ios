@@ -86,6 +86,8 @@
 		42B6A0E71CEB173900BDF8E8 /* MIAMCoinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E51CEB173900BDF8E8 /* MIAMCoinModel.m */; };
 		42B6A0EB1CEB1D3800BDF8E8 /* MIASendGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0E91CEB1D3800BDF8E8 /* MIASendGiftModel.m */; };
 		42B6A0EF1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */; };
+		42B857741CF844DA004B296A /* MIAVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B857731CF844DA004B296A /* MIAVideoPlayViewController.m */; };
+		42B857771CF853B7004B296A /* MIAPlaySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B857761CF853B7004B296A /* MIAPlaySlider.m */; };
 		42CC372C1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */; };
 		42D15F941CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */; };
 		42D612DD1CE1FDFB00B80753 /* MIAFontManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D51CE1FDD600B80753 /* MIAFontManage.m */; };
@@ -482,6 +484,10 @@
 		42B6A0E91CEB1D3800BDF8E8 /* MIASendGiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASendGiftModel.m; sourceTree = "<group>"; };
 		42B6A0EC1CEB1D4900BDF8E8 /* MIAOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAOrderModel.h; sourceTree = "<group>"; };
 		42B6A0ED1CEB1D4900BDF8E8 /* MIAOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAOrderModel.m; sourceTree = "<group>"; };
+		42B857721CF844DA004B296A /* MIAVideoPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAVideoPlayViewController.h; sourceTree = "<group>"; };
+		42B857731CF844DA004B296A /* MIAVideoPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAVideoPlayViewController.m; sourceTree = "<group>"; };
+		42B857751CF853B7004B296A /* MIAPlaySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPlaySlider.h; sourceTree = "<group>"; };
+		42B857761CF853B7004B296A /* MIAPlaySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPlaySlider.m; sourceTree = "<group>"; };
 		42CC37291CED57AD00BEEBAE /* MIAMCoinManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAMCoinManage.h; sourceTree = "<group>"; };
 		42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAMCoinManage.m; sourceTree = "<group>"; };
 		42D15F911CEC2A5C00EC74E7 /* JOPurchaseManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOPurchaseManage.h; sourceTree = "<group>"; };
@@ -1264,6 +1270,8 @@
 				429CC2071CE07577004BCC0C /* MIACellManage.m */,
 				42529E071CF70C27001F594B /* MIANavBarView.h */,
 				42529E081CF70C27001F594B /* MIANavBarView.m */,
+				42B857751CF853B7004B296A /* MIAPlaySlider.h */,
+				42B857761CF853B7004B296A /* MIAPlaySlider.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2123,6 +2131,8 @@
 				CD8322C61CF5974000D7A254 /* HXProfileContainerViewController.m */,
 				CD8322C91CF5974000D7A254 /* MIAProfileViewController.h */,
 				CD8322CA1CF5974000D7A254 /* MIAProfileViewController.m */,
+				42B857721CF844DA004B296A /* MIAVideoPlayViewController.h */,
+				42B857731CF844DA004B296A /* MIAVideoPlayViewController.m */,
 			);
 			path = Guests;
 			sourceTree = "<group>";
@@ -3035,6 +3045,7 @@
 				CD7960CA1CBE594C004CC661 /* HXAlertBanner.m in Sources */,
 				CD7960CB1CBE594C004CC661 /* HXProfileAlbumContainerCell.m in Sources */,
 				CDBCFAFE1CE1E35A0045946F /* HXLiveGiftViewController.m in Sources */,
+				42B857741CF844DA004B296A /* MIAVideoPlayViewController.m in Sources */,
 				42D613031CE2016900B80753 /* UIFont+JOExtend.m in Sources */,
 				CDE0171D1CE489AC005645D5 /* HXDownLoadCache.m in Sources */,
 				CD7960CC1CBE594C004CC661 /* HXProfileAlbumCell.m in Sources */,
@@ -3087,6 +3098,7 @@
 				CD80F64C1CF2EFF3005115C1 /* HXLiveGiftContainerViewController.m in Sources */,
 				CD7960E61CBE594C004CC661 /* HXLiveEndViewController.m in Sources */,
 				420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */,
+				42B857771CF853B7004B296A /* MIAPlaySlider.m in Sources */,
 				42984B611CDC878E004F00D5 /* MIAProfileLiveCell.m in Sources */,
 				CDDC383A1CEB1B3500328A17 /* HXBarrageModel.m in Sources */,
 				CD7960E71CBE594C004CC661 /* HXRecordLiveViewModel.m in Sources */,

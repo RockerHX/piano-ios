@@ -7,6 +7,8 @@
 //
 
 #import "MIAProfileVideoView.h"
+#import "AppDelegate.h"
+#import "MIAVideoPlayViewController.h"
 #import "MIAVideoModel.h"
 
 static CGFloat const kTitleLabelHeight = 20.;
@@ -21,9 +23,23 @@ static CGFloat const kTitleLabelHeight = 20.;
 
 @implementation MIAProfileVideoView
 
+- (void)addTapGesture{
+    
+    if (objc_getAssociatedObject(self, _cmd)) {
+        //
+    }else{
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [self addGestureRecognizer:tapGesture];
+        objc_setAssociatedObject(self, _cmd, @"only", OBJC_ASSOCIATION_RETAIN);
+    }
+}
+
 - (void)updateViewLayout{
     
     [super updateViewLayout];
+    
+    [self addTapGesture];
     
     [self.showImageView setBackgroundColor:JORGBSameCreate(230.)];
     [[self.showImageView layer] setCornerRadius:3.];
@@ -89,6 +105,18 @@ static CGFloat const kTitleLabelHeight = 20.;
         [JOFException exceptionWithName:@"MIAProfileVideoView exception!" reason:@"data需要为MIAVideoModel类型"];
     }
     
+}
+
+#pragma mark - tag action
+
+- (void)tapAction:(UIGestureRecognizer *)gesture{
+    
+    MIAVideoPlayViewController *videoViewController = [MIAVideoPlayViewController new];
+    [videoViewController setVideoURLString:_videoModel.videoUrl];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [(UINavigationController *)[[delegate window] rootViewController] presentViewController:videoViewController animated:YES completion:^{
+        
+    }];
 }
 
 @end

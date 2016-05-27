@@ -7,6 +7,7 @@
 //
 
 #import "MIAProfileReplayView.h"
+#import "AppDelegate.h"
 #import "MIAReplayModel.h"
 
 @interface MIAProfileReplayView()
@@ -18,10 +19,23 @@
 
 @implementation MIAProfileReplayView
 
+- (void)addTapGesture{
+    
+    if (objc_getAssociatedObject(self, _cmd)) {
+        //
+    }else{
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [self addGestureRecognizer:tapGesture];
+        objc_setAssociatedObject(self, _cmd, @"only", OBJC_ASSOCIATION_RETAIN);
+    }
+}
+
 - (void)updateViewLayout{
     
     [super updateViewLayout];
     
+    [self addTapGesture];
     [self.showImageView setBackgroundColor:JORGBCreate(230., 230., 230., 1.)];
 //    [[self.showImageView layer] setBorderWidth:0.5];
 //    [[self.showImageView layer] setBorderColor:[UIColor grayColor].CGColor];
@@ -89,6 +103,18 @@
     
         [JOFException exceptionWithName:@"MIAProfileReplayView exception" reason:@"data 不是MIAReplayModel类型"];
     }
+}
+
+#pragma mark - tag action
+
+- (void)tapAction:(UIGestureRecognizer *)gesture{
+    
+//    MIAVideoPlayViewController *videoViewController = [MIAVideoPlayViewController new];
+//    [videoViewController setVideoURLString:_videoModel.videoUrl];
+//    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [(UINavigationController *)[[delegate window] rootViewController] presentViewController:videoViewController animated:YES completion:^{
+//        
+//    }];
 }
 
 @end
