@@ -10,4 +10,6 @@
 
 @interface MIAProfileReplayView : MIABaseShowView
 
+@property (nonatomic, copy) NSString *uid;
+
 @end

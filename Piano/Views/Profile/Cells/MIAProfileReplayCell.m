@@ -16,12 +16,20 @@ static CGFloat const kProfileReplayItemSpaceDistance = 20.;
     CGFloat cellWidth;
 }
 
+@property (nonatomic, copy) NSString *profileUid;
+
 @property (nonatomic, strong) MIAProfileReplayView *leftReplayView;
 @property (nonatomic, strong) MIAProfileReplayView *rightReplayView;
 
 @end
 
 @implementation MIAProfileReplayCell
+
+- (void)setProfileReplayUID:(NSString *)uid{
+
+    self.profileUid = nil;
+    self.profileUid = uid;
+}
 
 - (void)setCellWidth:(CGFloat)width{
     
@@ -68,6 +76,7 @@ static CGFloat const kProfileReplayItemSpaceDistance = 20.;
             
             MIAProfileReplayView *replayView = [self.cellContentView viewWithTag:i+1];
             [replayView setHidden:NO];
+            [replayView setUid:_profileUid];
             [replayView setShowData:[data objectAtIndex:i]];
         }
         
