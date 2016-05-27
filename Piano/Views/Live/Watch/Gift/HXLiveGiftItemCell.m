@@ -7,15 +7,14 @@
 //
 
 #import "HXLiveGiftItemCell.h"
-#import "UIImageView+WebCache.h"
 
 
 @implementation HXLiveGiftItemCell
 
 #pragma mark - Public Methods
 - (void)updateWithGift:(HXGiftModel *)gift {
-//    [_giftLogo sd_setImageWithURL:[NSURL URLWithString:gift.]];
-    _bgView.image = [UIImage imageNamed:(gift.selected ? @"LG-GiftSeletedBG" : nil)];
+    _bgView.image = (gift.selected ? [UIImage imageNamed:@"LG-GiftSeletedBG"] : nil);
+    _giftLogo.image = [UIImage imageWithData:gift.iconData];
     _coinCountLabel.text = @(gift.mcoin).stringValue;
 }
 
