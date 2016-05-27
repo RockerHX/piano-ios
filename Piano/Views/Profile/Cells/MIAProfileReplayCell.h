@@ -10,4 +10,6 @@
 
 @interface MIAProfileReplayCell : MIABaseTableViewCell
 
+- (void)setProfileReplayUID:(NSString *)uid;
+
 @end

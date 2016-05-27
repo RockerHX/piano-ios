@@ -277,8 +277,14 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
         cell = [MIACellManage getCellWithType:cellType];
         [cell setCellWidth:View_Width(self.view)];
     }
+    
+    if (cellType == MIACellTypeReplay) {
+        [(MIAProfileReplayCell *)cell setProfileReplayUID:_uid];
+    }
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setCellData:[[_profileViewModel.cellDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+    
     return cell;
 }
 
