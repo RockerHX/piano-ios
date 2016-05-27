@@ -27,6 +27,9 @@ typedef NS_ENUM(NSUInteger, HXGiftType) {
 @property (nonatomic, strong)  NSString *iconUrl;
 @property (nonatomic, strong)  NSString *animateUrl;
 
+@property (nonatomic, strong)  NSString *nickName;
+@property (nonatomic, strong)  NSString *avatarUrl;
+
 @property (nonatomic, assign) BOOL  selected;
 @property (nonatomic, assign) BOOL  status;
 
