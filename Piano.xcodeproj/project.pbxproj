@@ -94,6 +94,8 @@
 		CD160F9A1CD05CD700DF4164 /* HXDiscoveryLiveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */; };
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
+		CD572DD61CF69AA500CCEC30 /* HXDynamicGiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD572DD51CF69AA500CCEC30 /* HXDynamicGiftView.m */; };
+		CD572DD81CF69AC400CCEC30 /* HXDynamicGiftView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD572DD71CF69AC400CCEC30 /* HXDynamicGiftView.xib */; };
 		CD6887991CF54F660081B2BD /* HXLiveBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6887981CF54F660081B2BD /* HXLiveBarrageCell.m */; };
 		CD68879C1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD68879B1CF54F8E0081B2BD /* HXLiveSettingBarrageCell.m */; };
 		CD68879F1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD68879E1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m */; };
@@ -590,6 +592,9 @@
 		CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeMyStationCell.m; sourceTree = "<group>"; };
 		CD546CFF1CAE9A63009FB2FD /* FormatTimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormatTimeHelper.h; sourceTree = "<group>"; };
 		CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormatTimeHelper.m; sourceTree = "<group>"; };
+		CD572DD41CF69AA500CCEC30 /* HXDynamicGiftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDynamicGiftView.h; sourceTree = "<group>"; };
+		CD572DD51CF69AA500CCEC30 /* HXDynamicGiftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDynamicGiftView.m; sourceTree = "<group>"; };
+		CD572DD71CF69AC400CCEC30 /* HXDynamicGiftView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXDynamicGiftView.xib; sourceTree = "<group>"; };
 		CD5D026E1CB5FB2D000285DC /* HXRecordLiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordLiveViewModel.h; sourceTree = "<group>"; };
 		CD5D026F1CB5FB2D000285DC /* HXRecordLiveViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordLiveViewModel.m; sourceTree = "<group>"; };
 		CD5D02721CB5FE49000285DC /* HXPreviewLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPreviewLiveViewController.h; sourceTree = "<group>"; };
@@ -1230,6 +1235,7 @@
 		429CC1E01CE03CD2004BCC0C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CD572DD31CF69A8B00CCEC30 /* DynamicGift */,
 				CDE016E11CE309C6005645D5 /* SectorSlider */,
 				429CC1F21CE04AC5004BCC0C /* MIABaseCellHeadView.h */,
 				429CC1F31CE04AC5004BCC0C /* MIABaseCellHeadView.m */,
@@ -1665,6 +1671,16 @@
 				CD546D001CAE9A63009FB2FD /* FormatTimeHelper.m */,
 			);
 			path = FormatTimeHelper;
+			sourceTree = "<group>";
+		};
+		CD572DD31CF69A8B00CCEC30 /* DynamicGift */ = {
+			isa = PBXGroup;
+			children = (
+				CD572DD41CF69AA500CCEC30 /* HXDynamicGiftView.h */,
+				CD572DD51CF69AA500CCEC30 /* HXDynamicGiftView.m */,
+				CD572DD71CF69AC400CCEC30 /* HXDynamicGiftView.xib */,
+			);
+			path = DynamicGift;
 			sourceTree = "<group>";
 		};
 		CD5CDF861CA919F700D2162C /* Me */ = {
@@ -2827,6 +2843,7 @@
 				CD79613B1CBE594C004CC661 /* HXPlaySummaryView.xib in Resources */,
 				CD79613C1CBE594C004CC661 /* Play.storyboard in Resources */,
 				CD79613D1CBE594C004CC661 /* HXAlbumsNavigationBar.xib in Resources */,
+				CD572DD81CF69AC400CCEC30 /* HXDynamicGiftView.xib in Resources */,
 				CD79613E1CBE594C004CC661 /* HXLoadingView.xib in Resources */,
 				CD79613F1CBE594C004CC661 /* HXPreviewLiveControlView.xib in Resources */,
 				CD7961401CBE594C004CC661 /* Login.storyboard in Resources */,
@@ -2969,6 +2986,7 @@
 				422497C51CF4663C008F8A55 /* JOManage.m in Sources */,
 				CD7960AE1CBE594C004CC661 /* HXSongModel.m in Sources */,
 				CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */,
+				CD572DD61CF69AA500CCEC30 /* HXDynamicGiftView.m in Sources */,
 				CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */,
 				CD6887A61CF551380081B2BD /* HXLiveBarrageViewController.m in Sources */,
 				42B6A0E31CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */,

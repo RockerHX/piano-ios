@@ -26,6 +26,7 @@
 #import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
 #import "MiaAPIHelper.h"
+#import "HXDynamicGiftView.h"
 
 
 @interface HXWatchLiveViewController () <
