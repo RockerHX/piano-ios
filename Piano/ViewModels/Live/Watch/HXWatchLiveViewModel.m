@@ -43,6 +43,7 @@
     _barragesSignal = RACObserve(self, barrages);
     _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
     _rewardSignal = [RACSubject subject];
+    _giftSignal = [RACSubject subject];
 }
 
 - (void)notificationConfigure {
@@ -174,6 +175,8 @@
     HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
     barrage.type = HXBarrageTypeGift;
     [self addBarrage:barrage];
+    
+    [_giftSignal sendNext:barrage];
 }
 
 - (void)addRewardBarrage:(NSDictionary *)data {
@@ -182,7 +185,7 @@
     [self addBarrage:barrage];
     
     _model.album.rewardTotal = barrage.rewardTotal;
-    [_rewardSignal sendNext:nil];
+    [_rewardSignal sendNext:barrage];
 }
 
 - (void)addComment:(NSDictionary *)data {

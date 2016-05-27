@@ -84,7 +84,6 @@ HXShowRechargeDelegate
     [super viewDidDisappear:animated];
     
     [self shouldSteady:NO];
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -119,8 +118,11 @@ HXShowRechargeDelegate
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
     }];
-    [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
+    [_viewModel.rewardSignal subscribeNext:^(id x) {
         [self updateAlbumView];
+    }];
+    [_viewModel.rewardSignal subscribeNext:^(NSString *giftID) {
+        ;
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];

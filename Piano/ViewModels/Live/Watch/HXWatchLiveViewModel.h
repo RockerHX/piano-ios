@@ -16,6 +16,7 @@
 @property (nonatomic, strong, readonly)  RACSignal *barragesSignal;
 @property (nonatomic, strong, readonly)  RACSignal *exitSignal;
 @property (nonatomic, strong, readonly) RACSubject *rewardSignal;
+@property (nonatomic, strong, readonly) RACSubject *giftSignal;
 
 @property (nonatomic, strong, readonly) RACCommand *enterRoomCommand;
 @property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
