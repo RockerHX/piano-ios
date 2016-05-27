@@ -44,7 +44,7 @@
 #pragma mark - Public Methods
 - (void)playWithURL:(NSString *)url {
     NSURL *downLoadURL = [NSURL URLWithString:url];
-    [[HXDownLoadCache cache] downLoadWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[HXDownLoadCache cache] downLoadWithURL:[NSURL URLWithString:url] completionHandler:^(HXDownLoadCache * _Nonnull cache, NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         [self startPlayWithURL:downLoadURL data:data];
     }];
 }

@@ -32,33 +32,32 @@
 }
 
 #pragma mark - Public Methods
-- (NSURLSessionDownloadTask *)downLoadWithURL:(NSURL *)url completionHandler:(nonnull void (^)(NSData * _Nullable, NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+- (NSURLSessionDownloadTask *)downLoadWithURL:(NSURL *)url completionHandler:(nonnull void (^)(HXDownLoadCache *, NSData *, NSURLResponse *, NSError *))completionHandler {
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0f];
     return [self downLoadWithRequest:request completionHandler:completionHandler];
 }
 
-- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request completionHandler:(nonnull void (^)(NSData * _Nullable, NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request completionHandler:(nonnull void (^)(HXDownLoadCache *, NSData *, NSURLResponse *, NSError *))completionHandler {
     
     NSURLSession *session = [NSURLSession sharedSession];
     return [self downLoadWithRequest:request session:session completionHandler:completionHandler];
 }
 
-- (NSURLSessionDownloadTask *)downLoadWithURL:(NSURL *)url configuration:(NSURLSessionConfiguration *)configuration completionHandler:(nonnull void (^)(NSData * _Nullable, NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+- (NSURLSessionDownloadTask *)downLoadWithURL:(NSURL *)url configuration:(NSURLSessionConfiguration *)configuration completionHandler:(nonnull void (^)(HXDownLoadCache *, NSData *, NSURLResponse *, NSError *))completionHandler {
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     return [self downLoadWithRequest:request configuration:configuration completionHandler:completionHandler];
 }
 
-- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request configuration:(NSURLSessionConfiguration *)configuration completionHandler:(nonnull void (^)(NSData * _Nullable, NSURL * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request configuration:(NSURLSessionConfiguration *)configuration completionHandler:(nonnull void (^)(HXDownLoadCache *, NSData *, NSURLResponse *, NSError *))completionHandler {
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     return [self downLoadWithRequest:request session:session completionHandler:completionHandler];
 }
 
 #pragma mark - Private Methods
-- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request session:(NSURLSession *)session completionHandler:(void (^)(NSData * __nullable data, NSURL * __nullable location, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler {
-    
+- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request session:(NSURLSession *)session completionHandler:(void (^)(HXDownLoadCache *, NSData *, NSURLResponse *, NSError *))completionHandler {
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         NSData *data = [NSData dataWithContentsOfURL:location];
@@ -69,7 +68,7 @@
         }
         
         if (completionHandler) {
-            completionHandler(data, location, response, error);
+            completionHandler(self, data, response, error);
         }
     }];
     [task resume];
