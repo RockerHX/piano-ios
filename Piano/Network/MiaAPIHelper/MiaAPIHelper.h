@@ -90,6 +90,18 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 		   completeBlock:(MiaRequestCompleteBlock)completeBlock
 			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
+/**
+ *  修改签名.
+ *
+ *  @param bio           修改的签名的内容.
+ *  @param completeBlock MiaRequestCompleteBlock.
+ *  @param timeoutBlock  MiaRequestTimeoutBlock.
+ */
++ (void)changeBio:(NSString *)bio
+    completeBlock:(MiaRequestCompleteBlock)completeBlock
+     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+
 + (void)getHomeListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
 						timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
