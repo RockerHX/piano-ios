@@ -18,7 +18,7 @@
 - (void)setGifts:(NSArray *)gifts {
     _gifts = gifts;
     
-    _selectedIndex = 0;
+    _selectedIndex = -1;
     [self.collectionView reloadData];
 }
 
@@ -42,6 +42,10 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (_selectedIndex < 0) {
+        _selectedIndex = indexPath.row;
+    }
+    
     HXGiftModel *selectedGift = _gifts[_selectedIndex];
     selectedGift.selected = NO;
     

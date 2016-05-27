@@ -24,7 +24,7 @@
 @implementation HXLiveGiftViewController {
     HXLiveGiftContainerViewController *_container;
     
-    NSArray *_giftList;
+    NSArray <HXGiftModel *>*_giftList;
     NSString *_giftCount;
 }
 
@@ -88,8 +88,9 @@
 
 #pragma mark - Event Response
 - (IBAction)giveGiftButtonPressed {
-    if (_giftList.count) {
-        HXGiftModel *gift = _giftList[_container.selectedIndex];
+    NSInteger selectedIndex = _container.selectedIndex;
+    if ((_giftList.count) && (selectedIndex >= 0)) {
+        HXGiftModel *gift = _giftList[selectedIndex];
         NSInteger rewardCount = gift.mcoin;
         NSInteger balanceCount = [MIAMCoinManage shareMCoinManage].mCoin.integerValue;
         if (balanceCount < rewardCount) {
@@ -130,6 +131,11 @@
 }
 
 - (void)dismiss {
+    NSInteger selectedIndex = _container.selectedIndex;
+    if (selectedIndex >= 0) {
+        _giftList[selectedIndex].selected = NO;
+    }
+    
     _bottomConstraint.constant = 0.0f;
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         [self.view layoutIfNeeded];
