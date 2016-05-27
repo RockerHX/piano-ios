@@ -8,6 +8,7 @@
 
 #import "HXDiscoveryModel.h"
 #import "HXReplayModel.h"
+#import "MIAReplayModel.h"
 
 
 @implementation HXDiscoveryModel
@@ -17,10 +18,23 @@
 }
 
 #pragma mark - Init Methods
-+ (instancetype)createWithReplayModel:(HXReplayModel *)replayModel {
-    NSDictionary *keyValues = [replayModel mj_keyValues];
-    HXDiscoveryModel *model = [HXDiscoveryModel mj_objectWithKeyValues:keyValues];
-    model.videoUrl = replayModel.replayUrl;
++ (instancetype)createWithReplayModel:(id)model {
+    HXDiscoveryModel *discoveryModel = nil;
+    if ([model isKindOfClass:[HXReplayModel class]]) {
+        HXReplayModel *replayModel = model;
+        NSDictionary *keyValues = [replayModel mj_keyValues];
+        discoveryModel = [HXDiscoveryModel mj_objectWithKeyValues:keyValues];
+        discoveryModel.videoUrl = replayModel.replayUrl;
+    } else if ([model isKindOfClass:[MIAReplayModel class]]) {
+        MIAReplayModel *replayModel = model;
+        discoveryModel = [HXDiscoveryModel new];
+        discoveryModel.uID= replayModel.;
+        discoveryModel.roomID= replayModel.roomID;
+        discoveryModel.nickName= replayModel.nick;
+        discoveryModel.coverUrl= replayModel.coverUrl;
+        discoveryModel.videoUrl= replayModel.;
+        discoveryModel.duration= replayModel.duration;
+    }
     return model;
 }
 

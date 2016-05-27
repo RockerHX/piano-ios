@@ -17,8 +17,9 @@
 @property (nonatomic, copy) NSString *viewCnt; //观看的人数
 @property (nonatomic, copy) NSString *closeTime; //关闭的时间
 @property (nonatomic, copy) NSString *title; //视频的名字
-@property (nonatomic, copy) NSString *duration; //视频的长度
 @property (nonatomic, copy) NSString *coverUrl; //直播中主播的图片
 @property (nonatomic, copy) NSString *createTime; //创建的时间
+
+@property (nonatomic, assign) NSInteger  duration; //视频的长度
 
 @end

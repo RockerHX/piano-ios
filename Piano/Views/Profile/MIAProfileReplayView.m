@@ -9,6 +9,7 @@
 #import "MIAProfileReplayView.h"
 #import "AppDelegate.h"
 #import "MIAReplayModel.h"
+#import "HXReplayViewController.h"
 
 @interface MIAProfileReplayView()
 
@@ -17,7 +18,9 @@
 
 @end
 
-@implementation MIAProfileReplayView
+@implementation MIAProfileReplayView {
+    MIAReplayModel *_replayModel;
+}
 
 - (void)addTapGesture{
     
@@ -85,17 +88,17 @@
     }
 }
 
-- (void)setShowData:(id)data{
+- (void)setShowData:(id)data {
     
     if ([data isKindOfClass:[MIAReplayModel class]]) {
     
         [self createTipNumberView];
         
-        MIAReplayModel *replayModel = data;
-        [self.showImageView sd_setImageWithURL:[NSURL URLWithString:replayModel.coverUrl] placeholderImage:nil];
-        [self.showTitleLabel setText:replayModel.title];
-        [self.showTipLabel setText:[replayModel.createTime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonthDay]];
-        [_numberlabel setText:replayModel.viewCnt];
+        _replayModel = data;
+        [self.showImageView sd_setImageWithURL:[NSURL URLWithString:_replayModel.coverUrl] placeholderImage:nil];
+        [self.showTitleLabel setText:_replayModel.title];
+        [self.showTipLabel setText:[_replayModel.createTime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonthDay]];
+        [_numberlabel setText:_replayModel.viewCnt];
         
         [self updateViewLayout];
         
@@ -107,14 +110,11 @@
 
 #pragma mark - tag action
 
-- (void)tapAction:(UIGestureRecognizer *)gesture{
-    
-//    MIAVideoPlayViewController *videoViewController = [MIAVideoPlayViewController new];
-//    [videoViewController setVideoURLString:_videoModel.videoUrl];
-//    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    [(UINavigationController *)[[delegate window] rootViewController] presentViewController:videoViewController animated:YES completion:^{
-//        
-//    }];
+- (void)tapAction:(UIGestureRecognizer *)gesture {
+    UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
+    HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
+    replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayNaviagtionController animated:YES completion:nil];
 }
 
 @end

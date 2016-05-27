@@ -15,6 +15,7 @@
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
 #import <ShareSDKUI/ShareSDKUI.h>
+#import "HXLiveModel.h"
 
 
 @interface HXReplayViewController () <
@@ -57,12 +58,6 @@ HXReplayBottomBarDelegate
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -92,7 +87,7 @@ HXReplayBottomBarDelegate
     [self.replayView.layer addSublayer:layer];
     
     [self updateAnchorView];
-//    _bottomBar.duration = _model.duration;
+    _bottomBar.duration = _model.duration;
 }
 
 - (void)sigalLink {
@@ -148,7 +143,7 @@ HXReplayBottomBarDelegate
 - (void)playFinished {
     _play = NO;
     dispatch_source_cancel(_timer);
-//    _bottomBar.currentTime = _model.duration;
+    _bottomBar.currentTime = _model.duration;
 }
 
 - (void)playError {
@@ -247,50 +242,29 @@ HXReplayBottomBarDelegate
             break;
         }
         case HXReplayBottomBarActionShare: {
-            //1、创建分享参数（必要）
-            NSMutableDictionary *shareParams = @{}.mutableCopy;
-            [shareParams SSDKSetupShareParamsByText:@"分享内容"
-                                             images:[UIImage imageNamed:@"传入的图片名"]
-                                                url:[NSURL URLWithString:@"http://mob.com"]
-                                              title:@"分享标题"
-                                               type:SSDKContentTypeAuto];
-            
-//            // 定制新浪微博的分享内容
-//            [shareParams SSDKSetupSinaWeiboShareParamsByText:@"定制新浪微博的分享内容" title:nil image:[UIImage imageNamed:@"传入的图片名"] url:nil latitude:0 longitude:0 objectID:nil type:SSDKContentTypeAuto];
-            // 定制微信好友的分享内容
-            [shareParams SSDKSetupWeChatParamsByText:@"定制微信的分享内容" title:@"title" url:[NSURL URLWithString:@"http://mob.com"] thumbImage:nil image:[UIImage imageNamed:@"传入的图片名"] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeAuto forPlatformSubType:SSDKPlatformSubTypeWechatSession];// 微信好友子平台
-            
-            //2、分享
-            [ShareSDK showShareActionSheet:self.view
-                                     items:nil
-                               shareParams:shareParams
-                       onShareStateChanged:
-             ^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                 ;
-             }];
             break;
         }
     }
 }
 
 - (void)bottomBar:(HXReplayBottomBar *)bar dragProgressBar:(CGFloat)progress {
-//    NSTimeInterval currentTime = _model.duration * progress;
-//    CMTime time = CMTimeMake(currentTime, 1);
-//    
-//    @weakify(self)
-//    [_player seekToTime:time completionHandler:^(BOOL finished) {
-//        @strongify(self)
-//        if (finished) {
-//            [self timerConfigure];
-//            [self->_viewModel clearComments];
-//            [self->_viewModel updateTimeNode:currentTime];
-//            [self fetchBarrageData];
-//            
-//            if (!_play) {
-//                [_player play];
-//            }
-//        }
-//    }];
+    NSTimeInterval currentTime = _model.duration * progress;
+    CMTime time = CMTimeMake(currentTime, 1);
+    
+    @weakify(self)
+    [_player seekToTime:time completionHandler:^(BOOL finished) {
+        @strongify(self)
+        if (finished) {
+            [self timerConfigure];
+            [self->_viewModel clearComments];
+            [self->_viewModel updateTimeNode:currentTime];
+            [self fetchBarrageData];
+            
+            if (!_play) {
+                [_player play];
+            }
+        }
+    }];
 }
 
 @end
