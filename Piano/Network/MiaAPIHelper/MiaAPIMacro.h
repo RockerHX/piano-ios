@@ -70,6 +70,9 @@ static NSString * const MiaAPIKey_Contact					= @"contact";
 static NSString * const MiaAPIKey_Platform					= @"platform";
 static NSString * const MiaAPIKey_OSVersion					= @"osversion";
 
+static NSString * const MiaAPICommand_User_Bio              = @"User.Post.Bio";//修改签名
+static NSString * const MiaAPIKey_Bio                       = @"bio";
+
 static NSString * const MiaAPICommand_User_GetProfile		= @"User.Get.Profile";
 
 // Notification

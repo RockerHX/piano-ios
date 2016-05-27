@@ -29,6 +29,11 @@
 		422497D31CF4664A008F8A55 /* JODataRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497CD1CF4664A008F8A55 /* JODataRequestConfig.m */; };
 		422497D41CF4664A008F8A55 /* JOFileDownloadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497CF1CF4664A008F8A55 /* JOFileDownloadConfig.m */; };
 		422497D51CF4664A008F8A55 /* JOFileUploadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497D11CF4664A008F8A55 /* JOFileUploadConfig.m */; };
+		42529DFD1CF699D9001F594B /* MIASettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529DFC1CF699D9001F594B /* MIASettingViewModel.m */; };
+		42529E001CF69D90001F594B /* MIASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529DFF1CF69D90001F594B /* MIASettingViewController.m */; };
+		42529E031CF6E1A3001F594B /* MIASettingContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529E021CF6E1A3001F594B /* MIASettingContentViewController.m */; };
+		42529E061CF6E56E001F594B /* MIASettingContentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529E051CF6E56E001F594B /* MIASettingContentViewModel.m */; };
+		42529E091CF70C27001F594B /* MIANavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529E081CF70C27001F594B /* MIANavBarView.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFE1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
 		42984B001CDAEF84004F00D5 /* UIColor+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE01CDAEF84004F00D5 /* UIColor+JOExtend.m */; };
@@ -379,6 +384,16 @@
 		422497D01CF4664A008F8A55 /* JOFileUploadConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOFileUploadConfig.h; sourceTree = "<group>"; };
 		422497D11CF4664A008F8A55 /* JOFileUploadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOFileUploadConfig.m; sourceTree = "<group>"; };
 		422497D61CF468DF008F8A55 /* JOHttpRequestType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOHttpRequestType.h; sourceTree = "<group>"; };
+		42529DFB1CF699D9001F594B /* MIASettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingViewModel.h; sourceTree = "<group>"; };
+		42529DFC1CF699D9001F594B /* MIASettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingViewModel.m; sourceTree = "<group>"; };
+		42529DFE1CF69D90001F594B /* MIASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingViewController.h; sourceTree = "<group>"; };
+		42529DFF1CF69D90001F594B /* MIASettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingViewController.m; sourceTree = "<group>"; };
+		42529E011CF6E1A3001F594B /* MIASettingContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingContentViewController.h; sourceTree = "<group>"; };
+		42529E021CF6E1A3001F594B /* MIASettingContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingContentViewController.m; sourceTree = "<group>"; };
+		42529E041CF6E56E001F594B /* MIASettingContentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingContentViewModel.h; sourceTree = "<group>"; };
+		42529E051CF6E56E001F594B /* MIASettingContentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingContentViewModel.m; sourceTree = "<group>"; };
+		42529E071CF70C27001F594B /* MIANavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIANavBarView.h; sourceTree = "<group>"; };
+		42529E081CF70C27001F594B /* MIANavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIANavBarView.m; sourceTree = "<group>"; };
 		42984ADB1CDAEF84004F00D5 /* NSObject+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JOExtend.h"; sourceTree = "<group>"; };
 		42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JOExtend.m"; sourceTree = "<group>"; };
 		42984ADD1CDAEF84004F00D5 /* NSString+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JOExtend.h"; sourceTree = "<group>"; };
@@ -1115,6 +1130,17 @@
 			path = NetConfig;
 			sourceTree = "<group>";
 		};
+		42529DFA1CF69998001F594B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				42529DFB1CF699D9001F594B /* MIASettingViewModel.h */,
+				42529DFC1CF699D9001F594B /* MIASettingViewModel.m */,
+				42529E041CF6E56E001F594B /* MIASettingContentViewModel.h */,
+				42529E051CF6E56E001F594B /* MIASettingContentViewModel.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		42984AD91CDAEF84004F00D5 /* JO */ = {
 			isa = PBXGroup;
 			children = (
@@ -1245,6 +1271,8 @@
 				429CC1F71CE04AC5004BCC0C /* MIABaseTableViewCell.m */,
 				429CC2061CE07577004BCC0C /* MIACellManage.h */,
 				429CC2071CE07577004BCC0C /* MIACellManage.m */,
+				42529E071CF70C27001F594B /* MIANavBarView.h */,
+				42529E081CF70C27001F594B /* MIANavBarView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1578,6 +1606,10 @@
 				CD9167641CAE524C000A12DC /* ChangePwdViewController.m */,
 				CD9167651CAE524C000A12DC /* HXFeedBackViewController.h */,
 				CD9167661CAE524C000A12DC /* HXFeedBackViewController.m */,
+				42529DFE1CF69D90001F594B /* MIASettingViewController.h */,
+				42529DFF1CF69D90001F594B /* MIASettingViewController.m */,
+				42529E011CF6E1A3001F594B /* MIASettingContentViewController.h */,
+				42529E021CF6E1A3001F594B /* MIASettingContentViewController.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2063,6 +2095,7 @@
 				CD3199811CAA6173006C845F /* Live */,
 				CDF300F81CA8D0C600C19C32 /* Albums */,
 				420BBB501CE9A6FA00F52AB2 /* Payment */,
+				42529DFA1CF69998001F594B /* Setting */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2797,7 +2830,7 @@
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
 					CD79608B1CBE594C004CC661 = {
-						DevelopmentTeam = H2JE2CWJS7;
+						DevelopmentTeam = PQE2NCR38L;
 					};
 				};
 			};
@@ -2927,6 +2960,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				420BBB551CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */,
+				42529E091CF70C27001F594B /* MIANavBarView.m in Sources */,
 				42984B021CDAEF84004F00D5 /* JOFAppInfo.m in Sources */,
 				CD07B2CC1CEEF51E00B5AB87 /* HXLiveRewardTopModel.m in Sources */,
 				CD79608E1CBE594C004CC661 /* HXSettingViewController.m in Sources */,
@@ -2951,6 +2985,7 @@
 				CD79609A1CBE594C004CC661 /* HXPreviewLiveTopBar.m in Sources */,
 				CD79609B1CBE594C004CC661 /* HXPlaySummaryView.m in Sources */,
 				CD79609C1CBE594C004CC661 /* UIViewController+HXClass.m in Sources */,
+				42529E001CF69D90001F594B /* MIASettingViewController.m in Sources */,
 				429CC2041CE06C48004BCC0C /* MIABaseShowView.m in Sources */,
 				CD79609D1CBE594C004CC661 /* HXIBView.m in Sources */,
 				420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */,
@@ -3007,6 +3042,7 @@
 				CD7960B91CBE594C004CC661 /* MiaRequestItem.m in Sources */,
 				CD7960BA1CBE594C004CC661 /* HXLabel.m in Sources */,
 				CD7960BB1CBE594C004CC661 /* HXAlbumsControlCell.m in Sources */,
+				42529DFD1CF699D9001F594B /* MIASettingViewModel.m in Sources */,
 				CD7960BD1CBE594C004CC661 /* HXGuestModel.m in Sources */,
 				CD7960BE1CBE594C004CC661 /* HXAlbumsCommentCountCell.m in Sources */,
 				429E500D1CE45D000008CA85 /* MIAAlbumBarView.m in Sources */,
@@ -3020,6 +3056,7 @@
 				CD7960C31CBE594C004CC661 /* HXAlbumsNavigationBar.m in Sources */,
 				CD7960C41CBE594C004CC661 /* ChangePwdViewController.m in Sources */,
 				CD7960C51CBE594C004CC661 /* UIImage+Extrude.m in Sources */,
+				42529E031CF6E1A3001F594B /* MIASettingContentViewController.m in Sources */,
 				CD7960C71CBE594C004CC661 /* HXVideoModel.m in Sources */,
 				CD7960C81CBE594C004CC661 /* HXWatchLiveViewModel.m in Sources */,
 				CD80F6541CF3036D005115C1 /* HXRewardGiftListLayout.m in Sources */,
@@ -3035,6 +3072,7 @@
 				CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */,
 				CD7960CD1CBE594C004CC661 /* HXRegisterContainerViewController.m in Sources */,
 				CD7960CE1CBE594C004CC661 /* SongPreloader.m in Sources */,
+				42529E061CF6E56E001F594B /* MIASettingContentViewModel.m in Sources */,
 				CD7960CF1CBE594C004CC661 /* UIView+Image.m in Sources */,
 				CD7960D01CBE594C004CC661 /* HXProfileModel.m in Sources */,
 				429CC2191CE08F47004BCC0C /* MIAAlbumModel.m in Sources */,
@@ -3269,8 +3307,8 @@
 			baseConfigurationReference = 02E1795951E578F7F615A6B3 /* Pods-Piano.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mia Music Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mia Music Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3281,7 +3319,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5a18aecf-fbfd-4290-bd13-e05b06bc8ef0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

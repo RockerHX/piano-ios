@@ -16,6 +16,12 @@ static NSString *kMIAFontLight = @"Helvetica";
 
 + (JOFont *)getFontWithType:(MIAFontType)type{
 
+    
+    if (type == MIAFontType_NavBar_Title) {
+        //NavBar的标题
+        return JOFontMake(kMIAFontBold, [UIColor whiteColor], 17.);
+    }
+    
     if (type == MIAFontType_Cell_Title) {
         //cell的head中tilte
         return JOFontMake(kMIAFontRegular, [UIColor blackColor], 13.);
@@ -178,6 +184,27 @@ static NSString *kMIAFontLight = @"Helvetica";
     }else if (type == MIAFontType_PayHistory_Amount){
         //余额
         return JOFontMake(kMIAFontRegular, JORGBCreate(171., 143., 71., 1.), 17.);
+    }
+    
+    //MARK: 设置
+    if (type == MIAFontType_Setting_CellTitle) {
+        //设置页面的cell的标题
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
+    }else if (type == MIAFontType_Setting_CellContent){
+        //设置页面的cell的内容
+        return JOFontMake(kMIAFontRegular, JORGBSameCreate(220.), 15.);
+    }else if (type == MIAFontType_Setting_Title){
+        //Bar的标题
+        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 19.);
+    }
+    
+    //MARK: 设置的Content页面
+    if (type == MIAFontType_SettingContent_Content) {
+        //设置的Content的内容
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 15.);
+    }else if (type == MIAFontType_SettingContent_Feedback_Tip){
+        //意见的提示用语
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 15.);
     }
     
     return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);

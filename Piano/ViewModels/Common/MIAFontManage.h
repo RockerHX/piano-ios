@@ -11,6 +11,8 @@
 
 typedef NS_ENUM(NSUInteger, MIAFontType) {
     
+    MIAFontType_NavBar_Title,//NavBar的标题
+    
     MIAFontType_Cell_Title, //cell的head中tilte
     MIAFontType_Cell_Tip,   //cell的head中右边的tip
 
@@ -75,7 +77,14 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
     MIAFontType_PayHistory_Time,  //时间
     MIAFontType_PayHistory_Amount, //余额
     
+    //MARK: 设置页面
+    MIAFontType_Setting_CellTitle,//设置页面的cell的标题
+    MIAFontType_Setting_CellContent,//设置页面的cell的内容
+    MIAFontType_Setting_Title,//Bar的标题
     
+    //MARK: 设置的Content
+    MIAFontType_SettingContent_Content,//设置的内容页面
+    MIAFontType_SettingContent_Feedback_Tip,//意见的提示用语
 };
 
 

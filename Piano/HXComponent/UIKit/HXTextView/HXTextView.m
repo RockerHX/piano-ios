@@ -69,6 +69,10 @@
         
         _placeholderLabel.text      = _placeholderText;
         _placeholderLabel.textColor = _placeholderColor;
+        
+        //修复placeHolder字符串只能显示一行,不能完全显示出来的bug  by:Joshua 2016 5.27
+        CGFloat labelHeight = [_placeholderLabel sizeThatFits:CGSizeMake(rect.size.width - 16.0f, CGFLOAT_MAX)].height+2;
+        [_placeholderLabel setFrame:CGRectMake(8.0f, 8.0f, rect.size.width - 16.0f, labelHeight)];
     }
     
     [self layoutGUI];

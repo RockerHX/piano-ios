@@ -17,12 +17,15 @@
 #import "NSString+MD5.h"
 #import "HXAlertBanner.h"
 #import "UIConstants.h"
+#import "MIANavBarView.h"
+#import "JOBaseSDK.h"
 
 @interface ChangePwdViewController () <UITextFieldDelegate>
 
 @end
 
 @implementation ChangePwdViewController {
+    MIANavBarView   *_navBarView;
 	UIView 			*_inputView;
 	UITextField 	*_oldPasswordTextField;
 	UITextField 	*_firstPasswordTextField;
@@ -58,9 +61,32 @@
 	[self.view setBackgroundColor:[UIColor whiteColor]];
     
 	[self initInputView];
+    [self createNavBarView];
+}
+
+- (void)createNavBarView{
+
+    _navBarView = [MIANavBarView newAutoLayoutView];
+    [_navBarView setTitle:@"修改密码"];
+    [_navBarView setBackgroundColor:[UIColor whiteColor]];
+    [[_navBarView navBarTitleLabel] setTextColor:[UIColor blackColor]];
+    [_navBarView setLeftButtonTitle:@"x" titleColor:[UIColor blackColor]];
+    
+    @weakify(self);
+    [_navBarView navBarLeftClickHanlder:^{
+        @strongify(self);
+        [self.navigationController popViewControllerAnimated:YES];
+    } rightClickHandler:nil];
+    [self.view addSubview:_navBarView];
+    
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:44. selfView:_navBarView superView:self.view];
 }
 
 - (void)initInputView {
+    
 	_inputView = [[UIView alloc] initWithFrame:self.view.frame];
 	[self.view addSubview:_inputView];
 

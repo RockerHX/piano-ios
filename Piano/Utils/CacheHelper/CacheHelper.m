@@ -9,7 +9,7 @@
 #import "CacheHelper.h"
 #import "SDWebImageManager.h"
 #import "PathHelper.h"
-
+#import "MIASongManage.h"
 
 @implementation CacheHelper {
 }
@@ -49,6 +49,35 @@
 			}
 		});
 	});
+}
+
++ (void)checkSongCacheSizeWithCompleteBlock:(void (^)(unsigned long long cacheSize))completeBlock{
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        unsigned long long totalSize = 0;
+        
+        NSUInteger imageCacheSize = [self calcDiskSizeOfDir:[[MIASongManage shareSongManage] songFilePath]];
+        totalSize += imageCacheSize;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completeBlock) {
+                completeBlock(totalSize);
+            }
+        });
+    });
+}
+
++ (void)cleanSongCacheWithCompleteBlock:(void (^)())completeBlock{
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [self deleteFilesInDir:[[MIASongManage shareSongManage] songFilePath]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completeBlock) {
+                completeBlock();
+            }
+        });
+    });
 }
 
 #pragma mark - Private Methods
