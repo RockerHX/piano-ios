@@ -151,3 +151,4 @@ static NSString * const MiaAPICommand_SendGift              = @"User.Gift.Post.B
 
 static NSString * const MiaAPIKey_MCoin                     = @"mcoin";//M币
 static NSString * const MiaAPIKey_GiftID                    = @"giftID";//礼物的id
+static NSString * const MiaAPIKey_GiftNum                   = @"giftNum";//礼物的数量

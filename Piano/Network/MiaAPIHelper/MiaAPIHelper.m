@@ -736,8 +736,8 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-
 + (void)sendGiftWithGiftID:(NSString *)giftID
+                 giftCount:(NSString *)giftCount
                     roomID:(NSString *)roomID
              completeBlock:(MiaRequestCompleteBlock)completeBlock
               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
@@ -745,6 +745,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
     [dictValues setValue:@"APPLE" forKey:MiaAPIKey_TradeType];
     [dictValues setValue:giftID forKey:MiaAPIKey_GiftID];
+    [dictValues setValue:giftCount forKey:MiaAPIKey_GiftNum];
     [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
     MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_SendGift
                                                                parameters:dictValues
