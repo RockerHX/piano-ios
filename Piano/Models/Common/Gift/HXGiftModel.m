@@ -19,7 +19,7 @@
 }
 
 - (void)mj_keyValuesDidFinishConvertingToObject {
-    [self download];
+    [self download:nil];
 }
 
 #pragma mark - Property
@@ -28,12 +28,15 @@
 }
 
 #pragma mark - Public Methods
-- (void)download {
-    [[HXDownLoadCache cache] downLoadWithURL:[NSURL URLWithString:_iconUrl] completionHandler:^(NSData * _Nullable data, NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+- (void)download:(void(^)(HXGiftModel *gift))completed {
+    [[HXDownLoadCache cache] downLoadWithURL:[NSURL URLWithString:_iconUrl] completionHandler:^(HXDownLoadCache * _Nonnull cache, NSData * _Nonnull data, NSURLResponse * _Nonnull response, NSError * _Nonnull error) {
         _iconData = data;
-    }];
-    [[HXDownLoadCache cache] downLoadWithURL:[NSURL URLWithString:_animateUrl] completionHandler:^(NSData * _Nullable data, NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        _animationData = data;
+        [cache downLoadWithURL:[NSURL URLWithString:_animateUrl] completionHandler:^(HXDownLoadCache * _Nonnull cache, NSData * _Nonnull data, NSURLResponse * _Nonnull response, NSError * _Nonnull error) {
+            _animationData = data;
+            if (completed) {
+                completed(self);
+            }
+        }];
     }];
 }
 

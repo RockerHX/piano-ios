@@ -33,6 +33,6 @@ typedef NS_ENUM(NSUInteger, HXGiftType) {
 @property (nonatomic, strong) NSData *iconData;
 @property (nonatomic, strong) NSData *animationData;
 
-- (void)download;
+- (void)download:(void(^)(HXGiftModel *gift))completed;
 
 @end
