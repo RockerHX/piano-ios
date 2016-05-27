@@ -31,7 +31,6 @@
     self = [super init];
     if (self) {
         [self initConfigure];
-        [self fetchGiftList:nil failure:nil];
     }
     return self;
 }
@@ -39,22 +38,29 @@
 #pragma mark - Configure Methods
 - (void)initConfigure {
     _giftMap = @{};
+    [self fetchGiftList:nil failure:nil];
 }
 
 #pragma mark - Public Methods
 - (void)fetchGiftList:(void(^)(HXGiftManager *manager))completed failure:(void(^)(NSString *prompt))failure {
-    [MiaAPIHelper getGiftListCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        if (success) {
-            [self parseGiftListWithLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-            if (completed) {
-                completed(self);
+    if (_giftList.count && _giftMap.allKeys.count) {
+        if (completed) {
+            completed(self);
+        }
+    } else {
+        [MiaAPIHelper getGiftListCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+            if (success) {
+                [self parseGiftListWithLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+                if (completed) {
+                    completed(self);
+                }
             }
-        }
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        if (failure) {
-            failure(TimtOutPrompt);
-        }
-    }];
+        } timeoutBlock:^(MiaRequestItem *requestItem) {
+            if (failure) {
+                failure(TimtOutPrompt);
+            }
+        }];
+    }
 }
 
 - (HXGiftModel *)giftWithID:(NSString *)giftID {
