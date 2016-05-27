@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HXGiftModel.h"
 
 
 @interface HXDynamicGiftView : UIView
@@ -17,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *promptLabel;
 
-- (void)stop;
+- (void)animationWithGift:(HXGiftModel *)gift;
 
 @end

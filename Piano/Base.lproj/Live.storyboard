@@ -415,7 +415,7 @@
                                             <outlet property="delegate" destination="k8B-Y3-ojo" id="LhJ-Lr-9lc"/>
                                         </connections>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNJ-dI-KGM" customClass="HXDynamicGiftView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNJ-dI-KGM" customClass="HXDynamicGiftView">
                                         <rect key="frame" x="64" y="50" width="192" height="234"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
