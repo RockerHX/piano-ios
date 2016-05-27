@@ -109,11 +109,11 @@
 }
 
 #pragma mark - tag action
-
 - (void)tapAction:(UIGestureRecognizer *)gesture {
     UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
     HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
     replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
+    replayViewController.model.uID = _uid;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayNaviagtionController animated:YES completion:nil];
 }
 

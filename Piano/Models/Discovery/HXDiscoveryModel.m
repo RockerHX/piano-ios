@@ -28,14 +28,13 @@
     } else if ([model isKindOfClass:[MIAReplayModel class]]) {
         MIAReplayModel *replayModel = model;
         discoveryModel = [HXDiscoveryModel new];
-        discoveryModel.uID= replayModel.;
         discoveryModel.roomID= replayModel.roomID;
         discoveryModel.nickName= replayModel.nick;
         discoveryModel.coverUrl= replayModel.coverUrl;
-        discoveryModel.videoUrl= replayModel.;
+        discoveryModel.videoUrl= replayModel.replayUrl;
         discoveryModel.duration= replayModel.duration;
     }
-    return model;
+    return discoveryModel;
 }
 
 @end
