@@ -14,6 +14,7 @@
 #import "HXGiftModel.h"
 #import "HXLiveGiftContainerViewController.h"
 #import "KxMenu.h"
+#import "HXGiftManager.h"
 
 
 @interface HXLiveGiftViewController ()
@@ -41,6 +42,13 @@
     [super viewDidAppear:animated];
     
     [self popUp];
+    [[HXGiftManager manager] fetchGiftList:^(HXGiftManager *manager) {
+        _giftList = manager.giftList;
+        _conianerHeightConstraint.constant = _container.contianerHeight;
+        _container.gifts = _giftList;
+    } failure:^(NSString *prompt) {
+        [self showBannerWithPrompt:prompt];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -70,13 +78,6 @@
 }
 
 - (void)viewConfigure {
-    [MiaAPIHelper getGiftListCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        if (success) {
-            [self parseGiftListWithLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-        }
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        [self showBannerWithPrompt:TimtOutPrompt];
-    }];
     [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
         [self updateControlContainer];
     } mCoinFailed:nil];
@@ -112,23 +113,12 @@
 }
 
 #pragma mark - Private Methods
-- (void)parseGiftListWithLists:(NSArray *)lists {
-    NSMutableArray *giftList = @[].mutableCopy;
-    for (NSDictionary *data in lists) {
-        HXGiftModel *gift = [HXGiftModel mj_objectWithKeyValues:data];
-        [giftList addObject:gift];
-    }
-    _giftList = [giftList copy];
-    _conianerHeightConstraint.constant = _container.contianerHeight;
-    _container.gifts = _giftList;
-}
-
 - (void)updateControlContainer {
     _balanceCountLabel.text = [MIAMCoinManage shareMCoinManage].mCoin;
 }
 
 - (void)popUp {
-    _bottomConstraint.constant = _containerView.height + _container.contianerHeight - 200.0f;
+    _bottomConstraint.constant = _controlContainerHeightConstraint.constant + _container.contianerHeight;
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
