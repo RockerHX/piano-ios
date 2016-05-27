@@ -73,7 +73,8 @@ static CGFloat const kPopButtonWidth = 40.;
 
     self.playSlider = [MIAPlaySlider newAutoLayoutView];
     [_playSlider setMinimumTrackTintColor:JORGBSameCreate(200.)];
-    [_playSlider setThumbTintColor:JORGBSameCreate(200.)];
+//    [_playSlider setThumbTintColor:JORGBSameCreate(200.)];
+    [_playSlider setSliderThumbHeight:20. color:JORGBSameCreate(200.)];
     [_playSlider setMaximumTrackTintColor:JORGBCreate(200., 200., 200., 0.7)];
     [_playView addSubview:_playSlider];
     

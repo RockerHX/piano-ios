@@ -12,8 +12,8 @@ static CGFloat const kSliderProgressHeight = 10.;
 
 @implementation MIAPlaySlider
 
-- (CGRect)trackRectForBounds:(CGRect)bounds
-{
+- (CGRect)trackRectForBounds:(CGRect)bounds{
+    
     bounds = [super trackRectForBounds:bounds];// 必须通过调用父类的trackRectForBounds获取一个bounds值，否则Autolayout会失效，UISlider的位置会跑偏。
     return CGRectMake(bounds.origin.x, bounds.origin.y-kSliderProgressHeight/2., bounds.size.width, kSliderProgressHeight);// 这里面的h即为你想要设置的高度。
 }
@@ -35,8 +35,10 @@ static CGFloat const kSliderProgressHeight = 10.;
     [imageView setBackgroundColor:color];
     [[imageView layer] setCornerRadius:radius];
     [[imageView layer] setMasksToBounds:YES];
+    [[imageView layer] setBorderWidth:2.];
+    [[imageView layer] setBorderColor:[UIColor clearColor].CGColor];
     
-    UIGraphicsBeginImageContext(imageView.frame.size);
+    UIGraphicsBeginImageContext(CGSizeMake(imageView.frame.size.width, imageView.frame.size.height));
     [imageView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
