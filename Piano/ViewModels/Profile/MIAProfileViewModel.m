@@ -131,7 +131,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
         
                                     if (success) {
                                         
-//                                        NSLog(@"^^^^^^^^^^^^^^^^:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+                                        NSLog(@"^^^^^^^^^^^^^^^^:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                         [self parseProfileWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                                         [subscriber sendCompleted];
                                     }else{
