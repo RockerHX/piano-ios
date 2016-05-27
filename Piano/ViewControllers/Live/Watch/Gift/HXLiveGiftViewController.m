@@ -22,9 +22,10 @@
 
 
 @implementation HXLiveGiftViewController {
-    NSArray *_giftList;
-    
     HXLiveGiftContainerViewController *_container;
+    
+    NSArray *_giftList;
+    NSString *_giftCount;
 }
 
 #pragma mark - Class Methods
@@ -60,6 +61,8 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    _giftCount = @"1";
+    
     __weak __typeof__(self)weakSelf = self;
     [_tapView bk_whenTapped:^{
         __strong __typeof__(self)strongSelf = weakSelf;
@@ -95,13 +98,13 @@
         }
         
         [self showHUD];
-        [[MIAMCoinManage shareMCoinManage] sendGiftWithGiftID:gift.ID roomID:_roomID success:^{
+        [[MIAMCoinManage shareMCoinManage] sendGiftWithGiftID:gift.ID giftCount:_giftCount roomID:_roomID success:^{
             [self hiddenHUD];
             [self showBannerWithPrompt:@"打赏成功！"];
             [self dismiss];
         } failed:^(NSString *failed) {
             [self hiddenHUD];
-            [self showBannerWithPrompt:@"打赏失败，请检查网络！"];
+            [self showBannerWithPrompt:failed];
         } mCoinSuccess:nil mCoinFailed:nil];
     } else {
         [self showBannerWithPrompt:@"请先选择要打赏的礼物！"];
@@ -109,7 +112,9 @@
 }
 
 - (void)countChanged:(KxMenuItem *)item {
-    NSLog(@"%@", item.title);
+    NSString *count = item.title;
+    _countLabel.text = count;
+    _giftCount = count;
 }
 
 #pragma mark - Private Methods

@@ -55,7 +55,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-nA-KxF" userLabel="Coin Count Container">
-                                                    <rect key="frame" x="23" y="78" width="23" height="17"/>
+                                                    <rect key="frame" x="22" y="78" width="27" height="17"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-fU-qUw">
                                                             <rect key="frame" x="0.0" y="0.0" width="7" height="17"/>
@@ -64,12 +64,12 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="id9-nn-fuy">
-                                                            <rect key="frame" x="7" y="0.0" width="16" height="17"/>
+                                                            <rect key="frame" x="11" y="0.0" width="16" height="17"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="id9-nn-fuy" firstAttribute="leading" secondItem="pZr-fU-qUw" secondAttribute="trailing" id="15t-Ea-QwJ"/>
+                                                        <constraint firstItem="id9-nn-fuy" firstAttribute="leading" secondItem="pZr-fU-qUw" secondAttribute="trailing" constant="4" id="15t-Ea-QwJ"/>
                                                         <constraint firstItem="pZr-fU-qUw" firstAttribute="top" secondItem="Uce-nA-KxF" secondAttribute="top" id="W41-6O-4XI"/>
                                                         <constraint firstAttribute="trailing" secondItem="id9-nn-fuy" secondAttribute="trailing" id="gJE-Rp-frv"/>
                                                         <constraint firstItem="pZr-fU-qUw" firstAttribute="leading" secondItem="Uce-nA-KxF" secondAttribute="leading" id="mYB-16-emb"/>
