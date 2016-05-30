@@ -44,7 +44,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Nw-Ae-70X" userLabel="BG">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-rx-QZM" userLabel="Gift Contianer">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-rx-QZM" userLabel="Gift Contianer">
                                             <rect key="frame" x="25" y="13" width="70" height="95"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="boh-Zw-Raw" userLabel="Gift Logo">
@@ -54,16 +54,16 @@
                                                         <constraint firstAttribute="width" constant="70" id="zaY-N6-Dgj"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-nA-KxF" userLabel="Coin Count Container">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-nA-KxF" userLabel="Coin Count Container">
                                                     <rect key="frame" x="22" y="78" width="27" height="17"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-fU-qUw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-fU-qUw">
                                                             <rect key="frame" x="0.0" y="0.0" width="7" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.70980392160000005" green="0.60784313729999995" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="id9-nn-fuy">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="id9-nn-fuy">
                                                             <rect key="frame" x="11" y="0.0" width="16" height="17"/>
                                                         </imageView>
                                                     </subviews>
@@ -420,10 +420,18 @@
                                             <constraint firstAttribute="width" secondItem="PNJ-dI-KGM" secondAttribute="height" multiplier="212:258" id="6pD-ei-5Hj"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exp-Rb-Qga" customClass="HXStaticGiftView">
+                                        <rect key="frame" x="10" y="228" width="230" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="fGA-Zp-5t3"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="YcW-dJ-C8a" secondAttribute="bottom" id="2E5-zu-C97"/>
+                                    <constraint firstItem="exp-Rb-Qga" firstAttribute="leading" secondItem="WuX-eh-vfZ" secondAttribute="leading" id="8Jx-38-QGe"/>
                                     <constraint firstItem="YcW-dJ-C8a" firstAttribute="leading" secondItem="VvH-Rw-RfM" secondAttribute="leading" id="CNR-PC-iTy"/>
                                     <constraint firstItem="PNJ-dI-KGM" firstAttribute="bottom" secondItem="VvH-Rw-RfM" secondAttribute="centerY" id="IDu-MC-k2q"/>
                                     <constraint firstItem="zOk-PV-4lz" firstAttribute="leading" secondItem="WuX-eh-vfZ" secondAttribute="trailing" constant="10" id="P8j-sQ-WKr"/>
@@ -436,6 +444,8 @@
                                     <constraint firstItem="zOk-PV-4lz" firstAttribute="bottom" secondItem="5m6-An-NpA" secondAttribute="bottom" id="h5p-w6-oeE"/>
                                     <constraint firstAttribute="trailing" secondItem="YcW-dJ-C8a" secondAttribute="trailing" id="liL-be-s2z"/>
                                     <constraint firstAttribute="trailing" secondItem="zOk-PV-4lz" secondAttribute="trailing" constant="10" id="nz1-wC-clN"/>
+                                    <constraint firstItem="WuX-eh-vfZ" firstAttribute="top" secondItem="exp-Rb-Qga" secondAttribute="bottom" constant="10" id="qPD-qR-qfa"/>
+                                    <constraint firstItem="exp-Rb-Qga" firstAttribute="trailing" secondItem="WuX-eh-vfZ" secondAttribute="trailing" id="tiu-uD-20h"/>
                                     <constraint firstItem="5m6-An-NpA" firstAttribute="top" secondItem="WuX-eh-vfZ" secondAttribute="bottom" constant="10" id="zAD-eP-aq1"/>
                                 </constraints>
                             </view>
@@ -505,9 +515,10 @@
                     <connections>
                         <outlet property="albumView" destination="zOk-PV-4lz" id="wuR-e9-ueE"/>
                         <outlet property="anchorView" destination="ZgH-JT-Lsv" id="5mr-sh-6D8"/>
+                        <outlet property="dynamicGiftView" destination="PNJ-dI-KGM" id="SyU-aO-dj6"/>
                         <outlet property="endCountContainer" destination="66e-OW-Cd2" id="xko-Q2-tG5"/>
-                        <outlet property="giftView" destination="PNJ-dI-KGM" id="OOM-8y-GyZ"/>
                         <outlet property="liveView" destination="Weh-Ip-WpZ" id="PSn-R3-edP"/>
+                        <outlet property="staticGiftView" destination="exp-Rb-Qga" id="l18-I0-E1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71y-Wn-rYn" userLabel="First Responder" sceneMemberID="firstResponder"/>

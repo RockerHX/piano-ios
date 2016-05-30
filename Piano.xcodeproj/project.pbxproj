@@ -288,6 +288,10 @@
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
 		CDBCFAF91CE1D6020045946F /* HXLiveAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBCFAF71CE1D6020045946F /* HXLiveAlbumView.xib */; };
 		CDBCFAFE1CE1E35A0045946F /* HXLiveGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAFC1CE1E35A0045946F /* HXLiveGiftViewController.m */; };
+		CDCB8CF11CFC316800F78CE3 /* HXStaticGiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB8CEF1CFC316800F78CE3 /* HXStaticGiftView.m */; };
+		CDCB8CF21CFC316800F78CE3 /* HXStaticGiftView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCB8CF01CFC316800F78CE3 /* HXStaticGiftView.xib */; };
+		CDCB8CF51CFC333300F78CE3 /* HXStaticGiftItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB8CF41CFC333300F78CE3 /* HXStaticGiftItemView.m */; };
+		CDCB8CF71CFC334A00F78CE3 /* HXStaticGiftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCB8CF61CFC334A00F78CE3 /* HXStaticGiftItemView.xib */; };
 		CDDC38291CEAF0EC00328A17 /* HXSelectedAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC38271CEAF0EC00328A17 /* HXSelectedAlbumViewController.m */; };
 		CDDC382E1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC382C1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m */; };
 		CDDC383A1CEB1B3500328A17 /* HXBarrageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC38381CEB1B3500328A17 /* HXBarrageModel.m */; };
@@ -798,6 +802,12 @@
 		CDC0631A1CB3E53200E66F2A /* HXDiscoveryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDiscoveryViewModel.m; sourceTree = "<group>"; };
 		CDCB46901CB788FD00ED3A8B /* UIView+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Image.h"; sourceTree = "<group>"; };
 		CDCB46911CB788FD00ED3A8B /* UIView+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Image.m"; sourceTree = "<group>"; };
+		CDCB8CEE1CFC316800F78CE3 /* HXStaticGiftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXStaticGiftView.h; sourceTree = "<group>"; };
+		CDCB8CEF1CFC316800F78CE3 /* HXStaticGiftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXStaticGiftView.m; sourceTree = "<group>"; };
+		CDCB8CF01CFC316800F78CE3 /* HXStaticGiftView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXStaticGiftView.xib; sourceTree = "<group>"; };
+		CDCB8CF31CFC333300F78CE3 /* HXStaticGiftItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXStaticGiftItemView.h; sourceTree = "<group>"; };
+		CDCB8CF41CFC333300F78CE3 /* HXStaticGiftItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXStaticGiftItemView.m; sourceTree = "<group>"; };
+		CDCB8CF61CFC334A00F78CE3 /* HXStaticGiftItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXStaticGiftItemView.xib; sourceTree = "<group>"; };
 		CDDC38261CEAF0EC00328A17 /* HXSelectedAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXSelectedAlbumViewController.h; sourceTree = "<group>"; };
 		CDDC38271CEAF0EC00328A17 /* HXSelectedAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSelectedAlbumViewController.m; sourceTree = "<group>"; };
 		CDDC382B1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPreviewSelectedAlbumCell.h; sourceTree = "<group>"; };
@@ -1272,6 +1282,7 @@
 		429CC1E01CE03CD2004BCC0C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CDCB8CED1CFC316800F78CE3 /* StaticGift */,
 				CD572DD31CF69A8B00CCEC30 /* DynamicGift */,
 				CDE016E11CE309C6005645D5 /* SectorSlider */,
 				429CC1F21CE04AC5004BCC0C /* MIABaseCellHeadView.h */,
@@ -2533,6 +2544,19 @@
 			path = Discovery;
 			sourceTree = "<group>";
 		};
+		CDCB8CED1CFC316800F78CE3 /* StaticGift */ = {
+			isa = PBXGroup;
+			children = (
+				CDCB8CF31CFC333300F78CE3 /* HXStaticGiftItemView.h */,
+				CDCB8CF41CFC333300F78CE3 /* HXStaticGiftItemView.m */,
+				CDCB8CF61CFC334A00F78CE3 /* HXStaticGiftItemView.xib */,
+				CDCB8CEE1CFC316800F78CE3 /* HXStaticGiftView.h */,
+				CDCB8CEF1CFC316800F78CE3 /* HXStaticGiftView.m */,
+				CDCB8CF01CFC316800F78CE3 /* HXStaticGiftView.xib */,
+			);
+			path = StaticGift;
+			sourceTree = "<group>";
+		};
 		CDDC382A1CEAF29B00328A17 /* SelectedAlbum */ = {
 			isa = PBXGroup;
 			children = (
@@ -2899,6 +2923,7 @@
 				CD79612F1CBE594C004CC661 /* HXWatchLiveBottomBar.xib in Resources */,
 				CD7961301CBE594C004CC661 /* HXLiveAnchorView.xib in Resources */,
 				CD7961321CBE594C004CC661 /* HXWatcherBoard.xib in Resources */,
+				CDCB8CF21CFC316800F78CE3 /* HXStaticGiftView.xib in Resources */,
 				CDBCFAF91CE1D6020045946F /* HXLiveAlbumView.xib in Resources */,
 				CD7961331CBE594C004CC661 /* HXRecordAnchorView.xib in Resources */,
 				CD7961341CBE594C004CC661 /* HXPreviewLiveTopBar.xib in Resources */,
@@ -2918,6 +2943,7 @@
 				CD7961421CBE594C004CC661 /* HXReplayBottomBar.xib in Resources */,
 				CD7961431CBE594C004CC661 /* Main.storyboard in Resources */,
 				CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */,
+				CDCB8CF71CFC334A00F78CE3 /* HXStaticGiftItemView.xib in Resources */,
 				CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */,
 				CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */,
 			);
@@ -3006,7 +3032,9 @@
 				CD7960921CBE594C004CC661 /* HXUserSession.m in Sources */,
 				420BBB611CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */,
 				CD7960931CBE594C004CC661 /* HXIBImageView.m in Sources */,
+				CDCB8CF51CFC333300F78CE3 /* HXStaticGiftItemView.m in Sources */,
 				422497C41CF4663C008F8A55 /* JOConfig.m in Sources */,
+				CDCB8CF11CFC316800F78CE3 /* HXStaticGiftView.m in Sources */,
 				422497D51CF4664A008F8A55 /* JOFileUploadConfig.m in Sources */,
 				CD7960941CBE594C004CC661 /* HXProfileReplayCell.m in Sources */,
 				CD7960951CBE594C004CC661 /* HXRecordAnchorView.m in Sources */,

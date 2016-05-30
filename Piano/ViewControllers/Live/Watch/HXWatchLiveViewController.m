@@ -27,6 +27,7 @@
 #import "MiaAPIHelper.h"
 #import "HXDynamicGiftView.h"
 #import "HXModalTransitionDelegate.h"
+#import "HXStaticGiftView.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -125,7 +126,11 @@ HXLiveAlbumViewDelegate
         [self updateAlbumView];
     }];
     [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
-        [_giftView animationWithGift:gift];
+        if (gift.type == HXGiftTypeStatic) {
+            [_staticGiftView animationWithGift:gift];
+        } else if (gift.type == HXGiftTypeDynamic) {
+            [_dynamicGiftView animationWithGift:gift];
+        }
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
