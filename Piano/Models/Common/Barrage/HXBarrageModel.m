@@ -16,7 +16,8 @@
              @"giftName": @"name",
             @"avatarUrl": @"userpic",
           @"rewardTotal": @"total",
-      @"rewardCoinCount": @"mcoin"};
+      @"rewardCoinCount": @"mcoin",
+            @"giftCount": @"giftNum"};
 }
 
 #pragma mark - Property

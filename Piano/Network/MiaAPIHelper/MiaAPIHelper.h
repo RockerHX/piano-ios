@@ -304,6 +304,7 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
  *  @param timeoutBlock  MiaRequestTimeoutBlock
  */
 + (void)sendGiftWithGiftID:(NSString *)giftID
+                 giftCount:(NSString *)giftCount
                     roomID:(NSString *)roomID
              completeBlock:(MiaRequestCompleteBlock)completeBlock
               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;

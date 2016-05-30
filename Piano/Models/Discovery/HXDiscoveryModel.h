@@ -26,7 +26,8 @@
 @property (nonatomic, strong)  NSString *coverUrl;
 @property (nonatomic, strong)  NSString *videoUrl;
 @property (nonatomic, strong)  NSString *coverColor;
+@property (nonatomic, assign) NSInteger  duration;
 
-+ (instancetype)createWithReplayModel:(HXReplayModel *)model;
++ (instancetype)createWithReplayModel:(id)model;
 
 @end

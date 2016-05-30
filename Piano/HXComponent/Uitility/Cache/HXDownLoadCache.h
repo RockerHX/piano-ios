@@ -23,14 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
  *  Timeout     : 10.0f
  *  CachePolicy : NSURLRequestReturnCacheDataElseLoad
  */
-- (NSURLSessionDownloadTask *)downLoadWithURL:(NSURL *)url completionHandler:(void (^)(NSData * __nullable data, NSURL * __nullable location, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler;
+- (NSURLSessionDownloadTask *)downLoadWithURL:(NSURL *)url completionHandler:(void (^)(HXDownLoadCache *cache, NSData *data, NSURLResponse *response, NSError *error))completionHandler;
 
 /**
  *  Custom Request
  */
-- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request completionHandler:(void (^)(NSData * __nullable data, NSURL * __nullable location, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler;
-- (NSURLSessionDownloadTask *)downLoadWithURL:(NSURL *)url configuration:(NSURLSessionConfiguration *)configuration completionHandler:(void (^)(NSData * __nullable data, NSURL * __nullable location, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler;
-- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request configuration:(NSURLSessionConfiguration *)configuration completionHandler:(void (^)(NSData * __nullable data, NSURL * __nullable location, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler;
+- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request completionHandler:(void (^)(HXDownLoadCache *cache, NSData *data, NSURLResponse *response, NSError *error))completionHandler;
+- (NSURLSessionDownloadTask *)downLoadWithURL:(NSURL *)url configuration:(NSURLSessionConfiguration *)configuration completionHandler:(void (^)(HXDownLoadCache *cache, NSData *data, NSURLResponse *response, NSError *error))completionHandler;
+- (NSURLSessionDownloadTask *)downLoadWithRequest:(NSURLRequest *)request configuration:(NSURLSessionConfiguration *)configuration completionHandler:(void (^)(HXDownLoadCache *cache, NSData *data, NSURLResponse *response, NSError *error))completionHandler;
 
 @end
 

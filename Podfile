@@ -29,6 +29,7 @@ target 'Piano' do
 	pod 'FXBlurView'
 	pod 'UITableView+FDTemplateLayoutCell'
     pod 'KxMenu'
+    pod 'YYImage'
 
 	# UMeng SDK
 	pod 'UMengAnalytics-NO-IDFA'

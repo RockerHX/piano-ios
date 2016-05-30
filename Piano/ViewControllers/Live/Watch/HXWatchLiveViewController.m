@@ -26,6 +26,7 @@
 #import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
 #import "MiaAPIHelper.h"
+#import "HXDynamicGiftView.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -84,7 +85,6 @@ HXShowRechargeDelegate
     [super viewDidDisappear:animated];
     
     [self shouldSteady:NO];
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -119,8 +119,11 @@ HXShowRechargeDelegate
     [_viewModel.exitSignal subscribeNext:^(id x) {
         [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
     }];
-    [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
+    [_viewModel.rewardSignal subscribeNext:^(id x) {
         [self updateAlbumView];
+    }];
+    [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
+        [_giftView animationWithGift:gift];
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];

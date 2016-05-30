@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet  UILabel *countLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *conianerHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *controlContainerHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @property (nonatomic, strong) NSString *roomID;

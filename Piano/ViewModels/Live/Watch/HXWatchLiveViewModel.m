@@ -9,6 +9,7 @@
 #import "HXWatchLiveViewModel.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
+#import "HXGiftManager.h"
 
 
 @implementation HXWatchLiveViewModel {
@@ -43,6 +44,7 @@
     _barragesSignal = RACObserve(self, barrages);
     _exitSignal = [[NSNotificationCenter defaultCenter] rac_addObserverForName:WebSocketMgrNotificationPushRoomClose object:nil];
     _rewardSignal = [RACSubject subject];
+    _giftSignal = [RACSubject subject];
 }
 
 - (void)notificationConfigure {
@@ -174,6 +176,11 @@
     HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
     barrage.type = HXBarrageTypeGift;
     [self addBarrage:barrage];
+    
+    HXGiftModel *gift = [[HXGiftManager manager] giftWithID:barrage.giftID];
+    gift.nickName = barrage.nickName;
+    gift.avatarUrl = barrage.avatarUrl;
+    [_giftSignal sendNext:gift];
 }
 
 - (void)addRewardBarrage:(NSDictionary *)data {
@@ -182,7 +189,7 @@
     [self addBarrage:barrage];
     
     _model.album.rewardTotal = barrage.rewardTotal;
-    [_rewardSignal sendNext:nil];
+    [_rewardSignal sendNext:barrage];
 }
 
 - (void)addComment:(NSDictionary *)data {

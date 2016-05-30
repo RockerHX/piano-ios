@@ -48,12 +48,14 @@ HXXibImplementation
 
 #pragma mark - Private Methods
 - (void)handleLyrics:(NSString *)lyric {
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:lyric];
-    [attributedString addAttributes:_lyricsAttributes range:[lyric rangeOfString:lyric]];
-    _lyricsView.attributedText = attributedString.copy;
-    _lyricsView.textAlignment = NSTextAlignmentCenter;
-    
-    [_lyricsView setContentOffset:CGPointZero animated:NO];
+    if (lyric) {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:lyric];
+        [attributedString addAttributes:_lyricsAttributes range:[lyric rangeOfString:lyric]];
+        _lyricsView.attributedText = attributedString.copy;
+        _lyricsView.textAlignment = NSTextAlignmentCenter;
+        
+        [_lyricsView setContentOffset:CGPointZero animated:NO];
+    }
 }
 
 @end

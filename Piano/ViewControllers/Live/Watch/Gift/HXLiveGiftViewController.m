@@ -14,6 +14,7 @@
 #import "HXGiftModel.h"
 #import "HXLiveGiftContainerViewController.h"
 #import "KxMenu.h"
+#import "HXGiftManager.h"
 
 
 @interface HXLiveGiftViewController ()
@@ -21,9 +22,10 @@
 
 
 @implementation HXLiveGiftViewController {
-    NSArray *_giftList;
-    
     HXLiveGiftContainerViewController *_container;
+    
+    NSArray <HXGiftModel *>*_giftList;
+    NSString *_giftCount;
 }
 
 #pragma mark - Class Methods
@@ -41,6 +43,13 @@
     [super viewDidAppear:animated];
     
     [self popUp];
+    [[HXGiftManager manager] fetchGiftList:^(HXGiftManager *manager) {
+        _giftList = manager.giftList;
+        _conianerHeightConstraint.constant = _container.contianerHeight;
+        _container.gifts = _giftList;
+    } failure:^(NSString *prompt) {
+        [self showBannerWithPrompt:prompt];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -52,6 +61,8 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    _giftCount = @"1";
+    
     __weak __typeof__(self)weakSelf = self;
     [_tapView bk_whenTapped:^{
         __strong __typeof__(self)strongSelf = weakSelf;
@@ -70,13 +81,6 @@
 }
 
 - (void)viewConfigure {
-    [MiaAPIHelper getGiftListCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        if (success) {
-            [self parseGiftListWithLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-        }
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        [self showBannerWithPrompt:TimtOutPrompt];
-    }];
     [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
         [self updateControlContainer];
     } mCoinFailed:nil];
@@ -84,8 +88,9 @@
 
 #pragma mark - Event Response
 - (IBAction)giveGiftButtonPressed {
-    if (_giftList.count) {
-        HXGiftModel *gift = _giftList[_container.selectedIndex];
+    NSInteger selectedIndex = _container.selectedIndex;
+    if ((_giftList.count) && (selectedIndex >= 0)) {
+        HXGiftModel *gift = _giftList[selectedIndex];
         NSInteger rewardCount = gift.mcoin;
         NSInteger balanceCount = [MIAMCoinManage shareMCoinManage].mCoin.integerValue;
         if (balanceCount < rewardCount) {
@@ -94,13 +99,13 @@
         }
         
         [self showHUD];
-        [[MIAMCoinManage shareMCoinManage] sendGiftWithGiftID:gift.ID roomID:_roomID success:^{
+        [[MIAMCoinManage shareMCoinManage] sendGiftWithGiftID:gift.ID giftCount:_giftCount roomID:_roomID success:^{
             [self hiddenHUD];
             [self showBannerWithPrompt:@"打赏成功！"];
             [self dismiss];
         } failed:^(NSString *failed) {
             [self hiddenHUD];
-            [self showBannerWithPrompt:@"打赏失败，请检查网络！"];
+            [self showBannerWithPrompt:failed];
         } mCoinSuccess:nil mCoinFailed:nil];
     } else {
         [self showBannerWithPrompt:@"请先选择要打赏的礼物！"];
@@ -108,33 +113,29 @@
 }
 
 - (void)countChanged:(KxMenuItem *)item {
-    NSLog(@"%@", item.title);
+    NSString *count = item.title;
+    _countLabel.text = count;
+    _giftCount = count;
 }
 
 #pragma mark - Private Methods
-- (void)parseGiftListWithLists:(NSArray *)lists {
-    NSMutableArray *giftList = @[].mutableCopy;
-    for (NSDictionary *data in lists) {
-        HXGiftModel *gift = [HXGiftModel mj_objectWithKeyValues:data];
-        [giftList addObject:gift];
-    }
-    _giftList = [giftList copy];
-    _conianerHeightConstraint.constant = _container.contianerHeight;
-    _container.gifts = _giftList;
-}
-
 - (void)updateControlContainer {
     _balanceCountLabel.text = [MIAMCoinManage shareMCoinManage].mCoin;
 }
 
 - (void)popUp {
-    _bottomConstraint.constant = _containerView.height + _container.contianerHeight - 200.0f;
+    _bottomConstraint.constant = _controlContainerHeightConstraint.constant + _container.contianerHeight;
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
 }
 
 - (void)dismiss {
+    NSInteger selectedIndex = _container.selectedIndex;
+    if (selectedIndex >= 0) {
+        _giftList[selectedIndex].selected = NO;
+    }
+    
     _bottomConstraint.constant = 0.0f;
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         [self.view layoutIfNeeded];

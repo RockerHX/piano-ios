@@ -64,6 +64,7 @@ typedef void(^MCoinManageFailed)(NSString *failed);
  *  @param roomID 房间的id
  */
 - (void)sendGiftWithGiftID:(NSString *)giftID
+                 giftCount:(NSString *)giftCount
                     roomID:(NSString *)roomID
                    success:(MCoinManageSuccess)success
                     failed:(MCoinManageFailed)failed

@@ -15,6 +15,7 @@
 #import "HXUserSession.h"
 #import "FileLog.h"
 #import "UIView+Frame.h"
+#import "HXGiftManager.h"
 
 
 @interface HXMainViewController () <
@@ -122,6 +123,7 @@ HXLoginViewControllerDelegate
 
 #pragma mark - Socket
 - (void)notificationWebSocketDidOpen:(NSNotification *)notification {
+    [HXGiftManager manager];
 	[MiaAPIHelper guestLoginWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 		if (success) {
             HXUserSession *userSession = [HXUserSession session];

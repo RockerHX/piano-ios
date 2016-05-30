@@ -231,6 +231,7 @@ static NSString *const kVerifyPurchaseVerifyKey = @"VerifyKey";
 }
 
 - (void)sendGiftWithGiftID:(NSString *)giftID
+                 giftCount:(NSString *)giftCount
                     roomID:(NSString *)roomID
                    success:(MCoinManageSuccess)success
                     failed:(MCoinManageFailed)failed
@@ -241,6 +242,7 @@ static NSString *const kVerifyPurchaseVerifyKey = @"VerifyKey";
     [self setMCoinSuccess:mCoinSuccess mCoinFailed:mCoinFailed];
 
     [MiaAPIHelper sendGiftWithGiftID:giftID
+                           giftCount:giftCount
                               roomID:roomID
                        completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                        
