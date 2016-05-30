@@ -124,6 +124,10 @@
 }
 
 - (void)dismiss {
+    [_giftList enumerateObjectsUsingBlock:^(HXGiftModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.selected = NO;
+    }];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
