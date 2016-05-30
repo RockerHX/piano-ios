@@ -30,12 +30,6 @@ HXSectorSliderDelegate
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self popUp];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -87,12 +81,6 @@ HXSectorSliderDelegate
     } mCoinSuccess:nil mCoinFailed:nil];
 }
 
-#pragma mark - Public Methods
-- (void)showOnViewController:(UIViewController *)viewController {
-    [viewController addChildViewController:self];
-    [viewController.view addSubview:self.view];
-}
-
 #pragma mark - Private Methods
 - (void)updateAlbumContainer {
     [_albumCover sd_setImageWithURL:[NSURL URLWithString:_album.coverUrl]];
@@ -105,21 +93,8 @@ HXSectorSliderDelegate
     _balanceCountLabel.text = [MIAMCoinManage shareMCoinManage].mCoin;
 }
 
-- (void)popUp {
-    _bottomConstraint.constant = _containerView.height;
-    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
-
 - (void)dismiss {
-    _bottomConstraint.constant = 0.0f;
-    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)showRechargeSence {

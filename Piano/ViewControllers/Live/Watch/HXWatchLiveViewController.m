@@ -381,7 +381,9 @@ HXShowRechargeDelegate
         rewardViewController.rechargeDelegate = self;
         rewardViewController.roomID = _roomID;
         rewardViewController.album = album;
-        [rewardViewController showOnViewController:self];
+        rewardViewController.transitioningDelegate = _modalTransitionDelegate;
+        rewardViewController.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:rewardViewController animated:YES completion:nil];
     }
 }
 

@@ -1420,7 +1420,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEi-et-LNY" userLabel="Container">
-                                <rect key="frame" x="0.0" y="568" width="320" height="420"/>
+                                <rect key="frame" x="0.0" y="148" width="320" height="420"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LC-BG" translatesAutoresizingMaskIntoConstraints="NO" id="Nyh-KS-mVJ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
@@ -1701,9 +1701,9 @@
                             <constraint firstItem="xbk-pn-fEo" firstAttribute="top" secondItem="3FR-IW-rin" secondAttribute="top" id="8xL-jY-hUw"/>
                             <constraint firstItem="xbk-pn-fEo" firstAttribute="leading" secondItem="3FR-IW-rin" secondAttribute="leading" id="K23-Fn-6V6"/>
                             <constraint firstAttribute="trailing" secondItem="xbk-pn-fEo" secondAttribute="trailing" id="UYy-Cw-lex"/>
-                            <constraint firstItem="XEi-et-LNY" firstAttribute="top" secondItem="xbk-pn-fEo" secondAttribute="bottom" id="Y3E-ZH-jmM"/>
+                            <constraint firstAttribute="bottom" secondItem="XEi-et-LNY" secondAttribute="bottom" id="VUz-HJ-jgd"/>
                             <constraint firstAttribute="trailing" secondItem="XEi-et-LNY" secondAttribute="trailing" id="dMr-2V-GOb"/>
-                            <constraint firstAttribute="bottom" secondItem="XEi-et-LNY" secondAttribute="top" id="ltQ-d6-5lp"/>
+                            <constraint firstAttribute="bottom" secondItem="xbk-pn-fEo" secondAttribute="bottom" id="ju0-AW-BJF"/>
                             <constraint firstItem="XEi-et-LNY" firstAttribute="leading" secondItem="3FR-IW-rin" secondAttribute="leading" id="nlU-2B-Mw3"/>
                         </constraints>
                     </view>
@@ -1712,7 +1712,6 @@
                         <outlet property="albumTitleLabel" destination="sqI-a3-ZKK" id="iGR-m2-4TL"/>
                         <outlet property="artistNameLabel" destination="scN-2L-HSU" id="VBt-ur-xrG"/>
                         <outlet property="balanceCountLabel" destination="Eho-RA-uBK" id="dhO-fk-dy2"/>
-                        <outlet property="bottomConstraint" destination="ltQ-d6-5lp" id="SCA-gZ-T6w"/>
                         <outlet property="containerView" destination="XEi-et-LNY" id="ZSo-V0-8xq"/>
                         <outlet property="rechargeContainer" destination="rTw-CI-1mr" id="Zfg-YN-1TG"/>
                         <outlet property="rewardCountLabel" destination="yLK-DC-Jqn" id="so9-ce-n4j"/>

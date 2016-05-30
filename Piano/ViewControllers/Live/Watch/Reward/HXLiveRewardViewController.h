@@ -32,13 +32,9 @@
 
 @property (weak, nonatomic) IBOutlet HXSectorSlider *sectorSlider;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
-
 @property (nonatomic, strong)     NSString *roomID;
 @property (nonatomic, strong) HXAlbumModel *album;
 
 - (IBAction)rewardButtonPressed;
-
-- (void)showOnViewController:(UIViewController *)viewController;
 
 @end
