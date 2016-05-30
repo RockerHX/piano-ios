@@ -85,6 +85,9 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
     //MARK: 设置的Content
     MIAFontType_SettingContent_Content,//设置的内容页面
     MIAFontType_SettingContent_Feedback_Tip,//意见的提示用语
+    
+    //MARK: 视频播放
+    MIAFontType_PlayVideo_Time,//视频播放页面的时间
 };
 
 

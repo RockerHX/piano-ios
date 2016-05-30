@@ -62,10 +62,12 @@ static CGFloat const kTitleLabelHeight = 20.;
     [JOAutoLayout autoLayoutWithHeight:[_numberlabel sizeThatFits:JOMAXSize].height selfView:_numberlabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_numberlabel sizeThatFits:JOMAXSize].width + 8. selfView:_numberlabel superView:self];
     
+    UIImage *videoImage = [UIImage imageNamed:@"PR-Video"];
+    
     [JOAutoLayout autoLayoutWithRightView:_numberlabel distance:-5. selfView:_videoImageView superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_numberlabel selfView:_videoImageView superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_numberlabel selfView:_videoImageView superView:self];
-    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_videoImageView superView:self];
+    [JOAutoLayout autoLayoutWithWidth:videoImage.size.width selfView:_videoImageView superView:self];
     
 }
 
@@ -74,7 +76,8 @@ static CGFloat const kTitleLabelHeight = 20.;
     if (!self.videoImageView) {
         
         self.videoImageView = [UIImageView newAutoLayoutView];
-        [_videoImageView setBackgroundColor:JORGBCreate(230., 230., 230., 0.7)];
+        [_videoImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [_videoImageView setImage:[UIImage imageNamed:@"PR-Video"]];
         [self addSubview:_videoImageView];
         
         self.numberlabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_ViweCount]];

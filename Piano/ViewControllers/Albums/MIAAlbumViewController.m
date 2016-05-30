@@ -106,7 +106,7 @@
     }];
     [self.view addSubview:_albumBarView];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:20. selfView:_albumBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:10. selfView:_albumBarView superView:self.view];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumBarView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumBarView superView:self.view];
     [JOAutoLayout autoLayoutWithHeight:kAlbumBarViewHeight selfView:_albumBarView superView:self.view];
@@ -234,6 +234,7 @@
     }else{
     
         [self.albumTableView.mj_footer endRefreshingWithNoMoreData];
+        [self.albumTableView.mj_footer setHidden:YES];
     }
 }
 

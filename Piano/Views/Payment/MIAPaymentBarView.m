@@ -11,7 +11,7 @@
 #import "MIAFontManage.h"
 
 static CGFloat const kPaymentBarHeight = 44.;//Bar的高度
-static CGFloat const kPaymentBarTopSpaceDistance = 20.; //Bar的上部的间距大小
+static CGFloat const kPaymentBarTopSpaceDistance = 10.; //Bar的上部的间距大小
 static CGFloat const kPaymentBarToTipSpaceDistance = 15.; //Bar到tip的间距大小
 static CGFloat const kPaymentTipToMSpacedistance = 10.; //tip到M的间距大小
 
@@ -61,8 +61,7 @@ static CGFloat const kPaymentTipToMSpacedistance = 10.; //tip到M的间距大小
     
     UIButton *popButton  = [UIButton buttonWithType:UIButtonTypeCustom];
     [popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [popButton setTitle:@"《" forState:UIControlStateNormal];
+    [popButton setImage:[UIImage imageNamed:@"C-BackIcon-White"] forState:UIControlStateNormal];
     [popButton addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
     [_barView addSubview:popButton];
     

@@ -111,14 +111,11 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     
     self.popButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_popButton setTitle:@"x" forState:UIControlStateNormal];
-    [[_popButton layer] setCornerRadius:kAlbumRewardPopButtonHeight/2.];
-    [[_popButton layer] setMasksToBounds:YES];
-    [_popButton setBackgroundColor:JORGBCreate(220., 220., 220., 0.7)];
+    [_popButton setImage:[UIImage imageNamed:@"VP-Close"] forState:UIControlStateNormal];
     [_popButton addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
     [_baseView addSubview:_popButton];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:20+kAlbumRewardTopSpaceDistance selfView:_popButton superView:_baseView];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:kAlbumRewardTopSpaceDistance selfView:_popButton superView:_baseView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-kAlbumRewardRightSpaceDistance selfView:_popButton superView:_baseView];
     [JOAutoLayout autoLayoutWithSize:JOSize(kAlbumRewardPopButtonHeight, kAlbumRewardPopButtonHeight) selfView:_popButton superView:_baseView];
 

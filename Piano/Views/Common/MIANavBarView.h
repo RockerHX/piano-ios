@@ -16,6 +16,11 @@ typedef void(^ButtonClickBlock)();
 @interface MIANavBarView : UIView
 
 /**
+ *  显示底部的分隔线,默认是不显示的.
+ */
+- (void)showBottomLineView;
+
+/**
  *  设置NavBar的标题
  *
  *  @param title 标题

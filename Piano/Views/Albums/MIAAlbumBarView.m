@@ -62,7 +62,7 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     
     self.popButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_popButton setTitle:@"《" forState:UIControlStateNormal];
+    [_popButton setImage:[UIImage imageNamed:@"C-BackIcon-White"] forState:UIControlStateNormal];
     [_popButton addTarget:self action:@selector(popButtonClikc) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_popButton];
     

@@ -10,6 +10,7 @@
 		1A423448169F3173A788A67A /* libPods-Piano.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2E70ABB0C246D442D00635 /* libPods-Piano.a */; };
 		4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
 		4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
+		4206FA371CFBDCBB0015249E /* MIAPlayBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4206FA361CFBDCBB0015249E /* MIAPlayBarView.m */; };
 		420A3D611CF551DA0081931E /* MIASongManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 420A3D601CF551DA0081931E /* MIASongManage.m */; };
 		420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB481CE99C9D00F52AB2 /* MIAPaymentViewController.m */; };
 		420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB4C1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m */; };
@@ -354,6 +355,8 @@
 		420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewController.m; sourceTree = "<group>"; };
 		4204445B1CE5863B00F6B303 /* MIAAlbumRewardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewModel.h; sourceTree = "<group>"; };
 		4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewModel.m; sourceTree = "<group>"; };
+		4206FA351CFBDCBB0015249E /* MIAPlayBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPlayBarView.h; sourceTree = "<group>"; };
+		4206FA361CFBDCBB0015249E /* MIAPlayBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPlayBarView.m; sourceTree = "<group>"; };
 		420A3D5F1CF551DA0081931E /* MIASongManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASongManage.h; sourceTree = "<group>"; };
 		420A3D601CF551DA0081931E /* MIASongManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASongManage.m; sourceTree = "<group>"; };
 		420BBB471CE99C9D00F52AB2 /* MIAPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentViewController.h; sourceTree = "<group>"; };
@@ -2027,6 +2030,8 @@
 				CD6C197B1CA519A900849B39 /* HXPlayBottomBar.h */,
 				CD6C197C1CA519A900849B39 /* HXPlayBottomBar.m */,
 				CD6C197D1CA519A900849B39 /* HXPlayBottomBar.xib */,
+				4206FA351CFBDCBB0015249E /* MIAPlayBarView.h */,
+				4206FA361CFBDCBB0015249E /* MIAPlayBarView.m */,
 			);
 			path = BottomBar;
 			sourceTree = "<group>";
@@ -3249,6 +3254,7 @@
 				42D15F941CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */,
 				CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */,
 				CD7961131CBE594C004CC661 /* HXWatcherBoard.m in Sources */,
+				4206FA371CFBDCBB0015249E /* MIAPlayBarView.m in Sources */,
 				42984B491CDC6137004F00D5 /* JOUIManage.m in Sources */,
 				CD7961141CBE594C004CC661 /* HXPlayTopBar.m in Sources */,
 				4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */,
@@ -3364,7 +3370,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5a18aecf-fbfd-4290-bd13-e05b06bc8ef0";
 			};
 			name = Debug;
 		};

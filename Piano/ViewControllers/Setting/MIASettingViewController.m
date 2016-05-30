@@ -23,6 +23,8 @@
 #import "UIImage+Extrude.h"
 #import "CacheHelper.h"
 
+static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
+
 @interface MIASettingViewController()<UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *coverImageView;
@@ -76,7 +78,8 @@
     [_navBarView setTitle:@"设置"];
     [_navBarView setBackgroundColor:[UIColor clearColor]];
     [[_navBarView navBarTitleLabel] setTextColor:[UIColor whiteColor]];
-    [_navBarView setLeftButtonTitle:@"x" titleColor:[UIColor whiteColor]];
+//    [_navBarView setLeftButtonTitle:@"x" titleColor:[UIColor whiteColor]];
+    [_navBarView setLeftButtonImageName:@"C-BackIcon-White"];
     
     @weakify(self);
     [_navBarView navBarLeftClickHanlder:^{
@@ -88,7 +91,7 @@
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:44. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:kSettingNavBarHeight selfView:_navBarView superView:self.view];
 }
 
 - (void)createSettingTableView{
@@ -103,7 +106,7 @@
     [self.view addSubview:_settingTableView];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_settingTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:44. selfView:_settingTableView superView:self.view];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:kSettingNavBarHeight selfView:_settingTableView superView:self.view];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_settingTableView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_settingTableView superView:self.view];
 }

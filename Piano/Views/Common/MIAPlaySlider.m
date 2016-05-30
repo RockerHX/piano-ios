@@ -8,7 +8,7 @@
 
 #import "MIAPlaySlider.h"
 
-static CGFloat const kSliderProgressHeight = 10.;
+static CGFloat const kSliderProgressHeight = 7.;
 
 @implementation MIAPlaySlider
 
