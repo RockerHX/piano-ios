@@ -101,6 +101,8 @@
 		CD160F9A1CD05CD700DF4164 /* HXDiscoveryLiveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */; };
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
+		CD4223111CFBEC060057A235 /* HXModalTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4223101CFBEC060057A235 /* HXModalTransitionDelegate.m */; };
+		CD4223141CFBEC200057A235 /* HXModalOverlayAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4223131CFBEC200057A235 /* HXModalOverlayAnimationController.m */; };
 		CD572DD61CF69AA500CCEC30 /* HXDynamicGiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD572DD51CF69AA500CCEC30 /* HXDynamicGiftView.m */; };
 		CD572DD81CF69AC400CCEC30 /* HXDynamicGiftView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD572DD71CF69AC400CCEC30 /* HXDynamicGiftView.xib */; };
 		CD6887991CF54F660081B2BD /* HXLiveBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6887981CF54F660081B2BD /* HXLiveBarrageCell.m */; };
@@ -609,6 +611,10 @@
 		CD4156C61CB39C890060CBE9 /* HXSongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSongModel.m; sourceTree = "<group>"; };
 		CD4156C81CB39CA30060CBE9 /* HXCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCommentModel.h; sourceTree = "<group>"; };
 		CD4156C91CB39CA30060CBE9 /* HXCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCommentModel.m; sourceTree = "<group>"; };
+		CD42230F1CFBEC060057A235 /* HXModalTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXModalTransitionDelegate.h; sourceTree = "<group>"; };
+		CD4223101CFBEC060057A235 /* HXModalTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXModalTransitionDelegate.m; sourceTree = "<group>"; };
+		CD4223121CFBEC200057A235 /* HXModalOverlayAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXModalOverlayAnimationController.h; sourceTree = "<group>"; };
+		CD4223131CFBEC200057A235 /* HXModalOverlayAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXModalOverlayAnimationController.m; sourceTree = "<group>"; };
 		CD4567381CAE13B800837DFF /* HXMeMyStationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeMyStationCell.h; sourceTree = "<group>"; };
 		CD4567391CAE13B800837DFF /* HXMeMyStationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeMyStationCell.m; sourceTree = "<group>"; };
 		CD546CFF1CAE9A63009FB2FD /* FormatTimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormatTimeHelper.h; sourceTree = "<group>"; };
@@ -1704,6 +1710,25 @@
 			path = Song;
 			sourceTree = "<group>";
 		};
+		CD42230A1CFBEB540057A235 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				CD42230E1CFBEC060057A235 /* Modal */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		CD42230E1CFBEC060057A235 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				CD42230F1CFBEC060057A235 /* HXModalTransitionDelegate.h */,
+				CD4223101CFBEC060057A235 /* HXModalTransitionDelegate.m */,
+				CD4223121CFBEC200057A235 /* HXModalOverlayAnimationController.h */,
+				CD4223131CFBEC200057A235 /* HXModalOverlayAnimationController.m */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
 		CD546CFE1CAE9A63009FB2FD /* FormatTimeHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -2611,6 +2636,7 @@
 		CDED8EFD1CA13BB4003867B8 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				CD42230A1CFBEB540057A235 /* Animation */,
 				CDED8EFE1CA13BB4003867B8 /* HXAlertBanner */,
 				CDED8F021CA13BB4003867B8 /* HXCaptchButton */,
 				CDED8F051CA13BB4003867B8 /* HXLabel */,
@@ -3033,6 +3059,7 @@
 				CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */,
 				CD572DD61CF69AA500CCEC30 /* HXDynamicGiftView.m in Sources */,
 				CD7960B01CBE594C004CC661 /* HXAlbumsContainerViewController.m in Sources */,
+				CD4223111CFBEC060057A235 /* HXModalTransitionDelegate.m in Sources */,
 				CD6887A61CF551380081B2BD /* HXLiveBarrageViewController.m in Sources */,
 				42B6A0E31CEB08EE00BDF8E8 /* MIARechargeModel.m in Sources */,
 				CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */,
@@ -3131,6 +3158,7 @@
 				420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */,
 				42B857771CF853B7004B296A /* MIAPlaySlider.m in Sources */,
 				42984B611CDC878E004F00D5 /* MIAProfileLiveCell.m in Sources */,
+				CD4223141CFBEC200057A235 /* HXModalOverlayAnimationController.m in Sources */,
 				CDDC383A1CEB1B3500328A17 /* HXBarrageModel.m in Sources */,
 				CD7960E71CBE594C004CC661 /* HXRecordLiveViewModel.m in Sources */,
 				429E50111CE46DDE0008CA85 /* MIAAlbumViewModel.m in Sources */,
