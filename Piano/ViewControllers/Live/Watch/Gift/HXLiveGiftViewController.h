@@ -7,12 +7,9 @@
 //
 
 #import "UIViewController+HXClass.h"
-#import "HXShowRechargeDelegate.h"
 
 
 @interface HXLiveGiftViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet       id  <HXShowRechargeDelegate>rechargeDelegate;
 
 @property (weak, nonatomic) IBOutlet   UIView *tapView;
 @property (weak, nonatomic) IBOutlet   UIView *containerView;

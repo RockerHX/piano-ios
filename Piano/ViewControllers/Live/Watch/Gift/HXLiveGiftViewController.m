@@ -15,6 +15,7 @@
 #import "HXLiveGiftContainerViewController.h"
 #import "KxMenu.h"
 #import "HXGiftManager.h"
+#import "MIAPaymentViewController.h"
 
 
 @interface HXLiveGiftViewController ()
@@ -127,9 +128,9 @@
 }
 
 - (void)showRechargeSence {
-    if (_rechargeDelegate && [_rechargeDelegate respondsToSelector:@selector(shouldShowRechargeSence)]) {
-        [_rechargeDelegate shouldShowRechargeSence];
-    }
+    MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
+    paymentViewController.present = YES;
+    [self presentViewController:paymentViewController animated:YES completion:nil];
 }
 
 - (void)popCountMenu {

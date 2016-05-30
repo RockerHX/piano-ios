@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "MIAMCoinManage.h"
 #import "HexColors.h"
+#import "MIAPaymentViewController.h"
 
 
 @interface HXLiveRewardViewController () <
@@ -98,9 +99,9 @@ HXSectorSliderDelegate
 }
 
 - (void)showRechargeSence {
-    if (_rechargeDelegate && [_rechargeDelegate respondsToSelector:@selector(shouldShowRechargeSence)]) {
-        [_rechargeDelegate shouldShowRechargeSence];
-    }
+    MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
+    paymentViewController.present = YES;
+    [self presentViewController:paymentViewController animated:YES completion:nil];
 }
 
 #pragma mark - HXSectorSliderDelegate Methods

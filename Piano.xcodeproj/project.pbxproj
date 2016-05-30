@@ -775,7 +775,6 @@
 		CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewController.m; sourceTree = "<group>"; };
 		CDAB160A1CEDC11D00949769 /* HXGiftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXGiftModel.h; sourceTree = "<group>"; };
 		CDAB160B1CEDC11D00949769 /* HXGiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGiftModel.m; sourceTree = "<group>"; };
-		CDAB160E1CEDCCFA00949769 /* HXShowRechargeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXShowRechargeDelegate.h; sourceTree = "<group>"; };
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
@@ -2418,7 +2417,6 @@
 			children = (
 				CDBCFAFA1CE1E3060045946F /* Gift */,
 				CDE016DC1CE2D8CC005645D5 /* Reward */,
-				CDAB160E1CEDCCFA00949769 /* HXShowRechargeDelegate.h */,
 				CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */,
 				CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */,
 			);

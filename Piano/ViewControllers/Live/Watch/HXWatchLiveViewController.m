@@ -21,7 +21,6 @@
 #import "HXLiveAlbumView.h"
 #import "HXLiveGiftViewController.h"
 #import "HXLiveRewardViewController.h"
-#import "HXShowRechargeDelegate.h"
 #import "MIAPaymentViewController.h"
 #import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
@@ -36,8 +35,7 @@ HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
 HXLiveBarrageContainerViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
-HXLiveAlbumViewDelegate,
-HXShowRechargeDelegate
+HXLiveAlbumViewDelegate
 >
 @end
 
@@ -348,7 +346,6 @@ HXShowRechargeDelegate
         }
         case HXWatchBottomBarActionGift: {
             HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
-            giftViewController.rechargeDelegate = self;
             giftViewController.roomID = _roomID;
             giftViewController.transitioningDelegate = _modalTransitionDelegate;
             giftViewController.modalPresentationStyle = UIModalPresentationCustom;
@@ -378,20 +375,12 @@ HXShowRechargeDelegate
     HXAlbumModel *album = _viewModel.model.album;
     if (album) {
         HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
-        rewardViewController.rechargeDelegate = self;
         rewardViewController.roomID = _roomID;
         rewardViewController.album = album;
         rewardViewController.transitioningDelegate = _modalTransitionDelegate;
         rewardViewController.modalPresentationStyle = UIModalPresentationCustom;
         [self presentViewController:rewardViewController animated:YES completion:nil];
     }
-}
-
-#pragma mark - HXShowRechargeDelegate Methods
-- (void)shouldShowRechargeSence {
-    MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
-    paymentViewController.present = YES;
-    [self presentViewController:paymentViewController animated:YES completion:nil];
 }
 
 @end
