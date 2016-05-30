@@ -39,34 +39,25 @@ HXXibImplementation
 
 #pragma mark - Public Methods
 - (void)animationWithGift:(HXGiftModel *)gift {
-    [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl]];
-    _nickNameLabel.text = gift.nickName;
-    _promptLabel.text = gift.prompt;
-    
     if (gift.type == HXGiftTypeDynamic) {
+        [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl]];
+        _nickNameLabel.text = gift.nickName;
+        _promptLabel.text = gift.prompt;
+        
         dispatch_async(_queue, ^{
             dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
             dispatch_sync(dispatch_get_main_queue(), ^{
                 self.alpha = 1.0f;
                 self.hidden = NO;
-//                NSLog(@"-------------------");
-//                NSLog(@"Gift View Hidden State:%@", self.hidden ? @"YES" : @"NO");
+                
                 YYImage *image = [YYImage imageWithData:gift.animationData];
                 _animationView.image = image;
-//                NSLog(@"-------------------");
-//                NSLog(@"Anmation Start");
-            });
-//            NSLog(@"-------------------");
-//            NSLog(@"Play Time:%@", @(gift.playTime).stringValue);
-            
-            dispatch_sync(dispatch_get_main_queue(), ^{
+                
                 [UIView animateWithDuration:0.5f delay:gift.playTime options:UIViewAnimationOptionCurveEaseIn animations:^{
                     self.alpha = 0.0f;
                 } completion:^(BOOL finished) {
                     self.hidden = YES;
                     _animationView.image = nil;
-//                    NSLog(@"-------------------");
-//                    NSLog(@"Anmation End");
                     dispatch_semaphore_signal(_semaphore);
                 }];
             });
