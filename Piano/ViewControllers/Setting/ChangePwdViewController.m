@@ -70,7 +70,9 @@
     [_navBarView setTitle:@"修改密码"];
     [_navBarView setBackgroundColor:[UIColor whiteColor]];
     [[_navBarView navBarTitleLabel] setTextColor:[UIColor blackColor]];
-    [_navBarView setLeftButtonTitle:@"x" titleColor:[UIColor blackColor]];
+    [_navBarView setLeftButtonImageName:@"C-BackIcon-Gray"];
+    [_navBarView showBottomLineView];
+//    [_navBarView setLeftButtonTitle:@"x" titleColor:[UIColor blackColor]];
     
     @weakify(self);
     [_navBarView navBarLeftClickHanlder:^{
@@ -82,7 +84,7 @@
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:44. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:50. selfView:_navBarView superView:self.view];
 }
 
 - (void)initInputView {
@@ -92,7 +94,7 @@
 
 	static const CGFloat kTextFieldMarginLeft		= 18;
 	static const CGFloat kTextFieldHeight			= 45;
-	static const CGFloat kUserNameMarginTop			= 64 + 30;
+	static const CGFloat kUserNameMarginTop			= 50 + 30;
 	static const CGFloat kVerificationCodeMarginTop	= kUserNameMarginTop + kTextFieldHeight + 5;
 	static const CGFloat kFirstPasswordMarginTop	= kVerificationCodeMarginTop + kTextFieldHeight + 5;
 	static const CGFloat kSecondPasswordMarginTop	= kFirstPasswordMarginTop + kTextFieldHeight + 5;

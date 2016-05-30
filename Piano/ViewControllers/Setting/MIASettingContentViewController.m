@@ -14,6 +14,8 @@
 #import "JOBaseSDK.h"
 #import "MIAFontManage.h"
 
+static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
+
 @interface MIASettingContentViewController()<UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>{
     
     
@@ -86,7 +88,8 @@
 //    [_navBarView setTitle:@""]
     [_navBarView setBackgroundColor:[UIColor whiteColor]];
     [[_navBarView navBarTitleLabel] setTextColor:[UIColor blackColor]];
-    [_navBarView setLeftButtonTitle:@"<-" titleColor:[UIColor blackColor]];
+    [_navBarView setLeftButtonImageName:@"C-BackIcon-Gray"];
+    [_navBarView showBottomLineView];
     
     @weakify(self);
     [_navBarView navBarLeftClickHanlder:^{
@@ -115,7 +118,7 @@
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:44. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:kContentNavBarHeight selfView:_navBarView superView:self.view];
 }
 
 - (void)createContentView{
@@ -136,7 +139,7 @@
         
         [JOAutoLayout autoLayoutWithLeftSpaceDistance:-1. selfView:_contentView superView:self.view];
         [JOAutoLayout autoLayoutWithRightSpaceDistance:1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:44+ kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentNavBarHeight + kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
         [JOAutoLayout autoLayoutWithHeight:kSettingContentTextFieldHeight selfView:_contentView superView:self.view];
         
         self.contentTextField = [UITextField newAutoLayoutView];
@@ -164,7 +167,7 @@
         
         [JOAutoLayout autoLayoutWithLeftSpaceDistance:-1. selfView:_contentView superView:self.view];
         [JOAutoLayout autoLayoutWithRightSpaceDistance:1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:44+ kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentNavBarHeight + kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
         [JOAutoLayout autoLayoutWithHeight:kSettingContentTextViewHeight selfView:_contentView superView:self.view];
         
         self.contentTextView = [HXTextView newAutoLayoutView];
@@ -245,7 +248,7 @@
         
         [JOAutoLayout autoLayoutWithLeftSpaceDistance:-1. selfView:_contentView superView:self.view];
         [JOAutoLayout autoLayoutWithRightSpaceDistance:1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:44+ kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentNavBarHeight + kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
         [JOAutoLayout autoLayoutWithHeight:kSettingContentTextViewHeight + feedbackLaelHeight + kSettingContentTextFieldHeight + contactLabelHeight+10  selfView:_contentView superView:self.view];
         
         
@@ -262,7 +265,7 @@
         [_contentTableView setSectionHeaderHeight:kSettingContentTopSpaceDistance];
         [self.view addSubview:_contentTableView];
         
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(44., 0., 0., 0.) selfView:_contentTableView superView:self.view];
+        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(kContentNavBarHeight, 0., 0., 0.) selfView:_contentTableView superView:self.view];
         
     }
 }
@@ -309,10 +312,12 @@
                 self.settingContentSaveBlock(self.contentType,self.contentTextField.text);
             }
             
-            [self showAlertWithMessage:@"昵称修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                [self performSelector:@selector(backAction) withObject:nil afterDelay:0.25];
-                
-            }];
+            [self showBannerWithPrompt:@"昵称修改成功"];
+            [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
+//            [self showAlertWithMessage:@"昵称修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+//                
+//                
+//            }];
         }];
         
     }else{
@@ -349,10 +354,13 @@
             self.settingContentSaveBlock(self.contentType,genderString);
         }
         
-        [self showAlertWithMessage:@"性别修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            [self backAction];
-            
-        }];
+        [self showBannerWithPrompt:@"性别修改成功"];
+        [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
+        
+//        [self showAlertWithMessage:@"性别修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+//            [self backAction];
+//            
+//        }];
     }];
 }
 
@@ -379,10 +387,14 @@
         @strongify(self);
             [self hiddenHUD];
             
-            [self showAlertWithMessage:@"简介修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                [self performSelector:@selector(backAction) withObject:nil afterDelay:0.25];
-                
-            }];
+            
+            [self showBannerWithPrompt:@"简介修改成功"];
+            [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
+            
+//            [self showAlertWithMessage:@"简介修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+//                [self performSelector:@selector(backAction) withObject:nil afterDelay:0.25];
+//                
+//            }];
 
         }];
         

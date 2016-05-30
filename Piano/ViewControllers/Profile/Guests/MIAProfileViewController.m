@@ -163,6 +163,8 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [_profileTableView setBackgroundColor:[UIColor clearColor]];
     [_profileTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_profileTableView setSectionFooterHeight:CGFLOAT_MIN];
+    [_profileTableView setShowsVerticalScrollIndicator:NO];
+    [_profileTableView setShowsHorizontalScrollIndicator:NO];
     [_profileTableView setDataSource:self];
     [_profileTableView setDelegate:self];
     [_profileTableView setTag:kTableViewTag];
@@ -174,15 +176,14 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 - (void)createPopButton{
 
     UIButton *popButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [popButton setTitle:@"《" forState:UIControlStateNormal];
-    [popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [popButton setImage:[UIImage imageNamed:@"PR-Back"] forState:UIControlStateNormal];
     [popButton addTarget:self action:@selector(popClick) forControlEvents:UIControlEventTouchUpInside];
     [popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_profileView addSubview:popButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:popButton superView:_profileView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:30. selfView:popButton superView:_profileView];
-    [JOAutoLayout autoLayoutWithSize:JOSize(30., 30.) selfView:popButton superView:_profileView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:15. selfView:popButton superView:_profileView];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:15. selfView:popButton superView:_profileView];
+    [JOAutoLayout autoLayoutWithSize:JOSize(35., 35.) selfView:popButton superView:_profileView];
 }
 
 #pragma mark - Button action
@@ -320,7 +321,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     }else if (profileCellType == MIAProfileCellTypeAlbum){
     
         return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-AlbumIcon"]
-                                                    title:@"专辑"
+                                                    title:@"数字专辑"
                                                  tipTitle:nil
                                                     frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)
                                             cellColorType:headColorType];

@@ -68,9 +68,22 @@ static CGFloat const kRightButtonWidth = 60.;//right按钮的宽度.
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_titleLabel superView:self];
     [JOAutoLayout autoLayoutWithLeftView:_leftButton distance:0. selfView:_titleLabel superView:self];
     [JOAutoLayout autoLayoutWithRightView:_rightButton distance:0. selfView:_titleLabel superView:self];
+    
 }
 
 #pragma mark -  show data
+
+- (void)showBottomLineView{
+
+    UIView *bottomLineView = [UIView newAutoLayoutView];
+    [bottomLineView setBackgroundColor:JORGBSameCreate(235.)];
+    [self addSubview:bottomLineView];
+    
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-0.5 selfView:bottomLineView superView:self];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:bottomLineView superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:bottomLineView superView:self];
+    [JOAutoLayout autoLayoutWithHeight:0.5 selfView:bottomLineView superView:self];
+}
 
 - (void)setTitle:(NSString *)title{
 

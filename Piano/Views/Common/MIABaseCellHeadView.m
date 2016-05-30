@@ -117,7 +117,7 @@ CGFloat const kBaseCellHeadViewHeight = 35.;
         [_headTipLabel setHidden:YES];
     }
     
-    [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:5. selfView:_headLabel superView:_maskView];
+    [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:4. selfView:_headLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithTopYView:_headImageView selfView:_headLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithBottomYView:_headImageView selfView:_headLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithRightView:_headTipLabel distance:0. selfView:_headLabel superView:_maskView];

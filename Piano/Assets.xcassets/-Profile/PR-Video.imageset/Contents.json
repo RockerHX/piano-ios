@@ -6,13 +6,13 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "VP-SliderThumb@2x.png",
+      "filename" : "Image@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "VP-SliderThumb@3x.png"
+      "filename" : "Image@3x.png"
     }
   ],
   "info" : {
