@@ -43,7 +43,8 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 15.;//礼物与名�
 - (void)createPayHistoryView{
 
     self.giftImageView = [UIImageView newAutoLayoutView];
-    [_giftImageView setBackgroundColor:[UIColor grayColor]];
+//    [_giftImageView setBackgroundColor:[UIColor grayColor]];
+    [_giftImageView setContentMode:UIViewContentModeScaleToFill];
     [[_giftImageView layer] setCornerRadius:kGiftImageViewWidth/2.];
     [[_giftImageView layer] setMasksToBounds:YES];
     [self addSubview:_giftImageView];

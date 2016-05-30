@@ -42,7 +42,7 @@ static CGFloat const kPaymentMoneyLabelWidth = 60.;
 - (void)createPaymentView{
 
     self.paymentImageView = [UIImageView newAutoLayoutView];
-    [_paymentImageView setBackgroundColor:[UIColor grayColor]];
+    [_paymentImageView setImage:[UIImage imageNamed:@"LC-CoinIcon-L"]];
     [self addSubview:_paymentImageView];
     
     [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_paymentImageView superView:self];
