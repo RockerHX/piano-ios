@@ -27,6 +27,7 @@
 #import "BlocksKit+UIKit.h"
 #import "MiaAPIHelper.h"
 #import "HXDynamicGiftView.h"
+#import "HXModalTransitionDelegate.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -45,6 +46,8 @@ HXShowRechargeDelegate
     HXLiveBarrageContainerViewController *_barrageContainer;
     HXLiveEndViewController *_endViewController;
     HXWatchLiveViewModel *_viewModel;
+    
+    HXModalTransitionDelegate *_modalTransitionDelegate;
 }
 
 #pragma mark - Class Methods
@@ -96,6 +99,7 @@ HXShowRechargeDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    _modalTransitionDelegate = [HXModalTransitionDelegate new];
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
     [self signalLink];
 }
@@ -346,8 +350,9 @@ HXShowRechargeDelegate
             HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
             giftViewController.rechargeDelegate = self;
             giftViewController.roomID = _roomID;
-            [self addChildViewController:giftViewController];
-            [self.view addSubview:giftViewController.view];
+            giftViewController.transitioningDelegate = _modalTransitionDelegate;
+            giftViewController.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:giftViewController animated:YES completion:nil];
             break;
         }
     }

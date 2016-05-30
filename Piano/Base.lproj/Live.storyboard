@@ -44,7 +44,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Nw-Ae-70X" userLabel="BG">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-rx-QZM" userLabel="Gift Contianer">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-rx-QZM" userLabel="Gift Contianer">
                                             <rect key="frame" x="25" y="13" width="70" height="95"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="boh-Zw-Raw" userLabel="Gift Logo">
@@ -54,16 +54,16 @@
                                                         <constraint firstAttribute="width" constant="70" id="zaY-N6-Dgj"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-nA-KxF" userLabel="Coin Count Container">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-nA-KxF" userLabel="Coin Count Container">
                                                     <rect key="frame" x="22" y="78" width="27" height="17"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-fU-qUw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZr-fU-qUw">
                                                             <rect key="frame" x="0.0" y="0.0" width="7" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.70980392160000005" green="0.60784313729999995" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="id9-nn-fuy">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="id9-nn-fuy">
                                                             <rect key="frame" x="11" y="0.0" width="16" height="17"/>
                                                         </imageView>
                                                     </subviews>
@@ -136,7 +136,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmT-3h-2jm" userLabel="Container">
-                                <rect key="frame" x="0.0" y="568" width="320" height="276"/>
+                                <rect key="frame" x="0.0" y="292" width="320" height="276"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LG-BG" translatesAutoresizingMaskIntoConstraints="NO" id="AwK-WF-LoI">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
@@ -339,21 +339,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="LmT-3h-2jm" secondAttribute="top" id="Dcq-3C-e07"/>
                             <constraint firstAttribute="trailing" secondItem="a15-lh-srE" secondAttribute="trailing" id="NdA-eG-2xe"/>
-                            <constraint firstItem="LmT-3h-2jm" firstAttribute="top" secondItem="a15-lh-srE" secondAttribute="bottom" id="Nnb-PH-dEq"/>
                             <constraint firstItem="a15-lh-srE" firstAttribute="leading" secondItem="Y13-pl-63U" secondAttribute="leading" id="PIq-Mm-ANz"/>
                             <constraint firstItem="a15-lh-srE" firstAttribute="top" secondItem="Y13-pl-63U" secondAttribute="top" id="Y4m-WY-EDX"/>
                             <constraint firstItem="LmT-3h-2jm" firstAttribute="leading" secondItem="Y13-pl-63U" secondAttribute="leading" id="foR-md-F0V"/>
+                            <constraint firstAttribute="bottom" secondItem="a15-lh-srE" secondAttribute="bottom" id="vbP-wP-bpp"/>
                             <constraint firstAttribute="trailing" secondItem="LmT-3h-2jm" secondAttribute="trailing" id="vwV-p1-3M6"/>
+                            <constraint firstAttribute="bottom" secondItem="LmT-3h-2jm" secondAttribute="bottom" id="xdI-Eg-Ujb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="balanceCountLabel" destination="HCZ-ti-qBa" id="xX6-rn-eik"/>
-                        <outlet property="bottomConstraint" destination="Dcq-3C-e07" id="uG2-Lm-6PD"/>
-                        <outlet property="conianerHeightConstraint" destination="xd5-Mb-EGJ" id="w1u-Bt-PYm"/>
                         <outlet property="containerView" destination="LmT-3h-2jm" id="IEe-ud-27v"/>
-                        <outlet property="controlContainerHeightConstraint" destination="jJR-4f-8RW" id="G2S-TM-Hns"/>
                         <outlet property="countContainer" destination="4x8-Uj-tnk" id="cOi-LQ-ay9"/>
                         <outlet property="countLabel" destination="Q6A-H9-gbZ" id="cdM-gD-1Et"/>
                         <outlet property="rechargeContainer" destination="Iw5-Ya-Dhy" id="ghC-RG-Qij"/>
