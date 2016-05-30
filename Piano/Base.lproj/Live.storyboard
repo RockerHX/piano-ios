@@ -1849,7 +1849,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2T-sf-MtJ" userLabel="Container">
-                                <rect key="frame" x="0.0" y="568" width="320" height="430"/>
+                                <rect key="frame" x="0.0" y="138" width="320" height="430"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaU-M8-R9y">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
@@ -1972,16 +1972,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BlD-cH-YpF" secondAttribute="trailing" id="CAn-vx-GHU"/>
+                            <constraint firstAttribute="bottom" secondItem="BlD-cH-YpF" secondAttribute="bottom" id="GoM-BY-fq4"/>
                             <constraint firstItem="z2T-sf-MtJ" firstAttribute="leading" secondItem="OxH-mt-1jF" secondAttribute="leading" id="KcX-lA-WwK"/>
                             <constraint firstItem="BlD-cH-YpF" firstAttribute="top" secondItem="OxH-mt-1jF" secondAttribute="top" id="OXm-JY-tVR"/>
                             <constraint firstItem="BlD-cH-YpF" firstAttribute="leading" secondItem="OxH-mt-1jF" secondAttribute="leading" id="aN8-zx-cEx"/>
-                            <constraint firstAttribute="bottom" secondItem="z2T-sf-MtJ" secondAttribute="top" id="eNL-Xu-l5c"/>
-                            <constraint firstItem="z2T-sf-MtJ" firstAttribute="top" secondItem="BlD-cH-YpF" secondAttribute="bottom" id="hr7-d6-KsO"/>
+                            <constraint firstAttribute="bottom" secondItem="z2T-sf-MtJ" secondAttribute="bottom" id="exB-gK-JVq"/>
                             <constraint firstAttribute="trailing" secondItem="z2T-sf-MtJ" secondAttribute="trailing" id="ja4-YS-PgL"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomConstraint" destination="eNL-Xu-l5c" id="VDo-jq-kcj"/>
                         <outlet property="containerView" destination="z2T-sf-MtJ" id="OL0-0y-Dn1"/>
                         <outlet property="tableView" destination="Uri-bH-9Dz" id="pjf-wA-79E"/>
                         <outlet property="tapView" destination="BlD-cH-YpF" id="3m2-KR-vEg"/>

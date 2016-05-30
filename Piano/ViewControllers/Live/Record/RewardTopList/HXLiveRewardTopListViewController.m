@@ -30,12 +30,6 @@ UITableViewDelegate
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self popUp];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,7 +38,7 @@ UITableViewDelegate
 }
 
 #pragma mark - Configure Methods
-- (void)loadConfigure {
+- (void)loadConfigure {    
     __weak __typeof__(self)weakSelf = self;
     [_tapView bk_whenTapped:^{
         __strong __typeof__(self)strongSelf = weakSelf;
@@ -79,28 +73,9 @@ UITableViewDelegate
     }
 }
 
-#pragma mark - Public Methods
-- (void)showOnViewController:(UIViewController *)viewController {
-    [viewController addChildViewController:self];
-    [viewController.view addSubview:self.view];
-}
-
-- (void)dismiss {
-    _bottomConstraint.constant = 0.0f;
-    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
-    }];
-}
-
 #pragma mark - Private Methods
-- (void)popUp {
-    _bottomConstraint.constant = _containerView.height;
-    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self.view layoutIfNeeded];
-    } completion:nil];
+- (void)dismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)parseLists:(NSArray *)lists {

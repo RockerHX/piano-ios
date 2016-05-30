@@ -1983,8 +1983,8 @@
 		CD6C19541CA5126400849B39 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				CD07B2CD1CEF021B00B5AB87 /* RewardTopList */,
 				CD5D02711CB5FE31000285DC /* Preview */,
+				CD07B2CD1CEF021B00B5AB87 /* RewardTopList */,
 				CD6C19551CA5133300849B39 /* HXRecordLiveViewController.h */,
 				CD6C19561CA5133300849B39 /* HXRecordLiveViewController.m */,
 			);

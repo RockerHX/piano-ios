@@ -24,6 +24,7 @@
 #import "HXLiveAlbumView.h"
 #import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
+#import "HXModalTransitionDelegate.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -50,6 +51,8 @@ HXLiveAlbumViewDelegate
     BOOL _frontCamera;
     BOOL _microEnable;
     BOOL _beauty;
+    
+    HXModalTransitionDelegate *_modalTransitionDelegate;
 }
 
 #pragma mark - Class Methods
@@ -92,7 +95,6 @@ HXLiveAlbumViewDelegate
     [super viewDidDisappear:animated];
     
     [self shouldSteady:NO];
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -104,6 +106,8 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    _modalTransitionDelegate = [HXModalTransitionDelegate new];
+    
     _frontCamera = YES;
     _microEnable = YES;
 }
@@ -300,7 +304,9 @@ static CGFloat AlbumViewWidth = 60.0f;
             HXLiveRewardTopListViewController *rewardTopListViewController = [HXLiveRewardTopListViewController instance];
             rewardTopListViewController.type = HXLiveRewardTopListTypeGift;
             rewardTopListViewController.roomID = _viewModel.roomID;
-            [rewardTopListViewController showOnViewController:self];
+            rewardTopListViewController.transitioningDelegate = _modalTransitionDelegate;
+            rewardTopListViewController.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:rewardTopListViewController animated:YES completion:nil];
             break;
         }
         case HXRecordBottomBarActionShare: {
@@ -395,7 +401,9 @@ static CGFloat AlbumViewWidth = 60.0f;
     HXLiveRewardTopListViewController *rewardTopListViewController = [HXLiveRewardTopListViewController instance];
     rewardTopListViewController.type = HXLiveRewardTopListTypeAlbum;
     rewardTopListViewController.roomID = _viewModel.roomID;
-    [rewardTopListViewController showOnViewController:self];
+    rewardTopListViewController.transitioningDelegate = _modalTransitionDelegate;
+    rewardTopListViewController.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:rewardTopListViewController animated:YES completion:nil];
 }
 
 @end
