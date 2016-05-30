@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet  UILabel *balanceCountLabel;
 @property (weak, nonatomic) IBOutlet  UILabel *countLabel;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *giftConianerHeightConstraint;
+
 @property (nonatomic, strong) NSString *roomID;
 
 - (IBAction)giveGiftButtonPressed;

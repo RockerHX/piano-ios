@@ -42,6 +42,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    _giftConianerHeightConstraint.constant = _container.contianerHeight;
     [[HXGiftManager manager] fetchGiftList:^(HXGiftManager *manager) {
         _giftList = manager.giftList;
         _container.gifts = _giftList;

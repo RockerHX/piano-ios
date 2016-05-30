@@ -353,6 +353,7 @@
                         <outlet property="containerView" destination="LmT-3h-2jm" id="IEe-ud-27v"/>
                         <outlet property="countContainer" destination="4x8-Uj-tnk" id="cOi-LQ-ay9"/>
                         <outlet property="countLabel" destination="Q6A-H9-gbZ" id="cdM-gD-1Et"/>
+                        <outlet property="giftConianerHeightConstraint" destination="xd5-Mb-EGJ" id="cDO-34-Mu8"/>
                         <outlet property="rechargeContainer" destination="Iw5-Ya-Dhy" id="ghC-RG-Qij"/>
                         <outlet property="tapView" destination="a15-lh-srE" id="WXp-Ab-K9b"/>
                     </connections>
