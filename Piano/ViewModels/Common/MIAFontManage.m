@@ -207,6 +207,10 @@ static NSString *kMIAFontLight = @"Helvetica";
         return JOFontMake(kMIAFontRegular, [UIColor blackColor], 15.);
     }
     
+    if (type == MIAFontType_PlayVideo_Time) {
+        return JOFontMake(kMIAFontRegular, JORGBSameCreate(230.), 15.);
+    }
+    
     return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
 }
 

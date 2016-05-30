@@ -9,17 +9,22 @@
 #import "MIAVideoPlayViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "MIAPlaySlider.h"
+#import "MIAPlayBarView.h"
 #import "JOBaseSDK.h"
 
 static CGFloat const kPopButtonWidth = 40.;
 
-@interface MIAVideoPlayViewController()
+@interface MIAVideoPlayViewController(){
+
+    dispatch_source_t timer;
+}
 
 @property (nonatomic, strong) UIButton *popButton;
 
 @property (nonatomic, strong) UIView *playView;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
 @property (nonatomic, strong) AVPlayer *player;
+@property (nonatomic, strong) MIAPlayBarView *playBarView;
 @property (nonatomic, strong) MIAPlaySlider *playSlider;
 
 @end
@@ -33,7 +38,7 @@ static CGFloat const kPopButtonWidth = 40.;
     
     [self createPlayView];
     [self createPopButton];
-    [self createPlaySliderView];
+    [self createPlayBarView];
 }
 
 - (void)createPlayView{
@@ -69,25 +74,57 @@ static CGFloat const kPopButtonWidth = 40.;
     [JOAutoLayout autoLayoutWithSize:JOSize(kPopButtonWidth, kPopButtonWidth) selfView:_popButton superView:self.view];
 }
 
-- (void)createPlaySliderView{
+- (void)createPlayBarView{
 
-    self.playSlider = [MIAPlaySlider newAutoLayoutView];
-    [_playSlider setMinimumTrackTintColor:JORGBSameCreate(200.)];
-//    [_playSlider setThumbTintColor:JORGBSameCreate(200.)];
-    [_playSlider setSliderThumbHeight:20. color:JORGBSameCreate(200.)];
-    [_playSlider setMaximumTrackTintColor:JORGBCreate(200., 200., 200., 0.7)];
-    [_playView addSubview:_playSlider];
+//    self.playSlider = [MIAPlaySlider newAutoLayoutView];
+//    [_playSlider setMinimumTrackTintColor:JORGBSameCreate(200.)];
+////    [_playSlider setThumbTintColor:JORGBSameCreate(200.)];
+//    [_playSlider setSliderThumbHeight:20. color:JORGBSameCreate(200.)];
+//    [_playSlider setMaximumTrackTintColor:JORGBCreate(200., 200., 200., 0.7)];
+//    [_playView addSubview:_playSlider];
+//    
+//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-10. selfView:_playSlider superView:_playView];
+//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_playSlider superView:_playView];
+//    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_playSlider superView:_playView];
+//    [JOAutoLayout autoLayoutWithHeight:20. selfView:_playSlider superView:_playView];
     
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-10. selfView:_playSlider superView:_playView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_playSlider superView:_playView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_playSlider superView:_playView];
-    [JOAutoLayout autoLayoutWithHeight:20. selfView:_playSlider superView:_playView];
+    self.playBarView = [MIAPlayBarView newAutoLayoutView];
+    [_playView addSubview:_playBarView];
+    
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_playBarView superView:_playView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_playBarView superView:_playView];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_playBarView superView:_playView];
+    [JOAutoLayout autoLayoutWithHeight:40. selfView:_playBarView superView:_playView];
 }
 
 - (void)viewDidLayoutSubviews{
     
     [super viewDidLayoutSubviews];
     _playerLayer.frame = _playView.bounds;
+}
+
+- (void)timerUpdate {
+    uint64_t interval = NSEC_PER_SEC;
+    dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, 0), interval, 0);
+    dispatch_source_set_event_handler(timer, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updatePlayBarTime];
+        });
+    });
+    dispatch_resume(timer);
+}
+
+- (void)updatePlayBarTime{
+
+    CMTime time = [_player currentTime];
+    CGFloat currentTime = 0.0f;
+    if (time.timescale > 0.0f) {
+        currentTime = time.value / time.timescale;
+    }
+    
+    [_playBarView setCurrentPlayTime:@""];
 }
 
 #pragma mark - button Action
