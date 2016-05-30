@@ -16,7 +16,7 @@ static CGFloat const kPlayBarViewRightSpaceDistance = 10.;
 static CGFloat const kPlayBarViewButtonToSliderSpaceDistance = 10.;
 static CGFloat const kPlayBarViewSliderToTimeLabelSpaceDistance = 10.;
 //static CGFloat const kPlayBarViewTimeLabelToButtonSpaceDistance = 10.;
-static CGFloat const kPlayBarViewTimeLabelWidth = 50.;
+static CGFloat const kPlayBarViewTimeLabelWidth = 40.;
 
 @interface MIAPlayBarView(){
 
@@ -49,7 +49,7 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 50.;
 
     self.playButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_playButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_playButton setBackgroundColor:[UIColor grayColor]];
+    [_playButton setImage:[UIImage imageNamed:@"VP-Pause"] forState:UIControlStateNormal];
     [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_playButton];
     
@@ -60,7 +60,7 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 50.;
     
     self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_shareButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_shareButton setBackgroundColor:[UIColor grayColor]];
+    [_shareButton setImage:[UIImage imageNamed:@"VP-Share"] forState:UIControlStateNormal];
     [_shareButton addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_shareButton];
     
@@ -80,9 +80,10 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 50.;
     [JOAutoLayout autoLayoutWithWidth:kPlayBarViewTimeLabelWidth selfView:_timeLabel superView:self];
     
     self.playSlider = [MIAPlaySlider newAutoLayoutView];
-    [_playSlider setMinimumTrackTintColor:JORGBSameCreate(200.)];
+    [_playSlider setMinimumTrackTintColor:JORGBSameCreate(220.)];
     //    [_playSlider setThumbTintColor:JORGBSameCreate(200.)];
-    [_playSlider setSliderThumbHeight:20. color:JORGBSameCreate(200.)];
+//    [_playSlider setSliderThumbHeight:20. color:JORGBSameCreate(200.)];
+    [_playSlider setThumbImage:[UIImage imageNamed:@"VP-SliderThumb"] forState:UIControlStateNormal];
     [_playSlider setMaximumTrackTintColor:JORGBCreate(200., 200., 200., 0.7)];
     [_playSlider setMinimumValue:0.];
     [_playSlider setMaximumValue:1.];
@@ -132,10 +133,10 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 50.;
 
     if (playState) {
         //播放状态
-        [_playButton setBackgroundColor:[UIColor purpleColor]];
+        [_playButton setImage:[UIImage imageNamed:@"VP-Play"] forState:UIControlStateNormal];
     }else{
         //未播放的状态
-        [_playButton setBackgroundColor:[UIColor grayColor]];
+        [_playButton setImage:[UIImage imageNamed:@"VP-Pause"] forState:UIControlStateNormal];
     }
 }
 

@@ -69,8 +69,7 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 - (void)createPopButton{
 
     self.popButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_popButton setTitle:@"x" forState:UIControlStateNormal];
-    [_popButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_popButton setImage:[UIImage imageNamed:@"VP-Close"] forState:UIControlStateNormal];
     [_popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_popButton addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_popButton];
