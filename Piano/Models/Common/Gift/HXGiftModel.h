@@ -30,8 +30,9 @@ typedef NS_ENUM(NSUInteger, HXGiftType) {
 @property (nonatomic, strong)  NSString *nickName;
 @property (nonatomic, strong)  NSString *avatarUrl;
 
-@property (nonatomic, assign) BOOL  selected;
-@property (nonatomic, assign) BOOL  status;
+@property (nonatomic, assign)      BOOL  selected;
+@property (nonatomic, assign)      BOOL  status;
+@property (nonatomic, assign) NSInteger  count;
 
 @property (nonatomic, strong) NSData *iconData;
 @property (nonatomic, strong) NSData *animationData;
