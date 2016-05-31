@@ -7,6 +7,7 @@
 //
 
 #import "HXMobileLoginViewController.h"
+#import "BlocksKit+UIKit.h"
 
 
 @interface HXMobileLoginViewController ()
@@ -34,6 +35,11 @@
         BOOL enabled = x.boolValue;
         self.loginButton.enabled = enabled;
         [self.loginButton setTitleColor:(enabled ? [UIColor blackColor] : [UIColor grayColor]) forState:UIControlStateNormal];
+    }];
+    
+    [self.view bk_whenTapped:^{
+        @strongify(self)
+        [self.view endEditing:YES];
     }];
 }
 
