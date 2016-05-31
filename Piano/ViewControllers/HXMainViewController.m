@@ -200,7 +200,7 @@ HXLoginViewControllerDelegate
             break;
         }
         case HXLoginViewControllerActionLoginSuccess: {
-            ;
+            [_discoveryContainerViewController startFetchList];
             break;
         }
     }
