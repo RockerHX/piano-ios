@@ -100,11 +100,12 @@ HXMobileLoginViewControllerDelegate
 - (void)loginSuccessHandleWithData:(NSDictionary *)data {
     [[HXUserSession session] updateUserWithData:data];
     
-    [self dismissLoginSence];
     if (_delegate && [_delegate respondsToSelector:@selector(loginViewController:takeAction:)]) {
         [_delegate loginViewController:self takeAction:HXLoginViewControllerActionLoginSuccess];
     }
     [self hiddenHUD];
+    [self showBannerWithPrompt:@"登录成功！"];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)loginFailureHanleWithPrompt:(NSString *)prompt {
