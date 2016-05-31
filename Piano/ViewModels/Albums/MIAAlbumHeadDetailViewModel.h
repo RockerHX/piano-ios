@@ -15,6 +15,7 @@ UIKIT_EXTERN CGFloat const kRightInsideSpaceDistance;//视图内部右边间隙�
 
 UIKIT_EXTERN CGFloat const kRewardDownloadViewHeight ; //打赏下载按钮视图的高度
 UIKIT_EXTERN CGFloat const kRewardViewHeight ; //打赏视图的高度
+UIKIT_EXTERN CGFloat const kRewardNoDataViewHeight;//无打赏人数的高度.
 UIKIT_EXTERN CGFloat const kPlayViewHeight ; //播放视图的高度
 
 @interface MIAAlbumHeadDetailViewModel : MIAViewModel

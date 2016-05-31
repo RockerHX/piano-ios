@@ -84,8 +84,13 @@ static CGFloat const kAlbumUserItemSpaceDistance = 10.;//每个元素之间的�
         [self removeAllRewardScrollSubViews];
         [_tipLabel setText:[NSString stringWithFormat:@"已打赏:%lu人",(unsigned long)[rewardData count]]];
         
+        if([rewardData count] == 0){
+        
+            [JOAutoLayout removeAutoLayoutWithBottomSelfView:_rewardScrollView superView:self];
+            [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_rewardScrollView superView:self];
+        }
+        
         for (int i = 0; i < [rewardData count]; i++) {
-
             if ([[rewardData objectAtIndex:i] isKindOfClass:[MIARewardAlbumModel class]]) {
                 
                 MIARewardAlbumModel *rewardAlbumModel = [rewardData objectAtIndex:i];

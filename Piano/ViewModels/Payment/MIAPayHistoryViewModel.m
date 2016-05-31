@@ -11,10 +11,12 @@
 #import "MIAOrderModel.h"
 
 CGFloat const kPayHistoryItemViewHeight = 50.;
-CGFloat const kPayHistoryCellHeight = 70.;
-CGFloat const kPayHistoryCellHeadHeight= 11.;
+CGFloat const kPayHistoryCellHeight = 81.;
+CGFloat const kPayHistoryCellHeadHeight= 9.;
 
 @interface MIAPayHistoryViewModel()
+
+@property (nonatomic, strong) RACCommand *fetchReceiveGiftListCommand;
 
 @end
 
@@ -27,6 +29,18 @@ CGFloat const kPayHistoryCellHeadHeight= 11.;
     
     [self fetchSendGiftListDataCommand];
     [self fetchOrderListDataCommand];
+}
+
+- (void)fetchRecevieGiftListDataCommand{
+
+//    @weakify(self);
+    self.fetchReceiveGiftListCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+//    @strongify(self);
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            
+            return nil;
+        }];
+    }];
 }
 
 - (void)fetchSendGiftListDataCommand{
@@ -56,6 +70,11 @@ CGFloat const kPayHistoryCellHeadHeight= 11.;
 }
 
 #pragma mark - Data operation
+
+- (void)fetchReceiveGiftListRequestWithSubscriber:(id<RACSubscriber>)subscriber{
+
+    
+}
 
 - (void)fetchSendGiftListRequestWithSubscriber:(id<RACSubscriber>)subscriber{
 

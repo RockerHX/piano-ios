@@ -10,8 +10,8 @@
 #import "JOBaseSDK.h"
 #import "MIAFontManage.h"
 
-static CGFloat const kLeftButtonWidth = 60.;//left按钮的宽度.
-static CGFloat const kRightButtonWidth = 60.;//right按钮的宽度.
+static CGFloat const kLeftButtonWidth = 50.;//left按钮的宽度.
+static CGFloat const kRightButtonWidth = 50.;//right按钮的宽度.
 
 @interface MIANavBarView()
 

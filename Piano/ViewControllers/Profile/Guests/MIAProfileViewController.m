@@ -71,7 +71,6 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 
 @end
 
-//16:9 高/宽
 @implementation MIAProfileViewController
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -220,20 +219,24 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     
     MIAProfileHeadModel *headModel = _profileViewModel.profileHeadModel;
     
-    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
-        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_coverImageView superView:self.view];
-        [JOAutoLayout autoLayoutWithHeight:View_Width(self.view)/(image.size.width/image.size.height) selfView:_coverImageView superView:self.view];
-        
-    }];
-//    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL] placeholderImage:nil];
+    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL]
+                       placeholderImage:nil
+                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                  [JOAutoLayout removeAutoLayoutWithHeightSelfView:_coverImageView superView:self.view];
+                                  [JOAutoLayout autoLayoutWithHeight:View_Width(self.view)/(image.size.width/image.size.height) selfView:_coverImageView superView:self.view];
+                              }];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
     [_profileHeadView setAttentionButtonState:[headModel.followState boolValue]];
     
-    [_profileTableView reloadData];
-    
-    
+    if ([_profileViewModel.cellDataArray count]) {
+        //
+        [_profileTableView setHidden:NO];
+        [_profileTableView reloadData];
+    }else{
+        
+        [_profileTableView setHidden:YES];
+    }
 }
 
 #pragma mark - table data source
@@ -312,7 +315,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     
     if (profileCellType == MIAProfileCellTypeLive) {
         
-        return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-AlbumIcon"]
+        return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-Live"]
                                                     title:@"正在直播"
                                                  tipTitle:[NSString stringWithFormat:@"%@人观看",_profileViewModel.profileLiveModel.liveViewCount]
                                                     frame:CGRectMake(0., 0., View_Width(self.view), profileTableHeadViewHeight + kBaseCellHeadViewHeight)
@@ -321,7 +324,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     }else if (profileCellType == MIAProfileCellTypeAlbum){
     
         return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-AlbumIcon"]
-                                                    title:@"数字专辑"
+                                                    title:@"专辑"
                                                  tipTitle:nil
                                                     frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)
                                             cellColorType:headColorType];
@@ -334,7 +337,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
                                             cellColorType:headColorType];
     }else if (profileCellType == MIAProfileCellTypeReplay){
         
-        return  [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-VideoIcon"]
+        return  [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-ReplayIcon"]
                                                      title:@"直播回放"
                                                   tipTitle:nil
                                                      frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)

@@ -133,10 +133,10 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 40.;
 
     if (playState) {
         //播放状态
-        [_playButton setImage:[UIImage imageNamed:@"VP-Play"] forState:UIControlStateNormal];
+        [_playButton setImage:[UIImage imageNamed:@"VP-Pause"] forState:UIControlStateNormal];
     }else{
         //未播放的状态
-        [_playButton setImage:[UIImage imageNamed:@"VP-Pause"] forState:UIControlStateNormal];
+        [_playButton setImage:[UIImage imageNamed:@"VP-Play"] forState:UIControlStateNormal];
     }
 }
 

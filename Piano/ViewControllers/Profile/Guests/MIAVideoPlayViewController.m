@@ -18,6 +18,7 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 @interface MIAVideoPlayViewController(){
 
     BOOL finishedState;
+    NSTimeInterval loadTime;
     dispatch_source_t timer;
 }
 
@@ -28,6 +29,9 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerItem *playerItem;
 @property (nonatomic, strong) MIAPlayBarView *playBarView;
+
+@property (nonatomic, strong) UIView *videoLoadingView;
+@property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 
 @end
 
@@ -47,6 +51,15 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     [_player play];
 }
 
+- (void)createLodingView{
+
+//    self.videoLoadingView = [UIView newAutoLayoutView];
+//    [_videoLoadingView setBackgroundColor:JORGBCreate(0., 0., 0., 0.7)];
+//    [_videoLoadingView ]
+//    [self.view addSubview:_videoLoadingView];
+    
+}
+
 - (void)createPlayView{
 
     self.playView = [UIView newAutoLayoutView];
@@ -61,9 +74,8 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
     _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    
     [_playView.layer addSublayer:_playerLayer];
-    
+    [self showHUD];
 }
 
 - (void)createPopButton{
@@ -88,7 +100,6 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     @strongify(self);
         if (type == PlayBarActionPlay) {
             //播放
-            
             if (finishedState) {
                 //结束的状态
                 finishedState = NO;
@@ -131,6 +142,9 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 - (void)addAVPlayObserver{
     
     [_playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    [_playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
+    [_playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+    [_playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playFinished) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playError) name:AVPlayerItemFailedToPlayToEndTimeNotification object:nil];
 
@@ -138,6 +152,9 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 
 - (void)removeAVPlayObserver{
     [_playerItem removeObserver:self forKeyPath:@"status"];
+    [_playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+    [_playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+    [_playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemFailedToPlayToEndTimeNotification object:nil];
 }
@@ -149,23 +166,60 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     if ([keyPath isEqualToString:@"status"]) {
         AVPlayerStatus status= [[change objectForKey:@"new"] intValue];
         if(status==AVPlayerStatusReadyToPlay){
-
+            
+            [self hiddenHUD];
             [_playBarView setCurrentPlayState:YES];
             [_playBarView setCurrentVideoDuration:playerItem.duration.value/playerItem.duration.timescale];
         }
+        
+    }else if([keyPath isEqualToString:@"loadedTimeRanges"]){
+        
+        //每次缓冲得到新数据 用来跟当前视屏播放的时间做一个对比,若当前缓冲时间小于播放的时间则表示 需要等待缓冲才能播放
+        NSArray *array=playerItem.loadedTimeRanges;
+        CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
+        float startSeconds = CMTimeGetSeconds(timeRange.start);
+        float durationSeconds = CMTimeGetSeconds(timeRange.duration);
+        loadTime = startSeconds + durationSeconds;//缓冲总长度
+//        [self checkPlayState];
+//        NSLog(@"startSecond:%.2f",startSeconds);
+//        NSLog(@"DurationSeconds:%.2f",durationSeconds);
+//        NSLog(@"共缓冲：%.2f",loadTime);
+        
+    }else if ([keyPath isEqualToString:@"playbackBufferEmpty"]){
+    
+        NSLog(@"缓冲数据为空");
+        [_player pause];
+        [_playBarView setCurrentPlayState:NO];
+        [self showHUD];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+            [_player play];
+            [_playBarView setCurrentPlayState:YES];
+            [self hiddenHUD];
+            //rate 是avplayer 是一个属性，rate 1.0表示正在播放，0.0暂停， -1播放器失效
+            if (_player.rate <= 0) {
+                //播放异常
+                
+            }
+            
+        });
+        
+        
+    }else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]){
+        
+        if(playerItem.playbackLikelyToKeepUp){
+        
+            NSLog(@"正常播放");
+            [_player play];
+            [self hiddenHUD];
+        }
+        
     }
-//    else if([keyPath isEqualToString:@"loadedTimeRanges"])
-//    {
-//        NSArray *array=playerItem.loadedTimeRanges;
-//        CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
-//        float startSeconds = CMTimeGetSeconds(timeRange.start);
-//        float durationSeconds = CMTimeGetSeconds(timeRange.duration);
-//        NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
-//        NSLog(@"共缓冲：%.2f",totalBuffer);
-//    }
 }
 
 #pragma mark - play state
+
 
 //- (void)playTimeJumped:(NSNotification *)notice{
 //

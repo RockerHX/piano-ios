@@ -12,7 +12,7 @@
 #import "MIAFontManage.h"
 #import "NSString+JOExtend.h"
 
-CGFloat const kAlbumSongCellHeight = 50.;//歌曲的cell的高度
+CGFloat const kAlbumSongCellHeight = 45.;//歌曲的cell的高度
 CGFloat const kAlbumBarViewHeight = 50.;//头部Bar的高度
 CGFloat const kAlbumEnterCommentViewHeight = 55.;//底部输入评论的框的高度
 CGFloat const kAlbumComentCellDefaultHeight = 70.;//默认的评论的cell的高度

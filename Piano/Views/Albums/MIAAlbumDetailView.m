@@ -199,6 +199,16 @@ static NSString *const kSongDownloadTitle = @"下载专辑";
         
         [_albumCoverImageView sd_setImageWithURL:[NSURL URLWithString:_albumModel.coverUrl] placeholderImage:nil];
         [_rewardView setRewardData:_albumModel.backList];
+        
+        if ([_albumModel.backList count]) {
+            //有打赏人的时候
+        }else{
+            //无打赏人的时候
+            albumDetailViewHeight = kPlayViewHeight + kRewardNoDataViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+            
+            [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardView superView:self];
+            [JOAutoLayout autoLayoutWithHeight:kRewardNoDataViewHeight selfView:_rewardView superView:self];
+        }
     }else{
     
         [JOFException exceptionWithName:@"MIAAlbumDetailView exception!" reason:@"data必须是MIAAlbumModel类型"];
@@ -207,7 +217,7 @@ static NSString *const kSongDownloadTitle = @"下载专辑";
 
 - (void)setAlbumSongModelData:(id)data{
 
-    if ([data isKindOfClass:[NSArray class]]) {
+    if ([data isKindOfClass:[NSArray class]]){
 
         [_playView setSongModelArray:data];
     }else{

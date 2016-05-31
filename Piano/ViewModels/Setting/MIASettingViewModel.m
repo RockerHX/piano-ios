@@ -7,6 +7,7 @@
 //
 
 #import "MIASettingViewModel.h"
+#import "JOBaseSDK.h"
 #import "CacheHelper.h"
 #import "HXUserSession.h"
 #import "UserSetting.h"
@@ -56,13 +57,13 @@ CGFloat const kSettingHeadImageHeight = 36.;
 - (void)loadCellContentDataArray{
 
     //头像
-    [[_settingCellContentDataArray firstObject] addObject:[HXUserSession session].user.avatarUrl];
+    [[_settingCellContentDataArray firstObject] addObject:JOConvertStringToNormalString([HXUserSession session].user.avatarUrl)];
     //昵称
-    [[_settingCellContentDataArray firstObject] addObject:[HXUserSession session].user.nickName];
+    [[_settingCellContentDataArray firstObject] addObject:JOConvertStringToNormalString([HXUserSession session].user.nickName)];
     //签名
-    [[_settingCellContentDataArray firstObject] addObject:[HXUserSession session].user.bio];
+    [[_settingCellContentDataArray firstObject] addObject:JOConvertStringToNormalString([HXUserSession session].user.bio)];
     //性别 1为男性 2为女性
-    [[_settingCellContentDataArray firstObject] addObject:[HXUserSession session].user.gender];
+    [[_settingCellContentDataArray firstObject] addObject:JOConvertStringToNormalString([HXUserSession session].user.gender)];
     //修改密码  占位的
     [[_settingCellContentDataArray firstObject] addObject:@""];
     
