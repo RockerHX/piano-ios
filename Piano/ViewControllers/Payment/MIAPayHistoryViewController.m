@@ -12,19 +12,21 @@
 #import "MIACellManage.h"
 #import "MIAFontManage.h"
 #import "MIANavBarView.h"
+#import "MIAItemsView.h"
 
 static CGFloat const kPayHistoryNavbarHeight = 50.;
 
-@interface MIAPayHistoryViewController()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface MIAPayHistoryViewController()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>{
+
+    NSInteger itemCount;
+}
 
 @property (nonatomic, strong) MIANavBarView *navBarView;
 
-@property (nonatomic, strong) UIButton *leftItemButton;
-@property (nonatomic, strong) UIButton *rightItemButton;
-@property (nonatomic, strong) UIView *itemView;
-@property (nonatomic, strong) UIView *animationView;
+@property (nonatomic, strong) MIAItemsView *itemsView;
 
 @property (nonatomic, strong) UIScrollView *payHistoryScrollView;
+@property (nonatomic, strong) UITableView *receiveGiftTableView;
 @property (nonatomic, strong) UITableView *sendGiftTableView;
 @property (nonatomic, strong) UITableView *paymentHistoryTableView;
 
@@ -38,6 +40,13 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
 
     [super loadView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    if (_historyType == HistoryType_Host) {
+        itemCount = 3;
+    }else if(_historyType == HistoryType_Guest){
+    
+        itemCount = 2;
+    }
     
     [self createNavBarView];
     [self createItemView];
@@ -69,50 +78,32 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
 }
 
 - (void)createItemView{
-
-    self.itemView = [UIView newAutoLayoutView];
-    [_itemView setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:_itemView];
     
-    [JOAutoLayout autoLayoutWithTopView:_navBarView distance:0. selfView:_itemView superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_itemView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_itemView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kPayHistoryItemViewHeight selfView:_itemView superView:self.view];
+    self.itemsView = [MIAItemsView newAutoLayoutView];
+    [_itemsView setItemArray:@[@"送出礼物",@"充值记录"]];
+    [_itemsView setItemTitleColor:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->color
+                        titleFont:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->font];
+    [_itemsView setAnimationColor:JORGBCreate(1., 195., 170., 1.)];
     
-    self.leftItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_leftItemButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_leftItemButton setTitle:@"送出礼物" forState:UIControlStateNormal];
-    [_leftItemButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->color forState:UIControlStateNormal];
-    [[_leftItemButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->font];
-    [_leftItemButton addTarget:self action:@selector(leftItemButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    [_itemView addSubview:_leftItemButton];
+    @weakify(self);
+    [_itemsView itemClickHanlder:^(NSInteger index, NSString *itemTitel) {
+    @strongify(self);
+        
+        if (index == 0) {
+            //送出的礼物
+            [self leftItemButtonClick];
+        }else if (index == 1){
+            //充值记录
+            [self rightItemButtonClick];
+        }
+        
+    }];
+    [self.view addSubview:_itemsView];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_leftItemButton superView:_itemView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_leftItemButton superView:_itemView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_leftItemButton superView:_itemView];
-    [JOAutoLayout autoLayoutWithWidthWithView:_itemView ratioValue:1./2. selfView:_leftItemButton superView:_itemView];
-    
-    self.rightItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_rightItemButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_rightItemButton setTitle:@"充值记录" forState:UIControlStateNormal];
-    [_rightItemButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->color forState:UIControlStateNormal];
-    [[_rightItemButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->font];
-    [_rightItemButton addTarget:self action:@selector(rightItemButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    [_itemView addSubview:_rightItemButton];
-    
-    [JOAutoLayout autoLayoutWithLeftView:_leftItemButton distance:0. selfView:_rightItemButton superView:_itemView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_rightItemButton superView:_itemView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_rightItemButton superView:_itemView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_rightItemButton superView:_itemView];
-    
-    self.animationView = [UIView newAutoLayoutView];
-    [_animationView setBackgroundColor:JORGBCreate(1., 195., 170., 1.)];
-    [_itemView addSubview:_animationView];
-    
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_animationView superView:_itemView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_animationView superView:_itemView];
-    [JOAutoLayout autoLayoutWithHeight:2. selfView:_animationView superView:_itemView];
-    [JOAutoLayout autoLayoutWithWidthWithView:_itemView ratioValue:1./2. selfView:_animationView superView:_itemView];
+    [JOAutoLayout autoLayoutWithTopView:_navBarView distance:0. selfView:_itemsView superView:self.view];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_itemsView superView:self.view];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_itemsView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:kPayHistoryItemViewHeight selfView:_itemsView superView:self.view];
 }
 
 - (void)createTableView{
@@ -124,11 +115,11 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_payHistoryScrollView setDelegate:self];
     [self.view addSubview:_payHistoryScrollView];
     
-    [_payHistoryScrollView setContentSize:JOSize(View_Width(self.view)*2., View_Height(self.view)-kPayHistoryItemViewHeight-kPayHistoryNavbarHeight)];
+    [_payHistoryScrollView setContentSize:JOSize(View_Width(self.view)*itemCount, View_Height(self.view)-kPayHistoryItemViewHeight-kPayHistoryNavbarHeight)];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopView:_itemView distance:0. selfView:_payHistoryScrollView superView:self.view];
+    [JOAutoLayout autoLayoutWithTopView:_itemsView distance:0. selfView:_payHistoryScrollView superView:self.view];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
     
     self.sendGiftTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -138,8 +129,27 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_sendGiftTableView setBackgroundColor:JORGBSameCreate(247.)];
     [_payHistoryScrollView addSubview:_sendGiftTableView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_sendGiftTableView superView:_payHistoryScrollView];
-    [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/2., _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
+    if (_historyType == HistoryType_Host) {
+        //主播状态
+        self.receiveGiftTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        [_receiveGiftTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_receiveGiftTableView setDataSource:self];
+        [_receiveGiftTableView setDelegate:self];
+        [_receiveGiftTableView setBackgroundColor:JORGBSameCreate(247.)];
+        [_payHistoryScrollView addSubview:_receiveGiftTableView];
+        
+        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_receiveGiftTableView superView:_payHistoryScrollView];
+        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_receiveGiftTableView superView:_payHistoryScrollView];
+        
+        [JOAutoLayout autoLayoutWithLeftView:_receiveGiftTableView distance:0. selfView:_sendGiftTableView superView:_payHistoryScrollView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_sendGiftTableView superView:_payHistoryScrollView];
+        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
+        
+    }else if (_historyType == HistoryType_Guest){
+        //客人状态
+        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_sendGiftTableView superView:_payHistoryScrollView];
+        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
+    }
     
     self.paymentHistoryTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [_paymentHistoryTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -150,20 +160,15 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     
     [JOAutoLayout autoLayoutWithLeftView:_sendGiftTableView distance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
-    [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/2., _payHistoryScrollView.contentSize.height) selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
+    [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
 }
 
 - (void)viewWillLayoutSubviews{
 
     [super viewWillLayoutSubviews];
-    [_payHistoryScrollView setContentSize:JOSize(View_Width(self.view)*2., View_Height(self.view)-kPayHistoryItemViewHeight-64.)];
+    [_payHistoryScrollView setContentSize:JOSize(View_Width(self.view)*itemCount, View_Height(self.view)-kPayHistoryItemViewHeight-kPayHistoryNavbarHeight)];
 }
 
-- (void)setAnimationViewOffsetX:(CGFloat)offsetx{
-    
-    [JOAutoLayout removeAutoLayoutWithLeftSelfView:_animationView superView:_itemView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:offsetx selfView:_animationView superView:_itemView];
-}
 
 - (void)loadViewModel{
 
@@ -227,6 +232,9 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     }else if([tableView isEqual:_paymentHistoryTableView]){
     
         return _payHistoryViewModel.orderListArray.count;
+    }else if ([tableView isEqual:_receiveGiftTableView]){
+    
+        return 1;
     }
     return 1;
 }
@@ -254,6 +262,9 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     }else if([tableView isEqual:_paymentHistoryTableView]){
         
         data =  [_payHistoryViewModel.orderListArray objectAtIndex:indexPath.section];
+    }else if ([tableView isEqual:_receiveGiftTableView]){
+        
+//        
     }
     
     [cell setCellData:data];
@@ -286,7 +297,8 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
     if ([scrollView isEqual:_payHistoryScrollView]) {
-        [self setAnimationViewOffsetX:scrollView.contentOffset.x/2.];
+//        [self setAnimationViewOffsetX:scrollView.contentOffset.x/2.];
+        [_itemsView setAnimationOffsetX:scrollView.contentOffset.x/2.];
     }
     
 }

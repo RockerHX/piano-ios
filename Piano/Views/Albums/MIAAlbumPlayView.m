@@ -117,8 +117,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [JOAutoLayout autoLayoutWithWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width+1 selfView:_remainTimeLabel superView:self];
     
     self.sliderView = [MIAPlaySlider newAutoLayoutView];
-//    [_sliderView setMinimumTrackImage:[[self getImageWithColor:SliderColor size:JOSize(20, 10.) cornerRadius:5.] stretchableImageWithLeftCapWidth:5. topCapHeight:0.] forState:UIControlStateNormal];
-//    [_sliderView setMaximumTrackImage:[[self getImageWithColor:[UIColor grayColor] size:JOSize(20, 10.) cornerRadius:5.] stretchableImageWithLeftCapWidth:5. topCapHeight:0.] forState:UIControlStateNormal];
     [_sliderView setMinimumTrackTintColor:SliderColor];
     [_sliderView setMaximumTrackTintColor:[UIColor grayColor]];
     [_sliderView setValue:0.];
@@ -367,7 +365,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     
     [self preButtonUpdateState];
     [self nextButtonUpdateState];
-    
     [self playButtonUpdateState];
 }
 
