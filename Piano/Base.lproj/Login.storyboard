@@ -216,6 +216,9 @@
                                         <rect key="frame" x="244" y="111" width="56" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="忘记密码"/>
+                                        <connections>
+                                            <segue destination="tWq-dV-jfD" kind="push" id="1NK-hR-B9E"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -452,7 +455,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VDS-4E-M7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="192" y="915"/>
+            <point key="canvasLocation" x="192" y="925"/>
         </scene>
         <!--HXRegisterViewController-->
         <scene sceneID="1Lj-l2-tgu">
@@ -777,7 +780,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3MS-n9-S1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="623" y="915"/>
+            <point key="canvasLocation" x="623" y="925"/>
         </scene>
     </scenes>
     <resources>
