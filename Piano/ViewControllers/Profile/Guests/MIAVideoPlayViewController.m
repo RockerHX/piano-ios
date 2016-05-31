@@ -53,11 +53,26 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 
 - (void)createLodingView{
 
-//    self.videoLoadingView = [UIView newAutoLayoutView];
-//    [_videoLoadingView setBackgroundColor:JORGBCreate(0., 0., 0., 0.7)];
-//    [_videoLoadingView ]
-//    [self.view addSubview:_videoLoadingView];
+    self.videoLoadingView = [UIView newAutoLayoutView];
+    [_videoLoadingView setBackgroundColor:JORGBCreate(0., 0., 0., 0.7)];
+    [[_videoLoadingView layer] setCornerRadius:5.];
+    [[_videoLoadingView layer] setMasksToBounds:YES];
+    [self.view addSubview:_videoLoadingView];
     
+    [JOAutoLayout autoLayoutWithCenterWithView:self.view selfView:_videoLoadingView superView:self.view];
+    [JOAutoLayout autoLayoutWithSize:JOSize(60., 60.) selfView:_videoLoadingView superView:self.view];
+    
+    self.indicatorView = [UIActivityIndicatorView newAutoLayoutView];
+    [_indicatorView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
+//    []
+}
+
+- (void)showLodingView{
+
+}
+
+- (void)hiddenLodingView{
+
 }
 
 - (void)createPlayView{
