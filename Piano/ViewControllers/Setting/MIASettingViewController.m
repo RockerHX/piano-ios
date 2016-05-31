@@ -404,7 +404,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
                     [[HXUserSession session] logout];
                     [HXAlertBanner showWithMessage:@"退出登录成功" tap:nil];
                     
-                    [self.navigationController popViewControllerAnimated:NO];
+                    [self.navigationController popToRootViewControllerAnimated:NO];
                     [self shouldLogout];
                 } else {
                     id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
