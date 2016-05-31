@@ -16,43 +16,63 @@
 @implementation HXMobileLoginViewController
 
 #pragma mark - View Controller Life Cycle
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self loadConfigure];
-//    [self viewConfigure];
+    [self loadConfigure];
+    [self viewConfigure];
 }
 
 #pragma mark - Configure Methods
-//- (void)loadConfigure {
-//    _viewModel = [HXLoginViewModel new];
-//    
-//    RAC(_viewModel.account, mobile) = _mobileTextField.rac_textSignal;
-//    RAC(_viewModel.account, password) = _passWordTextField.rac_textSignal;
-//    RAC(_loginButton, enabled) = [RACSignal combineLatest:@[RACObserve(self, loginAction) , _viewModel.enableLoginSignal] reduce:^id(NSNumber *action, NSNumber *enabled) {
-//        HXLoginAction loginAction = action.boolValue;
-//        switch (loginAction) {
-//            case HXLoginActionCancel: {
-//                return @(YES);
-//                break;
-//            }
-//            case HXLoginActionLogin: {
-//                return @(enabled.boolValue);
-//                break;
-//            }
-//        }
-//    }];
-//}
-//
-//- (void)viewConfigure {
-//    [_mobileTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-//    [_passWordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-//}
+- (void)loadConfigure {
+    RAC(_viewModel.account, mobile) = _mobileTextField.rac_textSignal;
+    RAC(_viewModel.account, password) = _passWordTextField.rac_textSignal;
+    
+    @weakify(self)
+    [_viewModel.enableLoginSignal subscribeNext:^(NSNumber *x) {
+        @strongify(self)
+        BOOL enabled = x.boolValue;
+        self.loginButton.enabled = enabled;
+        [self.loginButton setTitleColor:(enabled ? [UIColor blackColor] : [UIColor grayColor]) forState:UIControlStateNormal];
+    }];
+}
+
+- (void)viewConfigure {
+    [_mobileTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_passWordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+}
+
+#pragma mark - Event Response
+- (IBAction)backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)loginButtonPressed {
+    [self.view endEditing:YES];
+    [self startNormalLoginRequest];
+}
+
+#pragma mark - Private Methods
+- (void)startNormalLoginRequest {
+    [self showHUD];
+    
+    @weakify(self)
+    RACSignal *normalLoginSignal = [_viewModel.normalLoginCommand execute:nil];
+    [normalLoginSignal subscribeNext:^(NSDictionary *data) {
+        @strongify(self)
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loginSuccessHandleWithData:)]) {
+            [self.delegate loginSuccessHandleWithData:data];
+        }
+        [self hiddenHUD];
+    } error:^(NSError *error) {
+        @strongify(self)
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loginFailureHanleWithPrompt:)]) {
+            [self.delegate loginFailureHanleWithPrompt:error.domain];
+        }
+        [self hiddenHUD];
+    } completed:^{
+        ;
+    }];
+}
 
 @end

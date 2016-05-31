@@ -7,12 +7,13 @@
 //
 
 #import "HXLoginViewController.h"
-#import "HXLoginViewModel.h"
 #import "HXUserSession.h"
 #import "HXMobileLoginViewController.h"
 
 
-@interface HXLoginViewController ()
+@interface HXLoginViewController () <
+HXMobileLoginViewControllerDelegate
+>
 @end
 
 
@@ -33,7 +34,15 @@
 
 #pragma mark - Segue Methods
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    _shouldHideNavigationBar = [segue.destinationViewController isKindOfClass:[HXMobileLoginViewController class]];
+    if ([segue.destinationViewController isKindOfClass:[HXMobileLoginViewController class]]) {
+        _shouldHideNavigationBar = YES;
+        
+        HXMobileLoginViewController *mobileLoginViewController = segue.destinationViewController;
+        mobileLoginViewController.delegate = self;
+        mobileLoginViewController.viewModel = _viewModel;
+    } else {
+        _shouldHideNavigationBar = NO;
+    }
 }
 
 #pragma mark - View Controller Life Cycle
@@ -58,7 +67,7 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    _viewModel = [HXLoginViewModel new];
 }
 
 - (void)viewConfigure {
@@ -87,36 +96,20 @@
     }];
 }
 
-- (void)startNormalLoginRequest {
-    [self showHUD];
-    
-    @weakify(self)
-    RACSignal *normalLoginSignal = [_viewModel.normalLoginCommand execute:nil];
-    [normalLoginSignal subscribeNext:^(NSDictionary *data) {
-        @strongify(self)
-        [self loginSuccessHandleWithData:data];
-    } error:^(NSError *error) {
-        @strongify(self)
-        [self loginFailureHanleWithPrompt:error.domain];
-    } completed:^{
-        ;
-    }];
-}
-
+#pragma mark - HXMobileLoginViewControllerDelegate Methods
 - (void)loginSuccessHandleWithData:(NSDictionary *)data {
-    [self hiddenHUD];
-    
     [[HXUserSession session] updateUserWithData:data];
     
     [self dismissLoginSence];
     if (_delegate && [_delegate respondsToSelector:@selector(loginViewController:takeAction:)]) {
         [_delegate loginViewController:self takeAction:HXLoginViewControllerActionLoginSuccess];
     }
+    [self hiddenHUD];
 }
 
 - (void)loginFailureHanleWithPrompt:(NSString *)prompt {
-    [self hiddenHUD];
     [self showBannerWithPrompt:prompt];
+    [self hiddenHUD];
 }
 
 @end
