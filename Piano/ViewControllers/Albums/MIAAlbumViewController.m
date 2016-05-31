@@ -268,7 +268,6 @@
         @strongify(self);
         [self hiddenHUD];
         //更新视图的数据
-        [self.albumTableView reloadData];
         [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.albumViewModel.albumModel.coverUrl]
                                placeholderImage:nil
                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -278,6 +277,7 @@
         [self.albumTableHeadView setAlbumHeadDetailData:self.albumViewModel.albumModel];
         [self.albumTableHeadView setAlbumSongModelData:self.albumViewModel.cellDataArray.firstObject];
         
+        [self.albumTableView reloadData];
         [self addTableViewFooterRefersh];
     }];
 }
