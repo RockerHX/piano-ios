@@ -12,14 +12,7 @@
 #import "HXAlertBanner.h"
 
 
-typedef NS_ENUM(BOOL, HXLoginAction) {
-    HXLoginActionCancel,
-    HXLoginActionLogin,
-};
-
-
 @interface HXLoginViewController ()
-@property (nonatomic, assign) HXLoginAction  loginAction;
 @end
 
 
@@ -34,16 +27,6 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:_shouldHideNavigationBar animated:YES];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidLoad {
@@ -61,166 +44,21 @@ typedef NS_ENUM(BOOL, HXLoginAction) {
     return HXStoryBoardNameLogin;
 }
 
-#pragma mark - Segue Methods
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    _shouldHideNavigationBar = NO;
-}
-
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _viewModel = [HXLoginViewModel new];
-    
-    RAC(_viewModel.account, mobile) = _mobileTextField.rac_textSignal;
-    RAC(_viewModel.account, password) = _passWordTextField.rac_textSignal;
-    RAC(_loginButton, enabled) = [RACSignal combineLatest:@[RACObserve(self, loginAction) , _viewModel.enableLoginSignal] reduce:^id(NSNumber *action, NSNumber *enabled) {
-        HXLoginAction loginAction = action.boolValue;
-        switch (loginAction) {
-            case HXLoginActionCancel: {
-                return @(YES);
-                break;
-            }
-            case HXLoginActionLogin: {
-                return @(enabled.boolValue);
-                break;
-            }
-        }
-    }];
+    ;
 }
 
 - (void)viewConfigure {
-    [_mobileTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [_passWordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    ;
 }
 
 #pragma mark - Event Response
-- (IBAction)backButtonPressed {
-    _shouldHideNavigationBar = YES;
-    switch (_loginAction) {
-        case HXLoginActionLogin: {
-            [self showAnimation];
-            break;
-        }
-        case HXLoginActionCancel: {
-            [self dismissLoginSence];
-            if (_delegate && [_delegate respondsToSelector:@selector(loginViewController:takeAction:)]) {
-                [_delegate loginViewController:self takeAction:HXLoginViewControllerActionDismiss];
-            }
-            break;
-        }
-    }
-}
-
 - (IBAction)weixinButtonPressed {
-    _shouldHideNavigationBar = YES;
-    
     [self startWeiXinLoginRequest];
 }
 
-- (IBAction)loginButtonPressed {
-    [self.view endEditing:YES];
-    _shouldHideNavigationBar = YES;
-    
-    switch (_loginAction) {
-        case HXLoginActionLogin: {
-            [self startNormalLoginRequest];
-            break;
-        }
-        case HXLoginActionCancel: {
-            [self hiddenAnimation];
-            break;
-        }
-    }
-}
-
 #pragma mark - Private Methods
-- (void)hiddenAnimation {
-    __weak __typeof__(self)weakSelf = self;
-    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf hiddenOperationWithAction:HXLoginActionLogin];
-    } completion:^(BOOL finished) {
-        __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf hiddenAnimationCompletedWithAction:HXLoginActionLogin];
-        [strongSelf loginButtonMoveUpAnimation];
-    }];
-}
-
-- (void)showAnimation {
-    __weak __typeof__(self)weakSelf = self;
-    [self loginButtonMoveDownAnimationWithCompletion:^{
-        __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf hiddenAnimationCompletedWithAction:HXLoginActionCancel];
-        [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            __strong __typeof__(self)strongSelf = weakSelf;
-            [strongSelf hiddenOperationWithAction:HXLoginActionCancel];
-        } completion:nil];
-    }];
-}
-
-- (void)hiddenOperationWithAction:(HXLoginAction)action {
-    self.loginAction = action;
-    
-    CGFloat alpha = action ? 0.0f : 1.0f;
-    _logoView.alpha = alpha;
-    _weixinButton.alpha = alpha;
-    _registerView.alpha = alpha;
-}
-
-- (void)hiddenAnimationCompletedWithAction:(HXLoginAction)action {
-    BOOL hidden = action;
-    CGFloat alpha = action ? 1.0f : 0.0f;
-    
-    _logoView.hidden = hidden;
-    _logoView.alpha = alpha;
-    
-    _weixinButton.hidden = hidden;
-    _weixinButton.alpha = alpha;
-    
-    _registerView.hidden = hidden;
-    _registerView.alpha = alpha;
-}
-
-- (void)loginButtonMoveUpAnimation {
-    _loginButtonBottomConstraint.constant = 200.0f;
-    
-    __weak __typeof__(self)weakSelf = self;
-    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf loginButtonMoveOperationWithAction:HXLoginActionLogin];
-    } completion:^(BOOL finished) {
-        __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf loginButtonMoveOperationCompletedWithAction:HXLoginActionLogin];
-    }];
-}
-
-- (void)loginButtonMoveDownAnimationWithCompletion:(void(^)())completion {
-    _loginButtonBottomConstraint.constant = 60.0f;
-    
-    __weak __typeof__(self)weakSelf = self;
-    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf loginButtonMoveOperationWithAction:HXLoginActionCancel];
-    } completion:^(BOOL finished) {
-        __strong __typeof__(self)strongSelf = weakSelf;
-        [strongSelf loginButtonMoveOperationCompletedWithAction:HXLoginActionCancel];
-        completion();
-    }];
-}
-
-- (void)loginButtonMoveOperationWithAction:(HXLoginAction)action {
-    _loginView.hidden = action ? NO : YES;
-    [_loginButton setTitle:(action ? @"登录" : @"Mia账号登录") forState:UIControlStateNormal];
-    [self.view layoutIfNeeded];
-}
-
-- (void)loginButtonMoveOperationCompletedWithAction:(HXLoginAction)action {
-    __weak __typeof__(self)weakSelf = self;
-    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        __strong __typeof__(self)strongSelf = weakSelf;
-        strongSelf.loginView.alpha = action ? 1.0f : 0.0f;
-    } completion:nil];
-}
-
 - (void)startWeiXinLoginRequest {
     [self showHUD];
     
