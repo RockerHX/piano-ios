@@ -43,7 +43,16 @@ HXLoginViewControllerDelegate
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
+    [self.navigationController setNavigationBarHidden:_shouldHiddenNavigationBar animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     switch ([HXUserSession session].state) {
         case HXUserStateLogout: {
@@ -55,12 +64,6 @@ HXLoginViewControllerDelegate
             break;
         }
     }
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:_shouldHiddenNavigationBar animated:YES];
 }
 
 - (void)viewDidLoad {
