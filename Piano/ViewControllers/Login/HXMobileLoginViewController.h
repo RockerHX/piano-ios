@@ -17,11 +17,13 @@
 
 @property (weak, nonatomic) IBOutlet          id  <HXMobileLoginViewControllerDelegate>delegate;
 
+@property (weak, nonatomic) IBOutlet UIImageView *bgView;
 @property (weak, nonatomic) IBOutlet UITextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
 @property (weak, nonatomic) IBOutlet    UIButton *loginButton;
 
 @property (nonatomic, strong) HXLoginViewModel *viewModel;
+@property (nonatomic, strong)          UIImage *bgImage;
 
 - (IBAction)backButtonPressed;
 - (IBAction)loginButtonPressed;

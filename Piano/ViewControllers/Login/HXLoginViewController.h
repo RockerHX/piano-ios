@@ -30,6 +30,7 @@ typedef NS_ENUM(NSUInteger, HXLoginViewControllerAction) {
 
 @property (weak, nonatomic) IBOutlet id  <HXLoginViewControllerDelegate>delegate;
 
+@property (weak, nonatomic) IBOutlet UIImageView *bgView;
 @property (weak, nonatomic) IBOutlet    UIButton *weixinButton;
 @property (weak, nonatomic) IBOutlet    UIButton *mobileButton;
 @property (weak, nonatomic) IBOutlet      UIView *registerView;

@@ -130,6 +130,7 @@
                     <navigationItem key="navigationItem" id="25R-DE-tx6"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bgView" destination="SJc-6Q-mb8" id="gES-D4-Z6J"/>
                         <outlet property="mobileButton" destination="TFN-mw-K2y" id="FVa-7x-1cX"/>
                         <outlet property="registerView" destination="ec2-Wv-1IY" id="cgR-Eb-jFI"/>
                         <outlet property="weixinButton" destination="61s-lC-Toq" id="Rx6-V5-5cT"/>
@@ -274,6 +275,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="QWG-U9-iYX"/>
                     <connections>
+                        <outlet property="bgView" destination="E1U-fh-QmC" id="uac-uf-mv4"/>
                         <outlet property="loginButton" destination="MIh-Ry-QJG" id="klC-bg-YDt"/>
                         <outlet property="mobileTextField" destination="xj0-a2-zly" id="dse-RO-hUE"/>
                         <outlet property="passWordTextField" destination="ix2-Dm-vqM" id="9rj-Au-Lrl"/>

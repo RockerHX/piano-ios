@@ -8,6 +8,7 @@
 
 #import "HXMobileLoginViewController.h"
 #import "BlocksKit+UIKit.h"
+#import "FXBlurView.h"
 
 
 @interface HXMobileLoginViewController ()
@@ -46,6 +47,8 @@
 - (void)viewConfigure {
     [_mobileTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [_passWordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    
+    _bgView.image = [_bgImage blurredImageWithRadius:10.0f iterations:10.0f tintColor:[UIColor blackColor]];
 }
 
 #pragma mark - Event Response

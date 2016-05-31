@@ -39,6 +39,7 @@ HXMobileLoginViewControllerDelegate
         
         HXMobileLoginViewController *mobileLoginViewController = segue.destinationViewController;
         mobileLoginViewController.delegate = self;
+        mobileLoginViewController.bgImage = _bgView.image;
         mobileLoginViewController.viewModel = _viewModel;
     } else {
         _shouldHideNavigationBar = NO;
