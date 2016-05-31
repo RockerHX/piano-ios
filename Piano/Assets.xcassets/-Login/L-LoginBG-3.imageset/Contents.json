@@ -6,13 +6,13 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "L-LoginLogo@2x.png",
+      "filename" : "L-LoginBG-3@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "L-LoginLogo@3x.png"
+      "filename" : "L-LoginBG-3@3x.png"
     }
   ],
   "info" : {
