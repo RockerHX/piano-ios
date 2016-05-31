@@ -14,7 +14,7 @@
 #import "MIAFontManage.h"
 
 static CGFloat const kGiftImageViewWidth = 50.;//礼物图片的宽度
-static CGFloat const kPayHistoryImageToLabelSpaceDistance = 15.;//礼物与名字的间距大小
+static CGFloat const kPayHistoryImageToLabelSpaceDistance = 11.;//礼物与名字的间距大小
 
 @interface MIAPayHistoryCellView()
 
@@ -44,9 +44,9 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 15.;//礼物与名�
 
     self.giftImageView = [UIImageView newAutoLayoutView];
 //    [_giftImageView setBackgroundColor:[UIColor grayColor]];
-    [_giftImageView setContentMode:UIViewContentModeScaleToFill];
-    [[_giftImageView layer] setCornerRadius:kGiftImageViewWidth/2.];
-    [[_giftImageView layer] setMasksToBounds:YES];
+    [_giftImageView setContentMode:UIViewContentModeScaleAspectFill];
+//    [[_giftImageView layer] setCornerRadius:kGiftImageViewWidth/2.];
+//    [[_giftImageView layer] setMasksToBounds:YES];
     [self addSubview:_giftImageView];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_giftImageView superView:self];
@@ -84,19 +84,18 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 15.;//礼物与名�
 
     if ([data isKindOfClass:[MIASendGiftModel class]]) {
         //礼物
-        
         self.sendGiftModel = nil;
         self.sendGiftModel = data;
         
         [_giftImageView sd_setImageWithURL:[NSURL URLWithString:_sendGiftModel.iconUrl] placeholderImage:nil];
-        
+
         [_nameLabel setText:_sendGiftModel.giftName];
         [_mCountLabel setText:[NSString stringWithFormat:@"-%@M",_sendGiftModel.mcoin]];
         NSString *month = [_sendGiftModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonth];
         NSString *day = [_sendGiftModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterDay];
         [_dateLabel setText:[NSString stringWithFormat:@"%@月%@日",month,day]];
         
-        [JOAutoLayout removeAutoLayoutWithSizeSelfView:_mCountLabel superView:self];
+        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_mCountLabel superView:self];
         [JOAutoLayout autoLayoutWithWidth:[_mCountLabel sizeThatFits:JOMAXSize].width+1 selfView:_mCountLabel superView:self];
         
     }else if([data isKindOfClass:[MIAOrderModel class]]){
@@ -116,6 +115,9 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 15.;//礼物与名�
         
         [JOAutoLayout removeAutoLayoutWithWidthSelfView:_mCountLabel superView:self];
         [JOAutoLayout autoLayoutWithWidth:[_mCountLabel sizeThatFits:JOMAXSize].width+1 selfView:_mCountLabel superView:self];
+        
+        [JOAutoLayout removeAutoLayoutWithLeftSelfView:_nameLabel superView:self];
+        [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_nameLabel superView:self];
         
     }else{
     

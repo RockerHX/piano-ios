@@ -12,7 +12,7 @@
 
 CGFloat const kPayHistoryItemViewHeight = 50.;
 CGFloat const kPayHistoryCellHeight = 70.;
-CGFloat const kPayHistoryCellHeadHeight= 11.;
+CGFloat const kPayHistoryCellHeadHeight= 9.;
 
 @interface MIAPayHistoryViewModel()
 

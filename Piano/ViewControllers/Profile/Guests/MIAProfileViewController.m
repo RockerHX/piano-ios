@@ -74,6 +74,11 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 //16:9 高/宽
 @implementation MIAProfileViewController
 
+- (void)dealloc{
+
+    NSLog(@"MIAProfileViewController release");
+}
+
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
@@ -231,7 +236,15 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
     [_profileHeadView setAttentionButtonState:[headModel.followState boolValue]];
     
-    [_profileTableView reloadData];
+    if ([_profileViewModel.cellDataArray count]) {
+        //
+        [_profileTableView setHidden:NO];
+        [_profileTableView reloadData];
+    }else{
+        
+        [_profileTableView setHidden:YES];
+    }
+//    [_profileTableView reloadData];
     
     
 }
@@ -312,7 +325,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     
     if (profileCellType == MIAProfileCellTypeLive) {
         
-        return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-AlbumIcon"]
+        return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-Live"]
                                                     title:@"正在直播"
                                                  tipTitle:[NSString stringWithFormat:@"%@人观看",_profileViewModel.profileLiveModel.liveViewCount]
                                                     frame:CGRectMake(0., 0., View_Width(self.view), profileTableHeadViewHeight + kBaseCellHeadViewHeight)
@@ -334,7 +347,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
                                             cellColorType:headColorType];
     }else if (profileCellType == MIAProfileCellTypeReplay){
         
-        return  [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-VideoIcon"]
+        return  [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-ReplayIcon"]
                                                      title:@"直播回放"
                                                   tipTitle:nil
                                                      frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)

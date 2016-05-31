@@ -11,8 +11,13 @@
 #import "MIAPayHistoryViewModel.h"
 #import "MIACellManage.h"
 #import "MIAFontManage.h"
+#import "MIANavBarView.h"
+
+static CGFloat const kPayHistoryNavbarHeight = 50.;
 
 @interface MIAPayHistoryViewController()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+
+@property (nonatomic, strong) MIANavBarView *navBarView;
 
 @property (nonatomic, strong) UIButton *leftItemButton;
 @property (nonatomic, strong) UIButton *rightItemButton;
@@ -29,23 +34,38 @@
 
 @implementation MIAPayHistoryViewController
 
-- (void)viewWillAppear:(BOOL)animated{
-
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-}
-
 - (void)loadView{
 
     [super loadView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self setTitle:@"消费记录"];
     
+    [self createNavBarView];
     [self createItemView];
     [self createTableView];
     
     [self loadViewModel];
+}
+
+- (void)createNavBarView{
+
+    self.navBarView = [MIANavBarView newAutoLayoutView];
+    [_navBarView setBackgroundColor:[UIColor whiteColor]];
+    [[_navBarView navBarTitleLabel] setTextColor:[UIColor blackColor]];
+    [_navBarView setTitle:@"消费记录"];
+    [_navBarView setLeftButtonImageName:@"C-BackIcon-Gray"];
+    [_navBarView showBottomLineView];
+    
+    @weakify(self);
+    [_navBarView navBarLeftClickHanlder:^{
+        @strongify(self);
+        [self.navigationController popViewControllerAnimated:YES];
+    } rightClickHandler:nil];
+    [self.view addSubview:_navBarView];
+    
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
+    [JOAutoLayout autoLayoutWithHeight:kPayHistoryNavbarHeight selfView:_navBarView superView:self.view];
 }
 
 - (void)createItemView{
@@ -54,7 +74,7 @@
     [_itemView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:_itemView];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:64. selfView:_itemView superView:self.view];
+    [JOAutoLayout autoLayoutWithTopView:_navBarView distance:0. selfView:_itemView superView:self.view];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_itemView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_itemView superView:self.view];
     [JOAutoLayout autoLayoutWithHeight:kPayHistoryItemViewHeight selfView:_itemView superView:self.view];
@@ -104,14 +124,13 @@
     [_payHistoryScrollView setDelegate:self];
     [self.view addSubview:_payHistoryScrollView];
     
-    [_payHistoryScrollView setContentSize:JOSize(View_Width(self.view)*2., View_Height(self.view)-kPayHistoryItemViewHeight-64.)];
+    [_payHistoryScrollView setContentSize:JOSize(View_Width(self.view)*2., View_Height(self.view)-kPayHistoryItemViewHeight-kPayHistoryNavbarHeight)];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
     [JOAutoLayout autoLayoutWithTopView:_itemView distance:0. selfView:_payHistoryScrollView superView:self.view];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
     
-
     self.sendGiftTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [_sendGiftTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_sendGiftTableView setDataSource:self];
@@ -132,7 +151,6 @@
     [JOAutoLayout autoLayoutWithLeftView:_sendGiftTableView distance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
     [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/2., _payHistoryScrollView.contentSize.height) selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
-
 }
 
 - (void)viewWillLayoutSubviews{
@@ -163,14 +181,11 @@
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
-        
     } completed:^{
     @strongify(self);
         
         [self hiddenHUDWithView:self.sendGiftTableView];
-        
         [self.sendGiftTableView reloadData];
-        
     }];
     
     RACSignal *fetchOrderListSignal = [_payHistoryViewModel.fetchOrderListCommand execute:nil];
@@ -230,13 +245,12 @@
         [cell setCellWidth:View_Width(self.view)];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
+
     id data = nil;
     
     if ([tableView isEqual:_sendGiftTableView]) {
         
         data = [_payHistoryViewModel.sendGiftLsitArray objectAtIndex:indexPath.section];
-        
     }else if([tableView isEqual:_paymentHistoryTableView]){
         
         data =  [_payHistoryViewModel.orderListArray objectAtIndex:indexPath.section];
@@ -264,7 +278,6 @@
 #pragma mark - table delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     
 }
 

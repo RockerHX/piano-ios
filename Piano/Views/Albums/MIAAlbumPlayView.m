@@ -11,6 +11,7 @@
 #import "MusicMgr.h"
 #import "MIASongManage.h"
 #import "MIAFontManage.h"
+#import "MIAPlaySlider.h"
 
 #define SliderColor JORGBCreate(246., 28., 41., 1.)
 
@@ -34,7 +35,7 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
 
 @property (nonatomic, strong) UIButton *playButton;
 @property (nonatomic, strong) UILabel *startTimeLabel;
-@property (nonatomic, strong) UISlider *sliderView;
+@property (nonatomic, strong) MIAPlaySlider *sliderView;
 @property (nonatomic, strong) UILabel *remainTimeLabel;
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) UIButton *preButton;
@@ -115,14 +116,16 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_remainTimeLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width+1 selfView:_remainTimeLabel superView:self];
     
-    self.sliderView = [UISlider newAutoLayoutView];
-    [_sliderView setMinimumTrackImage:[[self getImageWithColor:SliderColor size:JOSize(20, 10.) cornerRadius:5.] stretchableImageWithLeftCapWidth:5. topCapHeight:0.] forState:UIControlStateNormal];
-    [_sliderView setMaximumTrackImage:[[self getImageWithColor:[UIColor grayColor] size:JOSize(20, 10.) cornerRadius:5.] stretchableImageWithLeftCapWidth:5. topCapHeight:0.] forState:UIControlStateNormal];
+    self.sliderView = [MIAPlaySlider newAutoLayoutView];
+//    [_sliderView setMinimumTrackImage:[[self getImageWithColor:SliderColor size:JOSize(20, 10.) cornerRadius:5.] stretchableImageWithLeftCapWidth:5. topCapHeight:0.] forState:UIControlStateNormal];
+//    [_sliderView setMaximumTrackImage:[[self getImageWithColor:[UIColor grayColor] size:JOSize(20, 10.) cornerRadius:5.] stretchableImageWithLeftCapWidth:5. topCapHeight:0.] forState:UIControlStateNormal];
+    [_sliderView setMinimumTrackTintColor:SliderColor];
+    [_sliderView setMaximumTrackTintColor:[UIColor grayColor]];
     [_sliderView setValue:0.];
     [_sliderView setMinimumValue:0.];
     [_sliderView setMaximumValue:1.];
     [_sliderView addTarget:self action:@selector(sliderAction) forControlEvents:UIControlEventValueChanged];
-    [_sliderView setThumbImage:[self getImageWithColor:SliderColor size:JOSize(20, 20.) cornerRadius:10.] forState:UIControlStateNormal];
+    [_sliderView setThumbImage:[UIImage imageNamed:@"AD-SliderThumb"] forState:UIControlStateNormal];
     [self addSubview:_sliderView];
     
     [JOAutoLayout autoLayoutWithTopYView:_playButton distance:5. selfView:_sliderView superView:self];
@@ -298,7 +301,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     if (_songBlock) {
         _songBlock([[MusicMgr standard] currentItem],[[MusicMgr standard] currentIndex]);
     }
-    
 }
 
 - (void)preSongAction{
@@ -335,7 +337,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
             
             songmModel.mp3Url = [NSString stringWithFormat:@"file://%@",[[MIASongManage shareSongManage] songPathWithURLString:mp3URLString]];
         }
-        
     }
     
     [self firstPlayUpdateState];
@@ -378,22 +379,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
 - (NSString *)getHostObject{
 
     return [NSString stringWithFormat:@"%@%@",kAlbumPlayHostKey,((HXSongModel *)[_songArray firstObject]).albumID];
-}
-
-#pragma mark - 图片的处理
-
-- (UIImage *)getImageWithColor:(UIColor *)color size:(CGSize )size cornerRadius:(CGFloat )radius{
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    [imageView setBackgroundColor:color];
-    [[imageView layer] setCornerRadius:radius];
-    [[imageView layer] setMasksToBounds:YES];
-    
-    UIGraphicsBeginImageContext(imageView.frame.size);
-    [imageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
 }
 
 @end

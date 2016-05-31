@@ -216,7 +216,8 @@
         
         self.playSongIndex = songIndex;
         
-        [self.albumTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+        [self.albumTableView reloadData];
+//        [self.albumTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     }];
     [_albumTableHeadView setFrame:CGRectMake(0., 0., View_Width(self.view), [_albumTableHeadView albumDetailViewHeight])];
     
@@ -292,7 +293,6 @@
     [sendCommentSingnal subscribeError:^(NSError *error) {
         
         [self hiddenHUD];
-        
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
@@ -389,7 +389,8 @@
     
     if (indexPath.section == 0) {
         //歌曲Section
-        if (indexPath.row == _playSongIndex && _playSongModel && [_playSongModel isEqual:[[_albumViewModel.cellDataArray objectAtIndex:indexPath.section] objectAtIndex:_playSongIndex]]) {
+
+        if (indexPath.row == _playSongIndex && _playSongModel) {
             [(MIAAlbumSongCell *)cell setSongPlayState:YES];
         }else{
         

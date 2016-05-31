@@ -6,13 +6,13 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "PR-Video@2x.png",
+      "filename" : "AD-Download@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "PR-Video@3x.png"
+      "filename" : "AD-Download@3x.png"
     }
   ],
   "info" : {

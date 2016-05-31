@@ -61,7 +61,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [JOAutoLayout autoLayoutWithCenterWithView:_indexLabel selfView:_playStateImageView superView:self];
     
     self.downloadStateImageView = [UIImageView newAutoLayoutView];
-    [_downloadStateImageView setBackgroundColor:[UIColor grayColor]];
+    [_downloadStateImageView setImage:[UIImage imageNamed:@"AD-NoDownload"]];
     [_downloadStateImageView setHidden:YES];
     [self addSubview:_downloadStateImageView];
     
@@ -95,7 +95,6 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:separateLineView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:separateLineView superView:self];
     [JOAutoLayout autoLayoutWithHeight:0.5 selfView:separateLineView superView:self];
-    
 }
 
 - (void)changeSongPlayState:(BOOL)state{
@@ -136,13 +135,11 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
         //更改歌曲存在状态标记的图片
         if ([[MIASongManage shareSongManage] songIsExistWithURLString:_songModel.mp3Url]) {
             
-            [_downloadStateImageView setBackgroundColor:[UIColor blueColor]];
-            
+            [_downloadStateImageView setImage:[UIImage imageNamed:@"AD-Download"]];
         }else{
         
-            [_downloadStateImageView setBackgroundColor:[UIColor grayColor]];
+            [_downloadStateImageView setImage:[UIImage imageNamed:@"AD-NoDownload"]];
         }
-        
     }else{
     
         [JOFException exceptionWithName:@"MIAAlbumSongView exception!" reason:@"data必须是MIASongModel类型"];

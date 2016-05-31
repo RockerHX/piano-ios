@@ -79,13 +79,11 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
     [self createContentView];
     
     [self loadViewModel];
-    
 }
 
 - (void)createNavBarView{
 
     self.navBarView = [MIANavBarView newAutoLayoutView];
-//    [_navBarView setTitle:@""]
     [_navBarView setBackgroundColor:[UIColor whiteColor]];
     [[_navBarView navBarTitleLabel] setTextColor:[UIColor blackColor]];
     [_navBarView setLeftButtonImageName:@"C-BackIcon-Gray"];
@@ -111,7 +109,6 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
             //意见反馈
             [self executeFeedbackCommand];
         }
-        
     }];
     [self.view addSubview:_navBarView];
     
@@ -125,10 +122,9 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
 
     self.contentView = [UIView newAutoLayoutView];
     
-    
     if (_contentType == SettingContentType_Nick) {
-        //初始化TextField
         
+        //初始化TextField
         [_navBarView setTitle:@"昵称"];
         [_navBarView setRightButtonTitle:@"保存" titleColor:[UIColor blackColor]];
         
@@ -155,7 +151,6 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [JOAutoLayout autoLayoutWithRightXView:_contentView distance:-20. selfView:_contentTextField superView:_contentView];
         [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_contentTextField superView:_contentView];
         [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_contentTextField superView:_contentView];
-        
         
     }else if(_contentType == SettingContentType_Summary ){
         //简介
@@ -251,7 +246,6 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentNavBarHeight + kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
         [JOAutoLayout autoLayoutWithHeight:kSettingContentTextViewHeight + feedbackLaelHeight + kSettingContentTextFieldHeight + contactLabelHeight+10  selfView:_contentView superView:self.view];
         
-        
     }else if (_contentType == SettingContentType_Gender){
         //性别
         [_navBarView setTitle:@"性别"];
@@ -266,7 +260,6 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [self.view addSubview:_contentTableView];
         
         [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(kContentNavBarHeight, 0., 0., 0.) selfView:_contentTableView superView:self.view];
-        
     }
 }
 
@@ -303,7 +296,6 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
             if (![error.domain isEqualToString:RACCommandErrorDomain]) {
                 [self showBannerWithPrompt:error.domain];
             }
-            
         } completed:^{
         @strongify(self);
             [self hiddenHUD];
@@ -314,17 +306,12 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
             
             [self showBannerWithPrompt:@"昵称修改成功"];
             [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
-//            [self showAlertWithMessage:@"昵称修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-//                
-//                
-//            }];
         }];
         
     }else{
         
         [HXAlertBanner showWithMessage:@"昵称不能为空" tap:nil];
     }
-    
 }
 
 - (void)executeChangeGenderCommand{
@@ -356,11 +343,6 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         
         [self showBannerWithPrompt:@"性别修改成功"];
         [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
-        
-//        [self showAlertWithMessage:@"性别修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-//            [self backAction];
-//            
-//        }];
     }];
 }
 
@@ -382,22 +364,12 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
             if (![error.domain isEqualToString:RACCommandErrorDomain]) {
                 [self showBannerWithPrompt:error.domain];
             }
-            
         } completed:^{
         @strongify(self);
             [self hiddenHUD];
-            
-            
             [self showBannerWithPrompt:@"简介修改成功"];
             [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
-            
-//            [self showAlertWithMessage:@"简介修改成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-//                [self performSelector:@selector(backAction) withObject:nil afterDelay:0.25];
-//                
-//            }];
-
         }];
-        
     }else{
         
         [HXAlertBanner showWithMessage:@"简介不能为空" tap:nil];
@@ -422,17 +394,12 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
                 if (![error.domain isEqualToString:RACCommandErrorDomain]) {
                     [self showBannerWithPrompt:error.domain];
                 }
-
         } completed:^{
         @strongify(self);
             [self hiddenHUD];
-            
-            [self showAlertWithMessage:@"意见提交成功" handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-               [self performSelector:@selector(backAction) withObject:nil afterDelay:0.25];
-                
-            }];
+            [self showBannerWithPrompt:@"意见提交成功"];
+            [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
         }];
-        
     }else{
         
         [HXAlertBanner showWithMessage:@"意见不能为空" tap:nil];

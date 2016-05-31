@@ -30,6 +30,7 @@
 		422497D31CF4664A008F8A55 /* JODataRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497CD1CF4664A008F8A55 /* JODataRequestConfig.m */; };
 		422497D41CF4664A008F8A55 /* JOFileDownloadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497CF1CF4664A008F8A55 /* JOFileDownloadConfig.m */; };
 		422497D51CF4664A008F8A55 /* JOFileUploadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 422497D11CF4664A008F8A55 /* JOFileUploadConfig.m */; };
+		4250D3E91CFD672400679251 /* MIAItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4250D3E81CFD672400679251 /* MIAItemsView.m */; };
 		42529DFD1CF699D9001F594B /* MIASettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529DFC1CF699D9001F594B /* MIASettingViewModel.m */; };
 		42529E001CF69D90001F594B /* MIASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529DFF1CF69D90001F594B /* MIASettingViewController.m */; };
 		42529E031CF6E1A3001F594B /* MIASettingContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529E021CF6E1A3001F594B /* MIASettingContentViewController.m */; };
@@ -389,6 +390,8 @@
 		422497D01CF4664A008F8A55 /* JOFileUploadConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOFileUploadConfig.h; sourceTree = "<group>"; };
 		422497D11CF4664A008F8A55 /* JOFileUploadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOFileUploadConfig.m; sourceTree = "<group>"; };
 		422497D61CF468DF008F8A55 /* JOHttpRequestType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOHttpRequestType.h; sourceTree = "<group>"; };
+		4250D3E71CFD672400679251 /* MIAItemsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAItemsView.h; sourceTree = "<group>"; };
+		4250D3E81CFD672400679251 /* MIAItemsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAItemsView.m; sourceTree = "<group>"; };
 		42529DFB1CF699D9001F594B /* MIASettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingViewModel.h; sourceTree = "<group>"; };
 		42529DFC1CF699D9001F594B /* MIASettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingViewModel.m; sourceTree = "<group>"; };
 		42529DFE1CF69D90001F594B /* MIASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingViewController.h; sourceTree = "<group>"; };
@@ -1284,6 +1287,8 @@
 				42529E081CF70C27001F594B /* MIANavBarView.m */,
 				42B857751CF853B7004B296A /* MIAPlaySlider.h */,
 				42B857761CF853B7004B296A /* MIAPlaySlider.m */,
+				4250D3E71CFD672400679251 /* MIAItemsView.h */,
+				4250D3E81CFD672400679251 /* MIAItemsView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -3161,6 +3166,7 @@
 				420BBB591CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */,
 				CD7960F91CBE594C004CC661 /* HXPathManager.m in Sources */,
 				CD7224981CF8254400C8EC6B /* HXGiftManager.m in Sources */,
+				4250D3E91CFD672400679251 /* MIAItemsView.m in Sources */,
 				CDDC38291CEAF0EC00328A17 /* HXSelectedAlbumViewController.m in Sources */,
 				CD7960FA1CBE594C004CC661 /* MIAButton.m in Sources */,
 				CD7960FB1CBE594C004CC661 /* HXReplayViewController.m in Sources */,
