@@ -7,12 +7,9 @@
 //
 
 #import "UIViewController+HXClass.h"
-#import "HXShowRechargeDelegate.h"
 
 
 @interface HXLiveGiftViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet       id  <HXShowRechargeDelegate>rechargeDelegate;
 
 @property (weak, nonatomic) IBOutlet   UIView *tapView;
 @property (weak, nonatomic) IBOutlet   UIView *containerView;
@@ -22,9 +19,7 @@
 @property (weak, nonatomic) IBOutlet  UILabel *balanceCountLabel;
 @property (weak, nonatomic) IBOutlet  UILabel *countLabel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *conianerHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *controlContainerHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *giftConianerHeightConstraint;
 
 @property (nonatomic, strong) NSString *roomID;
 

@@ -21,12 +21,13 @@
 #import "HXLiveAlbumView.h"
 #import "HXLiveGiftViewController.h"
 #import "HXLiveRewardViewController.h"
-#import "HXShowRechargeDelegate.h"
 #import "MIAPaymentViewController.h"
 #import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
 #import "MiaAPIHelper.h"
 #import "HXDynamicGiftView.h"
+#import "HXModalTransitionDelegate.h"
+#import "HXStaticGiftView.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -35,8 +36,7 @@ HXLiveAnchorViewDelegate,
 HXWatchLiveBottomBarDelegate,
 HXLiveBarrageContainerViewControllerDelegate,
 HXLiveEndViewControllerDelegate,
-HXLiveAlbumViewDelegate,
-HXShowRechargeDelegate
+HXLiveAlbumViewDelegate
 >
 @end
 
@@ -45,6 +45,8 @@ HXShowRechargeDelegate
     HXLiveBarrageContainerViewController *_barrageContainer;
     HXLiveEndViewController *_endViewController;
     HXWatchLiveViewModel *_viewModel;
+    
+    HXModalTransitionDelegate *_modalTransitionDelegate;
 }
 
 #pragma mark - Class Methods
@@ -96,6 +98,7 @@ HXShowRechargeDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    _modalTransitionDelegate = [HXModalTransitionDelegate new];
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
     [self signalLink];
 }
@@ -123,7 +126,11 @@ HXShowRechargeDelegate
         [self updateAlbumView];
     }];
     [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
-        [_giftView animationWithGift:gift];
+        if (gift.type == HXGiftTypeStatic) {
+            [_staticGiftView animationWithGift:gift];
+        } else if (gift.type == HXGiftTypeDynamic) {
+            [_dynamicGiftView animationWithGift:gift];
+        }
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
@@ -344,10 +351,10 @@ HXShowRechargeDelegate
         }
         case HXWatchBottomBarActionGift: {
             HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
-            giftViewController.rechargeDelegate = self;
             giftViewController.roomID = _roomID;
-            [self addChildViewController:giftViewController];
-            [self.view addSubview:giftViewController.view];
+            giftViewController.transitioningDelegate = _modalTransitionDelegate;
+            giftViewController.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:giftViewController animated:YES completion:nil];
             break;
         }
     }
@@ -373,18 +380,12 @@ HXShowRechargeDelegate
     HXAlbumModel *album = _viewModel.model.album;
     if (album) {
         HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
-        rewardViewController.rechargeDelegate = self;
         rewardViewController.roomID = _roomID;
         rewardViewController.album = album;
-        [rewardViewController showOnViewController:self];
+        rewardViewController.transitioningDelegate = _modalTransitionDelegate;
+        rewardViewController.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:rewardViewController animated:YES completion:nil];
     }
-}
-
-#pragma mark - HXShowRechargeDelegate Methods
-- (void)shouldShowRechargeSence {
-    MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
-    paymentViewController.present = YES;
-    [self presentViewController:paymentViewController animated:YES completion:nil];
 }
 
 @end

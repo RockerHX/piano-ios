@@ -30,19 +30,11 @@ typedef NS_ENUM(NSUInteger, HXLoginViewControllerAction) {
 
 @property (weak, nonatomic) IBOutlet id  <HXLoginViewControllerDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet UIImageView *logoView;
-@property (weak, nonatomic) IBOutlet      UIView *loginView;
+@property (weak, nonatomic) IBOutlet UIImageView *bgView;
 @property (weak, nonatomic) IBOutlet    UIButton *weixinButton;
-@property (weak, nonatomic) IBOutlet    UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet    UIButton *mobileButton;
 @property (weak, nonatomic) IBOutlet      UIView *registerView;
 
-@property (weak, nonatomic) IBOutlet UITextField *mobileTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginButtonBottomConstraint;
-
-- (IBAction)backButtonPressed;
 - (IBAction)weixinButtonPressed;
-- (IBAction)loginButtonPressed;
 
 @end

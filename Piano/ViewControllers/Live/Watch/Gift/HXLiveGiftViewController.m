@@ -15,6 +15,7 @@
 #import "HXLiveGiftContainerViewController.h"
 #import "KxMenu.h"
 #import "HXGiftManager.h"
+#import "MIAPaymentViewController.h"
 
 
 @interface HXLiveGiftViewController ()
@@ -42,10 +43,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self popUp];
+    _giftConianerHeightConstraint.constant = _container.contianerHeight;
     [[HXGiftManager manager] fetchGiftList:^(HXGiftManager *manager) {
         _giftList = manager.giftList;
-        _conianerHeightConstraint.constant = _container.contianerHeight;
         _container.gifts = _giftList;
     } failure:^(NSString *prompt) {
         [self showBannerWithPrompt:prompt];
@@ -123,32 +123,18 @@
     _balanceCountLabel.text = [MIAMCoinManage shareMCoinManage].mCoin;
 }
 
-- (void)popUp {
-    _bottomConstraint.constant = _controlContainerHeightConstraint.constant + _container.contianerHeight;
-    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
-
 - (void)dismiss {
-    NSInteger selectedIndex = _container.selectedIndex;
-    if (selectedIndex >= 0) {
-        _giftList[selectedIndex].selected = NO;
-    }
-    
-    _bottomConstraint.constant = 0.0f;
-    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
+    [_giftList enumerateObjectsUsingBlock:^(HXGiftModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.selected = NO;
     }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)showRechargeSence {
-    if (_rechargeDelegate && [_rechargeDelegate respondsToSelector:@selector(shouldShowRechargeSence)]) {
-        [_rechargeDelegate shouldShowRechargeSence];
-    }
+    MIAPaymentViewController *paymentViewController = [MIAPaymentViewController new];
+    paymentViewController.present = YES;
+    [self presentViewController:paymentViewController animated:YES completion:nil];
 }
 
 - (void)popCountMenu {

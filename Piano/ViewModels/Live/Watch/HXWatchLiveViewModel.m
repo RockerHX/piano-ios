@@ -180,6 +180,7 @@
     HXGiftModel *gift = [[HXGiftManager manager] giftWithID:barrage.giftID];
     gift.nickName = barrage.nickName;
     gift.avatarUrl = barrage.avatarUrl;
+    gift.count = barrage.giftCount;
     [_giftSignal sendNext:gift];
 }
 

@@ -11,6 +11,7 @@
 
 @class HXLiveAnchorView;
 @class HXLiveAlbumView;
+@class HXStaticGiftView;
 @class HXDynamicGiftView;
 
 
@@ -21,7 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet  HXLiveAnchorView *anchorView;
 @property (weak, nonatomic) IBOutlet   HXLiveAlbumView *albumView;
-@property (weak, nonatomic) IBOutlet HXDynamicGiftView *giftView;
+@property (weak, nonatomic) IBOutlet  HXStaticGiftView *staticGiftView;
+@property (weak, nonatomic) IBOutlet HXDynamicGiftView *dynamicGiftView;
 
 @property (nonatomic, strong) NSString *roomID;
 

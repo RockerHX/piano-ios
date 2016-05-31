@@ -43,24 +43,30 @@ HXLoginViewControllerDelegate
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
-    
-    switch ([HXUserSession session].state) {
-        case HXUserStateLogout: {
-            [self shouldShowLoginSence];
-            break;
-        }
-        case HXUserStateLogin: {
-            [self autoLogin];
-            break;
-        }
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
     [self.navigationController setNavigationBarHidden:_shouldHiddenNavigationBar animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        switch ([HXUserSession session].state) {
+            case HXUserStateLogout: {
+                [self shouldShowLoginSenceWithAnimation:NO];
+                break;
+            }
+            case HXUserStateLogin: {
+                [self autoLogin];
+                break;
+            }
+        }
+    });
 }
 
 - (void)viewDidLoad {
@@ -91,7 +97,7 @@ HXLoginViewControllerDelegate
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidAutoReconnectFailed:) name:WebSocketMgrNotificationDidAutoReconnectFailed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationWebSocketDidCloseWithCode:) name:WebSocketMgrNotificationDidCloseWithCode object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldShowLoginSence) name:kLoginNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldShowLoginSence) name:kLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutCompleted) name:kLogoutNotification object:nil];
 }
 
@@ -110,15 +116,15 @@ HXLoginViewControllerDelegate
 }
 
 #pragma mark - Private Methods
-- (void)shouldShowLoginSence {
+- (void)shouldShowLoginSenceWithAnimation:(BOOL)animation {
     UINavigationController *loginNavigationController = [HXLoginViewController navigationControllerInstance];
     HXLoginViewController *loginViewController = loginNavigationController.viewControllers.firstObject;
     loginViewController.delegate = self;
-    [self presentViewController:loginNavigationController animated:NO completion:nil];
+    [self presentViewController:loginNavigationController animated:animation completion:nil];
 }
 
 - (void)logoutCompleted {
-    ;
+    [self shouldShowLoginSenceWithAnimation:YES];
 }
 
 #pragma mark - Socket
@@ -197,7 +203,7 @@ HXLoginViewControllerDelegate
             break;
         }
         case HXLoginViewControllerActionLoginSuccess: {
-            ;
+            [_discoveryContainerViewController startFetchList];
             break;
         }
     }

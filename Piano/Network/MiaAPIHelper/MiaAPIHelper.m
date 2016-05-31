@@ -75,7 +75,8 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[dictValues setValue:nickName forKey:MiaAPIKey_NickName];
 	[dictValues setValue:sex forKey:MiaAPIKey_Sex];
 	[dictValues setValue:type forKey:MiaAPIKey_From];
-	[dictValues setValue:avatar forKey:MiaAPIKey_HeadImageURL];
+    [dictValues setValue:avatar forKey:MiaAPIKey_HeadImageURL];
+    [dictValues setValue:[self getUUID] forKey:MiaAPIKey_GUID];
 
 	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostThirdLogin
 															   parameters:dictValues
@@ -92,7 +93,8 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[dictValues setValue:mobile forKey:MiaAPIKey_PhoneNumber];
 	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_Dev];
 	[dictValues setValue:MiaAPIDefaultIMEI forKey:MiaAPIKey_IMEI];
-	[dictValues setValue:passwordHash forKey:MiaAPIKey_Pwd];
+    [dictValues setValue:passwordHash forKey:MiaAPIKey_Pwd];
+    [dictValues setValue:[self getUUID] forKey:MiaAPIKey_GUID];
 
 	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostLogin
 															   parameters:dictValues
@@ -107,7 +109,8 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 			timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
 	[dictValues setValue:uID forKey:MiaAPIKey_UID];
-	[dictValues setValue:token forKey:MiaAPIKey_Token];
+    [dictValues setValue:token forKey:MiaAPIKey_Token];
+    [dictValues setValue:[self getUUID] forKey:MiaAPIKey_GUID];
 
 	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostSession
 															   parameters:dictValues
@@ -152,7 +155,8 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 	[dictValues setValue:phoneNumber forKey:MiaAPIKey_PhoneNumber];
 	[dictValues setValue:scode forKey:MiaAPIKey_SCode];
 	[dictValues setValue:nickName forKey:MiaAPIKey_Nick];
-	[dictValues setValue:passwordHash forKey:MiaAPIKey_Password];
+    [dictValues setValue:passwordHash forKey:MiaAPIKey_Password];
+    [dictValues setValue:[self getUUID] forKey:MiaAPIKey_GUID];
 
 	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_PostRegister
 															   parameters:dictValues

@@ -7,7 +7,6 @@
 //
 
 #import "UIViewController+HXClass.h"
-#import "HXShowRechargeDelegate.h"
 
 
 @class HXAlbumModel;
@@ -15,8 +14,6 @@
 
 
 @interface HXLiveRewardViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet      id  <HXShowRechargeDelegate>rechargeDelegate;
 
 @property (weak, nonatomic) IBOutlet  UIView *tapView;
 @property (weak, nonatomic) IBOutlet  UIView *containerView;
@@ -32,13 +29,9 @@
 
 @property (weak, nonatomic) IBOutlet HXSectorSlider *sectorSlider;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
-
 @property (nonatomic, strong)     NSString *roomID;
 @property (nonatomic, strong) HXAlbumModel *album;
 
 - (IBAction)rewardButtonPressed;
-
-- (void)showOnViewController:(UIViewController *)viewController;
 
 @end
