@@ -9,7 +9,7 @@
 #import "HXLoginViewController.h"
 #import "HXLoginViewModel.h"
 #import "HXUserSession.h"
-#import "HXAlertBanner.h"
+#import "HXMobileLoginViewController.h"
 
 
 @interface HXLoginViewController ()
@@ -22,6 +22,20 @@
     HXLoginViewModel *_viewModel;
 }
 
+#pragma mark - Class Methods
++ (NSString *)navigationControllerIdentifier {
+    return @"HXLoginNavigationController";
+}
+
++ (HXStoryBoardName)storyBoardName {
+    return HXStoryBoardNameLogin;
+}
+
+#pragma mark - Segue Methods
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    _shouldHideNavigationBar = [segue.destinationViewController isKindOfClass:[HXMobileLoginViewController class]];
+}
+
 #pragma mark - View Controller Life Cycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -29,19 +43,17 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:_shouldHideNavigationBar animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self loadConfigure];
     [self viewConfigure];
-}
-
-+ (NSString *)navigationControllerIdentifier {
-    return @"HXLoginNavigationController";
-}
-
-+ (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameLogin;
 }
 
 #pragma mark - Configure Methods
