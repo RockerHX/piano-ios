@@ -11,7 +11,7 @@
 #import "MIAOrderModel.h"
 
 CGFloat const kPayHistoryItemViewHeight = 50.;
-CGFloat const kPayHistoryCellHeight = 70.;
+CGFloat const kPayHistoryCellHeight = 81.;
 CGFloat const kPayHistoryCellHeadHeight= 9.;
 
 @interface MIAPayHistoryViewModel()

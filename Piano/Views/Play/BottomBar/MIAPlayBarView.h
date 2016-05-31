@@ -42,7 +42,7 @@ typedef void (^PlayBarActionBlock)(PlayBarActionType type);
 /**
  *  滑动到那个时间点播放.
  *
- *  @return 滑动到的时间点.
+ *  @return 滑动到的时间点.(秒)
  */
 - (CGFloat)currentPlayTime;
 
