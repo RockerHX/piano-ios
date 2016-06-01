@@ -45,7 +45,8 @@ typedef NS_ENUM(NSUInteger, HXHostProfileContainerAction) {
 @protocol HXHostProfileContainerDelegate <NSObject>
 
 @required
-- (void)container:(HXHostProfileContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model;
+- (void)container:(HXHostProfileContainerViewController *)container showAttentionAnchor:(HXAttentionModel *)anchor;
+- (void)container:(HXHostProfileContainerViewController *)container showRewardAlbum:(HXAlbumModel *)album;
 - (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXHostProfileContainerAction)action;
 
 @end

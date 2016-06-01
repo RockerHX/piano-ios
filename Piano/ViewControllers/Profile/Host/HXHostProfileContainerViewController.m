@@ -173,14 +173,16 @@ HXMeRewardAlbumContainerCellDelegate
 
 #pragma mark - HXMeAttentionContainerCellDelegate Methods
 - (void)attentionCell:(HXMeAttentionContainerCell *)cell selectedAttention:(HXAttentionModel *)attention {
-    if (_delegate && [_delegate respondsToSelector:@selector(container:hanleAttentionAnchor:)]) {
-        [_delegate container:self hanleAttentionAnchor:attention];
+    if (_delegate && [_delegate respondsToSelector:@selector(container:showAttentionAnchor:)]) {
+        [_delegate container:self showAttentionAnchor:attention];
     }
 }
 
 #pragma mark - HXMeRewardAlbumContainerCellDelegate Methods
 - (void)rewardAlbumCell:(HXMeRewardAlbumContainerCell *)cell selectedAlbum:(HXAlbumModel *)album {
-    ;
+    if (_delegate && [_delegate respondsToSelector:@selector(container:showRewardAlbum:)]) {
+        [_delegate container:self showRewardAlbum:album];
+    }
 }
 
 @end

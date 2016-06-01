@@ -17,6 +17,7 @@
 #import "MIAPaymentViewController.h"
 #import "A2BlockInvocation.h"
 #import "MIAPayHistoryViewController.h"
+#import "MIAAlbumViewController.h"
 
 
 @interface HXHostProfileViewController () <
@@ -104,6 +105,31 @@ HXHostProfileContainerDelegate
         [profileViewController setUid:model.uID];
         [self.navigationController pushViewController:profileViewController animated:YES];
     }
+}
+
+- (void)container:(HXHostProfileContainerViewController *)container showAttentionAnchor:(HXAttentionModel *)anchor {
+    if (anchor.live) {
+        if (!anchor.roomID) {
+            [self showBannerWithPrompt:@"直播已结束"];
+            return;
+        }
+        
+        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+        watchLiveViewController.roomID = anchor.roomID;
+        [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+    } else {
+        MIAProfileViewController *profileViewController = [MIAProfileViewController new];
+        [profileViewController setUid:anchor.uID];
+        [self.navigationController pushViewController:profileViewController animated:YES];
+    }
+}
+
+- (void)container:(HXHostProfileContainerViewController *)container showRewardAlbum:(HXAlbumModel *)album {
+    MIAAlbumViewController *albumViewController = [MIAAlbumViewController new];
+    [albumViewController setAlbumUID:album.ID];
+    [albumViewController setRewardType:MIAAlbumRewardTypeMyReward];
+    [self.navigationController pushViewController:albumViewController animated:YES];
 }
 
 - (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXHostProfileContainerAction)action {
