@@ -26,7 +26,9 @@ CGFloat const kPayHistoryCellHeadHeight= 9.;
 
     _sendGiftLsitArray = [NSMutableArray array];
     _orderListArray = [NSMutableArray array];
+    _recevierGiftListArray = [NSMutableArray array];
     
+    [self fetchRecevieGiftListDataCommand];
     [self fetchSendGiftListDataCommand];
     [self fetchOrderListDataCommand];
 }

@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, HistoryType){
-
-    HistoryType_Guest, //客人
-    HistoryType_Host, //主播
-};
-
 @interface MIAPayHistoryViewController : UIViewController
-
-@property (nonatomic, assign) HistoryType historyType;
 
 @end

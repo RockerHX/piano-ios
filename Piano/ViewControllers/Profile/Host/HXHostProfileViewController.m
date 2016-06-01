@@ -138,7 +138,6 @@ HXHostProfileContainerDelegate
         }
         case HXHostProfileContainerActionPurchaseHistory: {
             MIAPayHistoryViewController *payHistoryViewController = [MIAPayHistoryViewController new];
-            [payHistoryViewController setHistoryType:HistoryType_Host];
             [self.navigationController pushViewController:payHistoryViewController animated:YES];
             break;
         }

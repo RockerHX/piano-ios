@@ -11,6 +11,7 @@
 #import "MIAPayHistoryViewModel.h"
 #import "MIACellManage.h"
 #import "MIAFontManage.h"
+#import "HXUserSession.h"
 #import "MIANavBarView.h"
 #import "MIAItemsView.h"
 
@@ -41,11 +42,12 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [super loadView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    if (_historyType == HistoryType_Host) {
-        itemCount = 3;
-    }else if(_historyType == HistoryType_Guest){
-    
+    if ([[HXUserSession session] role] == HXUserRoleNormal) {
+        //非主播
         itemCount = 2;
+    }else if([[HXUserSession session] role] == HXUserRoleAnchor){
+        //主播
+        itemCount = 3;
     }
     
     [self createNavBarView];
@@ -80,7 +82,14 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
 - (void)createItemView{
     
     self.itemsView = [MIAItemsView newAutoLayoutView];
-    [_itemsView setItemArray:@[@"送出礼物",@"充值记录"]];
+    
+    if ([[HXUserSession session] role] == HXUserRoleNormal) {
+        //非主播
+        [_itemsView setItemArray:@[@"送出礼物",@"充值记录"]];
+    }else if([[HXUserSession session] role] == HXUserRoleAnchor){
+        //主播
+        [_itemsView setItemArray:@[@"收到礼物",@"送出礼物",@"充值记录"]];
+    }
     [_itemsView setItemTitleColor:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->color
                         titleFont:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->font];
     [_itemsView setAnimationColor:JORGBCreate(1., 195., 170., 1.)];
@@ -129,7 +138,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_sendGiftTableView setBackgroundColor:JORGBSameCreate(247.)];
     [_payHistoryScrollView addSubview:_sendGiftTableView];
     
-    if (_historyType == HistoryType_Host) {
+    if ([[HXUserSession session] role] == HXUserRoleAnchor) {
         //主播状态
         self.receiveGiftTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         [_receiveGiftTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -145,7 +154,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
         [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_sendGiftTableView superView:_payHistoryScrollView];
         [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
         
-    }else if (_historyType == HistoryType_Guest){
+    }else if ([[HXUserSession session] role] == HXUserRoleNormal){
         //客人状态
         [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_sendGiftTableView superView:_payHistoryScrollView];
         [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
@@ -234,7 +243,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
         return _payHistoryViewModel.orderListArray.count;
     }else if ([tableView isEqual:_receiveGiftTableView]){
     
-        return 1;
+        return _payHistoryViewModel.recevierGiftListArray.count;
     }
     return 1;
 }
@@ -298,7 +307,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
 
     if ([scrollView isEqual:_payHistoryScrollView]) {
 //        [self setAnimationViewOffsetX:scrollView.contentOffset.x/2.];
-        [_itemsView setAnimationOffsetX:scrollView.contentOffset.x/2.];
+        [_itemsView setAnimationOffsetX:scrollView.contentOffset.x/itemCount];
     }
     
 }
