@@ -138,7 +138,6 @@
 		CD7960A41CBE594C004CC661 /* HXLiveAnchorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F215A1CAD2E8B0067A1DA /* HXLiveAnchorView.m */; };
 		CD7960A51CBE594C004CC661 /* HXCaptchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDED8F041CA13BB4003867B8 /* HXCaptchButton.m */; };
 		CD7960A61CBE594C004CC661 /* HXMeRechargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD23679B1CA93B2F002C8233 /* HXMeRechargeCell.m */; };
-		CD7960A71CBE594C004CC661 /* HXMeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2367951CA9212B002C8233 /* HXMeViewModel.m */; };
 		CD7960A81CBE594C004CC661 /* HXAlbumsSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5DD8AC1CA912790077A17B /* HXAlbumsSongCell.m */; };
 		CD7960AA1CBE594C004CC661 /* HXAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF301061CA8D4ED00C19C32 /* HXAlbumsViewController.m */; };
 		CD7960AB1CBE594C004CC661 /* HXProfileReplayContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD858D9B1CAE6B24007441E9 /* HXProfileReplayContainerCell.m */; };
@@ -289,6 +288,7 @@
 		CDA394951CFEBB3D00F56A41 /* HXMeRewardAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA394941CFEBB3D00F56A41 /* HXMeRewardAlbumCell.m */; };
 		CDA394981CFEBB6B00F56A41 /* HXMeRewardAlbumContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA394971CFEBB6B00F56A41 /* HXMeRewardAlbumContainerCell.m */; };
 		CDA3949B1CFEBC3300F56A41 /* HXMeRewardAlbumPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA3949A1CFEBC3300F56A41 /* HXMeRewardAlbumPromptCell.m */; };
+		CDA3949F1CFEC10700F56A41 /* HXHostProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA3949E1CFEC10700F56A41 /* HXHostProfileViewModel.m */; };
 		CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -560,8 +560,6 @@
 		CD2367861CA91CFB002C8233 /* HXAlbumsNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsNavigationBar.h; sourceTree = "<group>"; };
 		CD2367871CA91CFB002C8233 /* HXAlbumsNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsNavigationBar.m; sourceTree = "<group>"; };
 		CD2367881CA91CFB002C8233 /* HXAlbumsNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXAlbumsNavigationBar.xib; sourceTree = "<group>"; };
-		CD2367941CA9212B002C8233 /* HXMeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeViewModel.h; sourceTree = "<group>"; };
-		CD2367951CA9212B002C8233 /* HXMeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeViewModel.m; sourceTree = "<group>"; };
 		CD23679A1CA93B2F002C8233 /* HXMeRechargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeRechargeCell.h; sourceTree = "<group>"; };
 		CD23679B1CA93B2F002C8233 /* HXMeRechargeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeRechargeCell.m; sourceTree = "<group>"; };
 		CD2367A01CA93B6B002C8233 /* HXMePurchaseHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMePurchaseHistoryCell.h; sourceTree = "<group>"; };
@@ -793,6 +791,8 @@
 		CDA394971CFEBB6B00F56A41 /* HXMeRewardAlbumContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeRewardAlbumContainerCell.m; sourceTree = "<group>"; };
 		CDA394991CFEBC3300F56A41 /* HXMeRewardAlbumPromptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeRewardAlbumPromptCell.h; sourceTree = "<group>"; };
 		CDA3949A1CFEBC3300F56A41 /* HXMeRewardAlbumPromptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeRewardAlbumPromptCell.m; sourceTree = "<group>"; };
+		CDA3949D1CFEC10700F56A41 /* HXHostProfileViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXHostProfileViewModel.h; sourceTree = "<group>"; };
+		CDA3949E1CFEC10700F56A41 /* HXHostProfileViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXHostProfileViewModel.m; sourceTree = "<group>"; };
 		CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewController.h; sourceTree = "<group>"; };
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
@@ -1485,15 +1485,6 @@
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
-		CD2367931CA9211F002C8233 /* Me */ = {
-			isa = PBXGroup;
-			children = (
-				CD2367941CA9212B002C8233 /* HXMeViewModel.h */,
-				CD2367951CA9212B002C8233 /* HXMeViewModel.m */,
-			);
-			path = Me;
-			sourceTree = "<group>";
-		};
 		CD2367A91CA93CFC002C8233 /* Attention */ = {
 			isa = PBXGroup;
 			children = (
@@ -2157,7 +2148,6 @@
 			children = (
 				429CC1ED1CE03EA2004BCC0C /* Common */,
 				CDC063181CB3E53200E66F2A /* Discovery */,
-				CD2367931CA9211F002C8233 /* Me */,
 				CD294A001CA294AA00CA3C3F /* Login */,
 				CDE2FC811CABD42600476968 /* Profile */,
 				CD3199811CAA6173006C845F /* Live */,
@@ -2468,6 +2458,15 @@
 			path = RewardAlbum;
 			sourceTree = "<group>";
 		};
+		CDA3949C1CFEC0F900F56A41 /* Host */ = {
+			isa = PBXGroup;
+			children = (
+				CDA3949D1CFEC10700F56A41 /* HXHostProfileViewModel.h */,
+				CDA3949E1CFEC10700F56A41 /* HXHostProfileViewModel.m */,
+			);
+			path = Host;
+			sourceTree = "<group>";
+		};
 		CDAA8DA41CA3C7DA0048C526 /* Replay */ = {
 			isa = PBXGroup;
 			children = (
@@ -2659,6 +2658,7 @@
 		CDE2FC811CABD42600476968 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CDA3949C1CFEC0F900F56A41 /* Host */,
 				CDE2FC821CABD43700476968 /* HXProfileViewModel.h */,
 				CDE2FC831CABD43700476968 /* HXProfileViewModel.m */,
 				429CC1DC1CE034D4004BCC0C /* MIAProfileViewModel.h */,
@@ -3128,7 +3128,6 @@
 				CD7960A61CBE594C004CC661 /* HXMeRechargeCell.m in Sources */,
 				42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */,
 				CD8322D01CF5974000D7A254 /* HXProfileContainerViewController.m in Sources */,
-				CD7960A71CBE594C004CC661 /* HXMeViewModel.m in Sources */,
 				CDA394911CFE78E700F56A41 /* HXSelectedAlbumContainerViewController.m in Sources */,
 				CD7960A81CBE594C004CC661 /* HXAlbumsSongCell.m in Sources */,
 				CD7960AA1CBE594C004CC661 /* HXAlbumsViewController.m in Sources */,
@@ -3169,6 +3168,7 @@
 				CD7960C11CBE594C004CC661 /* NSObject+LoginAction.m in Sources */,
 				42B6A0EF1CEB1D4900BDF8E8 /* MIAOrderModel.m in Sources */,
 				420BBB5D1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */,
+				CDA3949F1CFEC10700F56A41 /* HXHostProfileViewModel.m in Sources */,
 				CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */,
 				CD7960C31CBE594C004CC661 /* HXAlbumsNavigationBar.m in Sources */,
 				CD7960C41CBE594C004CC661 /* ChangePwdViewController.m in Sources */,

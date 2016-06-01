@@ -1,17 +1,23 @@
 //
-//  HXMeViewModel.m
+//  HXHostProfileViewModel.m
 //  Piano
 //
 //  Created by miaios on 16/3/28.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXMeViewModel.h"
+#import "HXHostProfileViewModel.h"
 #import "MiaAPIHelper.h"
 #import "HXUserSession.h"
+#import "UIConstants.h"
 
 
-@implementation HXMeViewModel
+static CGFloat BorderSpace = 15.0f;
+static CGFloat AttentionBottomSpace = 45.0f;
+static CGFloat AlbumBottomSpace = 40.0f;
+
+
+@implementation HXHostProfileViewModel
 
 #pragma mark - Initialize Methods
 - (instancetype)init {
@@ -25,15 +31,23 @@
 #pragma mark - Configure Methods
 - (void)initConfigure {
     _normalHeight = 56.0f;
-    _attentionHeight = 125.0f;
+    
+    _attentionItemSpace = 25.0f;
+    _albumItemSpace = 17.0f;
+    
+    _attentionItemWidth = ((SCREEN_WIDTH - (BorderSpace * 2) - (_attentionItemSpace*3)) / 4);
+    _albumItemWidth = ((SCREEN_WIDTH - (BorderSpace * 2) - (_albumItemSpace * 2)) / 3);
+    
+    _attetionItemHeight = _attentionItemWidth + AttentionBottomSpace;
+    _albumItemHeight = _albumItemWidth + AlbumBottomSpace;
     
     [self setupRowTypes];
     [self fetchDataCommandConfigure];
 }
 
 - (void)setupRowTypes {
-    _rowTypes = @[@(HXMeRowTypeRecharge),
-                  @(HXMeRowTypePurchaseHistory)];
+    _rowTypes = @[@(HXHostProfileRowTypeRecharge),
+                  @(HXHostProfileRowTypePurchaseHistory)];
 }
 
 - (void)fetchDataCommandConfigure {
@@ -69,24 +83,26 @@
 - (void)resetRowType {
     NSMutableArray *rowTypes = [_rowTypes mutableCopy];
     if (_model.attentions.count) {
-        for (NSInteger index = 2; index < _rowTypes.count; index++) {
-            HXMeRowType rowType = [_rowTypes[index] integerValue];
-            if ((rowType == HXMeRowTypeAttentionPrompt) || (rowType == HXMeRowTypeAttentions)) {
-                return;
-            }
-        }
-        [rowTypes insertObject:@(HXMeRowTypeAttentionPrompt) atIndex:2];
-        [rowTypes insertObject:@(HXMeRowTypeAttentions) atIndex:3];
-    } else {
-        for (NSInteger index = 2; index < _rowTypes.count; index++) {
-            HXMeRowType rowType = [_rowTypes[index] integerValue];
-            if ((rowType == HXMeRowTypeAttentionPrompt) || (rowType == HXMeRowTypeAttentions)) {
-                [rowTypes removeLastObject];
-            }
-        }
+        [rowTypes addObject:@(HXHostProfileRowTypeAttentionPrompt)];
+        [rowTypes addObject:@(HXHostProfileRowTypeAttentions)];
     }
+    if (_model.albums.count) {
+        [rowTypes addObject:@(HXHostProfileRowTypeRewardAlbumPrompt)];
+        [rowTypes addObject:@(HXHostProfileRowTypeRewardAlbums)];
+    }
+    
+    [self resizeHeight];
+    
     _rowTypes = [rowTypes copy];
     _rows = _rowTypes.count;
+}
+
+- (void)resizeHeight {
+    NSInteger attentionCount = _model.attentions.count;
+    _attentionHeight = (_attetionItemHeight * ((attentionCount / 4) + (attentionCount % 4)));
+    
+    NSInteger albumCount = _model.albums.count;
+    _rewardAlbumHeight =  (_albumItemHeight * ((albumCount / 3) + ((albumCount % 3) ? 1 : 0)));
 }
 
 @end

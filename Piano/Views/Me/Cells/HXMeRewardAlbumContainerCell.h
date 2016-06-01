@@ -10,16 +10,21 @@
 
 
 @class HXAlbumModel;
+@class HXHostProfileViewModel;
 @protocol HXMeRewardAlbumContainerCellDelegate;
 
 
-@interface HXMeRewardAlbumContainerCell : UITableViewCell <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HXMeRewardAlbumContainerCell : UITableViewCell <
+UICollectionViewDataSource,
+UICollectionViewDelegate,
+UICollectionViewDelegateFlowLayout
+>
 
 @property (weak, nonatomic) IBOutlet id  <HXMeRewardAlbumContainerCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-- (void)updateCellWithAlbums:(NSArray *)albums;
+- (void)updateCellWithViewModel:(HXHostProfileViewModel *)viewModel;
 
 @end
 
@@ -28,6 +33,6 @@
 @protocol HXMeRewardAlbumContainerCellDelegate <NSObject>
 
 @required
-- (void)attentionCell:(HXMeRewardAlbumContainerCell *)cell selectedAlbum:(HXAlbumModel *)album;
+- (void)rewardAlbumCell:(HXMeRewardAlbumContainerCell *)cell selectedAlbum:(HXAlbumModel *)album;
 
 @end

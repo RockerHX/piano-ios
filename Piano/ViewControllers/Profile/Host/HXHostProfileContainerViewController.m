@@ -19,7 +19,8 @@
 
 
 @interface HXHostProfileContainerViewController () <
-HXMeAttentionContainerCellDelegate
+HXMeAttentionContainerCellDelegate,
+HXMeRewardAlbumContainerCellDelegate
 >
 @end
 
@@ -72,29 +73,29 @@ HXMeAttentionContainerCellDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
-    HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXHostProfileRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
-        case HXMeRowTypeRecharge: {
+        case HXHostProfileRowTypeRecharge: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeRechargeCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXMeRowTypePurchaseHistory: {
+        case HXHostProfileRowTypePurchaseHistory: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMePurchaseHistoryCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXMeRowTypeAttentionPrompt: {
+        case HXHostProfileRowTypeAttentionPrompt: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeAttentionPromptCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXMeRowTypeAttentions: {
+        case HXHostProfileRowTypeAttentions: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeAttentionContainerCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXMeRowTypeRewardAlbumPrompt: {
+        case HXHostProfileRowTypeRewardAlbumPrompt: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeRewardAlbumPromptCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXMeRowTypeRewardAlbums: {
+        case HXHostProfileRowTypeRewardAlbums: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeRewardAlbumContainerCell class]) forIndexPath:indexPath];
             break;
         }
@@ -105,20 +106,20 @@ HXMeAttentionContainerCellDelegate
 #pragma mark - Table View Delegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 0.0f;
-    HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXHostProfileRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
-        case HXMeRowTypeRecharge:
-        case HXMeRowTypePurchaseHistory:
-        case HXMeRowTypeAttentionPrompt:
-        case HXMeRowTypeRewardAlbumPrompt: {
+        case HXHostProfileRowTypeRecharge:
+        case HXHostProfileRowTypePurchaseHistory:
+        case HXHostProfileRowTypeAttentionPrompt:
+        case HXHostProfileRowTypeRewardAlbumPrompt: {
             height = _viewModel.normalHeight;
             break;
         }
-        case HXMeRowTypeAttentions: {
+        case HXHostProfileRowTypeAttentions: {
             height = _viewModel.attentionHeight;
             break;
         }
-        case HXMeRowTypeRewardAlbums: {
+        case HXHostProfileRowTypeRewardAlbums: {
             height = _viewModel.rewardAlbumHeight;
             break;
         }
@@ -127,14 +128,18 @@ HXMeAttentionContainerCellDelegate
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXHostProfileRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
-        case HXMeRowTypeAttentionPrompt: {
+        case HXHostProfileRowTypeAttentionPrompt: {
             [(HXMeAttentionPromptCell *)cell updateCellWithCount:_viewModel.model.attentions.count];
             break;
         }
-        case HXMeRowTypeAttentions: {
-            [(HXMeAttentionContainerCell *)cell updateCellWithAttentions:_viewModel.model.attentions];
+        case HXHostProfileRowTypeAttentions: {
+            [(HXMeAttentionContainerCell *)cell updateCellWithViewModel:_viewModel];
+            break;
+        }
+        case HXHostProfileRowTypeRewardAlbums: {
+            [(HXMeRewardAlbumContainerCell *)cell updateCellWithViewModel:_viewModel];
             break;
         }
         default: {
@@ -146,15 +151,15 @@ HXMeAttentionContainerCellDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    HXMeRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
+    HXHostProfileRowType rowType = [_viewModel.rowTypes[indexPath.row] integerValue];
     switch (rowType) {
-        case HXMeRowTypeRecharge: {
+        case HXHostProfileRowTypeRecharge: {
             if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
                 [_delegate container:self takeAction:HXHostProfileContainerActionRecharge];
             }
             break;
         }
-        case HXMeRowTypePurchaseHistory: {
+        case HXHostProfileRowTypePurchaseHistory: {
             if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
                 [_delegate container:self takeAction:HXHostProfileContainerActionPurchaseHistory];
             }
@@ -171,6 +176,11 @@ HXMeAttentionContainerCellDelegate
     if (_delegate && [_delegate respondsToSelector:@selector(container:hanleAttentionAnchor:)]) {
         [_delegate container:self hanleAttentionAnchor:attention];
     }
+}
+
+#pragma mark - HXMeRewardAlbumContainerCellDelegate Methods
+- (void)rewardAlbumCell:(HXMeRewardAlbumContainerCell *)cell selectedAlbum:(HXAlbumModel *)album {
+    ;
 }
 
 @end

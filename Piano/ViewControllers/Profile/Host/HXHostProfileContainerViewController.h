@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HXMeViewModel.h"
+#import "HXHostProfileViewModel.h"
 #import "HXAttentionModel.h"
 
 
@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, HXHostProfileContainerAction) {
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *signatureLabel;
 
-@property (nonatomic, strong) HXMeViewModel *viewModel;
+@property (nonatomic, strong) HXHostProfileViewModel *viewModel;
 
 - (IBAction)backButtonPressed;
 - (IBAction)settingButtonPressed;

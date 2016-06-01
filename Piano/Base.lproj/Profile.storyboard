@@ -776,7 +776,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6s-5S-0ex">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="868"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="RUd-j5-cx4" kind="embed" id="785-hv-vJS"/>
@@ -785,7 +785,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="f6s-5S-0ex" secondAttribute="bottom" constant="-300" id="4QZ-RY-p2p"/>
+                            <constraint firstAttribute="bottom" secondItem="f6s-5S-0ex" secondAttribute="bottom" id="4QZ-RY-p2p"/>
                             <constraint firstAttribute="trailing" secondItem="W6M-rp-Ysv" secondAttribute="trailing" id="60a-rU-5h6"/>
                             <constraint firstItem="f6s-5S-0ex" firstAttribute="top" secondItem="ael-Nv-czs" secondAttribute="top" id="DaY-Wf-B95"/>
                             <constraint firstItem="W6M-rp-Ysv" firstAttribute="top" secondItem="ael-Nv-czs" secondAttribute="top" id="EDA-pP-bKb"/>
@@ -808,7 +808,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXHostProfileContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RUd-j5-cx4" userLabel="HXHostProfileContainerViewController" customClass="HXHostProfileContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="112" sectionHeaderHeight="28" sectionFooterHeight="28" id="Me2-2L-yFB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="868"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="w2x-lo-RAO">
@@ -1029,28 +1029,28 @@
                                     <outlet property="countLabel" destination="lDG-VT-zBu" id="rba-Ex-Uka"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXMeAttentionContainerCell" rowHeight="125" id="EtM-Kn-q0B" userLabel="HXMeAttentionContainerCell" customClass="HXMeAttentionContainerCell">
-                                <rect key="frame" x="0.0" y="556" width="320" height="125"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXMeAttentionContainerCell" rowHeight="100" id="EtM-Kn-q0B" userLabel="HXMeAttentionContainerCell" customClass="HXMeAttentionContainerCell">
+                                <rect key="frame" x="0.0" y="556" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EtM-Kn-q0B" id="DOe-k0-AQb">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uJb-hf-CYm">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="125"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uJb-hf-CYm">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="100"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hbV-TF-pzT">
-                                                <size key="itemSize" width="90" height="125"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hbV-TF-pzT">
+                                                <size key="itemSize" width="90" height="99"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HXMeAttentionCell" id="gCI-k1-pPb" userLabel="HXMeAttentionCell" customClass="HXMeAttentionCell">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="125"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="99"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="125"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="99"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WG3-oZ-XGu" userLabel="Avatar" customClass="HXIBImageView">
@@ -1066,6 +1066,44 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvZ-jy-cZU" customClass="HXIBView">
+                                                                <rect key="frame" x="23" y="52" width="44" height="16"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOl-gW-U3D" userLabel="Point" customClass="HXIBView">
+                                                                        <rect key="frame" x="8" y="6" width="4" height="4"/>
+                                                                        <color key="backgroundColor" red="1" green="0.3411764706" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="4" id="FKb-BD-oQi"/>
+                                                                            <constraint firstAttribute="width" secondItem="WOl-gW-U3D" secondAttribute="height" multiplier="1:1" id="jNh-Lp-WZq"/>
+                                                                        </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="2"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cos-v1-BeJ">
+                                                                        <rect key="frame" x="16" y="2" width="18" height="11"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                                        <color key="textColor" red="1" green="0.3411764705882353" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="Cos-v1-BeJ" firstAttribute="leading" secondItem="WOl-gW-U3D" secondAttribute="trailing" constant="4" id="Daw-jz-oLF"/>
+                                                                    <constraint firstAttribute="width" constant="44" id="QsW-cL-Bgg"/>
+                                                                    <constraint firstAttribute="height" constant="16" id="RzQ-gZ-M7f"/>
+                                                                    <constraint firstItem="Cos-v1-BeJ" firstAttribute="centerY" secondItem="hvZ-jy-cZU" secondAttribute="centerY" id="ebc-yM-X12"/>
+                                                                    <constraint firstItem="WOl-gW-U3D" firstAttribute="centerY" secondItem="hvZ-jy-cZU" secondAttribute="centerY" id="fDh-mH-uCY"/>
+                                                                    <constraint firstItem="WOl-gW-U3D" firstAttribute="leading" secondItem="hvZ-jy-cZU" secondAttribute="leading" constant="8" id="wfQ-5P-f5R"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDQ-Cv-cVm" userLabel="Nick Name Label">
                                                                 <rect key="frame" x="0.0" y="68" width="90" height="26"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1076,67 +1114,17 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4I-cW-tzA" userLabel="Live Prompt Container">
-                                                                <rect key="frame" x="0.0" y="94" width="90" height="31"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvZ-jy-cZU" customClass="HXIBView">
-                                                                        <rect key="frame" x="14" y="0.0" width="62" height="18"/>
-                                                                        <subviews>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOl-gW-U3D" userLabel="Point" customClass="HXIBView">
-                                                                                <rect key="frame" x="8" y="7" width="4" height="4"/>
-                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="width" constant="4" id="FKb-BD-oQi"/>
-                                                                                    <constraint firstAttribute="width" secondItem="WOl-gW-U3D" secondAttribute="height" multiplier="1:1" id="jNh-Lp-WZq"/>
-                                                                                </constraints>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                        <real key="value" value="2"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                </userDefinedRuntimeAttributes>
-                                                                            </view>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在直播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cos-v1-BeJ">
-                                                                                <rect key="frame" x="16" y="3" width="36" height="11"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="Cos-v1-BeJ" firstAttribute="leading" secondItem="WOl-gW-U3D" secondAttribute="trailing" constant="4" id="Daw-jz-oLF"/>
-                                                                            <constraint firstAttribute="width" constant="62" id="QsW-cL-Bgg"/>
-                                                                            <constraint firstAttribute="height" constant="18" id="RzQ-gZ-M7f"/>
-                                                                            <constraint firstItem="Cos-v1-BeJ" firstAttribute="centerY" secondItem="hvZ-jy-cZU" secondAttribute="centerY" id="ebc-yM-X12"/>
-                                                                            <constraint firstItem="WOl-gW-U3D" firstAttribute="centerY" secondItem="hvZ-jy-cZU" secondAttribute="centerY" id="fDh-mH-uCY"/>
-                                                                            <constraint firstItem="WOl-gW-U3D" firstAttribute="leading" secondItem="hvZ-jy-cZU" secondAttribute="leading" constant="8" id="wfQ-5P-f5R"/>
-                                                                        </constraints>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="9"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </view>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="hvZ-jy-cZU" firstAttribute="top" secondItem="F4I-cW-tzA" secondAttribute="top" id="8Gg-kP-Yzf"/>
-                                                                    <constraint firstItem="hvZ-jy-cZU" firstAttribute="centerX" secondItem="F4I-cW-tzA" secondAttribute="centerX" id="uoP-IG-NUV"/>
-                                                                </constraints>
-                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <constraints>
                                                         <constraint firstItem="WG3-oZ-XGu" firstAttribute="centerX" secondItem="gCI-k1-pPb" secondAttribute="centerX" id="2Oa-RM-0Dk"/>
                                                         <constraint firstAttribute="trailing" secondItem="oDQ-Cv-cVm" secondAttribute="trailing" id="IFM-cC-YDm"/>
-                                                        <constraint firstAttribute="bottom" secondItem="F4I-cW-tzA" secondAttribute="bottom" id="IkH-MM-yGH"/>
                                                         <constraint firstItem="WG3-oZ-XGu" firstAttribute="top" secondItem="gCI-k1-pPb" secondAttribute="top" id="Kut-fd-JTO"/>
                                                         <constraint firstItem="oDQ-Cv-cVm" firstAttribute="top" secondItem="WG3-oZ-XGu" secondAttribute="bottom" id="Ocp-B8-LZb"/>
-                                                        <constraint firstItem="F4I-cW-tzA" firstAttribute="leading" secondItem="gCI-k1-pPb" secondAttribute="leading" id="TWq-BG-tV8"/>
+                                                        <constraint firstItem="hvZ-jy-cZU" firstAttribute="centerX" secondItem="WG3-oZ-XGu" secondAttribute="centerX" id="PLX-Bn-hGq"/>
                                                         <constraint firstItem="oDQ-Cv-cVm" firstAttribute="leading" secondItem="gCI-k1-pPb" secondAttribute="leading" id="cBl-pc-oPs"/>
-                                                        <constraint firstAttribute="trailing" secondItem="F4I-cW-tzA" secondAttribute="trailing" id="pCQ-KH-LOP"/>
-                                                        <constraint firstItem="F4I-cW-tzA" firstAttribute="top" secondItem="oDQ-Cv-cVm" secondAttribute="bottom" id="v7D-pn-S52"/>
+                                                        <constraint firstItem="hvZ-jy-cZU" firstAttribute="bottom" secondItem="WG3-oZ-XGu" secondAttribute="bottom" id="wZl-fZ-XKM"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="avatar" destination="WG3-oZ-XGu" id="3wM-Ca-uIb"/>
@@ -1165,7 +1153,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXMeRewardAlbumPromptCell" rowHeight="56" id="3WK-n7-sUG" userLabel="HXMeRewardAlbumPromptCell" customClass="HXMeRewardAlbumPromptCell">
-                                <rect key="frame" x="0.0" y="681" width="320" height="56"/>
+                                <rect key="frame" x="0.0" y="656" width="320" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3WK-n7-sUG" id="lF0-Ie-rTJ">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -1213,16 +1201,16 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HXMeRewardAlbumContainerCell" rowHeight="125" id="Wor-hp-bBi" userLabel="HXMeRewardAlbumContainerCell" customClass="HXMeRewardAlbumContainerCell">
-                                <rect key="frame" x="0.0" y="737" width="320" height="125"/>
+                                <rect key="frame" x="0.0" y="712" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wor-hp-bBi" id="bJh-Y5-zHw">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2xp-nR-lE5">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2xp-nR-lE5">
                                             <rect key="frame" x="15" y="0.0" width="290" height="125"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="czW-oP-XBr">
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="15" id="czW-oP-XBr">
                                                 <size key="itemSize" width="90" height="125"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>

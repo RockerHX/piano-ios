@@ -27,7 +27,7 @@ HXHostProfileContainerDelegate
 
 @implementation HXHostProfileViewController {
     HXHostProfileContainerViewController *_containerViewController;
-    HXMeViewModel *_viewModel;
+    HXHostProfileViewModel *_viewModel;
 }
 
 #pragma mark - Segue
@@ -50,7 +50,8 @@ HXHostProfileContainerDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _containerViewController.viewModel = self.viewModel;
+    _viewModel = [HXHostProfileViewModel new];
+    _containerViewController.viewModel = _viewModel;
     
     [self fetchData];
 }
@@ -59,18 +60,10 @@ HXHostProfileContainerDelegate
     [self showHUD];
 }
 
-#pragma mark - Property
-- (HXMeViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [HXMeViewModel new];
-    }
-    return _viewModel;
-}
-
 #pragma mark - Private Methods
 - (void)fetchData {
     @weakify(self)
-    RACSignal *fetchSignal = [self.viewModel.fetchCommand execute:nil];
+    RACSignal *fetchSignal = [_viewModel.fetchCommand execute:nil];
     [fetchSignal subscribeError:^(NSError *error) {
         @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {

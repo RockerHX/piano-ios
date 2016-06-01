@@ -7,23 +7,24 @@
 //
 
 #import "HXMeAttentionContainerCell.h"
+#import "HXHostProfileViewModel.h"
 #import "HXMeAttentionCell.h"
 
 
 @implementation HXMeAttentionContainerCell {
-    NSArray *_attentions;
+    HXHostProfileViewModel *_viewModel;
 }
 
 #pragma mark - Public Methods
-- (void)updateCellWithAttentions:(NSArray *)attentions {
-    _attentions = attentions;
+- (void)updateCellWithViewModel:(HXHostProfileViewModel *)viewModel {
+    _viewModel = viewModel;
     
     [self.collectionView reloadData];
 }
 
 #pragma mark - Collection View Data Source Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _attentions.count;
+    return _viewModel.model.attentions.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -32,14 +33,18 @@
 }
 
 #pragma mark - Collection View Delegate Methods
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(_viewModel.attentionItemWidth, _viewModel.attetionItemHeight);
+}
+
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     HXMeAttentionCell *attentionCell = (HXMeAttentionCell *)cell;
-    [attentionCell updateCellWithAttention:_attentions[indexPath.row]];
+    [attentionCell updateCellWithAttention:_viewModel.model.attentions[indexPath.row]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_delegate && [_delegate respondsToSelector:@selector(attentionCell:selectedAttention:)]) {
-        [_delegate attentionCell:self selectedAttention:_attentions[indexPath.row]];
+        [_delegate attentionCell:self selectedAttention:_viewModel.model.attentions[indexPath.row]];
     }
 }
 
