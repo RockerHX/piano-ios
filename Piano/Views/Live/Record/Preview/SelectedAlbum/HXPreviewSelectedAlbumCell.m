@@ -12,6 +12,24 @@
 
 @implementation HXPreviewSelectedAlbumCell
 
+#pragma mark - Load Methods
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self loadConfigure];
+    [self viewConfigure];
+}
+
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    ;
+}
+
+- (void)viewConfigure {
+    self.layer.borderWidth = 0.5f;
+    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+}
+
 #pragma mark - Public Methods
 - (void)updateWithAlbum:(HXAlbumModel *)album {
     [_coverView sd_setImageWithURL:[NSURL URLWithString:album.coverUrl]];
