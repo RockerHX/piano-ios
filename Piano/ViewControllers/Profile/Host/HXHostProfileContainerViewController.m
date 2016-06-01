@@ -9,9 +9,10 @@
 #import "HXHostProfileContainerViewController.h"
 #import "HXMeRechargeCell.h"
 #import "HXMePurchaseHistoryCell.h"
-#import "HXMeMyStationCell.h"
 #import "HXMeAttentionPromptCell.h"
 #import "HXMeAttentionContainerCell.h"
+#import "HXMeRewardAlbumPromptCell.h"
+#import "HXMeRewardAlbumContainerCell.h"
 #import "UIImageView+WebCache.h"
 #import "HXSettingViewController.h"
 #import "MIASettingViewController.h"
@@ -81,16 +82,20 @@ HXMeAttentionContainerCellDelegate
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMePurchaseHistoryCell class]) forIndexPath:indexPath];
             break;
         }
-        case HXMeRowTypeMyStation: {
-            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeMyStationCell class]) forIndexPath:indexPath];
-            break;
-        }
         case HXMeRowTypeAttentionPrompt: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeAttentionPromptCell class]) forIndexPath:indexPath];
             break;
         }
         case HXMeRowTypeAttentions: {
             cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeAttentionContainerCell class]) forIndexPath:indexPath];
+            break;
+        }
+        case HXMeRowTypeRewardAlbumPrompt: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeRewardAlbumPromptCell class]) forIndexPath:indexPath];
+            break;
+        }
+        case HXMeRowTypeRewardAlbums: {
+            cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HXMeRewardAlbumContainerCell class]) forIndexPath:indexPath];
             break;
         }
     }
@@ -104,13 +109,17 @@ HXMeAttentionContainerCellDelegate
     switch (rowType) {
         case HXMeRowTypeRecharge:
         case HXMeRowTypePurchaseHistory:
-        case HXMeRowTypeMyStation:
-        case HXMeRowTypeAttentionPrompt: {
+        case HXMeRowTypeAttentionPrompt:
+        case HXMeRowTypeRewardAlbumPrompt: {
             height = _viewModel.normalHeight;
             break;
         }
         case HXMeRowTypeAttentions: {
             height = _viewModel.attentionHeight;
+            break;
+        }
+        case HXMeRowTypeRewardAlbums: {
+            height = _viewModel.rewardAlbumHeight;
             break;
         }
     }
@@ -149,10 +158,6 @@ HXMeAttentionContainerCellDelegate
             if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:)]) {
                 [_delegate container:self takeAction:HXHostProfileContainerActionPurchaseHistory];
             }
-            break;
-        }
-        case HXMeRowTypeMyStation: {
-            ;
             break;
         }
         default: {

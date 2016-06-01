@@ -13,9 +13,10 @@
 typedef NS_ENUM(NSUInteger, HXMeRowType) {
     HXMeRowTypeRecharge,
     HXMeRowTypePurchaseHistory,
-    HXMeRowTypeMyStation,
     HXMeRowTypeAttentionPrompt,
     HXMeRowTypeAttentions,
+    HXMeRowTypeRewardAlbumPrompt,
+    HXMeRowTypeRewardAlbums,
 };
 
 
@@ -25,6 +26,7 @@ typedef NS_ENUM(NSUInteger, HXMeRowType) {
 
 @property (nonatomic, assign, readonly)   CGFloat  normalHeight;
 @property (nonatomic, assign, readonly)   CGFloat  attentionHeight;
+@property (nonatomic, assign, readonly)   CGFloat  rewardAlbumHeight;
 
 @property (nonatomic, assign, readonly) NSInteger  rows;
 @property (nonatomic, strong, readonly)   NSArray *rowTypes;
