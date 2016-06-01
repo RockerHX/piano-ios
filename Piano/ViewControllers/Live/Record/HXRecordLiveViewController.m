@@ -123,6 +123,8 @@ HXLiveAlbumViewDelegate
 - (IBAction)closeButtonPressed {
     [_anchorView stopRecordTime];
     [_albumView stopAlbumAnmation];
+    [_viewModel closeLive];
+    [[HXZegoAVKitManager manager] closeLive];
     
     ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi takeLocalViewSnapshot];
@@ -240,6 +242,7 @@ static CGFloat AlbumViewWidth = 60.0f;
 - (void)onPublishSucc:(NSString *)streamID {
     NSLog(@"%s, stream: %@", __func__, streamID);
     [_anchorView startRecordTime];
+    [[HXZegoAVKitManager manager] startLive];
 }
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID {

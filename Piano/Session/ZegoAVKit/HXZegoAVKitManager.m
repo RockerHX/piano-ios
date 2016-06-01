@@ -9,6 +9,9 @@
 #import "HXZegoAVKitManager.h"
 
 
+static NSString *LiveStateKey = @"LiveStateKey";
+
+
 @interface HXZegoAVKitManager ()
 @end
 
@@ -47,6 +50,11 @@
     [ZegoLiveApi setLogLevel:4];
 }
 
+#pragma mark - Property
+- (HXLiveState)liveState {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:LiveStateKey];
+}
+
 #pragma mark - Public Methods
 - (void)setAppID:(NSString *)appID signKey:(NSData *)signKey {
     _appID = appID;
@@ -67,6 +75,14 @@
     ;
 }
 
+- (void)startLive {
+    [self storeLiveStateWithState:HXLiveStateException];
+}
+
+- (void)closeLive {
+    [self storeLiveStateWithState:HXLiveStateNormal];
+}
+
 #pragma mark - Private Methods
 - (NSData *)zegoAppSignFromServer {
     //!! Demo 把signKey先写到代码中
@@ -83,6 +99,11 @@
     NSData * appSign = [[NSData alloc] initWithBytes:signkey length:32];
     
     return appSign;
+}
+
+- (void)storeLiveStateWithState:(HXLiveState)liveState {
+    [[NSUserDefaults standardUserDefaults] setBool:liveState forKey:LiveStateKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
