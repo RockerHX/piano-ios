@@ -15,6 +15,8 @@
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
 #import "MIAPaymentViewController.h"
+#import "A2BlockInvocation.h"
+#import "MIAPayHistoryViewController.h"
 
 
 @interface HXHostProfileViewController () <
@@ -135,7 +137,9 @@ HXHostProfileContainerDelegate
             break;
         }
         case HXHostProfileContainerActionPurchaseHistory: {
-            ;
+            MIAPayHistoryViewController *payHistoryViewController = [MIAPayHistoryViewController new];
+            [payHistoryViewController setHistoryType:HistoryType_Host];
+            [self.navigationController pushViewController:payHistoryViewController animated:YES];
             break;
         }
     }

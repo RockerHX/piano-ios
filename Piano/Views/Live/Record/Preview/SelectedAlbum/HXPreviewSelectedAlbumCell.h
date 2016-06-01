@@ -10,12 +10,12 @@
 #import "HXAlbumModel.h"
 
 
-@interface HXPreviewSelectedAlbumCell : UITableViewCell
+@interface HXPreviewSelectedAlbumCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverView;
+@property (weak, nonatomic) IBOutlet      UIView *selectedMaskView;
 @property (weak, nonatomic) IBOutlet     UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet     UILabel *summaryLabel;
 
-- (void)displayWithAlbum:(HXAlbumModel *)album;
+- (void)updateWithAlbum:(HXAlbumModel *)album;
 
 @end
