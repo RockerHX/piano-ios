@@ -19,7 +19,7 @@ NSString *const WeiBoKEY                    = @"2506510146";
 NSString *const WeiBoSecret                 = @"1c681bbb0998aff13b70939c8096f1d4";
 NSString *const WeiBoRedirectUri            = @"http://www.miamusic.com";
 
-NSString *const JPUSH_APPKEY_ENTERPRISE     = @"1b77f040954bbd861cc049fa";
+NSString *const JPUSH_APPKEY_ENTERPRISE     = @"278a0abbde136d51f22225d7";
 NSString *const JPUSH_APPKEY_APPSTORE       = @"4d66751a4666e4262d75d33d";
 
 NSString *const APPSTORE_BUNDLE_ID          = @"com.miamusic.live";
