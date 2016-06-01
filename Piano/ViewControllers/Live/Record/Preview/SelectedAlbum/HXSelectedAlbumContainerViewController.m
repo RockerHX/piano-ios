@@ -17,7 +17,9 @@ UICollectionViewDelegateFlowLayout
 @end
 
 
-@implementation HXSelectedAlbumContainerViewController
+@implementation HXSelectedAlbumContainerViewController {
+    HXAlbumModel *_selectedAlbum;
+}
 
 #pragma mark - View Controller Life Cycle
 - (void)viewDidLoad {
@@ -52,8 +54,14 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (_delegate && [_delegate respondsToSelector:@selector(container:selectedAlbum:)]) {
-        [_delegate container:self selectedAlbum:_albums[indexPath.row]];
+    _selectedAlbum.selected = NO;
+    HXAlbumModel *album = _albums[indexPath.row];
+    album.selected = YES;
+    [collectionView reloadData];
+    _selectedAlbum = album;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(container:selectedIndex:)]) {
+        [_delegate container:self selectedIndex:indexPath.row];
     }
 }
 

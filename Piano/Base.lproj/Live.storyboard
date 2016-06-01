@@ -1899,6 +1899,9 @@
                                         <state key="normal" title="确  定">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="enterButtonPressed" destination="VJq-9Z-1Bk" eventType="touchUpInside" id="YJi-aX-PTL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

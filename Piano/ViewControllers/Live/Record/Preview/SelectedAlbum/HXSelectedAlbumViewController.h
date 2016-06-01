@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet id  <HXSelectedAlbumViewControllerDelegate>delegate;
 
 - (IBAction)closeButtonPressed;
+- (IBAction)enterButtonPressed;
 
 
 @end

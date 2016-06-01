@@ -27,6 +27,7 @@ HXSelectedAlbumContainerViewControllerDelegate
 @implementation HXSelectedAlbumViewController {
     NSInteger _start;
     NSMutableArray *_albumList;
+    BOOL _selectedIndex;
     
     HXSelectedAlbumContainerViewController *_container;
 }
@@ -66,6 +67,13 @@ HXSelectedAlbumContainerViewControllerDelegate
     [self dismiss];
 }
 
+- (IBAction)enterButtonPressed {
+    if (_delegate && [_delegate respondsToSelector:@selector(selectedAlbumViewController:selectedAlbum:)]) {
+        [_delegate selectedAlbumViewController:self selectedAlbum:_albumList[_selectedIndex]];
+    }
+    [self dismiss];
+}
+
 #pragma mark - Private Methods
 - (void)dismiss {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -96,11 +104,8 @@ HXSelectedAlbumContainerViewControllerDelegate
 }
 
 #pragma mark - HXSelectedAlbumContainerViewControllerDelegate Methods
-- (void)container:(HXSelectedAlbumContainerViewController *)contianer selectedAlbum:(HXAlbumModel *)album {
-    if (_delegate && [_delegate respondsToSelector:@selector(selectedAlbumViewController:selectedAlbum:)]) {
-        [_delegate selectedAlbumViewController:self selectedAlbum:album];
-    }
-    [self dismiss];
+- (void)container:(HXSelectedAlbumContainerViewController *)contianer selectedIndex:(NSInteger)index {
+    _selectedIndex = index;
 }
 
 @end

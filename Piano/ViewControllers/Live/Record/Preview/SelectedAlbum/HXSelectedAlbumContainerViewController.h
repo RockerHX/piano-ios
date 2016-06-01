@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-@class HXAlbumModel;
 @protocol HXSelectedAlbumContainerViewControllerDelegate;
 
 
@@ -25,6 +24,6 @@
 @protocol HXSelectedAlbumContainerViewControllerDelegate <NSObject>
 
 @required
-- (void)container:(HXSelectedAlbumContainerViewController *)contianer selectedAlbum:(HXAlbumModel *)album;
+- (void)container:(HXSelectedAlbumContainerViewController *)contianer selectedIndex:(NSInteger )index;
 
 @end
