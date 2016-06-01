@@ -189,6 +189,13 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
               completeBlock:(MiaRequestCompleteBlock)completeBlock
                timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)closeLiveWithRoomID:(NSString *)roomID
+              completeBlock:(MiaRequestCompleteBlock)completeBlock
+               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)refetchLiveWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                        timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 + (void)getUserProfileWithUID:(NSString *)uID
 				completeBlock:(MiaRequestCompleteBlock)completeBlock
 				 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
