@@ -12,16 +12,11 @@
 
 @implementation HXPreviewSelectedAlbumCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
 #pragma mark - Public Methods
-- (void)displayWithAlbum:(HXAlbumModel *)album {
+- (void)updateWithAlbum:(HXAlbumModel *)album {
     [_coverView sd_setImageWithURL:[NSURL URLWithString:album.coverUrl]];
+    _selectedMaskView.hidden = !album.selected;
     _titleLabel.text = album.title;
-    _summaryLabel.text = album.summary;
 }
 
 @end
