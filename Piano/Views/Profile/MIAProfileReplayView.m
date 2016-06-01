@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "MIAReplayModel.h"
 #import "HXReplayViewController.h"
+#import "MusicMgr.h"
 
 @interface MIAProfileReplayView()
 
@@ -104,7 +105,6 @@
         [_numberlabel setText:_replayModel.viewCnt];
         
         [self updateViewLayout];
-        
     }else{
     
         [JOFException exceptionWithName:@"MIAProfileReplayView exception" reason:@"data 不是MIAReplayModel类型"];
@@ -117,7 +117,11 @@
     HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
     replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
     replayViewController.model.uID = _uid;
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayNaviagtionController animated:YES completion:nil];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayNaviagtionController animated:YES completion:^{
+        if ([[MusicMgr standard] isPlaying]) {
+            [[MusicMgr standard] pause];
+        }
+    }];
 }
 
 @end
