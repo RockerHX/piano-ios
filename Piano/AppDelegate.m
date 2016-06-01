@@ -122,7 +122,7 @@
 		tags = [NSSet setWithObjects:@"ios", @"production", nil];
 		alias = @"ios_production";
 	} else {
-		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY_ENTERPRISE channel:CHANNEL_FIRIM apsForProduction:NO];
+		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY_ENTERPRISE channel:CHANNEL_FIRIM apsForProduction:YES];
 		tags = [NSSet setWithObjects:@"ios", @"develop", nil];
 		alias = @"ios_develop";
 	}
