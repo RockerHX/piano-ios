@@ -112,6 +112,11 @@
     return @(_model.viewCount).stringValue;
 }
 
+#pragma mark - Public Methods
+- (void)closeLive {
+    [MiaAPIHelper closeLiveWithRoomID:self.roomID completeBlock:nil timeoutBlock:nil];
+}
+
 #pragma mark - Private Methods
 - (void)addEnterBarrage:(NSDictionary *)data {
     HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];

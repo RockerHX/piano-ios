@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HXNoNetworkView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ds-7c-eTb">
+                    <rect key="frame" x="0.0" y="158" width="320" height="240"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NN-WiFiIcon" translatesAutoresizingMaskIntoConstraints="NO" id="QbL-1P-Iyc">
+                            <rect key="frame" x="120" y="8" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="QbL-1P-Iyc" secondAttribute="height" multiplier="1:1" id="Wuo-rw-lcW"/>
+                                <constraint firstAttribute="width" constant="80" id="oqi-mH-2G8"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网络未连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sq3-xM-VaJ">
+                            <rect key="frame" x="115" y="103" width="90" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备未连接到网络，请检查您的网络" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gH-rt-QQl">
+                            <rect key="frame" x="32" y="135" width="256" height="20"/>
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="6gH-rt-QQl" firstAttribute="centerX" secondItem="sq3-xM-VaJ" secondAttribute="centerX" id="19Q-CE-AHj"/>
+                        <constraint firstItem="QbL-1P-Iyc" firstAttribute="centerX" secondItem="0Ds-7c-eTb" secondAttribute="centerX" id="CpV-ea-1vQ"/>
+                        <constraint firstItem="sq3-xM-VaJ" firstAttribute="centerX" secondItem="QbL-1P-Iyc" secondAttribute="centerX" id="I4c-ZK-j1d"/>
+                        <constraint firstAttribute="width" secondItem="0Ds-7c-eTb" secondAttribute="height" multiplier="4:3" id="KaI-hF-761"/>
+                        <constraint firstItem="sq3-xM-VaJ" firstAttribute="top" secondItem="QbL-1P-Iyc" secondAttribute="bottom" constant="15" id="SEH-um-Nt2"/>
+                        <constraint firstItem="QbL-1P-Iyc" firstAttribute="top" secondItem="0Ds-7c-eTb" secondAttribute="top" constant="8" id="bDR-8r-dlB"/>
+                        <constraint firstItem="6gH-rt-QQl" firstAttribute="top" secondItem="sq3-xM-VaJ" secondAttribute="bottom" constant="10" id="iAX-ay-8Jl"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbL-dS-dF6">
+                    <rect key="frame" x="0.0" y="398" width="320" height="170"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xbL-dS-dF6" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="44w-Ky-k4n"/>
+                <constraint firstAttribute="bottom" secondItem="xbL-dS-dF6" secondAttribute="bottom" id="5cu-sd-Pg1"/>
+                <constraint firstAttribute="trailing" secondItem="xbL-dS-dF6" secondAttribute="trailing" id="8uw-pX-D7G"/>
+                <constraint firstItem="xbL-dS-dF6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EC8-bk-APc"/>
+                <constraint firstItem="xbL-dS-dF6" firstAttribute="top" secondItem="0Ds-7c-eTb" secondAttribute="bottom" id="N4j-le-ilQ"/>
+                <constraint firstItem="0Ds-7c-eTb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nip-Cs-5bB"/>
+                <constraint firstAttribute="trailing" secondItem="0Ds-7c-eTb" secondAttribute="trailing" id="dZW-PX-Amg"/>
+            </constraints>
+            <point key="canvasLocation" x="400" y="350"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="NN-WiFiIcon" width="75" height="75"/>
+    </resources>
+</document>

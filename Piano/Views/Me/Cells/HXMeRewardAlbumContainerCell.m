@@ -1,17 +1,17 @@
 //
-//  HXMeAttentionContainerCell.m
+//  HXMeRewardAlbumContainerCell.m
 //  Piano
 //
-//  Created by miaios on 16/3/28.
+//  Created by miaios on 16/6/1.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXMeAttentionContainerCell.h"
+#import "HXMeRewardAlbumContainerCell.h"
 #import "HXHostProfileViewModel.h"
-#import "HXMeAttentionCell.h"
+#import "HXMeRewardAlbumCell.h"
 
 
-@implementation HXMeAttentionContainerCell {
+@implementation HXMeRewardAlbumContainerCell {
     HXHostProfileViewModel *_viewModel;
 }
 
@@ -24,27 +24,26 @@
 
 #pragma mark - Collection View Data Source Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _viewModel.model.attentions.count;
+    return _viewModel.model.albums.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    HXMeAttentionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXMeAttentionCell class]) forIndexPath:indexPath];
-    return cell;
+    return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXMeRewardAlbumCell class]) forIndexPath:indexPath];
 }
 
 #pragma mark - Collection View Delegate Methods
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(_viewModel.attentionItemWidth, _viewModel.attetionItemHeight);
+    return CGSizeMake(_viewModel.albumItemWidth, _viewModel.albumItemHeight);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    HXMeAttentionCell *attentionCell = (HXMeAttentionCell *)cell;
-    [attentionCell updateCellWithAttention:_viewModel.model.attentions[indexPath.row]];
+    HXMeRewardAlbumCell *albumCell = (HXMeRewardAlbumCell *)cell;
+    [albumCell updateCellWithAlbum:_viewModel.model.albums[indexPath.row]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (_delegate && [_delegate respondsToSelector:@selector(attentionCell:selectedAttention:)]) {
-        [_delegate attentionCell:self selectedAttention:_viewModel.model.attentions[indexPath.row]];
+    if (_delegate && [_delegate respondsToSelector:@selector(rewardAlbumCell:selectedAlbum:)]) {
+        [_delegate rewardAlbumCell:self selectedAlbum:_viewModel.model.albums[indexPath.row]];
     }
 }
 

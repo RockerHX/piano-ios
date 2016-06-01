@@ -10,6 +10,12 @@
 #import <ZegoAVKit2/ZegoLiveApi.h>
 
 
+typedef NS_ENUM(BOOL, HXLiveState) {
+    HXLiveStateNormal = YES,
+    HXLiveStateException = NO,
+};
+
+
 @interface HXZegoAVKitManager : NSObject
 
 @property (nonatomic, assign, readonly) NSString *appID;
@@ -19,6 +25,7 @@
 @property (nonatomic, strong, readonly) NSString *port;
 @property (nonatomic, strong, readonly) NSString *url;
 
+@property (nonatomic, assign, readonly) HXLiveState  liveState;
 @property (nonatomic, strong, readonly) ZegoLiveApi *zegoLiveApi;
 
 + (instancetype)manager;
@@ -29,5 +36,8 @@
 
 - (void)fetchShowList:(void(^)(HXZegoAVKitManager *manager, BOOL success))completed failure:(void(^)(HXZegoAVKitManager *manager, NSString *message))failure;
 - (void)fetchReplayList:(void(^)(HXZegoAVKitManager *manager, BOOL success))completed failure:(void(^)(HXZegoAVKitManager *manager, NSString *message))failure;
+
+- (void)startLive;
+- (void)closeLive;
 
 @end

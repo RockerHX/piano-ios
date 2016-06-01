@@ -16,6 +16,7 @@
 #import "FileLog.h"
 #import "UIView+Frame.h"
 #import "HXGiftManager.h"
+#import "HXNoNetworkView.h"
 
 
 @interface HXMainViewController () <
@@ -141,6 +142,7 @@ HXLoginViewControllerDelegate
 			[self autoLogin];
             
             [_discoveryContainerViewController startFetchList];
+            [HXNoNetworkView hidden];
 		} else {
 			[self autoReconnect];
 		}
@@ -155,10 +157,15 @@ HXLoginViewControllerDelegate
 
 - (void)notificationWebSocketDidAutoReconnectFailed:(NSNotification *)notification {
     NSLog(@"notificationWebSocketDidAutoReconnectFailed");
+    [self showNoNetworkView];
 }
 
 - (void)notificationWebSocketDidCloseWithCode:(NSNotification *)notification {
     NSLog(@"Connection Closed! (see logs)");
+}
+
+- (void)showNoNetworkView {
+    [HXNoNetworkView showOnViewController:self.navigationController show:nil play:nil];
 }
 
 - (void)autoLogin {

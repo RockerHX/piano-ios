@@ -30,4 +30,6 @@
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
 @property (nonatomic, strong) NSArray<HXBarrageModel *> *barrages;
 
+- (void)closeLive;
+
 @end
