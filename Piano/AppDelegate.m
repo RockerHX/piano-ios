@@ -115,11 +115,21 @@
 	}
 	
 	//Required
+	NSSet *tags = nil;
+	NSString *alias = nil;
 	if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APPSTORE_BUNDLE_ID]) {
-		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY_APPSTORE channel:CHANNEL_APPSTORE apsForProduction:NO];
+		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY_APPSTORE channel:CHANNEL_APPSTORE apsForProduction:YES];
+		tags = [NSSet setWithObjects:@"ios", @"production", nil];
+		alias = @"ios_production";
 	} else {
 		[JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY_ENTERPRISE channel:CHANNEL_FIRIM apsForProduction:NO];
+		tags = [NSSet setWithObjects:@"ios", @"develop", nil];
+		alias = @"ios_develop";
 	}
+
+	[JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
+		NSLog(@"JPUSH setTags rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
+	}];
 
 	NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
 	if (remoteNotification) {
