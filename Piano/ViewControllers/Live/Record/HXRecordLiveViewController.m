@@ -202,7 +202,7 @@ static CGFloat AlbumViewWidth = 60.0f;
 }
 
 #pragma mark - ZegoLiveApiDelegate
-- (void)onLoginChannel:(uint32)error {
+- (void)onLoginChannel:(NSString *)channel error:(uint32)error {
     NSLog(@"%s, err: %u", __func__, error);
     if (error == 0) {
         ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
@@ -237,20 +237,20 @@ static CGFloat AlbumViewWidth = 60.0f;
     [alert show];
 }
 
-- (void)onPublishSucc:(NSString *)streamID {
+- (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
     NSLog(@"%s, stream: %@", __func__, streamID);
     [_anchorView startRecordTime];
 }
 
-- (void)onPublishStop:(uint32)err stream:(NSString *)streamID {
+- (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, stream: %@, err: %u", __func__, streamID, err);
 }
 
-- (void)onPlaySucc:(NSString *)streamID {
+- (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, stream: %@", __func__, streamID);
 }
 
-- (void)onPlayStop:(uint32)err streamID:(NSString *)streamID {
+- (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
 }
 
