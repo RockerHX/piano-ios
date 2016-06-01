@@ -154,7 +154,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         
     }else if(_contentType == SettingContentType_Summary ){
         //简介
-        [_navBarView setTitle:@"简介"];
+        [_navBarView setTitle:@"签名"];
         [_navBarView setRightButtonTitle:@"保存" titleColor:[UIColor blackColor]];
         
         [_contentView setBackgroundColor:[UIColor clearColor]];
@@ -368,6 +368,11 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         @strongify(self);
             [self hiddenHUD];
             [self showBannerWithPrompt:@"简介修改成功"];
+            
+            if (self.settingContentSaveBlock) {
+                self.settingContentSaveBlock(self.contentType,JOTrimString(text));
+            }
+            
             [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
         }];
     }else{

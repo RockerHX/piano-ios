@@ -118,7 +118,6 @@ static CGFloat const kTitleLabelHeight = 20.;
     [videoViewController setVideoURLString:_videoModel.videoUrl];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [(UINavigationController *)[[delegate window] rootViewController] presentViewController:videoViewController animated:YES completion:^{
-        
     }];
 }
 

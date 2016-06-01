@@ -18,5 +18,6 @@ UIKIT_EXTERN CGFloat const kPayHistoryCellHeadHeight; //头部的高度
 
 @property (nonatomic, strong, readonly) NSMutableArray *sendGiftLsitArray;//送出的礼物的列表
 @property (nonatomic, strong, readonly) NSMutableArray *orderListArray; //充值的列表
+@property (nonatomic, strong, readonly) NSMutableArray *recevierGiftListArray;//收到的礼物的列表.
 
 @end

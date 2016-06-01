@@ -110,7 +110,6 @@
         }else if(type == PaymentBarButtonItemType_PayHistory){
             //消费记录
             MIAPayHistoryViewController *payHistoryViewController = [MIAPayHistoryViewController new];
-            [payHistoryViewController setHistoryType:HistoryType_Guest];
             [self.navigationController pushViewController:payHistoryViewController animated:YES];
         }
     }];
