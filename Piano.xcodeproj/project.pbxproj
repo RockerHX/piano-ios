@@ -285,6 +285,8 @@
 		CDA394801CFD72D600F56A41 /* HXForgotPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA3947C1CFD72D600F56A41 /* HXForgotPWViewController.m */; };
 		CDA394891CFD75CA00F56A41 /* HXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA394861CFD75CA00F56A41 /* HXLoginViewController.m */; };
 		CDA3948A1CFD75CA00F56A41 /* HXMobileLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA394881CFD75CA00F56A41 /* HXMobileLoginViewController.m */; };
+		CDA3948E1CFE78CD00F56A41 /* HXSelectedAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA3948D1CFE78CD00F56A41 /* HXSelectedAlbumViewController.m */; };
+		CDA394911CFE78E700F56A41 /* HXSelectedAlbumContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA394901CFE78E700F56A41 /* HXSelectedAlbumContainerViewController.m */; };
 		CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -295,7 +297,6 @@
 		CDCB8CF21CFC316800F78CE3 /* HXStaticGiftView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCB8CF01CFC316800F78CE3 /* HXStaticGiftView.xib */; };
 		CDCB8CF51CFC333300F78CE3 /* HXStaticGiftItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB8CF41CFC333300F78CE3 /* HXStaticGiftItemView.m */; };
 		CDCB8CF71CFC334A00F78CE3 /* HXStaticGiftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCB8CF61CFC334A00F78CE3 /* HXStaticGiftItemView.xib */; };
-		CDDC38291CEAF0EC00328A17 /* HXSelectedAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC38271CEAF0EC00328A17 /* HXSelectedAlbumViewController.m */; };
 		CDDC382E1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC382C1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m */; };
 		CDDC383A1CEB1B3500328A17 /* HXBarrageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDC38381CEB1B3500328A17 /* HXBarrageModel.m */; };
 		CDE016E01CE2D8D8005645D5 /* HXLiveRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE016DE1CE2D8D8005645D5 /* HXLiveRewardViewController.m */; };
@@ -782,6 +783,10 @@
 		CDA394861CFD75CA00F56A41 /* HXLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLoginViewController.m; sourceTree = "<group>"; };
 		CDA394871CFD75CA00F56A41 /* HXMobileLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMobileLoginViewController.h; sourceTree = "<group>"; };
 		CDA394881CFD75CA00F56A41 /* HXMobileLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMobileLoginViewController.m; sourceTree = "<group>"; };
+		CDA3948C1CFE78CD00F56A41 /* HXSelectedAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXSelectedAlbumViewController.h; sourceTree = "<group>"; };
+		CDA3948D1CFE78CD00F56A41 /* HXSelectedAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSelectedAlbumViewController.m; sourceTree = "<group>"; };
+		CDA3948F1CFE78E700F56A41 /* HXSelectedAlbumContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXSelectedAlbumContainerViewController.h; sourceTree = "<group>"; };
+		CDA394901CFE78E700F56A41 /* HXSelectedAlbumContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSelectedAlbumContainerViewController.m; sourceTree = "<group>"; };
 		CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayViewController.h; sourceTree = "<group>"; };
 		CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayViewController.m; sourceTree = "<group>"; };
 		CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewController.h; sourceTree = "<group>"; };
@@ -817,8 +822,6 @@
 		CDCB8CF31CFC333300F78CE3 /* HXStaticGiftItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXStaticGiftItemView.h; sourceTree = "<group>"; };
 		CDCB8CF41CFC333300F78CE3 /* HXStaticGiftItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXStaticGiftItemView.m; sourceTree = "<group>"; };
 		CDCB8CF61CFC334A00F78CE3 /* HXStaticGiftItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXStaticGiftItemView.xib; sourceTree = "<group>"; };
-		CDDC38261CEAF0EC00328A17 /* HXSelectedAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXSelectedAlbumViewController.h; sourceTree = "<group>"; };
-		CDDC38271CEAF0EC00328A17 /* HXSelectedAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSelectedAlbumViewController.m; sourceTree = "<group>"; };
 		CDDC382B1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPreviewSelectedAlbumCell.h; sourceTree = "<group>"; };
 		CDDC382C1CEAF2B900328A17 /* HXPreviewSelectedAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPreviewSelectedAlbumCell.m; sourceTree = "<group>"; };
 		CDDC38371CEB1B3500328A17 /* HXBarrageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXBarrageModel.h; sourceTree = "<group>"; };
@@ -1790,10 +1793,9 @@
 		CD5D02711CB5FE31000285DC /* Preview */ = {
 			isa = PBXGroup;
 			children = (
+				CDA3948B1CFE78CD00F56A41 /* SelectedAlbum */,
 				CD5D02721CB5FE49000285DC /* HXPreviewLiveViewController.h */,
 				CD5D02731CB5FE49000285DC /* HXPreviewLiveViewController.m */,
-				CDDC38261CEAF0EC00328A17 /* HXSelectedAlbumViewController.h */,
-				CDDC38271CEAF0EC00328A17 /* HXSelectedAlbumViewController.m */,
 				CD5D02751CB60189000285DC /* HXCountDownViewController.h */,
 				CD5D02761CB60189000285DC /* HXCountDownViewController.m */,
 			);
@@ -2435,6 +2437,17 @@
 				CDA3947C1CFD72D600F56A41 /* HXForgotPWViewController.m */,
 			);
 			path = ForgotPW;
+			sourceTree = "<group>";
+		};
+		CDA3948B1CFE78CD00F56A41 /* SelectedAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				CDA3948C1CFE78CD00F56A41 /* HXSelectedAlbumViewController.h */,
+				CDA3948D1CFE78CD00F56A41 /* HXSelectedAlbumViewController.m */,
+				CDA3948F1CFE78E700F56A41 /* HXSelectedAlbumContainerViewController.h */,
+				CDA394901CFE78E700F56A41 /* HXSelectedAlbumContainerViewController.m */,
+			);
+			path = SelectedAlbum;
 			sourceTree = "<group>";
 		};
 		CDAA8DA41CA3C7DA0048C526 /* Replay */ = {
@@ -3097,6 +3110,7 @@
 				42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */,
 				CD8322D01CF5974000D7A254 /* HXProfileContainerViewController.m in Sources */,
 				CD7960A71CBE594C004CC661 /* HXMeViewModel.m in Sources */,
+				CDA394911CFE78E700F56A41 /* HXSelectedAlbumContainerViewController.m in Sources */,
 				CD7960A81CBE594C004CC661 /* HXAlbumsSongCell.m in Sources */,
 				CD7960AA1CBE594C004CC661 /* HXAlbumsViewController.m in Sources */,
 				CD7960AB1CBE594C004CC661 /* HXProfileReplayContainerCell.m in Sources */,
@@ -3150,6 +3164,7 @@
 				CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */,
 				CD7960CA1CBE594C004CC661 /* HXAlertBanner.m in Sources */,
 				CD7960CB1CBE594C004CC661 /* HXProfileAlbumContainerCell.m in Sources */,
+				CDA3948E1CFE78CD00F56A41 /* HXSelectedAlbumViewController.m in Sources */,
 				CDBCFAFE1CE1E35A0045946F /* HXLiveGiftViewController.m in Sources */,
 				42B857741CF844DA004B296A /* MIAVideoPlayViewController.m in Sources */,
 				42D613031CE2016900B80753 /* UIFont+JOExtend.m in Sources */,
@@ -3235,7 +3250,6 @@
 				CD7960F91CBE594C004CC661 /* HXPathManager.m in Sources */,
 				CD7224981CF8254400C8EC6B /* HXGiftManager.m in Sources */,
 				4250D3E91CFD672400679251 /* MIAItemsView.m in Sources */,
-				CDDC38291CEAF0EC00328A17 /* HXSelectedAlbumViewController.m in Sources */,
 				CD7960FA1CBE594C004CC661 /* MIAButton.m in Sources */,
 				CD7960FB1CBE594C004CC661 /* HXReplayViewController.m in Sources */,
 				42984B651CDC9E0B004F00D5 /* MIAProfileAlbumCell.m in Sources */,

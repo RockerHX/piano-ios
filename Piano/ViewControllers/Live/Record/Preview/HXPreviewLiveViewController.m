@@ -174,7 +174,7 @@ HXSelectedAlbumViewControllerDelegate
         case HXPreviewLiveEidtViewActionAddAlbum: {
             HXSelectedAlbumViewController *selctedAlbumViewController = [HXSelectedAlbumViewController instance];
             selctedAlbumViewController.delegate = self;
-            [selctedAlbumViewController showOnViewController:self];
+            [self presentViewController:selctedAlbumViewController animated:YES completion:nil];
             break;
         }
     }

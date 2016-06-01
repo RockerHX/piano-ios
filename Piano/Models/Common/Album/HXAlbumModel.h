@@ -19,4 +19,6 @@
 @property (nonatomic, strong)  NSString *coverUrl;
 @property (nonatomic, assign) NSInteger  rewardTotal;
 
+@property (nonatomic, assign)      BOOL  selected;
+
 @end
