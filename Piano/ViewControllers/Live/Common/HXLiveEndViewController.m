@@ -11,6 +11,7 @@
 #import "HXUserSession.h"
 #import "UIImageView+WebCache.h"
 #import "HXLiveModel.h"
+#import "MiaAPIHelper.h"
 
 
 @interface HXLiveEndViewController ()
@@ -39,7 +40,14 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    [MiaAPIHelper getRoomStat:_liveModel.roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+            _totalViewCountLabel.text = @([data[@"viewCnt"] integerValue]).stringValue;
+            _appendFansCountLabel.text = @([data[@"newFansCnt"] integerValue]).stringValue;
+            _appendMCurrencyCountLabel.text = @([data[@"newMcoinsCnt"] integerValue]).stringValue;
+        }
+    } timeoutBlock:nil];
 }
 
 - (void)viewConfigure {
