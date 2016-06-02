@@ -12,12 +12,14 @@
 #import "MIAPlaySlider.h"
 #import "MIAPlayBarView.h"
 #import "JOBaseSDK.h"
+#import "MusicMgr.h"
 
 static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 
 @interface MIAVideoPlayViewController(){
 
     BOOL finishedState;
+    BOOL playState;
     NSTimeInterval loadTime;
     dispatch_source_t timer;
 }
@@ -42,22 +44,50 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     [super loadView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
+    if ([[MusicMgr standard] isPlaying]) {
+        [[MusicMgr standard] pause];
+    }
+    
     finishedState = NO;
+    playState = NO;
     [self createPlayView];
     [self createPopButton];
     [self createPlayBarView];
     [self addAVPlayObserver];
     [self timerUpdate];
+    [self createLodingView];
     [_player play];
+    [self showLodingView];
 }
 
 - (void)createLodingView{
 
-//    self.videoLoadingView = [UIView newAutoLayoutView];
-//    [_videoLoadingView setBackgroundColor:JORGBCreate(0., 0., 0., 0.7)];
-//    [_videoLoadingView ]
-//    [self.view addSubview:_videoLoadingView];
+    self.videoLoadingView = [UIView newAutoLayoutView];
+    [_videoLoadingView setBackgroundColor:JORGBCreate(80., 80., 80., 0.4)];
+    [[_videoLoadingView layer] setCornerRadius:5.];
+    [[_videoLoadingView layer] setMasksToBounds:YES];
+    [_videoLoadingView setHidden:YES];
+    [self.view addSubview:_videoLoadingView];
     
+    [JOAutoLayout autoLayoutWithCenterWithView:self.view selfView:_videoLoadingView superView:self.view];
+    [JOAutoLayout autoLayoutWithSize:JOSize(70., 70.) selfView:_videoLoadingView superView:self.view];
+    
+    self.indicatorView = [UIActivityIndicatorView newAutoLayoutView];
+    [_indicatorView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [_indicatorView startAnimating];
+    [_videoLoadingView addSubview:_indicatorView];
+    
+    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0, .0, 0., 0.) selfView:_indicatorView superView:_videoLoadingView];
+}
+
+- (void)showLodingView{
+
+    [_videoLoadingView setHidden:NO];
+}
+
+- (void)hiddenLodingView{
+
+    [_videoLoadingView setHidden:YES];
 }
 
 - (void)createPlayView{
@@ -75,7 +105,6 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
     _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [_playView.layer addSublayer:_playerLayer];
-    [self showHUD];
 }
 
 - (void)createPopButton{
@@ -106,10 +135,14 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
                 [self.player seekToTime:CMTimeMake(0, 1)];
             }else{
                 //暂停的状态
+                
             }
+            
+            playState = YES;
             [self.player play];
         }else if (type == PlayBarActionPause){
             //暂停
+            playState = NO;
             [self.player pause];
         }else if (type == PlayBarActionSlider){
             //滑动
@@ -167,7 +200,8 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
         AVPlayerStatus status= [[change objectForKey:@"new"] intValue];
         if(status==AVPlayerStatusReadyToPlay){
             
-            [self hiddenHUD];
+            playState = YES;
+            [self hiddenLodingView];
             [_playBarView setCurrentPlayState:YES];
             [_playBarView setCurrentVideoDuration:playerItem.duration.value/playerItem.duration.timescale];
         }
@@ -187,34 +221,36 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
         
     }else if ([keyPath isEqualToString:@"playbackBufferEmpty"]){
     
-        NSLog(@"缓冲数据为空");
+//        NSLog(@"缓冲数据为空");
         [_player pause];
-        [_playBarView setCurrentPlayState:NO];
-        [self showHUD];
         
+        if (playState) {
+            [_playBarView setCurrentPlayState:NO];
+            [self showLodingView];
+        }
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-            [_player play];
-            [_playBarView setCurrentPlayState:YES];
-            [self hiddenHUD];
-            //rate 是avplayer 是一个属性，rate 1.0表示正在播放，0.0暂停， -1播放器失效
-            if (_player.rate <= 0) {
-                //播放异常
-                
+            if (playState) {
+                [_player play];
+                [_playBarView setCurrentPlayState:YES];
+                [self hiddenLodingView];
+                //rate 是avplayer 是一个属性，rate 1.0表示正在播放，0.0暂停， -1播放器失效
+                if (_player.rate <= 0) {
+                    //播放异常
+                    
+                }
             }
-            
         });
-        
-        
     }else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]){
         
         if(playerItem.playbackLikelyToKeepUp){
-        
-            NSLog(@"正常播放");
-            [_player play];
-            [self hiddenHUD];
+//            NSLog(@"正常播放");
+            if (playState) {
+                [_player play];
+                [self hiddenLodingView];
+            }
         }
-        
     }
 }
 

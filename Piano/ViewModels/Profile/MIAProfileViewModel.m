@@ -8,6 +8,7 @@
 
 #import "MIAProfileViewModel.h"
 #import "MIAProfileModel.h"
+#import "JOBaseSDK.h"
 
 CGFloat const kProfileLiveCellHeight = 100.;
 CGFloat const kProfileAlbumCellHeight = 150.;
@@ -130,8 +131,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
                               completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         
                                     if (success) {
-                                        
-                                        NSLog(@"^^^^^^^^^^^^^^^^:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+//                                        NSLog(@"^^^^^^^^^^^^^^^^:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                         [self parseProfileWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                                         [subscriber sendCompleted];
                                     }else{
@@ -199,8 +199,25 @@ CGFloat const kProfileReplayCellHeight = 210.;
         [_cellTypes addObject:@(MIAProfileCellTypeReplay)];
         [_cellDataArray addObject:[_profileModel.replay JOSeparateArrayWithNumber:2]];
     }
-    
+
      _sections = [_cellTypes count];
+}
+
+#pragma mark - cell height
+
++ (CGFloat)profileAlbumCellHeight{
+
+    return kProfileAlbumCellHeight;
+}
+
++ (CGFloat)profileVideoCellHeight{
+
+    return kProfileVideoCellHeight;
+}
+
++ (CGFloat)profileReplayCellHeight{
+
+    return kProfileReplayCellHeight;
 }
 
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "MIAProfileLiveView.h"
+#import "HXWatchLiveViewController.h"
+#import "AppDelegate.h"
+#import "MusicMgr.h"
 #import "MIAProfileViewModel.h"
 
 static CGFloat const kShowImageToTitleDistanceSpace = 10.;
@@ -21,9 +24,23 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
 
 @implementation MIAProfileLiveView
 
+- (void)addTapGesture{
+    
+    if (objc_getAssociatedObject(self, _cmd)) {
+        //
+    }else{
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [self addGestureRecognizer:tapGesture];
+        objc_setAssociatedObject(self, _cmd, @"only", OBJC_ASSOCIATION_RETAIN);
+    }
+}
+
 - (void)updateViewLayout{
     
     [super updateViewLayout];
+    
+    [self addTapGesture];
     
     [self.showImageView setBackgroundColor:[UIColor grayColor]];
     [[self.showImageView layer] setCornerRadius:3.];
@@ -62,12 +79,26 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
          [self.showTipLabel setText:_liveModel.liveTitle];
         
         [self updateViewLayout];
-        
     }else{
     
         [JOFException exceptionWithName:@"MIAProfileLiveView exception!" reason:@"data类型需要为LiveModel"];
     }
+}
+
+#pragma mark - tag action
+
+- (void)tapAction:(UIGestureRecognizer *)gesture{
     
+    UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+    watchLiveViewController.roomID = _liveModel.liveRoomID;
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [(UINavigationController *)[[delegate window] rootViewController] presentViewController:watchLiveNavigationController animated:YES completion:^{
+
+        if ([[MusicMgr standard] isPlaying]) {
+            [[MusicMgr standard] stop];
+        }
+    }];
 }
 
 @end

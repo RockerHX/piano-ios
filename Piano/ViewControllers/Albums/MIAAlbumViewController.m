@@ -416,7 +416,7 @@
     }else if (section == 1){
     
         return [MIABaseCellHeadView cellHeadViewWithImage:nil
-                                                    title:@"评论 3"
+                                                    title:[NSString stringWithFormat:@"评论 %ld",(long)_albumViewModel.commentCount]
                                                  tipTitle:nil
                                                     frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)
                                             cellColorType:BaseCellHeadColorTypeWhiter];

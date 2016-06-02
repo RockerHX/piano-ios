@@ -317,15 +317,12 @@ static NSString *const kVerifyPurchaseVerifyKey = @"VerifyKey";
                                              //验证失败
                                              [self failedHandlerWithReason:@"充值验证结果失败"];
                                          }
-                                         
                                      }else{
                                          
                                          [self failedHandlerWithReason:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
                                      }
-                                     
                                      //服务器验证完之后 需要删除本地的数据
                                      [self removeLocalVerifyPurchaseWithTransactionID:transactionID];
-                                     
                                  } timeoutBlock:^(MiaRequestItem *requestItem) {
                                      
                                      [self failedHandlerWithReason:TimtOutPrompt];

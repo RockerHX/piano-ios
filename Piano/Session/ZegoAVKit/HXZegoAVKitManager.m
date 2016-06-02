@@ -45,9 +45,17 @@ static NSString *LiveStateKey = @"LiveStateKey";
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
-//    _zegoLiveApi = [[ZegoLiveApi alloc] initWithAppID:1 appSignature:[self zegoAppSignFromServer]];
+	[ZegoLiveApi setLogLevel:4];
+
+#ifdef DEBUG
+	[ZegoLiveApi setUseTestEnv:YES];
+#else
+	[ZegoLiveApi setUseTestEnv:NO];
+#endif
+
+	//    _zegoLiveApi = [[ZegoLiveApi alloc] initWithAppID:1 appSignature:[self zegoAppSignFromServer]];
     _zegoLiveApi = [[ZegoLiveApi alloc] initWithAppID:1533641591 appSignature:[self zegoAppSignFromServer]];
-    [ZegoLiveApi setLogLevel:4];
+	[_zegoLiveApi requireHardwareAccelerated:NO];
 }
 
 #pragma mark - Property

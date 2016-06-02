@@ -255,20 +255,42 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 /**
  *  获取送出的礼物列表.
  *
+ *  @param start         起始的位置.
+ *  @param limit         每次拉取的数量
  *  @param completeBlock MiaRequestCompleteBlock
  *  @param timeoutBlock  MiaRequestTimeoutBlock
  */
-+ (void)getSendGiftListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
-                            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
++ (void)getSendGiftListWithStart:(NSString *)start
+                           limit:(NSString *)limit
+                   completeBlock:(MiaRequestCompleteBlock)completeBlock
+                    timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 /**
  *  获取充值的记录列表.
  *
+ *  @param start         起始的位置.
+ *  @param limit         每次拉取的数量
  *  @param completeBlock MiaRequestCompleteBlock
  *  @param timeoutBlock  MiaRequestTimeoutBlock
  */
-+ (void)getOrderListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
-                         timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
++ (void)getOrderListWithStart:(NSString *)start
+                        limit:(NSString *)limit
+                completeBlock:(MiaRequestCompleteBlock)completeBlock
+                 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+/**
+ *  获取接收到的礼物列表.
+ *
+ *  @param start         起始位置.
+ *  @param limit         每次拉取的数量.
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)getReceiverListWithStart:(NSString *)start
+                           limit:(NSString *)limit
+                   completeBlock:(MiaRequestCompleteBlock)completeBlock
+                    timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 
 /**
  *  内购成功后向服务器发起验证

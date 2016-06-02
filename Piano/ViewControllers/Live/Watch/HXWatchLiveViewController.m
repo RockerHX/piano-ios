@@ -221,7 +221,7 @@ HXLiveAlbumViewDelegate
 }
 
 #pragma mark - ZegoLiveApiDelegate
-- (void)onLoginChannel:(uint32)error {
+- (void)onLoginChannel:(NSString *)channel error:(uint32)error {
     NSLog(@"%s, err: %u", __func__, error);
     if (error == 0) {
         ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
@@ -247,19 +247,19 @@ HXLiveAlbumViewDelegate
     [alert show];
 }
 
-- (void)onPublishSucc:(NSString *)streamID {
+- (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
     NSLog(@"%s, stream: %@", __func__, streamID);
 }
 
-- (void)onPublishStop:(uint32)err stream:(NSString *)streamID {
+- (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, stream: %@, err: %u", __func__, streamID, err);
 }
 
-- (void)onPlaySucc:(NSString *)streamID {
+- (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, stream: %@", __func__, streamID);
 }
 
-- (void)onPlayStop:(uint32)err streamID:(NSString *)streamID {
+- (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
 }
 
@@ -272,7 +272,11 @@ HXLiveAlbumViewDelegate
     [self endLiveWithSnapShotImage:snapShotImage];
 }
 
-- (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
+- (void)onTakeLocalViewSnapshot:(CGImageRef)img {
+}
+
+- (void)onCaptureVideoSizeChangedToWidth:(uint32)width height:(uint32)height {
+}
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
