@@ -154,7 +154,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fch-1c-3Tw">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D-LiveEntryBG" translatesAutoresizingMaskIntoConstraints="NO" id="fch-1c-3Tw">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
                                         </imageView>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eG-wd-mXx">
@@ -483,6 +483,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="D-LiveEntryBG" width="317" height="565"/>
         <image name="D-MusicEntryIcon" width="15" height="15"/>
         <image name="D-VideoEntryIcon" width="15" height="15"/>
         <image name="PR-MaskBG" width="375" height="667"/>
