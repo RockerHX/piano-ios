@@ -311,16 +311,16 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
         
     }else if (level == HXSectorSliderLevelNormal){
         //50
-        self.rewardMCoin = @"50";
+        self.rewardMCoin = @"20";
     }else if (level == HXSectorSliderLevelMedium){
         //100
-        self.rewardMCoin = @"100";
+        self.rewardMCoin = @"30";
     }else if (level == HXSectorSliderLevelHigh){
         //150
-        self.rewardMCoin = @"150";
+        self.rewardMCoin = @"50";
     }else if (level == HXSectorSliderLevelVeryHigh){
         //200
-        self.rewardMCoin = @"200";
+        self.rewardMCoin = @"100";
     }
     
     [_rewardMCoinLabel setText:[NSString stringWithFormat:@"%@M币",_rewardMCoin]];

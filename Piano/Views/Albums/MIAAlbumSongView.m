@@ -80,12 +80,13 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_timeLabel superView:self];
     
     self.songNameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]];
+    [_songNameLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_songNameLabel];
     
     [JOAutoLayout autoLayoutWithLeftView:_downloadStateImageView distance:5. selfView:_songNameLabel superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_indexLabel selfView:_songNameLabel superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_indexLabel selfView:_songNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_timeLabel distance:5. selfView:_songNameLabel superView:self];
+    [JOAutoLayout autoLayoutWithRightView:_timeLabel distance:-5. selfView:_songNameLabel superView:self];
     
     UIView *separateLineView = [UIView newAutoLayoutView];
     [separateLineView setBackgroundColor:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]->color];
