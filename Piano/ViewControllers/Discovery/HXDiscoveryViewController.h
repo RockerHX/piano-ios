@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryViewControllerAction) {
 @property (weak, nonatomic) IBOutlet HXDiscoveryTopBar *topBar;
 
 - (void)startFetchList;
+- (void)recoveryLive;
 
 @end
 

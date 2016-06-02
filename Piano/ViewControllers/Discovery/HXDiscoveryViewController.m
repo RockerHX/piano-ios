@@ -24,6 +24,7 @@
 #import "MIAProfileViewController.h"
 #import "HXHostProfileViewController.h"
 #import "UIButton+WebCache.h"
+#import "MiaAPIHelper.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -96,6 +97,18 @@ HXDiscoveryContainerDelegate
         @strongify(self)
         [self fetchCompleted];
     }];
+}
+
+- (void)recoveryLive {
+    [self hiddenNavigationBar];
+//    UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+//    [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
+    
+    [MiaAPIHelper refetchLiveWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            NSLog(@"%@", userInfo);
+        }
+    } timeoutBlock:nil];
 }
 
 #pragma mark - Private Methods
