@@ -17,6 +17,7 @@
 #import "MIAPaymentViewController.h"
 #import "A2BlockInvocation.h"
 #import "MIAPayHistoryViewController.h"
+#import "MIAAlbumViewController.h"
 
 
 @interface HXHostProfileViewController () <
@@ -27,7 +28,7 @@ HXHostProfileContainerDelegate
 
 @implementation HXHostProfileViewController {
     HXHostProfileContainerViewController *_containerViewController;
-    HXMeViewModel *_viewModel;
+    HXHostProfileViewModel *_viewModel;
 }
 
 #pragma mark - Segue
@@ -50,7 +51,8 @@ HXHostProfileContainerDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    _containerViewController.viewModel = self.viewModel;
+    _viewModel = [HXHostProfileViewModel new];
+    _containerViewController.viewModel = _viewModel;
     
     [self fetchData];
 }
@@ -59,18 +61,10 @@ HXHostProfileContainerDelegate
     [self showHUD];
 }
 
-#pragma mark - Property
-- (HXMeViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [HXMeViewModel new];
-    }
-    return _viewModel;
-}
-
 #pragma mark - Private Methods
 - (void)fetchData {
     @weakify(self)
-    RACSignal *fetchSignal = [self.viewModel.fetchCommand execute:nil];
+    RACSignal *fetchSignal = [_viewModel.fetchCommand execute:nil];
     [fetchSignal subscribeError:^(NSError *error) {
         @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
@@ -111,6 +105,31 @@ HXHostProfileContainerDelegate
         [profileViewController setUid:model.uID];
         [self.navigationController pushViewController:profileViewController animated:YES];
     }
+}
+
+- (void)container:(HXHostProfileContainerViewController *)container showAttentionAnchor:(HXAttentionModel *)anchor {
+    if (anchor.live) {
+        if (!anchor.roomID) {
+            [self showBannerWithPrompt:@"直播已结束"];
+            return;
+        }
+        
+        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+        watchLiveViewController.roomID = anchor.roomID;
+        [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+    } else {
+        MIAProfileViewController *profileViewController = [MIAProfileViewController new];
+        [profileViewController setUid:anchor.uID];
+        [self.navigationController pushViewController:profileViewController animated:YES];
+    }
+}
+
+- (void)container:(HXHostProfileContainerViewController *)container showRewardAlbum:(HXAlbumModel *)album {
+    MIAAlbumViewController *albumViewController = [MIAAlbumViewController new];
+    [albumViewController setAlbumUID:album.ID];
+    [albumViewController setRewardType:MIAAlbumRewardTypeMyReward];
+    [self.navigationController pushViewController:albumViewController animated:YES];
 }
 
 - (void)container:(HXHostProfileContainerViewController *)container takeAction:(HXHostProfileContainerAction)action {

@@ -36,38 +36,37 @@ ZEGO_EXTERN NSString *const kZegoPublishStreamURLKey;   ///< 当前直播流观�
 
 /// \brief 获取流信息结果
 /// \param err 0 成功，进一步等待流信息更新，否则出错
-- (void)onLoginChannel:(uint32)err;
-
-/// \brief 频道连接断开
-/// \param err 错误码
-/// \param channel 断开的频道
-- (void)onDisconnected:(uint32)err channel:(NSString *)channel;
-
-/// \brief 频道连接重新建立
-/// \param channel 频道
-- (void)onReconnected:(NSString *)channel;
+- (void)onLoginChannel:(NSString *)channel error:(uint32)err;
 
 /// \brief 发布直播成功
-- (void)onPublishSucc:(NSString *)streamID;
+/// \param streamID 发布流ID
+/// \param channel 所在 channel
+/// \param playUrl 主播流的播放 url
+- (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl;
 
 /// \brief 发布直播失败
-/// \param err 1 正常结束, 2 异常结束
-- (void)onPublishStop:(uint32)err stream:(NSString *)streamID;
+/// \param err 1 正常结束, 非 1 异常结束
+- (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel;
 
 /// \brief 观看直播成功
 /// \param streamID 直播流的唯一标识
-- (void)onPlaySucc:(NSString *)streamID;
+- (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel;
 
 /// \brief 观看直播失败
 /// \param err 1 正常结束, 非 1 异常结束
 /// \param streamID 直播流的唯一标识
-- (void)onPlayStop:(uint32)err streamID:(NSString *)streamID;
+- (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel;
 
 /// \brief 视频的宽度和高度变化通知,startPlay后，如果视频宽度或者高度发生变化(首次的值也会)，则收到该通知
 /// \param streamID 流的唯一标识
 /// \param width 宽
 /// \param height 高
 - (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height;
+
+/// \brief 采集视频的宽度和高度变化通知
+/// \param width 宽
+/// \param height 高
+- (void)onCaptureVideoSizeChangedToWidth:(uint32)width height:(uint32)height;
 
 /// \brief 截取观看直播 view 图像结果
 /// \param img 图像数据
@@ -176,6 +175,10 @@ ZEGO_EXTERN NSString *const kZegoPublishStreamURLKey;   ///< 当前直播流观�
 /// \return true：成功；false:失败
 - (bool)setBuiltInSpeakerOn:(bool)bOn;
 
+/// \brief 开关硬件编解码
+/// \param bRequire 开关
+- (bool)requireHardwareAccelerated:(bool)bRequire;
+
 /// \brief 登录频道
 /// \param channel 频道 ID
 /// \param user 用户
@@ -207,17 +210,22 @@ ZEGO_EXTERN NSString *const kZegoPublishStreamURLKey;   ///< 当前直播流观�
 /// \brief 退出当前频道
 - (bool)logoutChannel;
 
-/// \brief 获取当前频道ID
-- (NSString *)liveChannel;
-
-/// \brief 获取主播流信息
-/// \return 直播流信息，key 包含 kZegoPublishStreamIDKey/kZegoPublishStreamURLKey
-- (NSDictionary *)currentPublishInfo;
-
 /// \brief 主动出发日志上报
 - (void)uploadLog;
 
 /// \brief 获取 SDK 版本
 - (NSString *)version;
 
+/// \brief 是否启用测试环境
++ (void)setUseTestEnv:(bool)useTestEnv;
+
+/// \brief 设置外部采集模块
+/// \param factory 工厂对象，继承自 ZEGO::AV::VideoCaptureFactory，
+/// \note 必须在 InitSDK 前调用，并且不能置空
+///    Example:
+//+ (void)setVideoCaptureFactory:(void *)factory;
+
 @end
+
+
+

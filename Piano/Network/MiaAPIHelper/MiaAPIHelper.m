@@ -558,6 +558,30 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)closeLiveWithRoomID:(NSString *)roomID
+              completeBlock:(MiaRequestCompleteBlock)completeBlock
+               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_Close
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)refetchLiveWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                        timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_ReFetch
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 #pragma mark - profile
 + (void)getUserProfileWithUID:(NSString *)uID
 					completeBlock:(MiaRequestCompleteBlock)completeBlock
