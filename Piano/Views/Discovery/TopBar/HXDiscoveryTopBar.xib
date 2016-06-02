@@ -33,12 +33,12 @@
                         <action selector="profileButtonPressed" destination="-1" eventType="touchUpInside" id="V8Z-US-Ep4"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZC-Ng-Inw" userLabel="Musicn Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZC-Ng-Inw" userLabel="Musicn Button">
                     <rect key="frame" x="259" y="15" width="46" height="46"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="46" id="iUg-lA-4DN"/>
                     </constraints>
-                    <state key="normal" title="Music"/>
+                    <state key="normal" image="D-PlayerEntryIcon"/>
                     <connections>
                         <action selector="musicButtonPressed" destination="-1" eventType="touchUpInside" id="1za-6o-Ir2"/>
                     </connections>
@@ -57,4 +57,7 @@
             <point key="canvasLocation" x="359" y="372"/>
         </view>
     </objects>
+    <resources>
+        <image name="D-PlayerEntryIcon" width="25" height="25"/>
+    </resources>
 </document>
