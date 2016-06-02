@@ -166,12 +166,14 @@ HXDiscoveryContainerDelegate
             break;
         }
         case HXDiscoveryContainerActionStartLive: {
+            [[MusicMgr standard] pause];
             [self hiddenNavigationBar];
             UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
             [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
+            [[MusicMgr standard] pause];
             [self hiddenNavigationBar];
             UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
             HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];

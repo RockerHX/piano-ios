@@ -154,7 +154,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fch-1c-3Tw">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D-LiveEntryBG" translatesAutoresizingMaskIntoConstraints="NO" id="fch-1c-3Tw">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
                                         </imageView>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eG-wd-mXx">
@@ -383,21 +383,57 @@
                                                 <constraint firstAttribute="bottom" secondItem="SyA-Mc-0RO" secondAttribute="bottom" constant="4" id="t9v-6q-s16"/>
                                             </constraints>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hbt-ft-vNa" userLabel="Video Icon">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D-VideoEntryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hbt-ft-vNa" userLabel="Video Icon" customClass="HXIBImageView">
                                             <rect key="frame" x="5" y="131" width="28" height="28"/>
                                             <color key="backgroundColor" red="0.61568627450980395" green="0.47843137254901957" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="28" id="T0Z-B5-AJj"/>
                                                 <constraint firstAttribute="width" secondItem="hbt-ft-vNa" secondAttribute="height" multiplier="1:1" id="b6F-gl-5s7"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="14"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JM4-AN-jpV" userLabel="Album Icon">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWn-g9-l59" userLabel="Video Red Dot" customClass="HXIBView">
+                                            <rect key="frame" x="25" y="131" width="8" height="8"/>
+                                            <color key="backgroundColor" red="0.95294117647058818" green="0.082352941176470587" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="8" id="rIp-TN-XiG"/>
+                                                <constraint firstAttribute="width" secondItem="VWn-g9-l59" secondAttribute="height" multiplier="1:1" id="rha-SY-Psx"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D-MusicEntryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JM4-AN-jpV" userLabel="Album Icon" customClass="HXIBImageView">
                                             <rect key="frame" x="41" y="131" width="28" height="28"/>
                                             <color key="backgroundColor" red="0.61568627450000002" green="0.47843137250000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="28" id="Wtt-wS-WGm"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="14"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iD6-c4-RJ9" userLabel="Album Red Dot" customClass="HXIBView">
+                                            <rect key="frame" x="61" y="131" width="8" height="8"/>
+                                            <color key="backgroundColor" red="0.95294117649999999" green="0.08235294118" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="iD6-c4-RJ9" secondAttribute="height" multiplier="1:1" id="ccF-NZ-IR0"/>
+                                                <constraint firstAttribute="width" constant="8" id="ny0-Db-12q"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -412,20 +448,26 @@
                                     <constraint firstItem="2c0-aG-ej8" firstAttribute="leading" secondItem="7f9-iC-Xtw" secondAttribute="leading" constant="5" id="Rau-Pe-Rrr"/>
                                     <constraint firstItem="2c0-aG-ej8" firstAttribute="top" secondItem="7f9-iC-Xtw" secondAttribute="centerY" id="YGo-sr-oan"/>
                                     <constraint firstItem="sjE-Wh-idO" firstAttribute="top" secondItem="7f9-iC-Xtw" secondAttribute="top" id="Zrf-z8-Ijg"/>
+                                    <constraint firstItem="VWn-g9-l59" firstAttribute="top" secondItem="hbt-ft-vNa" secondAttribute="top" id="dcO-Sd-IhR"/>
+                                    <constraint firstItem="iD6-c4-RJ9" firstAttribute="top" secondItem="JM4-AN-jpV" secondAttribute="top" id="iJg-wQ-DJN"/>
                                     <constraint firstAttribute="bottom" secondItem="sjE-Wh-idO" secondAttribute="bottom" id="kgo-6t-KIn"/>
+                                    <constraint firstItem="iD6-c4-RJ9" firstAttribute="trailing" secondItem="JM4-AN-jpV" secondAttribute="trailing" id="nMD-xH-L3D"/>
                                     <constraint firstItem="JM4-AN-jpV" firstAttribute="leading" secondItem="hbt-ft-vNa" secondAttribute="trailing" constant="8" id="uEb-z8-bpc"/>
+                                    <constraint firstItem="hbt-ft-vNa" firstAttribute="trailing" secondItem="VWn-g9-l59" secondAttribute="trailing" id="w6y-z4-Zqq"/>
                                     <constraint firstItem="JM4-AN-jpV" firstAttribute="top" secondItem="hbt-ft-vNa" secondAttribute="top" id="xv0-hR-jWZ"/>
                                 </constraints>
                                 <size key="customSize" width="218" height="200"/>
                                 <connections>
                                     <outlet property="albumIcon" destination="JM4-AN-jpV" id="LCx-bW-dMN"/>
                                     <outlet property="albumIconWidthConstraint" destination="Wtt-wS-WGm" id="3cm-8b-rJh"/>
+                                    <outlet property="albumRedDot" destination="iD6-c4-RJ9" id="dkI-nj-S7B"/>
                                     <outlet property="cover" destination="sjE-Wh-idO" id="q1b-ph-VDS"/>
                                     <outlet property="iconSpaceConstraint" destination="uEb-z8-bpc" id="Fv0-JE-r45"/>
                                     <outlet property="nickNameContainer" destination="2c0-aG-ej8" id="Et5-Eh-kNM"/>
                                     <outlet property="nickNameLabel" destination="SyA-Mc-0RO" id="dkF-cq-okN"/>
                                     <outlet property="videoIcon" destination="hbt-ft-vNa" id="MdL-9d-evV"/>
                                     <outlet property="videoIconWidthConstraint" destination="T0Z-B5-AJj" id="4GM-fM-36H"/>
+                                    <outlet property="videoRedDot" destination="VWn-g9-l59" id="a7N-9j-iUO"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -441,6 +483,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="D-LiveEntryBG" width="317" height="565"/>
+        <image name="D-MusicEntryIcon" width="15" height="15"/>
+        <image name="D-VideoEntryIcon" width="15" height="15"/>
         <image name="PR-MaskBG" width="375" height="667"/>
     </resources>
 </document>
