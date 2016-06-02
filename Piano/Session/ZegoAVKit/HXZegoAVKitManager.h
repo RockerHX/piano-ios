@@ -10,9 +10,10 @@
 #import <ZegoAVKit2/ZegoLiveApi.h>
 
 
-typedef NS_ENUM(BOOL, HXLiveState) {
-    HXLiveStateNormal = YES,
-    HXLiveStateException = NO,
+typedef NS_ENUM(NSUInteger, HXLiveState) {
+    HXLiveStatePreview,
+    HXLiveStateLive,
+    HXLiveStateNormal,
 };
 
 
@@ -37,6 +38,7 @@ typedef NS_ENUM(BOOL, HXLiveState) {
 - (void)fetchShowList:(void(^)(HXZegoAVKitManager *manager, BOOL success))completed failure:(void(^)(HXZegoAVKitManager *manager, NSString *message))failure;
 - (void)fetchReplayList:(void(^)(HXZegoAVKitManager *manager, BOOL success))completed failure:(void(^)(HXZegoAVKitManager *manager, NSString *message))failure;
 
+- (void)startPreview;
 - (void)startLive;
 - (void)closeLive;
 

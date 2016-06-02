@@ -27,12 +27,13 @@
         discoveryModel.videoUrl = replayModel.replayUrl;
     } else if ([model isKindOfClass:[MIAReplayModel class]]) {
         MIAReplayModel *replayModel = model;
-        discoveryModel = [HXDiscoveryModel new];
-        discoveryModel.roomID= replayModel.roomID;
-        discoveryModel.nickName= replayModel.nick;
-        discoveryModel.coverUrl= replayModel.coverUrl;
-        discoveryModel.videoUrl= replayModel.replayUrl;
-        discoveryModel.duration= replayModel.duration;
+        discoveryModel              = [HXDiscoveryModel new];
+        discoveryModel.roomID       = replayModel.roomID;
+        discoveryModel.anchorAvatar = replayModel.anchorAvatar;
+        discoveryModel.nickName     = replayModel.nick;
+        discoveryModel.coverUrl     = replayModel.coverUrl;
+        discoveryModel.videoUrl     = replayModel.replayUrl;
+        discoveryModel.duration     = replayModel.duration;
     }
     return discoveryModel;
 }

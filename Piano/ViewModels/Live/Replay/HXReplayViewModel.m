@@ -8,7 +8,6 @@
 
 #import "HXReplayViewModel.h"
 #import "MiaAPIHelper.h"
-#import "LocationMgr.h"
 
 
 @implementation HXReplayViewModel
@@ -25,20 +24,20 @@
 
 #pragma mark - Configure Methods
 - (void)initConfigure {
-    _comments = @[];
+    _barrages = @[];
     
-    [self fetchCommentCommandConfigure];
+    [self fetchBarrageCommandConfigure];
     [self checkAttentionStateCommandConfigure];
     [self viewReplayCommandConfigure];
     [self takeAttentionCommandConfigure];
 }
 
-- (void)fetchCommentCommandConfigure {
+- (void)fetchBarrageCommandConfigure {
     @weakify(self)
-    _fetchCommentCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    _fetchBarrageCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self)
-            [self fetchCommentRequestWithSubscriber:subscriber];
+            [self fetchBarrageRequestWithSubscriber:subscriber];
             return nil;
         }];
         return signal;
@@ -86,6 +85,10 @@
 }
 
 #pragma mark - Property
+- (NSString *)anchorAvatar {
+    return _model.anchorAvatar;
+}
+
 - (NSString *)anchorNickName {
     return _model.nickName;
 }
@@ -95,27 +98,25 @@
     _timeNode = node;
 }
 
-- (void)clearComments {
-    _comments = @[];
+- (void)clearBarrages {
+    _barrages = @[];
 }
 
 #pragma mark - Private Methods
-- (void)fetchCommentRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-	[[LocationMgr standard] initLocationMgr];
-    [[LocationMgr standard] startUpdatingLocationWithOnceBlock:^(CLLocationCoordinate2D coordinate, NSString *address) {
-        [MiaAPIHelper getReplyCommentWithRoomID:_model.roomID latitude:coordinate.latitude longitude:coordinate.longitude time:_timeNode completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-            if (success) {
-                NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
-                _timeNode = [data[@"time"] integerValue];
-                [self addComment:data[@"comments"]];
-                
-                [subscriber sendCompleted];
-            } else {
-                [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
-            }
-        } timeoutBlock:^(MiaRequestItem *requestItem) {
-            [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
-        }];
+- (void)fetchBarrageRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+    [MiaAPIHelper getReplyCommentWithRoomID:_model.roomID latitude:0 longitude:0 time:_timeNode completeBlock:
+     ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+            _timeNode = [data[@"time"] integerValue];
+            [self addBarrages:data[@"comments"]];
+            
+            [subscriber sendCompleted];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
     }];
 }
 
@@ -166,14 +167,13 @@
     }];
 }
 
-- (void)addComment:(NSDictionary *)datas {
-    NSMutableArray *comments = [_comments mutableCopy];
+- (void)addBarrages:(NSDictionary *)datas {
+    NSMutableArray *comments = [_barrages mutableCopy];
     for (NSDictionary *data in datas) {
         HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:data];
         [comments addObject:model];
     }
-    
-    self.comments = [comments copy];
+    self.barrages = [comments copy];
 }
 
 @end

@@ -9,20 +9,27 @@
 #import "MJExtension.h"
 
 
+typedef NS_ENUM(NSUInteger, HXDiscoveryModelType) {
+    HXDiscoveryModelTypeAnchor,
+    HXDiscoveryModelTypeLive,
+    HXDiscoveryModelTypeProfile,
+};
+
+
 @class HXReplayModel;
 
 
 @interface HXDiscoveryModel : NSObject
 
-@property (nonatomic, assign)      BOOL  anchor;
-@property (nonatomic, assign)      BOOL  live;
-@property (nonatomic, assign)      BOOL  videoUpdated;
-@property (nonatomic, assign)      BOOL  albumUpdated;
+@property (nonatomic, assign)                 BOOL  videoUpdated;
+@property (nonatomic, assign)                 BOOL  albumUpdated;
+@property (nonatomic, assign) HXDiscoveryModelType  type;
 
 @property (nonatomic, strong)  NSString *uID;
 @property (nonatomic, strong)  NSString *roomID;
 @property (nonatomic, strong)  NSString *liveDate;
 @property (nonatomic, strong)  NSString *nickName;
+@property (nonatomic, strong)  NSString *anchorAvatar;
 @property (nonatomic, strong)  NSString *coverUrl;
 @property (nonatomic, strong)  NSString *videoUrl;
 @property (nonatomic, strong)  NSString *coverColor;

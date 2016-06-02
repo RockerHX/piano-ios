@@ -8,12 +8,12 @@
 
 #import "ReactiveCocoa.h"
 #import "HXDiscoveryModel.h"
-#import "HXCommentModel.h"
+#import "HXBarrageModel.h"
 
 
 @interface HXReplayViewModel : NSObject
 
-@property (nonatomic, strong, readonly) RACCommand *fetchCommentCommand;
+@property (nonatomic, strong, readonly) RACCommand *fetchBarrageCommand;
 @property (nonatomic, strong, readonly) RACCommand *checkAttentionStateCommand;
 @property (nonatomic, strong, readonly) RACCommand *viewReplayCommand;
 @property (nonatomic, strong, readonly) RACCommand *takeAttentionCommand;
@@ -27,11 +27,11 @@
 @property (nonatomic, strong, readonly) NSString *anchorNickName;
 @property (nonatomic, strong, readonly) NSString *viewCount;
 
-@property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
+@property (nonatomic, strong) NSArray<HXBarrageModel *> *barrages;
 
 - (instancetype)initWithDiscoveryModel:(HXDiscoveryModel *)model;
 
 - (void)updateTimeNode:(NSTimeInterval)node;
-- (void)clearComments;
+- (void)clearBarrages;
 
 @end

@@ -17,6 +17,7 @@
 #import "UIView+Frame.h"
 #import "HXGiftManager.h"
 #import "HXNoNetworkView.h"
+#import "HXZegoAVKitManager.h"
 
 
 @interface HXMainViewController () <
@@ -140,9 +141,6 @@ HXLoginViewControllerDelegate
 
 //			[self checkUpdate];
 			[self autoLogin];
-            
-            [_discoveryContainerViewController startFetchList];
-            [HXNoNetworkView hidden];
 		} else {
 			[self autoReconnect];
 		}
@@ -179,7 +177,11 @@ HXLoginViewControllerDelegate
              HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
              [userSession updateUser:user];
              
-             //                     [self updateNotificationBadge];
+             [HXNoNetworkView hidden];
+             [_discoveryContainerViewController startFetchList];
+             if ([HXZegoAVKitManager manager].liveState == HXLiveStateLive) {
+                 [_discoveryContainerViewController recoveryLive];
+             }
          } else {
              [[FileLog standard] log:@"autoLogin failed, logout"];
              [userSession logout];

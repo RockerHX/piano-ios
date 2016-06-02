@@ -64,8 +64,7 @@
     HXUserSession *userSession = [HXUserSession session];
     if ((userSession.state == HXUserStateLogin) && (userSession.role == HXUserRoleAnchor)) {
         HXDiscoveryModel *model = [HXDiscoveryModel new];
-        model.anchor = YES;
-        model.live = YES;
+        model.type = HXDiscoveryModelTypeAnchor;
         model.coverUrl = userSession.user.coverUrl;
         model.videoUrl = userSession.user.videoUrl;
         [discoveryList addObject:model];
@@ -73,6 +72,7 @@
     
     for (NSDictionary *data in liveList) {
         HXDiscoveryModel *model = [HXDiscoveryModel mj_objectWithKeyValues:data];
+        model.type = HXDiscoveryModelTypeLive;
         if (model) {
             [discoveryList addObject:model];
         }
@@ -80,6 +80,7 @@
     
     for (NSDictionary *data in musicianList) {
         HXDiscoveryModel *model = [HXDiscoveryModel mj_objectWithKeyValues:data];
+        model.type = HXDiscoveryModelTypeProfile;
         if (model) {
             [discoveryList addObject:model];
         }

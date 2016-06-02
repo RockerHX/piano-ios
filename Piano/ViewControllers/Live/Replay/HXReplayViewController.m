@@ -92,13 +92,10 @@ HXReplayBottomBarDelegate
 
 - (void)sigalLink {
     if (([HXUserSession session].state == HXUserStateLogin) && ![[HXUserSession session].uid isEqualToString:_viewModel.model.uID]) {
-        @weakify(self)
         RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
         [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
-            @strongify(self)
             self->_anchorView.attented = state.boolValue;
         } error:^(NSError *error) {
-            @strongify(self)
             if (![error.domain isEqualToString:RACCommandErrorDomain]) {
                 [self showBannerWithPrompt:error.domain];
             }
@@ -175,16 +172,13 @@ HXReplayBottomBarDelegate
 }
 
 - (void)fetchBarrageData {
-    @weakify(self)
-    RACSignal *fetchCommentSiganl = [_viewModel.fetchCommentCommand execute:nil];
-    [fetchCommentSiganl subscribeError:^(NSError *error) {
-        @strongify(self)
+    RACSignal *fetchBarrageSiganl = [_viewModel.fetchBarrageCommand execute:nil];
+    [fetchBarrageSiganl subscribeError:^(NSError *error) {
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
-        @strongify(self)
-        self->_containerViewController.barrages = self->_viewModel.comments;
+        _containerViewController.barrages = _viewModel.barrages;
     }];
 }
 
@@ -256,7 +250,7 @@ HXReplayBottomBarDelegate
         @strongify(self)
         if (finished) {
             [self timerConfigure];
-            [self->_viewModel clearComments];
+            [self->_viewModel clearBarrages];
             [self->_viewModel updateTimeNode:currentTime];
             [self fetchBarrageData];
             

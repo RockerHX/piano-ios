@@ -33,7 +33,7 @@
     
     [self signalLink];
     [self notificationConfigure];
-    [self leaveRoomCommandConfigure];
+    [self closeRoomCommandConfigure];
 }
 
 - (void)signalLink {
@@ -83,12 +83,12 @@
     }];
 }
 
-- (void)leaveRoomCommandConfigure {
+- (void)closeRoomCommandConfigure {
     @weakify(self)
-    _leaveRoomCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    _closeRoomCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self)
-            [self leaveRoomRequestWithSubscriber:subscriber];
+            [self closeRoomRequestWithSubscriber:subscriber];
             return nil;
         }];
         return signal;
@@ -172,8 +172,8 @@
     _model.viewCount = count;
 }
 
-- (void)leaveRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper leaveRoom:self.roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+- (void)closeRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
+    [MiaAPIHelper closeLiveWithRoomID:self.roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             [subscriber sendCompleted];
         } else {

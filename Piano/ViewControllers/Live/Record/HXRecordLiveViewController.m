@@ -41,13 +41,13 @@ HXLiveAlbumViewDelegate
 
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
-    HXLiveEndViewController *_endViewController;
     HXLiveBarrageContainerViewController *_barrageContainer;
     
     NSString *_roomID;
     NSString *_roomTitle;
     
     HXRecordLiveViewModel *_viewModel;
+    HXLiveModel *_liveModel;
     BOOL _frontCamera;
     BOOL _microEnable;
     BOOL _beauty;
@@ -69,10 +69,7 @@ HXLiveAlbumViewDelegate
     if ([segue.identifier isEqualToString:NSStringFromClass([HXPreviewLiveViewController class])]) {
         _previewViewController = segue.destinationViewController;
         _previewViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
-        _endViewController = segue.destinationViewController;
-        _endViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
+    }else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
         _barrageContainer = segue.destinationViewController;
         _barrageContainer.delegate = self;
     }
@@ -115,20 +112,32 @@ HXLiveAlbumViewDelegate
 
 - (void)viewConfigure {
     //设置回调代理
-    [[HXZegoAVKitManager manager].zegoLiveApi setDelegate:self];
+    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+    [manager.zegoLiveApi setDelegate:self];
     
+    [manager startPreview];
     [self startPreview];
+    if (_liveModel) {
+        [self previewControllerHandleFinishedShouldStartLive:nil liveModel:_liveModel frontCamera:_frontCamera beauty:_beauty];
+    }
 }
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
-    [_anchorView stopRecordTime];
-    [_albumView stopAlbumAnmation];
-    [_viewModel closeLive];
-    [[HXZegoAVKitManager manager] closeLive];
-    
-    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
-    [zegoLiveApi takeLocalViewSnapshot];
+    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+    if (manager.liveState == HXLiveStateLive) {
+        [_anchorView stopRecordTime];
+        [_albumView stopAlbumAnmation];
+        [manager.zegoLiveApi takeLocalViewSnapshot];
+    } else {
+        [self leaveRoom];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+#pragma mark - Public Methods
+- (void)recoveryLive:(HXLiveModel *)model {
+    _liveModel = model;
 }
 
 #pragma mark - Private Methods
@@ -161,14 +170,21 @@ HXLiveAlbumViewDelegate
 - (void)endLiveWithSnapShotImage:(UIImage *)image {
     [self leaveRoom];
     
-    _endViewController.snapShotImage = image;
-    _endCountContainer.hidden = NO;
+    HXLiveEndViewController *liveEndViewController = [HXLiveEndViewController instance];
+    liveEndViewController.delegate = self;
+    liveEndViewController.isLive = YES;
+    liveEndViewController.snapShotImage = image;
+    liveEndViewController.liveModel = _viewModel.model;
+    [self presentViewController:liveEndViewController animated:YES completion:nil];
 }
 
 - (void)leaveRoom {
-    [_viewModel.leaveRoomCommand execute:nil];
+    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+    [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+        [manager closeLive];
+    }];
     
-    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    ZegoLiveApi *zegoLiveApi = manager.zegoLiveApi;
     [zegoLiveApi stopPreview];
     [zegoLiveApi logoutChannel];
 }
@@ -223,7 +239,7 @@ static CGFloat AlbumViewWidth = 60.0f;
         b = [zegoLiveApi setFilter:ZEGO_FILTER_NONE];
         assert(b);
         
-        b = [zegoLiveApi startPublishingWithTitle:_roomTitle streamID:nil];
+        b = [zegoLiveApi startPublishingWithTitle:_roomTitle streamID:_viewModel.model.streamAlias];
         assert(b);
         NSLog(@"%s, ret: %d", __func__, ret);
     }
@@ -259,10 +275,8 @@ static CGFloat AlbumViewWidth = 60.0f;
     NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
 }
 
-- (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {
-    NSLog(@"%s", __func__);
-}
-
+- (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {}
+- (void)onCaptureVideoSizeChangedToWidth:(uint32)width height:(uint32)height {}
 - (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {}
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {
@@ -376,7 +390,7 @@ static CGFloat AlbumViewWidth = 60.0f;
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods
 - (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    ;
 }
 
 //#pragma mark - HXWatcherContainerViewControllerDelegate Methods

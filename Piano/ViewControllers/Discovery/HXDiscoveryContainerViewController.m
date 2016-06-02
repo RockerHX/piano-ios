@@ -115,7 +115,7 @@ HXDiscoveryLiveCellDelegate
     HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
-            if (model.anchor) {
+            if (model.type == HXDiscoveryModelTypeAnchor) {
                 cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryLiveCell class]) forIndexPath:indexPath];
             } else {
                 cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HXDiscoveryShowCell class]) forIndexPath:indexPath];
@@ -137,7 +137,7 @@ HXDiscoveryLiveCellDelegate
     HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
-            if (model.anchor) {
+            if (model.type == HXDiscoveryModelTypeAnchor) {
                 HXDiscoveryLiveCell *liveCell = (HXDiscoveryLiveCell *)cell;
                 [liveCell updateCellWithModel:model];
             } else {
@@ -160,7 +160,7 @@ HXDiscoveryLiveCellDelegate
     HXCollectionViewLayoutStyle style = [self collectionView:collectionView layout:(HXCollectionViewLayout *)self.collectionView.collectionViewLayout styleForItemAtIndexPath:indexPath];
     switch (style) {
         case HXCollectionViewLayoutStyleHeavy: {
-            if (model.anchor) {
+            if (model.type == HXDiscoveryModelTypeAnchor) {
                 return;
             } else {
                 action = HXDiscoveryContainerActionShowLive;
@@ -179,7 +179,7 @@ HXDiscoveryLiveCellDelegate
 
 #pragma mark - HXCollectionViewLayoutDelegate Methods
 - (HXCollectionViewLayoutStyle)collectionView:(UICollectionView *)collectionView layout:(HXCollectionViewLayout *)layout styleForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return _viewModel.discoveryList[indexPath.row].live ? HXCollectionViewLayoutStyleHeavy : HXCollectionViewLayoutStylePetty;
+    return (_viewModel.discoveryList[indexPath.row].type == HXDiscoveryModelTypeProfile) ? HXCollectionViewLayoutStylePetty : HXCollectionViewLayoutStyleHeavy;
 }
 
 #pragma mark - HXDiscoveryLiveCellDelegate Methods
