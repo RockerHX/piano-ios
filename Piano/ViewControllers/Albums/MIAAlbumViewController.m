@@ -231,7 +231,11 @@
 
     if ([self.albumViewModel.cellDataArray count] == 2 && [[self.albumViewModel.cellDataArray lastObject] count] < self.albumViewModel.commentCount) {
 
-        [self.albumTableView.mj_footer resetNoMoreData];
+//        [self.albumTableView.mj_footer resetNoMoreData];
+        if ([self.albumTableView.mj_footer isRefreshing]) {
+            [self.albumTableView.mj_footer endRefreshing];
+        }
+        
     }else{
     
         [self.albumTableView.mj_footer endRefreshingWithNoMoreData];

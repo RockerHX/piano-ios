@@ -20,32 +20,6 @@ UIKIT_EXTERN CGFloat const kPayHistoryCellHeadHeight; //头部的高度
 @property (nonatomic, strong, readonly) NSMutableArray *orderListArray; //充值的列表
 @property (nonatomic, strong, readonly) NSMutableArray *recevierGiftListArray;//收到的礼物的列表.
 
-/**
- *  获取发送礼物列表.
- *
- *  @param start 起始位置.
- *
- *  @return 获取的信号量.
- */
-- (RACSignal *)getSendGiftListWithStart:(NSString *)start;
-
-/**
- *  获取消费记录的列表.
- *
- *  @param start 起始位置.
- *
- *  @return 获取的信号量.
- */
-- (RACSignal *)getOrderListWithStart:(NSString *)start;
-
-/**
- *  获取收到的礼物的列表.
- *
- *  @param start 起始位置.
- *
- *  @return 获取的信号量.
- */
-- (RACSignal *)getReceiverGiftListWithStart:(NSString *)start;
 
 /**
  *  接收到的礼物是否是完整的数据.
