@@ -177,11 +177,11 @@
 	NSString *alias = nil;
 
 #ifdef DEBUG
-	tags = [NSSet setWithObjects:@"production", nil];
-	alias = @"ios_production";
-#else
 	tags = [NSSet setWithObjects:@"develop", nil];
 	alias = @"ios_develop";
+#else
+	tags = [NSSet setWithObjects:@"production", nil];
+	alias = @"ios_production";
 #endif
 
 	[JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
