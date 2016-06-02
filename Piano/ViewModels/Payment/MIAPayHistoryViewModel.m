@@ -155,7 +155,7 @@ static NSString *const kRequestMaxLimitedCount = @"10";
                           completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                               if (success) {
                                   [self parseOrderListWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-                                  NSLog(@"充值的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+//                                  NSLog(@"充值的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                   [subscriber sendCompleted];
                               }else{
                                       
