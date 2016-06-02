@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet     UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *videoIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *albumIcon;
+@property (weak, nonatomic) IBOutlet      UIView *videoRedDot;
+@property (weak, nonatomic) IBOutlet      UIView *albumRedDot;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoIconWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumIconWidthConstraint;

@@ -21,10 +21,6 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryModelType) {
 
 @interface HXDiscoveryModel : NSObject
 
-@property (nonatomic, assign)                 BOOL  videoUpdated;
-@property (nonatomic, assign)                 BOOL  albumUpdated;
-@property (nonatomic, assign) HXDiscoveryModelType  type;
-
 @property (nonatomic, strong)  NSString *uID;
 @property (nonatomic, strong)  NSString *roomID;
 @property (nonatomic, strong)  NSString *liveDate;
@@ -34,6 +30,13 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryModelType) {
 @property (nonatomic, strong)  NSString *videoUrl;
 @property (nonatomic, strong)  NSString *coverColor;
 @property (nonatomic, assign) NSInteger  duration;
+@property (nonatomic, assign) NSInteger  videoUpdated;
+@property (nonatomic, assign) NSInteger  albumUpdated;
+
+
+@property (nonatomic, assign) HXDiscoveryModelType  type;
+@property (nonatomic, assign) BOOL  showVideoIcon;
+@property (nonatomic, assign) BOOL  showAlbumIcon;
 
 + (instancetype)createWithReplayModel:(id)model;
 

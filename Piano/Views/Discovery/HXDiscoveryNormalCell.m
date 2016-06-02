@@ -50,6 +50,8 @@ static CGFloat IconSpace = 8.0f;
     _iconSpaceConstraint.constant = showVideoIcon ? IconSpace : 0.0f;
     _videoIcon.hidden = !showVideoIcon;
     _albumIcon.hidden = !showAlbumIcon;
+    _videoRedDot.hidden = _videoIcon.hidden;
+    _albumRedDot.hidden = _albumIcon.hidden;
 }
 
 @end

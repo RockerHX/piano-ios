@@ -38,4 +38,9 @@
     return discoveryModel;
 }
 
+- (void)mj_keyValuesDidFinishConvertingToObject {
+    _showVideoIcon = (_videoUpdated == 1) ? YES : NO;
+    _showAlbumIcon = (_albumUpdated == 1) ? YES : NO;
+}
+
 @end
