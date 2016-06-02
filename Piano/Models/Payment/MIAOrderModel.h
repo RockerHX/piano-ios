@@ -13,5 +13,6 @@
 @property (nonatomic, copy) NSString *amount;  //充值的金额
 @property (nonatomic, copy) NSString *body; //增加的M币
 @property (nonatomic, copy) NSString *createdTime; //充值的时间
+@property (nonatomic, copy) NSString *id;
 
 @end

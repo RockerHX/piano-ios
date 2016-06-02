@@ -118,7 +118,7 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     
     self.sliderView = [MIAPlaySlider newAutoLayoutView];
     [_sliderView setMinimumTrackTintColor:SliderColor];
-    [_sliderView setMaximumTrackTintColor:[UIColor grayColor]];
+    [_sliderView setMaximumTrackTintColor:JORGBSameCreate(210.)];
     [_sliderView setValue:0.];
     [_sliderView setMinimumValue:0.];
     [_sliderView setMaximumValue:1.];
@@ -130,11 +130,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [JOAutoLayout autoLayoutWithBottomYView:_playButton distance:-5. selfView:_sliderView superView:self];
     [JOAutoLayout autoLayoutWithLeftView:_startTimeLabel distance:kTimeToSliderSpaceDistance selfView:_sliderView superView:self];
     [JOAutoLayout autoLayoutWithRightView:_remainTimeLabel distance:-kTimeToSliderSpaceDistance selfView:_sliderView superView:self];
-}
-
-- (void)sliderAction{
-
-    [[MusicMgr standard] seekToPosition:_sliderView.value];
 }
 
 - (void)dealloc{
@@ -253,6 +248,11 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
 }
 
 #pragma mark - Button Action
+
+- (void)sliderAction{
+    
+    [[MusicMgr standard] seekToPosition:_sliderView.value];
+}
 
 - (void)playAction{
     

@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, DeviceType){
     DeviceType_Iphone5,
     DeviceType_Iphone5c,
     DeviceType_Iphone5s,
+    DeviceType_Iphonese,
     DeviceType_Iphone6,
     DeviceType_Iphone6plus,
     DeviceType_Iphone6s,
@@ -58,6 +59,13 @@ typedef NS_ENUM(NSInteger, SystemVersion){
 };
 
 @interface JOFDeviceInfo : JOFunctionObject
+
+/**
+ *  当前设备是5s以上的设备.PS 根据设备的大小来区分,所以SE归到了5s以下的设备下面.
+ *
+ *  @return 是否是那种的状态值.
+ */
+//+ (BOOL)deviceOveriPhone5s;
 
 /**
  *  获取设备具体的类型.

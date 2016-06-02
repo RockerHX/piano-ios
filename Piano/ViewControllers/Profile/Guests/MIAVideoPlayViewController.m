@@ -19,6 +19,7 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 @interface MIAVideoPlayViewController(){
 
     BOOL finishedState;
+    BOOL playState;
     NSTimeInterval loadTime;
     dispatch_source_t timer;
 }
@@ -48,6 +49,7 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     }
     
     finishedState = NO;
+    playState = NO;
     [self createPlayView];
     [self createPopButton];
     [self createPlayBarView];
@@ -133,10 +135,14 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
                 [self.player seekToTime:CMTimeMake(0, 1)];
             }else{
                 //暂停的状态
+                
             }
+            
+            playState = YES;
             [self.player play];
         }else if (type == PlayBarActionPause){
             //暂停
+            playState = NO;
             [self.player pause];
         }else if (type == PlayBarActionSlider){
             //滑动
@@ -194,6 +200,7 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
         AVPlayerStatus status= [[change objectForKey:@"new"] intValue];
         if(status==AVPlayerStatusReadyToPlay){
             
+            playState = YES;
             [self hiddenLodingView];
             [_playBarView setCurrentPlayState:YES];
             [_playBarView setCurrentVideoDuration:playerItem.duration.value/playerItem.duration.timescale];
@@ -216,32 +223,34 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     
 //        NSLog(@"缓冲数据为空");
         [_player pause];
-        [_playBarView setCurrentPlayState:NO];
-        [self showLodingView];
         
+        if (playState) {
+            [_playBarView setCurrentPlayState:NO];
+            [self showLodingView];
+        }
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-            [_player play];
-            [_playBarView setCurrentPlayState:YES];
-            [self hiddenLodingView];
-            //rate 是avplayer 是一个属性，rate 1.0表示正在播放，0.0暂停， -1播放器失效
-            if (_player.rate <= 0) {
-                //播放异常
-                
+            if (playState) {
+                [_player play];
+                [_playBarView setCurrentPlayState:YES];
+                [self hiddenLodingView];
+                //rate 是avplayer 是一个属性，rate 1.0表示正在播放，0.0暂停， -1播放器失效
+                if (_player.rate <= 0) {
+                    //播放异常
+                    
+                }
             }
-            
         });
-        
-        
     }else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]){
         
         if(playerItem.playbackLikelyToKeepUp){
-        
 //            NSLog(@"正常播放");
-            [_player play];
-            [self hiddenLodingView];
+            if (playState) {
+                [_player play];
+                [self hiddenLodingView];
+            }
         }
-        
     }
 }
 

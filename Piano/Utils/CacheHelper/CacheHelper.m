@@ -56,8 +56,8 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         unsigned long long totalSize = 0;
         
-        NSUInteger imageCacheSize = [self calcDiskSizeOfDir:[[MIASongManage shareSongManage] songFilePath]];
-        totalSize += imageCacheSize;
+        unsigned long long songCacheSize = [self calcDiskSizeOfDir:[[MIASongManage shareSongManage] songFilePath]];
+        totalSize += songCacheSize;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completeBlock) {

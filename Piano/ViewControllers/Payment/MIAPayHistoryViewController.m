@@ -14,6 +14,7 @@
 #import "HXUserSession.h"
 #import "MIANavBarView.h"
 #import "MIAItemsView.h"
+#import "MJRefresh.h"
 
 static CGFloat const kPayHistoryNavbarHeight = 50.;
 
@@ -27,7 +28,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
 @property (nonatomic, strong) MIAItemsView *itemsView;
 
 @property (nonatomic, strong) UIScrollView *payHistoryScrollView;
-@property (nonatomic, strong) UITableView *receiveGiftTableView;
+//@property (nonatomic, strong) UITableView *receiveGiftTableView;
 @property (nonatomic, strong) UITableView *sendGiftTableView;
 @property (nonatomic, strong) UITableView *paymentHistoryTableView;
 
@@ -47,7 +48,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
         itemCount = 2;
     }else if([[HXUserSession session] role] == HXUserRoleAnchor){
         //主播
-        itemCount = 3;
+        itemCount = 2;
     }
     
     [self createNavBarView];
@@ -87,8 +88,8 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
         //非主播
         [_itemsView setItemArray:@[@"送出礼物",@"充值记录"]];
     }else if([[HXUserSession session] role] == HXUserRoleAnchor){
-        //主播
-        [_itemsView setItemArray:@[@"收到礼物",@"送出礼物",@"充值记录"]];
+        //主播 @[@"收到礼物",@"送出礼物",@"充值记录"]
+        [_itemsView setItemArray:@[@"送出礼物",@"充值记录"]];
     }
     [_itemsView setItemTitleColor:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->color
                         titleFont:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->font];
@@ -98,14 +99,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_itemsView itemClickHanlder:^(NSInteger index, NSString *itemTitel) {
     @strongify(self);
         
-        if (index == 0) {
-            //送出的礼物
-            [self leftItemButtonClick];
-        }else if (index == 1){
-            //充值记录
-            [self rightItemButtonClick];
-        }
-        
+        [self scrollToItemIndex:index];
     }];
     [self.view addSubview:_itemsView];
     
@@ -136,35 +130,37 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_sendGiftTableView setDataSource:self];
     [_sendGiftTableView setDelegate:self];
     [_sendGiftTableView setBackgroundColor:JORGBSameCreate(247.)];
+    [_sendGiftTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreSendGiftList)]];
     [_payHistoryScrollView addSubview:_sendGiftTableView];
     
-    if ([[HXUserSession session] role] == HXUserRoleAnchor) {
-        //主播状态
-        self.receiveGiftTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        [_receiveGiftTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_receiveGiftTableView setDataSource:self];
-        [_receiveGiftTableView setDelegate:self];
-        [_receiveGiftTableView setBackgroundColor:JORGBSameCreate(247.)];
-        [_payHistoryScrollView addSubview:_receiveGiftTableView];
-        
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_receiveGiftTableView superView:_payHistoryScrollView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_receiveGiftTableView superView:_payHistoryScrollView];
-        
-        [JOAutoLayout autoLayoutWithLeftView:_receiveGiftTableView distance:0. selfView:_sendGiftTableView superView:_payHistoryScrollView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_sendGiftTableView superView:_payHistoryScrollView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
-        
-    }else if ([[HXUserSession session] role] == HXUserRoleNormal){
+//    if ([[HXUserSession session] role] == HXUserRoleAnchor) {
+//        //主播状态
+//        self.receiveGiftTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+//        [_receiveGiftTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+//        [_receiveGiftTableView setDataSource:self];
+//        [_receiveGiftTableView setDelegate:self];
+//        [_receiveGiftTableView setBackgroundColor:JORGBSameCreate(247.)];
+//        [_payHistoryScrollView addSubview:_receiveGiftTableView];
+//        
+//        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_receiveGiftTableView superView:_payHistoryScrollView];
+//        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_receiveGiftTableView superView:_payHistoryScrollView];
+//        
+//        [JOAutoLayout autoLayoutWithLeftView:_receiveGiftTableView distance:0. selfView:_sendGiftTableView superView:_payHistoryScrollView];
+//        [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_sendGiftTableView superView:_payHistoryScrollView];
+//        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
+//        
+//    }else if ([[HXUserSession session] role] == HXUserRoleNormal){
         //客人状态
         [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_sendGiftTableView superView:_payHistoryScrollView];
         [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
-    }
+//    }
     
     self.paymentHistoryTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [_paymentHistoryTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_paymentHistoryTableView setDataSource:self];
     [_paymentHistoryTableView setDelegate:self];
     [_paymentHistoryTableView setBackgroundColor:JORGBSameCreate(247.)];
+    [_paymentHistoryTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreOrderList)]];
     [_payHistoryScrollView addSubview:_paymentHistoryTableView];
     
     [JOAutoLayout autoLayoutWithLeftView:_sendGiftTableView distance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
@@ -185,10 +181,16 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [self showHUDWithView:_sendGiftTableView];
     [self showHUDWithView:_paymentHistoryTableView];
     
+    [self fetchMoreSendGiftList];
+    [self fetchMoreOrderList];
+}
+
+- (void)fetchMoreSendGiftList{
+
     @weakify(self);
     RACSignal *fetchSendGiftListSignal = [_payHistoryViewModel.fetchCommand execute:nil];
     [fetchSendGiftListSignal subscribeError:^(NSError *error) {
-    @strongify(self);
+        @strongify(self);
         
         [self hiddenHUDWithView:self.sendGiftTableView];
         
@@ -196,38 +198,65 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
-    @strongify(self);
+        @strongify(self);
         
         [self hiddenHUDWithView:self.sendGiftTableView];
         [self.sendGiftTableView reloadData];
+        [self updateSendGiftFooterStatus];
     }];
+}
+
+- (void)fetchMoreOrderList{
     
+    @weakify(self);
     RACSignal *fetchOrderListSignal = [_payHistoryViewModel.fetchOrderListCommand execute:nil];
     [fetchOrderListSignal subscribeError:^(NSError *error) {
-    @strongify(self);
+        @strongify(self);
         [self hiddenHUDWithView:self.paymentHistoryTableView];
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
-        
     } completed:^{
-    @strongify(self);
-        
+        @strongify(self);
         [self hiddenHUDWithView:self.paymentHistoryTableView];
         [self.paymentHistoryTableView reloadData];
+        [self updateOrderFooterStatus];
     }];
+}
+
+- (void)updateSendGiftFooterStatus{
+
+    if ([_payHistoryViewModel sendGiftIsCompleteData]) {
+        
+        if ([self.sendGiftTableView.mj_footer isRefreshing]) {
+            [self.sendGiftTableView.mj_footer endRefreshing];
+        }
+    }else{
+    
+        [self.sendGiftTableView.mj_footer endRefreshingWithNoMoreData];
+        [self.sendGiftTableView.mj_footer setHidden:YES];
+    }
+}
+
+- (void)updateOrderFooterStatus{
+
+    if ([_payHistoryViewModel orderIsCompleteData]) {
+        
+        if ([self.paymentHistoryTableView.mj_footer isRefreshing]) {
+            [self.paymentHistoryTableView.mj_footer endRefreshing];
+        }
+    }else{
+        
+        [self.paymentHistoryTableView.mj_footer endRefreshingWithNoMoreData];
+        [self.paymentHistoryTableView.mj_footer setHidden:YES];
+    }
 }
 
 #pragma mark - Button action
 
-- (void)leftItemButtonClick{
+- (void)scrollToItemIndex:(NSInteger)index{
 
-    [_payHistoryScrollView scrollRectToVisible:CGRectMake(0., 0., View_Width(self.view), _payHistoryScrollView.contentSize.height) animated:YES];
-}
-
-- (void)rightItemButtonClick{
-
-    [_payHistoryScrollView scrollRectToVisible:CGRectMake(View_Width(self.view), 0., View_Width(self.view), _payHistoryScrollView.contentSize.height) animated:YES];
+    [_payHistoryScrollView scrollRectToVisible:CGRectMake(View_Width(self.view)*index, 0., View_Width(self.view), _payHistoryScrollView.contentSize.height) animated:YES];
 }
 
 #pragma mark - table data source
@@ -241,10 +270,11 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     }else if([tableView isEqual:_paymentHistoryTableView]){
     
         return _payHistoryViewModel.orderListArray.count;
-    }else if ([tableView isEqual:_receiveGiftTableView]){
-    
-        return _payHistoryViewModel.recevierGiftListArray.count;
     }
+//    else if ([tableView isEqual:_receiveGiftTableView]){
+//    
+//        return _payHistoryViewModel.recevierGiftListArray.count;
+//    }
     return 1;
 }
 
@@ -271,10 +301,11 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     }else if([tableView isEqual:_paymentHistoryTableView]){
         
         data =  [_payHistoryViewModel.orderListArray objectAtIndex:indexPath.section];
-    }else if ([tableView isEqual:_receiveGiftTableView]){
-        
-//        
     }
+//    else if ([tableView isEqual:_receiveGiftTableView]){
+//        
+//
+//    }
     
     [cell setCellData:data];
     return cell;

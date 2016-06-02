@@ -71,4 +71,9 @@ typedef NS_ENUM(NSUInteger, MIAProfileCellType) {
 
 - (instancetype)initWithUID:(NSString *)uid;
 
+//获取不同cell的高度
++ (CGFloat)profileAlbumCellHeight;
++ (CGFloat)profileVideoCellHeight;
++ (CGFloat)profileReplayCellHeight;
+
 @end

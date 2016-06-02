@@ -13,8 +13,14 @@
 CGFloat const kPayHistoryItemViewHeight = 50.;
 CGFloat const kPayHistoryCellHeight = 81.;
 CGFloat const kPayHistoryCellHeadHeight= 9.;
+static NSString *const kRequestMaxLimitedCount = @"10";
 
-@interface MIAPayHistoryViewModel()
+@interface MIAPayHistoryViewModel(){
+
+    BOOL sendGiftCompleteState;
+    BOOL orderCompleteState;
+    BOOL receiverGiftCompleteState;
+}
 
 @property (nonatomic, strong) RACCommand *fetchReceiveGiftListCommand;
 
@@ -23,7 +29,7 @@ CGFloat const kPayHistoryCellHeadHeight= 9.;
 @implementation MIAPayHistoryViewModel
 
 - (void)initConfigure{
-
+    
     _sendGiftLsitArray = [NSMutableArray array];
     _orderListArray = [NSMutableArray array];
     _recevierGiftListArray = [NSMutableArray array];
@@ -71,54 +77,107 @@ CGFloat const kPayHistoryCellHeadHeight= 9.;
     }];
 }
 
+#pragma mark - complete state
+
+- (BOOL)sendGiftIsCompleteData{
+
+    return sendGiftCompleteState;
+}
+
+- (BOOL)orderIsCompleteData{
+
+    return orderCompleteState;
+}
+
+- (BOOL)receiverGiftIsCompleteData{
+
+    return receiverGiftCompleteState;
+}
+
 #pragma mark - Data operation
 
 - (void)fetchReceiveGiftListRequestWithSubscriber:(id<RACSubscriber>)subscriber{
 
-    
+    [MiaAPIHelper getReceiverListWithStart:[NSString stringWithFormat:@"%lu",(unsigned long)[_recevierGiftListArray count]]
+                                     limit:kRequestMaxLimitedCount
+                             completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                                 
+                                 if (success) {
+//                                     [self parseSendGiftListWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+                                     //            NSLog(@"收到的礼物列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+                                     [subscriber sendCompleted];
+                                 }else{
+                                     
+                                     [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+                                 }
+                             }
+                              timeoutBlock:^(MiaRequestItem *requestItem) {
+                                    [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+                              }];
 }
 
 - (void)fetchSendGiftListRequestWithSubscriber:(id<RACSubscriber>)subscriber{
+    
+    NSString *startID = @"0";
+    if ([_sendGiftLsitArray count]) {
+     
+        startID = [(MIASendGiftModel *)[_sendGiftLsitArray lastObject] id];
+    }
 
-    [MiaAPIHelper getSendGiftListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper getSendGiftListWithStart:startID
+                                     limit:kRequestMaxLimitedCount
+                             completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         
-        if (success) {
-            [self parseSendGiftListWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-//            NSLog(@"送出礼物的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
-            [subscriber sendCompleted];
-        }else{
-            
-            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
-        }
-        
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        
-        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
-    }];
+                                 if (success) {
+                                     [self parseSendGiftListWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+//                                                 NSLog(@"送出礼物的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+                                     [subscriber sendCompleted];
+                                 }else{
+                                     
+                                     [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+                                 }
+                             }
+                              timeoutBlock:^(MiaRequestItem *requestItem) {
+                                  [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+                              }];
 }
 
 - (void)fetchOrderListRequestWithSubscriber:(id<RACSubscriber>)subscriber{
     
-    [MiaAPIHelper getOrderListWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    NSString *startID = @"0";
+    if ([_orderListArray count]) {
         
-        if (success) {
-            [self parseOrderListWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-//            NSLog(@"充值的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
-            [subscriber sendCompleted];
-        }else{
-            
-            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
-        }
+        startID = [(MIAOrderModel *)[_orderListArray lastObject] id];
+    }
+    
+    [MiaAPIHelper getOrderListWithStart:startID
+                                  limit:kRequestMaxLimitedCount
+                          completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                              if (success) {
+                                  [self parseOrderListWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+                                  NSLog(@"充值的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+                                  [subscriber sendCompleted];
+                              }else{
+                                      
+                                      [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+                                  }
+                          }
+                           timeoutBlock:^(MiaRequestItem *requestItem) {
         
-    } timeoutBlock:^(MiaRequestItem *requestItem) {
-        
-        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
-    }];
+                                    [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+                           }];
 }
 
 - (void)parseSendGiftListWithData:(NSArray *)array{
 
-    [_sendGiftLsitArray removeAllObjects];
+    if ([array count] == [kRequestMaxLimitedCount integerValue]) {
+
+        sendGiftCompleteState = YES;
+    }else{
+        
+        sendGiftCompleteState = NO;
+    }
+    
     for (int i = 0; i < [array count]; i++) {
         MIASendGiftModel *sendGiftModel = [MIASendGiftModel mj_objectWithKeyValues:[array objectAtIndex:i]];
         [_sendGiftLsitArray addObject:sendGiftModel];
@@ -127,7 +186,14 @@ CGFloat const kPayHistoryCellHeadHeight= 9.;
 
 - (void)parseOrderListWithData:(NSArray *)array{
 
-    [_orderListArray removeAllObjects];
+    if ([array count] == [kRequestMaxLimitedCount integerValue]) {
+        
+        orderCompleteState = YES;
+    }else{
+        
+        orderCompleteState = NO;
+    }
+    
     for (int i = 0; i < [array count]; i++) {
         MIAOrderModel *orderModel = [MIAOrderModel mj_objectWithKeyValues:[array objectAtIndex:i]];
         [_orderListArray addObject:orderModel];

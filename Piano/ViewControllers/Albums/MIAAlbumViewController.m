@@ -231,7 +231,11 @@
 
     if ([self.albumViewModel.cellDataArray count] == 2 && [[self.albumViewModel.cellDataArray lastObject] count] < self.albumViewModel.commentCount) {
 
-        [self.albumTableView.mj_footer resetNoMoreData];
+//        [self.albumTableView.mj_footer resetNoMoreData];
+        if ([self.albumTableView.mj_footer isRefreshing]) {
+            [self.albumTableView.mj_footer endRefreshing];
+        }
+        
     }else{
     
         [self.albumTableView.mj_footer endRefreshingWithNoMoreData];
@@ -416,7 +420,7 @@
     }else if (section == 1){
     
         return [MIABaseCellHeadView cellHeadViewWithImage:nil
-                                                    title:@"评论 3"
+                                                    title:[NSString stringWithFormat:@"评论 %ld",(long)_albumViewModel.commentCount]
                                                  tipTitle:nil
                                                     frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)
                                             cellColorType:BaseCellHeadColorTypeWhiter];

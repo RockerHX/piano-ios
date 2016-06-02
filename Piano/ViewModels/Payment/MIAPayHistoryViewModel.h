@@ -20,4 +20,26 @@ UIKIT_EXTERN CGFloat const kPayHistoryCellHeadHeight; //头部的高度
 @property (nonatomic, strong, readonly) NSMutableArray *orderListArray; //充值的列表
 @property (nonatomic, strong, readonly) NSMutableArray *recevierGiftListArray;//收到的礼物的列表.
 
+
+/**
+ *  接收到的礼物是否是完整的数据.
+ *
+ *  @return 完整的状态.
+ */
+- (BOOL)sendGiftIsCompleteData;
+
+/**
+ *  消费记录是否是完整的数据.
+ *
+ *  @return 完整的状态.
+ */
+- (BOOL)orderIsCompleteData;
+
+/**
+ *  获取到的礼物列表是否是完整的数据.
+ *
+ *  @return 完整的状态.
+ */
+- (BOOL)receiverGiftIsCompleteData;
+
 @end

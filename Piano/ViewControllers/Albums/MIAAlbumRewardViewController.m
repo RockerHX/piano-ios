@@ -55,8 +55,18 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
+        
+        [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
+        [self updateMCoinAccountLabelLayout];
+        
+    } mCoinFailed:^(NSString *failed) {
+        
+        [self showBannerWithPrompt:failed];
+    }];
 }
+
 
 - (void)loadView{
 
@@ -76,15 +86,6 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     [self createAlbumInfoView];
     [self createRewardView];
 
-    [[MIAMCoinManage shareMCoinManage] updateMCoinWithMCoinSuccess:^{
-       
-        [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
-       [self updateMCoinAccountLabelLayout];
-        
-    } mCoinFailed:^(NSString *failed) {
-        
-        [self showBannerWithPrompt:failed];
-    }];
 }
 
 #pragma mark - view create
@@ -261,7 +262,6 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
 #pragma mark - Button click
 
 - (void)popAction{
-
     
     [self.navigationController popViewControllerAnimated:YES];
 //    [self dismissViewControllerAnimated:YES completion:^{
@@ -283,6 +283,7 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
                                                      roomID:@"0" success:^{
                                                      
                                                          [self hiddenHUD];
+                                                         [self showBannerWithPrompt:@"打赏成功"];
 //                                                         JOLog(@"打赏成功");
                                                      }
                                                      failed:^(NSString *failed) {
