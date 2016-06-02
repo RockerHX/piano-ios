@@ -695,10 +695,14 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
-+ (void)getSendGiftListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
-                            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
++ (void)getSendGiftListWithStart:(NSString *)start
+                           limit:(NSString *)limit
+                   completeBlock:(MiaRequestCompleteBlock)completeBlock
+                    timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
 
     NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:start forKey:MiaAPIKey_Start];
+    [dictValues setValue:limit forKey:MiaAPIKey_Limit];
     MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Gift_SendList
                                                                parameters:dictValues
                                                             completeBlock:completeBlock
@@ -707,12 +711,31 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 }
 
 
-+ (void)getOrderListWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
-                         timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
++ (void)getOrderListWithStart:(NSString *)start
+                        limit:(NSString *)limit
+                completeBlock:(MiaRequestCompleteBlock)completeBlock
+                 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
 
     NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
     [dictValues setValue:@"APPLE" forKey:MiaAPIKey_TradeType];
+    [dictValues setValue:start forKey:MiaAPIKey_Start];
+    [dictValues setValue:limit forKey:MiaAPIKey_Limit];
     MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Order_GetList
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)getReceiverListWithStart:(NSString *)start
+                           limit:(NSString *)limit
+                   completeBlock:(MiaRequestCompleteBlock)completeBlock
+                    timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:start forKey:MiaAPIKey_Start];
+    [dictValues setValue:limit forKey:MiaAPIKey_Limit];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Gift_ReceiverList
                                                                parameters:dictValues
                                                             completeBlock:completeBlock
                                                              timeoutBlock:timeoutBlock];

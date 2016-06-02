@@ -5,6 +5,8 @@
 //  Created by 刘维 on 15/10/26.
 //  Copyright © 2015年 刘维. All rights reserved.
 //
+//对应的查看对照表
+//https://www.theiphonewiki.com/wiki/Models
 
 #import "JOFDeviceInfo.h"
 #include <sys/types.h>
@@ -44,6 +46,7 @@
     if ([platform isEqualToString:@"iPhone7,2"]) return DeviceType_Iphone6;
     if ([platform isEqualToString:@"iPhone8,1"]) return DeviceType_Iphone6s;
     if ([platform isEqualToString:@"iPhone8,2"]) return DeviceType_Iphone6splus;
+    if ([platform isEqualToString:@"iPhone8,4"]) return DeviceType_Iphonese;
     
     if ([platform isEqualToString:@"iPod1,1"])   return DeviceType_Ipod1G;
     if ([platform isEqualToString:@"iPod2,1"])   return DeviceType_Ipod2G;
@@ -81,6 +84,16 @@
     return DeviceType_Unknown;
     
 }
+
+//+ (BOOL)deviceOveriPhone5s{
+//
+//    if ([JOFDeviceInfo deviceType] == DeviceType_Iphone6 ||
+//        [JOFDeviceInfo deviceType] == DeviceType_Iphone6s ||
+//        [JOFDeviceInfo deviceType] == DeviceType_Iphone6plus ||
+//        [JOFDeviceInfo deviceType] == DeviceType_Iphone6splus) {
+//        return NO;
+//    }
+//}
 
 + (CGFloat)currentSystemVersion{
 

@@ -140,6 +140,7 @@ static NSString * const MiaAPICommand_Musician_Replay_PostView		= @"Musician.Rep
 //purchase
 static NSString * const MiaAPICommand_Recharge_GetList      = @"User.Get.Recharge"; //充值列表
 static NSString * const MiaAPICommand_MCoin_GetBalance      = @"User.Get.Mcoin";    //我的M币余额
+static NSString * const MiaAPICommand_Gift_ReceiverList     = @"Musician.Get.Gift";//收到的礼物列表
 static NSString * const MiaAPICommand_Gift_SendList         = @"User.Get.Gift";     //送出礼物列表
 static NSString * const MiaAPICommand_Order_GetList         = @"User.Get.Order";    //充值记录
 static NSString * const MiaAPICommand_Verify                = @"User.Post.Order"; //服务器验证
