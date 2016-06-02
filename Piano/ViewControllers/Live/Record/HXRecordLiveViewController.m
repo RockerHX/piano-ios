@@ -132,7 +132,6 @@ HXLiveAlbumViewDelegate
         [self leaveRoom];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-    [manager closeLive];
 }
 
 #pragma mark - Public Methods
@@ -173,13 +172,17 @@ HXLiveAlbumViewDelegate
     liveEndViewController.delegate = self;
     liveEndViewController.isLive = YES;
     liveEndViewController.snapShotImage = image;
+    liveEndViewController.liveModel = _viewModel.model;
     [self presentViewController:liveEndViewController animated:YES completion:nil];
 }
 
 - (void)leaveRoom {
-    [_viewModel.closeRoomCommand execute:nil];
+    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+    [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+        [manager closeLive];
+    }];
     
-    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+    ZegoLiveApi *zegoLiveApi = manager.zegoLiveApi;
     [zegoLiveApi stopPreview];
     [zegoLiveApi logoutChannel];
 }
