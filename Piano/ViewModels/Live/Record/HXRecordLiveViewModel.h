@@ -17,7 +17,7 @@
 @property (nonatomic, strong, readonly)  RACSignal *exitSignal;
 @property (nonatomic, strong, readonly) RACSubject *rewardSignal;
 
-@property (nonatomic, strong, readonly) RACCommand *leaveRoomCommand;
+@property (nonatomic, strong, readonly) RACCommand *closeRoomCommand;
 
 @property (nonatomic, strong) HXLiveModel *model;
 
@@ -29,7 +29,5 @@
 
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
 @property (nonatomic, strong) NSArray<HXBarrageModel *> *barrages;
-
-- (void)closeLive;
 
 @end

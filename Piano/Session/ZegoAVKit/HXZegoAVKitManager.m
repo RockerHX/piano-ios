@@ -60,7 +60,7 @@ static NSString *LiveStateKey = @"LiveStateKey";
 
 #pragma mark - Property
 - (HXLiveState)liveState {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:LiveStateKey];
+    return [[NSUserDefaults standardUserDefaults] integerForKey:LiveStateKey];
 }
 
 #pragma mark - Public Methods
@@ -83,8 +83,12 @@ static NSString *LiveStateKey = @"LiveStateKey";
     ;
 }
 
+- (void)startPreview {
+    [self storeLiveStateWithState:HXLiveStatePreview];
+}
+
 - (void)startLive {
-    [self storeLiveStateWithState:HXLiveStateException];
+    [self storeLiveStateWithState:HXLiveStateLive];
 }
 
 - (void)closeLive {
@@ -110,7 +114,7 @@ static NSString *LiveStateKey = @"LiveStateKey";
 }
 
 - (void)storeLiveStateWithState:(HXLiveState)liveState {
-    [[NSUserDefaults standardUserDefaults] setBool:liveState forKey:LiveStateKey];
+    [[NSUserDefaults standardUserDefaults] setInteger:liveState forKey:LiveStateKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
