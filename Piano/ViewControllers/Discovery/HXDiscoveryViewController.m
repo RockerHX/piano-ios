@@ -25,6 +25,7 @@
 #import "HXHostProfileViewController.h"
 #import "UIButton+WebCache.h"
 #import "MiaAPIHelper.h"
+#import "HXLiveModel.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -101,12 +102,15 @@ HXDiscoveryContainerDelegate
 
 - (void)recoveryLive {
     [self hiddenNavigationBar];
-//    UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-//    [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
     
     [MiaAPIHelper refetchLiveWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             NSLog(@"%@", userInfo);
+            HXLiveModel *model = [HXLiveModel mj_objectWithKeyValues:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+            UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
+            HXRecordLiveViewController *recordLiveViewController = [recordLiveNavigationController.viewControllers firstObject];
+            [recordLiveViewController recoveryLive:model];
+            [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
         }
     } timeoutBlock:nil];
 }

@@ -9,6 +9,7 @@
 #import "UIViewController+HXClass.h"
 
 
+@class HXLiveModel;
 @class HXRecordAnchorView;
 @class HXLiveAlbumView;
 
@@ -29,5 +30,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewWidthConstraint;
 
 - (IBAction)closeButtonPressed;
+
+- (void)recoveryLive:(HXLiveModel *)model;
 
 @end

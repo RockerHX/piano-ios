@@ -48,6 +48,7 @@ HXLiveAlbumViewDelegate
     NSString *_roomTitle;
     
     HXRecordLiveViewModel *_viewModel;
+    HXLiveModel *_liveModel;
     BOOL _frontCamera;
     BOOL _microEnable;
     BOOL _beauty;
@@ -117,6 +118,9 @@ HXLiveAlbumViewDelegate
     [[HXZegoAVKitManager manager].zegoLiveApi setDelegate:self];
     
     [self startPreview];
+    if (_liveModel) {
+        [self previewControllerHandleFinishedShouldStartLive:nil liveModel:_liveModel frontCamera:_frontCamera beauty:_beauty];
+    }
 }
 
 #pragma mark - Event Response
@@ -128,6 +132,11 @@ HXLiveAlbumViewDelegate
     
     ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi takeLocalViewSnapshot];
+}
+
+#pragma mark - Public Methods
+- (void)recoveryLive:(HXLiveModel *)model {
+    _liveModel = model;
 }
 
 #pragma mark - Private Methods
@@ -221,7 +230,7 @@ static CGFloat AlbumViewWidth = 60.0f;
         b = [zegoLiveApi setFilter:ZEGO_FILTER_NONE];
         assert(b);
         
-        b = [zegoLiveApi startPublishingWithTitle:_roomTitle streamID:nil];
+        b = [zegoLiveApi startPublishingWithTitle:_roomTitle streamID:_viewModel.model.streamAlias];
         assert(b);
         NSLog(@"%s, ret: %d", __func__, ret);
     }
@@ -257,10 +266,8 @@ static CGFloat AlbumViewWidth = 60.0f;
     NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
 }
 
-- (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {
-    NSLog(@"%s", __func__);
-}
-
+- (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {}
+- (void)onCaptureVideoSizeChangedToWidth:(uint32)width height:(uint32)height {}
 - (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {}
 
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {
