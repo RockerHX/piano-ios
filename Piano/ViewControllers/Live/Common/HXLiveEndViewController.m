@@ -45,6 +45,8 @@
 - (void)viewConfigure {
     _blurView.contentMode = UIViewContentModeScaleAspectFill;
     _containerView.backgroundColor = [UIColor clearColor];
+    
+    [self updateUI];
 }
 
 #pragma mark - Property
@@ -54,18 +56,22 @@
 }
 
 - (void)setSnapShotImage:(UIImage *)snapShotImage {
-    _snapShotImage = snapShotImage;
-    _blurView.image = [snapShotImage blurredImageWithRadius:30.0f iterations:10 tintColor:[UIColor blackColor]];
-    
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:(_isLive ? [HXUserSession session].user.avatarUrl : _liveModel.avatarUrl)]];
-    _nickNameLabel.text = (_isLive ? [HXUserSession session].nickName : _liveModel.nickName);
+    _snapShotImage = [snapShotImage blurredImageWithRadius:30.0f iterations:10 tintColor:[UIColor blackColor]];
 }
 
-#pragma mark - Private Methods
+#pragma mark - Event Methods
 - (IBAction)backButtonPressed {
+    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     if (_delegate && [_delegate respondsToSelector:@selector(endViewControllerWouldLikeExitRoom:)]) {
         [_delegate endViewControllerWouldLikeExitRoom:self];
     }
+}
+
+#pragma mark - Private Methods
+- (void)updateUI {
+    _blurView.image = _snapShotImage;
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:(_isLive ? [HXUserSession session].user.avatarUrl : _liveModel.avatarUrl)]];
+    _nickNameLabel.text = (_isLive ? [HXUserSession session].nickName : _liveModel.nickName);
 }
 
 @end

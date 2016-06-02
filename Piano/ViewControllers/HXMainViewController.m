@@ -179,7 +179,7 @@ HXLoginViewControllerDelegate
              
              [HXNoNetworkView hidden];
              [_discoveryContainerViewController startFetchList];
-             if (![HXZegoAVKitManager manager].liveState) {
+             if ([HXZegoAVKitManager manager].liveState == HXLiveStateLive) {
                  [_discoveryContainerViewController recoveryLive];
              }
          } else {

@@ -18,7 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *liveView;
 @property (weak, nonatomic) IBOutlet UIView *previewContainer;
-@property (weak, nonatomic) IBOutlet UIView *endCountContainer;
 
 @property (weak, nonatomic) IBOutlet             UIView *topBar;
 @property (weak, nonatomic) IBOutlet HXRecordAnchorView *anchorView;

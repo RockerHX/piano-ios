@@ -41,7 +41,6 @@ HXLiveAlbumViewDelegate
 
 @implementation HXRecordLiveViewController {
     HXPreviewLiveViewController *_previewViewController;
-    HXLiveEndViewController *_endViewController;
     HXLiveBarrageContainerViewController *_barrageContainer;
     
     NSString *_roomID;
@@ -70,10 +69,7 @@ HXLiveAlbumViewDelegate
     if ([segue.identifier isEqualToString:NSStringFromClass([HXPreviewLiveViewController class])]) {
         _previewViewController = segue.destinationViewController;
         _previewViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
-        _endViewController = segue.destinationViewController;
-        _endViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
+    }else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
         _barrageContainer = segue.destinationViewController;
         _barrageContainer.delegate = self;
     }
@@ -115,8 +111,10 @@ HXLiveAlbumViewDelegate
 
 - (void)viewConfigure {
     //设置回调代理
-    [[HXZegoAVKitManager manager].zegoLiveApi setDelegate:self];
+    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+    [manager.zegoLiveApi setDelegate:self];
     
+    [manager startPreview];
     [self startPreview];
     if (_liveModel) {
         [self previewControllerHandleFinishedShouldStartLive:nil liveModel:_liveModel frontCamera:_frontCamera beauty:_beauty];
@@ -125,13 +123,16 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
-    [_anchorView stopRecordTime];
-    [_albumView stopAlbumAnmation];
-    [_viewModel closeLive];
-    [[HXZegoAVKitManager manager] closeLive];
-    
-    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
-    [zegoLiveApi takeLocalViewSnapshot];
+    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+    if (manager.liveState == HXLiveStateLive) {
+        [_anchorView stopRecordTime];
+        [_albumView stopAlbumAnmation];
+        [manager.zegoLiveApi takeLocalViewSnapshot];
+    } else {
+        [self leaveRoom];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    [manager closeLive];
 }
 
 #pragma mark - Public Methods
@@ -168,12 +169,15 @@ HXLiveAlbumViewDelegate
 - (void)endLiveWithSnapShotImage:(UIImage *)image {
     [self leaveRoom];
     
-    _endViewController.snapShotImage = image;
-    _endCountContainer.hidden = NO;
+    HXLiveEndViewController *liveEndViewController = [HXLiveEndViewController instance];
+    liveEndViewController.delegate = self;
+    liveEndViewController.isLive = YES;
+    liveEndViewController.snapShotImage = image;
+    [self presentViewController:liveEndViewController animated:YES completion:nil];
 }
 
 - (void)leaveRoom {
-    [_viewModel.leaveRoomCommand execute:nil];
+    [_viewModel.closeRoomCommand execute:nil];
     
     ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi stopPreview];
@@ -381,7 +385,7 @@ static CGFloat AlbumViewWidth = 60.0f;
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods
 - (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    ;
 }
 
 //#pragma mark - HXWatcherContainerViewControllerDelegate Methods

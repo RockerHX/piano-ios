@@ -1335,26 +1335,16 @@
                                     <segue destination="lMF-gb-QbS" kind="embed" identifier="HXPreviewLiveViewController" id="V3P-Zk-5Ce"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5r-4n-Pmd" userLabel="End Count Container">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <connections>
-                                    <segue destination="BL6-gn-Sp7" kind="embed" identifier="HXLiveEndViewController" id="3Mh-Zf-ECv"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="N5r-4n-Pmd" secondAttribute="bottom" id="AlR-wN-Ndt"/>
                             <constraint firstAttribute="bottom" secondItem="gBE-eG-6gh" secondAttribute="bottom" id="Dcg-wK-CtK"/>
                             <constraint firstItem="9dU-lx-FmV" firstAttribute="top" secondItem="pgQ-Qw-mlH" secondAttribute="bottom" id="Dcj-j0-hue"/>
                             <constraint firstItem="Agg-0j-dp2" firstAttribute="top" secondItem="Ahh-O2-KkP" secondAttribute="top" id="TnS-oQ-hbv"/>
                             <constraint firstAttribute="bottom" secondItem="9dU-lx-FmV" secondAttribute="bottom" id="TvY-tX-UHj"/>
                             <constraint firstAttribute="trailing" secondItem="Agg-0j-dp2" secondAttribute="trailing" id="WoR-iM-WDo"/>
-                            <constraint firstItem="N5r-4n-Pmd" firstAttribute="leading" secondItem="Ahh-O2-KkP" secondAttribute="leading" id="XJP-Qy-1xv"/>
-                            <constraint firstAttribute="trailing" secondItem="N5r-4n-Pmd" secondAttribute="trailing" id="Y7x-m3-YbF"/>
                             <constraint firstItem="9dU-lx-FmV" firstAttribute="leading" secondItem="Ahh-O2-KkP" secondAttribute="leading" id="ci9-PY-NPQ"/>
                             <constraint firstItem="Agg-0j-dp2" firstAttribute="leading" secondItem="Ahh-O2-KkP" secondAttribute="leading" id="dbL-vz-8jU"/>
-                            <constraint firstItem="N5r-4n-Pmd" firstAttribute="top" secondItem="Ahh-O2-KkP" secondAttribute="top" id="ePR-ZK-EVo"/>
                             <constraint firstAttribute="bottom" secondItem="Agg-0j-dp2" secondAttribute="bottom" id="feK-xc-faP"/>
                             <constraint firstAttribute="trailing" secondItem="9dU-lx-FmV" secondAttribute="trailing" id="lyf-PZ-HaZ"/>
                             <constraint firstAttribute="trailing" secondItem="gBE-eG-6gh" secondAttribute="trailing" id="oSH-X6-Ya8"/>
@@ -1372,7 +1362,6 @@
                         <outlet property="anchorView" destination="xC5-yV-giV" id="lEV-Tk-gdx"/>
                         <outlet property="barragesView" destination="tE0-wM-lMe" id="cIa-K2-e9G"/>
                         <outlet property="bottomBar" destination="6ea-F8-wyq" id="Dyg-XJ-EZT"/>
-                        <outlet property="endCountContainer" destination="N5r-4n-Pmd" id="zQ8-77-Tmp"/>
                         <outlet property="liveView" destination="Agg-0j-dp2" id="xrG-iF-yvF"/>
                         <outlet property="previewContainer" destination="gBE-eG-6gh" id="JkK-rD-9uM"/>
                         <outlet property="topBar" destination="zt2-bD-MKs" id="kx0-wi-wuB"/>
@@ -1784,7 +1773,7 @@
                                                     <rect key="frame" x="10" y="10" width="169" height="27"/>
                                                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1854,7 +1843,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加打赏专辑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AH-10-zAY">
                                         <rect key="frame" x="109" y="20" width="102" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12d-kH-jqb">
@@ -2108,7 +2097,6 @@
         <image name="LR-RewardLogo" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O5M-18-fAC"/>
-        <segue reference="byL-Cj-PN6"/>
+        <segue reference="HeX-r3-laS"/>
     </inferredMetricsTieBreakers>
 </document>
