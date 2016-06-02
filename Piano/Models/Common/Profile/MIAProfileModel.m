@@ -32,4 +32,10 @@
              @"replay": @"MIAReplayModel"};
 }
 
+- (void)mj_keyValuesDidFinishConvertingToObject {
+    [_replay enumerateObjectsUsingBlock:^(MIAReplayModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.anchorAvatar = _userpic;
+    }];
+}
+
 @end

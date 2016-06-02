@@ -85,6 +85,10 @@
 }
 
 #pragma mark - Property
+- (NSString *)anchorAvatar {
+    return _model.anchorAvatar;
+}
+
 - (NSString *)anchorNickName {
     return _model.nickName;
 }

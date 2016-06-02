@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryModelType) {
 @property (nonatomic, strong)  NSString *roomID;
 @property (nonatomic, strong)  NSString *liveDate;
 @property (nonatomic, strong)  NSString *nickName;
+@property (nonatomic, strong)  NSString *anchorAvatar;
 @property (nonatomic, strong)  NSString *coverUrl;
 @property (nonatomic, strong)  NSString *videoUrl;
 @property (nonatomic, strong)  NSString *coverColor;

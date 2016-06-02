@@ -25,4 +25,6 @@
 
 @property (nonatomic, assign) NSInteger  duration; //视频的长度
 
+@property (nonatomic, copy) NSString *anchorAvatar; //主播头像
+
 @end
