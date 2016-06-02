@@ -175,13 +175,14 @@
 
 	NSSet *tags = nil;
 	NSString *alias = nil;
-	if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APPSTORE_BUNDLE_ID]) {
-		tags = [NSSet setWithObjects:@"production", nil];
-		alias = @"ios_production";
-	} else {
-		tags = [NSSet setWithObjects:@"develop", nil];
-		alias = @"ios_develop";
-	}
+
+#ifdef DEBUG
+	tags = [NSSet setWithObjects:@"production", nil];
+	alias = @"ios_production";
+#else
+	tags = [NSSet setWithObjects:@"develop", nil];
+	alias = @"ios_develop";
+#endif
 
 	[JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
 		NSLog(@"JPUSH setTags rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
