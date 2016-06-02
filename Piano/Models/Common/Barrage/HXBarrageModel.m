@@ -22,6 +22,7 @@
 
 #pragma mark - Property
 - (void)setType:(HXBarrageType)type {
+    _type = type;
     NSString *actionString = nil;
     switch (type) {
             case HXBarrageTypeEnter: {

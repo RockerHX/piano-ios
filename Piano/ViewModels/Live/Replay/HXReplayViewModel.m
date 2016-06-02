@@ -170,8 +170,10 @@
 - (void)addBarrages:(NSDictionary *)datas {
     NSMutableArray *comments = [_barrages mutableCopy];
     for (NSDictionary *data in datas) {
-        HXCommentModel *model = [HXCommentModel mj_objectWithKeyValues:data];
-        [comments addObject:model];
+        HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
+        HXCommentModel *comment = [HXCommentModel mj_objectWithKeyValues:data];
+        barrage.comment = comment;
+        [comments addObject:barrage];
     }
     self.barrages = [comments copy];
 }
