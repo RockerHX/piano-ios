@@ -14,6 +14,7 @@
 #import "HXUserSession.h"
 #import "MIANavBarView.h"
 #import "MIAItemsView.h"
+#import "MJRefresh.h"
 
 static CGFloat const kPayHistoryNavbarHeight = 50.;
 
@@ -129,6 +130,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_sendGiftTableView setDataSource:self];
     [_sendGiftTableView setDelegate:self];
     [_sendGiftTableView setBackgroundColor:JORGBSameCreate(247.)];
+    [_sendGiftTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreSendGiftList)]];
     [_payHistoryScrollView addSubview:_sendGiftTableView];
     
 //    if ([[HXUserSession session] role] == HXUserRoleAnchor) {
@@ -158,6 +160,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_paymentHistoryTableView setDataSource:self];
     [_paymentHistoryTableView setDelegate:self];
     [_paymentHistoryTableView setBackgroundColor:JORGBSameCreate(247.)];
+    [_paymentHistoryTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreOrderList)]];
     [_payHistoryScrollView addSubview:_paymentHistoryTableView];
     
     [JOAutoLayout autoLayoutWithLeftView:_sendGiftTableView distance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
@@ -178,10 +181,16 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [self showHUDWithView:_sendGiftTableView];
     [self showHUDWithView:_paymentHistoryTableView];
     
+    [self fetchMoreSendGiftList];
+    [self fetchMoreOrderList];
+}
+
+- (void)fetchMoreSendGiftList{
+
     @weakify(self);
     RACSignal *fetchSendGiftListSignal = [_payHistoryViewModel.fetchCommand execute:nil];
     [fetchSendGiftListSignal subscribeError:^(NSError *error) {
-    @strongify(self);
+        @strongify(self);
         
         [self hiddenHUDWithView:self.sendGiftTableView];
         
@@ -189,26 +198,58 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
-    @strongify(self);
+        @strongify(self);
         
         [self hiddenHUDWithView:self.sendGiftTableView];
         [self.sendGiftTableView reloadData];
+        [self updateSendGiftFooterStatus];
     }];
+}
+
+- (void)fetchMoreOrderList{
     
+    @weakify(self);
     RACSignal *fetchOrderListSignal = [_payHistoryViewModel.fetchOrderListCommand execute:nil];
     [fetchOrderListSignal subscribeError:^(NSError *error) {
-    @strongify(self);
+        @strongify(self);
         [self hiddenHUDWithView:self.paymentHistoryTableView];
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
-        
     } completed:^{
-    @strongify(self);
-        
+        @strongify(self);
         [self hiddenHUDWithView:self.paymentHistoryTableView];
         [self.paymentHistoryTableView reloadData];
+        [self updateOrderFooterStatus];
     }];
+}
+
+- (void)updateSendGiftFooterStatus{
+
+    if ([_payHistoryViewModel sendGiftIsCompleteData]) {
+        
+        if ([self.sendGiftTableView.mj_footer isRefreshing]) {
+            [self.sendGiftTableView.mj_footer endRefreshing];
+        }
+    }else{
+    
+        [self.sendGiftTableView.mj_footer endRefreshingWithNoMoreData];
+        [self.sendGiftTableView.mj_footer setHidden:YES];
+    }
+}
+
+- (void)updateOrderFooterStatus{
+
+    if ([_payHistoryViewModel orderIsCompleteData]) {
+        
+        if ([self.paymentHistoryTableView.mj_footer isRefreshing]) {
+            [self.paymentHistoryTableView.mj_footer endRefreshing];
+        }
+    }else{
+        
+        [self.paymentHistoryTableView.mj_footer endRefreshingWithNoMoreData];
+        [self.paymentHistoryTableView.mj_footer setHidden:YES];
+    }
 }
 
 #pragma mark - Button action

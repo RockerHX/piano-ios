@@ -24,4 +24,9 @@
  */
 - (void)setRewardData:(id)rewardData;
 
+/**
+ *  移除rewardView的Layout
+ */
+- (void)removeRewardViewLayout;
+
 @end

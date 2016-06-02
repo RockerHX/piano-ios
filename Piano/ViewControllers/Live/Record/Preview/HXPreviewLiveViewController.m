@@ -69,6 +69,7 @@ HXSelectedAlbumViewControllerDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _frontCamera = YES;
+	_beauty = YES;
     _model = [HXLiveModel new];
     
     [_controlContainerView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyBoard)]];
@@ -147,7 +148,7 @@ HXSelectedAlbumViewControllerDelegate
     switch (action) {
         case HXPreviewLiveTopBarActionBeauty: {
             _beauty = !_beauty;
-            [zegoLiveApi enableBeautifying:_beauty];
+			[zegoLiveApi enableBeautifying:_beauty ? ZEGO_BEAUTIFY_POLISH : ZEGO_BEAUTIFY_NONE];
             break;
         }
         case HXPreviewLiveTopBarActionChange: {

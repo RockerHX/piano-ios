@@ -24,6 +24,11 @@
 - (void)createAlbumDetailView{
     
     if (!self.albumSongView) {
+        
+        [self setBackgroundColor:[UIColor clearColor]];
+        [self.contentView setBackgroundColor:[UIColor clearColor]];
+        [self.cellContentView setBackgroundColor:[UIColor clearColor]];
+        
         self.albumSongView = [MIAAlbumSongView newAutoLayoutView];
         [self.cellContentView addSubview:_albumSongView];
         

@@ -15,7 +15,12 @@ CGFloat const kPayHistoryCellHeight = 81.;
 CGFloat const kPayHistoryCellHeadHeight= 9.;
 static NSString *const kRequestMaxLimitedCount = @"10";
 
-@interface MIAPayHistoryViewModel()
+@interface MIAPayHistoryViewModel(){
+
+    BOOL sendGiftCompleteState;
+    BOOL orderCompleteState;
+    BOOL receiverGiftCompleteState;
+}
 
 @property (nonatomic, strong) RACCommand *fetchReceiveGiftListCommand;
 
@@ -24,7 +29,7 @@ static NSString *const kRequestMaxLimitedCount = @"10";
 @implementation MIAPayHistoryViewModel
 
 - (void)initConfigure{
-
+    
     _sendGiftLsitArray = [NSMutableArray array];
     _orderListArray = [NSMutableArray array];
     _recevierGiftListArray = [NSMutableArray array];
@@ -72,43 +77,28 @@ static NSString *const kRequestMaxLimitedCount = @"10";
     }];
 }
 
-#pragma mark - 
-
-- (RACSignal *)getSendGiftListWithStart:(NSString *)start{
-
-    return nil;
-}
-
-- (RACSignal *)getOrderListWithStart:(NSString *)start{
-
-    return nil;
-}
-
-- (RACSignal *)getReceiverGiftListWithStart:(NSString *)start{
-
-    return nil;
-}
+#pragma mark - complete state
 
 - (BOOL)sendGiftIsCompleteData{
 
-    return NO;
+    return sendGiftCompleteState;
 }
 
 - (BOOL)orderIsCompleteData{
 
-    return NO;
+    return orderCompleteState;
 }
 
 - (BOOL)receiverGiftIsCompleteData{
 
-    return NO;
+    return receiverGiftCompleteState;
 }
 
 #pragma mark - Data operation
 
 - (void)fetchReceiveGiftListRequestWithSubscriber:(id<RACSubscriber>)subscriber{
 
-    [MiaAPIHelper getReceiverListWithStart:@""
+    [MiaAPIHelper getReceiverListWithStart:[NSString stringWithFormat:@"%lu",(unsigned long)[_recevierGiftListArray count]]
                                      limit:kRequestMaxLimitedCount
                              completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                                  
@@ -127,14 +117,20 @@ static NSString *const kRequestMaxLimitedCount = @"10";
 }
 
 - (void)fetchSendGiftListRequestWithSubscriber:(id<RACSubscriber>)subscriber{
+    
+    NSString *startID = @"0";
+    if ([_sendGiftLsitArray count]) {
+     
+        startID = [(MIASendGiftModel *)[_sendGiftLsitArray lastObject] id];
+    }
 
-    [MiaAPIHelper getSendGiftListWithStart:@""
+    [MiaAPIHelper getSendGiftListWithStart:startID
                                      limit:kRequestMaxLimitedCount
                              completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         
                                  if (success) {
                                      [self parseSendGiftListWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-                                     //            NSLog(@"送出礼物的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+//                                                 NSLog(@"送出礼物的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                      [subscriber sendCompleted];
                                  }else{
                                      
@@ -148,12 +144,18 @@ static NSString *const kRequestMaxLimitedCount = @"10";
 
 - (void)fetchOrderListRequestWithSubscriber:(id<RACSubscriber>)subscriber{
     
-    [MiaAPIHelper getOrderListWithStart:@""
+    NSString *startID = @"0";
+    if ([_orderListArray count]) {
+        
+        startID = [(MIAOrderModel *)[_orderListArray lastObject] id];
+    }
+    
+    [MiaAPIHelper getOrderListWithStart:startID
                                   limit:kRequestMaxLimitedCount
                           completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                               if (success) {
                                   [self parseOrderListWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-                                  NSLog(@"充值的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+//                                  NSLog(@"充值的列表:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                   [subscriber sendCompleted];
                               }else{
                                       
@@ -168,7 +170,14 @@ static NSString *const kRequestMaxLimitedCount = @"10";
 
 - (void)parseSendGiftListWithData:(NSArray *)array{
 
-    [_sendGiftLsitArray removeAllObjects];
+    if ([array count] == [kRequestMaxLimitedCount integerValue]) {
+
+        sendGiftCompleteState = YES;
+    }else{
+        
+        sendGiftCompleteState = NO;
+    }
+    
     for (int i = 0; i < [array count]; i++) {
         MIASendGiftModel *sendGiftModel = [MIASendGiftModel mj_objectWithKeyValues:[array objectAtIndex:i]];
         [_sendGiftLsitArray addObject:sendGiftModel];
@@ -177,7 +186,14 @@ static NSString *const kRequestMaxLimitedCount = @"10";
 
 - (void)parseOrderListWithData:(NSArray *)array{
 
-    [_orderListArray removeAllObjects];
+    if ([array count] == [kRequestMaxLimitedCount integerValue]) {
+        
+        orderCompleteState = YES;
+    }else{
+        
+        orderCompleteState = NO;
+    }
+    
     for (int i = 0; i < [array count]; i++) {
         MIAOrderModel *orderModel = [MIAOrderModel mj_objectWithKeyValues:[array objectAtIndex:i]];
         [_orderListArray addObject:orderModel];

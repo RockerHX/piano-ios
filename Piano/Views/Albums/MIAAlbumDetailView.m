@@ -184,6 +184,7 @@ static NSString *const kSongDownloadTitle = @"下载专辑";
         [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardView superView:self];
         [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardView superView:self];
         [_rewardView setHidden:YES];
+        [_rewardView removeRewardViewLayout];
         
         albumDetailViewHeight = kPlayViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
     }

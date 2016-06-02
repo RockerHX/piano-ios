@@ -124,7 +124,6 @@ static CGFloat const kAlbumUserItemSpaceDistance = 10.;//每个元素之间的�
                 
             }
         }
-        
     }else{
     
         [JOFException exceptionWithName:@"MIAAlbumRewardView exception!" reason:@"rewardData需要为一个数组类型"];
@@ -137,6 +136,11 @@ static CGFloat const kAlbumUserItemSpaceDistance = 10.;//每个元素之间的�
         [view setHidden:YES];
         [view removeFromSuperview];
     }
+}
+
+- (void)removeRewardViewLayout{
+
+    [JOAutoLayout removeAllAutoLayoutWithSelfView:_tipLabel superView:self];
 }
 
 @end
