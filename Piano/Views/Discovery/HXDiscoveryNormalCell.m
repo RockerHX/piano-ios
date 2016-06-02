@@ -36,20 +36,20 @@ static CGFloat IconSpace = 8.0f;
     _nickNameContainer.backgroundColor = coverColor;
     _nickNameLabel.text = model.nickName;
     
-    BOOL videoUpdated = model.videoUpdated;
-    BOOL albumUpdated = model.albumUpdated;
+    BOOL showVideoIcon = model.showVideoIcon;
+    BOOL showAlbumIcon = model.showAlbumIcon;
     
-    if (videoUpdated) {
+    if (showVideoIcon) {
         _videoIcon.backgroundColor = coverColor;
     }
-    if (albumUpdated) {
+    if (showAlbumIcon) {
         _albumIcon.backgroundColor = coverColor;
     }
     
-    _videoIconWidthConstraint.constant = videoUpdated ? _albumIconWidthConstraint.constant : 0.0f;
-    _iconSpaceConstraint.constant = videoUpdated ? IconSpace : 0.0f;
-    _videoIcon.hidden = !videoUpdated;
-    _albumIcon.hidden = !albumUpdated;
+    _videoIconWidthConstraint.constant = showVideoIcon ? _albumIconWidthConstraint.constant : 0.0f;
+    _iconSpaceConstraint.constant = showVideoIcon ? IconSpace : 0.0f;
+    _videoIcon.hidden = !showVideoIcon;
+    _albumIcon.hidden = !showAlbumIcon;
 }
 
 @end
