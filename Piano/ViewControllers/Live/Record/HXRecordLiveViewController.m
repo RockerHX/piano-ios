@@ -109,6 +109,7 @@ HXLiveAlbumViewDelegate
     _modalTransitionDelegate = [HXModalTransitionDelegate new];
     
     _frontCamera = YES;
+	_beauty = YES;
     _microEnable = YES;
 }
 
@@ -137,6 +138,7 @@ HXLiveAlbumViewDelegate
     [zegoLiveApi setLocalView:_liveView];
     [zegoLiveApi setLocalViewMode:ZegoVideoViewModeScaleAspectFill];
     [zegoLiveApi setFrontCam:_frontCamera];
+	[zegoLiveApi enableBeautifying:_beauty ? ZEGO_BEAUTIFY_POLISH : ZEGO_BEAUTIFY_NONE];
     [zegoLiveApi startPreview];
 }
 
@@ -215,7 +217,7 @@ static CGFloat AlbumViewWidth = 60.0f;
         bool b = [zegoLiveApi enableMic:_microEnable];
         assert(b);
         
-        b = [zegoLiveApi enableBeautifying:_beauty];
+        b = [zegoLiveApi enableBeautifying:_beauty ? ZEGO_BEAUTIFY_POLISH : ZEGO_BEAUTIFY_NONE];
         assert(b);
         
         b = [zegoLiveApi setFilter:ZEGO_FILTER_NONE];
