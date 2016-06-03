@@ -87,6 +87,7 @@ HXReplayBottomBarDelegate
     [self.replayView.layer addSublayer:layer];
     
     [self updateAnchorView];
+    _anchorView.replay = YES;
     _bottomBar.duration = _model.duration;
 }
 

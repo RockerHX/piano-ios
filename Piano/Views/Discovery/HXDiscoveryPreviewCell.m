@@ -32,9 +32,12 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    [super loadConfigure];
 }
 
 - (void)viewConfigure {
+    [super viewConfigure];
+    
     _previewLayer = [AVPlayerLayer new];
     _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     _previewLayer.frame = self.bounds;

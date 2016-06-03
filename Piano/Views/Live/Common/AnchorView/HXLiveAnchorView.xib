@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,6 +14,7 @@
                 <outlet property="attentionButtonWidthConstraint" destination="m7S-3u-eem" id="jjf-QC-zhr"/>
                 <outlet property="avatar" destination="Iuj-VO-Lk7" id="ZR5-65-EZt"/>
                 <outlet property="countLabel" destination="dcQ-qJ-VZU" id="71q-Gv-zaG"/>
+                <outlet property="countPromptLabel" destination="T0B-6I-Ucv" id="Gor-31-gpd"/>
                 <outlet property="nickNameLabel" destination="s7d-ZL-oRp" id="oAn-aN-aIF"/>
             </connections>
         </placeholder>

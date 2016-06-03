@@ -12,6 +12,25 @@
 
 @implementation HXDiscoveryCell
 
+#pragma mark - Load Methods
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self loadConfigure];
+    [self viewConfigure];
+}
+
+#pragma mark - Configure Methods
+- (void)loadConfigure {
+    ;
+}
+
+- (void)viewConfigure {
+    self.layer.contents = (__bridge id _Nullable)([UIImage imageNamed:@"D-LiveEntryBG"].CGImage);
+    self.layer.contentsGravity = kCAGravityResizeAspectFill;
+}
+
+#pragma mark - Layout Methods
 - (void)layoutSubviews {
     [super layoutSubviews];
     
