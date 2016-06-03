@@ -137,6 +137,13 @@ HXDiscoveryContainerDelegate
     }
 }
 
+- (void)pauseMusic {
+    MusicMgr *musicMgr = [MusicMgr standard];
+    if (musicMgr.isPlaying) {
+        [[MusicMgr standard] pause];
+    }
+}
+
 #pragma mark - HXDiscoveryTopBarDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     [self hiddenNavigationBar];
@@ -166,15 +173,15 @@ HXDiscoveryContainerDelegate
             break;
         }
         case HXDiscoveryContainerActionStartLive: {
-            [[MusicMgr standard] pause];
             [self hiddenNavigationBar];
+            [self pauseMusic];
             UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
             [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
-            [[MusicMgr standard] pause];
             [self hiddenNavigationBar];
+            [self pauseMusic];
             UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
             HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
             watchLiveViewController.roomID = model.roomID;
