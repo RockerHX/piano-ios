@@ -131,7 +131,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
                               completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         
                                     if (success) {
-//                                        NSLog(@"^^^^^^^^^^^^^^^^:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+                                        NSLog(@"^^^^^^^^^^^^^^^^:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                         [self parseProfileWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                                         [subscriber sendCompleted];
                                     }else{
@@ -159,7 +159,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
     _profileHeadModel.followState = _profileModel.follow;
     _profileHeadModel.avatarURL = _profileModel.coverUrl;
     _profileHeadModel.fansCount = _profileModel.fansCnt;
-    _profileHeadModel.followState = _profileModel.followCnt;
+    _profileHeadModel.followCount = _profileModel.followCnt;
     _profileHeadModel.userpic = _profileModel.userpic;
 }
 

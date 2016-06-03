@@ -135,6 +135,21 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
         
         [attentionSignal subscribeNext:^(id x) {
             [self.profileHeadView setAttentionButtonState:[x boolValue]];
+            
+            MIAProfileHeadModel *headModel = self.profileViewModel.profileHeadModel;
+            NSInteger fans = [headModel.fansCount integerValue];
+            
+            if ([x boolValue]) {
+                //已关注
+                fans +=1;
+            }else{
+                //未关注
+                fans -=1;
+            }
+            
+            [self.profileHeadView setProfileFans:[NSString stringWithFormat:@"%ld",(long)fans] attention:headModel.followCount];
+            self.profileViewModel.profileHeadModel.fansCount =[NSString stringWithFormat:@"%ld",(long)fans];
+            
         } error:^(NSError *error) {
            
             [self hiddenHUD];
@@ -227,6 +242,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
                               }];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
+    
     [_profileHeadView setAttentionButtonState:[headModel.followState boolValue]];
     
     if ([_profileViewModel.cellDataArray count]) {
@@ -317,7 +333,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
         
         return [MIABaseCellHeadView cellHeadViewWithImage:[UIImage imageNamed:@"PR-Live"]
                                                     title:@"正在直播"
-                                                 tipTitle:[NSString stringWithFormat:@"%@人观看",_profileViewModel.profileLiveModel.liveViewCount]
+                                                 tipTitle:[NSString stringWithFormat:@"%@人观看",_profileViewModel.profileLiveModel.liveOnlineCount]
                                                     frame:CGRectMake(0., 0., View_Width(self.view), profileTableHeadViewHeight + kBaseCellHeadViewHeight)
                                             cellColorType:headColorType];
         

@@ -62,4 +62,7 @@ typedef void(^SendCommentBlock) (NSString *commentConent);
  */
 - (void)cleanTextView;
 
+//移除键盘的通知
+- (void)removeKeyBoardShowObbserve;
+
 @end
