@@ -127,7 +127,7 @@ HXLiveAlbumViewDelegate
     if (manager.liveState == HXLiveStateLive) {
         [_anchorView stopRecordTime];
         [_albumView stopAlbumAnmation];
-        [manager.zegoLiveApi takeLocalViewSnapshot];
+        [self closeLive];
     } else {
         [self leaveRoom];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -166,13 +166,12 @@ HXLiveAlbumViewDelegate
     NSLog(@"%s, ret: %d", __func__, ret);
 }
 
-- (void)endLiveWithSnapShotImage:(UIImage *)image {
+- (void)closeLive {
     [self leaveRoom];
     
     HXLiveEndViewController *liveEndViewController = [HXLiveEndViewController instance];
     liveEndViewController.delegate = self;
     liveEndViewController.isLive = YES;
-    liveEndViewController.snapShotImage = image;
     liveEndViewController.liveModel = _viewModel.model;
     [self presentViewController:liveEndViewController animated:YES completion:nil];
 }
@@ -277,11 +276,7 @@ static CGFloat AlbumViewWidth = 60.0f;
 - (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {}
 - (void)onCaptureVideoSizeChangedToWidth:(uint32)width height:(uint32)height {}
 - (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {}
-
-- (void)onTakeLocalViewSnapshot:(CGImageRef)img {
-    UIImage *snapShotImage = [UIImage imageWithCGImage:img];
-    [self endLiveWithSnapShotImage:snapShotImage];
-}
+- (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
 #pragma mark - HXRecordAnchorViewDelegate Methods
 - (void)anchorView:(HXRecordAnchorView *)anchorView takeAction:(HXRecordAnchorViewAction)action {

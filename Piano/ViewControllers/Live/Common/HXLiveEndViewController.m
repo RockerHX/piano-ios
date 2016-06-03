@@ -63,10 +63,6 @@
     _countContainerView.hidden = !isLive;
 }
 
-- (void)setSnapShotImage:(UIImage *)snapShotImage {
-    _snapShotImage = [snapShotImage blurredImageWithRadius:30.0f iterations:10 tintColor:[UIColor blackColor]];
-}
-
 #pragma mark - Event Methods
 - (IBAction)backButtonPressed {
     [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -77,8 +73,11 @@
 
 #pragma mark - Private Methods
 - (void)updateUI {
-    _blurView.image = _snapShotImage;
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:(_isLive ? [HXUserSession session].user.avatarUrl : _liveModel.avatarUrl)]];
+    __weak __typeof__(self)weakSelf = self;
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:(_isLive ? [HXUserSession session].user.avatarUrl : _liveModel.avatarUrl)] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        __strong __typeof__(self)strongSelf = weakSelf;
+        strongSelf.blurView.image = [image blurredImageWithRadius:10.0f iterations:10 tintColor:[UIColor blackColor]];;
+    }];
     _nickNameLabel.text = (_isLive ? [HXUserSession session].nickName : _liveModel.nickName);
 }
 
