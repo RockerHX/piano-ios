@@ -655,10 +655,10 @@
             </objects>
             <point key="canvasLocation" x="396" y="904"/>
         </scene>
-        <!--HXLiveBarrageViewController-->
+        <!--HXLiveCommentViewController-->
         <scene sceneID="FbM-ii-pet">
             <objects>
-                <viewController storyboardIdentifier="HXLiveBarrageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYO-0B-Ek3" userLabel="HXLiveBarrageViewController" customClass="HXLiveBarrageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HXLiveCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYO-0B-Ek3" userLabel="HXLiveCommentViewController" customClass="HXLiveCommentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TLw-Kt-qqx"/>
                         <viewControllerLayoutGuide type="bottom" id="dIx-vc-5L1"/>

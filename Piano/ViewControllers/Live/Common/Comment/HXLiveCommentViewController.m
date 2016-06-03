@@ -1,18 +1,18 @@
 //
-//  HXLiveBarrageViewController.m
+//  HXLiveCommentViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/31.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveBarrageViewController.h"
+#import "HXLiveCommentViewController.h"
 #import "HXLiveCommentViewModel.h"
 
-@interface HXLiveBarrageViewController ()
+@interface HXLiveCommentViewController ()
 @end
 
-@implementation HXLiveBarrageViewController {
+@implementation HXLiveCommentViewController {
     HXLiveCommentViewModel *_viewModel;
 }
 
@@ -42,6 +42,7 @@
     
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewConfigure {
@@ -65,13 +66,12 @@
     } completed:^{
         @strongify(self)
         [self hiddenHUD];
-        [self tapGesture];
+        [self hiddenKeyboard];
     }];
 }
 
 - (void)tapGesture {
-    [_textField resignFirstResponder];
-    [self hiddenKeyBoardAnimation];
+    [self hiddenKeyboard];
 }
 
 - (void)keyBoardWillShow:(NSNotification *)notification {
@@ -79,6 +79,10 @@
     //获取当前显示的键盘高度
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size;
     [self popKeyBoardAnimationWithHeight:keyboardSize.height];
+}
+
+- (void)keyBoardWillHidden:(NSNotification *)notification {
+    [self hiddenKeyboard];
 }
 
 #pragma mark - Private Methods
@@ -97,6 +101,11 @@
         [self.view removeFromSuperview];
         [self removeFromParentViewController];
     }];
+}
+
+- (void)hiddenKeyboard {
+    [_textField resignFirstResponder];
+    [self hiddenKeyBoardAnimation];
 }
 
 @end

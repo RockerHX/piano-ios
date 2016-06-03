@@ -10,7 +10,7 @@
 #import "HXZegoAVKitManager.h"
 #import "HXLiveBarrageContainerViewController.h"
 #import "HXLiveEndViewController.h"
-#import "HXLiveBarrageViewController.h"
+#import "HXLiveCommentViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
@@ -315,7 +315,7 @@ HXLiveAlbumViewDelegate
     
     switch (action) {
         case HXWatchBottomBarActionComment: {
-            HXLiveBarrageViewController *commentViewController = [HXLiveBarrageViewController instance];
+            HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
             commentViewController.roomID = _roomID;
             [self addChildViewController:commentViewController];
             [self.view addSubview:commentViewController.view];
