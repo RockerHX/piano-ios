@@ -27,6 +27,13 @@ HXXibImplementation
     }
 }
 
+- (void)setReplay:(BOOL)replay {
+    _replay = replay;
+    if (replay) {
+        _countPromptLabel.text = @"观看人数";
+    }
+}
+
 #pragma mark - Event Response
 - (IBAction)avatarButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(anchorView:takeAction:)]) {
