@@ -361,6 +361,7 @@ static CGFloat AlbumViewWidth = 60.0f;
 - (void)previewControllerHandleFinishedShouldStartLive:(HXPreviewLiveViewController *)viewController liveModel:(HXLiveModel *)model frontCamera:(BOOL)frontCamera beauty:(BOOL)beauty {
     _frontCamera = frontCamera;
     _beauty      = beauty;
+    _bottomBar.beautyButton.selected = !beauty;
     
     [self startPublish];
     
