@@ -30,6 +30,7 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryModelType) {
 @property (nonatomic, strong)  NSString *videoUrl;
 @property (nonatomic, strong)  NSString *coverColor;
 @property (nonatomic, assign) NSInteger  duration;
+@property (nonatomic, assign) NSInteger  onlineCount;
 @property (nonatomic, assign) NSInteger  videoUpdated;
 @property (nonatomic, assign) NSInteger  albumUpdated;
 
