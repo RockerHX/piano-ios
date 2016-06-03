@@ -17,11 +17,16 @@
     [super awakeFromNib];
     
     [self loadConfigure];
+    [self viewConfigure];
 }
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    [super loadConfigure];
+}
+
+- (void)viewConfigure {
+    [super viewConfigure];
 }
 
 #pragma mark - Public Methods

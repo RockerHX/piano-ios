@@ -11,4 +11,7 @@
 
 @interface HXDiscoveryCell : UICollectionViewCell
 
+- (void)loadConfigure;
+- (void)viewConfigure;
+
 @end
