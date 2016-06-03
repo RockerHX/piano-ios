@@ -11,6 +11,7 @@
 
 @interface HXLiveCommentViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet      UIView *tapView;
 @property (weak, nonatomic) IBOutlet      UIView *commentView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet    UIButton *sendButton;

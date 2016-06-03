@@ -8,6 +8,7 @@
 
 #import "HXLiveCommentViewController.h"
 #import "HXLiveCommentViewModel.h"
+#import "BlocksKit+UIKit.h"
 
 @interface HXLiveCommentViewController ()
 @end
@@ -22,12 +23,6 @@
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [_textField becomeFirstResponder];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,13 +35,18 @@
     _viewModel = [[HXLiveCommentViewModel alloc] initWithRoomID:_roomID];
     RAC(_viewModel, content) = _textField.rac_textSignal;
     
-    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewConfigure {
-    ;
+    __weak __typeof__(self)weakSelf = self;
+    [_tapView bk_whenTapped:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [strongSelf hiddenKeyboard];
+    }];
+    
+    [_textField becomeFirstResponder];
 }
 
 #pragma mark - Event Response
@@ -57,9 +57,11 @@
     RACSignal *sendSignal = [_viewModel.sendCommand execute:nil];
     [sendSignal subscribeNext:^(NSString *message) {
         @strongify(self)
+        [self hiddenHUD];
         [self showBannerWithPrompt:message];
     } error:^(NSError *error) {
         @strongify(self)
+        [self hiddenHUD];
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
@@ -68,10 +70,6 @@
         [self hiddenHUD];
         [self hiddenKeyboard];
     }];
-}
-
-- (void)tapGesture {
-    [self hiddenKeyboard];
 }
 
 - (void)keyBoardWillShow:(NSNotification *)notification {
@@ -98,13 +96,12 @@
     [UIView animateWithDuration:0.4f animations:^{
         [_commentView layoutIfNeeded];
     } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
 - (void)hiddenKeyboard {
-    [_textField resignFirstResponder];
+    [self.view endEditing:YES];
     [self hiddenKeyBoardAnimation];
 }
 

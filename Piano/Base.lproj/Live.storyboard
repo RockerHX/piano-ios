@@ -667,6 +667,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55i-Et-K6o" userLabel="Tap View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h64-16-14L">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <subviews>
@@ -696,8 +700,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="55i-Et-K6o" firstAttribute="top" secondItem="YxM-ta-Jya" secondAttribute="top" id="6hP-HS-tFW"/>
+                            <constraint firstAttribute="bottom" secondItem="55i-Et-K6o" secondAttribute="bottom" id="ARh-ri-nDn"/>
                             <constraint firstItem="h64-16-14L" firstAttribute="leading" secondItem="YxM-ta-Jya" secondAttribute="leading" id="P2u-jr-t2e"/>
                             <constraint firstAttribute="trailing" secondItem="h64-16-14L" secondAttribute="trailing" id="lUM-vD-UG7"/>
+                            <constraint firstAttribute="trailing" secondItem="55i-Et-K6o" secondAttribute="trailing" id="nie-P1-UUj"/>
+                            <constraint firstItem="55i-Et-K6o" firstAttribute="leading" secondItem="YxM-ta-Jya" secondAttribute="leading" id="q7z-eq-ehp"/>
                             <constraint firstAttribute="bottom" secondItem="h64-16-14L" secondAttribute="bottom" id="teS-vN-hPi"/>
                         </constraints>
                     </view>
@@ -706,6 +714,7 @@
                         <outlet property="bottomConstraint" destination="teS-vN-hPi" id="uK2-vb-OvZ"/>
                         <outlet property="commentView" destination="h64-16-14L" id="B38-GA-gfc"/>
                         <outlet property="sendButton" destination="G7n-9s-ivL" id="aKw-lg-Gwm"/>
+                        <outlet property="tapView" destination="55i-Et-K6o" id="qZH-7g-KPZ"/>
                         <outlet property="textField" destination="BtK-8y-Ddp" id="FLz-Zc-qam"/>
                     </connections>
                 </viewController>

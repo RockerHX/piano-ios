@@ -299,8 +299,9 @@ static CGFloat AlbumViewWidth = 60.0f;
         case HXRecordBottomBarActionComment: {
             HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
             commentViewController.roomID = _viewModel.model.roomID;
-            [self addChildViewController:commentViewController];
-            [self.view addSubview:commentViewController.view];
+            commentViewController.transitioningDelegate = _modalTransitionDelegate;
+            commentViewController.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:commentViewController animated:YES completion:nil];
             break;
         }
         case HXRecordBottomBarActionBeauty: {
