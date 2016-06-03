@@ -9,7 +9,6 @@
 #import "HXHostProfileViewController.h"
 #import "HXHostProfileContainerViewController.h"
 #import "HXSettingViewController.h"
-#import "HXWatchLiveViewController.h"
 #import "HXUserSession.h"
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
@@ -97,40 +96,10 @@ HXHostProfileContainerDelegate
 }
 
 #pragma mark - HXHostProfileContainerDelegate Methods
-- (void)container:(HXHostProfileContainerViewController *)container hanleAttentionAnchor:(HXAttentionModel *)model {
-    if (model.live) {
-        if (!model.roomID) {
-            [self showBannerWithPrompt:@"直播已结束"];
-            return;
-        }
-        
-        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
-        watchLiveViewController.roomID = model.roomID;
-        [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
-    } else {
-        MIAProfileViewController *profileViewController = [MIAProfileViewController new];
-        [profileViewController setUid:model.uID];
-        [self.navigationController pushViewController:profileViewController animated:YES];
-    }
-}
-
 - (void)container:(HXHostProfileContainerViewController *)container showAttentionAnchor:(HXAttentionModel *)anchor {
-    if (anchor.live) {
-        if (!anchor.roomID) {
-            [self showBannerWithPrompt:@"直播已结束"];
-            return;
-        }
-        
-        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
-        watchLiveViewController.roomID = anchor.roomID;
-        [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
-    } else {
-        MIAProfileViewController *profileViewController = [MIAProfileViewController new];
-        [profileViewController setUid:anchor.uID];
-        [self.navigationController pushViewController:profileViewController animated:YES];
-    }
+    MIAProfileViewController *profileViewController = [MIAProfileViewController new];
+    [profileViewController setUid:anchor.uID];
+    [self.navigationController pushViewController:profileViewController animated:YES];
 }
 
 - (void)container:(HXHostProfileContainerViewController *)container showRewardAlbum:(HXAlbumModel *)album {
