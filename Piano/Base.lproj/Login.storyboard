@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-LoginBG-1" translatesAutoresizingMaskIntoConstraints="NO" id="SJc-6Q-mb8" userLabel="Animation BG">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-LoginBG-2" translatesAutoresizingMaskIntoConstraints="NO" id="SJc-6Q-mb8" userLabel="Animation BG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-47-uJf" userLabel="Login Button Container">
@@ -148,7 +148,6 @@
         <!--HXMobileLoginViewController-->
         <scene sceneID="pU3-PJ-uS5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3cQ-ml-U9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HXMobileLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tsv-CR-02G" userLabel="HXMobileLoginViewController" customClass="HXMobileLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LWX-k4-ohC"/>
@@ -158,7 +157,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-LoginBG-1" translatesAutoresizingMaskIntoConstraints="NO" id="E1U-fh-QmC" userLabel="Animation BG">
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-LoginBG-2" translatesAutoresizingMaskIntoConstraints="NO" id="E1U-fh-QmC" userLabel="Animation BG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaY-QA-yTW" userLabel="Back Button">
@@ -238,7 +237,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIh-Ry-QJG" customClass="HXIBButton">
                                 <rect key="frame" x="20" y="334" width="280" height="46"/>
-                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="8U7-IB-ima"/>
                                 </constraints>
@@ -281,6 +280,7 @@
                         <outlet property="passWordTextField" destination="ix2-Dm-vqM" id="9rj-Au-Lrl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cQ-ml-U9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-250" y="925"/>
         </scene>
@@ -788,7 +788,7 @@
     <resources>
         <image name="C-ArrowIcon-Right-White" width="25" height="25"/>
         <image name="C-BackIcon-White" width="25" height="25"/>
-        <image name="L-LoginBG-1" width="375" height="667"/>
+        <image name="L-LoginBG-2" width="375" height="667"/>
         <image name="L-LoginLogo" width="180" height="180"/>
         <image name="L-MobileLogo" width="35" height="35"/>
         <image name="L-WeiXinLogo" width="35" height="35"/>
