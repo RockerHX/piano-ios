@@ -211,7 +211,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="218" height="249"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hU6-CA-4zu">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D-LiveEntryBG" translatesAutoresizingMaskIntoConstraints="NO" id="hU6-CA-4zu">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="249"/>
                                         </imageView>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-8E-EwO">
@@ -359,7 +359,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sjE-Wh-idO">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D-LiveEntryBG" translatesAutoresizingMaskIntoConstraints="NO" id="sjE-Wh-idO">
                                             <rect key="frame" x="0.0" y="0.0" width="218" height="200"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2c0-aG-ej8" userLabel="Nick Name Contaner">

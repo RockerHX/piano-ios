@@ -69,7 +69,7 @@ HXXibImplementation
 
 #pragma mark - Private Methods
 - (NSString *)timeFormatWithTime:(CGFloat)time {
-    NSInteger second = time;
+    NSInteger second = fabs(time);
     NSInteger minute = second / 60;
     return [NSString stringWithFormat:@"%02zd:%02zd", minute, (second % 60)];
 }

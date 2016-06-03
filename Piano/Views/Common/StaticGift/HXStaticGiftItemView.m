@@ -43,7 +43,7 @@ HXXibImplementation
     [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl]];
     _nickNameLabel.text = gift.nickName;
     _promptLabel.text = gift.prompt;
-    _giftView.image = [UIImage imageWithData:gift.iconData];
+    _giftView.image = [UIImage imageWithData:gift.animationData];
     
     for (NSInteger index = 1; index <= gift.count; index++) {
         dispatch_group_async(_group, _queue, ^{
