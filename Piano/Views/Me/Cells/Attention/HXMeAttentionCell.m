@@ -14,7 +14,7 @@
 
 #pragma mark - Public Methods
 - (void)updateCellWithAttention:(HXAttentionModel *)attention {
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:attention.avatarUrl]];
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:attention.avatarUrl] placeholderImage:[UIImage imageNamed:@"C-DefaultAvatar"]];
     _nickNameLabel.text = attention.nickName;
     _livePromptView.hidden = !attention.live;
 }
