@@ -28,6 +28,7 @@
 #import "HXDynamicGiftView.h"
 #import "HXModalTransitionDelegate.h"
 #import "HXStaticGiftView.h"
+#import "UIImage+Extrude.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -313,7 +314,7 @@ HXLiveAlbumViewDelegate
             NSString *shareTitle   = model.shareTitle;
             NSString *shareContent = model.shareContent;
             NSURL *shareURL        = [NSURL URLWithString:model.shareUrl];
-            UIImage *shareImage    = [_anchorView.avatar imageForState:UIControlStateNormal];
+            UIImage *shareImage    = [UIImage scaleToSize:[_anchorView.avatar imageForState:UIControlStateNormal] maxWidthOrHeight:100] ;
             
             NSMutableDictionary *shareParams = @{}.mutableCopy;
             [shareParams SSDKSetupShareParamsByText:shareContent
