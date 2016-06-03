@@ -96,7 +96,7 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
     [(UINavigationController *)[[delegate window] rootViewController] presentViewController:watchLiveNavigationController animated:YES completion:^{
 
         if ([[MusicMgr standard] isPlaying]) {
-            [[MusicMgr standard] stop];
+            [[MusicMgr standard] pause];
         }
     }];
 }

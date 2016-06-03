@@ -40,6 +40,8 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 @property (nonatomic, strong) UIImage *uploadingImage;
 @property (nonatomic, strong) MBProgressHUD *uploadAvatarProgressHUD;
 
+@property (nonatomic, copy) SettingDataChangeBlock settingDataChangeBlock;
+
 @end
 
 @implementation MIASettingViewController
@@ -291,6 +293,14 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     
 }
 
+#pragma mark - block
+
+- (void)settingDataChangeHandler:(SettingDataChangeBlock)block{
+
+    self.settingDataChangeBlock = nil;
+    self.settingDataChangeBlock = block;
+}
+
 #pragma mark - Action
 
 - (void)changeHeadImage{
@@ -313,6 +323,11 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [settingContentViewController settingContentSaveHandler:^(SettingContentType contentType, NSString *content) {
     @strongify(self);
         [self.settingViewModel updateNickName:content];
+        
+        if (self.settingDataChangeBlock) {
+            self.settingDataChangeBlock();
+        }
+        
     }];
     [self.navigationController pushViewController:settingContentViewController animated:YES];
 }
@@ -325,6 +340,10 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [settingContentViewController settingContentSaveHandler:^(SettingContentType contentType, NSString *content) {
     @strongify(self);
         [self.settingViewModel updateSummay:content];
+        
+        if (self.settingDataChangeBlock) {
+            self.settingDataChangeBlock();
+        }
     }];
     [self.navigationController pushViewController:settingContentViewController animated:YES];
 }
@@ -529,6 +548,9 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     
     [_headImageView setImage:avatarImage];
     [_settingViewModel updateAvtarURLString:url];
+    if (self.settingDataChangeBlock) {
+        self.settingDataChangeBlock();
+    }
 }
 
 @end
