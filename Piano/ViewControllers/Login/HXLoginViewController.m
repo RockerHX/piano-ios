@@ -105,7 +105,7 @@ HXMobileLoginViewControllerDelegate
         [_delegate loginViewController:self takeAction:HXLoginViewControllerActionLoginSuccess];
     }
     [self hiddenHUD];
-    [self showBannerWithPrompt:@"登录成功！"];
+    [self showBannerWithPrompt:@"登录成功"];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
