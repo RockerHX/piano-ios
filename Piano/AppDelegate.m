@@ -24,8 +24,8 @@
 #import "MusicMgr.h"
 #import "JPUSHService.h"
 #import "NSString+IsNull.h"
-#import "HXMainViewController.h"
 
+#import "HXWatchLiveViewController.h"
 
 @interface AppDelegate ()
 @end
@@ -219,9 +219,13 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 	}
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
-//		NSLog(@"%@ with roomID: %@", action, param1);
-//        HXMainViewController *mainViewController = (HXMainViewController *)self.window.rootViewController;
-//        [mainViewController watchLiveWithRoomID:param1];
+		NSLog(@"%@ with roomID: %@", action, param1);
+
+		UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+		HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+		watchLiveViewController.roomID = param1;
+		[self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
+
 	}
 }
 
