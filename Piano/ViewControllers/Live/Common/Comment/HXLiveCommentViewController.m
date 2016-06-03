@@ -34,6 +34,9 @@
 - (void)loadConfigure {
     _viewModel = [[HXLiveCommentViewModel alloc] initWithRoomID:_roomID];
     RAC(_viewModel, content) = _textField.rac_textSignal;
+    [_textField.rac_textSignal subscribeNext:^(NSString *x) {
+        _sendButton.enabled = x.length;
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
@@ -44,6 +47,12 @@
     [_tapView bk_whenTapped:^{
         __strong __typeof__(self)strongSelf = weakSelf;
         [strongSelf hiddenKeyboard];
+    }];
+    
+    [_textField setBk_shouldReturnBlock:^BOOL(UITextField *textField) {
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [strongSelf sendButtonPressed];
+        return textField.text.length;
     }];
     
     [_textField becomeFirstResponder];
