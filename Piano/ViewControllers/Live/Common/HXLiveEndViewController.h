@@ -38,8 +38,6 @@
 @property (nonatomic, assign)        BOOL  isLive;
 @property (nonatomic, strong) HXLiveModel *liveModel;
 
-@property (nonatomic, strong) UIImage *snapShotImage;
-
 - (IBAction)backButtonPressed;
 
 @end

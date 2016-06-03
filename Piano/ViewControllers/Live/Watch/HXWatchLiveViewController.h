@@ -18,7 +18,6 @@
 @interface HXWatchLiveViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *liveView;
-@property (weak, nonatomic) IBOutlet UIView *endCountContainer;
 
 @property (weak, nonatomic) IBOutlet  HXLiveAnchorView *anchorView;
 @property (weak, nonatomic) IBOutlet   HXLiveAlbumView *albumView;

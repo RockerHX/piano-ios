@@ -43,7 +43,6 @@ HXLiveAlbumViewDelegate
 
 @implementation HXWatchLiveViewController {
     HXLiveBarrageContainerViewController *_barrageContainer;
-    HXLiveEndViewController *_endViewController;
     HXWatchLiveViewModel *_viewModel;
     
     HXModalTransitionDelegate *_modalTransitionDelegate;
@@ -64,9 +63,6 @@ HXLiveAlbumViewDelegate
     if ([identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
         _barrageContainer = segue.destinationViewController;
         _barrageContainer.delegate = self;
-    } else if ([segue.identifier isEqualToString:NSStringFromClass([HXLiveEndViewController class])]) {
-        _endViewController = segue.destinationViewController;
-        _endViewController.delegate = self;
     }
 }
 
@@ -120,7 +116,7 @@ HXLiveAlbumViewDelegate
         _barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
-        [[HXZegoAVKitManager manager].zegoLiveApi takeRemoteViewSnapshot:RemoteViewIndex_First];
+        [self endLive];
     }];
     [_viewModel.rewardSignal subscribeNext:^(id x) {
         [self updateAlbumView];
@@ -164,14 +160,14 @@ HXLiveAlbumViewDelegate
     [[HXZegoAVKitManager manager].zegoLiveApi logoutChannel];
 }
 
-- (void)endLiveWithSnapShotImage:(UIImage *)image {
-    self->_endViewController.isLive = NO;
-    self->_endViewController.liveModel = _viewModel.model;
-    
-    _endViewController.snapShotImage = image;
-    self.endCountContainer.hidden = NO;
-    
+- (void)endLive {
     [self leaveRoom];
+    
+    HXLiveEndViewController *liveEndViewController = [HXLiveEndViewController instance];
+    liveEndViewController.delegate = self;
+    liveEndViewController.isLive = NO;
+    liveEndViewController.liveModel = _viewModel.model;
+    [self presentViewController:liveEndViewController animated:YES completion:nil];
 }
 
 - (void)fetchDataFinfished {
@@ -263,17 +259,9 @@ HXLiveAlbumViewDelegate
     NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
 }
 
-- (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {
-    NSLog(@"%s", __func__);
-}
-
+- (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {}
 - (void)onCaptureVideoSizeChangedToWidth:(uint32)width height:(uint32)height {}
-
-- (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {
-    UIImage *snapShotImage = [UIImage imageWithCGImage:img];
-    [self endLiveWithSnapShotImage:snapShotImage];
-}
-
+- (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {}
 - (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
@@ -370,7 +358,7 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods
 - (void)endViewControllerWouldLikeExitRoom:(HXLiveEndViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    ;
 }
 
 #pragma mark - HXLiveAlbumViewDelegate Methods
