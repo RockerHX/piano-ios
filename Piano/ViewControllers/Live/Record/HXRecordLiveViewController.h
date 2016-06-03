@@ -12,6 +12,7 @@
 @class HXLiveModel;
 @class HXRecordAnchorView;
 @class HXLiveAlbumView;
+@class HXRecordBottomBar;
 
 
 @interface HXRecordLiveViewController : UIViewController
@@ -22,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet             UIView *topBar;
 @property (weak, nonatomic) IBOutlet HXRecordAnchorView *anchorView;
 @property (weak, nonatomic) IBOutlet             UIView *barragesView;
-@property (weak, nonatomic) IBOutlet             UIView *bottomBar;
+@property (weak, nonatomic) IBOutlet  HXRecordBottomBar *bottomBar;
 @property (weak, nonatomic) IBOutlet    HXLiveAlbumView *albumView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewLeftConstraint;

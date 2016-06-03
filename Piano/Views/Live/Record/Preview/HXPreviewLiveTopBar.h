@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, HXPreviewLiveTopBarAction) {
 @property (weak, nonatomic) IBOutlet UIButton *changeButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
-- (IBAction)beautyButtonPressed;
+- (IBAction)beautyButtonPressed:(UIButton *)button;
 - (IBAction)changeButtonPressed;
 - (IBAction)closeButtonPressed;
 

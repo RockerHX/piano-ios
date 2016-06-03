@@ -21,7 +21,8 @@ HXXibImplementation
     }
 }
 
-- (IBAction)beautyButtonPressed {
+- (IBAction)beautyButtonPressed:(UIButton *)button {
+    button.selected = !button.selected;
     if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
         [_delegate bottomBar:self takeAction:HXRecordBottomBarActionBeauty];
     }
@@ -33,7 +34,8 @@ HXXibImplementation
     }
 }
 
-- (IBAction)muteButtonPressed {
+- (IBAction)muteButtonPressed:(UIButton *)button {
+    button.selected = !button.selected;
     if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
         [_delegate bottomBar:self takeAction:HXRecordBottomBarActionMute];
     }

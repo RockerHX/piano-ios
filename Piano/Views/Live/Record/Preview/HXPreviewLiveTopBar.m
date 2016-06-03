@@ -15,7 +15,8 @@
 HXXibImplementation
 
 #pragma mark - Event Response
-- (IBAction)beautyButtonPressed {
+- (IBAction)beautyButtonPressed:(UIButton *)button {
+    button.selected = !button.selected;
     if (_delegate && [_delegate respondsToSelector:@selector(topBar:takeAction:)]) {
         [_delegate topBar:self takeAction:HXPreviewLiveTopBarActionBeauty];
     }
