@@ -106,6 +106,7 @@ HXHostProfileContainerDelegate
     
     _viewModel.model.summary = [HXUserSession session].user.bio;
     _viewModel.model.nickName = [HXUserSession session].user.nickName;
+    _viewModel.model.avatarUrl = [HXUserSession session].user.avatarUrl;
     [self->_containerViewController refresh];
 }
 
