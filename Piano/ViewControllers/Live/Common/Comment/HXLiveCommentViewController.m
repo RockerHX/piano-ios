@@ -46,6 +46,12 @@
         [strongSelf hiddenKeyboard];
     }];
     
+    [_textField setBk_shouldReturnBlock:^BOOL(UITextField *textField) {
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [strongSelf sendButtonPressed];
+        return YES;
+    }];
+    
     [_textField becomeFirstResponder];
 }
 
