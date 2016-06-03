@@ -54,19 +54,19 @@ static NSString *kMIAFontLight = @"Helvetica";
         return JOFontMake(kMIAFontRegular, [UIColor grayColor], 13.);
     }else if (type == MIAFontType_Profile_Album_Name){
         //专辑的名字
-        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 13.);
+        return JOFontMake(kMIAFontRegular, JORGBSameCreate(38.), 13.);
     }else if (type == MIAFontType_Profile_Album_BackTotal){
         //打赏人数
         return JOFontMake(kMIAFontRegular, [UIColor grayColor], 10.);
     }else if (type == MIAFontType_Profile_Video_Name){
         //视频的名字
-        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 15.);
+        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 13.);
     }else if (type == MIAFontType_Profile_Video_ViweCount){
         //视频观看的人数
         return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 12.);
     }else if (type == MIAFontType_Profile_Replay_Name){
         //直播回放的名字
-        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 13.);
+        return JOFontMake(kMIAFontRegular, JORGBSameCreate(38.), 13.);
     }else if (type == MIAFontType_Profile_Replay_Date){
         //直播的时间
         return JOFontMake(kMIAFontRegular, [UIColor grayColor], 10.);

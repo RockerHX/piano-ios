@@ -237,8 +237,11 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [_coverImageView sd_setImageWithURL:[NSURL URLWithString:headModel.avatarURL]
                        placeholderImage:nil
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                  [JOAutoLayout removeAutoLayoutWithHeightSelfView:_coverImageView superView:self.view];
-                                  [JOAutoLayout autoLayoutWithHeight:View_Width(self.view)/(image.size.width/image.size.height) selfView:_coverImageView superView:self.view];
+                                  
+                                  if (image) {
+                                      [JOAutoLayout removeAutoLayoutWithHeightSelfView:_coverImageView superView:self.view];
+                                      [JOAutoLayout autoLayoutWithHeight:View_Width(self.view)/(image.size.width/image.size.height) selfView:_coverImageView superView:self.view];
+                                  }
                               }];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
@@ -373,13 +376,13 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
         
     }else if (profileCellType == MIAProfileCellTypeAlbum){
         
-        return kProfileAlbumCellHeight;
+        return [MIAProfileViewModel profileAlbumCellHeight];
     }else if (profileCellType == MIAProfileCellTypeVideo){
         
-        return kProfileVideoCellHeight;
+        return [MIAProfileViewModel profileVideoCellHeight];
     }else if (profileCellType == MIAProfileCellTypeReplay){
         
-        return  kProfileReplayCellHeight;
+        return  [MIAProfileViewModel profileReplayCellHeight];
     }
     
     return 100.;

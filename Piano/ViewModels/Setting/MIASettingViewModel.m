@@ -113,7 +113,6 @@ CGFloat const kSettingHeadImageHeight = 36.;
     
     [[_settingCellContentDataArray firstObject] replaceObjectAtIndex:1 withObject:[HXUserSession session].user.nickName];
     [self handlerContentDataUpdate];
-    
 }
 
 - (void)updateAvtarURLString:(NSString *)urlString{

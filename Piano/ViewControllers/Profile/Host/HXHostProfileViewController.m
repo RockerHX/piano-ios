@@ -44,7 +44,7 @@ HXHostProfileContainerDelegate
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self updateUI];
+//    [self updateUI];
 }
 
 - (void)viewDidLoad {
@@ -95,6 +95,20 @@ HXHostProfileContainerDelegate
     [self->_containerViewController refresh];
 }
 
+- (void)updateHeadUI{
+
+    __weak __typeof__(self)weakSelf = self;
+    [_coverView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] completed:
+     ^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+         __strong __typeof__(self)strongSelf = weakSelf;
+         strongSelf.coverView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
+     }];
+    
+    _viewModel.model.summary = [HXUserSession session].user.bio;
+    _viewModel.model.nickName = [HXUserSession session].user.nickName;
+    [self->_containerViewController refresh];
+}
+
 #pragma mark - HXHostProfileContainerDelegate Methods
 - (void)container:(HXHostProfileContainerViewController *)container showAttentionAnchor:(HXAttentionModel *)anchor {
     MIAProfileViewController *profileViewController = [MIAProfileViewController new];
@@ -135,6 +149,11 @@ HXHostProfileContainerDelegate
         case HXHostProfileContainerActionPurchaseHistory: {
             MIAPayHistoryViewController *payHistoryViewController = [MIAPayHistoryViewController new];
             [self.navigationController pushViewController:payHistoryViewController animated:YES];
+            break;
+        }
+        case HXHostProfileContainerActionUpdate:{
+        
+            [self updateHeadUI];
             break;
         }
     }
