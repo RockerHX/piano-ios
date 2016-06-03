@@ -3448,7 +3448,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3469,9 +3469,9 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Piano/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miamusic.enterprise.live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "06d373d2-f79b-4feb-996d-469a1685196c";
+				PROVISIONING_PROFILE = "5a18aecf-fbfd-4290-bd13-e05b06bc8ef0";
 			};
 			name = Release;
 		};
