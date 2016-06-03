@@ -70,7 +70,7 @@ HXMeRewardAlbumContainerCellDelegate
 
 #pragma mark - Private Methods
 - (void)updateHeaderWithProfileModel:(HXProfileModel *)model {
-    [_avatarView sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl]];
+    [_avatarView sd_setImageWithURL:[NSURL URLWithString:model.avatarUrl] placeholderImage:[UIImage imageNamed:@"PH-DefaultAvatar"]];
     _nickNameLabel.text = model.nickName;
     _signatureLabel.text = model.summary;
 }

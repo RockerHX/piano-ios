@@ -25,6 +25,7 @@
 #import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
 #import "HXModalTransitionDelegate.h"
+#import "UIImage+Extrude.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -328,7 +329,7 @@ static CGFloat AlbumViewWidth = 60.0f;
             NSString *shareTitle   = model.shareTitle;
             NSString *shareContent = model.shareContent;
             NSURL *shareURL        = [NSURL URLWithString:model.shareUrl];
-            UIImage *shareImage    = [_anchorView.avatar imageForState:UIControlStateNormal];
+            UIImage *shareImage    = [UIImage scaleToSize:[_anchorView.avatar imageForState:UIControlStateNormal] maxWidthOrHeight:100] ;
             
             NSMutableDictionary *shareParams = @{}.mutableCopy;
             [shareParams SSDKSetupShareParamsByText:shareContent

@@ -28,6 +28,7 @@
 #import "HXDynamicGiftView.h"
 #import "HXModalTransitionDelegate.h"
 #import "HXStaticGiftView.h"
+#import "UIImage+Extrude.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -313,7 +314,7 @@ HXLiveAlbumViewDelegate
             NSString *shareTitle   = model.shareTitle;
             NSString *shareContent = model.shareContent;
             NSURL *shareURL        = [NSURL URLWithString:model.shareUrl];
-            UIImage *shareImage    = [_anchorView.avatar imageForState:UIControlStateNormal];
+            UIImage *shareImage    = [UIImage scaleToSize:[_anchorView.avatar imageForState:UIControlStateNormal] maxWidthOrHeight:100] ;
             
             NSMutableDictionary *shareParams = @{}.mutableCopy;
             [shareParams SSDKSetupShareParamsByText:shareContent
@@ -324,20 +325,20 @@ HXLiveAlbumViewDelegate
 //            [shareParams SSDKSetupWeChatParamsByText:shareContent title:shareTitle url:shareURL thumbImage:nil image:shareImage musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeAuto forPlatformSubType:SSDKPlatformSubTypeWechatSession];
 //            [shareParams SSDKSetupSinaWeiboShareParamsByText:shareContent title:shareTitle image:shareImage url:shareURL latitude:0 longitude:0 objectID:nil type:SSDKContentTypeAuto];
             [ShareSDK showShareActionSheet:self.view items:nil shareParams:shareParams onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                 switch (state) {
-                     case SSDKResponseStateSuccess: {
-                         [UIAlertView bk_showAlertViewWithTitle:@"分享成功" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
-                         [MiaAPIHelper sharePostWithRoomID:_viewModel.roomID completeBlock:nil timeoutBlock:nil];
-                         break;
-                     }
-                     case SSDKResponseStateFail: {
-                         [UIAlertView bk_showAlertViewWithTitle:@"分享失败" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
-                         break;
-                     }
-                     default:
-                         break;
-                 }
-             }];
+                switch (state) {
+                    case SSDKResponseStateSuccess: {
+                        [UIAlertView bk_showAlertViewWithTitle:@"分享成功" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+                        [MiaAPIHelper sharePostWithRoomID:_viewModel.roomID completeBlock:nil timeoutBlock:nil];
+                        break;
+                    }
+                    case SSDKResponseStateFail: {
+                        [UIAlertView bk_showAlertViewWithTitle:@"分享失败" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            }];
             break;
         }
         case HXWatchBottomBarActionGift: {
