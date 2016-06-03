@@ -46,10 +46,12 @@
 @implementation MIAAlbumViewController
 
 - (void)dealloc{
-
+    
     if (_rewardType == MIAAlbumRewardTypeMyReward) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:kMIASongDownloadFinishedNoticeKey object:nil];
     }
+    
+    [_enterCommentView removeKeyBoardShowObbserve];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

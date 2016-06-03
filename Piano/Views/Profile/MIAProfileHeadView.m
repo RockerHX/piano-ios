@@ -13,7 +13,7 @@
 
 CGFloat const kAttentionButtonTag = 3333;
 
-static NSString *const kAttentionTipTitle = @"取消关注";
+static NSString *const kAttentionTipTitle = @"已关注";
 static NSString *const kUNnAttentiontipTitle = @"关注";
 
 static CGFloat const kLeftSpaceDistance = 10.; // 需要显示的内容与左边的间距
@@ -116,6 +116,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [JOAutoLayout autoLayoutWithHeight:kFansViewHeight selfView:_fansView superView:self];
     
     self.fansLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_Fans]];
+    [_fansLabel setText:@"0"];
     [_fansView addSubview:_fansLabel];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_fansLabel superView:_fansView];
@@ -142,6 +143,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [JOAutoLayout autoLayoutWithWidth:1. selfView:separateLineView superView:_fansView];
     
     self.attentionLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_Fans]];
+    [_attentionLabel setText:@"0"];
     [_fansView addSubview:_attentionLabel];
     
     [JOAutoLayout autoLayoutWithLeftView:separateLineView distance:kFansToSeparateLineSpaceDistance selfView:_attentionLabel superView:_fansView];

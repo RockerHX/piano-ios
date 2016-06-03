@@ -31,10 +31,11 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
 
 @implementation MIAAlbumEnterCommentView
 
-- (void)dealloc{
-
-    [self removeKeyBoardShowObbserve];
-}
+//- (void)dealloc{
+//
+//    NSLog(@"MIAAlbumEnterCommentView release");
+//    [self removeKeyBoardShowObbserve];
+//}
 
 - (instancetype)init{
 
