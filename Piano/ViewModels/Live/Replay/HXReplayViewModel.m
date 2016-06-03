@@ -93,6 +93,10 @@
     return _model.nickName;
 }
 
+- (NSString *)viewCount {
+    return _model.viewCount;
+}
+
 #pragma mark - Public Methods
 - (void)updateTimeNode:(NSTimeInterval)node {
     _timeNode = node;

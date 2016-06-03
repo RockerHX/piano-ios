@@ -35,6 +35,7 @@
         discoveryModel.coverUrl     = replayModel.coverUrl;
         discoveryModel.videoUrl     = replayModel.replayUrl;
         discoveryModel.duration     = replayModel.duration;
+        discoveryModel.viewCount    = replayModel.viewCnt;
     }
     return discoveryModel;
 }
