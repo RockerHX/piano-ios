@@ -42,6 +42,12 @@ HXHostProfileContainerDelegate
 }
 
 #pragma mark - View Controller Life Cycle
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self updateUI];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -85,6 +91,8 @@ HXHostProfileContainerDelegate
         __strong __typeof__(self)strongSelf = weakSelf;
          strongSelf.coverView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
     }];
+    
+    _viewModel.model.summary = [HXUserSession session].user.bio;
     [self->_containerViewController refresh];
 }
 

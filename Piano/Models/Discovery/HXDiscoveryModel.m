@@ -14,7 +14,8 @@
 @implementation HXDiscoveryModel
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{@"nickName": @"nick"};
+    return @{@"nickName": @"nick",
+          @"onlineCount": @"onlineCnt"};
 }
 
 #pragma mark - Init Methods

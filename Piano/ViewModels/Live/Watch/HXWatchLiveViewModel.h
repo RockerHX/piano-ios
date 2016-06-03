@@ -30,7 +30,7 @@
 
 @property (nonatomic, strong, readonly) NSString *anchorAvatar;
 @property (nonatomic, strong, readonly) NSString *anchorNickName;
-@property (nonatomic, strong, readonly) NSString *viewCount;
+@property (nonatomic, strong, readonly) NSString *onlineCount;
 
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
 @property (nonatomic, strong) NSArray<HXBarrageModel *> *barrages;

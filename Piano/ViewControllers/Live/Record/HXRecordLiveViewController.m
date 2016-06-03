@@ -43,7 +43,6 @@ HXLiveAlbumViewDelegate
     HXPreviewLiveViewController *_previewViewController;
     HXLiveBarrageContainerViewController *_barrageContainer;
     
-    NSString *_roomID;
     NSString *_roomTitle;
     
     HXRecordLiveViewModel *_viewModel;
@@ -299,7 +298,7 @@ static CGFloat AlbumViewWidth = 60.0f;
     switch (action) {
         case HXRecordBottomBarActionComment: {
             HXLiveBarrageViewController *commentViewController = [HXLiveBarrageViewController instance];
-            commentViewController.roomID = _roomID;
+            commentViewController.roomID = _viewModel.model.roomID;
             [self addChildViewController:commentViewController];
             [self.view addSubview:commentViewController.view];
             break;

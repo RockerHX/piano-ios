@@ -149,8 +149,8 @@
     return _model.nickName;
 }
 
-- (NSString *)viewCount {
-    return @(_model.viewCount).stringValue;
+- (NSString *)onlineCount {
+    return @(_model.onlineCount).stringValue;
 }
 
 #pragma mark - Private Methods
@@ -211,7 +211,7 @@
 }
 
 - (void)updateOnlineCount:(NSInteger)count {
-    _model.viewCount = count;
+    _model.onlineCount = count;
 }
 
 - (void)enterRoomRequestWithSubscriber:(id<RACSubscriber>)subscriber {
