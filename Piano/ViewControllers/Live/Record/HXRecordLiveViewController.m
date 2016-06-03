@@ -15,7 +15,7 @@
 #import "HXPreviewLiveViewController.h"
 #import "HXLiveEndViewController.h"
 #import "HXLiveBarrageContainerViewController.h"
-#import "HXLiveBarrageViewController.h"
+#import "HXLiveCommentViewController.h"
 #import "HXRecordLiveViewModel.h"
 #import "UIButton+WebCache.h"
 #import "HXWatcherBoard.h"
@@ -297,10 +297,11 @@ static CGFloat AlbumViewWidth = 60.0f;
 - (void)bottomBar:(HXRecordBottomBar *)bar takeAction:(HXRecordBottomBarAction)action {
     switch (action) {
         case HXRecordBottomBarActionComment: {
-            HXLiveBarrageViewController *commentViewController = [HXLiveBarrageViewController instance];
+            HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
             commentViewController.roomID = _viewModel.model.roomID;
-            [self addChildViewController:commentViewController];
-            [self.view addSubview:commentViewController.view];
+            commentViewController.transitioningDelegate = _modalTransitionDelegate;
+            commentViewController.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:commentViewController animated:YES completion:nil];
             break;
         }
         case HXRecordBottomBarActionBeauty: {

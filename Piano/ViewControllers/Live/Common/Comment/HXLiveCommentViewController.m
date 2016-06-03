@@ -1,18 +1,19 @@
 //
-//  HXLiveBarrageViewController.m
+//  HXLiveCommentViewController.m
 //  Piano
 //
 //  Created by miaios on 16/3/31.
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import "HXLiveBarrageViewController.h"
+#import "HXLiveCommentViewController.h"
 #import "HXLiveCommentViewModel.h"
+#import "BlocksKit+UIKit.h"
 
-@interface HXLiveBarrageViewController ()
+@interface HXLiveCommentViewController ()
 @end
 
-@implementation HXLiveBarrageViewController {
+@implementation HXLiveCommentViewController {
     HXLiveCommentViewModel *_viewModel;
 }
 
@@ -22,12 +23,6 @@
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [_textField becomeFirstResponder];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,12 +35,18 @@
     _viewModel = [[HXLiveCommentViewModel alloc] initWithRoomID:_roomID];
     RAC(_viewModel, content) = _textField.rac_textSignal;
     
-    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewConfigure {
-    ;
+    __weak __typeof__(self)weakSelf = self;
+    [_tapView bk_whenTapped:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [strongSelf hiddenKeyboard];
+    }];
+    
+    [_textField becomeFirstResponder];
 }
 
 #pragma mark - Event Response
@@ -56,22 +57,19 @@
     RACSignal *sendSignal = [_viewModel.sendCommand execute:nil];
     [sendSignal subscribeNext:^(NSString *message) {
         @strongify(self)
+        [self hiddenHUD];
         [self showBannerWithPrompt:message];
     } error:^(NSError *error) {
         @strongify(self)
+        [self hiddenHUD];
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
         @strongify(self)
         [self hiddenHUD];
-        [self tapGesture];
+        [self hiddenKeyboard];
     }];
-}
-
-- (void)tapGesture {
-    [_textField resignFirstResponder];
-    [self hiddenKeyBoardAnimation];
 }
 
 - (void)keyBoardWillShow:(NSNotification *)notification {
@@ -79,6 +77,10 @@
     //获取当前显示的键盘高度
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size;
     [self popKeyBoardAnimationWithHeight:keyboardSize.height];
+}
+
+- (void)keyBoardWillHidden:(NSNotification *)notification {
+    [self hiddenKeyboard];
 }
 
 #pragma mark - Private Methods
@@ -94,9 +96,13 @@
     [UIView animateWithDuration:0.4f animations:^{
         [_commentView layoutIfNeeded];
     } completion:^(BOOL finished) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+- (void)hiddenKeyboard {
+    [self.view endEditing:YES];
+    [self hiddenKeyBoardAnimation];
 }
 
 @end

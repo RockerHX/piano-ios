@@ -10,7 +10,7 @@
 #import "HXZegoAVKitManager.h"
 #import "HXLiveBarrageContainerViewController.h"
 #import "HXLiveEndViewController.h"
-#import "HXLiveBarrageViewController.h"
+#import "HXLiveCommentViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
@@ -267,16 +267,14 @@ HXLiveAlbumViewDelegate
     NSLog(@"%s", __func__);
 }
 
+- (void)onCaptureVideoSizeChangedToWidth:(uint32)width height:(uint32)height {}
+
 - (void)onTakeRemoteViewSnapshot:(CGImageRef)img view:(RemoteViewIndex)index {
     UIImage *snapShotImage = [UIImage imageWithCGImage:img];
     [self endLiveWithSnapShotImage:snapShotImage];
 }
 
-- (void)onTakeLocalViewSnapshot:(CGImageRef)img {
-}
-
-- (void)onCaptureVideoSizeChangedToWidth:(uint32)width height:(uint32)height {
-}
+- (void)onTakeLocalViewSnapshot:(CGImageRef)img {}
 
 #pragma mark - HXLiveAnchorViewDelegate Methods
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
@@ -315,10 +313,11 @@ HXLiveAlbumViewDelegate
     
     switch (action) {
         case HXWatchBottomBarActionComment: {
-            HXLiveBarrageViewController *commentViewController = [HXLiveBarrageViewController instance];
+            HXLiveCommentViewController *commentViewController = [HXLiveCommentViewController instance];
             commentViewController.roomID = _roomID;
-            [self addChildViewController:commentViewController];
-            [self.view addSubview:commentViewController.view];
+            commentViewController.transitioningDelegate = _modalTransitionDelegate;
+            commentViewController.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:commentViewController animated:YES completion:nil];
             break;
         }
         case HXWatchBottomBarActionShare: {

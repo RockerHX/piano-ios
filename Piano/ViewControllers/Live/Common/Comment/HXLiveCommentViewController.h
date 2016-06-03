@@ -1,5 +1,5 @@
 //
-//  HXLiveBarrageViewController.h
+//  HXLiveCommentViewController.h
 //  Piano
 //
 //  Created by miaios on 16/3/31.
@@ -9,8 +9,9 @@
 #import "UIViewController+HXClass.h"
 
 
-@interface HXLiveBarrageViewController : UIViewController
+@interface HXLiveCommentViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet      UIView *tapView;
 @property (weak, nonatomic) IBOutlet      UIView *commentView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet    UIButton *sendButton;
