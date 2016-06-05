@@ -13,7 +13,7 @@ CGFloat const kRightSpaceDistance = 10.; //视图右空隙大小
 CGFloat const kLeftInsideSpaceDistance = 10.;
 CGFloat const kRightInsideSpaceDistance = 10.;
 
-CGFloat const kRewardDownloadViewHeight = 60.; //打赏下载按钮视图的高度
+CGFloat const kRewardDownloadViewHeight = 0.; //打赏下载按钮视图的高度
 CGFloat const kRewardViewHeight = 70.; //打赏视图的高度
 CGFloat const kRewardNoDataViewHeight = 25.;//没有打赏人数的高度
 CGFloat const kPlayViewHeight = 50.; //播放视图的高度
