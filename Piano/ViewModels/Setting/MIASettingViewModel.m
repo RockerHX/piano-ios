@@ -86,7 +86,7 @@ CGFloat const kSettingHeadImageHeight = 36.;
 
     NSString *buildVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
     NSString *shortVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-   return [NSString stringWithFormat:@"%@.%@", shortVersion, buildVersion];
+   return [NSString stringWithFormat:@"V%@.%@", shortVersion, buildVersion];
 }
 
 #pragma mark - block

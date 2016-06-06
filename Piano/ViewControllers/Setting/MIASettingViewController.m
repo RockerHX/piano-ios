@@ -170,6 +170,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [cell setBackgroundColor:[UIColor clearColor]];
     [[cell textLabel] setTextColor:[MIAFontManage getFontWithType:MIAFontType_Setting_CellTitle]->color];
     [[cell textLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Setting_CellTitle]->font];
+//    NSLog(@"fontName:%@",[[cell textLabel] font]);
     [[cell textLabel] setText:[[_settingViewModel.settingCellDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
     [[cell detailTextLabel] setTextColor:[MIAFontManage getFontWithType:MIAFontType_Setting_CellContent]->color];
     [[cell detailTextLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Setting_CellContent]->font];
@@ -198,7 +199,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         //头像
         [cell.contentView addSubview:_headImageView];
         
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_headImageView superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-17. selfView:_headImageView superView:cell.contentView];
         [JOAutoLayout autoLayoutWithSize:JOSize(kSettingHeadImageHeight, kSettingHeadImageHeight) selfView:_headImageView superView:cell.contentView];
         [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_headImageView superView:cell.contentView];
     }
@@ -207,9 +208,9 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         //网络开关
         [cell.contentView addSubview:_netSwitch];
         
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_netSwitch superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-15. selfView:_netSwitch superView:cell.contentView];
         [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_netSwitch superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(50, 30.) selfView:_netSwitch superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithSize:JOSize(44, 26.) selfView:_netSwitch superView:cell.contentView];
     }
     
     //是否存在箭头指示
@@ -237,6 +238,11 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
     return CGFLOAT_MIN;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+    return 11.;
 }
 
 #pragma mark - table delegate

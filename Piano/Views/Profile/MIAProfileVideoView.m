@@ -11,7 +11,7 @@
 #import "MIAVideoPlayViewController.h"
 #import "MIAVideoModel.h"
 
-static CGFloat const kTitleLabelHeight = 20.;
+CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
 
 @interface MIAProfileVideoView()
 
@@ -42,7 +42,7 @@ static CGFloat const kTitleLabelHeight = 20.;
     [self addTapGesture];
     
     [self.showImageView setBackgroundColor:JORGBSameCreate(230.)];
-    [[self.showImageView layer] setCornerRadius:3.];
+//    [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_Name]];
    
     [self.showTipLabel setHidden:YES];
@@ -50,15 +50,15 @@ static CGFloat const kTitleLabelHeight = 20.;
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:self.showTitleLabel superView:self];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showTitleLabel superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0 selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:kTitleLabelHeight selfView:self.showTitleLabel superView:self];
+    [JOAutoLayout autoLayoutWithHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height selfView:self.showTitleLabel superView:self];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showImageView superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithBottomView:self.showTitleLabel distance:0. selfView:self.showImageView superView:self];
+    [JOAutoLayout autoLayoutWithBottomView:self.showTitleLabel distance:-kProfileVideoToTitleSpaceDistance selfView:self.showImageView superView:self];
     
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_numberlabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_numberlabel superView:self];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:7. selfView:_numberlabel superView:self];
     [JOAutoLayout autoLayoutWithHeight:[_numberlabel sizeThatFits:JOMAXSize].height selfView:_numberlabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_numberlabel sizeThatFits:JOMAXSize].width + 8. selfView:_numberlabel superView:self];
     

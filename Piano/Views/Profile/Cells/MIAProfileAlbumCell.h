@@ -8,6 +8,8 @@
 
 #import "MIABaseTableViewCell.h"
 
+UIKIT_EXTERN CGFloat const kProfileAlbumItemSpaceDistance;
+
 @interface MIAProfileAlbumCell : MIABaseTableViewCell
 
 @end

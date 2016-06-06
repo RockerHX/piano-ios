@@ -10,7 +10,7 @@
 #import "MIAProfileAlbumView.h"
 #import "MIAProfileViewModel.h"
 
-static CGFloat const kProfileAlbumItemSpaceDistance = 20.;
+CGFloat const kProfileAlbumItemSpaceDistance = 18.;
 
 @interface MIAProfileAlbumCell(){
 

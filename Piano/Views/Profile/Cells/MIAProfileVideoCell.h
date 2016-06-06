@@ -8,6 +8,8 @@
 
 #import "MIABaseTableViewCell.h"
 
+UIKIT_EXTERN CGFloat const kProfileVideoItemSpaceDistance;
+
 @interface MIAProfileVideoCell : MIABaseTableViewCell
 
 @end

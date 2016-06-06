@@ -9,7 +9,7 @@
 #import "MIAProfileVideoCell.h"
 #import "MIAProfileVideoView.h"
 
-static CGFloat const kProfileVideoItemSpaceDistance = 20.;
+CGFloat const kProfileVideoItemSpaceDistance = 11.;
 
 @interface MIAProfileVideoCell(){
 
