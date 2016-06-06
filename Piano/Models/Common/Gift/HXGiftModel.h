@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, HXGiftType) {
 
 @interface HXGiftModel : NSObject
 
-@property (nonatomic, assign)      NSInteger  mcoin;
+@property (nonatomic, assign)          float  mcoin;
 @property (nonatomic, assign)     HXGiftType  type;
 @property (nonatomic, assign) NSTimeInterval  playTime;
 
