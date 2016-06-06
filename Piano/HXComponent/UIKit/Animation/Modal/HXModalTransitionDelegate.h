@@ -6,9 +6,16 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HXModalOverlayAnimationController.h"
 
 
 @interface HXModalTransitionDelegate : NSObject <UIViewControllerTransitioningDelegate>
+
+@property (nonatomic, assign, readonly) HXModalDirection  direction;
+@property (nonatomic, assign, readonly)   NSTimeInterval  transitionDuration;
+
++ (instancetype)instance;
++ (instancetype)instanceWithDirection:(HXModalDirection)direction;
++ (instancetype)instanceWithDirection:(HXModalDirection)direction transitionDuration:(NSTimeInterval)transitionDuration;
 
 @end
