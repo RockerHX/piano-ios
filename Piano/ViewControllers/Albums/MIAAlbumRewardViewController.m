@@ -18,7 +18,7 @@
 #import "MIAMCoinManage.h"
 #import "HXSectorSlider.h"
 
-static NSString *const kRewardTipString = @"打赏,下载该专辑的无损音质版";
+static NSString *const kRewardTipString = @" ";//@"打赏,下载该专辑的无损音质版";
 static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
 
 @interface MIAAlbumRewardViewController()<HXSectorSliderDelegate>

@@ -9,6 +9,7 @@
 #import "MIAProfileViewModel.h"
 #import "MIAProfileModel.h"
 #import "JOBaseSDK.h"
+#import "HXVersion.h"
 
 CGFloat const kProfileLiveCellHeight = 100.;
 CGFloat const kProfileAlbumCellHeight = 150.;
@@ -159,7 +160,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
     _profileHeadModel.followState = _profileModel.follow;
     _profileHeadModel.avatarURL = _profileModel.coverUrl;
     _profileHeadModel.fansCount = _profileModel.fansCnt;
-    _profileHeadModel.followState = _profileModel.followCnt;
+    _profileHeadModel.followCount = _profileModel.followCnt;
     _profileHeadModel.userpic = _profileModel.userpic;
 }
 
@@ -206,18 +207,65 @@ CGFloat const kProfileReplayCellHeight = 210.;
 #pragma mark - cell height
 
 + (CGFloat)profileAlbumCellHeight{
-
-    return kProfileAlbumCellHeight;
+    
+    if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6 || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6s) {
+        return kProfileAlbumCellHeight;
+    }else if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6plus || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6splus){
+        return kProfileAlbumCellHeight + 15.;
+    }else if([JOFDeviceInfo deviceType] == DeviceType_Simulator){
+        
+        if([HXVersion currentModel] == HXDeviceModelTypeIphone4_4S || [HXVersion currentModel] == HXDeviceModelTypeIphone5_5S){
+            return kProfileAlbumCellHeight - 15.;
+        }else if ([HXVersion currentModel] == HXDeviceModelTypeIphone6Plus){
+            
+            return kProfileAlbumCellHeight + 15.;
+        }
+        return kProfileAlbumCellHeight;
+    }else{
+        return kProfileAlbumCellHeight-15.;
+    }
 }
 
 + (CGFloat)profileVideoCellHeight{
-
-    return kProfileVideoCellHeight;
+    
+    if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6 || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6s) {
+        return kProfileVideoCellHeight;
+    }else if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6plus || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6splus){
+        return kProfileVideoCellHeight + 15.;
+    }else if([JOFDeviceInfo deviceType] == DeviceType_Simulator){
+        
+        if([HXVersion currentModel] == HXDeviceModelTypeIphone4_4S || [HXVersion currentModel] == HXDeviceModelTypeIphone5_5S){
+            return kProfileVideoCellHeight - 15.;
+        }else if ([HXVersion currentModel] == HXDeviceModelTypeIphone6Plus){
+            
+            return kProfileVideoCellHeight + 15.;
+        }
+        return kProfileVideoCellHeight;
+    }else{
+        return kProfileVideoCellHeight-15.;
+    }
 }
 
 + (CGFloat)profileReplayCellHeight{
 
-    return kProfileReplayCellHeight;
+    if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6 || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6s) {
+        return kProfileReplayCellHeight;
+    }else if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6plus || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6splus){
+        return kProfileReplayCellHeight + 15.;
+    }else if([JOFDeviceInfo deviceType] == DeviceType_Simulator){
+    
+        if([HXVersion currentModel] == HXDeviceModelTypeIphone4_4S || [HXVersion currentModel] == HXDeviceModelTypeIphone5_5S){
+            return kProfileReplayCellHeight - 25.;
+        }else if ([HXVersion currentModel] == HXDeviceModelTypeIphone6Plus){
+            
+            return kProfileReplayCellHeight + 15.;
+        }
+        return kProfileReplayCellHeight;
+        
+    }else{
+        return kProfileReplayCellHeight-15.;
+    }
+    
 }
 
 @end

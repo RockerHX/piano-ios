@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, HXHostProfileContainerAction) {
     HXHostProfileContainerActionSignatureTaped,
     HXHostProfileContainerActionRecharge,
     HXHostProfileContainerActionPurchaseHistory,
+    HXHostProfileContainerActionUpdate,
 };
 
 

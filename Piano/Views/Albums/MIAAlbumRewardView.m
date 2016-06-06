@@ -102,7 +102,7 @@ static CGFloat const kAlbumUserItemSpaceDistance = 10.;//每个元素之间的�
                 [[userImageView layer] setBorderWidth:1.];
                 [[userImageView layer] setBorderColor:JORGBSameCreate(220.).CGColor];
                 [userImageView setTag:i+1];
-                [userImageView sd_setImageWithURL:[NSURL URLWithString:rewardAlbumModel.userpic] placeholderImage:nil];
+                [userImageView sd_setImageWithURL:[NSURL URLWithString:rewardAlbumModel.userpic] placeholderImage:[UIImage imageNamed:@"C-DefaultAvatar"]];
                 [_rewardContentView addSubview:userImageView];
                 
                 [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:userImageView superView:_rewardContentView];

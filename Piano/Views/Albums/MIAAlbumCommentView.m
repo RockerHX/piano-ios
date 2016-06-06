@@ -102,7 +102,7 @@ static CGFloat const kImageWidth = 40.;//图片的宽度
         self.commentModel = nil;
         self.commentModel = data;
         
-        [_headImageView sd_setImageWithURL:[NSURL URLWithString:_commentModel.userpic] placeholderImage:nil];
+        [_headImageView sd_setImageWithURL:[NSURL URLWithString:_commentModel.userpic] placeholderImage:[UIImage imageNamed:@"C-DefaultAvatar"]];
         [_nickNameLabel setText:_commentModel.nick];
         [_commentLabel setText:_commentModel.content];
         [_timeLabel setText:[_commentModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonthDay]];

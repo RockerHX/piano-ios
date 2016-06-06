@@ -33,7 +33,7 @@ CGFloat const kSettingHeadImageHeight = 36.;
 
 - (void)initTableCellDataArray{
 
-    _settingCellDataArray = @[@[@"头像",@"昵称",@"签名",@"性别",@"修改密码"],@[@"清除缓存",@"清除下载的歌曲",@"在2G/3G/4G网络下播放"],@[@"意见反馈",@"当前版本",@"退出登录"]];
+    _settingCellDataArray = @[@[@"头像",@"昵称",@"签名",@"性别",@"修改密码"],@[@"清除缓存",@"清除缓存的歌曲",@"在2G/3G/4G网络下播放"],@[@"意见反馈",@"当前版本",@"退出登录"]];
     
     self.settingCellContentDataArray = [NSMutableArray arrayWithObjects:[NSMutableArray array],[NSMutableArray array],[NSMutableArray array],nil];
     [self loadCellContentDataArray];
@@ -113,7 +113,6 @@ CGFloat const kSettingHeadImageHeight = 36.;
     
     [[_settingCellContentDataArray firstObject] replaceObjectAtIndex:1 withObject:[HXUserSession session].user.nickName];
     [self handlerContentDataUpdate];
-    
 }
 
 - (void)updateAvtarURLString:(NSString *)urlString{
@@ -148,7 +147,7 @@ CGFloat const kSettingHeadImageHeight = 36.;
     [self handlerContentDataUpdate];
 }
 - (void)updateSongCache{
-    [[_settingCellContentDataArray objectAtIndex:1] replaceObjectAtIndex:1 withObject:@"下载的歌曲已清除"];
+    [[_settingCellContentDataArray objectAtIndex:1] replaceObjectAtIndex:1 withObject:@"缓存的歌曲已清除"];
     [self handlerContentDataUpdate];
 }
 

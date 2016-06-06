@@ -40,6 +40,8 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 @property (nonatomic, strong) UIImage *uploadingImage;
 @property (nonatomic, strong) MBProgressHUD *uploadAvatarProgressHUD;
 
+@property (nonatomic, copy) SettingDataChangeBlock settingDataChangeBlock;
+
 @end
 
 @implementation MIASettingViewController
@@ -291,6 +293,14 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     
 }
 
+#pragma mark - block
+
+- (void)settingDataChangeHandler:(SettingDataChangeBlock)block{
+
+    self.settingDataChangeBlock = nil;
+    self.settingDataChangeBlock = block;
+}
+
 #pragma mark - Action
 
 - (void)changeHeadImage{
@@ -313,6 +323,11 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [settingContentViewController settingContentSaveHandler:^(SettingContentType contentType, NSString *content) {
     @strongify(self);
         [self.settingViewModel updateNickName:content];
+        
+        if (self.settingDataChangeBlock) {
+            self.settingDataChangeBlock();
+        }
+        
     }];
     [self.navigationController pushViewController:settingContentViewController animated:YES];
 }
@@ -325,6 +340,10 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [settingContentViewController settingContentSaveHandler:^(SettingContentType contentType, NSString *content) {
     @strongify(self);
         [self.settingViewModel updateSummay:content];
+        
+        if (self.settingDataChangeBlock) {
+            self.settingDataChangeBlock();
+        }
     }];
     [self.navigationController pushViewController:settingContentViewController animated:YES];
 }
@@ -364,11 +383,11 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
 - (void)cleanSongCache{
 
-    MBProgressHUD *aMBProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"正在清除下载歌曲..."];
+    MBProgressHUD *aMBProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"正在清除缓存歌曲..."];
     [CacheHelper cleanSongCacheWithCompleteBlock:^{
         //        _cacheLabel.text = @"缓存已清除";
         [aMBProgressHUD removeFromSuperview];
-        [HXAlertBanner showWithMessage:@"下载歌曲清除成功" tap:nil];
+        [HXAlertBanner showWithMessage:@"缓存歌曲清除成功" tap:nil];
         [_settingViewModel updateSongCache];
     }];
 }
@@ -529,6 +548,9 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     
     [_headImageView setImage:avatarImage];
     [_settingViewModel updateAvtarURLString:url];
+    if (self.settingDataChangeBlock) {
+        self.settingDataChangeBlock();
+    }
 }
 
 @end

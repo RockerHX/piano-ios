@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  当数据发生修改的时候触发的block
+ *
+ */
+typedef void(^SettingDataChangeBlock) ();
+
 @interface MIASettingViewController : UIViewController
+
+/**
+ *  数据发生改变时block的回调.
+ *
+ *  @param block SettingDataChangeBlock.
+ */
+- (void)settingDataChangeHandler:(SettingDataChangeBlock)block;
 
 @end

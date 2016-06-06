@@ -24,8 +24,8 @@
 #import "MusicMgr.h"
 #import "JPUSHService.h"
 #import "NSString+IsNull.h"
-#import "HXMainViewController.h"
 
+#import "HXWatchLiveViewController.h"
 
 @interface AppDelegate ()
 @end
@@ -175,13 +175,14 @@
 
 	NSSet *tags = nil;
 	NSString *alias = nil;
-	if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:APPSTORE_BUNDLE_ID]) {
-		tags = [NSSet setWithObjects:@"production", nil];
-		alias = @"ios_production";
-	} else {
-		tags = [NSSet setWithObjects:@"develop", nil];
-		alias = @"ios_develop";
-	}
+
+#ifdef DEBUG
+	tags = [NSSet setWithObjects:@"develop", nil];
+	alias = @"ios_develop";
+#else
+	tags = [NSSet setWithObjects:@"production", nil];
+	alias = @"ios_production";
+#endif
 
 	[JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
 		NSLog(@"JPUSH setTags rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
@@ -218,9 +219,13 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 	}
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
-//		NSLog(@"%@ with roomID: %@", action, param1);
-//        HXMainViewController *mainViewController = (HXMainViewController *)self.window.rootViewController;
-//        [mainViewController watchLiveWithRoomID:param1];
+		NSLog(@"%@ with roomID: %@", action, param1);
+
+		UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+		HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+		watchLiveViewController.roomID = param1;
+		[self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
+
 	}
 }
 

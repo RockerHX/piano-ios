@@ -50,7 +50,16 @@ HXMeRewardAlbumContainerCellDelegate
 }
 
 - (IBAction)settingButtonPressed {
-    [self.navigationController pushViewController:[MIASettingViewController new] animated:YES];
+    
+    MIASettingViewController *settingViewController = [MIASettingViewController new];
+    @weakify(self);
+    [settingViewController settingDataChangeHandler:^{
+    @strongify(self);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(container:takeAction:)]) {
+            [self.delegate container:self takeAction:HXHostProfileContainerActionUpdate];
+        }
+    }];
+    [self.navigationController pushViewController:settingViewController animated:YES];
 }
 
 #pragma mark - Public Methods

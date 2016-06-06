@@ -17,8 +17,8 @@
 
 #import "MIAAlbumHeadDetailViewModel.h"
 
-static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
-static NSString *const kSongDownloadTitle = @"下载专辑";
+static NSString *const kRewardDownloadTitle = @"打赏";
+//static NSString *const kSongDownloadTitle = @"下载专辑";
 
 @interface MIAAlbumDetailView(){
 
@@ -47,7 +47,7 @@ static NSString *const kSongDownloadTitle = @"下载专辑";
         [self setBackgroundColor:[UIColor clearColor]];
         [self createAlbumDetailView];
         
-        albumDetailViewHeight = kPlayViewHeight + kRewardViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+        albumDetailViewHeight = kPlayViewHeight + kRewardViewHeight+ kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance; //+
     }
     return self;
 }
@@ -162,10 +162,12 @@ static NSString *const kSongDownloadTitle = @"下载专辑";
         if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kRewardDownloadTitle]) {
             //打赏
             _rewardAlbumActionBlock(RewardAlbumActionType_Reward);
-        }else if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kSongDownloadTitle]){
-            //下载专辑
-            _rewardAlbumActionBlock(RewardAlbumActionType_DownloadAlbum);
         }
+        
+//        else if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kSongDownloadTitle]){
+//            //下载专辑
+//            _rewardAlbumActionBlock(RewardAlbumActionType_DownloadAlbum);
+//        }
     }
 }
 
@@ -174,19 +176,23 @@ static NSString *const kSongDownloadTitle = @"下载专辑";
 - (void)setAlbumRewardState:(BOOL)state{
 
     if (state == YES) {
-//        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardForDownloadView superView:self];
-//        [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardForDownloadView superView:self];
-//        [_rewardForDownloadView setHidden:YES];
+        
+        [JOAutoLayout removeAllAutoLayoutWithSelfView:_rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardForDownloadView superView:self];
+        [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardForDownloadView superView:self];
+        [_rewardButton setHidden:YES];
+        [_rewardForDownloadView setHidden:YES];
         
         //kSongDownloadTitle
-        [_rewardButton setTitle:kSongDownloadTitle forState:UIControlStateNormal];
+        
+//        [_rewardButton setTitle:kSongDownloadTitle forState:UIControlStateNormal];
         
         [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardView superView:self];
         [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardView superView:self];
         [_rewardView setHidden:YES];
         [_rewardView removeRewardViewLayout];
         
-        albumDetailViewHeight = kPlayViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+        albumDetailViewHeight = kPlayViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
     }
     
 }
@@ -205,7 +211,7 @@ static NSString *const kSongDownloadTitle = @"下载专辑";
             //有打赏人的时候
         }else{
             //无打赏人的时候
-            albumDetailViewHeight = kPlayViewHeight + kRewardNoDataViewHeight + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+            albumDetailViewHeight = kPlayViewHeight + kRewardNoDataViewHeight+ 10. + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
             
             [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardView superView:self];
             [JOAutoLayout autoLayoutWithHeight:kRewardNoDataViewHeight selfView:_rewardView superView:self];
