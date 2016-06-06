@@ -1569,7 +1569,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Xrn-gl-v1G"/>
                                                 </constraints>
-                                                <state key="normal" title="打赏,下载高品质版">
+                                                <state key="normal" title="打赏专辑">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
