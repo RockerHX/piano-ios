@@ -10,7 +10,7 @@
 #import "HXDiscoveryContainerViewController.h"
 #import "HXRecordLiveViewController.h"
 #import "HXWatchLiveViewController.h"
-#import "HXReplayViewController.h"
+#import "HXWatchLiveLandscapeViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
 #import "HXAlbumsViewController.h"
@@ -175,17 +175,16 @@ HXDiscoveryContainerDelegate
         case HXDiscoveryContainerActionStartLive: {
             [self hiddenNavigationBar];
             [self pauseMusic];
-            UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-            [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
+            HXRecordLiveViewController *recordLiveController = [HXRecordLiveViewController instance];
+            [self presentViewController:recordLiveController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
             [self hiddenNavigationBar];
             [self pauseMusic];
-            UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+            HXWatchLiveViewController *watchLiveViewController = [HXWatchLiveViewController instance];
             watchLiveViewController.roomID = model.roomID;
-            [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+            [self presentViewController:watchLiveViewController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowStation: {

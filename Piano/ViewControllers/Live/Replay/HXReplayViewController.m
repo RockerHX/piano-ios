@@ -41,10 +41,6 @@ HXReplayBottomBarDelegate
     return HXStoryBoardNameLive;
 }
 
-+ (NSString *)navigationControllerIdentifier {
-    return @"HXReplayNavigationController";
-}
-
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _containerViewController = segue.destinationViewController;

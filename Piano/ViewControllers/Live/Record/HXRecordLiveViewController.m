@@ -60,10 +60,6 @@ HXLiveAlbumViewDelegate
     return HXStoryBoardNameLive;
 }
 
-+ (NSString *)navigationControllerIdentifier {
-    return @"HXRecordLiveNavigationController";
-}
-
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:NSStringFromClass([HXPreviewLiveViewController class])]) {
@@ -73,11 +69,6 @@ HXLiveAlbumViewDelegate
         _barrageContainer = segue.destinationViewController;
         _barrageContainer.delegate = self;
     }
-}
-
-#pragma mark - Status Bar
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - View Controller Life Cycle

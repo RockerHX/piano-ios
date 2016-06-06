@@ -8,22 +8,6 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--HXWatchLiveNavigationController-->
-        <scene sceneID="cdu-SS-wgN">
-            <objects>
-                <navigationController storyboardIdentifier="HXWatchLiveNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3QD-vO-iEy" userLabel="HXWatchLiveNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ak1-Yd-Agt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="k8B-Y3-ojo" kind="relationship" relationship="rootViewController" id="fxp-Ik-UKt"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bxj-ci-GQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-814" y="334"/>
-        </scene>
         <!--HXLiveGiftContainerViewController-->
         <scene sceneID="UOY-Hp-asU">
             <objects>
@@ -512,7 +496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71y-Wn-rYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-422" y="334"/>
+            <point key="canvasLocation" x="-429" y="334"/>
         </scene>
         <!--HXLiveBarrageContainerViewController-->
         <scene sceneID="C9C-2x-864">
@@ -709,7 +693,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYI-CU-FKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3" y="1108"/>
+            <point key="canvasLocation" x="196" y="1397"/>
         </scene>
         <!--HXLiveEndViewController-->
         <scene sceneID="nHT-AS-1LA">
@@ -981,23 +965,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VwH-3g-9xi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="396" y="-328"/>
-        </scene>
-        <!--HXReplayNavigationController-->
-        <scene sceneID="bxV-qL-g0V">
-            <objects>
-                <navigationController storyboardIdentifier="HXReplayNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cCl-Ng-LH5" userLabel="HXReplayNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bJf-iM-Pue">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="gxm-Sv-8N7" kind="relationship" relationship="rootViewController" id="8m8-EG-kvA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zal-2k-YRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3" y="334"/>
+            <point key="canvasLocation" x="612" y="1397"/>
         </scene>
         <!--HXReplayViewController-->
         <scene sceneID="2Qx-iM-9aD">
@@ -1112,22 +1080,6 @@
             </objects>
             <point key="canvasLocation" x="396" y="334"/>
         </scene>
-        <!--HXRecordLiveNavigationController-->
-        <scene sceneID="gpJ-KG-FF8">
-            <objects>
-                <navigationController storyboardIdentifier="HXRecordLiveNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jak-Up-WAg" userLabel="HXRecordLiveNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K0Z-pN-X74">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="KgN-Fz-2Es" kind="relationship" relationship="rootViewController" id="5Ev-kX-dn2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mzv-m6-d9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="836" y="334"/>
-        </scene>
         <!--HXPreviewLiveViewController-->
         <scene sceneID="6qR-gA-MXI">
             <objects>
@@ -1225,7 +1177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tJE-rL-4Sa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="334"/>
+            <point key="canvasLocation" x="1692" y="300"/>
         </scene>
         <!--HXRecordLiveViewController-->
         <scene sceneID="pEV-it-Bi9">
@@ -1367,7 +1319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E11-tB-DEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239" y="334"/>
+            <point key="canvasLocation" x="1287" y="300"/>
         </scene>
         <!--HXCountDownViewController-->
         <scene sceneID="Yiv-VB-siN">
@@ -1400,7 +1352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPh-jA-wRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2054" y="334"/>
+            <point key="canvasLocation" x="2102" y="300"/>
         </scene>
         <!--HXLiveRewardViewController-->
         <scene sceneID="ZBt-vy-puc">
@@ -1578,7 +1530,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="rewardButtonPressed" destination="mE1-D1-RGi" eventType="touchUpInside" id="SI0-SR-5jc"/>
+                                                    <action selector="rewardButtonPressed" destination="mE1-D1-RGi" eventType="touchUpInside" id="bSK-lP-KpF"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZ3-nc-epd" userLabel="Balance Container">
@@ -1814,7 +1766,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEB-1k-3bO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239" y="1760"/>
+            <point key="canvasLocation" x="1287" y="1726"/>
         </scene>
         <!--HXSelectedAlbumViewController-->
         <scene sceneID="g5S-ea-WfQ">
@@ -1918,7 +1870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdq-V3-1AC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239" y="1108"/>
+            <point key="canvasLocation" x="1287" y="1074"/>
         </scene>
         <!--HXLiveRewardTopListViewController-->
         <scene sceneID="Ijb-J8-q77">
@@ -2077,7 +2029,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqS-zp-koG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="1108"/>
+            <point key="canvasLocation" x="1692" y="1074"/>
         </scene>
     </scenes>
     <resources>
