@@ -89,7 +89,7 @@
 }
 
 - (void)keyBoardWillHidden:(NSNotification *)notification {
-    [self hiddenKeyboard];
+    [self hiddenKeyBoardAnimation];
 }
 
 #pragma mark - Private Methods
@@ -110,8 +110,7 @@
 }
 
 - (void)hiddenKeyboard {
-    [self.view endEditing:YES];
-    [self hiddenKeyBoardAnimation];
+    [self.textField resignFirstResponder];
 }
 
 @end
