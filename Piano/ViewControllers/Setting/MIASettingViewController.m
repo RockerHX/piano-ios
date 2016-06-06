@@ -383,11 +383,11 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
 - (void)cleanSongCache{
 
-    MBProgressHUD *aMBProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"正在清除下载歌曲..."];
+    MBProgressHUD *aMBProgressHUD = [MBProgressHUDHelp showLoadingWithText:@"正在清除缓存歌曲..."];
     [CacheHelper cleanSongCacheWithCompleteBlock:^{
         //        _cacheLabel.text = @"缓存已清除";
         [aMBProgressHUD removeFromSuperview];
-        [HXAlertBanner showWithMessage:@"下载歌曲清除成功" tap:nil];
+        [HXAlertBanner showWithMessage:@"缓存歌曲清除成功" tap:nil];
         [_settingViewModel updateSongCache];
     }];
 }

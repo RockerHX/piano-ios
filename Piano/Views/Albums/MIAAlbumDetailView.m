@@ -17,7 +17,7 @@
 
 #import "MIAAlbumHeadDetailViewModel.h"
 
-//static NSString *const kRewardDownloadTitle = @"打赏,下载高品质版本";
+static NSString *const kRewardDownloadTitle = @"打赏";
 //static NSString *const kSongDownloadTitle = @"下载专辑";
 
 @interface MIAAlbumDetailView(){
@@ -26,8 +26,8 @@
 }
 
 @property (nonatomic, strong) UIImageView *albumCoverImageView;
-//@property (nonatomic, strong) UIView *rewardForDownloadView;
-//@property (nonatomic, strong) UIButton *rewardButton;
+@property (nonatomic, strong) UIView *rewardForDownloadView;
+@property (nonatomic, strong) UIButton *rewardButton;
 @property (nonatomic, strong) MIAAlbumRewardView *rewardView;
 @property (nonatomic, strong) MIAAlbumPlayView *playView;
 
@@ -47,7 +47,7 @@
         [self setBackgroundColor:[UIColor clearColor]];
         [self createAlbumDetailView];
         
-        albumDetailViewHeight = kPlayViewHeight + kRewardViewHeight+ 10 + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance; //+ kRewardDownloadViewHeight
+        albumDetailViewHeight = kPlayViewHeight + kRewardViewHeight+ kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance; //+
     }
     return self;
 }
@@ -63,7 +63,7 @@
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., kLeftSpaceDistance, 0., -kRightSpaceDistance) selfView:backView superView:self];
     
     [self createCoverImageView];
-//    [self createRewardDownloadView];
+    [self createRewardDownloadView];
     [self createRewardView];
     [self createPlayView];
 }
@@ -82,36 +82,36 @@
     }
 }
 
-//- (void)createRewardDownloadView{
-//
-//    if (!self.rewardForDownloadView) {
-//        
-//        self.rewardForDownloadView = [UIView newAutoLayoutView];
-//        [_rewardForDownloadView setBackgroundColor:[UIColor whiteColor]];
-//        [self addSubview:_rewardForDownloadView];
-//        
-//        [JOAutoLayout autoLayoutWithTopView:_albumCoverImageView distance:0. selfView:_rewardForDownloadView superView:self];
-//        [JOAutoLayout autoLayoutWithLeftXView:_albumCoverImageView distance:kLeftInsideSpaceDistance selfView:_rewardForDownloadView superView:self];
-//        [JOAutoLayout autoLayoutWithRightXView:_albumCoverImageView distance:-kRightInsideSpaceDistance selfView:_rewardForDownloadView superView:self];
-//        [JOAutoLayout autoLayoutWithHeight:kRewardDownloadViewHeight selfView:_rewardForDownloadView superView:self];
-//        
-//        CGFloat topSpaceDistance = 10.;
-//        self.rewardButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [[_rewardButton titleLabel] setJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_PayDownloadButtonTitle]];
-//        [_rewardButton setTitle:kRewardDownloadTitle forState:UIControlStateNormal];
-//        [_rewardButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-//        [_rewardButton setBackgroundColor:JORGBSameCreate(30.)];
-//        [[_rewardButton layer] setCornerRadius:(kRewardDownloadViewHeight-2*topSpaceDistance)/2.];
-//        [[_rewardButton layer] setMasksToBounds:YES];
-//        [_rewardButton addTarget:self action:@selector(rewardButtonClick) forControlEvents:UIControlEventTouchUpInside];
-//        [_rewardForDownloadView addSubview:_rewardButton];
-//        
-//        [JOAutoLayout autoLayoutWithTopSpaceDistance:topSpaceDistance selfView:_rewardButton superView:_rewardForDownloadView];
-//        [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_rewardButton superView:_rewardForDownloadView];
-//        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-topSpaceDistance selfView:_rewardButton superView:_rewardForDownloadView];
-//        [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:_rewardButton superView:_rewardForDownloadView];
-//    }
-//}
+- (void)createRewardDownloadView{
+
+    if (!self.rewardForDownloadView) {
+        
+        self.rewardForDownloadView = [UIView newAutoLayoutView];
+        [_rewardForDownloadView setBackgroundColor:[UIColor whiteColor]];
+        [self addSubview:_rewardForDownloadView];
+        
+        [JOAutoLayout autoLayoutWithTopView:_albumCoverImageView distance:0. selfView:_rewardForDownloadView superView:self];
+        [JOAutoLayout autoLayoutWithLeftXView:_albumCoverImageView distance:kLeftInsideSpaceDistance selfView:_rewardForDownloadView superView:self];
+        [JOAutoLayout autoLayoutWithRightXView:_albumCoverImageView distance:-kRightInsideSpaceDistance selfView:_rewardForDownloadView superView:self];
+        [JOAutoLayout autoLayoutWithHeight:kRewardDownloadViewHeight selfView:_rewardForDownloadView superView:self];
+        
+        CGFloat topSpaceDistance = 10.;
+        self.rewardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [[_rewardButton titleLabel] setJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_PayDownloadButtonTitle]];
+        [_rewardButton setTitle:kRewardDownloadTitle forState:UIControlStateNormal];
+        [_rewardButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_rewardButton setBackgroundColor:JORGBSameCreate(30.)];
+        [[_rewardButton layer] setCornerRadius:(kRewardDownloadViewHeight-2*topSpaceDistance)/2.];
+        [[_rewardButton layer] setMasksToBounds:YES];
+        [_rewardButton addTarget:self action:@selector(rewardButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        [_rewardForDownloadView addSubview:_rewardButton];
+        
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:topSpaceDistance selfView:_rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-topSpaceDistance selfView:_rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:_rewardButton superView:_rewardForDownloadView];
+    }
+}
 
 - (void)createRewardView{
 
@@ -120,7 +120,7 @@
         [_rewardView setRewardViewHeight:kRewardViewHeight];
         [self addSubview:_rewardView];
         
-        [JOAutoLayout autoLayoutWithTopView:_albumCoverImageView distance:10. selfView:_rewardView superView:self];
+        [JOAutoLayout autoLayoutWithTopView:_rewardForDownloadView distance:0. selfView:_rewardView superView:self];
         [JOAutoLayout autoLayoutWithLeftXView:_albumCoverImageView distance:kLeftInsideSpaceDistance selfView:_rewardView superView:self];
         [JOAutoLayout autoLayoutWithRightXView:_albumCoverImageView distance:-kRightInsideSpaceDistance selfView:_rewardView superView:self];
         [JOAutoLayout autoLayoutWithHeight:kRewardViewHeight selfView:_rewardView superView:self];
@@ -155,28 +155,33 @@
 
 #pragma mark - Button click
 
-//- (void)rewardButtonClick{
-//
-//    if (_rewardAlbumActionBlock) {
-//        
-//        if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kRewardDownloadTitle]) {
-//            //打赏
-//            _rewardAlbumActionBlock(RewardAlbumActionType_Reward);
-//        }else if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kSongDownloadTitle]){
+- (void)rewardButtonClick{
+
+    if (_rewardAlbumActionBlock) {
+        
+        if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kRewardDownloadTitle]) {
+            //打赏
+            _rewardAlbumActionBlock(RewardAlbumActionType_Reward);
+        }
+        
+//        else if ([[_rewardButton titleForState:UIControlStateNormal] isEqualToString:kSongDownloadTitle]){
 //            //下载专辑
 //            _rewardAlbumActionBlock(RewardAlbumActionType_DownloadAlbum);
 //        }
-//    }
-//}
+    }
+}
 
 #pragma mark - Data 
 
 - (void)setAlbumRewardState:(BOOL)state{
 
     if (state == YES) {
-//        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardForDownloadView superView:self];
-//        [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardForDownloadView superView:self];
-//        [_rewardForDownloadView setHidden:YES];
+        
+        [JOAutoLayout removeAllAutoLayoutWithSelfView:_rewardButton superView:_rewardForDownloadView];
+        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardForDownloadView superView:self];
+        [JOAutoLayout autoLayoutWithHeight:CGFLOAT_MIN selfView:_rewardForDownloadView superView:self];
+        [_rewardButton setHidden:YES];
+        [_rewardForDownloadView setHidden:YES];
         
         //kSongDownloadTitle
         
@@ -187,7 +192,7 @@
         [_rewardView setHidden:YES];
         [_rewardView removeRewardViewLayout];
         
-        albumDetailViewHeight = kPlayViewHeight + 10 + kRewardDownloadViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
+        albumDetailViewHeight = kPlayViewHeight + JOScreenSize.width - kLeftSpaceDistance - kRightSpaceDistance;
     }
     
 }
