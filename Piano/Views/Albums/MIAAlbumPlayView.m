@@ -20,7 +20,7 @@ static CGFloat const kBottomSpaceDistance = 10.; //下面的间距大小
 
 static CGFloat const kButtonToTimeSpaceDistance = 10.;//播放按钮到开始时间的间距大小
 static CGFloat const kTimeToSliderSpaceDistance = 10.; //播放时间到slider的间距大小
-static CGFloat const kButtonToButtonSpaceDistance = 10.;//按钮间的间距大小
+//static CGFloat const kButtonToButtonSpaceDistance = 10.;//按钮间的间距大小
 
 
 static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
@@ -37,8 +37,8 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
 @property (nonatomic, strong) UILabel *startTimeLabel;
 @property (nonatomic, strong) MIAPlaySlider *sliderView;
 @property (nonatomic, strong) UILabel *remainTimeLabel;
-@property (nonatomic, strong) UIButton *nextButton;
-@property (nonatomic, strong) UIButton *preButton;
+//@property (nonatomic, strong) UIButton *nextButton;
+//@property (nonatomic, strong) UIButton *preButton;
 
 //@property (nonatomic, strong) NSTimer * timer;
 
@@ -83,35 +83,35 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_startTimeLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_startTimeLabel sizeThatFits:JOMAXSize].width+1 selfView:_startTimeLabel superView:self];
     
-    self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_nextButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_nextButton addTarget:self action:@selector(nextSongAction) forControlEvents:UIControlEventTouchUpInside];
-    [_nextButton setImage:[UIImage imageNamed:@"AD-NextIcon-E"] forState:UIControlStateNormal];
-    [_nextButton setImage:[UIImage imageNamed:@"AD-NextIcon-U"] forState:UIControlStateDisabled];
-    [self addSubview:_nextButton];
+//    self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [_nextButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    [_nextButton addTarget:self action:@selector(nextSongAction) forControlEvents:UIControlEventTouchUpInside];
+//    [_nextButton setImage:[UIImage imageNamed:@"AD-NextIcon-E"] forState:UIControlStateNormal];
+//    [_nextButton setImage:[UIImage imageNamed:@"AD-NextIcon-U"] forState:UIControlStateDisabled];
+//    [self addSubview:_nextButton];
+//    
+//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_nextButton superView:self];
+//    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_nextButton superView:self];
+//    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_nextButton superView:self];
+//    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_nextButton superView:self];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_nextButton superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_nextButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_nextButton superView:self];
-    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_nextButton superView:self];
-    
-    self.preButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_preButton addTarget:self action:@selector(preSongAction) forControlEvents:UIControlEventTouchUpInside];
-    [_preButton setImage:[UIImage imageNamed:@"AD-PreviousIcon-E"] forState:UIControlStateNormal];
-    [_preButton setImage:[UIImage imageNamed:@"AD-PreviousIcon-U"] forState:UIControlStateDisabled];
-    [_preButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_preButton];
-    
-    [JOAutoLayout autoLayoutWithRightView:_nextButton distance:-kButtonToButtonSpaceDistance selfView:_preButton superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_preButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_preButton superView:self];
-    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_preButton superView:self];
+//    self.preButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [_preButton addTarget:self action:@selector(preSongAction) forControlEvents:UIControlEventTouchUpInside];
+//    [_preButton setImage:[UIImage imageNamed:@"AD-PreviousIcon-E"] forState:UIControlStateNormal];
+//    [_preButton setImage:[UIImage imageNamed:@"AD-PreviousIcon-U"] forState:UIControlStateDisabled];
+//    [_preButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    [self addSubview:_preButton];
+//    
+//    [JOAutoLayout autoLayoutWithRightView:_nextButton distance:-kButtonToButtonSpaceDistance selfView:_preButton superView:self];
+//    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_preButton superView:self];
+//    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_preButton superView:self];
+//    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_preButton superView:self];
     
     self.remainTimeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Play_Time]];
     [_remainTimeLabel setText:@"00:00"];
     [self addSubview:_remainTimeLabel];
     
-    [JOAutoLayout autoLayoutWithRightView:_preButton distance:-kButtonToTimeSpaceDistance selfView:_remainTimeLabel superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-5. selfView:_remainTimeLabel superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_remainTimeLabel superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_remainTimeLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width+1 selfView:_remainTimeLabel superView:self];
@@ -171,8 +171,8 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     //此版本不理会再次进入正在播放专辑页面,每一次进入都当做是进入一张全新的专辑页面
         playState = NO;
         [_playButton setImage:[UIImage imageNamed:@"AD-PlayIcon-L"] forState:UIControlStateNormal];
-        [_preButton setEnabled:NO];
-        [_nextButton setEnabled:NO];
+//        [_preButton setEnabled:NO];
+//        [_nextButton setEnabled:NO];
         [_sliderView setEnabled:NO];
 //    }
 }
@@ -196,9 +196,9 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     NSString *firstMP3URLString = ((HXSongModel *)[_songArray firstObject]).mp3Url;
     if ([[MusicMgr standard] isPlayingWithUrl:firstMP3URLString]) {
         //是第一首歌 上一首的按钮不可点击状态
-        [_preButton setEnabled:NO];
+//        [_preButton setEnabled:NO];
     }else{
-        [_preButton setEnabled:YES];
+//        [_preButton setEnabled:YES];
     }
 }
 
@@ -208,9 +208,9 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     NSString *endMP3URLString = ((HXSongModel *)[_songArray lastObject]).mp3Url;
     if ([[MusicMgr standard] isPlayingWithUrl:endMP3URLString]) {
         //是最后首歌 下一首的按钮不可点击状态
-        [_nextButton setEnabled:NO];
+//        [_nextButton setEnabled:NO];
     }else{
-        [_nextButton setEnabled:YES];
+//        [_nextButton setEnabled:YES];
     }
 }
 
