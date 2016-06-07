@@ -151,9 +151,11 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
             if ([x boolValue]) {
                 //已关注
                 fans +=1;
+                [self showBannerWithPrompt:@"关注成功"];
             }else{
                 //未关注
                 fans -=1;
+                [self showBannerWithPrompt:@"取消关注成功"];
             }
             
             [self.profileHeadView setProfileFans:[NSString stringWithFormat:@"%ld",(long)fans] attention:headModel.followCount];

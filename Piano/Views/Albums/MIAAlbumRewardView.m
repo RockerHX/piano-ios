@@ -14,7 +14,7 @@
 
 static CGFloat const kTipLabelToUserItemSpaceDistance = 5.;
 static CGFloat const kScrollViewToBottomSpaceDistance = 5.;
-static CGFloat const kAlbumUserItemSpaceDistance = 10.;//每个元素之间的间距
+static CGFloat const kAlbumUserItemSpaceDistance = 6.;//每个元素之间的间距
 
 @interface MIAAlbumRewardView(){
 

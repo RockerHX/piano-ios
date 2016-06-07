@@ -74,7 +74,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [_timeLabel setHidden:YES];
     [self addSubview:_timeLabel];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_timeLabel superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-15. selfView:_timeLabel superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_indexLabel selfView:_timeLabel superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_indexLabel selfView:_timeLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_timeLabel superView:self];

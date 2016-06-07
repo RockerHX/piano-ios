@@ -104,7 +104,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [_settingTableView setDelegate:self];
     [_settingTableView setBackgroundColor:[UIColor clearColor]];
     [_settingTableView setSectionHeaderHeight:CGFLOAT_MIN];
-    [_settingTableView setSeparatorColor:JORGBCreate(110., 110., 110., 0.5)];
+    [_settingTableView setSeparatorColor:JORGBCreate(80., 80., 80., 0.5)];
     [self.view addSubview:_settingTableView];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_settingTableView superView:self.view];
@@ -249,7 +249,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
     if (section != 2) {
         UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0., 0., View_Width(self.view), 11.)];
-        [footerView setBackgroundColor:JORGBSameCreate(30.)];
+        [footerView setBackgroundColor:JORGBCreate(80., 80., 80., 0.5)];
         return footerView;
     }
     

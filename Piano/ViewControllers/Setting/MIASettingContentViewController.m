@@ -154,7 +154,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         
     }else if(_contentType == SettingContentType_Summary ){
         //简介
-        [_navBarView setTitle:@"签名"];
+        [_navBarView setTitle:@"个人签名"];
         [_navBarView setRightButtonTitle:@"保存" titleColor:[UIColor blackColor]];
         
         [_contentView setBackgroundColor:[UIColor clearColor]];
@@ -310,7 +310,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         
     }else{
         
-        [HXAlertBanner showWithMessage:@"昵称不能为空" tap:nil];
+        [self showBannerWithPrompt:@"昵称不能为空"];
     }
 }
 
@@ -367,7 +367,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         } completed:^{
         @strongify(self);
             [self hiddenHUD];
-            [self showBannerWithPrompt:@"简介修改成功"];
+            [self showBannerWithPrompt:@"个人签名修改成功"];
             
             if (self.settingContentSaveBlock) {
                 self.settingContentSaveBlock(self.contentType,JOTrimString(text));
@@ -377,7 +377,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         }];
     }else{
         
-        [HXAlertBanner showWithMessage:@"简介不能为空" tap:nil];
+        [self showBannerWithPrompt:@"签名不能为空"];
     }
     
 }
@@ -407,7 +407,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         }];
     }else{
         
-        [HXAlertBanner showWithMessage:@"意见不能为空" tap:nil];
+        [self showBannerWithPrompt:@"意见不能为空"];
     }
 }
 
