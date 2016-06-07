@@ -402,7 +402,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         } completed:^{
         @strongify(self);
             [self hiddenHUD];
-            [self showBannerWithPrompt:@"意见提交成功"];
+            [self showBannerWithPrompt:@"提交成功"];
             [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5];
         }];
     }else{

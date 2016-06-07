@@ -324,7 +324,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-        imagePickerController.sourceType =  UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        imagePickerController.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
         imagePickerController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePickerController.sourceType];
     }
     imagePickerController.delegate = self;
