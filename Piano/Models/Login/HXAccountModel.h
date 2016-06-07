@@ -6,12 +6,12 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <ShareSDK/ShareSDK.h>
+#import <UMengSocialCOM/UMSocial.h>
 
 
 @interface HXAccountModel : NSObject
 
-@property (nonatomic, strong) SSDKUser *sdkUser;
+@property (nonatomic, strong) UMSocialAccountEntity *sdkUser;
 
 @property (nonatomic, copy)   NSString *mobile;
 @property (nonatomic, copy)   NSString *password;

@@ -22,13 +22,14 @@
 #import "HXLiveGiftViewController.h"
 #import "HXLiveRewardViewController.h"
 #import "MIAPaymentViewController.h"
-#import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
 #import "MiaAPIHelper.h"
 #import "HXDynamicGiftView.h"
 #import "HXModalTransitionDelegate.h"
 #import "HXStaticGiftView.h"
 #import "UIImage+Extrude.h"
+#import <UMengSocialCOM/UMSocial.h>
+#import "HXAppConstants.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -304,32 +305,20 @@ HXLiveAlbumViewDelegate
             HXLiveModel *model     = _viewModel.model;
             NSString *shareTitle   = model.shareTitle;
             NSString *shareContent = model.shareContent;
-            NSURL *shareURL        = [NSURL URLWithString:model.shareUrl];
+            NSString *shareURL     = model.shareUrl;
             UIImage *shareImage    = [UIImage scaleToSize:[_anchorView.avatar imageForState:UIControlStateNormal] maxWidthOrHeight:100] ;
             
-            NSMutableDictionary *shareParams = @{}.mutableCopy;
-            [shareParams SSDKSetupShareParamsByText:shareContent
-                                             images:shareImage
-                                                url:shareURL
-                                              title:shareTitle
-                                               type:SSDKContentTypeAuto];
-//            [shareParams SSDKSetupWeChatParamsByText:shareContent title:shareTitle url:shareURL thumbImage:nil image:shareImage musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeAuto forPlatformSubType:SSDKPlatformSubTypeWechatSession];
-//            [shareParams SSDKSetupSinaWeiboShareParamsByText:shareContent title:shareTitle image:shareImage url:shareURL latitude:0 longitude:0 objectID:nil type:SSDKContentTypeAuto];
-            [ShareSDK showShareActionSheet:self.view items:nil shareParams:shareParams onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                switch (state) {
-                    case SSDKResponseStateSuccess: {
-                        [UIAlertView bk_showAlertViewWithTitle:@"分享成功" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
-                        [MiaAPIHelper sharePostWithRoomID:_viewModel.roomID completeBlock:nil timeoutBlock:nil];
-                        break;
-                    }
-                    case SSDKResponseStateFail: {
-                        [UIAlertView bk_showAlertViewWithTitle:@"分享失败" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
-                        break;
-                    }
-                    default:
-                        break;
-                }
-            }];
+            //如果需要分享回调，请将delegate对象设置self，并实现下面的回调方法
+            [UMSocialData defaultData].extConfig.title = shareTitle;
+            [UMSocialData defaultData].extConfig.wechatSessionData.url = shareURL;
+            [UMSocialData defaultData].extConfig.wechatTimelineData.url = shareURL;
+            [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeWeb url:shareURL];
+            [UMSocialSnsService presentSnsIconSheetView:self
+                                                 appKey:UMengAPPKEY
+                                              shareText:shareContent
+                                             shareImage:shareImage
+                                        shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToSina]
+                                               delegate:nil];
             break;
         }
         case HXWatchBottomBarActionGift: {
