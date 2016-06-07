@@ -8,6 +8,8 @@
 
 #import "MIABaseTableViewCell.h"
 
+UIKIT_EXTERN CGFloat const kProfileReplayItemSpaceDistance;
+
 @interface MIAProfileReplayCell : MIABaseTableViewCell
 
 - (void)setProfileReplayUID:(NSString *)uid;

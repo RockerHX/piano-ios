@@ -8,6 +8,8 @@
 
 #import "MIABaseShowView.h"
 
+UIKIT_EXTERN CGFloat const kProfileVideoToTitleSpaceDistance;
+
 @interface MIAProfileVideoView : MIABaseShowView
 
 @end

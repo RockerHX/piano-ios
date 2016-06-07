@@ -8,6 +8,9 @@
 
 #import "MIABaseShowView.h"
 
+UIKIT_EXTERN CGFloat const kAlbumImageToTitleSpaceDistance;
+UIKIT_EXTERN CGFloat const kAlbumTitleToTipSpaceDistance;
+
 @interface MIAProfileAlbumView : MIABaseShowView
 
 @end

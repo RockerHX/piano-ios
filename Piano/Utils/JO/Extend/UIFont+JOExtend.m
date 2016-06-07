@@ -24,4 +24,14 @@ JOFont * JOFontMake(NSString *fontName,UIColor *fontColor,CGFloat fontSize){
     return Font;
 }
 
+JOFont * JOFontsMake(UIFont *font, UIColor *fontColor){
+
+    JOFont *Font = [JOFont new];
+    Font -> name = font.fontName;
+    Font -> color = fontColor;
+    Font -> size = font.pointSize;
+    Font -> font = font;
+    return Font;
+}
+
 @end
