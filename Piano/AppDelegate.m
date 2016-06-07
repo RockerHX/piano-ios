@@ -47,7 +47,7 @@
     [MobClick setAppVersion:[[HXVersion appVersion] stringByAppendingFormat:@"(%@)", [HXVersion appBuildVersion]]];
     [MobClick setEncryptEnabled:YES];       // 日志加密
     // 启动[友盟统计]
-    [MobClick setCrashReportEnabled:NO];
+    [MobClick setCrashReportEnabled:YES];
     
     UMAnalyticsConfig *analyticsConfigure = [UMAnalyticsConfig sharedInstance];
     analyticsConfigure.appKey = UMengAPPKEY;
