@@ -11,13 +11,10 @@
 
 // UMeng SDK
 #import <UMMobClick/MobClick.h>
+#import <UMengSocialCOM/UMSocial.h>
+#import <UMengSocialCOM/UMSocialWechatHandler.h>
+#import <UMengSocialCOM/UMSocialSinaSSOHandler.h>
 #import "HXVersion.h"
-
-// Share SDK
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
-#import "WXApi.h"
-#import "WeiboSDK.h"
 
 // MusicMgr
 #import "UserSetting.h"
@@ -59,44 +56,17 @@
     }
     [MobClick startWithConfigure:analyticsConfigure];
     
+    //设置友盟社会化组件appkey
+    [UMSocialData setAppKey:UMengAPPKEY];
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:WeiXinKEY appSecret:WeiXinSecret url:@"http://www.baidu.com"];
+    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 #import "UMSocialSinaSSOHandler.h"
+    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:WeiBoKEY
+                                              secret:WeiBoSecret
+                                         RedirectURL:WeiBoRedirectUri];
+    
 //#pragma mark - Testin Crash SDK
 //    [TestinAgent init:TestinAPPKEY channel:FirimChannel config:[TestinConfig defaultConfig]];
-    
-#pragma mark - Share SDK
-    NSArray *activePlatforms = @[@(SSDKPlatformTypeWechat),
-                                 @(SSDKPlatformTypeSinaWeibo)];
-    [ShareSDK registerApp:ShareSDKKEY activePlatforms:activePlatforms onImport:^(SSDKPlatformType platformType) {
-        switch (platformType) {
-            case SSDKPlatformTypeWechat: {
-                [ShareSDKConnector connectWeChat:[WXApi class]];
-                break;
-            }
-            case SSDKPlatformTypeSinaWeibo: {
-                [ShareSDKConnector connectWeibo:[WeiboSDK class]];
-                break;
-            }
-            default:
-                break;
-        }
-    } onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
-        switch (platformType) {
-            case SSDKPlatformTypeWechat: {
-                [appInfo SSDKSetupWeChatByAppId:WeiXinKEY
-                                      appSecret:WeiXinSecret];
-                break;
-            }
-            case SSDKPlatformTypeSinaWeibo: {
-                //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-                [appInfo SSDKSetupSinaWeiboByAppKey:WeiBoKEY
-                                          appSecret:WeiBoSecret
-                                        redirectUri:WeiBoRedirectUri
-                                           authType:SSDKAuthTypeBoth];
-                break;
-            }
-            default:
-                break;
-        }
-    }];
 
 #pragma mark - JPush SDK
 	//Required
@@ -129,23 +99,13 @@
 	return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
+- (void)applicationWillResignActive:(UIApplication *)application {}
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
+- (void)applicationDidEnterBackground:(UIApplication *)application {}
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
+- (void)applicationWillEnterForeground:(UIApplication *)application {}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-
 	// 切换回前台主动取消被打断状态
 	[MusicMgr standard].isInterruption = NO;
 
@@ -158,8 +118,14 @@
 	[application setApplicationIconBadgeNumber:0];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)applicationWillTerminate:(UIApplication *)application {}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == NO) {
+        //调用其他SDK，例如支付宝SDK等
+    }
+    return result;
 }
 
 #pragma mark - 远程控制事件
@@ -220,11 +186,10 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
 		NSLog(@"%@ with roomID: %@", action, param1);
-
-		UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-		HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+        
+        HXWatchLiveViewController *watchLiveViewController = [HXWatchLiveViewController instance];
 		watchLiveViewController.roomID = param1;
-		[self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
+		[self.window.rootViewController presentViewController:watchLiveViewController animated:YES completion:nil];
 
 	}
 }

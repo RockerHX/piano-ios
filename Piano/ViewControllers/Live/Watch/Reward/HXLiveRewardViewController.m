@@ -27,7 +27,7 @@ HXSectorSliderDelegate
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameLive;
+    return HXStoryBoardNameRewardAlbum;
 }
 
 #pragma mark - View Controller Life Cycle

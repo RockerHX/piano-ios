@@ -31,7 +31,7 @@
 
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameLive;
+    return HXStoryBoardNameRewardGift;
 }
 
 #pragma mark - Segue

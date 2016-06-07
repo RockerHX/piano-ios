@@ -58,37 +58,27 @@
 }
 
 - (void)startWeiXinLoginAuthorizeWithSubscriber:(id<RACSubscriber>)subscriber {
-    [ShareSDK getUserInfo:SSDKPlatformTypeWechat onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
-        switch (state) {
-            case SSDKResponseStateBegin: {
-                break;
-            }
-            case SSDKResponseStateSuccess: {
-                _account.sdkUser = user;
-                [self startWeiXinLoginRequestWithSubscriber:subscriber];
-                break;
-            }
-            case SSDKResponseStateFail: {
-                [subscriber sendError:error];
-                break;
-            }
-            case SSDKResponseStateCancel: {
-                [subscriber sendError:[NSError errorWithDomain:@"用户取消" code:-1 userInfo:nil]];
-                break;
-            }
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
+    snsPlatform.loginClickHandler(nil, [UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:snsPlatform.platformName];
+            _account.sdkUser = snsAccount;
+            [self startWeiXinLoginRequestWithSubscriber:subscriber];
+        } else {
+            [subscriber sendError:[NSError errorWithDomain:response.message code:response.responseCode userInfo:nil]];
         }
-    }];
+        
+    });
 }
 
 - (void)startWeiXinLoginRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    SSDKUser *user = _account.sdkUser;
-    NSDictionary *credential = user.credential.rawData;
-    NSString *openID = credential[@"openid"];
-    NSString *unionID = credential[@"unionid"];
-    NSString *token = user.credential.token;
-    NSString *nickName = user.nickname;
-    NSString *avatar = user.icon;
-    NSString *sex = ((user.gender == SSDKGenderUnknown) ? @"0" : @(user.gender + 1).stringValue);
+    UMSocialAccountEntity *user = _account.sdkUser;
+    NSString *openID = user.openId;
+    NSString *unionID = user.unionId;
+    NSString *token = user.accessToken;
+    NSString *nickName = user.userName;
+    NSString *avatar = user.iconURL;
+    NSString *sex = @"0";
 
     [MiaAPIHelper thirdLoginWithOpenID:openID
                                unionID:unionID

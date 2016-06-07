@@ -116,11 +116,10 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
 
 #pragma mark - tag action
 - (void)tapAction:(UIGestureRecognizer *)gesture {
-    UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
-    HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
+    HXReplayViewController *replayViewController = [HXReplayViewController instance];
     replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
     replayViewController.model.uID = _uid;
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayNaviagtionController animated:YES completion:^{
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayViewController animated:YES completion:^{
         if ([[MusicMgr standard] isPlaying]) {
             [[MusicMgr standard] pause];
         }

@@ -14,7 +14,6 @@
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
-#import "HXWatchLiveViewModel.h"
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
@@ -22,13 +21,14 @@
 #import "HXLiveGiftViewController.h"
 #import "HXLiveRewardViewController.h"
 #import "MIAPaymentViewController.h"
-#import <ShareSDKUI/ShareSDKUI.h>
 #import "BlocksKit+UIKit.h"
 #import "MiaAPIHelper.h"
 #import "HXDynamicGiftView.h"
 #import "HXModalTransitionDelegate.h"
 #import "HXStaticGiftView.h"
 #import "UIImage+Extrude.h"
+#import <UMengSocialCOM/UMSocial.h>
+#import "HXAppConstants.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -44,8 +44,6 @@ HXLiveAlbumViewDelegate
 
 @implementation HXWatchLiveViewController {
     HXLiveBarrageContainerViewController *_barrageContainer;
-    HXWatchLiveViewModel *_viewModel;
-    
     HXModalTransitionDelegate *_modalTransitionDelegate;
 }
 
@@ -54,22 +52,13 @@ HXLiveAlbumViewDelegate
     return HXStoryBoardNameLive;
 }
 
-+ (NSString *)navigationControllerIdentifier {
-    return @"HXWatchLiveNavigationController";
-}
-
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSString *identifier = segue.identifier;
-    if ([identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
-        _barrageContainer = segue.destinationViewController;
+    __kindof UIViewController *destinationViewController = segue.destinationViewController;
+    if ([destinationViewController isKindOfClass:[HXLiveBarrageContainerViewController class]]) {
+        _barrageContainer = destinationViewController;
         _barrageContainer.delegate = self;
     }
-}
-
-#pragma mark - Status Bar
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -113,29 +102,35 @@ HXLiveAlbumViewDelegate
 }
 
 - (void)signalLink {
+    @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         _barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
+        @strongify(self)
         [self endLive];
     }];
     [_viewModel.rewardSignal subscribeNext:^(id x) {
+        @strongify(self)
         [self updateAlbumView];
     }];
     [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
+        @strongify(self)
         if (gift.type == HXGiftTypeStatic) {
-            [_staticGiftView animationWithGift:gift];
+            [self.staticGiftView animationWithGift:gift];
         } else if (gift.type == HXGiftTypeDynamic) {
-            [_dynamicGiftView animationWithGift:gift];
+            [self.dynamicGiftView animationWithGift:gift];
         }
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
+        @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
+        @strongify(self)
         [self fetchDataFinfished];
     }];
 }
@@ -201,7 +196,7 @@ HXLiveAlbumViewDelegate
         RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
         [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
             @strongify(self)
-            self->_anchorView.attented = state.boolValue;
+            self.anchorView.attented = state.boolValue;
         } error:^(NSError *error) {
             @strongify(self)
             if (![error.domain isEqualToString:RACCommandErrorDomain]) {
@@ -313,32 +308,20 @@ HXLiveAlbumViewDelegate
             HXLiveModel *model     = _viewModel.model;
             NSString *shareTitle   = model.shareTitle;
             NSString *shareContent = model.shareContent;
-            NSURL *shareURL        = [NSURL URLWithString:model.shareUrl];
+            NSString *shareURL     = model.shareUrl;
             UIImage *shareImage    = [UIImage scaleToSize:[_anchorView.avatar imageForState:UIControlStateNormal] maxWidthOrHeight:100] ;
             
-            NSMutableDictionary *shareParams = @{}.mutableCopy;
-            [shareParams SSDKSetupShareParamsByText:shareContent
-                                             images:shareImage
-                                                url:shareURL
-                                              title:shareTitle
-                                               type:SSDKContentTypeAuto];
-//            [shareParams SSDKSetupWeChatParamsByText:shareContent title:shareTitle url:shareURL thumbImage:nil image:shareImage musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil type:SSDKContentTypeAuto forPlatformSubType:SSDKPlatformSubTypeWechatSession];
-//            [shareParams SSDKSetupSinaWeiboShareParamsByText:shareContent title:shareTitle image:shareImage url:shareURL latitude:0 longitude:0 objectID:nil type:SSDKContentTypeAuto];
-            [ShareSDK showShareActionSheet:self.view items:nil shareParams:shareParams onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                switch (state) {
-                    case SSDKResponseStateSuccess: {
-                        [UIAlertView bk_showAlertViewWithTitle:@"分享成功" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
-                        [MiaAPIHelper sharePostWithRoomID:_viewModel.roomID completeBlock:nil timeoutBlock:nil];
-                        break;
-                    }
-                    case SSDKResponseStateFail: {
-                        [UIAlertView bk_showAlertViewWithTitle:@"分享失败" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
-                        break;
-                    }
-                    default:
-                        break;
-                }
-            }];
+            //如果需要分享回调，请将delegate对象设置self，并实现下面的回调方法
+            [UMSocialData defaultData].extConfig.title = shareTitle;
+            [UMSocialData defaultData].extConfig.wechatSessionData.url = shareURL;
+            [UMSocialData defaultData].extConfig.wechatTimelineData.url = shareURL;
+            [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeWeb url:shareURL];
+            [UMSocialSnsService presentSnsIconSheetView:self
+                                                 appKey:UMengAPPKEY
+                                              shareText:shareContent
+                                             shareImage:shareImage
+                                        shareToSnsNames:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToSina]
+                                               delegate:nil];
             break;
         }
         case HXWatchBottomBarActionGift: {

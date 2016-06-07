@@ -29,10 +29,6 @@
             storyBoardName = @"Discovery";
             break;
         }
-        case HXStoryBoardNamePublish: {
-            storyBoardName = @"Publish";
-            break;
-        }
         case HXStoryBoardNameMe: {
             storyBoardName = @"Me";
             break;
@@ -51,6 +47,14 @@
         }
         case HXStoryBoardNameLive: {
             storyBoardName = @"Live";
+            break;
+        }
+        case HXStoryBoardNameRewardGift: {
+            storyBoardName = @"RewardGift";
+            break;
+        }
+        case HXStoryBoardNameRewardAlbum: {
+            storyBoardName = @"RewardAlbum";
             break;
         }
         case HXStoryBoardNamePlay: {

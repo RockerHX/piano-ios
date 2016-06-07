@@ -14,7 +14,6 @@
 #import "HXReplayViewModel.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
-#import <ShareSDKUI/ShareSDKUI.h>
 #import "HXLiveModel.h"
 
 
@@ -27,7 +26,7 @@ HXReplayBottomBarDelegate
 
 
 @implementation HXReplayViewController {
-    HXLiveBarrageContainerViewController *_containerViewController;
+    HXLiveBarrageContainerViewController *_barrageContainer;
     
     HXReplayViewModel *_viewModel;
     AVPlayer *_player;
@@ -41,14 +40,13 @@ HXReplayBottomBarDelegate
     return HXStoryBoardNameLive;
 }
 
-+ (NSString *)navigationControllerIdentifier {
-    return @"HXReplayNavigationController";
-}
-
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    _containerViewController = segue.destinationViewController;
-    _containerViewController.delegate = self;
+    __kindof UIViewController *destinationViewController = segue.destinationViewController;
+    if ([destinationViewController isKindOfClass:[HXLiveBarrageContainerViewController class]]) {
+        _barrageContainer = destinationViewController;
+        _barrageContainer.delegate = self;
+    }
 }
 
 #pragma mark - View Controller Life Cycle
@@ -92,11 +90,14 @@ HXReplayBottomBarDelegate
 }
 
 - (void)sigalLink {
+    @weakify(self)
     if (([HXUserSession session].state == HXUserStateLogin) && ![[HXUserSession session].uid isEqualToString:_viewModel.model.uID]) {
         RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
         [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
-            self->_anchorView.attented = state.boolValue;
+            @strongify(self)
+            self.anchorView.attented = state.boolValue;
         } error:^(NSError *error) {
+            @strongify(self)
             if (![error.domain isEqualToString:RACCommandErrorDomain]) {
                 [self showBannerWithPrompt:error.domain];
             }
@@ -173,13 +174,15 @@ HXReplayBottomBarDelegate
 }
 
 - (void)fetchBarrageData {
+    @weakify(self)
     RACSignal *fetchBarrageSiganl = [_viewModel.fetchBarrageCommand execute:nil];
     [fetchBarrageSiganl subscribeError:^(NSError *error) {
+        @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
-        _containerViewController.barrages = _viewModel.barrages;
+        _barrageContainer.barrages = _viewModel.barrages;
     }];
 }
 

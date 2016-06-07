@@ -33,14 +33,7 @@ target 'Piano' do
 
 	# UMeng SDK
 	pod 'UMengAnalytics-NO-IDFA'
-
-	# Share SDK
-	pod 'ShareSDK3'
-	pod 'MOBFoundation'
-	pod 'ShareSDK3/ShareSDKUI'
-	pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
-	pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
-	#pod 'ShareSDK3/ShareSDKPlatforms/QQ'
+    pod 'UMengSocialCOM'
 
 	# JPush SDK
 	pod 'JPush', '~> 2.1.0'

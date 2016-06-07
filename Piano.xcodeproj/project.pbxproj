@@ -105,6 +105,8 @@
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
 		CD2EC4E61D016BDA0065CD4A /* HXLiveCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2EC4E51D016BDA0065CD4A /* HXLiveCommentViewController.m */; };
+		CD3D1C071D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3D1C061D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m */; };
+		CD3D1C0A1D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3D1C091D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m */; };
 		CD4223111CFBEC060057A235 /* HXModalTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4223101CFBEC060057A235 /* HXModalTransitionDelegate.m */; };
 		CD4223141CFBEC200057A235 /* HXModalOverlayAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4223131CFBEC200057A235 /* HXModalOverlayAnimationController.m */; };
 		CD572DD61CF69AA500CCEC30 /* HXDynamicGiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD572DD51CF69AA500CCEC30 /* HXDynamicGiftView.m */; };
@@ -114,6 +116,7 @@
 		CD68879F1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD68879E1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m */; };
 		CD6887A51CF551380081B2BD /* HXLiveBarrageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6887A21CF551380081B2BD /* HXLiveBarrageContainerViewController.m */; };
 		CD7224981CF8254400C8EC6B /* HXGiftManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7224971CF8254400C8EC6B /* HXGiftManager.m */; };
+		CD7666861D055D03008099F1 /* HXWatchLiveLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7666851D055D03008099F1 /* HXWatchLiveLandscapeViewController.m */; };
 		CD79608E1CBE594C004CC661 /* HXSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72851CA11DE0003CDB77 /* HXSettingViewController.m */; };
 		CD79608F1CBE594C004CC661 /* HXLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E72981CA11E02003CDB77 /* HXLiveModel.m */; };
 		CD7960901CBE594C004CC661 /* UIView+HXIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2949C71CA28A3500CA3C3F /* UIView+HXIBnspectable.m */; };
@@ -293,6 +296,10 @@
 		CDA394A41CFEEB2600F56A41 /* HXNoNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA394A21CFEEB2600F56A41 /* HXNoNetworkView.m */; };
 		CDA394A51CFEEB2600F56A41 /* HXNoNetworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA394A31CFEEB2600F56A41 /* HXNoNetworkView.xib */; };
 		CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
+		CDAC6CBD1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CBC1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m */; };
+		CDAC6CC01D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CBF1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m */; };
+		CDAC6CC31D06DE4100A13725 /* RewardGift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CC11D06DE4100A13725 /* RewardGift.storyboard */; };
+		CDAC6CC61D06DEB700A13725 /* RewardAlbum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CC41D06DEB700A13725 /* RewardAlbum.storyboard */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
@@ -622,6 +629,10 @@
 		CD2EC4E51D016BDA0065CD4A /* HXLiveCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveCommentViewController.m; sourceTree = "<group>"; };
 		CD3199831CAA6182006C845F /* HXWatchLiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveViewModel.h; sourceTree = "<group>"; };
 		CD3199841CAA6182006C845F /* HXWatchLiveViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewModel.m; sourceTree = "<group>"; };
+		CD3D1C051D06B4470043ABBE /* HXLiveGiftLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveGiftLandscapeViewController.h; sourceTree = "<group>"; };
+		CD3D1C061D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveGiftLandscapeViewController.m; sourceTree = "<group>"; };
+		CD3D1C081D06B4790043ABBE /* HXLiveRewardLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveRewardLandscapeViewController.h; sourceTree = "<group>"; };
+		CD3D1C091D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveRewardLandscapeViewController.m; sourceTree = "<group>"; };
 		CD4156C51CB39C890060CBE9 /* HXSongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXSongModel.h; sourceTree = "<group>"; };
 		CD4156C61CB39C890060CBE9 /* HXSongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXSongModel.m; sourceTree = "<group>"; };
 		CD4156C81CB39CA30060CBE9 /* HXCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCommentModel.h; sourceTree = "<group>"; };
@@ -706,6 +717,8 @@
 		CD6C19881CA519A900849B39 /* HXPlayTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXPlayTopBar.xib; sourceTree = "<group>"; };
 		CD7224961CF8254400C8EC6B /* HXGiftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXGiftManager.h; sourceTree = "<group>"; };
 		CD7224971CF8254400C8EC6B /* HXGiftManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGiftManager.m; sourceTree = "<group>"; };
+		CD7666841D055D03008099F1 /* HXWatchLiveLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveLandscapeViewController.h; sourceTree = "<group>"; };
+		CD7666851D055D03008099F1 /* HXWatchLiveLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveLandscapeViewController.m; sourceTree = "<group>"; };
 		CD7960811CBDE7FD004CC661 /* HXLiveEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveEndViewController.h; sourceTree = "<group>"; };
 		CD7960821CBDE7FD004CC661 /* HXLiveEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveEndViewController.m; sourceTree = "<group>"; };
 		CD7960841CBE39A6004CC661 /* UIViewController+LoginAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LoginAction.h"; sourceTree = "<group>"; };
@@ -807,6 +820,12 @@
 		CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewController.m; sourceTree = "<group>"; };
 		CDAB160A1CEDC11D00949769 /* HXGiftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXGiftModel.h; sourceTree = "<group>"; };
 		CDAB160B1CEDC11D00949769 /* HXGiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGiftModel.m; sourceTree = "<group>"; };
+		CDAC6CBB1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRewardGiftListLandscapeLayout.h; sourceTree = "<group>"; };
+		CDAC6CBC1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRewardGiftListLandscapeLayout.m; sourceTree = "<group>"; };
+		CDAC6CBE1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveGiftLandscapeContainerViewController.h; sourceTree = "<group>"; };
+		CDAC6CBF1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveGiftLandscapeContainerViewController.m; sourceTree = "<group>"; };
+		CDAC6CC21D06DE4100A13725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RewardGift.storyboard; sourceTree = "<group>"; };
+		CDAC6CC51D06DEB700A13725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RewardAlbum.storyboard; sourceTree = "<group>"; };
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
@@ -1732,6 +1751,27 @@
 			path = Watch;
 			sourceTree = "<group>";
 		};
+		CD3D1C031D06B42E0043ABBE /* Gift */ = {
+			isa = PBXGroup;
+			children = (
+				CDAC6CBA1D06CB8100A13725 /* Layout */,
+				CD3D1C051D06B4470043ABBE /* HXLiveGiftLandscapeViewController.h */,
+				CD3D1C061D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m */,
+				CDAC6CBE1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.h */,
+				CDAC6CBF1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m */,
+			);
+			path = Gift;
+			sourceTree = "<group>";
+		};
+		CD3D1C041D06B42E0043ABBE /* Reward */ = {
+			isa = PBXGroup;
+			children = (
+				CD3D1C081D06B4790043ABBE /* HXLiveRewardLandscapeViewController.h */,
+				CD3D1C091D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m */,
+			);
+			path = Reward;
+			sourceTree = "<group>";
+		};
 		CD4156C31CB39C7C0060CBE9 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
@@ -2125,6 +2165,8 @@
 				CDED8F301CA13EFD003867B8 /* Profile.storyboard */,
 				CD2E72EF1CA11E75003CDB77 /* Setting.storyboard */,
 				CD2E72E71CA11E75003CDB77 /* Live.storyboard */,
+				CDAC6CC11D06DE4100A13725 /* RewardGift.storyboard */,
+				CDAC6CC41D06DEB700A13725 /* RewardAlbum.storyboard */,
 				CD6C195F1CA5196A00849B39 /* Play.storyboard */,
 				CDF9504A1CA558E300BDB586 /* Albums.storyboard */,
 			);
@@ -2190,6 +2232,17 @@
 				420BBB4F1CE9A6D500F52AB2 /* Payment */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CD7666831D055CD7008099F1 /* Landscape */ = {
+			isa = PBXGroup;
+			children = (
+				CD3D1C031D06B42E0043ABBE /* Gift */,
+				CD3D1C041D06B42E0043ABBE /* Reward */,
+				CD7666841D055D03008099F1 /* HXWatchLiveLandscapeViewController.h */,
+				CD7666851D055D03008099F1 /* HXWatchLiveLandscapeViewController.m */,
+			);
+			path = Landscape;
 			sourceTree = "<group>";
 		};
 		CD7960871CBE4BA1004CC661 /* LocationMgr */ = {
@@ -2507,6 +2560,7 @@
 		CDAA8DA71CA3C7DA0048C526 /* Watch */ = {
 			isa = PBXGroup;
 			children = (
+				CD7666831D055CD7008099F1 /* Landscape */,
 				CDBCFAFA1CE1E3060045946F /* Gift */,
 				CDE016DC1CE2D8CC005645D5 /* Reward */,
 				CDAA8DA81CA3C7DB0048C526 /* HXWatchLiveViewController.h */,
@@ -2542,6 +2596,15 @@
 				CDAB160B1CEDC11D00949769 /* HXGiftModel.m */,
 			);
 			path = Gift;
+			sourceTree = "<group>";
+		};
+		CDAC6CBA1D06CB8100A13725 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				CDAC6CBB1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.h */,
+				CDAC6CBC1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		CDB099EB1CB520C000C47EA0 /* AnchorView */ = {
@@ -3005,6 +3068,7 @@
 				CD79612E1CBE594C004CC661 /* Profile.storyboard in Resources */,
 				CD79612F1CBE594C004CC661 /* HXWatchLiveBottomBar.xib in Resources */,
 				CDA394A51CFEEB2600F56A41 /* HXNoNetworkView.xib in Resources */,
+				CDAC6CC31D06DE4100A13725 /* RewardGift.storyboard in Resources */,
 				CD7961301CBE594C004CC661 /* HXLiveAnchorView.xib in Resources */,
 				CD7961321CBE594C004CC661 /* HXWatcherBoard.xib in Resources */,
 				CDCB8CF21CFC316800F78CE3 /* HXStaticGiftView.xib in Resources */,
@@ -3028,6 +3092,7 @@
 				CD7961431CBE594C004CC661 /* Main.storyboard in Resources */,
 				CD7961441CBE594C004CC661 /* HXPlayTopBar.xib in Resources */,
 				CDCB8CF71CFC334A00F78CE3 /* HXStaticGiftItemView.xib in Resources */,
+				CDAC6CC61D06DEB700A13725 /* RewardAlbum.storyboard in Resources */,
 				CD7961461CBE594C004CC661 /* HXRecordBottomBar.xib in Resources */,
 				CD7961471CBE594C004CC661 /* HXProfileNavigationBar.xib in Resources */,
 			);
@@ -3140,6 +3205,7 @@
 				CD79609E1CBE594C004CC661 /* HXIBButton.m in Sources */,
 				42984B0C1CDAEF84004F00D5 /* JOFFileManage.m in Sources */,
 				420A3D611CF551DA0081931E /* MIASongManage.m in Sources */,
+				CD7666861D055D03008099F1 /* HXWatchLiveLandscapeViewController.m in Sources */,
 				CD79609F1CBE594C004CC661 /* HXRecordBottomBar.m in Sources */,
 				CD07B2D01CEF021B00B5AB87 /* HXLiveRewardTopListViewController.m in Sources */,
 				42A0DB031CE2E08200F1FCEF /* MIAAlbumSongCell.m in Sources */,
@@ -3248,6 +3314,7 @@
 				429CC20D1CE08BAF004BCC0C /* MIAProfileModel.m in Sources */,
 				42A0DAEC1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */,
 				CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */,
+				CDAC6CC01D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m in Sources */,
 				42984B061CDAEF84004F00D5 /* JOFCrash.m in Sources */,
 				420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */,
 				CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */,
@@ -3292,6 +3359,7 @@
 				CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */,
 				42984B5D1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */,
 				CD7960F61CBE594C004CC661 /* HXAttentionModel.m in Sources */,
+				CD3D1C0A1D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m in Sources */,
 				420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */,
 				CD7960F71CBE594C004CC661 /* NSTimer+BlockSupport.m in Sources */,
 				CDA3948A1CFD75CA00F56A41 /* HXMobileLoginViewController.m in Sources */,
@@ -3342,6 +3410,7 @@
 				4206FA371CFBDCBB0015249E /* MIAPlayBarView.m in Sources */,
 				42984B491CDC6137004F00D5 /* JOUIManage.m in Sources */,
 				CD7961141CBE594C004CC661 /* HXPlayTopBar.m in Sources */,
+				CDAC6CBD1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m in Sources */,
 				4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */,
 				CD7961151CBE594C004CC661 /* NSString+IsNull.m in Sources */,
 				42A0DAFE1CE2E07100F1FCEF /* MIAAlbumSongView.m in Sources */,
@@ -3353,6 +3422,7 @@
 				CD79611A1CBE594C004CC661 /* HXProfileVideoContainerCell.m in Sources */,
 				CD79611B1CBE594C004CC661 /* HXAnchorModel.m in Sources */,
 				CD79611C1CBE594C004CC661 /* HXDiscoveryNormalCell.m in Sources */,
+				CD3D1C071D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m in Sources */,
 				CD79611D1CBE594C004CC661 /* HXSettingSession.m in Sources */,
 				CD79611E1CBE594C004CC661 /* FormatTimeHelper.m in Sources */,
 				CD80F6501CF2F60E005115C1 /* HXLiveGiftItemCell.m in Sources */,
@@ -3418,6 +3488,22 @@
 				CD8A9A7E1C9906CA00698DE9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CDAC6CC11D06DE4100A13725 /* RewardGift.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDAC6CC21D06DE4100A13725 /* Base */,
+			);
+			name = RewardGift.storyboard;
+			sourceTree = "<group>";
+		};
+		CDAC6CC41D06DEB700A13725 /* RewardAlbum.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDAC6CC51D06DEB700A13725 /* Base */,
+			);
+			name = RewardAlbum.storyboard;
 			sourceTree = "<group>";
 		};
 		CDED8F301CA13EFD003867B8 /* Profile.storyboard */ = {

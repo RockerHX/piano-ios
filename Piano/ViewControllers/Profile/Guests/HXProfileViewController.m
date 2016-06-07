@@ -111,10 +111,9 @@ HXProfileContainerViewControllerDelegate
 }
 
 - (void)container:(HXProfileContainerViewController *)container selectedReplay:(HXReplayModel *)replay {
-    UINavigationController *replayNaviagtionController = [HXReplayViewController navigationControllerInstance];
-    HXReplayViewController *replayViewController = [replayNaviagtionController.viewControllers firstObject];
+    HXReplayViewController *replayViewController = [HXReplayViewController instance];
     replayViewController.model = [HXDiscoveryModel createWithReplayModel:replay];
-    [self presentViewController:replayNaviagtionController animated:YES completion:nil];
+    [self presentViewController:replayViewController animated:YES completion:nil];
 }
 
 @end

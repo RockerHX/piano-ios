@@ -1,5 +1,5 @@
 //
-//  HXRewardGiftListLayout.h
+//  HXRewardGiftListLandscapeLayout.h
 //  CollectionViewDemo
 //
 //  Created by miaios on 16/4/19.
@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HXRewardGiftListLayout : UICollectionViewLayout
+@interface HXRewardGiftListLandscapeLayout : UICollectionViewLayout
 
 @property (nonatomic, assign, readonly) CGFloat  controlWidth;
 @property (nonatomic, assign, readonly) CGFloat  controlHeight;
 @property (nonatomic, assign, readonly) CGFloat  itemWidth;
 @property (nonatomic, assign, readonly) CGFloat  itemHeight;
 
-@property (nonatomic, assign)    CGFloat lineSpace;
 @property (nonatomic, assign) NSUInteger columnOfRow;
 
 @end

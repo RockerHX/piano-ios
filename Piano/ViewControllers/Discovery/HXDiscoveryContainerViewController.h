@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryContainerAction) {
 
 - (void)displayDiscoveryList;
 - (void)stopPreviewVideo;
+- (void)reload;
 
 @end
 

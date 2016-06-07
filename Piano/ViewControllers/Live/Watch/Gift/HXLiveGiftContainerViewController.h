@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HXLiveGiftContainerViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
+@interface HXLiveGiftContainerViewController : UICollectionViewController
 
 @property (nonatomic, strong) NSArray *gifts;
 

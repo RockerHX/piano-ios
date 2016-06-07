@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+HXClass.h"
+#import "HXWatchLiveViewModel.h"
 
 
 @class HXLiveAnchorView;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet HXDynamicGiftView *dynamicGiftView;
 
 @property (nonatomic, strong) NSString *roomID;
+@property (nonatomic, strong, readonly) HXWatchLiveViewModel *viewModel;
 
 - (IBAction)closeButtonPressed;
 
