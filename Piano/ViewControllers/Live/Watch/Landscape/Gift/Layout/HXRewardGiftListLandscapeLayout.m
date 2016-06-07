@@ -31,7 +31,7 @@
 
 #pragma mark - Configure Methods
 - (void)setup {
-    _lineSpace = 1.0f;
+    _columnOfRow = 3;
 }
 
 #pragma mark - Property
@@ -40,15 +40,15 @@
 }
 
 - (CGFloat)controlHeight {
-    return (self.itemWidth * 2) + (_lineSpace * 3);
+    return self.collectionView.frame.size.height;
 }
 
 - (CGFloat)itemWidth {
-    return (self.controlWidth - (_lineSpace * 4)) / 3;
+    return self.controlWidth / 3;
 }
 
 - (CGFloat)itemHeight {
-    return self.itemWidth;
+    return self.controlHeight / 2;
 }
 
 #pragma mark - Required Methods
@@ -65,27 +65,24 @@
     
     CGFloat controlWidth = self.controlWidth;
     CGFloat itemWidth = self.itemWidth;
-    CGFloat itemHeight = itemWidth;
-    CGFloat itemSize = itemWidth + _lineSpace;
+    CGFloat itemHeight = self.itemHeight;
     
     BOOL newLine = NO;
-    NSInteger loop = 3;
-    NSInteger pageLoop = loop * 2;
-    CGFloat x = _lineSpace;
-    CGFloat y = _lineSpace;
+    NSInteger pageLoop = _columnOfRow * 2;
+    CGFloat x, y = 0.0f;
     NSMutableArray *itemAttributes = [NSMutableArray arrayWithCapacity:itemsCount];
     for(NSInteger index = 0; index < itemsCount; index++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
         
-        NSInteger remainder = (index % loop);
+        NSInteger remainder = (index % _columnOfRow);
         NSInteger page = (index / pageLoop);
-        x = _lineSpace + (controlWidth * page) + (itemSize * remainder);
+        x = (controlWidth * page) + (itemWidth * remainder);
         
         if (index && !remainder) {
             newLine = !newLine;
         }
-        y = _lineSpace + (newLine ? itemSize : 0);
+        y = (newLine ? itemHeight : 0);
         
         attributes.frame = CGRectMake(x, y, itemWidth, itemHeight);
         [itemAttributes addObject:attributes];
@@ -94,8 +91,7 @@
 }
 
 - (CGSize)collectionViewContentSize {
-    NSInteger loop = 3;
-    NSInteger pageLoop = loop * 2;
+    NSInteger pageLoop = _columnOfRow * 2;
     CGFloat sizeWidth = ((_layoutAttributes.count / pageLoop) + 1) * self.controlWidth;
     
     return CGSizeMake(sizeWidth, self.controlHeight);

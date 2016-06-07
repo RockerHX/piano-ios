@@ -32,6 +32,7 @@
 #pragma mark - Configure Methods
 - (void)setup {
     _lineSpace = 1.0f;
+    _columnOfRow = 3;
 }
 
 #pragma mark - Property
@@ -69,16 +70,14 @@
     CGFloat itemSize = itemWidth + _lineSpace;
     
     BOOL newLine = NO;
-    NSInteger loop = 3;
-    NSInteger pageLoop = loop * 2;
-    CGFloat x = _lineSpace;
-    CGFloat y = _lineSpace;
+    NSInteger pageLoop = _columnOfRow * 2;
+    CGFloat x, y = _lineSpace;
     NSMutableArray *itemAttributes = [NSMutableArray arrayWithCapacity:itemsCount];
     for(NSInteger index = 0; index < itemsCount; index++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
         
-        NSInteger remainder = (index % loop);
+        NSInteger remainder = (index % _columnOfRow);
         NSInteger page = (index / pageLoop);
         x = _lineSpace + (controlWidth * page) + (itemSize * remainder);
         
@@ -94,8 +93,7 @@
 }
 
 - (CGSize)collectionViewContentSize {
-    NSInteger loop = 3;
-    NSInteger pageLoop = loop * 2;
+    NSInteger pageLoop = _columnOfRow * 2;
     CGFloat sizeWidth = ((_layoutAttributes.count / pageLoop) + 1) * self.controlWidth;
     
     return CGSizeMake(sizeWidth, self.controlHeight);

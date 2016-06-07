@@ -31,7 +31,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBV-rx-QZM" userLabel="Gift Contianer">
                                             <rect key="frame" x="25" y="13" width="70" height="95"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="boh-Zw-Raw" userLabel="Gift Logo">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="boh-Zw-Raw" userLabel="Gift Logo">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="boh-Zw-Raw" secondAttribute="height" multiplier="1:1" id="6wG-tN-u1O"/>
@@ -289,6 +289,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRT-81-lU3" userLabel="Control Container">
                                         <rect key="frame" x="0.0" y="200" width="320" height="76"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVR-us-yH3" userLabel="Top Line">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="SaK-VU-m0R"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoA-dJ-S7L" userLabel="Balance Container">
                                                 <rect key="frame" x="16" y="30" width="81" height="17"/>
                                                 <subviews>
@@ -352,7 +359,7 @@
                                                     <constraint firstItem="joj-Mb-5P7" firstAttribute="centerY" secondItem="HoA-dJ-S7L" secondAttribute="centerY" id="uPw-xA-xD3"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdB-oD-v3q" customClass="HXIBButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdB-oD-v3q">
                                                 <rect key="frame" x="226" y="23" width="78" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -372,7 +379,7 @@
                                                     <action selector="giveGiftButtonPressed" destination="n6E-5k-PTu" eventType="touchUpInside" id="OkK-3E-DMR"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4x8-Uj-tnk" userLabel="Count Container" customClass="HXIBView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4x8-Uj-tnk" userLabel="Count Container">
                                                 <rect key="frame" x="137" y="23" width="79" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8HL-Kz-Cu8">
@@ -449,10 +456,13 @@
                                             <constraint firstItem="QdB-oD-v3q" firstAttribute="centerY" secondItem="pRT-81-lU3" secondAttribute="centerY" id="6ti-6c-tvd"/>
                                             <constraint firstAttribute="trailing" secondItem="QdB-oD-v3q" secondAttribute="trailing" constant="16" id="74x-O8-s2W"/>
                                             <constraint firstItem="QdB-oD-v3q" firstAttribute="leading" secondItem="4x8-Uj-tnk" secondAttribute="trailing" constant="10" id="9Es-YZ-5OH"/>
+                                            <constraint firstAttribute="trailing" secondItem="DVR-us-yH3" secondAttribute="trailing" id="X48-b8-Bbh"/>
+                                            <constraint firstItem="DVR-us-yH3" firstAttribute="leading" secondItem="pRT-81-lU3" secondAttribute="leading" id="bzs-md-ym4"/>
                                             <constraint firstAttribute="height" constant="76" id="jJR-4f-8RW"/>
                                             <constraint firstItem="HoA-dJ-S7L" firstAttribute="centerY" secondItem="pRT-81-lU3" secondAttribute="centerY" id="ngo-4e-zcr"/>
                                             <constraint firstItem="HoA-dJ-S7L" firstAttribute="leading" secondItem="pRT-81-lU3" secondAttribute="leading" constant="16" id="sKc-XT-VcC"/>
                                             <constraint firstItem="4x8-Uj-tnk" firstAttribute="centerY" secondItem="pRT-81-lU3" secondAttribute="centerY" id="tK0-jY-CDN"/>
+                                            <constraint firstItem="DVR-us-yH3" firstAttribute="top" secondItem="pRT-81-lU3" secondAttribute="top" id="veN-a9-XUG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2522,21 +2532,28 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBd-f7-GEc" userLabel="Container">
-                                <rect key="frame" x="276" y="0.0" width="292" height="320"/>
+                                <rect key="frame" x="277" y="0.0" width="291" height="320"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LG-BG" translatesAutoresizingMaskIntoConstraints="NO" id="wzu-kt-oaW">
-                                        <rect key="frame" x="0.0" y="0.0" width="292" height="320"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="291" height="320"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2NY-Ob-xMC">
-                                        <rect key="frame" x="0.0" y="0.0" width="292" height="220"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="291" height="220"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="C6k-fx-pLk" kind="embed" id="WRT-Cr-uPu"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNg-l0-otP" userLabel="Control Container">
-                                        <rect key="frame" x="0.0" y="220" width="292" height="100"/>
+                                        <rect key="frame" x="0.0" y="220" width="291" height="100"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naF-tQ-FLM" userLabel="Top Line">
+                                                <rect key="frame" x="0.0" y="0.0" width="291" height="0.0"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="LjN-P5-exP"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hie-eW-JyM" userLabel="Count Container">
                                                 <rect key="frame" x="24" y="30" width="112" height="30"/>
                                                 <subviews>
@@ -2695,12 +2712,15 @@
                                         <constraints>
                                             <constraint firstItem="hie-eW-JyM" firstAttribute="height" secondItem="5TZ-9B-tcw" secondAttribute="height" id="2RW-Od-9Wd"/>
                                             <constraint firstItem="bGO-L6-B4o" firstAttribute="top" secondItem="hie-eW-JyM" secondAttribute="bottom" constant="10" id="5T2-Ua-5Pa"/>
+                                            <constraint firstAttribute="trailing" secondItem="naF-tQ-FLM" secondAttribute="trailing" id="8n8-qR-drI"/>
                                             <constraint firstItem="5TZ-9B-tcw" firstAttribute="top" secondItem="wNg-l0-otP" secondAttribute="top" constant="30" id="9gv-3M-It6"/>
                                             <constraint firstItem="5TZ-9B-tcw" firstAttribute="leading" secondItem="wNg-l0-otP" secondAttribute="centerX" constant="10" id="ByW-eq-SDy"/>
                                             <constraint firstItem="hie-eW-JyM" firstAttribute="centerY" secondItem="5TZ-9B-tcw" secondAttribute="centerY" id="QBa-12-eAU"/>
+                                            <constraint firstItem="naF-tQ-FLM" firstAttribute="top" secondItem="wNg-l0-otP" secondAttribute="top" id="RVm-ch-mO0"/>
                                             <constraint firstAttribute="height" constant="100" id="Y3O-rt-43U"/>
                                             <constraint firstItem="bGO-L6-B4o" firstAttribute="leading" secondItem="hie-eW-JyM" secondAttribute="leading" constant="10" id="d4y-iH-Apg"/>
                                             <constraint firstItem="hie-eW-JyM" firstAttribute="trailing" secondItem="wNg-l0-otP" secondAttribute="centerX" constant="-10" id="heD-J4-Jf3"/>
+                                            <constraint firstItem="naF-tQ-FLM" firstAttribute="leading" secondItem="wNg-l0-otP" secondAttribute="leading" id="jEh-sU-cFm"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2714,7 +2734,7 @@
                                     <constraint firstItem="wzu-kt-oaW" firstAttribute="top" secondItem="MBd-f7-GEc" secondAttribute="top" id="Y2r-gx-cop"/>
                                     <constraint firstItem="wNg-l0-otP" firstAttribute="top" secondItem="2NY-Ob-xMC" secondAttribute="bottom" id="d3f-Dx-280"/>
                                     <constraint firstItem="wzu-kt-oaW" firstAttribute="leading" secondItem="MBd-f7-GEc" secondAttribute="leading" id="epc-Ak-sZi"/>
-                                    <constraint firstAttribute="width" constant="292" id="fCS-Ws-vj9"/>
+                                    <constraint firstAttribute="width" constant="291" id="fCS-Ws-vj9"/>
                                     <constraint firstAttribute="bottom" secondItem="wNg-l0-otP" secondAttribute="bottom" id="fEe-xZ-CtS"/>
                                     <constraint firstAttribute="trailing" secondItem="wzu-kt-oaW" secondAttribute="trailing" id="u0j-au-XGG"/>
                                     <constraint firstItem="2NY-Ob-xMC" firstAttribute="leading" secondItem="MBd-f7-GEc" secondAttribute="leading" id="zU3-ax-JcV"/>
@@ -2752,7 +2772,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="HXLiveGiftLandscapeContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C6k-fx-pLk" userLabel="HXLiveGiftLandscapeContainerViewController" customClass="HXLiveGiftLandscapeContainerViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="04A-tJ-Bgt">
-                        <rect key="frame" x="0.0" y="0.0" width="292" height="220"/>
+                        <rect key="frame" x="0.0" y="0.0" width="291" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="GdB-0N-RSI" customClass="HXRewardGiftListLandscapeLayout"/>
@@ -2770,7 +2790,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXw-su-bKf" userLabel="Gift Contianer">
                                             <rect key="frame" x="25" y="13" width="70" height="95"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8sf-2h-b66" userLabel="Gift Logo">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8sf-2h-b66" userLabel="Gift Logo">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="8sf-2h-b66" secondAttribute="height" multiplier="1:1" id="4GO-be-xPt"/>

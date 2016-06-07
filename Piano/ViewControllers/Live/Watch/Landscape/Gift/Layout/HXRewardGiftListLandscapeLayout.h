@@ -16,6 +16,6 @@
 @property (nonatomic, assign, readonly) CGFloat  itemWidth;
 @property (nonatomic, assign, readonly) CGFloat  itemHeight;
 
-@property (nonatomic, assign) CGFloat lineSpace;
+@property (nonatomic, assign) NSUInteger columnOfRow;
 
 @end

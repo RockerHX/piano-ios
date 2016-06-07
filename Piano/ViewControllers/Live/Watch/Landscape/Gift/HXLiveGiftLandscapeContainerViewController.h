@@ -6,14 +6,9 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HXLiveGiftContainerViewController.h"
 
 
-@interface HXLiveGiftLandscapeContainerViewController : UICollectionViewController
-
-@property (nonatomic, strong) NSArray *gifts;
-
-@property (nonatomic, assign, readonly) NSInteger  selectedIndex;
-@property (nonatomic, assign, readonly)   CGFloat  contianerHeight;
+@interface HXLiveGiftLandscapeContainerViewController : HXLiveGiftContainerViewController
 
 @end
