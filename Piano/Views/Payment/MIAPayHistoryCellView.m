@@ -13,7 +13,7 @@
 #import "JOBaseSDK.h"
 #import "MIAFontManage.h"
 
-static CGFloat const kGiftImageViewWidth = 50.;//礼物图片的宽度
+static CGFloat const kGiftImageViewWidth = 51.;//礼物图片的宽度
 static CGFloat const kPayHistoryImageToLabelSpaceDistance = 11.;//礼物与名字的间距大小
 
 @interface MIAPayHistoryCellView()

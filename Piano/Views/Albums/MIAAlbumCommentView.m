@@ -14,7 +14,7 @@
 #import "MIACommentModel.h"
 
 static CGFloat const kImageToLabelSpaceDistance = 15.;//图片与label之间的间距
-static CGFloat const kImageWidth = 40.;//图片的宽度
+static CGFloat const kImageWidth = 36.;//图片的宽度
 
 @interface MIAAlbumCommentView(){
 

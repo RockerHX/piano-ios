@@ -53,6 +53,7 @@
     if ([platform isEqualToString:@"iPod3,1"])   return DeviceType_Ipod3G;
     if ([platform isEqualToString:@"iPod4,1"])   return DeviceType_Ipod4G;
     if ([platform isEqualToString:@"iPod5,1"])   return DeviceType_Ipod5G;
+    if ([platform isEqualToString:@"iPod7,1"])   return DeviceType_Ipod6G;
     
     if ([platform isEqualToString:@"iPad1,1"])   return DeviceType_Ipad1;
     
@@ -74,15 +75,135 @@
     if ([platform isEqualToString:@"iPad4,1"])   return DeviceType_IpadAir;
     if ([platform isEqualToString:@"iPad4,2"])   return DeviceType_IpadAir;
     if ([platform isEqualToString:@"iPad4,3"])   return DeviceType_IpadAir;
+    if ([platform isEqualToString:@"iPad5,3"])   return DeviceType_IpadAir2;
+    if ([platform isEqualToString:@"iPad5,4"])   return DeviceType_IpadAir2;
+    
+    if ([platform isEqualToString:@"iPad6,3"])   return DeviceType_IpadPro;
+    if ([platform isEqualToString:@"iPad6,4"])   return DeviceType_IpadPro;
+    if ([platform isEqualToString:@"iPad6,7"])   return DeviceType_IpadPro;
+    if ([platform isEqualToString:@"iPad6,8"])   return DeviceType_IpadPro;
+    
     if ([platform isEqualToString:@"iPad4,4"])   return DeviceType_IpadMini2;
     if ([platform isEqualToString:@"iPad4,5"])   return DeviceType_IpadMini2;
     if ([platform isEqualToString:@"iPad4,6"])   return DeviceType_IpadMini2;
+    
+    if ([platform isEqualToString:@"iPad4,7"])   return DeviceType_IpadMini3;
+    if ([platform isEqualToString:@"iPad4,8"])   return DeviceType_IpadMini3;
+    if ([platform isEqualToString:@"iPad4,9"])   return DeviceType_IpadMini3;
+    
+    if ([platform isEqualToString:@"iPad5,1"])   return DeviceType_IpadMini4;
+    if ([platform isEqualToString:@"iPad5,2"])   return DeviceType_IpadMini4;
     
     if ([platform isEqualToString:@"i386"])      return DeviceType_Simulator;
     if ([platform isEqualToString:@"x86_64"])    return DeviceType_Simulator;
     
     return DeviceType_Unknown;
     
+}
+
++ (NSString *)deviceName{
+
+    NSString *deviceName = @"未知设备";
+    
+    switch ([JOFDeviceInfo deviceType]) {
+        case DeviceType_Iphone2G:
+            deviceName = @"iPhone2G";
+            break;
+        case DeviceType_Iphone3G:
+            deviceName = @"iPhone3G";
+            break;
+        case DeviceType_Iphone3GS:
+            deviceName = @"iPhone3GS";
+            break;
+        case DeviceType_Iphone4:
+            deviceName = @"iPhone4";
+            break;
+        case DeviceType_Iphone4s:
+            deviceName = @"iPhone4S";
+            break;
+        case DeviceType_Iphone5:
+            deviceName = @"iPhone5";
+            break;
+        case DeviceType_Iphone5c:
+            deviceName = @"iPhone5C";
+            break;
+        case DeviceType_Iphone5s:
+            deviceName = @"iPhone5S";
+            break;
+        case DeviceType_Iphonese:
+            deviceName = @"iPhoneSE";
+            break;
+        case DeviceType_Iphone6:
+            deviceName = @"iPhone6";
+            break;
+        case DeviceType_Iphone6plus:
+            deviceName = @"iPhone6Plus";
+            break;
+        case DeviceType_Iphone6s:
+            deviceName = @"iPhone6S";
+            break;
+        case DeviceType_Iphone6splus:
+            deviceName = @"iPhone6SPlus";
+            break;
+        case DeviceType_Ipod1G:
+            deviceName = @"iPod1G";
+            break;
+        case DeviceType_Ipod2G:
+            deviceName = @"iPod2G";
+            break;
+        case DeviceType_Ipod3G:
+            deviceName = @"iPod3G";
+            break;
+        case DeviceType_Ipod4G:
+            deviceName = @"iPod4G";
+            break;
+        case DeviceType_Ipod5G:
+            deviceName = @"iPod5G";
+            break;
+        case DeviceType_Ipod6G:
+            deviceName = @"iPod6G";
+            break;
+        case DeviceType_Ipad1:
+            deviceName = @"iPad1";
+            break;
+        case DeviceType_Ipad2:
+            deviceName = @"iPad2";
+            break;
+        case DeviceType_Ipad3:
+            deviceName = @"iPad3";
+            break;
+        case DeviceType_Ipad4:
+            deviceName = @"iPad4";
+            break;
+        case DeviceType_IpadAir:
+            deviceName = @"iPadAir";
+            break;
+        case DeviceType_IpadAir2:
+            deviceName = @"iPadAir2";
+            break;
+        case DeviceType_IpadMini1:
+            deviceName = @"iPadMini";
+            break;
+        case DeviceType_IpadMini2:
+            deviceName = @"iPadMini2";
+            break;
+        case DeviceType_IpadMini3:
+            deviceName = @"iPadMini3";
+            break;
+        case DeviceType_IpadMini4:
+            deviceName = @"iPadMini4";
+            break;
+        case DeviceType_IpadPro:
+            deviceName = @"iPadPro";
+            break;
+        case DeviceType_Simulator:
+            deviceName = @"Simulator";
+            break;
+        default:
+            break;
+    }
+    
+    return deviceName;
 }
 
 //+ (BOOL)deviceOveriPhone5s{
@@ -117,7 +238,7 @@
     
 }
 
-+ (NSString *)deviceName{
++ (NSString *)deviceUserName{
 
     return [[UIDevice currentDevice] name];
 }

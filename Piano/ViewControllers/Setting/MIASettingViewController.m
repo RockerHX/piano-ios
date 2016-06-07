@@ -23,6 +23,8 @@
 #import "UIImage+Extrude.h"
 #import "CacheHelper.h"
 
+#import "MIAInfoLog.h"
+
 static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
 @interface MIASettingViewController()<UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -56,6 +58,8 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [self createHeadImageView];
     [self createNetSwitch];
     [self createSettingTableView];
+    
+    [MIAInfoLog uploadInfoLogWithRoomID:@"123456" streamID:@"111"];
     
 }
 
@@ -104,7 +108,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [_settingTableView setDelegate:self];
     [_settingTableView setBackgroundColor:[UIColor clearColor]];
     [_settingTableView setSectionHeaderHeight:CGFLOAT_MIN];
-    [_settingTableView setSeparatorColor:JORGBCreate(110., 110., 110., 0.5)];
+    [_settingTableView setSeparatorColor:JORGBCreate(80., 80., 80., 0.5)];
     [self.view addSubview:_settingTableView];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_settingTableView superView:self.view];
@@ -245,6 +249,17 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     return 11.;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+
+    if (section != 2) {
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0., 0., View_Width(self.view), 11.)];
+        [footerView setBackgroundColor:JORGBCreate(80., 80., 80., 0.5)];
+        return footerView;
+    }
+    
+    return nil;
+}
+
 #pragma mark - table delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -313,7 +328,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-        imagePickerController.sourceType =  UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        imagePickerController.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
         imagePickerController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePickerController.sourceType];
     }
     imagePickerController.delegate = self;

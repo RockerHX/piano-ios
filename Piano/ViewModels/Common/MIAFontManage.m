@@ -110,7 +110,7 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 12.);
     }else if (type == MIAFontType_Album_Song_Title){
         //音乐的标题
-        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], JORGBSameCreate(180.));
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], JORGBSameCreate(190.));
 //        return JOFontMake(kMIAFontRegular,JORGBSameCreate(180.), 17.);
     }else if (type == MIAFontType_Album_Song_Time){
         //音乐的时长
@@ -126,7 +126,7 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor grayColor], 13.);
     }else if (type == MIAFontType_Album_Comment_Time){
         //评论的时间
-        return JOFontsMake([UIFont systemFontOfSize:10. weight:UIFontWeightRegular], [UIColor grayColor]);
+        return JOFontsMake([UIFont systemFontOfSize:10. weight:UIFontWeightRegular], JORGBSameCreate(187.));
 //        return JOFontMake(kMIAFontRegular, [UIColor grayColor], 10.);
     }else if (type == MIAFontType_Album_Comment_Enter){
         //评论输入框
@@ -141,31 +141,31 @@
     //MARK: 专辑打赏页面
     if (type == MIAFontType_AlbumReward_Title) {
         //专辑的标题
-        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }else if (type == MIAFontType_AlbumReward_Singer){
         //演唱者
-        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(220.));
+        return JOFontsMake([UIFont systemFontOfSize:12. weight:UIFontWeightRegular], JORGBSameCreate(220.));
 //        return JOFontMake(kMIAFontRegular, JORGBSameCreate(220.), 13.);
     }else if (type == MIAFontType_AlbumReward_Tip){
         //提示
-        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }else if (type == MIAFontType_AlbumReward_RewardMCoin){
         //打赏的M币数量
-        return JOFontsMake([UIFont systemFontOfSize:22. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:30. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 22.);
     }else if (type == MIAFontType_AlbumReward_RewardButtonTitle){
         //打赏的按钮的标题
-        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }else if (type == MIAFontType_AlbumReward_Account){
         //M币的账户余额
-        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 15.);
     }else if (type == MIAFontType_AlbumReward_Recharge){
         //充值
-        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 15.);
     }
     
@@ -215,7 +215,7 @@
     //MARK: 消费的记录
     if (type == MIAFontType_PayHistory_HeadTip) {
         //头部的提示模块标题
-        return JOFontsMake([UIFont systemFontOfSize:19 weight:UIFontWeightRegular], JORGBSameCreate(160.));
+        return JOFontsMake([UIFont systemFontOfSize:15 weight:UIFontWeightRegular], JORGBSameCreate(160.));
 //        return JOFontMake(kMIAFontRegular, JORGBSameCreate(160.), 19.);
     }else if (type == MIAFontType_PayHistory_Title){
         //标题
@@ -223,7 +223,7 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
     }else if (type == MIAFontType_PayHistory_Time){
         //时间
-        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(210.));
+        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], JORGBSameCreate(210.));
 //        return JOFontMake(kMIAFontRegular, JORGBSameCreate(210.), 13.);
     }else if (type == MIAFontType_PayHistory_Amount){
         //余额
