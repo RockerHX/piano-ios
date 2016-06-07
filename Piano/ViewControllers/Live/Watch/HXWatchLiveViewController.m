@@ -14,7 +14,6 @@
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
 #import "HXWatcherBoard.h"
-#import "HXWatchLiveViewModel.h"
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"
@@ -45,8 +44,6 @@ HXLiveAlbumViewDelegate
 
 @implementation HXWatchLiveViewController {
     HXLiveBarrageContainerViewController *_barrageContainer;
-    HXWatchLiveViewModel *_viewModel;
-    
     HXModalTransitionDelegate *_modalTransitionDelegate;
 }
 

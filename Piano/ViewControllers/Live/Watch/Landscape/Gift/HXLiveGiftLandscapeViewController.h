@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Mia Music. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HXLiveGiftViewController.h"
 
 
-@interface HXLiveGiftLandscapeViewController : UIViewController
+@interface HXLiveGiftLandscapeViewController : HXLiveGiftViewController
 
 @end
