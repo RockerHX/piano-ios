@@ -295,6 +295,8 @@
 		CDA394A41CFEEB2600F56A41 /* HXNoNetworkView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA394A21CFEEB2600F56A41 /* HXNoNetworkView.m */; };
 		CDA394A51CFEEB2600F56A41 /* HXNoNetworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA394A31CFEEB2600F56A41 /* HXNoNetworkView.xib */; };
 		CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB160B1CEDC11D00949769 /* HXGiftModel.m */; };
+		CDAC6CBD1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CBC1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m */; };
+		CDAC6CC01D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CBF1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
@@ -813,6 +815,10 @@
 		CDAA8DA91CA3C7DB0048C526 /* HXWatchLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveViewController.m; sourceTree = "<group>"; };
 		CDAB160A1CEDC11D00949769 /* HXGiftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXGiftModel.h; sourceTree = "<group>"; };
 		CDAB160B1CEDC11D00949769 /* HXGiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGiftModel.m; sourceTree = "<group>"; };
+		CDAC6CBB1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRewardGiftListLandscapeLayout.h; sourceTree = "<group>"; };
+		CDAC6CBC1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRewardGiftListLandscapeLayout.m; sourceTree = "<group>"; };
+		CDAC6CBE1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLiveGiftLandscapeContainerViewController.h; sourceTree = "<group>"; };
+		CDAC6CBF1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveGiftLandscapeContainerViewController.m; sourceTree = "<group>"; };
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
@@ -1739,8 +1745,11 @@
 		CD3D1C031D06B42E0043ABBE /* Gift */ = {
 			isa = PBXGroup;
 			children = (
+				CDAC6CBA1D06CB8100A13725 /* Layout */,
 				CD3D1C051D06B4470043ABBE /* HXLiveGiftLandscapeViewController.h */,
 				CD3D1C061D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m */,
+				CDAC6CBE1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.h */,
+				CDAC6CBF1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m */,
 			);
 			path = Gift;
 			sourceTree = "<group>";
@@ -2578,6 +2587,15 @@
 			path = Gift;
 			sourceTree = "<group>";
 		};
+		CDAC6CBA1D06CB8100A13725 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				CDAC6CBB1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.h */,
+				CDAC6CBC1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		CDB099EB1CB520C000C47EA0 /* AnchorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3283,6 +3301,7 @@
 				429CC20D1CE08BAF004BCC0C /* MIAProfileModel.m in Sources */,
 				42A0DAEC1CE2CC2400F1FCEF /* MIAAlbumViewController.m in Sources */,
 				CDAB160D1CEDC11D00949769 /* HXGiftModel.m in Sources */,
+				CDAC6CC01D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m in Sources */,
 				42984B061CDAEF84004F00D5 /* JOFCrash.m in Sources */,
 				420BBB4A1CE99C9D00F52AB2 /* MIAPaymentViewController.m in Sources */,
 				CD7960DA1CBE594C004CC661 /* HXProfileNavigationBar.m in Sources */,
@@ -3377,6 +3396,7 @@
 				4206FA371CFBDCBB0015249E /* MIAPlayBarView.m in Sources */,
 				42984B491CDC6137004F00D5 /* JOUIManage.m in Sources */,
 				CD7961141CBE594C004CC661 /* HXPlayTopBar.m in Sources */,
+				CDAC6CBD1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m in Sources */,
 				4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */,
 				CD7961151CBE594C004CC661 /* NSString+IsNull.m in Sources */,
 				42A0DAFE1CE2E07100F1FCEF /* MIAAlbumSongView.m in Sources */,
