@@ -105,29 +105,35 @@ HXLiveAlbumViewDelegate
 }
 
 - (void)signalLink {
+    @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
         _barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {
+        @strongify(self)
         [self endLive];
     }];
     [_viewModel.rewardSignal subscribeNext:^(id x) {
+        @strongify(self)
         [self updateAlbumView];
     }];
     [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
+        @strongify(self)
         if (gift.type == HXGiftTypeStatic) {
-            [_staticGiftView animationWithGift:gift];
+            [self.staticGiftView animationWithGift:gift];
         } else if (gift.type == HXGiftTypeDynamic) {
-            [_dynamicGiftView animationWithGift:gift];
+            [self.dynamicGiftView animationWithGift:gift];
         }
     }];
     
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
+        @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
+        @strongify(self)
         [self fetchDataFinfished];
     }];
 }
@@ -193,7 +199,7 @@ HXLiveAlbumViewDelegate
         RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
         [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
             @strongify(self)
-            self->_anchorView.attented = state.boolValue;
+            self.anchorView.attented = state.boolValue;
         } error:^(NSError *error) {
             @strongify(self)
             if (![error.domain isEqualToString:RACCommandErrorDomain]) {

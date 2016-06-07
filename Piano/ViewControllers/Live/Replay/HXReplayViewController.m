@@ -87,11 +87,14 @@ HXReplayBottomBarDelegate
 }
 
 - (void)sigalLink {
+    @weakify(self)
     if (([HXUserSession session].state == HXUserStateLogin) && ![[HXUserSession session].uid isEqualToString:_viewModel.model.uID]) {
         RACSignal *checkAttentionStateSiganl = [_viewModel.checkAttentionStateCommand execute:nil];
         [checkAttentionStateSiganl subscribeNext:^(NSNumber *state) {
-            self->_anchorView.attented = state.boolValue;
+            @strongify(self)
+            self.anchorView.attented = state.boolValue;
         } error:^(NSError *error) {
+            @strongify(self)
             if (![error.domain isEqualToString:RACCommandErrorDomain]) {
                 [self showBannerWithPrompt:error.domain];
             }
@@ -168,8 +171,10 @@ HXReplayBottomBarDelegate
 }
 
 - (void)fetchBarrageData {
+    @weakify(self)
     RACSignal *fetchBarrageSiganl = [_viewModel.fetchBarrageCommand execute:nil];
     [fetchBarrageSiganl subscribeError:^(NSError *error) {
+        @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
