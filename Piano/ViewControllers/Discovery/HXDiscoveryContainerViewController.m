@@ -60,6 +60,10 @@ HXDiscoveryLiveCellDelegate
     [_previewCell stopPlay];
 }
 
+- (void)reload {
+    [self.collectionView reloadData];
+}
+
 #pragma mark - Private Methods
 - (void)endLoad {
     [self.collectionView reloadData];
