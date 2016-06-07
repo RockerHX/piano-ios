@@ -338,4 +338,30 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
              completeBlock:(MiaRequestCompleteBlock)completeBlock
               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
+#pragma mark - Log 上传
+
+/**
+ *  获取需要上传log日志的相关信息.
+ *
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)getUploadLogWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+/**
+ *  上传日志.
+ *
+ *  @param roomID        房间的id
+ *  @param content       上传的一些内容.
+ *  @param fileID        文件的id
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)uploadLogWithRoomID:(NSString *)roomID
+                    content:(NSString *)content
+                     fileID:(NSString *)fileID
+              completeBlock:(MiaRequestCompleteBlock)completeBlock
+               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end

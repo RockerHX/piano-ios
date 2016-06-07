@@ -23,6 +23,8 @@
 #import "UIImage+Extrude.h"
 #import "CacheHelper.h"
 
+#import "MIAInfoLog.h"
+
 static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
 @interface MIASettingViewController()<UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -56,6 +58,8 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [self createHeadImageView];
     [self createNetSwitch];
     [self createSettingTableView];
+    
+    [MIAInfoLog uploadInfoLogWithRoomID:@"123456" streamID:@"111"];
     
 }
 
