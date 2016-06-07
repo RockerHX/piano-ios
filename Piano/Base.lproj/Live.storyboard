@@ -37,7 +37,7 @@
                                             <constraint firstAttribute="width" constant="230" id="wNJ-ab-9AI"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" id="00e-Qs-05q"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="" id="00e-Qs-05q"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OZ-sy-Agy" userLabel="Bottom Bar" customClass="HXWatchLiveBottomBar">
@@ -187,7 +187,7 @@
                                             <constraint firstAttribute="height" constant="160" id="Yeh-A1-kdq"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXLiveBarrageContainerViewController" id="O5M-18-fAC"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="" id="O5M-18-fAC"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5m6-An-NpA" userLabel="Bottom Bar" customClass="HXWatchLiveBottomBar">
@@ -829,7 +829,7 @@
                                             <constraint firstAttribute="height" constant="160" id="5Nw-lI-oYO"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXLiveBarrageContainerViewController" id="xaJ-1k-tkf"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="" id="xaJ-1k-tkf"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-Sr-nxg" userLabel="Bottom Bar" customClass="HXReplayBottomBar">
@@ -1050,7 +1050,7 @@
                                             <constraint firstAttribute="height" constant="160" id="ghU-RT-gfi"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="HXLiveBarrageContainerViewController" id="HeX-r3-laS"/>
+                                            <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="" id="HeX-r3-laS"/>
                                         </connections>
                                     </containerView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ea-F8-wyq" userLabel="Bottom Bar" customClass="HXRecordBottomBar">
@@ -1533,6 +1533,6 @@
         <image name="LC-CommentBubbleIcon" width="11" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O5M-18-fAC"/>
+        <segue reference="HeX-r3-laS"/>
     </inferredMetricsTieBreakers>
 </document>

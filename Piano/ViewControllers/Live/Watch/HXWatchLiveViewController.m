@@ -54,9 +54,9 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSString *identifier = segue.identifier;
-    if ([identifier isEqualToString:NSStringFromClass([HXLiveBarrageContainerViewController class])]) {
-        _barrageContainer = segue.destinationViewController;
+    __kindof UIViewController *destinationViewController = segue.destinationViewController;
+    if ([destinationViewController isKindOfClass:[HXLiveBarrageContainerViewController class]]) {
+        _barrageContainer = destinationViewController;
         _barrageContainer.delegate = self;
     }
 }

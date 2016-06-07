@@ -26,7 +26,7 @@ HXReplayBottomBarDelegate
 
 
 @implementation HXReplayViewController {
-    HXLiveBarrageContainerViewController *_containerViewController;
+    HXLiveBarrageContainerViewController *_barrageContainer;
     
     HXReplayViewModel *_viewModel;
     AVPlayer *_player;
@@ -42,8 +42,11 @@ HXReplayBottomBarDelegate
 
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    _containerViewController = segue.destinationViewController;
-    _containerViewController.delegate = self;
+    __kindof UIViewController *destinationViewController = segue.destinationViewController;
+    if ([destinationViewController isKindOfClass:[HXLiveBarrageContainerViewController class]]) {
+        _barrageContainer = destinationViewController;
+        _barrageContainer.delegate = self;
+    }
 }
 
 #pragma mark - View Controller Life Cycle
@@ -179,7 +182,7 @@ HXReplayBottomBarDelegate
             [self showBannerWithPrompt:error.domain];
         }
     } completed:^{
-        _containerViewController.barrages = _viewModel.barrages;
+        _barrageContainer.barrages = _viewModel.barrages;
     }];
 }
 
