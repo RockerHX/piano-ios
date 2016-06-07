@@ -245,6 +245,17 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     return 11.;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+
+    if (section != 2) {
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0., 0., View_Width(self.view), 11.)];
+        [footerView setBackgroundColor:JORGBSameCreate(30.)];
+        return footerView;
+    }
+    
+    return nil;
+}
+
 #pragma mark - table delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

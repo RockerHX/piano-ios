@@ -69,7 +69,7 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_playButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_playButton superView:self];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:-3. selfView:_playButton superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_playButton superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_playButton superView:self];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_playButton superView:self];

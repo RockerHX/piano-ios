@@ -63,7 +63,7 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 - (void)createLodingView{
 
     self.videoLoadingView = [UIView newAutoLayoutView];
-    [_videoLoadingView setBackgroundColor:JORGBCreate(80., 80., 80., 0.4)];
+    [_videoLoadingView setBackgroundColor:[UIColor clearColor]];
     [[_videoLoadingView layer] setCornerRadius:5.];
     [[_videoLoadingView layer] setMasksToBounds:YES];
     [_videoLoadingView setHidden:YES];
@@ -135,7 +135,6 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
                 [self.player seekToTime:CMTimeMake(0, 1)];
             }else{
                 //暂停的状态
-                
             }
             
             playState = YES;

@@ -21,7 +21,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
 @property (nonatomic, strong) UILabel *indexLabel;
 @property (nonatomic, strong) UILabel *songNameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) UIImageView *playStateImageView;
+//@property (nonatomic, strong) UIImageView *playStateImageView;
 @property (nonatomic, strong) UIImageView *downloadStateImageView;
 @property (nonatomic, strong) HXSongModel *songModel;
 
@@ -51,14 +51,14 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_indexLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:kIndexLabelWidth selfView:_indexLabel superView:self];
     
-    self.playStateImageView = [UIImageView newAutoLayoutView];
-    [_playStateImageView setContentMode:UIViewContentModeScaleAspectFit];
-    [_playStateImageView setImage:[UIImage imageNamed:@"AD-PauseIcon-S"]];
-    [_playStateImageView setHidden:YES];
-    [self addSubview:_playStateImageView];
-    
-    [JOAutoLayout autoLayoutWithSize:JOSize(kIndexLabelWidth-15., kIndexLabelWidth-15.) selfView:_playStateImageView superView:self];
-    [JOAutoLayout autoLayoutWithCenterWithView:_indexLabel selfView:_playStateImageView superView:self];
+//    self.playStateImageView = [UIImageView newAutoLayoutView];
+//    [_playStateImageView setContentMode:UIViewContentModeScaleAspectFit];
+//    [_playStateImageView setImage:[UIImage imageNamed:@"AD-PauseIcon-S"]];
+//    [_playStateImageView setHidden:YES];
+//    [self addSubview:_playStateImageView];
+//    
+//    [JOAutoLayout autoLayoutWithSize:JOSize(kIndexLabelWidth-15., kIndexLabelWidth-15.) selfView:_playStateImageView superView:self];
+//    [JOAutoLayout autoLayoutWithCenterWithView:_indexLabel selfView:_playStateImageView superView:self];
     
     self.downloadStateImageView = [UIImageView newAutoLayoutView];
     [_downloadStateImageView setImage:[UIImage imageNamed:@"AD-NoDownload"]];
@@ -101,8 +101,8 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
 - (void)changeSongPlayState:(BOOL)state{
     
     [_timeLabel setHidden:!state];
-    [_indexLabel setHidden:state];
-    [_playStateImageView setHidden:!state];
+//    [_indexLabel setHidden:state];
+//    [_playStateImageView setHidden:!state];
     
     UIColor *textColor = [UIColor whiteColor];
     if (state) {
@@ -110,6 +110,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     }else{
         textColor = [MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]->color;
     }
+    [_indexLabel setTextColor:textColor];
     [_songNameLabel setTextColor:textColor];
 }
 
