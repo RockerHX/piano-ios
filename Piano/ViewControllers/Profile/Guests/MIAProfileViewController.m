@@ -180,6 +180,15 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
     [JOAutoLayout autoLayoutWithHeight:profileTableHeadViewHeight selfView:_profileHeadView superView:_profileView];
+    
+    UIView *headBackgroundView = [UIView newAutoLayoutView];
+    [headBackgroundView setBackgroundColor:[UIColor blackColor]];
+    [_profileView addSubview:headBackgroundView];
+    
+    [JOAutoLayout autoLayoutWithTopView:_profileHeadView distance:0. selfView:headBackgroundView superView:_profileView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
 }
 
 - (void)createProfileTableView{
