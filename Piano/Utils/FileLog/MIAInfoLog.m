@@ -26,13 +26,11 @@
                         completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                             
                             if (success) {
-                                    NSLog(@"日志提交结果:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
-//                                [subscriber sendCompleted];
+//                                    NSLog(@"日志提交结果:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                 JOLog(@"日志提交成功");
                             }else{
                                 
                                 JOLog(@"日志提交失败");
-//                                [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
                             }
                         }timeoutBlock:^(MiaRequestItem *requestItem) {
                              

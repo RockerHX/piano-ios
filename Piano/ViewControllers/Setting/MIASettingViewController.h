@@ -16,6 +16,8 @@ typedef void(^SettingDataChangeBlock) ();
 
 @interface MIASettingViewController : UIViewController
 
+@property (nonatomic, strong) UIImage *maskImage;
+
 /**
  *  数据发生改变时block的回调.
  *

@@ -36,6 +36,10 @@
         return [MIACellManage createCellWithClass:[MIAPayHistoryCell class]];
     }
     
+    if (type == MIACellTypeSetting) {
+        return [MIACellManage createCellWithClass:[MIASettingCell class]];
+    }
+    
     if (type == MIACellTypeNormal) {
         return [MIACellManage createCellWithClass:[MIABaseTableViewCell class]];
     }
