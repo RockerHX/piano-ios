@@ -27,6 +27,8 @@
 #import "UIImage+Extrude.h"
 #import <UMengSocialCOM/UMSocial.h>
 #import "HXAppConstants.h"
+#import "HXDynamicGiftView.h"
+#import "HXStaticGiftView.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -192,6 +194,14 @@ HXLiveAlbumViewDelegate
     [_viewModel.rewardSignal subscribeNext:^(NSNumber *rewardTotal) {
         @strongify(self)
         [self updateAlbumView];
+    }];
+    [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
+        @strongify(self)
+        if (gift.type == HXGiftTypeStatic) {
+            [self.staticGiftView animationWithGift:gift];
+        } else if (gift.type == HXGiftTypeDynamic) {
+            [self.dynamicGiftView animationWithGift:gift];
+        }
     }];
 }
 
