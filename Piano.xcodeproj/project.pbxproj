@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1A423448169F3173A788A67A /* libPods-Piano.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2E70ABB0C246D442D00635 /* libPods-Piano.a */; };
+		398E29321D08093A00E22956 /* UIImage+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E29311D08093A00E22956 /* UIImage+JOExtend.m */; };
+		398E29381D08097400E22956 /* MIASettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E29351D08097400E22956 /* MIASettingCell.m */; };
+		398E29391D08097400E22956 /* MIASettingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E29371D08097400E22956 /* MIASettingCellView.m */; };
 		4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
 		4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
 		4206FA371CFBDCBB0015249E /* MIAPlayBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4206FA361CFBDCBB0015249E /* MIAPlayBarView.m */; };
@@ -370,6 +373,12 @@
 		398451F01CAD05DB009018C6 /* UserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSetting.m; sourceTree = "<group>"; };
 		398A6D0F1CAB77D6001A68B1 /* HXGuestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXGuestModel.h; sourceTree = "<group>"; };
 		398A6D101CAB77D6001A68B1 /* HXGuestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXGuestModel.m; sourceTree = "<group>"; };
+		398E29301D08093A00E22956 /* UIImage+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JOExtend.h"; sourceTree = "<group>"; };
+		398E29311D08093A00E22956 /* UIImage+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JOExtend.m"; sourceTree = "<group>"; };
+		398E29341D08097400E22956 /* MIASettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingCell.h; sourceTree = "<group>"; };
+		398E29351D08097400E22956 /* MIASettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingCell.m; sourceTree = "<group>"; };
+		398E29361D08097400E22956 /* MIASettingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingCellView.h; sourceTree = "<group>"; };
+		398E29371D08097400E22956 /* MIASettingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingCellView.m; sourceTree = "<group>"; };
 		420444571CE56DCF00F6B303 /* MIAAlbumRewardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewController.h; sourceTree = "<group>"; };
 		420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewController.m; sourceTree = "<group>"; };
 		4204445B1CE5863B00F6B303 /* MIAAlbumRewardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewModel.h; sourceTree = "<group>"; };
@@ -1093,6 +1102,15 @@
 			path = UserSetting;
 			sourceTree = "<group>";
 		};
+		398E29331D08097400E22956 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				398E29341D08097400E22956 /* MIASettingCell.h */,
+				398E29351D08097400E22956 /* MIASettingCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		420A3D5E1CF551DA0081931E /* Song */ = {
 			isa = PBXGroup;
 			children = (
@@ -1234,6 +1252,8 @@
 		42984ADA1CDAEF84004F00D5 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				398E29301D08093A00E22956 /* UIImage+JOExtend.h */,
+				398E29311D08093A00E22956 /* UIImage+JOExtend.m */,
 				42D612D71CE1FDE700B80753 /* UIFont+JOExtend.h */,
 				42D612D81CE1FDE700B80753 /* UIFont+JOExtend.m */,
 				42D612D91CE1FDE700B80753 /* UILabel+JOExtend.h */,
@@ -1693,6 +1713,9 @@
 		CD2E72931CA11DF8003CDB77 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				398E29331D08097400E22956 /* Cell */,
+				398E29361D08097400E22956 /* MIASettingCellView.h */,
+				398E29371D08097400E22956 /* MIASettingCellView.m */,
 				CD9167741CAE5304000A12DC /* MBProgressHUDHelp */,
 				CD91676C1CAE52E7000A12DC /* MIALabel */,
 				CD91676F1CAE52E7000A12DC /* MIAUIButton */,
@@ -3269,6 +3292,7 @@
 				42984B0E1CDAEF84004F00D5 /* JOFunctionObject.m in Sources */,
 				CD7960AC1CBE594C004CC661 /* HXAlbumsCommentCell.m in Sources */,
 				422497C51CF4663C008F8A55 /* JOManage.m in Sources */,
+				398E29381D08097400E22956 /* MIASettingCell.m in Sources */,
 				CD7960AE1CBE594C004CC661 /* HXSongModel.m in Sources */,
 				CD7960AF1CBE594C004CC661 /* HXPlayViewController.m in Sources */,
 				CD572DD61CF69AA500CCEC30 /* HXDynamicGiftView.m in Sources */,
@@ -3452,6 +3476,7 @@
 				CDAC6CBD1D06CB8100A13725 /* HXRewardGiftListLandscapeLayout.m in Sources */,
 				4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */,
 				CD7961151CBE594C004CC661 /* NSString+IsNull.m in Sources */,
+				398E29391D08097400E22956 /* MIASettingCellView.m in Sources */,
 				42A0DAFE1CE2E07100F1FCEF /* MIAAlbumSongView.m in Sources */,
 				CD7961161CBE594C004CC661 /* main.m in Sources */,
 				CD7961171CBE594C004CC661 /* HXThemeManager.m in Sources */,
@@ -3470,6 +3495,7 @@
 				CD7961201CBE594C004CC661 /* HXDiscoveryContainerViewController.m in Sources */,
 				CDE016E01CE2D8D8005645D5 /* HXLiveRewardViewController.m in Sources */,
 				429CC2021CE06C39004BCC0C /* MIAViewModel.m in Sources */,
+				398E29321D08093A00E22956 /* UIImage+JOExtend.m in Sources */,
 				42A0DAFC1CE2D65E00F1FCEF /* MIAAlbumHeadDetailViewModel.m in Sources */,
 				CDA394801CFD72D600F56A41 /* HXForgotPWViewController.m in Sources */,
 				CD7961211CBE594C004CC661 /* HXAccountModel.m in Sources */,
