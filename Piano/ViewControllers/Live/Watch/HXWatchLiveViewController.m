@@ -361,7 +361,18 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
 - (void)barrageContainer:(HXLiveBarrageContainerViewController *)container shouldShowBarrage:(HXBarrageModel *)barrage {
-    ;
+    if (barrage.type == HXBarrageTypeComment) {
+        HXWatcherModel *watcher = [HXWatcherModel instanceWithComment:barrage.comment];
+        [HXLiveUserBoard showWithWatcher:watcher showProfile:nil report:^(HXWatcherModel *watcher) {
+            ;
+        } gaged:^(HXWatcherModel *watcher) {
+            [MiaAPIHelper reportWithType:@"resport_anchor" content:watcher.ID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                [self showBannerWithPrompt:@"举报成功"];
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                [self showBannerWithPrompt:@"网络超时，举报失败"];
+            }];
+        } closed:nil];
+    }
 }
 
 #pragma mark - HXLiveEndViewControllerDelegate Methods

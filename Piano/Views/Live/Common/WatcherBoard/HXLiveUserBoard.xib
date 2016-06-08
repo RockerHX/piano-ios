@@ -186,6 +186,6 @@
     </objects>
     <resources>
         <image name="LC-ProfileIcon" width="15" height="15"/>
-        <image name="LC-ReportIcon-Black" width="375" height="667"/>
+        <image name="LC-ReportIcon-Black" width="21" height="15"/>
     </resources>
 </document>
