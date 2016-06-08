@@ -185,12 +185,11 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 	}
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
-		NSLog(@"%@ with roomID: %@", action, param1);
-        
-        HXWatchLiveViewController *watchLiveViewController = [HXWatchLiveViewController instance];
-		watchLiveViewController.roomID = param1;
-		[self.window.rootViewController presentViewController:watchLiveViewController animated:YES completion:nil];
-
+        NSLog(@"%@ with roomID: %@", action, param1);
+        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+        watchLiveViewController.roomID = param1;
+        [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
 	}
 }
 

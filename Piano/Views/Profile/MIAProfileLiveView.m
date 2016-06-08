@@ -86,14 +86,12 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
 }
 
 #pragma mark - tag action
-
 - (void)tapAction:(UIGestureRecognizer *)gesture{
-    
-    HXWatchLiveViewController *watchLiveViewController = [HXWatchLiveViewController instance];
+    UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
     watchLiveViewController.roomID = _liveModel.liveRoomID;
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [(UINavigationController *)[[delegate window] rootViewController] presentViewController:watchLiveViewController animated:YES completion:^{
-
+    [(UINavigationController *)[[delegate window] rootViewController] presentViewController:watchLiveNavigationController animated:YES completion:^{
         if ([[MusicMgr standard] isPlaying]) {
             [[MusicMgr standard] pause];
         }
