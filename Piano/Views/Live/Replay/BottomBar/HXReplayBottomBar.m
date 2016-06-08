@@ -53,9 +53,9 @@ HXXibImplementation
     }
 }
 
-- (IBAction)shareButtonPressed {
+- (IBAction)reportButtonPressed {
     if (_delegate && [_delegate respondsToSelector:@selector(bottomBar:takeAction:)]) {
-        [_delegate bottomBar:self takeAction:HXReplayBottomBarActionShare];
+        [_delegate bottomBar:self takeAction:HXReplayBottomBarActionReport];
     }
 }
 

@@ -22,7 +22,6 @@
 
 @property (nonatomic, strong) HXDiscoveryModel *model;
 
-- (IBAction)reportButtonPressed;
 - (IBAction)closeButtonPressed;
 
 @end

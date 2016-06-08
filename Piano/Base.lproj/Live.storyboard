@@ -900,16 +900,6 @@
                                     <constraint firstItem="K18-QZ-PAu" firstAttribute="leading" secondItem="UAv-at-bm5" secondAttribute="leading" constant="10" id="rWf-gQ-JHq"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ug2-k0-cb4" userLabel="Resport Button">
-                                <rect key="frame" x="226" y="10" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="iIp-8r-ggq"/>
-                                </constraints>
-                                <state key="normal" image="LC-ReportIcon-Gray"/>
-                                <connections>
-                                    <action selector="reportButtonPressed" destination="gxm-Sv-8N7" eventType="touchUpInside" id="IH2-9O-3AG"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CU9-hb-5Tu" userLabel="Close Button">
                                 <rect key="frame" x="276" y="13" width="44" height="44"/>
                                 <constraints>
@@ -924,11 +914,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CU9-hb-5Tu" firstAttribute="leading" secondItem="ug2-k0-cb4" secondAttribute="trailing" id="4Af-2E-AAS"/>
-                            <constraint firstItem="ug2-k0-cb4" firstAttribute="width" secondItem="ug2-k0-cb4" secondAttribute="height" multiplier="1:1" id="K9e-qL-HGQ"/>
                             <constraint firstItem="UAv-at-bm5" firstAttribute="top" secondItem="otD-yR-bpK" secondAttribute="bottom" id="KCf-zT-sTp"/>
                             <constraint firstItem="4oN-8V-zMZ" firstAttribute="top" secondItem="DAo-oU-1G7" secondAttribute="top" id="MwI-dn-DZe"/>
-                            <constraint firstItem="ug2-k0-cb4" firstAttribute="centerY" secondItem="CU9-hb-5Tu" secondAttribute="centerY" id="T7s-zm-qI8"/>
                             <constraint firstItem="CU9-hb-5Tu" firstAttribute="centerY" secondItem="ktk-jC-3ie" secondAttribute="centerY" id="UxT-X5-XUZ"/>
                             <constraint firstAttribute="bottom" secondItem="UAv-at-bm5" secondAttribute="bottom" id="ZBG-NZ-xeX"/>
                             <constraint firstAttribute="trailing" secondItem="UAv-at-bm5" secondAttribute="trailing" id="gpQ-86-RMd"/>
@@ -1660,16 +1647,6 @@
                                     <constraint firstAttribute="trailing" secondItem="r6Z-zd-SpT" secondAttribute="trailing" constant="10" id="uJe-I3-O4x"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gg-ui-OHJ" userLabel="Resport Button">
-                                <rect key="frame" x="477" y="10" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Qdk-j0-fZx"/>
-                                </constraints>
-                                <state key="normal" image="LC-ReportIcon-Gray"/>
-                                <connections>
-                                    <action selector="reportButtonPressed" destination="DxU-vc-lr7" eventType="touchUpInside" id="xiJ-i0-OaM"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqW-Iz-hQS" userLabel="Close Button">
                                 <rect key="frame" x="527" y="19" width="31" height="31"/>
                                 <state key="normal" image="L-CloseIcon"/>
@@ -1685,13 +1662,10 @@
                             <constraint firstAttribute="bottom" secondItem="AHm-Vd-xNT" secondAttribute="bottom" id="3dz-wD-ChP"/>
                             <constraint firstAttribute="bottom" secondItem="4S1-sT-Nb3" secondAttribute="bottom" id="7eD-0E-Wi2"/>
                             <constraint firstItem="AHm-Vd-xNT" firstAttribute="leading" secondItem="HEK-fg-ml0" secondAttribute="leading" id="9qu-KY-JRe"/>
-                            <constraint firstItem="1Gg-ui-OHJ" firstAttribute="width" secondItem="1Gg-ui-OHJ" secondAttribute="height" multiplier="1:1" id="AQW-me-Q4z"/>
                             <constraint firstAttribute="trailing" secondItem="4S1-sT-Nb3" secondAttribute="trailing" id="B6a-pD-UmZ"/>
                             <constraint firstAttribute="trailing" secondItem="hqW-Iz-hQS" secondAttribute="trailing" constant="10" id="JdA-D1-nfj"/>
-                            <constraint firstItem="hqW-Iz-hQS" firstAttribute="leading" secondItem="1Gg-ui-OHJ" secondAttribute="trailing" id="KlK-IL-NVf"/>
                             <constraint firstItem="4S1-sT-Nb3" firstAttribute="leading" secondItem="HEK-fg-ml0" secondAttribute="leading" id="PRT-CA-gRD"/>
                             <constraint firstItem="4S1-sT-Nb3" firstAttribute="top" secondItem="74I-KS-fgL" secondAttribute="bottom" id="PYQ-ge-xjc"/>
-                            <constraint firstItem="1Gg-ui-OHJ" firstAttribute="centerY" secondItem="hqW-Iz-hQS" secondAttribute="centerY" id="Yj2-Se-EgN"/>
                             <constraint firstAttribute="trailing" secondItem="AHm-Vd-xNT" secondAttribute="trailing" id="nHW-Nz-vPA"/>
                         </constraints>
                     </view>
