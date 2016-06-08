@@ -22,6 +22,8 @@
 #import "NSObject+LoginAction.h"
 #import "UIImage+Extrude.h"
 #import "CacheHelper.h"
+#import "FXBlurView.h"
+#import "MIACellManage.h"
 
 static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
@@ -49,6 +51,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 - (void)loadView{
 
     [super loadView];
+    [self.view setBackgroundColor:[UIColor blackColor]];
     [self loadViewModel];
     
     [self createCoverImageView];
@@ -56,13 +59,12 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [self createHeadImageView];
     [self createNetSwitch];
     [self createSettingTableView];
-    
 }
 
 - (void)createCoverImageView{
     
     self.coverImageView = [UIImageView newAutoLayoutView];
-    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.coverUrl] placeholderImage:nil];
+    [_coverImageView setImage:[_maskImage blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor blackColor]]];
     [self.view addSubview:_coverImageView];
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_coverImageView superView:self.view];
@@ -78,7 +80,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
     self.navBarView = [MIANavBarView newAutoLayoutView];
     [_navBarView setTitle:@"设置"];
-    [_navBarView setBackgroundColor:[UIColor clearColor]];
+    [_navBarView setBackgroundColor:JORGBCreate(0., 0., 0., 0.5)];
     [[_navBarView navBarTitleLabel] setTextColor:[UIColor whiteColor]];
 //    [_navBarView setLeftButtonTitle:@"x" titleColor:[UIColor whiteColor]];
     [_navBarView setLeftButtonImageName:@"C-BackIcon-White"];
@@ -104,7 +106,8 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [_settingTableView setDelegate:self];
     [_settingTableView setBackgroundColor:[UIColor clearColor]];
     [_settingTableView setSectionHeaderHeight:CGFLOAT_MIN];
-    [_settingTableView setSeparatorColor:JORGBCreate(110., 110., 110., 0.5)];
+//    [_settingTableView setSeparatorColor:JORGBCreate(80., 80., 80., 0.0)];
+    [_settingTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:_settingTableView];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_settingTableView superView:self.view];
@@ -162,14 +165,77 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    MIABaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if (!cell) {
+        
+        cell = [MIACellManage getCellWithType:MIACellTypeSetting];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    NSString *contentString = @"";
+    if (indexPath.section == 0 && indexPath.row == 0) {
+    }else{
+        
+        if (indexPath.section == 0 && indexPath.row == 3) {
+            
+            NSString *genderString = [[_settingViewModel.settingCellContentDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+            if ([genderString isEqualToString:@"1"]) {
+                contentString = @"男";
+            }else if ([genderString isEqualToString:@"2"]){
+                contentString = @"女";
+            }
+            
+        }else{
+            
+            contentString = [[_settingViewModel.settingCellContentDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+//            [[cell detailTextLabel] setText:[[_settingViewModel.settingCellContentDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+        }
+    }
+    
+    [(MIASettingCell *)cell setSettingCellTitle:[[_settingViewModel.settingCellDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] contnet:contentString];
+    
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    
+    if (section == 0 && row == 0) {
+        //头像
+        [cell.contentView addSubview:_headImageView];
+        
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-17. selfView:_headImageView superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithSize:JOSize(kSettingHeadImageHeight, kSettingHeadImageHeight) selfView:_headImageView superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_headImageView superView:cell.contentView];
+    }
+    
+    if (section == 1 && row == 2) {
+        //网络开关
+        [cell.contentView addSubview:_netSwitch];
+        
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-15. selfView:_netSwitch superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_netSwitch superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithSize:JOSize(44, 26.) selfView:_netSwitch superView:cell.contentView];
+    }
+    
+    //是否存在箭头指示
+    if ((section == 0 && row == 0) || (section == 1) || (section == 2 && row == 1) || (section == 2 && row == 2)) {
+        //不存在箭头指示
+        [(MIASettingCell *)cell setCellAccessoryImage:nil];
+    }else{
+        [(MIASettingCell *)cell setCellAccessoryImage:[UIImage imageNamed:@"C-ArrowIcon-Right-Gray"]];
+//        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
+    
+    /*
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"0_cell"];
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     }
-    [cell setBackgroundColor:[UIColor clearColor]];
+//    [cell setBackgroundColor:JORGBCreate(0., 0., 0., 0.4)];
+//    [[cell contentView] setBackgroundColor:JORGBCreate(0., 0., 0., 0.4)];
     [[cell textLabel] setTextColor:[MIAFontManage getFontWithType:MIAFontType_Setting_CellTitle]->color];
     [[cell textLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Setting_CellTitle]->font];
+//    NSLog(@"fontName:%@",[[cell textLabel] font]);
     [[cell textLabel] setText:[[_settingViewModel.settingCellDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
     [[cell detailTextLabel] setTextColor:[MIAFontManage getFontWithType:MIAFontType_Setting_CellContent]->color];
     [[cell detailTextLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Setting_CellContent]->font];
@@ -198,7 +264,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         //头像
         [cell.contentView addSubview:_headImageView];
         
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_headImageView superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-17. selfView:_headImageView superView:cell.contentView];
         [JOAutoLayout autoLayoutWithSize:JOSize(kSettingHeadImageHeight, kSettingHeadImageHeight) selfView:_headImageView superView:cell.contentView];
         [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_headImageView superView:cell.contentView];
     }
@@ -207,9 +273,9 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         //网络开关
         [cell.contentView addSubview:_netSwitch];
         
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_netSwitch superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-15. selfView:_netSwitch superView:cell.contentView];
         [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_netSwitch superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(50, 30.) selfView:_netSwitch superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithSize:JOSize(44, 26.) selfView:_netSwitch superView:cell.contentView];
     }
     
     //是否存在箭头指示
@@ -219,6 +285,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     }else{
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
+    */
     
     return cell;
 }
@@ -237,6 +304,11 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
     return CGFLOAT_MIN;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+    return 11.;
 }
 
 #pragma mark - table delegate
@@ -307,7 +379,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-        imagePickerController.sourceType =  UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        imagePickerController.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
         imagePickerController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePickerController.sourceType];
     }
     imagePickerController.delegate = self;

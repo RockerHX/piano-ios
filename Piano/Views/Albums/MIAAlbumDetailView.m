@@ -95,7 +95,7 @@ static NSString *const kRewardDownloadTitle = @"打赏";
         [JOAutoLayout autoLayoutWithRightXView:_albumCoverImageView distance:-kRightInsideSpaceDistance selfView:_rewardForDownloadView superView:self];
         [JOAutoLayout autoLayoutWithHeight:kRewardDownloadViewHeight selfView:_rewardForDownloadView superView:self];
         
-        CGFloat topSpaceDistance = 10.;
+        CGFloat topSpaceDistance = 17.;
         self.rewardButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [[_rewardButton titleLabel] setJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_PayDownloadButtonTitle]];
         [_rewardButton setTitle:kRewardDownloadTitle forState:UIControlStateNormal];

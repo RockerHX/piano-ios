@@ -51,4 +51,6 @@
 
 JO_EXTERN JOFont * JOFontMake(NSString *fontName,UIColor *fontColor,CGFloat fontSize);
 
+JO_EXTERN JOFont * JOFontsMake(UIFont *font, UIColor *fontColor);
+
 @end

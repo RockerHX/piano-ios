@@ -140,11 +140,11 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     [_albumNameLabel setText:_albumModel.title];
     [_albumInfoView addSubview:_albumNameLabel];
     
-    CGFloat albumNameLabelHeight = [_albumNameLabel sizeThatFits:JOMAXSize].height+8.;
+    CGFloat albumNameLabelHeight = [_albumNameLabel sizeThatFits:JOMAXSize].height;
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumNameLabel superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumNameLabel superView:_albumInfoView];
-    [JOAutoLayout autoLayoutWithBottomView:_singerNameLabel distance:0. selfView:_albumNameLabel superView:_albumInfoView];
+    [JOAutoLayout autoLayoutWithBottomView:_singerNameLabel distance:-kAlbumInfoAlbumNameToSingerNameSpaceDistance selfView:_albumNameLabel superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithHeight:albumNameLabelHeight selfView:_albumNameLabel superView:_albumInfoView];
 
     self.albumCoverImageView = [UIImageView newAutoLayoutView];
@@ -155,14 +155,16 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_albumCoverImageView superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithCenterXWithView:_albumInfoView selfView:_albumCoverImageView superView:_albumInfoView];
-    [JOAutoLayout autoLayoutWithWidthWithView:_albumInfoView ratioValue:1./3. selfView:_albumCoverImageView superView:_albumInfoView];
+    [JOAutoLayout autoLayoutWithWidth:kAlbumInfoImageViewWidth selfView:_albumCoverImageView superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_albumCoverImageView superView:_albumInfoView];
     
+    
+    CGFloat albumInfoHeight =singerNameLabelHeight+albumNameLabelHeight+kAlbumInfoImageViewWidth + kAlbumInfoImageToAlbumNameSpaceDistance + kAlbumInfoAlbumNameToSingerNameSpaceDistance;
     
     [JOAutoLayout autoLayoutWithTopView:_popButton distance:kButtonToAlbumInfoViewSpaceDistance selfView:_albumInfoView superView:_baseView];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kAlbumRewardLeftSpaceDistance selfView:_albumInfoView superView:_baseView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-kAlbumRewardRightSpaceDistance selfView:_albumInfoView superView:_baseView];
-    [JOAutoLayout autoLayoutWithHeight:singerNameLabelHeight+albumNameLabelHeight+View_Width(self.view)/3. selfView:_albumInfoView superView:_baseView];
+    [JOAutoLayout autoLayoutWithHeight:albumInfoHeight selfView:_albumInfoView superView:_baseView];
     
     self.rewardTipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_AlbumReward_Tip]];
     [_rewardTipLabel setTextAlignment:NSTextAlignmentCenter];

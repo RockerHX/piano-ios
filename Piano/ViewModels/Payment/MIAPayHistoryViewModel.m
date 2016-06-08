@@ -10,7 +10,7 @@
 #import "MIASendGiftModel.h"
 #import "MIAOrderModel.h"
 
-CGFloat const kPayHistoryItemViewHeight = 50.;
+CGFloat const kPayHistoryItemViewHeight = 56.;
 CGFloat const kPayHistoryCellHeight = 81.;
 CGFloat const kPayHistoryCellHeadHeight= 9.;
 static NSString *const kRequestMaxLimitedCount = @"10";

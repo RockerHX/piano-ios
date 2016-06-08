@@ -32,9 +32,10 @@ CGFloat const kBaseCellHeadViewHeight = 35.;
     self.maskView = [UIView newAutoLayoutView];
     [self addSubview:_maskView];
     
-    self.headImageView = [UIImageView newAutoLayoutView];
-    [_headImageView setContentMode:UIViewContentModeScaleAspectFit];
-    [_maskView addSubview:_headImageView];
+    self.headImageButtonView = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_headImageButtonView setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    [_headImageButtonView setContentMode:UIViewContentModeScaleAspectFit];
+    [_maskView addSubview:_headImageButtonView];
     
     self.headLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Cell_Title]];
     [_headLabel setBackgroundColor:[UIColor clearColor]];
@@ -80,7 +81,7 @@ CGFloat const kBaseCellHeadViewHeight = 35.;
     }
     
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_maskView superView:self];
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:_headImageView superView:_maskView];
+    [JOAutoLayout removeAllAutoLayoutWithSelfView:_headImageButtonView superView:_maskView];
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_headLabel superView:_maskView];
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_headTipLabel superView:_maskView];
     
@@ -90,21 +91,22 @@ CGFloat const kBaseCellHeadViewHeight = 35.;
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_maskView superView:self];
     [JOAutoLayout autoLayoutWithHeight:kBaseCellHeadViewHeight-10 selfView:_maskView superView:self];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_headImageView superView:_maskView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:10. selfView:_headImageView superView:_maskView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_headImageView superView:_maskView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_headImageButtonView superView:_maskView];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:10. selfView:_headImageButtonView superView:_maskView];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_headImageButtonView superView:_maskView];
     if (image) {
-        [_headImageView setImage:image];
-        [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_headImageView superView:_maskView];
-        [_headImageView setHidden:NO];
+//        [_headImageButtonView setImage:image];
+        [_headImageButtonView setImage:image forState:UIControlStateNormal];
+        [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_headImageButtonView superView:_maskView];
+        [_headImageButtonView setHidden:NO];
     }else{
-        [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_headImageView superView:_maskView];
-        [_headImageView setHidden:YES];
+        [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_headImageButtonView superView:_maskView];
+        [_headImageButtonView setHidden:YES];
     }
     
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_headTipLabel superView:_maskView];
-    [JOAutoLayout autoLayoutWithTopYView:_headImageView selfView:_headTipLabel superView:_maskView];
-    [JOAutoLayout autoLayoutWithBottomYView:_headImageView selfView:_headTipLabel superView:_maskView];
+    [JOAutoLayout autoLayoutWithTopYView:_headImageButtonView selfView:_headTipLabel superView:_maskView];
+    [JOAutoLayout autoLayoutWithBottomYView:_headImageButtonView selfView:_headTipLabel superView:_maskView];
     
     if (headTipTitle && [headTipTitle length]) {
         [_headTipLabel setText:headTipTitle];
@@ -117,9 +119,9 @@ CGFloat const kBaseCellHeadViewHeight = 35.;
         [_headTipLabel setHidden:YES];
     }
     
-    [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:4. selfView:_headLabel superView:_maskView];
-    [JOAutoLayout autoLayoutWithTopYView:_headImageView selfView:_headLabel superView:_maskView];
-    [JOAutoLayout autoLayoutWithBottomYView:_headImageView selfView:_headLabel superView:_maskView];
+    [JOAutoLayout autoLayoutWithLeftView:_headImageButtonView distance:4. selfView:_headLabel superView:_maskView];
+    [JOAutoLayout autoLayoutWithTopYView:_headImageButtonView selfView:_headLabel superView:_maskView];
+    [JOAutoLayout autoLayoutWithBottomYView:_headImageButtonView selfView:_headLabel superView:_maskView];
     [JOAutoLayout autoLayoutWithRightView:_headTipLabel distance:0. selfView:_headLabel superView:_maskView];
     
     [_headLabel setText:JOConvertStringToNormalString(headTitle)];

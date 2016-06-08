@@ -822,4 +822,53 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
+#pragma mark - Log 上传
+
++ (void)getUploadLogWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                         timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:@"txt" forKey:MiaAPIKey_Type];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_User_GetUpload
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)uploadLogWithRoomID:(NSString *)roomID
+                    content:(NSString *)content
+                     fileID:(NSString *)fileID
+              completeBlock:(MiaRequestCompleteBlock)completeBlock
+               timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+    [dictValues setValue:content forKey:MiaAPIKey_Content];
+    [dictValues setValue:fileID forKey:MiaAPIKey_fileID];
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_LogUpload
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
+#pragma mark - 举报 report
+
++ (void)reportWithType:(NSString *)type
+               content:(NSString *)content
+         completeBlock:(MiaRequestCompleteBlock)completeBlock
+          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:type forKey:MiaAPIKey_Type];
+    [dictValues setValue:content forKey:MiaAPIKey_Content];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Report
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 @end

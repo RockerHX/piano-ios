@@ -11,6 +11,9 @@
 #import "MIAAlbumViewController.h"
 #import "MIAAlbumModel.h"
 
+CGFloat const kAlbumImageToTitleSpaceDistance = 7.;
+CGFloat const kAlbumTitleToTipSpaceDistance = 5.;
+
 @interface MIAProfileAlbumView()
 
 @property (nonatomic, strong) MIAAlbumModel *albumModel;
@@ -50,7 +53,7 @@
     
     [self addTapGesture];
     
-    [[self.showImageView layer] setCornerRadius:3.];
+//    [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_Name]];
     [self.showTipLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_BackTotal]];
 
@@ -59,15 +62,16 @@
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];
     [JOAutoLayout autoLayoutWithHeightWidthRatioValue:1. selfView:self.showImageView superView:self];
     
-    [JOAutoLayout autoLayoutWithTopView:self.showImageView distance:0. selfView:self.showTitleLabel superView:self];
+    [JOAutoLayout autoLayoutWithTopView:self.showImageView distance:kAlbumImageToTitleSpaceDistance selfView:self.showTitleLabel superView:self];
     [JOAutoLayout autoLayoutWithLeftXView:self.showImageView selfView:self.showTitleLabel superView:self];
     [JOAutoLayout autoLayoutWithRightXView:self.showImageView selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height + 6 selfView:self.showTitleLabel superView:self];
+    [JOAutoLayout autoLayoutWithHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height selfView:self.showTitleLabel superView:self];
     
-    [JOAutoLayout autoLayoutWithTopView:self.showTitleLabel distance:0 selfView:self.showTipLabel superView:self];
+    [JOAutoLayout autoLayoutWithTopView:self.showTitleLabel distance:kAlbumTitleToTipSpaceDistance selfView:self.showTipLabel superView:self];
     [JOAutoLayout autoLayoutWithLeftXView:self.showImageView selfView:self.showTipLabel superView:self];
     [JOAutoLayout autoLayoutWithRightXView:self.showImageView selfView:self.showTipLabel superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:self.showTipLabel superView:self];
+//    [JOAutoLayout autoLayoutWithHeight:[self.showTipLabel sizeThatFits:JOMAXSize].height selfView:self.showTipLabel superView:self];
 }
 
 - (void)setShowData:(id)data{

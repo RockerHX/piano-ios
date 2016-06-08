@@ -64,6 +64,7 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [_popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_popButton setImage:[UIImage imageNamed:@"C-BackIcon-White"] forState:UIControlStateNormal];
     [_popButton addTarget:self action:@selector(popButtonClikc) forControlEvents:UIControlEventTouchUpInside];
+//    [_popButton setImageEdgeInsets:UIEdgeInsetsMake(0., -15., 0., 0.)];
     [self addSubview:_popButton];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_popButton superView:self];

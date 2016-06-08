@@ -32,6 +32,7 @@ typedef NS_ENUM(NSInteger, DeviceType){
     DeviceType_Ipod3G,
     DeviceType_Ipod4G,
     DeviceType_Ipod5G,
+    DeviceType_Ipod6G,
     
     DeviceType_Ipad1,
     DeviceType_Ipad2,
@@ -39,9 +40,14 @@ typedef NS_ENUM(NSInteger, DeviceType){
     DeviceType_Ipad4,
     
     DeviceType_IpadAir,
+    DeviceType_IpadAir2,
+    
+    DeviceType_IpadPro,
     
     DeviceType_IpadMini1,
     DeviceType_IpadMini2,
+    DeviceType_IpadMini3,
+    DeviceType_IpadMini4,
     
     DeviceType_Unknown,
 };
@@ -75,6 +81,13 @@ typedef NS_ENUM(NSInteger, SystemVersion){
 + (DeviceType)deviceType;
 
 /**
+ *  获取设备的名称.
+ *
+ *  @return 设备的名称
+ */
++ (NSString *)deviceName;
+
+/**
  *  获取当前系统的版本号.
  *
  *  @return 版本号.
@@ -93,6 +106,6 @@ typedef NS_ENUM(NSInteger, SystemVersion){
  *
  *  @return 设备的名字.
  */
-+ (NSString *)deviceName;
++ (NSString *)deviceUserName;
 
 @end

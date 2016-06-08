@@ -8,6 +8,9 @@
 
 #import "MIABaseShowView.h"
 
+UIKIT_EXTERN CGFloat kProfileReplayImageToTitleSpaceDistance;
+UIKIT_EXTERN CGFloat kProfileReplayTitleToTipSpaceDistance;
+
 @interface MIAProfileReplayView : MIABaseShowView
 
 @property (nonatomic, copy) NSString *uid;

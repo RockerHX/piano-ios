@@ -12,8 +12,8 @@
 #import "MusicMgr.h"
 #import "MIAProfileViewModel.h"
 
-static CGFloat const kShowImageToTitleDistanceSpace = 10.;
-static CGFloat const kTitleTopDistanceSpace = 15.;
+static CGFloat const kShowImageToTitleDistanceSpace = 9.;
+static CGFloat const kTitleTopDistanceSpace = 10.;
 static CGFloat const kTitleToTipDistanceSpace = 5.;
 
 @interface MIAProfileLiveView()
@@ -43,7 +43,7 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
     [self addTapGesture];
     
     [self.showImageView setBackgroundColor:[UIColor grayColor]];
-    [[self.showImageView layer] setCornerRadius:3.];
+//    [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Live_Title]];
     [self.showTitleLabel setTextAlignment:NSTextAlignmentLeft];
     

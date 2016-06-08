@@ -11,7 +11,16 @@
 #import "JOBaseSDK.h"
 #import "HXVersion.h"
 
-CGFloat const kProfileLiveCellHeight = 100.;
+#import "MIAFontManage.h"
+#import "MIAProfileAlbumCell.h"
+#import "MIABaseTableViewCell.h"
+#import "MIAProfileAlbumView.h"
+#import "MIAProfileVideoCell.h"
+#import "MIAProfileVideoView.h"
+#import "MIAProfileReplayCell.h"
+#import "MIAProfileReplayView.h"
+
+CGFloat const kProfileLiveCellHeight = 80.;
 CGFloat const kProfileAlbumCellHeight = 150.;
 CGFloat const kProfileVideoCellHeight = 140.;
 CGFloat const kProfileReplayCellHeight = 210.;
@@ -206,66 +215,43 @@ CGFloat const kProfileReplayCellHeight = 210.;
 
 #pragma mark - cell height
 
-+ (CGFloat)profileAlbumCellHeight{
++ (CGFloat)profileAlbumCellHeightWithWidth:(CGFloat)width{
+
+    CGFloat viewWidth = (width - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - 2*kProfileAlbumItemSpaceDistance)/3.;
     
-    if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6 || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6s) {
-        return kProfileAlbumCellHeight;
-    }else if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6plus || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6splus){
-        return kProfileAlbumCellHeight + 15.;
-    }else if([JOFDeviceInfo deviceType] == DeviceType_Simulator){
-        
-        if([HXVersion currentModel] == HXDeviceModelTypeIphone4_4S || [HXVersion currentModel] == HXDeviceModelTypeIphone5_5S){
-            return kProfileAlbumCellHeight - 15.;
-        }else if ([HXVersion currentModel] == HXDeviceModelTypeIphone6Plus){
-            
-            return kProfileAlbumCellHeight + 15.;
-        }
-        return kProfileAlbumCellHeight;
-    }else{
-        return kProfileAlbumCellHeight-15.;
-    }
+    UILabel *label1 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_Name]];
+    [label1 setText:@" "];
+    CGFloat height1 = [label1 sizeThatFits:JOMAXSize].height;
+    
+    UILabel *label2 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_BackTotal]];
+    [label2 setText:@" "];
+    CGFloat height2 = [label2 sizeThatFits:JOMAXSize].height;
+    
+    return viewWidth + kAlbumImageToTitleSpaceDistance + height1 + kAlbumTitleToTipSpaceDistance + height2 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance/2.;
 }
 
-+ (CGFloat)profileVideoCellHeight{
++ (CGFloat)profileVideoCellHeightWithWidth:(CGFloat)width{
+
+    UILabel *label1 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_Name]];
+    [label1 setText:@" "];
+    CGFloat height1 = [label1 sizeThatFits:JOMAXSize].height;
     
-    if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6 || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6s) {
-        return kProfileVideoCellHeight;
-    }else if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6plus || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6splus){
-        return kProfileVideoCellHeight + 15.;
-    }else if([JOFDeviceInfo deviceType] == DeviceType_Simulator){
-        
-        if([HXVersion currentModel] == HXDeviceModelTypeIphone4_4S || [HXVersion currentModel] == HXDeviceModelTypeIphone5_5S){
-            return kProfileVideoCellHeight - 15.;
-        }else if ([HXVersion currentModel] == HXDeviceModelTypeIphone6Plus){
-            
-            return kProfileVideoCellHeight + 15.;
-        }
-        return kProfileVideoCellHeight;
-    }else{
-        return kProfileVideoCellHeight-15.;
-    }
+    return 94. + kProfileVideoToTitleSpaceDistance + height1 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance/2.;
 }
 
-+ (CGFloat)profileReplayCellHeight{
++ (CGFloat)profileReplayCellHeightWithWidth:(CGFloat)width{
 
-    if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6 || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6s) {
-        return kProfileReplayCellHeight;
-    }else if ([JOFDeviceInfo deviceType] ==  DeviceType_Iphone6plus || [JOFDeviceInfo deviceType] ==  DeviceType_Iphone6splus){
-        return kProfileReplayCellHeight + 15.;
-    }else if([JOFDeviceInfo deviceType] == DeviceType_Simulator){
+    CGFloat viewWidth = (width - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - kProfileReplayItemSpaceDistance)/2.;
     
-        if([HXVersion currentModel] == HXDeviceModelTypeIphone4_4S || [HXVersion currentModel] == HXDeviceModelTypeIphone5_5S){
-            return kProfileReplayCellHeight - 25.;
-        }else if ([HXVersion currentModel] == HXDeviceModelTypeIphone6Plus){
-            
-            return kProfileReplayCellHeight + 15.;
-        }
-        return kProfileReplayCellHeight;
-        
-    }else{
-        return kProfileReplayCellHeight-15.;
-    }
+    UILabel *label1 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Replay_Name]];
+    [label1 setText:@" "];
+    CGFloat height1 = [label1 sizeThatFits:JOMAXSize].height;
     
+    UILabel *label2 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Replay_Date]];
+    [label2 setText:@" "];
+    CGFloat height2 = [label2 sizeThatFits:JOMAXSize].height;
+    
+    return viewWidth + kProfileReplayTitleToTipSpaceDistance + height1 + kProfileReplayImageToTitleSpaceDistance + height2 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance/2.;
 }
 
 @end

@@ -159,3 +159,9 @@ static NSString * const MiaAPICommand_SendGift              = @"User.Gift.Post.B
 static NSString * const MiaAPIKey_MCoin                     = @"mcoin";//M币
 static NSString * const MiaAPIKey_GiftID                    = @"giftID";//礼物的id
 static NSString * const MiaAPIKey_GiftNum                   = @"giftNum";//礼物的数量
+
+//log upload
+static NSString * const MiaAPICommand_LogUpload             = @"Live.Room.Post.Log";//上传日志
+
+//Report
+static NSString * const MiaAPICommand_Report                = @"User.Post.Report";//举报

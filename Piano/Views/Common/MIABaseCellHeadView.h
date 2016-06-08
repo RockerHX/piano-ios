@@ -19,7 +19,7 @@ UIKIT_EXTERN CGFloat const kBaseCellHeadViewHeight;
 
 @interface MIABaseCellHeadView : UIView
 
-@property (nonatomic, strong) UIImageView *headImageView;
+@property (nonatomic, strong) UIButton *headImageButtonView;
 @property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, strong) UILabel *headLabel;

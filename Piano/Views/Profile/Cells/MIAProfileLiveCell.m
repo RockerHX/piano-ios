@@ -33,7 +33,7 @@
         [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_liveView superView:self.cellContentView];
         [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_liveView superView:self.cellContentView];
         [JOAutoLayout autoLayoutWithRightSpaceDistance:-kContentViewInsideRightSpaceDistance selfView:_liveView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_liveView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-15. selfView:_liveView superView:self.cellContentView];
 
         }
 }

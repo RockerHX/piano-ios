@@ -16,8 +16,8 @@ CGFloat const kAttentionButtonTag = 3333;
 static NSString *const kAttentionTipTitle = @"已关注";
 static NSString *const kUNnAttentiontipTitle = @"关注";
 
-static CGFloat const kLeftSpaceDistance = 10.; // 需要显示的内容与左边的间距
-static CGFloat const kRightSpaceDistance = 10.; // 与右边的间距
+static CGFloat const kLeftSpaceDistance = 8.; // 需要显示的内容与左边的间距
+static CGFloat const kRightSpaceDistance = 8.; // 与右边的间距
 static CGFloat const kNameToBottomSpaceDistance = 180.;//名字距离底部的间距
 static CGFloat const kFansToBottomSpaceDistance = 40.;//粉丝部分与底部的间距
 static CGFloat const kNameToSummaySpaceDistance = 4.; //名字与描述间的距离
@@ -66,23 +66,25 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [_headImageView setHidden:YES];
     [self addSubview:_headImageView];
     
+    UIImage *maskImage = [UIImage imageNamed:@"PR-Mask"];
     self.maskImageView = [UIImageView newAutoLayoutView];
-    [_maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
-    [_maskImageView setAlpha:0.];
+    [_maskImageView setImage:maskImage];
     [self addSubview:_maskImageView];
     
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_headImageView superView:self];
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self];
+//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_maskImageView superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_maskImageView superView:self];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_maskImageView superView:self];
+    [JOAutoLayout autoLayoutWithHeight:maskImage.size.height selfView:_maskImageView superView:self];
 }
 
 - (void)createHeadLabel{
 
     self.nameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_NickName]];
     [_nameLabel setTextAlignment:NSTextAlignmentCenter];
-    [[_nameLabel layer] setCornerRadius:4.];
-    [[_nameLabel layer] setMasksToBounds:YES];
-    [_nameLabel setBackgroundColor:JOConvertRGBToColor(53., 11., 114., 1.)];
+    [_nameLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
     [self addSubview:_nameLabel];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_nameLabel superView:self];
@@ -92,14 +94,12 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     
     self.summayLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_Summary]];
     [_summayLabel setTextAlignment:NSTextAlignmentCenter];
-    [[_summayLabel layer] setCornerRadius:4.];
-    [[_summayLabel layer] setMasksToBounds:YES];
-    [_summayLabel setBackgroundColor:JOConvertRGBToColor(53., 11., 114., 1.)];
+    [_summayLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
     [self addSubview:_summayLabel];
     
     [JOAutoLayout autoLayoutWithLeftXView:_nameLabel selfView:_summayLabel superView:self];
     [JOAutoLayout autoLayoutWithTopView:_nameLabel distance:kNameToSummaySpaceDistance selfView:_summayLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:37. selfView:_summayLabel superView:self];
+    [JOAutoLayout autoLayoutWithHeight:36. selfView:_summayLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_summayLabel superView:self];
     
 }
@@ -200,8 +200,8 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [_nameLabel setText:nameString];
     [_summayLabel setText:summaryString];
     
-    CGFloat nameWidth = [nameString length]?([_nameLabel sizeThatFits:JOMAXSize].width + 30.):CGFLOAT_MIN;
-    CGFloat summaryWidth = [summaryString length]?([_summayLabel sizeThatFits:JOMAXSize].width +30.):CGFLOAT_MIN;
+    CGFloat nameWidth = [nameString length]?([_nameLabel sizeThatFits:JOMAXSize].width + 12.):CGFLOAT_MIN;
+    CGFloat summaryWidth = [summaryString length]?([_summayLabel sizeThatFits:JOMAXSize].width +10.):CGFLOAT_MIN;
     
     [JOAutoLayout removeAutoLayoutWithWidthSelfView:_nameLabel superView:self];
     [JOAutoLayout removeAutoLayoutWithWidthSelfView:_summayLabel superView:self];

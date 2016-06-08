@@ -9,7 +9,7 @@
 #import "MIAProfileReplayCell.h"
 #import "MIAProfileReplayView.h"
 
-static CGFloat const kProfileReplayItemSpaceDistance = 20.;
+CGFloat const kProfileReplayItemSpaceDistance = 11.;
 
 @interface MIAProfileReplayCell(){
 
