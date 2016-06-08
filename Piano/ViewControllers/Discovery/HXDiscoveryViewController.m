@@ -182,9 +182,10 @@ HXDiscoveryContainerDelegate
         case HXDiscoveryContainerActionShowLive: {
             [self hiddenNavigationBar];
             [self pauseMusic];
-            HXWatchLiveViewController *watchLiveViewController = [HXWatchLiveViewController instance];
+            UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
             watchLiveViewController.roomID = model.roomID;
-            [self presentViewController:watchLiveViewController animated:YES completion:nil];
+            [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowStation: {

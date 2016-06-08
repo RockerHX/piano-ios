@@ -29,6 +29,7 @@
 #import "UIImage+Extrude.h"
 #import <UMengSocialCOM/UMSocial.h>
 #import "HXAppConstants.h"
+#import "MIAProfileViewController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -50,6 +51,10 @@ HXLiveAlbumViewDelegate
 #pragma mark - Class Methods
 + (HXStoryBoardName)storyBoardName {
     return HXStoryBoardNameLive;
+}
+
++ (NSString *)navigationControllerIdentifier {
+    return @"HXWatchLiveNavigationController";
 }
 
 #pragma mark - Segue
@@ -266,7 +271,9 @@ HXLiveAlbumViewDelegate
         case HXLiveAnchorViewActionShowAnchor: {
             HXWatcherModel *watcher = [HXWatcherModel instanceWithLiveModel:_viewModel.model];
             [HXLiveUserBoard showWithWatcher:watcher showProfile:^(HXWatcherModel *watcher) {
-                ;
+                MIAProfileViewController *profileViewController = [MIAProfileViewController new];
+                [profileViewController setUid:watcher.ID];
+                [self.navigationController pushViewController:profileViewController animated:YES];
             } report:^(HXWatcherModel *watcher) {
                 [MiaAPIHelper reportWithType:@"resport_anchor" content:watcher.ID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                     [self showBannerWithPrompt:@"举报成功"];

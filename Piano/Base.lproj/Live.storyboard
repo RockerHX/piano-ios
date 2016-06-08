@@ -157,7 +157,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIr-1x-cab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-566" y="758"/>
+            <point key="canvasLocation" x="-552" y="879"/>
+        </scene>
+        <!--HXWatchLiveNavigationController-->
+        <scene sceneID="Kp8-dZ-vG8">
+            <objects>
+                <navigationController storyboardIdentifier="HXWatchLiveNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZWy-Kg-1Ie" userLabel="HXWatchLiveNavigationController" customClass="HXNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xD2-pI-Noz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="k8B-Y3-ojo" kind="relationship" relationship="rootViewController" id="lnh-1f-aY7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WSD-EH-CSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-485" y="334"/>
         </scene>
         <!--HXWatchLiveViewController-->
         <scene sceneID="2zW-bO-gX2">
@@ -1635,7 +1651,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QY0-6n-hTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-566" y="1152"/>
+            <point key="canvasLocation" x="-552" y="1273"/>
         </scene>
     </scenes>
     <resources>
