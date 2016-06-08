@@ -9,6 +9,8 @@
 #import "HXLoginViewController.h"
 #import "HXUserSession.h"
 #import "HXMobileLoginViewController.h"
+#import "BlocksKit+UIKit.h"
+#import "HXUserTermsViewController.h"
 
 
 @interface HXLoginViewController () <
@@ -69,15 +71,34 @@ HXMobileLoginViewControllerDelegate
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     _viewModel = [HXLoginViewModel new];
+    
+    @weakify(self)
+    [RACObserve(self.checkBoxButton, selected) subscribeNext:^(NSNumber *x) {
+        @strongify(self)
+        BOOL enabled = [x boolValue];
+        CGFloat alpha = enabled ? 1.0f : 0.5f;
+        self.weixinButton.alpha = alpha;
+        self.mobileButton.alpha = alpha;
+        self.weixinButton.enabled = enabled;
+        self.mobileButton.enabled = enabled;
+    }];
 }
 
 - (void)viewConfigure {
-    ;
+    @weakify(self)
+    [_termOfServiceLabel bk_whenTapped:^{
+        @strongify(self)
+        [self showUserTerms];
+    }];
 }
 
 #pragma mark - Event Response
 - (IBAction)weixinButtonPressed {
     [self startWeiXinLoginRequest];
+}
+
+- (IBAction)checkBoxButtonPressed:(UIButton *)button {
+    button.selected = !button.selected;
 }
 
 #pragma mark - Private Methods
@@ -95,6 +116,12 @@ HXMobileLoginViewControllerDelegate
     } completed:^{
         ;
     }];
+}
+
+- (void)showUserTerms {
+    _shouldHideNavigationBar = YES;
+    HXUserTermsViewController *userTermsViewController = [HXUserTermsViewController instance];
+    [self presentViewController:userTermsViewController animated:YES completion:nil];
 }
 
 #pragma mark - HXMobileLoginViewControllerDelegate Methods

@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXWatchLiveBottomBar">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXWatchLiveLandscapeBottomBar">
             <connections>
                 <outlet property="commentButton" destination="PeU-ya-QOq" id="9UC-2E-eVz"/>
                 <outlet property="giftButton" destination="NBb-uy-x54" id="VjH-Oy-f6P"/>
@@ -18,21 +18,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-ya-QOq">
-                    <rect key="frame" x="0.0" y="9" width="31" height="31"/>
+                    <rect key="frame" x="187" y="9" width="31" height="31"/>
                     <state key="normal" image="L-CommentIcon"/>
                     <connections>
                         <action selector="commentButtonPressed" destination="-1" eventType="touchUpInside" id="eZq-Rk-Fh2"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTn-f4-zfa">
-                    <rect key="frame" x="41" y="9" width="31" height="31"/>
+                    <rect key="frame" x="228" y="9" width="31" height="31"/>
                     <state key="normal" image="L-ShareIcon"/>
                     <connections>
                         <action selector="shareButtonPressed" destination="-1" eventType="touchUpInside" id="ZWz-eD-cN8"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBb-uy-x54">
-                    <rect key="frame" x="82" y="9" width="31" height="31"/>
+                    <rect key="frame" x="269" y="9" width="31" height="31"/>
                     <state key="normal" image="L-GiftIcon"/>
                     <connections>
                         <action selector="giftButtonPressed" destination="-1" eventType="touchUpInside" id="vcD-J8-U4T"/>
@@ -43,8 +43,8 @@
             <constraints>
                 <constraint firstItem="NBb-uy-x54" firstAttribute="centerY" secondItem="RTn-f4-zfa" secondAttribute="centerY" id="3cB-3Q-7Na"/>
                 <constraint firstItem="RTn-f4-zfa" firstAttribute="centerY" secondItem="PeU-ya-QOq" secondAttribute="centerY" id="3ss-xD-nuZ"/>
+                <constraint firstAttribute="trailing" secondItem="NBb-uy-x54" secondAttribute="trailing" id="4MY-zf-aSk"/>
                 <constraint firstAttribute="bottom" secondItem="PeU-ya-QOq" secondAttribute="bottom" id="d66-o1-mYE"/>
-                <constraint firstItem="PeU-ya-QOq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dWa-9L-FlL"/>
                 <constraint firstItem="NBb-uy-x54" firstAttribute="leading" secondItem="RTn-f4-zfa" secondAttribute="trailing" constant="10" id="iWG-cn-HsT"/>
                 <constraint firstItem="RTn-f4-zfa" firstAttribute="leading" secondItem="PeU-ya-QOq" secondAttribute="trailing" constant="10" id="t2S-9c-OJI"/>
             </constraints>

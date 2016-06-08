@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXReplayLandscapeBottomBar">
+            <connections>
+                <outlet property="container" destination="23x-b0-eyX" id="Fbt-eN-vVA"/>
+                <outlet property="endTimeLabel" destination="NAw-5s-REF" id="ebM-Ld-R4Q"/>
+                <outlet property="slider" destination="UbX-9p-CZ9" id="nhq-Ju-kCy"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="23x-b0-eyX">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjb-0J-Qf4">
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAw-5s-REF">
+                            <rect key="frame" x="460" y="13" width="40" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="wCq-gR-ngl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbX-9p-CZ9" customClass="HXReplaySlider">
+                            <rect key="frame" x="39" y="5" width="418" height="31"/>
+                            <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="sliderValueChanged:" destination="-1" eventType="touchUpInside" id="6mq-jH-daz"/>
+                                <action selector="sliderValueChanged:" destination="-1" eventType="touchCancel" id="BUY-GX-PPL"/>
+                                <action selector="sliderValueChanged:" destination="-1" eventType="touchUpOutside" id="eL9-Ry-acr"/>
+                            </connections>
+                        </slider>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-ya-QOq">
+                            <rect key="frame" x="0.0" y="5" width="31" height="31"/>
+                            <state key="normal" image="LR-PauseIcon"/>
+                            <state key="selected" image="LR-PlayIcon"/>
+                            <connections>
+                                <action selector="pauseButtonPressed:" destination="-1" eventType="touchUpInside" id="hft-HJ-YiZ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="NAw-5s-REF" secondAttribute="trailing" id="9Ew-QZ-GCw"/>
+                        <constraint firstItem="UbX-9p-CZ9" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="Fqi-X6-let"/>
+                        <constraint firstItem="NAw-5s-REF" firstAttribute="leading" secondItem="UbX-9p-CZ9" secondAttribute="trailing" constant="5" id="MUB-Ri-wy2"/>
+                        <constraint firstItem="UbX-9p-CZ9" firstAttribute="leading" secondItem="PeU-ya-QOq" secondAttribute="trailing" constant="10" id="SrJ-0n-U5Q"/>
+                        <constraint firstItem="PeU-ya-QOq" firstAttribute="leading" secondItem="Fjb-0J-Qf4" secondAttribute="leading" id="nYB-pR-f8V"/>
+                        <constraint firstItem="PeU-ya-QOq" firstAttribute="centerY" secondItem="UbX-9p-CZ9" secondAttribute="centerY" id="quY-G2-EB3"/>
+                        <constraint firstItem="NAw-5s-REF" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="w0c-q3-eQK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.89411764709999997" green="0.90980392160000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Fjb-0J-Qf4" secondAttribute="trailing" id="UKb-uh-d3h"/>
+                <constraint firstItem="Fjb-0J-Qf4" firstAttribute="top" secondItem="23x-b0-eyX" secondAttribute="top" id="i8m-eC-WVE"/>
+                <constraint firstItem="Fjb-0J-Qf4" firstAttribute="leading" secondItem="23x-b0-eyX" secondAttribute="leading" id="iph-tY-UIt"/>
+                <constraint firstAttribute="bottom" secondItem="Fjb-0J-Qf4" secondAttribute="bottom" id="rQs-72-yz3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="301" y="428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="LR-PauseIcon" width="31" height="31"/>
+        <image name="LR-PlayIcon" width="31" height="31"/>
+    </resources>
+</document>

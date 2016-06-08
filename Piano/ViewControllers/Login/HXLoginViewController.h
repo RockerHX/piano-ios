@@ -34,7 +34,10 @@ typedef NS_ENUM(NSUInteger, HXLoginViewControllerAction) {
 @property (weak, nonatomic) IBOutlet    UIButton *weixinButton;
 @property (weak, nonatomic) IBOutlet    UIButton *mobileButton;
 @property (weak, nonatomic) IBOutlet      UIView *registerView;
+@property (weak, nonatomic) IBOutlet    UIButton *checkBoxButton;
+@property (weak, nonatomic) IBOutlet      UIView *termOfServiceLabel;
 
 - (IBAction)weixinButtonPressed;
+- (IBAction)checkBoxButtonPressed:(UIButton *)button;
 
 @end

@@ -16,9 +16,9 @@
           "height" : 1
         },
         "cap-insets" : {
-          "left" : 11,
-          "top" : 11,
           "right" : 11,
+          "top" : 11,
+          "left" : 11,
           "bottom" : 11
         }
       }
@@ -35,9 +35,9 @@
           "height" : 1
         },
         "cap-insets" : {
-          "left" : 17,
-          "top" : 17,
           "right" : 17,
+          "top" : 17,
+          "left" : 17,
           "bottom" : 17
         }
       }
