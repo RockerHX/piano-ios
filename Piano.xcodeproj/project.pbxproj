@@ -301,6 +301,9 @@
 		CDAC6CC61D06DEB700A13725 /* RewardAlbum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CC41D06DEB700A13725 /* RewardAlbum.storyboard */; };
 		CDAC6CCB1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CC91D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m */; };
 		CDAC6CCC1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CCA1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib */; };
+		CDAC6CD01D07C11300A13725 /* HXReplayLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CCF1D07C11300A13725 /* HXReplayLandscapeViewController.m */; };
+		CDAC6CD41D07C55C00A13725 /* HXReplayLandscapeBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CD31D07C55C00A13725 /* HXReplayLandscapeBottomBar.m */; };
+		CDAC6CD61D07C56600A13725 /* HXReplayLandscapeBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CD51D07C56600A13725 /* HXReplayLandscapeBottomBar.xib */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
@@ -828,6 +831,11 @@
 		CDAC6CC81D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveLandscapeBottomBar.h; sourceTree = "<group>"; };
 		CDAC6CC91D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveLandscapeBottomBar.m; sourceTree = "<group>"; };
 		CDAC6CCA1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatchLiveLandscapeBottomBar.xib; sourceTree = "<group>"; };
+		CDAC6CCE1D07C11300A13725 /* HXReplayLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayLandscapeViewController.h; sourceTree = "<group>"; };
+		CDAC6CCF1D07C11300A13725 /* HXReplayLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayLandscapeViewController.m; sourceTree = "<group>"; };
+		CDAC6CD21D07C55C00A13725 /* HXReplayLandscapeBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXReplayLandscapeBottomBar.h; sourceTree = "<group>"; };
+		CDAC6CD31D07C55C00A13725 /* HXReplayLandscapeBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXReplayLandscapeBottomBar.m; sourceTree = "<group>"; };
+		CDAC6CD51D07C56600A13725 /* HXReplayLandscapeBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXReplayLandscapeBottomBar.xib; sourceTree = "<group>"; };
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
@@ -2035,6 +2043,7 @@
 		CD6C19471CA4E7AD00849B39 /* BottomBar */ = {
 			isa = PBXGroup;
 			children = (
+				CDAC6CD11D07C54700A13725 /* Landscape */,
 				CD92AF881CBBAF2000106A89 /* Slider */,
 				CD6C19481CA4E7AD00849B39 /* HXReplayBottomBar.h */,
 				CD6C19491CA4E7AD00849B39 /* HXReplayBottomBar.m */,
@@ -2552,6 +2561,7 @@
 		CDAA8DA41CA3C7DA0048C526 /* Replay */ = {
 			isa = PBXGroup;
 			children = (
+				CDAC6CCD1D07C0FE00A13725 /* Landscape */,
 				CDAA8DA51CA3C7DA0048C526 /* HXReplayViewController.h */,
 				CDAA8DA61CA3C7DA0048C526 /* HXReplayViewController.m */,
 			);
@@ -2614,6 +2624,25 @@
 				CDAC6CC81D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.h */,
 				CDAC6CC91D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m */,
 				CDAC6CCA1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib */,
+			);
+			path = Landscape;
+			sourceTree = "<group>";
+		};
+		CDAC6CCD1D07C0FE00A13725 /* Landscape */ = {
+			isa = PBXGroup;
+			children = (
+				CDAC6CCE1D07C11300A13725 /* HXReplayLandscapeViewController.h */,
+				CDAC6CCF1D07C11300A13725 /* HXReplayLandscapeViewController.m */,
+			);
+			path = Landscape;
+			sourceTree = "<group>";
+		};
+		CDAC6CD11D07C54700A13725 /* Landscape */ = {
+			isa = PBXGroup;
+			children = (
+				CDAC6CD21D07C55C00A13725 /* HXReplayLandscapeBottomBar.h */,
+				CDAC6CD31D07C55C00A13725 /* HXReplayLandscapeBottomBar.m */,
+				CDAC6CD51D07C56600A13725 /* HXReplayLandscapeBottomBar.xib */,
 			);
 			path = Landscape;
 			sourceTree = "<group>";
@@ -3043,11 +3072,6 @@
 			attributes = {
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Mia Music";
-				TargetAttributes = {
-					CD79608B1CBE594C004CC661 = {
-						DevelopmentTeam = PQE2NCR38L;
-					};
-				};
 			};
 			buildConfigurationList = CD8A9A671C9906CA00698DE9 /* Build configuration list for PBXProject "Piano" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3073,6 +3097,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDAC6CCC1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib in Resources */,
+				CDAC6CD61D07C56600A13725 /* HXReplayLandscapeBottomBar.xib in Resources */,
 				CD79612B1CBE594C004CC661 /* LaunchScreen.storyboard in Resources */,
 				CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */,
 				CD79612C1CBE594C004CC661 /* HXAlbumsBottomBar.xib in Resources */,
@@ -3253,6 +3278,7 @@
 				CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */,
 				CD7960B31CBE594C004CC661 /* MBProgressHUDHelp.m in Sources */,
 				CD8322D21CF5974000D7A254 /* MIAProfileViewController.m in Sources */,
+				CDAC6CD41D07C55C00A13725 /* HXReplayLandscapeBottomBar.m in Sources */,
 				42984B511CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */,
 				CD7960B41CBE594C004CC661 /* UIImage+ColorToImage.m in Sources */,
 				CD7960B51CBE594C004CC661 /* HXDiscoveryViewController.m in Sources */,
@@ -3378,6 +3404,7 @@
 				CDA3948A1CFD75CA00F56A41 /* HXMobileLoginViewController.m in Sources */,
 				CD7960F81CBE594C004CC661 /* HXReplayViewModel.m in Sources */,
 				420BBB591CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */,
+				CDAC6CD01D07C11300A13725 /* HXReplayLandscapeViewController.m in Sources */,
 				CDA3949B1CFEBC3300F56A41 /* HXMeRewardAlbumPromptCell.m in Sources */,
 				CD7960F91CBE594C004CC661 /* HXPathManager.m in Sources */,
 				CD7224981CF8254400C8EC6B /* HXGiftManager.m in Sources */,
@@ -3563,7 +3590,7 @@
 			baseConfigurationReference = 02E1795951E578F7F615A6B3 /* Pods-Piano.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mia Music Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mia Music Co.,Ltd.";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

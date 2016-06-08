@@ -28,11 +28,6 @@
     HXModalTransitionDelegate *_rightModalTransitionDelegate;
 }
 
-#pragma mark - Class Methods
-+ (HXStoryBoardName)storyBoardName {
-    return HXStoryBoardNameLive;
-}
-
 #pragma mark - Orientations Methods
 - (BOOL)shouldAutorotate {
     return NO;
