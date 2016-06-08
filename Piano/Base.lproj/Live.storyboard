@@ -40,7 +40,7 @@
                                             <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="" id="00e-Qs-05q"/>
                                         </connections>
                                     </containerView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OZ-sy-Agy" userLabel="Bottom Bar" customClass="HXWatchLiveBottomBar">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OZ-sy-Agy" userLabel="Bottom Bar" customClass="HXWatchLiveLandscapeBottomBar">
                                         <rect key="frame" x="250" y="265" width="238" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="eRb-80-hjR"/>
@@ -316,7 +316,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXLiveBarrageContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXLiveBarrageContainerViewController" customClass="HXLiveBarrageContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1533,6 +1533,6 @@
         <image name="LC-CommentBubbleIcon" width="11" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HeX-r3-laS"/>
+        <segue reference="00e-Qs-05q"/>
     </inferredMetricsTieBreakers>
 </document>

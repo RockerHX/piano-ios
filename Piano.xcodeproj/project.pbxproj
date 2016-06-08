@@ -299,6 +299,8 @@
 		CDAC6CC01D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CBF1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m */; };
 		CDAC6CC31D06DE4100A13725 /* RewardGift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CC11D06DE4100A13725 /* RewardGift.storyboard */; };
 		CDAC6CC61D06DEB700A13725 /* RewardAlbum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CC41D06DEB700A13725 /* RewardAlbum.storyboard */; };
+		CDAC6CCB1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CC91D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m */; };
+		CDAC6CCC1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CCA1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
@@ -823,6 +825,9 @@
 		CDAC6CBF1D06CF6300A13725 /* HXLiveGiftLandscapeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLiveGiftLandscapeContainerViewController.m; sourceTree = "<group>"; };
 		CDAC6CC21D06DE4100A13725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RewardGift.storyboard; sourceTree = "<group>"; };
 		CDAC6CC51D06DEB700A13725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RewardAlbum.storyboard; sourceTree = "<group>"; };
+		CDAC6CC81D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatchLiveLandscapeBottomBar.h; sourceTree = "<group>"; };
+		CDAC6CC91D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatchLiveLandscapeBottomBar.m; sourceTree = "<group>"; };
+		CDAC6CCA1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXWatchLiveLandscapeBottomBar.xib; sourceTree = "<group>"; };
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
@@ -1978,6 +1983,7 @@
 		CD6581601CA3E99B00E2EF19 /* BottomBar */ = {
 			isa = PBXGroup;
 			children = (
+				CDAC6CC71D07BEAE00A13725 /* Landscape */,
 				CD6581611CA3E99B00E2EF19 /* HXWatchLiveBottomBar.h */,
 				CD6581621CA3E99B00E2EF19 /* HXWatchLiveBottomBar.m */,
 				CD6581631CA3E99B00E2EF19 /* HXWatchLiveBottomBar.xib */,
@@ -2602,6 +2608,16 @@
 			path = Layout;
 			sourceTree = "<group>";
 		};
+		CDAC6CC71D07BEAE00A13725 /* Landscape */ = {
+			isa = PBXGroup;
+			children = (
+				CDAC6CC81D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.h */,
+				CDAC6CC91D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m */,
+				CDAC6CCA1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib */,
+			);
+			path = Landscape;
+			sourceTree = "<group>";
+		};
 		CDB099EB1CB520C000C47EA0 /* AnchorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3056,6 +3072,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDAC6CCC1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.xib in Resources */,
 				CD79612B1CBE594C004CC661 /* LaunchScreen.storyboard in Resources */,
 				CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */,
 				CD79612C1CBE594C004CC661 /* HXAlbumsBottomBar.xib in Resources */,
@@ -3293,6 +3310,7 @@
 				42984B451CDC48E7004F00D5 /* MIAProfileHeadView.m in Sources */,
 				42A0DAFD1CE2E06D00F1FCEF /* MIAAlbumRewardView.m in Sources */,
 				CD7960D21CBE594C004CC661 /* HXWatchLiveBottomBar.m in Sources */,
+				CDAC6CCB1D07BEDB00A13725 /* HXWatchLiveLandscapeBottomBar.m in Sources */,
 				CD8322D31CF5974000D7A254 /* HXHostProfileContainerViewController.m in Sources */,
 				CD7960D31CBE594C004CC661 /* UIView+Frame.m in Sources */,
 				429CC2151CE08F22004BCC0C /* MIAVideoModel.m in Sources */,
