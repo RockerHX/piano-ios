@@ -1660,7 +1660,17 @@
                                     <constraint firstAttribute="trailing" secondItem="r6Z-zd-SpT" secondAttribute="trailing" constant="10" id="uJe-I3-O4x"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqW-Iz-hQS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gg-ui-OHJ" userLabel="Resport Button">
+                                <rect key="frame" x="477" y="10" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Qdk-j0-fZx"/>
+                                </constraints>
+                                <state key="normal" image="LC-ReportIcon-Gray"/>
+                                <connections>
+                                    <action selector="reportButtonPressed" destination="DxU-vc-lr7" eventType="touchUpInside" id="xiJ-i0-OaM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqW-Iz-hQS" userLabel="Close Button">
                                 <rect key="frame" x="527" y="19" width="31" height="31"/>
                                 <state key="normal" image="L-CloseIcon"/>
                                 <connections>
@@ -1675,10 +1685,13 @@
                             <constraint firstAttribute="bottom" secondItem="AHm-Vd-xNT" secondAttribute="bottom" id="3dz-wD-ChP"/>
                             <constraint firstAttribute="bottom" secondItem="4S1-sT-Nb3" secondAttribute="bottom" id="7eD-0E-Wi2"/>
                             <constraint firstItem="AHm-Vd-xNT" firstAttribute="leading" secondItem="HEK-fg-ml0" secondAttribute="leading" id="9qu-KY-JRe"/>
+                            <constraint firstItem="1Gg-ui-OHJ" firstAttribute="width" secondItem="1Gg-ui-OHJ" secondAttribute="height" multiplier="1:1" id="AQW-me-Q4z"/>
                             <constraint firstAttribute="trailing" secondItem="4S1-sT-Nb3" secondAttribute="trailing" id="B6a-pD-UmZ"/>
                             <constraint firstAttribute="trailing" secondItem="hqW-Iz-hQS" secondAttribute="trailing" constant="10" id="JdA-D1-nfj"/>
+                            <constraint firstItem="hqW-Iz-hQS" firstAttribute="leading" secondItem="1Gg-ui-OHJ" secondAttribute="trailing" id="KlK-IL-NVf"/>
                             <constraint firstItem="4S1-sT-Nb3" firstAttribute="leading" secondItem="HEK-fg-ml0" secondAttribute="leading" id="PRT-CA-gRD"/>
                             <constraint firstItem="4S1-sT-Nb3" firstAttribute="top" secondItem="74I-KS-fgL" secondAttribute="bottom" id="PYQ-ge-xjc"/>
+                            <constraint firstItem="1Gg-ui-OHJ" firstAttribute="centerY" secondItem="hqW-Iz-hQS" secondAttribute="centerY" id="Yj2-Se-EgN"/>
                             <constraint firstAttribute="trailing" secondItem="AHm-Vd-xNT" secondAttribute="trailing" id="nHW-Nz-vPA"/>
                         </constraints>
                     </view>
@@ -1707,6 +1720,6 @@
         <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="00e-Qs-05q"/>
+        <segue reference="xKo-2K-gUT"/>
     </inferredMetricsTieBreakers>
 </document>
