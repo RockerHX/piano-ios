@@ -38,10 +38,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-LoginBG-2" translatesAutoresizingMaskIntoConstraints="NO" id="SJc-6Q-mb8" userLabel="Animation BG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-LoginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-RU-KTz">
+                                <rect key="frame" x="70" y="134" width="180" height="180"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0e-47-uJf" userLabel="Login Button Container">
-                                <rect key="frame" x="20" y="432" width="280" height="46"/>
+                                <rect key="frame" x="20" y="430" width="280" height="46"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61s-lC-Toq">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61s-lC-Toq">
                                         <rect key="frame" x="0.0" y="0.0" width="136" height="46"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -56,7 +59,7 @@
                                             <action selector="weixinButtonPressed" destination="AsC-p9-PE8" eventType="touchUpInside" id="E5T-ZH-fEW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-mw-K2y">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-mw-K2y">
                                         <rect key="frame" x="144" y="0.0" width="136" height="46"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="手机号" image="L-MobileLogo">
@@ -81,7 +84,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ec2-Wv-1IY" userLabel="注册按钮">
-                                <rect key="frame" x="118" y="513" width="85" height="25"/>
+                                <rect key="frame" x="118" y="511" width="85" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="立即注册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVb-hW-7N2">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="25"/>
@@ -108,22 +111,54 @@
                                     <outletCollection property="gestureRecognizers" destination="bLL-O1-8hb" appends="YES" id="clG-Y8-ck1"/>
                                 </connections>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-LoginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-RU-KTz">
-                                <rect key="frame" x="70" y="134" width="180" height="180"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3n-HC-0aF" userLabel="Agree Container">
+                                <rect key="frame" x="54" y="536" width="213" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我同意《Mia音乐服务及使用条款》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfG-fa-6ng">
+                                        <rect key="frame" x="24" y="0.0" width="189" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHr-vb-0Lb" userLabel="Check Box">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="HrH-PH-SyM"/>
+                                            <constraint firstAttribute="width" secondItem="XHr-vb-0Lb" secondAttribute="height" multiplier="1:1" id="xkL-CA-nZM"/>
+                                        </constraints>
+                                        <state key="normal" image="L-CheckBox-US"/>
+                                        <state key="selected" image="L-CheckBox-S"/>
+                                        <connections>
+                                            <action selector="checkBoxButtonPressed:" destination="AsC-p9-PE8" eventType="touchUpInside" id="n7b-Gn-Fz9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MfG-fa-6ng" secondAttribute="trailing" id="OXc-Ju-98f"/>
+                                    <constraint firstAttribute="bottom" secondItem="XHr-vb-0Lb" secondAttribute="bottom" id="S52-kA-MHT"/>
+                                    <constraint firstItem="XHr-vb-0Lb" firstAttribute="top" secondItem="N3n-HC-0aF" secondAttribute="top" id="iXe-a5-rRb"/>
+                                    <constraint firstItem="MfG-fa-6ng" firstAttribute="leading" secondItem="XHr-vb-0Lb" secondAttribute="trailing" id="pZe-dy-LlF"/>
+                                    <constraint firstAttribute="bottom" secondItem="MfG-fa-6ng" secondAttribute="bottom" id="rCJ-ac-e8u"/>
+                                    <constraint firstItem="MfG-fa-6ng" firstAttribute="top" secondItem="N3n-HC-0aF" secondAttribute="top" id="tyS-x5-FDa"/>
+                                    <constraint firstItem="XHr-vb-0Lb" firstAttribute="leading" secondItem="N3n-HC-0aF" secondAttribute="leading" id="z96-0l-cfd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="N3n-HC-0aF" firstAttribute="top" secondItem="ec2-Wv-1IY" secondAttribute="bottom" id="050-HG-Oxt"/>
                             <constraint firstItem="ec2-Wv-1IY" firstAttribute="top" secondItem="i0e-47-uJf" secondAttribute="bottom" constant="35" id="4Vm-oC-WyG"/>
                             <constraint firstItem="ec2-Wv-1IY" firstAttribute="centerX" secondItem="MgH-Sh-6z1" secondAttribute="centerX" id="7b1-4q-bSv"/>
                             <constraint firstItem="i0e-47-uJf" firstAttribute="leading" secondItem="MgH-Sh-6z1" secondAttribute="leading" constant="20" id="BSv-gg-mmb"/>
-                            <constraint firstItem="yck-tL-Gdf" firstAttribute="top" secondItem="ec2-Wv-1IY" secondAttribute="bottom" constant="30" id="Ee5-vw-X1N"/>
                             <constraint firstItem="yck-tL-Gdf" firstAttribute="top" secondItem="SJc-6Q-mb8" secondAttribute="bottom" id="IAc-ZQ-nlh"/>
                             <constraint firstItem="SJc-6Q-mb8" firstAttribute="top" secondItem="MgH-Sh-6z1" secondAttribute="top" id="aD5-95-pzB"/>
                             <constraint firstItem="SJc-6Q-mb8" firstAttribute="leading" secondItem="MgH-Sh-6z1" secondAttribute="leading" id="fFO-pD-LKs"/>
                             <constraint firstItem="NAh-RU-KTz" firstAttribute="bottom" secondItem="MgH-Sh-6z1" secondAttribute="centerY" constant="30" id="gDt-Lx-Ome"/>
                             <constraint firstItem="NAh-RU-KTz" firstAttribute="centerX" secondItem="MgH-Sh-6z1" secondAttribute="centerX" id="gUO-RC-36i"/>
+                            <constraint firstItem="N3n-HC-0aF" firstAttribute="centerX" secondItem="MgH-Sh-6z1" secondAttribute="centerX" id="iBp-Df-Jwy"/>
                             <constraint firstAttribute="trailing" secondItem="i0e-47-uJf" secondAttribute="trailing" constant="20" id="ipl-7q-JEm"/>
+                            <constraint firstItem="yck-tL-Gdf" firstAttribute="top" secondItem="N3n-HC-0aF" secondAttribute="bottom" constant="8" id="tk0-5c-pq5"/>
                             <constraint firstAttribute="trailing" secondItem="SJc-6Q-mb8" secondAttribute="trailing" id="wdT-hy-1lI"/>
                         </constraints>
                     </view>
@@ -131,8 +166,10 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bgView" destination="SJc-6Q-mb8" id="gES-D4-Z6J"/>
+                        <outlet property="checkBoxButton" destination="XHr-vb-0Lb" id="dVY-YD-at5"/>
                         <outlet property="mobileButton" destination="TFN-mw-K2y" id="FVa-7x-1cX"/>
                         <outlet property="registerView" destination="ec2-Wv-1IY" id="cgR-Eb-jFI"/>
+                        <outlet property="termOfServiceLabel" destination="MfG-fa-6ng" id="Dog-jB-whk"/>
                         <outlet property="weixinButton" destination="61s-lC-Toq" id="Rx6-V5-5cT"/>
                     </connections>
                 </viewController>
@@ -735,15 +772,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mia用户使用条款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3L-IG-aSC">
-                                <rect key="frame" x="99" y="28" width="122" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mia音乐服务及使用条款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3L-IG-aSC">
+                                <rect key="frame" x="75" y="28" width="170" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRD-Jf-4gv">
-                                <rect key="frame" x="252" y="23" width="60" height="30"/>
-                                <state key="normal" title="我知道了"/>
+                                <rect key="frame" x="267" y="23" width="45" height="30"/>
+                                <state key="normal" title="知道了"/>
                                 <connections>
                                     <action selector="iKnowButtonPressed" destination="efT-Zx-Bg0" eventType="touchUpInside" id="dJy-w3-rZt"/>
                                 </connections>
@@ -788,6 +825,8 @@
     <resources>
         <image name="C-ArrowIcon-Right-White" width="25" height="25"/>
         <image name="C-BackIcon-White" width="25" height="25"/>
+        <image name="L-CheckBox-S" width="12" height="12"/>
+        <image name="L-CheckBox-US" width="12" height="12"/>
         <image name="L-LoginBG-2" width="375" height="667"/>
         <image name="L-LoginLogo" width="180" height="180"/>
         <image name="L-MobileLogo" width="35" height="35"/>
