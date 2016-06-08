@@ -10,6 +10,7 @@
 
 
 @class HXCommentModel;
+@class HXLiveModel;
 
 
 @interface HXWatcherModel : NSObject
@@ -20,5 +21,6 @@
 @property (nonatomic, strong) NSString *signature;
 
 + (instancetype)instanceWithComment:(HXCommentModel *)comment;
++ (instancetype)instanceWithLiveModel:(HXLiveModel *)liveModel;
 
 @end

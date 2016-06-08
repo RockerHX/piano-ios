@@ -264,7 +264,16 @@ HXLiveAlbumViewDelegate
 - (void)anchorView:(HXLiveAnchorView *)anchorView takeAction:(HXLiveAnchorViewAction)action {
     switch (action) {
         case HXLiveAnchorViewActionShowAnchor: {
-            ;
+            HXWatcherModel *watcher = [HXWatcherModel instanceWithLiveModel:_viewModel.model];
+            [HXLiveUserBoard showWithWatcher:watcher showProfile:^(HXWatcherModel *watcher) {
+                ;
+            } report:^(HXWatcherModel *watcher) {
+                [MiaAPIHelper reportWithType:@"resport_anchor" content:watcher.ID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                    [self showBannerWithPrompt:@"举报成功"];
+                } timeoutBlock:^(MiaRequestItem *requestItem) {
+                    [self showBannerWithPrompt:@"网络超时，举报失败"];
+                }];
+            } gaged:nil closed:nil];
             break;
         }
         case HXLiveAnchorViewActionAttention: {
