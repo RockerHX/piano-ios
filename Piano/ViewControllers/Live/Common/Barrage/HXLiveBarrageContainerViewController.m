@@ -76,7 +76,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ;
+    if (_delegate && [_delegate respondsToSelector:@selector(barrageContainer:shouldShowBarrage:)]) {
+        [_delegate barrageContainer:self shouldShowBarrage:_barrages[indexPath.row]];
+    }
 }
 
 @end

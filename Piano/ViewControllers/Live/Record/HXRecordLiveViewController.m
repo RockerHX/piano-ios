@@ -18,7 +18,7 @@
 #import "HXLiveCommentViewController.h"
 #import "HXRecordLiveViewModel.h"
 #import "UIButton+WebCache.h"
-#import "HXWatcherBoard.h"
+#import "HXLiveUserBoard.h"
 #import "MiaAPIHelper.h"
 #import "HXLiveRewardTopListViewController.h"
 #import "HXLiveAlbumView.h"
@@ -374,26 +374,18 @@ static CGFloat AlbumViewWidth = 60.0f;
     ;
 }
 
-//#pragma mark - HXWatcherContainerViewControllerDelegate Methods
-//- (void)watcherContainer:(HXWatcherContainerViewController *)container shouldShowWatcher:(HXWatcherModel *)watcher {
-//    [HXWatcherBoard showWithWatcher:watcher gaged:^{
-//        [MiaAPIHelper forbidUser:watcher.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//            if (success) {
-//                [self showBannerWithPrompt:[watcher.nickName stringByAppendingString:@"已禁言！"]];
-//            } else {
-//                [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-//            }
-//        } timeoutBlock:^(MiaRequestItem *requestItem) {
-//            [self showBannerWithPrompt:TimtOutPrompt];
-//        }];
-//    } closed:^{
-//        ;
-//    }];
-//}
-
 #pragma mark - HXLiveBarrageContainerViewControllerDelegate Methods
 - (void)barrageContainer:(HXLiveBarrageContainerViewController *)container shouldShowBarrage:(HXBarrageModel *)barrage {
-    ;
+    if (barrage.type == HXBarrageTypeComment) {
+        HXWatcherModel *watcher = [HXWatcherModel instanceWithComment:barrage.comment];
+        [HXLiveUserBoard showWithWatcher:watcher gaged:^(HXWatcherModel *watcher) {
+            [MiaAPIHelper forbidUser:watcher.ID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                [self showBannerWithPrompt:@"禁言成功"];
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                [self showBannerWithPrompt:@"网络超时，禁言失败"];
+            }];
+        } closed:nil];
+    }
 }
 
 #pragma mark - HXLiveAlbumViewDelegate Methods

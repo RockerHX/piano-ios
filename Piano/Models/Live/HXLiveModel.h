@@ -16,6 +16,7 @@
 @property (nonatomic, strong)  NSString *title;
 @property (nonatomic, strong)  NSString *nickName;
 @property (nonatomic, strong)  NSString *avatarUrl;
+@property (nonatomic, strong)  NSString *signature;
 
 @property (nonatomic, strong)  NSString *hlsUrl;
 @property (nonatomic, strong)  NSString *rtmpUrl;
