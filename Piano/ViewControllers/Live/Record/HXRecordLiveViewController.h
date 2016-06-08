@@ -13,6 +13,8 @@
 @class HXRecordAnchorView;
 @class HXLiveAlbumView;
 @class HXRecordBottomBar;
+@class HXStaticGiftView;
+@class HXDynamicGiftView;
 
 
 @interface HXRecordLiveViewController : UIViewController
@@ -25,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet             UIView *barragesView;
 @property (weak, nonatomic) IBOutlet  HXRecordBottomBar *bottomBar;
 @property (weak, nonatomic) IBOutlet    HXLiveAlbumView *albumView;
+@property (weak, nonatomic) IBOutlet  HXStaticGiftView *staticGiftView;
+@property (weak, nonatomic) IBOutlet HXDynamicGiftView *dynamicGiftView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewWidthConstraint;

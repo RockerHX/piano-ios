@@ -12,7 +12,7 @@
 typedef NS_ENUM(NSUInteger, HXReplayBottomBarAction) {
     HXReplayBottomBarActionPlay,
     HXReplayBottomBarActionPause,
-    HXReplayBottomBarActionShare,
+    HXReplayBottomBarActionReport,
 };
 
 
@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, HXReplayBottomBarAction) {
 @property (nonatomic, assign) CGFloat duration;
 
 - (IBAction)pauseButtonPressed:(UIButton *)button;
-- (IBAction)shareButtonPressed;
+- (IBAction)reportButtonPressed;
 - (IBAction)sliderValueChanged:(UISlider *)slider;
 
 @end

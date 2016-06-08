@@ -21,7 +21,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="500" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAw-5s-REF">
-                            <rect key="frame" x="460" y="13" width="40" height="14"/>
+                            <rect key="frame" x="419" y="13" width="40" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="wCq-gR-ngl"/>
                             </constraints>
@@ -30,7 +30,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbX-9p-CZ9" customClass="HXReplaySlider">
-                            <rect key="frame" x="39" y="5" width="418" height="31"/>
+                            <rect key="frame" x="39" y="5" width="377" height="31"/>
                             <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                             <connections>
@@ -47,13 +47,23 @@
                                 <action selector="pauseButtonPressed:" destination="-1" eventType="touchUpInside" id="hft-HJ-YiZ"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p06-xq-QEJ">
+                            <rect key="frame" x="469" y="4" width="31" height="31"/>
+                            <state key="normal" image="LC-ReportIcon-Gray"/>
+                            <state key="selected" image="LR-PlayIcon"/>
+                            <connections>
+                                <action selector="reportButtonPressed" destination="-1" eventType="touchUpInside" id="He5-ek-UrQ"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="NAw-5s-REF" secondAttribute="trailing" id="9Ew-QZ-GCw"/>
                         <constraint firstItem="UbX-9p-CZ9" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="Fqi-X6-let"/>
+                        <constraint firstItem="p06-xq-QEJ" firstAttribute="leading" secondItem="NAw-5s-REF" secondAttribute="trailing" constant="10" id="JAV-VP-9aW"/>
                         <constraint firstItem="NAw-5s-REF" firstAttribute="leading" secondItem="UbX-9p-CZ9" secondAttribute="trailing" constant="5" id="MUB-Ri-wy2"/>
                         <constraint firstItem="UbX-9p-CZ9" firstAttribute="leading" secondItem="PeU-ya-QOq" secondAttribute="trailing" constant="10" id="SrJ-0n-U5Q"/>
+                        <constraint firstItem="p06-xq-QEJ" firstAttribute="centerY" secondItem="UbX-9p-CZ9" secondAttribute="centerY" id="aJz-rW-cl9"/>
+                        <constraint firstAttribute="trailing" secondItem="p06-xq-QEJ" secondAttribute="trailing" id="h4n-R0-L7J"/>
                         <constraint firstItem="PeU-ya-QOq" firstAttribute="leading" secondItem="Fjb-0J-Qf4" secondAttribute="leading" id="nYB-pR-f8V"/>
                         <constraint firstItem="PeU-ya-QOq" firstAttribute="centerY" secondItem="UbX-9p-CZ9" secondAttribute="centerY" id="quY-G2-EB3"/>
                         <constraint firstItem="NAw-5s-REF" firstAttribute="centerY" secondItem="Fjb-0J-Qf4" secondAttribute="centerY" id="w0c-q3-eQK"/>
@@ -73,6 +83,7 @@
         </view>
     </objects>
     <resources>
+        <image name="LC-ReportIcon-Gray" width="31" height="31"/>
         <image name="LR-PauseIcon" width="31" height="31"/>
         <image name="LR-PlayIcon" width="31" height="31"/>
     </resources>

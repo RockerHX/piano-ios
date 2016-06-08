@@ -115,7 +115,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
-                                    <state key="normal" title="举报" image="LC-ResportIcon-Black">
+                                    <state key="normal" title="举报" image="LC-ReportIcon-Black">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -186,6 +186,6 @@
     </objects>
     <resources>
         <image name="LC-ProfileIcon" width="15" height="15"/>
-        <image name="LC-ResportIcon-Black" width="21" height="15"/>
+        <image name="LC-ReportIcon-Black" width="375" height="667"/>
     </resources>
 </document>

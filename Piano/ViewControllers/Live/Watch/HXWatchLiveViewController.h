@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSString *roomID;
 @property (nonatomic, strong, readonly) HXWatchLiveViewModel *viewModel;
 
+- (IBAction)reportButtonPressed;
 - (IBAction)closeButtonPressed;
 
 @end

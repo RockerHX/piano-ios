@@ -141,6 +141,10 @@ HXLiveAlbumViewDelegate
 }
 
 #pragma mark - Event Response
+- (IBAction)reportButtonPressed {
+    [self reportAnchorWithID:_viewModel.model.uID];
+}
+
 - (IBAction)closeButtonPressed {
     [self dismiss];
 }
@@ -217,6 +221,18 @@ HXLiveAlbumViewDelegate
     [_albumView updateWithAlbum:album];
 }
 
+- (void)reportAnchorWithID:(NSString *)uid {
+    [UIAlertView bk_showAlertViewWithTitle:@"是否举报主播" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"举报"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            [MiaAPIHelper reportWithType:@"resport_anchor" content:uid completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                [self showBannerWithPrompt:@"举报成功"];
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                [self showBannerWithPrompt:@"网络超时，举报失败"];
+            }];
+        }
+    }];
+}
+
 #pragma mark - ZegoLiveApiDelegate
 - (void)onLoginChannel:(NSString *)channel error:(uint32)error {
     NSLog(@"%s, err: %u", __func__, error);
@@ -275,11 +291,7 @@ HXLiveAlbumViewDelegate
                 [profileViewController setUid:watcher.ID];
                 [self.navigationController pushViewController:profileViewController animated:YES];
             } report:^(HXWatcherModel *watcher) {
-                [MiaAPIHelper reportWithType:@"resport_anchor" content:watcher.ID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-                    [self showBannerWithPrompt:@"举报成功"];
-                } timeoutBlock:^(MiaRequestItem *requestItem) {
-                    [self showBannerWithPrompt:@"网络超时，举报失败"];
-                }];
+                [self reportAnchorWithID:watcher.ID];
             } gaged:nil closed:nil];
             break;
         }
