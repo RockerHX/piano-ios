@@ -283,6 +283,16 @@
                                     <constraint firstAttribute="height" constant="40" id="iux-rb-bDk"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYF-Hl-bNW" userLabel="Resport Button">
+                                <rect key="frame" x="220" y="10" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="u27-of-DRJ"/>
+                                </constraints>
+                                <state key="normal" image="LC-ReportIcon-Gray"/>
+                                <connections>
+                                    <action selector="reportButtonPressed" destination="k8B-Y3-ojo" eventType="touchUpInside" id="yPW-J1-sBA"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R38-Wu-TSw" userLabel="Close Button">
                                 <rect key="frame" x="270" y="10" width="50" height="50"/>
                                 <constraints>
@@ -298,6 +308,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="R38-Wu-TSw" firstAttribute="centerY" secondItem="WGF-DP-Xhn" secondAttribute="centerY" id="1Kl-BS-S8Y"/>
+                            <constraint firstItem="R38-Wu-TSw" firstAttribute="leading" secondItem="UYF-Hl-bNW" secondAttribute="trailing" id="50E-Pv-6et"/>
+                            <constraint firstItem="UYF-Hl-bNW" firstAttribute="width" secondItem="UYF-Hl-bNW" secondAttribute="height" multiplier="1:1" id="MEy-M0-oAw"/>
                             <constraint firstItem="Weh-Ip-WpZ" firstAttribute="top" secondItem="43w-fr-l6Q" secondAttribute="top" id="Oxb-ql-frS"/>
                             <constraint firstItem="VvH-Rw-RfM" firstAttribute="top" secondItem="HZd-BB-htj" secondAttribute="bottom" id="VFN-ku-RoB"/>
                             <constraint firstAttribute="trailing" secondItem="R38-Wu-TSw" secondAttribute="trailing" id="Ycx-b8-XbC"/>
@@ -309,6 +321,7 @@
                             <constraint firstAttribute="trailing" secondItem="WGF-DP-Xhn" secondAttribute="trailing" constant="10" id="lVa-UL-f8y"/>
                             <constraint firstAttribute="bottom" secondItem="VvH-Rw-RfM" secondAttribute="bottom" id="oa3-DB-pWm"/>
                             <constraint firstAttribute="bottom" secondItem="Weh-Ip-WpZ" secondAttribute="bottom" id="uHO-22-XqT"/>
+                            <constraint firstItem="UYF-Hl-bNW" firstAttribute="centerY" secondItem="R38-Wu-TSw" secondAttribute="centerY" id="vSX-ug-tnw"/>
                             <constraint firstItem="Weh-Ip-WpZ" firstAttribute="leading" secondItem="43w-fr-l6Q" secondAttribute="leading" id="zIs-bR-7AV"/>
                         </constraints>
                     </view>
@@ -332,7 +345,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXLiveBarrageContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXLiveBarrageContainerViewController" customClass="HXLiveBarrageContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="120"/>
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="160"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1661,8 +1674,9 @@
         <image name="LC-BarrageGiftIcon" width="25" height="25"/>
         <image name="LC-BarrageRewardIcon" width="25" height="25"/>
         <image name="LC-CommentBubbleIcon" width="11" height="11"/>
+        <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xKo-2K-gUT"/>
+        <segue reference="O5M-18-fAC"/>
     </inferredMetricsTieBreakers>
 </document>
