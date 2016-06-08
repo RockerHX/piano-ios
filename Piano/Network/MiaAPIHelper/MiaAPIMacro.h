@@ -161,3 +161,6 @@ static NSString * const MiaAPIKey_GiftNum                   = @"giftNum";//礼�
 
 //log upload
 static NSString * const MiaAPICommand_LogUpload             = @"Live.Room.Post.Log";//上传日志
+
+//Report
+static NSString * const MiaAPICommand_Report                = @"User.Post.Report";//举报
