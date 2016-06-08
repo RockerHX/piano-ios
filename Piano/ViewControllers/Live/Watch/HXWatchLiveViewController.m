@@ -13,7 +13,7 @@
 #import "HXLiveCommentViewController.h"
 #import "HXLiveAnchorView.h"
 #import "HXWatchLiveBottomBar.h"
-#import "HXWatcherBoard.h"
+#import "HXLiveUserBoard.h"
 #import "HXSettingSession.h"
 #import "UIButton+WebCache.h"
 #import "HXUserSession.h"

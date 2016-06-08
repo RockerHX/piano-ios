@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *nickName;
 @property (nonatomic, strong) NSString *avatarUrl;
 @property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *signature;
 
 @property (nonatomic, assign)     BOOL  backAlbum;
 @property (nonatomic, assign)     BOOL  backGift;
