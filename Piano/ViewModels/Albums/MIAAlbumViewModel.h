@@ -69,5 +69,4 @@ UIKIT_EXTERN NSInteger const kAlbumCommentLimitCount;//拉取评论的数量
  */
 - (RACSignal *)getCommentListWithAlbumID:(NSString *)albumID lastCommentID:(NSString *)lastCommentID;
 
-
 @end

@@ -24,6 +24,7 @@
 #import "MJRefresh.h"
 
 #import "MIASongManage.h"
+#import "MIAReportManage.h"
 
 
 @interface MIAAlbumViewController()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
@@ -105,6 +106,21 @@
     [_albumBarView popActionHandler:^{
     @strongify(self);
         [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [_albumBarView reportActionHandler:^{
+    @strongify(self);
+        [[MIAReportManage reportManage] reportWithType:@"专辑" content:@"专辑内容" reportHandler:^(ReportState reportState) {
+            @strongify(self);
+            if (reportState == ReportSuccess) {
+                //成功
+                [self showBannerWithPrompt:@"专辑举报成功"];
+            }else if(reportState == ReportFaild){
+                //失败
+                [self showBannerWithPrompt:@"专辑举报失败"];
+            }else if (reportState == ReportCancel){
+                //取消
+            }
+        }];
     }];
     [self.view addSubview:_albumBarView];
     
@@ -467,7 +483,20 @@
         [_albumTableHeadView playAlbumSongWithIndex:indexPath.row];
     }else if (indexPath.section == 1){
         //评论的点击
-        
+
+        @weakify(self);
+        [[MIAReportManage reportManage] reportWithType:@"评论" content:@"评论内容" reportHandler:^(ReportState reportState) {
+        @strongify(self);
+            if (reportState == ReportSuccess) {
+                //成功
+                [self showBannerWithPrompt:@"评论举报成功"];
+            }else if(reportState == ReportFaild){
+                //失败
+                [self showBannerWithPrompt:@"评论举报失败"];
+            }else if (reportState == ReportCancel){
+                //取消
+            }
+        }];
     }
 }
 

@@ -60,15 +60,15 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 40.;
     
     self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_shareButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_shareButton setImage:[UIImage imageNamed:@"VP-Share"] forState:UIControlStateNormal];
+    [_shareButton setImage:[UIImage imageNamed:@"C-More"] forState:UIControlStateNormal];
     [_shareButton addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_shareButton];
     
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-kPlayBarViewRightSpaceDistance selfView:_shareButton superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_shareButton superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_shareButton superView:self];
-//    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_shareButton superView:self];
-    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_shareButton superView:self];
+    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_shareButton superView:self];
+//    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_shareButton superView:self];
     
     self.timeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_PlayVideo_Time]];
     [_timeLabel setText:@"00:00"];

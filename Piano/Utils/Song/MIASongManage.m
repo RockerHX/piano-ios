@@ -154,7 +154,7 @@ static NSString *const kSongCachePath = @"/Song";//缓存的路径名
         
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
             NSString *urlString = (__bridge NSString *)(dispatch_get_context(downloadQueue));
-            NSLog(@"当前下载歌曲的地址为:%@",urlString);
+//            NSLog(@"当前下载歌曲的地址为:%@",urlString);
             //下载的具体操作
             
             if ([self songIsExistWithURLString:urlString]) {

@@ -20,8 +20,10 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
 @property (nonatomic, strong) UILabel *songNameLabel;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UIButton *popButton;
+@property (nonatomic, strong) UIButton *reportButton;
 
 @property (nonatomic, copy) PopActionBlock popActionBlock;
+@property (nonatomic, copy) ReportActionBlock reportActionBlock;
 
 @end
 
@@ -64,13 +66,23 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [_popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_popButton setImage:[UIImage imageNamed:@"C-BackIcon-White"] forState:UIControlStateNormal];
     [_popButton addTarget:self action:@selector(popButtonClikc) forControlEvents:UIControlEventTouchUpInside];
-//    [_popButton setImageEdgeInsets:UIEdgeInsetsMake(0., -15., 0., 0.)];
     [self addSubview:_popButton];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_popButton superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_popButton superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_popButton superView:self];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_popButton superView:self];
+    
+    self.reportButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_reportButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_reportButton setImage:[UIImage imageNamed:@"C-More"] forState:UIControlStateNormal];
+    [_reportButton addTarget:self action:@selector(reportButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_reportButton];
+    
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_reportButton superView:self];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_reportButton superView:self];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_reportButton superView:self];
+    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_reportButton superView:self];
 }
 
 - (void)popButtonClikc{
@@ -80,10 +92,23 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     }
 }
 
+- (void)reportButtonClick{
+
+    if (_reportActionBlock) {
+        _reportActionBlock();
+    }
+}
+
 - (void)popActionHandler:(PopActionBlock)block{
 
     self.popActionBlock = nil;
     self.popActionBlock = block;
+}
+
+- (void)reportActionHandler:(ReportActionBlock)block{
+
+    self.reportActionBlock = nil;
+    self.reportActionBlock = block;
 }
 
 - (void)setAlbumName:(NSString *)albumName singerName:(NSString *)singerName{
