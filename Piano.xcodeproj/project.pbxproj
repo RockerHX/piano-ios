@@ -99,6 +99,7 @@
 		42D680891D06D4C600AE24FC /* UIImage+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D680881D06D4C600AE24FC /* UIImage+JOExtend.m */; };
 		42D6808D1D06D9BF00AE24FC /* MIASettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D6808C1D06D9BF00AE24FC /* MIASettingCell.m */; };
 		42D680901D06D9D500AE24FC /* MIASettingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D6808F1D06D9D500AE24FC /* MIASettingCellView.m */; };
+		42F1455E1D07CC5100A7EAAD /* MIAReportManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F1455D1D07CC5100A7EAAD /* MIAReportManage.m */; };
 		CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */; };
 		CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */; };
 		CD07B2C81CEEF39300B5AB87 /* HXLiveRewardTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2C71CEEF39300B5AB87 /* HXLiveRewardTopCell.m */; };
@@ -554,6 +555,8 @@
 		42D6808C1D06D9BF00AE24FC /* MIASettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingCell.m; sourceTree = "<group>"; };
 		42D6808E1D06D9D500AE24FC /* MIASettingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingCellView.h; sourceTree = "<group>"; };
 		42D6808F1D06D9D500AE24FC /* MIASettingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingCellView.m; sourceTree = "<group>"; };
+		42F1455C1D07CC5100A7EAAD /* MIAReportManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAReportManage.h; sourceTree = "<group>"; };
+		42F1455D1D07CC5100A7EAAD /* MIAReportManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAReportManage.m; sourceTree = "<group>"; };
 		57BC6D5C1D05B8F6C2BCD2CA /* Pods-Piano-Beta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Piano-Beta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta.release.xcconfig"; sourceTree = "<group>"; };
 		CD01F1C11CCE2007006BF4BF /* HXCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCollectionViewLayout.h; sourceTree = "<group>"; };
 		CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCollectionViewLayout.m; sourceTree = "<group>"; };
@@ -981,6 +984,7 @@
 		395D67021C9AB15000ED0454 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				42F1455B1D07CC3B00A7EAAD /* Report */,
 				420A3D5E1CF551DA0081931E /* Song */,
 				42984AD91CDAEF84004F00D5 /* JO */,
 				CD7960871CBE4BA1004CC661 /* LocationMgr */,
@@ -1412,6 +1416,15 @@
 				42D6808C1D06D9BF00AE24FC /* MIASettingCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		42F1455B1D07CC3B00A7EAAD /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				42F1455C1D07CC5100A7EAAD /* MIAReportManage.h */,
+				42F1455D1D07CC5100A7EAAD /* MIAReportManage.m */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
@@ -3327,6 +3340,7 @@
 				429CC2151CE08F22004BCC0C /* MIAVideoModel.m in Sources */,
 				CD7960D41CBE594C004CC661 /* HXUserModel.m in Sources */,
 				422497D31CF4664A008F8A55 /* JODataRequestConfig.m in Sources */,
+				42F1455E1D07CC5100A7EAAD /* MIAReportManage.m in Sources */,
 				422497C61CF4663C008F8A55 /* JOMission.m in Sources */,
 				429CC2011CE0689C004BCC0C /* NSArray+JOExtend.m in Sources */,
 				CD7960D51CBE594C004CC661 /* UserDefaultsUtils.m in Sources */,

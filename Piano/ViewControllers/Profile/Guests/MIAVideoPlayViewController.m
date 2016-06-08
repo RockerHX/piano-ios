@@ -13,6 +13,8 @@
 #import "MIAPlayBarView.h"
 #import "JOBaseSDK.h"
 #import "MusicMgr.h"
+#import "MiaAPIHelper.h"
+#import "MIAReportManage.h"
 
 static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 
@@ -152,7 +154,21 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
                         }
                  }];
         }else if (type == PlayBarActionShare){
-            //分享
+            //分享 暂时用来作为举报的按钮事件
+            [MiaAPIHelper reportWithType:@"视频"
+                                 content:@"视频内容"
+                           completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                               
+                               if (success) {
+                                   
+                                   [self showBannerWithPrompt:@"视频举报成功"];
+                               }else{
+                                   [self showBannerWithPrompt:@"视频举报失败"];
+                               }
+                           } timeoutBlock:^(MiaRequestItem *requestItem) {
+                               [self showBannerWithPrompt:@"视频举报失败"];
+                               
+                           }];
         }
     }];
     [_playView addSubview:_playBarView];
