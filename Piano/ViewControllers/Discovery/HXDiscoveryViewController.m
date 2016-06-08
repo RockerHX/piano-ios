@@ -107,10 +107,9 @@ HXDiscoveryContainerDelegate
     [MiaAPIHelper refetchLiveWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             HXLiveModel *model = [HXLiveModel mj_objectWithKeyValues:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-            UINavigationController *recordLiveNavigationController = [HXRecordLiveViewController navigationControllerInstance];
-            HXRecordLiveViewController *recordLiveViewController = [recordLiveNavigationController.viewControllers firstObject];
+            HXRecordLiveViewController *recordLiveViewController = [HXRecordLiveViewController instance];
             [recordLiveViewController recoveryLive:model];
-            [self presentViewController:recordLiveNavigationController animated:YES completion:nil];
+            [self presentViewController:recordLiveViewController animated:YES completion:nil];
         }
     } timeoutBlock:nil];
 }
