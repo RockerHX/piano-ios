@@ -94,7 +94,7 @@ typedef void(^VOID_BLOCK)(void);
     board->_gagedBlock       = gaged;
     board->_closedBlock      = closed;
     board.controlContainer.hidden = !(showProfile && report);
-    board.gagedButton.hidden = !gaged;
+    [board.gagedButton setTitle:((report && gaged) ? @"举报" : @"禁言") forState:UIControlStateNormal];
     return board;
 }
 
