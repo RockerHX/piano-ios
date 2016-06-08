@@ -364,4 +364,19 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
               completeBlock:(MiaRequestCompleteBlock)completeBlock
                timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
+#pragma mark - 举报 
+
+/**
+ *  举报.
+ *
+ *  @param type          举报的type.
+ *  @param content       举报的内容.
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)reportWithType:(NSString *)type
+               content:(NSString *)content
+         completeBlock:(MiaRequestCompleteBlock)completeBlock
+          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end

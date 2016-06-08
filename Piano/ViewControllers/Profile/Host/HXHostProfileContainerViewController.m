@@ -16,6 +16,7 @@
 #import "UIImageView+WebCache.h"
 #import "HXSettingViewController.h"
 #import "MIASettingViewController.h"
+#import "JOBaseSDK.h"
 
 
 @interface HXHostProfileContainerViewController () <
@@ -52,6 +53,7 @@ HXMeRewardAlbumContainerCellDelegate
 - (IBAction)settingButtonPressed {
     
     MIASettingViewController *settingViewController = [MIASettingViewController new];
+    [settingViewController setMaskImage:[UIImage JOImageWithView:self.view]];
     @weakify(self);
     [settingViewController settingDataChangeHandler:^{
     @strongify(self);

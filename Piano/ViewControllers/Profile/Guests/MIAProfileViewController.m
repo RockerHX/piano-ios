@@ -218,7 +218,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_profileView addSubview:popButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:15. selfView:popButton superView:_profileView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:8. selfView:popButton superView:_profileView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:7.5 selfView:popButton superView:_profileView];
     [JOAutoLayout autoLayoutWithSize:JOSize(35., 35.) selfView:popButton superView:_profileView];
 }

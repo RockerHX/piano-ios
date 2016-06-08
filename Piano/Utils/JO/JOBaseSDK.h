@@ -19,5 +19,6 @@
 #import "NSArray+JOExtend.h"
 #import "UIFont+JOExtend.h"
 #import "UILabel+JOExtend.h"
+#import "UIImage+JOExtend.h"
 
 //#endif /* JOBaseSDK_h */

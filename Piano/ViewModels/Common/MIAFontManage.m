@@ -234,11 +234,11 @@
     //MARK: 设置
     if (type == MIAFontType_Setting_CellTitle) {
         //设置页面的cell的标题
-        return JOFontsMake([UIFont systemFontOfSize:14. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 14.);
     }else if (type == MIAFontType_Setting_CellContent){
         //设置页面的cell的内容
-        return JOFontsMake([UIFont systemFontOfSize:14. weight:UIFontWeightRegular], JORGBSameCreate(220.));
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], JORGBSameCreate(220.));
 //        return JOFontMake(kMIAFontRegular, JORGBSameCreate(220.), 14.);
     }else if (type == MIAFontType_Setting_Title){
         //Bar的标题

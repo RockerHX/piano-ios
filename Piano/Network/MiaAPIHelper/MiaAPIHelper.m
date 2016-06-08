@@ -854,4 +854,21 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
+#pragma mark - 举报 report
+
++ (void)reportWithType:(NSString *)type
+               content:(NSString *)content
+         completeBlock:(MiaRequestCompleteBlock)completeBlock
+          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:type forKey:MiaAPIKey_Type];
+    [dictValues setValue:content forKey:MiaAPIKey_Content];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Report
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 @end

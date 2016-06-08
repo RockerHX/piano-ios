@@ -66,14 +66,18 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [_headImageView setHidden:YES];
     [self addSubview:_headImageView];
     
+    UIImage *maskImage = [UIImage imageNamed:@"PR-Mask"];
     self.maskImageView = [UIImageView newAutoLayoutView];
-    [_maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
-    [_maskImageView setAlpha:0.];
+    [_maskImageView setImage:maskImage];
     [self addSubview:_maskImageView];
     
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_headImageView superView:self];
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self];
+//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_maskImageView superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_maskImageView superView:self];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_maskImageView superView:self];
+    [JOAutoLayout autoLayoutWithHeight:maskImage.size.height selfView:_maskImageView superView:self];
 }
 
 - (void)createHeadLabel{

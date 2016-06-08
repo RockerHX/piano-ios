@@ -465,6 +465,9 @@
     if (indexPath.section == 0) {
         //歌曲的section处理,播放当前的歌曲
         [_albumTableHeadView playAlbumSongWithIndex:indexPath.row];
+    }else if (indexPath.section == 1){
+        //评论的点击
+        
     }
 }
 

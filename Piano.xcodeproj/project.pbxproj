@@ -96,6 +96,9 @@
 		42D613021CE2016300B80753 /* UILabel+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DA1CE1FDE700B80753 /* UILabel+JOExtend.m */; };
 		42D613031CE2016900B80753 /* UIFont+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D81CE1FDE700B80753 /* UIFont+JOExtend.m */; };
 		42D680861D06BFB400AE24FC /* MIAInfoLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D680851D06BFB400AE24FC /* MIAInfoLog.m */; };
+		42D680891D06D4C600AE24FC /* UIImage+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D680881D06D4C600AE24FC /* UIImage+JOExtend.m */; };
+		42D6808D1D06D9BF00AE24FC /* MIASettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D6808C1D06D9BF00AE24FC /* MIASettingCell.m */; };
+		42D680901D06D9D500AE24FC /* MIASettingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D6808F1D06D9D500AE24FC /* MIASettingCellView.m */; };
 		CD01F1C31CCE2007006BF4BF /* HXCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */; };
 		CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01F1C81CCF0611006BF4BF /* HXDiscoveryCell.m */; };
 		CD07B2C81CEEF39300B5AB87 /* HXLiveRewardTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD07B2C71CEEF39300B5AB87 /* HXLiveRewardTopCell.m */; };
@@ -545,6 +548,12 @@
 		42D612FB1CE1FF0900B80753 /* MIAAlbumSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumSongCell.m; sourceTree = "<group>"; };
 		42D680841D06BFB400AE24FC /* MIAInfoLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAInfoLog.h; sourceTree = "<group>"; };
 		42D680851D06BFB400AE24FC /* MIAInfoLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAInfoLog.m; sourceTree = "<group>"; };
+		42D680871D06D4C600AE24FC /* UIImage+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JOExtend.h"; sourceTree = "<group>"; };
+		42D680881D06D4C600AE24FC /* UIImage+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JOExtend.m"; sourceTree = "<group>"; };
+		42D6808B1D06D9BF00AE24FC /* MIASettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingCell.h; sourceTree = "<group>"; };
+		42D6808C1D06D9BF00AE24FC /* MIASettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingCell.m; sourceTree = "<group>"; };
+		42D6808E1D06D9D500AE24FC /* MIASettingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingCellView.h; sourceTree = "<group>"; };
+		42D6808F1D06D9D500AE24FC /* MIASettingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingCellView.m; sourceTree = "<group>"; };
 		57BC6D5C1D05B8F6C2BCD2CA /* Pods-Piano-Beta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Piano-Beta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta.release.xcconfig"; sourceTree = "<group>"; };
 		CD01F1C11CCE2007006BF4BF /* HXCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCollectionViewLayout.h; sourceTree = "<group>"; };
 		CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCollectionViewLayout.m; sourceTree = "<group>"; };
@@ -1240,6 +1249,8 @@
 				42984B131CDB0542004F00D5 /* UIView+JOExtend.m */,
 				429CC1FE1CE0689C004BCC0C /* NSArray+JOExtend.h */,
 				429CC1FF1CE0689C004BCC0C /* NSArray+JOExtend.m */,
+				42D680871D06D4C600AE24FC /* UIImage+JOExtend.h */,
+				42D680881D06D4C600AE24FC /* UIImage+JOExtend.m */,
 			);
 			path = Extend;
 			sourceTree = "<group>";
@@ -1392,6 +1403,15 @@
 				42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */,
 			);
 			path = Purchas;
+			sourceTree = "<group>";
+		};
+		42D6808A1D06D97C00AE24FC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				42D6808B1D06D9BF00AE24FC /* MIASettingCell.h */,
+				42D6808C1D06D9BF00AE24FC /* MIASettingCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		55A2965703CA0FF3081251C6 /* Frameworks */ = {
@@ -1685,11 +1705,14 @@
 		CD2E72931CA11DF8003CDB77 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				42D6808A1D06D97C00AE24FC /* Cell */,
 				CD9167741CAE5304000A12DC /* MBProgressHUDHelp */,
 				CD91676C1CAE52E7000A12DC /* MIALabel */,
 				CD91676F1CAE52E7000A12DC /* MIAUIButton */,
 				CD9167691CAE528D000A12DC /* GenderPickerView.h */,
 				CD91676A1CAE528D000A12DC /* GenderPickerView.m */,
+				42D6808E1D06D9D500AE24FC /* MIASettingCellView.h */,
+				42D6808F1D06D9D500AE24FC /* MIASettingCellView.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3241,6 +3264,7 @@
 				CD7960B21CBE594C004CC661 /* HXAlbumsViewModel.m in Sources */,
 				CD7960B31CBE594C004CC661 /* MBProgressHUDHelp.m in Sources */,
 				CD8322D21CF5974000D7A254 /* MIAProfileViewController.m in Sources */,
+				42D6808D1D06D9BF00AE24FC /* MIASettingCell.m in Sources */,
 				42984B511CDC7FEB004F00D5 /* MIAProfileLiveView.m in Sources */,
 				CD7960B41CBE594C004CC661 /* UIImage+ColorToImage.m in Sources */,
 				CD7960B51CBE594C004CC661 /* HXDiscoveryViewController.m in Sources */,
@@ -3326,6 +3350,7 @@
 				42984B0A1CDAEF84004F00D5 /* JOFException.m in Sources */,
 				CD7960DE1CBE594C004CC661 /* HXIBLabel.m in Sources */,
 				42984B001CDAEF84004F00D5 /* UIColor+JOExtend.m in Sources */,
+				42D680901D06D9D500AE24FC /* MIASettingCellView.m in Sources */,
 				CDA394951CFEBB3D00F56A41 /* HXMeRewardAlbumCell.m in Sources */,
 				CD7960DF1CBE594C004CC661 /* HXTextView.m in Sources */,
 				CD7960E01CBE594C004CC661 /* MusicMgr.m in Sources */,
@@ -3381,6 +3406,7 @@
 				42A0DAFF1CE2E07300F1FCEF /* MIAAlbumPlayView.m in Sources */,
 				422497D41CF4664A008F8A55 /* JOFileDownloadConfig.m in Sources */,
 				4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */,
+				42D680891D06D4C600AE24FC /* UIImage+JOExtend.m in Sources */,
 				CD7961031CBE594C004CC661 /* HXReplaySlider.m in Sources */,
 				42CC372C1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */,
 				CD7961041CBE594C004CC661 /* CacheHelper.m in Sources */,
