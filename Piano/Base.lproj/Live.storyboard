@@ -116,7 +116,17 @@
                                     <constraint firstItem="ckr-OS-Sm9" firstAttribute="top" secondItem="Ng3-bd-ypl" secondAttribute="top" id="rta-MY-nMm"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE7-qj-rlW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIa-ca-bHB" userLabel="Resport Button">
+                                <rect key="frame" x="468" y="10" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="JcC-lz-oxW"/>
+                                </constraints>
+                                <state key="normal" image="LC-ReportIcon-Gray"/>
+                                <connections>
+                                    <action selector="reportButtonPressed" destination="Dyc-be-gjQ" eventType="touchUpInside" id="ALr-IF-ZVp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE7-qj-rlW" userLabel="Close Button">
                                 <rect key="frame" x="518" y="10" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="IWG-YK-rf0"/>
@@ -130,11 +140,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pIa-ca-bHB" firstAttribute="centerY" secondItem="WE7-qj-rlW" secondAttribute="centerY" id="0eV-WN-62z"/>
                             <constraint firstItem="Dnz-GS-1EO" firstAttribute="height" secondItem="aBX-Fw-0Sh" secondAttribute="height" multiplier="0.6" id="50T-Hp-RI7"/>
                             <constraint firstItem="WE7-qj-rlW" firstAttribute="centerY" secondItem="Ng3-bd-ypl" secondAttribute="centerY" id="ANB-Uv-HXT"/>
                             <constraint firstItem="Ng3-bd-ypl" firstAttribute="top" secondItem="mO5-HS-sqh" secondAttribute="bottom" constant="15" id="GWq-vh-WKL"/>
                             <constraint firstAttribute="trailing" secondItem="D6v-2K-8cm" secondAttribute="trailing" id="Gu8-5S-4SB"/>
                             <constraint firstItem="gi9-YG-ZfP" firstAttribute="top" secondItem="6LA-y0-bo0" secondAttribute="bottom" id="Hxo-Yd-uSC"/>
+                            <constraint firstItem="pIa-ca-bHB" firstAttribute="width" secondItem="pIa-ca-bHB" secondAttribute="height" multiplier="1:1" id="IkV-eh-qAg"/>
                             <constraint firstItem="Ng3-bd-ypl" firstAttribute="leading" secondItem="aBX-Fw-0Sh" secondAttribute="leading" constant="10" id="JsU-0Q-hY5"/>
                             <constraint firstItem="D6v-2K-8cm" firstAttribute="leading" secondItem="aBX-Fw-0Sh" secondAttribute="leading" id="KRS-fg-7MT"/>
                             <constraint firstItem="6LA-y0-bo0" firstAttribute="leading" secondItem="aBX-Fw-0Sh" secondAttribute="leading" id="PDL-mC-M3K"/>
@@ -142,6 +154,7 @@
                             <constraint firstAttribute="bottom" secondItem="D6v-2K-8cm" secondAttribute="bottom" id="irU-kD-29Q"/>
                             <constraint firstAttribute="trailing" secondItem="WE7-qj-rlW" secondAttribute="trailing" id="jzy-pK-aKk"/>
                             <constraint firstItem="D6v-2K-8cm" firstAttribute="top" secondItem="aBX-Fw-0Sh" secondAttribute="top" id="paP-8l-bFi"/>
+                            <constraint firstItem="WE7-qj-rlW" firstAttribute="leading" secondItem="pIa-ca-bHB" secondAttribute="trailing" id="vpV-Sy-Sgh"/>
                             <constraint firstItem="6LA-y0-bo0" firstAttribute="top" secondItem="mO5-HS-sqh" secondAttribute="bottom" id="xIB-sH-bxi"/>
                         </constraints>
                     </view>
@@ -345,7 +358,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXLiveBarrageContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXLiveBarrageContainerViewController" customClass="HXLiveBarrageContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1694,6 +1707,6 @@
         <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xaJ-1k-tkf"/>
+        <segue reference="00e-Qs-05q"/>
     </inferredMetricsTieBreakers>
 </document>
