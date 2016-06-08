@@ -28,6 +28,11 @@
     HXModalTransitionDelegate *_rightModalTransitionDelegate;
 }
 
+#pragma mark - Class Methods
++ (NSString *)navigationControllerIdentifier {
+    return @"HXWatchLiveLandscapeNavigationController";
+}
+
 #pragma mark - Orientations Methods
 - (BOOL)shouldAutorotate {
     return NO;

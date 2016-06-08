@@ -9,7 +9,7 @@
 #import "MIAProfileReplayView.h"
 #import "AppDelegate.h"
 #import "MIAReplayModel.h"
-#import "HXReplayViewController.h"
+#import "HXReplayLandscapeViewController.h"
 #import "MusicMgr.h"
 
 CGFloat kProfileReplayImageToTitleSpaceDistance = 9. ;
@@ -116,8 +116,13 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
 
 #pragma mark - tag action
 - (void)tapAction:(UIGestureRecognizer *)gesture {
-    HXReplayViewController *replayViewController = [HXReplayViewController instance];
-    replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
+#warning Horizontal Replay Live
+    HXReplayViewController *replayViewController = nil;
+//    if (horizontal) {
+//        replayViewController = [HXReplayLandscapeViewController instance];
+//    } else {
+        replayViewController = [HXReplayViewController instance];
+//    }
     replayViewController.model.uID = _uid;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayViewController animated:YES completion:^{
         if ([[MusicMgr standard] isPlaying]) {

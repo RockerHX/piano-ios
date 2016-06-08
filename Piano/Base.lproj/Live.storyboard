@@ -8,6 +8,23 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--HXWatchLiveLandscapeNavigationController-->
+        <scene sceneID="eUX-Wp-dC6">
+            <objects>
+                <navigationController storyboardIdentifier="HXWatchLiveLandscapeNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Szl-bk-a1x" userLabel="HXWatchLiveLandscapeNavigationController" customClass="HXLandscapeNaviagtionController" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0eg-5T-8jN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Dyc-be-gjQ" kind="relationship" relationship="rootViewController" id="N8L-ZZ-GwH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbc-r4-5hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1190" y="879"/>
+        </scene>
         <!--HXWatchLiveLandscapeViewController-->
         <scene sceneID="hhV-en-qaZ">
             <objects>
@@ -158,7 +175,9 @@
                             <constraint firstItem="6LA-y0-bo0" firstAttribute="top" secondItem="mO5-HS-sqh" secondAttribute="bottom" id="xIB-sH-bxi"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Ggy-fA-nD0"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="albumView" destination="Fpd-Fw-TPr" id="vHA-vC-YpT"/>
@@ -358,7 +377,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXLiveBarrageContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXLiveBarrageContainerViewController" customClass="HXLiveBarrageContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1716,6 +1735,6 @@
         <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HeX-r3-laS"/>
+        <segue reference="00e-Qs-05q"/>
     </inferredMetricsTieBreakers>
 </document>

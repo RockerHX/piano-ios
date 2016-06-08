@@ -10,7 +10,7 @@
 #import "HXProfileNavigationBar.h"
 #import "HXProfileContainerViewController.h"
 #import "HXAlbumsViewController.h"
-#import "HXReplayViewController.h"
+#import "HXReplayLandscapeViewController.h"
 
 
 @interface HXProfileViewController () <
@@ -111,7 +111,13 @@ HXProfileContainerViewControllerDelegate
 }
 
 - (void)container:(HXProfileContainerViewController *)container selectedReplay:(HXReplayModel *)replay {
-    HXReplayViewController *replayViewController = [HXReplayViewController instance];
+#warning Horizontal Replay Live
+    HXReplayViewController *replayViewController = nil;
+//    if (horizontal) {
+//        replayViewController = [HXReplayLandscapeViewController instance];
+//    } else {
+        replayViewController = [HXReplayViewController instance];
+//    }
     replayViewController.model = [HXDiscoveryModel createWithReplayModel:replay];
     [self presentViewController:replayViewController animated:YES completion:nil];
 }

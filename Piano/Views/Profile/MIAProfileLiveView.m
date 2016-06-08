@@ -7,7 +7,7 @@
 //
 
 #import "MIAProfileLiveView.h"
-#import "HXWatchLiveViewController.h"
+#import "HXWatchLiveLandscapeViewController.h"
 #import "AppDelegate.h"
 #import "MusicMgr.h"
 #import "MIAProfileViewModel.h"
@@ -87,8 +87,14 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
 
 #pragma mark - tag action
 - (void)tapAction:(UIGestureRecognizer *)gesture{
-    UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+#warning Horizontal Watch Live
+    UINavigationController *watchLiveNavigationController = nil;
+    //        if (horizontal) {
+    //            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+    //        } else {
+    watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    //        }
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
     watchLiveViewController.roomID = _liveModel.liveRoomID;
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [(UINavigationController *)[[delegate window] rootViewController] presentViewController:watchLiveNavigationController animated:YES completion:^{
