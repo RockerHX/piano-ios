@@ -30,7 +30,6 @@
 #import <UMengSocialCOM/UMSocial.h>
 #import "HXAppConstants.h"
 #import "MIAProfileViewController.h"
-#import "BlocksKit.h"
 
 
 @interface HXWatchLiveViewController () <
