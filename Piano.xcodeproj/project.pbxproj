@@ -308,6 +308,7 @@
 		CDAC6CD61D07C56600A13725 /* HXReplayLandscapeBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAC6CD51D07C56600A13725 /* HXReplayLandscapeBottomBar.xib */; };
 		CDAC6CDA1D07F9F400A13725 /* HXAnchorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CD91D07F9F400A13725 /* HXAnchorModel.m */; };
 		CDAC6CDE1D07FA1000A13725 /* HXWatcherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CDD1D07FA1000A13725 /* HXWatcherModel.m */; };
+		CDAC6CE11D08315600A13725 /* HXLandscapeNaviagtionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAC6CE01D08315600A13725 /* HXLandscapeNaviagtionController.m */; };
 		CDB456F81CE5D00100F4450B /* ZegoAVKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; };
 		CDB456FA1CE5E94600F4450B /* ZegoAVKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB456F61CE5D00100F4450B /* ZegoAVKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDBCFAF61CE1D5F90045946F /* HXLiveAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBCFAF41CE1D5F90045946F /* HXLiveAlbumView.m */; };
@@ -848,6 +849,8 @@
 		CDAC6CD91D07F9F400A13725 /* HXAnchorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAnchorModel.m; sourceTree = "<group>"; };
 		CDAC6CDC1D07FA1000A13725 /* HXWatcherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXWatcherModel.h; sourceTree = "<group>"; };
 		CDAC6CDD1D07FA1000A13725 /* HXWatcherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXWatcherModel.m; sourceTree = "<group>"; };
+		CDAC6CDF1D08315600A13725 /* HXLandscapeNaviagtionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLandscapeNaviagtionController.h; sourceTree = "<group>"; };
+		CDAC6CE01D08315600A13725 /* HXLandscapeNaviagtionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLandscapeNaviagtionController.m; sourceTree = "<group>"; };
 		CDB099EC1CB520C000C47EA0 /* HXRecordAnchorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXRecordAnchorView.h; sourceTree = "<group>"; };
 		CDB099ED1CB520C000C47EA0 /* HXRecordAnchorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXRecordAnchorView.m; sourceTree = "<group>"; };
 		CDB099EE1CB520C000C47EA0 /* HXRecordAnchorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HXRecordAnchorView.xib; sourceTree = "<group>"; };
@@ -2269,6 +2272,8 @@
 				CD3D1C041D06B42E0043ABBE /* Reward */,
 				CD7666841D055D03008099F1 /* HXWatchLiveLandscapeViewController.h */,
 				CD7666851D055D03008099F1 /* HXWatchLiveLandscapeViewController.m */,
+				CDAC6CDF1D08315600A13725 /* HXLandscapeNaviagtionController.h */,
+				CDAC6CE01D08315600A13725 /* HXLandscapeNaviagtionController.m */,
 			);
 			path = Landscape;
 			sourceTree = "<group>";
@@ -3437,6 +3442,7 @@
 				CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */,
 				42984B5D1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */,
 				CD7960F61CBE594C004CC661 /* HXAttentionModel.m in Sources */,
+				CDAC6CE11D08315600A13725 /* HXLandscapeNaviagtionController.m in Sources */,
 				CD3D1C0A1D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m in Sources */,
 				420BBB4E1CE99D0E00F52AB2 /* MIAPayHistoryViewController.m in Sources */,
 				CD7960F71CBE594C004CC661 /* NSTimer+BlockSupport.m in Sources */,

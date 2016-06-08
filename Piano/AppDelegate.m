@@ -22,7 +22,7 @@
 #import "JPUSHService.h"
 #import "NSString+IsNull.h"
 
-#import "HXWatchLiveViewController.h"
+#import "HXWatchLiveLandscapeViewController.h"
 
 @interface AppDelegate ()
 @end
@@ -186,8 +186,14 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
         NSLog(@"%@ with roomID: %@", action, param1);
-        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+#warning Horizontal Watch Live
+        UINavigationController *watchLiveNavigationController = nil;
+//        if (horizontal) {
+//            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+//        } else {
+            watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+//        }
+        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
         watchLiveViewController.roomID = param1;
         [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
 	}
