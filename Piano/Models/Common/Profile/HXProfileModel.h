@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, HXProfileGender) {
 @property (nonatomic, strong)        NSString *liveRoomID;
 @property (nonatomic, strong)        NSString *liveTitle;
 @property (nonatomic, strong)        NSString *liveCoverUrl;
-
+@property (nonatomic, assign)       NSInteger  horizontal;
 
 @property (nonatomic, strong) NSArray<HXAttentionModel *> *attentions;
 @property (nonatomic, strong)     NSArray<HXAlbumModel *> *albums;

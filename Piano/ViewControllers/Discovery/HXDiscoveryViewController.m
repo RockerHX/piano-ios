@@ -182,13 +182,13 @@ HXDiscoveryContainerDelegate
         case HXDiscoveryContainerActionShowLive: {
             [self hiddenNavigationBar];
             [self pauseMusic];
-#warning Horizontal Watch Live
-            UINavigationController *watchLiveNavigationController = nil;
-            //        if (horizontal) {
-            //            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
-            //        } else {
-            watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-            //        }
+			UINavigationController *watchLiveNavigationController = nil;
+			if (model.horizontal) {
+				watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+			} else {
+				watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+			}
+
             HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
             watchLiveViewController.roomID = model.roomID;
             [self presentViewController:watchLiveNavigationController animated:YES completion:nil];

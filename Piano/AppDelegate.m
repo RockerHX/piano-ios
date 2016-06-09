@@ -174,13 +174,17 @@
 
 static NSString * const PushExtraKey_Action					= @"action";
 static NSString * const PushExtraKey_PARAM1					= @"param1";
+static NSString * const PushExtraKey_PARAM2					= @"param2";
 static NSString * const PushAction_WatchLive				= @"watchlive";
 
 #pragma mark - handle notifications
 - (void)handleNotification:(NSDictionary *)userInfo {
 	NSString *action = userInfo[PushExtraKey_Action];
 	NSString *param1 = userInfo[PushExtraKey_PARAM1];
-	if ([NSString isNull:action] || [NSString isNull:param1]) {
+	NSString *param2 = userInfo[PushExtraKey_PARAM2];
+	if ([NSString isNull:action]
+		|| [NSString isNull:param1]
+		|| [NSString isNull:param2]) {
 		return;
 	}
 
@@ -188,11 +192,11 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
         NSLog(@"%@ with roomID: %@", action, param1);
 #warning Horizontal Watch Live
         UINavigationController *watchLiveNavigationController = nil;
-//        if (horizontal) {
-//            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
-//        } else {
+        if ([param2 boolValue]) {
+            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+        } else {
             watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-//        }
+        }
         HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
         watchLiveViewController.roomID = param1;
         [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];

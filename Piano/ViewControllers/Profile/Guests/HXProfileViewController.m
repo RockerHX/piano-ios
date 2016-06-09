@@ -113,11 +113,11 @@ HXProfileContainerViewControllerDelegate
 - (void)container:(HXProfileContainerViewController *)container selectedReplay:(HXReplayModel *)replay {
 #warning Horizontal Replay Live
     HXReplayViewController *replayViewController = nil;
-//    if (horizontal) {
-//        replayViewController = [HXReplayLandscapeViewController instance];
-//    } else {
+    if (_viewModel.model.horizontal) {
+        replayViewController = [HXReplayLandscapeViewController instance];
+    } else {
         replayViewController = [HXReplayViewController instance];
-//    }
+    }
     replayViewController.model = [HXDiscoveryModel createWithReplayModel:replay];
     [self presentViewController:replayViewController animated:YES completion:nil];
 }
