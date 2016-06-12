@@ -1538,9 +1538,8 @@
                                                             <color key="textColor" red="0.76862745098039209" green="0.68627450980392157" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nYc-nt-qmv" userLabel="Coin Icon">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LC-CoinIcon-M" translatesAutoresizingMaskIntoConstraints="NO" id="nYc-nt-qmv" userLabel="Coin Icon">
                                                             <rect key="frame" x="271" y="24" width="23" height="23"/>
-                                                            <color key="backgroundColor" red="0.76862745099999996" green="0.68627450980000004" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="23" id="r6v-W0-Pdk"/>
                                                                 <constraint firstAttribute="width" secondItem="nYc-nt-qmv" secondAttribute="height" multiplier="1:1" id="vZ4-WT-gBz"/>
@@ -1740,6 +1739,7 @@
         <image name="L-MaskBG" width="375" height="250"/>
         <image name="LC-BarrageGiftIcon" width="25" height="25"/>
         <image name="LC-BarrageRewardIcon" width="25" height="25"/>
+        <image name="LC-CoinIcon-M" width="21" height="21"/>
         <image name="LC-CommentBubbleIcon" width="11" height="11"/>
         <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
