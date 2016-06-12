@@ -1487,7 +1487,7 @@
                                             <constraint firstItem="6iC-if-nkL" firstAttribute="centerY" secondItem="qaU-M8-R9y" secondAttribute="centerY" id="zVn-Nz-RWP"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uri-bH-9Dz">
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uri-bH-9Dz">
                                         <rect key="frame" x="0.0" y="70" width="320" height="360"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1575,6 +1575,12 @@
                                             <outlet property="delegate" destination="Si8-fB-DwK" id="ZFn-mf-X4V"/>
                                         </connections>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fka-t2-ddR" userLabel="Prompt Label">
+                                        <rect key="frame" x="139" y="240" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1583,7 +1589,9 @@
                                     <constraint firstItem="Uri-bH-9Dz" firstAttribute="leading" secondItem="z2T-sf-MtJ" secondAttribute="leading" id="CFU-14-HTt"/>
                                     <constraint firstItem="Uri-bH-9Dz" firstAttribute="top" secondItem="qaU-M8-R9y" secondAttribute="bottom" id="JMW-rM-6ji"/>
                                     <constraint firstAttribute="bottom" secondItem="Uri-bH-9Dz" secondAttribute="bottom" id="Oo7-0b-txY"/>
+                                    <constraint firstItem="fka-t2-ddR" firstAttribute="centerX" secondItem="Uri-bH-9Dz" secondAttribute="centerX" id="ZXn-pQ-waD"/>
                                     <constraint firstItem="qaU-M8-R9y" firstAttribute="top" secondItem="z2T-sf-MtJ" secondAttribute="top" id="j46-N3-OsU"/>
+                                    <constraint firstItem="fka-t2-ddR" firstAttribute="centerY" secondItem="Uri-bH-9Dz" secondAttribute="centerY" id="kMz-3d-4Or"/>
                                     <constraint firstAttribute="trailing" secondItem="qaU-M8-R9y" secondAttribute="trailing" id="twd-q3-y0o"/>
                                 </constraints>
                             </view>
@@ -1601,6 +1609,7 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="z2T-sf-MtJ" id="OL0-0y-Dn1"/>
+                        <outlet property="promptLabel" destination="fka-t2-ddR" id="hfi-LX-pF5"/>
                         <outlet property="tableView" destination="Uri-bH-9Dz" id="pjf-wA-79E"/>
                         <outlet property="tapView" destination="BlD-cH-YpF" id="3m2-KR-vEg"/>
                         <outlet property="titleLabel" destination="6iC-if-nkL" id="6zy-eZ-XQu"/>
