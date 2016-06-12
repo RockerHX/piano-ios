@@ -182,6 +182,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
     _profileLiveModel.liveRoomID = _profileModel.liveRoomID;
     _profileLiveModel.liveTitle = _profileModel.liveTitle;
     _profileLiveModel.liveCoverURL = _profileModel.liveRoomCoverUrl;
+	_profileLiveModel.horizontal = _profileModel.horizontal;
 }
 
 - (void)updateCellData{

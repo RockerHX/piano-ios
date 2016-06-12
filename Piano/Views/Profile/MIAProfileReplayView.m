@@ -9,7 +9,7 @@
 #import "MIAProfileReplayView.h"
 #import "AppDelegate.h"
 #import "MIAReplayModel.h"
-#import "HXReplayViewController.h"
+#import "HXReplayLandscapeViewController.h"
 #import "MusicMgr.h"
 #import "MiaAPIHelper.h"
 
@@ -134,7 +134,14 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
 //        
 //    }];
     
-    HXReplayViewController *replayViewController = [HXReplayViewController instance];
+//    HXReplayViewController *replayViewController = [HXReplayViewController instance];
+//    replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
+    HXReplayViewController *replayViewController = nil;
+    if (_replayModel.horizontal) {
+        replayViewController = [HXReplayLandscapeViewController instance];
+    } else {
+        replayViewController = [HXReplayViewController instance];
+    }
     replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
     replayViewController.model.uID = _uid;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayViewController animated:YES completion:^{

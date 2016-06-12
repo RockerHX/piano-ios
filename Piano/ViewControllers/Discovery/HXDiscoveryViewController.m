@@ -9,7 +9,7 @@
 #import "HXDiscoveryViewController.h"
 #import "HXDiscoveryContainerViewController.h"
 #import "HXRecordLiveViewController.h"
-#import "HXWatchLiveViewController.h"
+#import "HXWatchLiveLandscapeViewController.h"
 #import "HXWatchLiveLandscapeViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
@@ -182,8 +182,14 @@ HXDiscoveryContainerDelegate
         case HXDiscoveryContainerActionShowLive: {
             [self hiddenNavigationBar];
             [self pauseMusic];
-            UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+			UINavigationController *watchLiveNavigationController = nil;
+			if (model.horizontal) {
+				watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+			} else {
+				watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+			}
+
+            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
             watchLiveViewController.roomID = model.roomID;
             [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
             break;

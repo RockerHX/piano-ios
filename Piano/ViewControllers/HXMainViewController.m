@@ -9,7 +9,7 @@
 #import "HXMainViewController.h"
 #import "HXDiscoveryViewController.h"
 #import "HXLoginViewController.h"
-#import "HXWatchLiveViewController.h"
+#import "HXWatchLiveLandscapeViewController.h"
 #import "MiaAPIHelper.h"
 #import "WebSocketMgr.h"
 #import "HXUserSession.h"
@@ -108,14 +108,20 @@ HXLoginViewControllerDelegate
 }
 
 #pragma mark - Public Methods
-- (void)watchLiveWithRoomID:(NSString *)roomID {
-    if (roomID.length) {
-        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
-        watchLiveViewController.roomID = roomID;
-        [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
-    }
-}
+//- (void)watchLiveWithRoomID:(NSString *)roomID {
+//    if (roomID.length) {
+//#warning Horizontal Watch Live
+//        UINavigationController *watchLiveNavigationController = nil;
+//        //        if (horizontal) {
+//        //            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+//        //        } else {
+//        watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+//        //        }
+//        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+//        watchLiveViewController.roomID = roomID;
+//        [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+//    }
+//}
 
 #pragma mark - Private Methods
 - (void)shouldShowLoginSenceWithAnimation:(BOOL)animation {

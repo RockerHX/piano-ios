@@ -35,11 +35,12 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryModelType) {
 @property (nonatomic, assign) NSInteger  onlineCount;
 @property (nonatomic, assign) NSInteger  videoUpdated;
 @property (nonatomic, assign) NSInteger  albumUpdated;
-
+@property (nonatomic, assign) NSInteger  horizontal;
 
 @property (nonatomic, assign) HXDiscoveryModelType  type;
 @property (nonatomic, assign) BOOL  showVideoIcon;
 @property (nonatomic, assign) BOOL  showAlbumIcon;
+
 
 + (instancetype)createWithReplayModel:(id)model;
 

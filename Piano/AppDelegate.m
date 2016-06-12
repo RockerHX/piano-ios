@@ -22,7 +22,7 @@
 #import "JPUSHService.h"
 #import "NSString+IsNull.h"
 
-#import "HXWatchLiveViewController.h"
+#import "HXWatchLiveLandscapeViewController.h"
 
 @interface AppDelegate ()
 @end
@@ -174,20 +174,30 @@
 
 static NSString * const PushExtraKey_Action					= @"action";
 static NSString * const PushExtraKey_PARAM1					= @"param1";
+static NSString * const PushExtraKey_PARAM2					= @"param2";
 static NSString * const PushAction_WatchLive				= @"watchlive";
 
 #pragma mark - handle notifications
 - (void)handleNotification:(NSDictionary *)userInfo {
 	NSString *action = userInfo[PushExtraKey_Action];
 	NSString *param1 = userInfo[PushExtraKey_PARAM1];
-	if ([NSString isNull:action] || [NSString isNull:param1]) {
+	NSString *param2 = userInfo[PushExtraKey_PARAM2];
+	if ([NSString isNull:action]
+		|| [NSString isNull:param1]
+		|| [NSString isNull:param2]) {
 		return;
 	}
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
         NSLog(@"%@ with roomID: %@", action, param1);
-        UINavigationController *watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];
+#warning Horizontal Watch Live
+        UINavigationController *watchLiveNavigationController = nil;
+        if ([param2 boolValue]) {
+            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+        } else {
+            watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+        }
+        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
         watchLiveViewController.roomID = param1;
         [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
 	}

@@ -24,6 +24,7 @@
 @property (nonatomic, copy) NSString *shareUrl; //分享的地址
 
 @property (nonatomic, assign) NSInteger  duration; //视频的长度
+@property (nonatomic, assign) NSInteger  horizontal;
 
 @property (nonatomic, copy) NSString *anchorAvatar; //主播头像
 

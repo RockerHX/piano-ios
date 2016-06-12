@@ -242,14 +242,10 @@ HXReplayBottomBarDelegate
             break;
         }
         case HXReplayBottomBarActionReport: {
-            [UIAlertView bk_showAlertViewWithTitle:@"是否举报主播" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"举报"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                if (buttonIndex != alertView.cancelButtonIndex) {
-                    [MiaAPIHelper reportWithType:@"resport_anchor" content:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-                        [self showBannerWithPrompt:@"举报成功"];
-                    } timeoutBlock:^(MiaRequestItem *requestItem) {
-                        [self showBannerWithPrompt:@"网络超时，举报失败"];
-                    }];
-                }
+            [MiaAPIHelper reportWithType:@"resport_anchor" content:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                [self showBannerWithPrompt:@"举报成功"];
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                [self showBannerWithPrompt:@"网络超时，举报失败"];
             }];
             break;
         }
