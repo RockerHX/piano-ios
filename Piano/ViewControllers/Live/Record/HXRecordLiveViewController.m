@@ -308,6 +308,10 @@ static CGFloat AlbumViewWidth = 60.0f;
         case HXRecordBottomBarActionBeauty: {
             _beauty = !_beauty;
             [[HXZegoAVKitManager manager].zegoLiveApi enableBeautifying:_beauty];
+            
+            NSString *prompt = _beauty ? @"已开启" : @"已关闭";
+            prompt = [prompt stringByAppendingString:@"美颜功能"];
+            [self showBannerWithPrompt:prompt];
             break;
         }
         case HXRecordBottomBarActionChange: {
