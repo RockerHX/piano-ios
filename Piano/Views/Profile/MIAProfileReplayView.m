@@ -11,6 +11,7 @@
 #import "MIAReplayModel.h"
 #import "HXReplayViewController.h"
 #import "MusicMgr.h"
+#import "MiaAPIHelper.h"
 
 CGFloat kProfileReplayImageToTitleSpaceDistance = 9. ;
 CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
@@ -116,6 +117,23 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
 
 #pragma mark - tag action
 - (void)tapAction:(UIGestureRecognizer *)gesture {
+    
+    //视频统计.
+//    [MiaAPIHelper videoCountWithID:_videoModel.id completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+//        
+//        if (success) {
+//            //            JOLog(@"视频统计成功");
+//            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_videoModel.viewCnt) integerValue] +1];
+//            _videoModel.viewCnt = viewCount;
+//            [_numberlabel setText:viewCount];
+//        }else{
+//            //            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
+//        }
+//        
+//    } timeoutBlock:^(MiaRequestItem *requestItem) {
+//        
+//    }];
+    
     HXReplayViewController *replayViewController = [HXReplayViewController instance];
     replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
     replayViewController.model.uID = _uid;

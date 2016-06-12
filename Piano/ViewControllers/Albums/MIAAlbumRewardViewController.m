@@ -286,6 +286,7 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
                                                      
                                                          [self hiddenHUD];
                                                          [self showBannerWithPrompt:@"打赏成功"];
+                                                         [self popAction];
 //                                                         JOLog(@"打赏成功");
                                                      }
                                                      failed:^(NSString *failed) {
@@ -293,11 +294,11 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
                                                          [self hiddenHUD];
                                                          [self showBannerWithPrompt:failed];
                                                      } mCoinSuccess:^{
-                                                         [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
-                                                         [self updateMCoinAccountLabelLayout];
+//                                                         [_accountLabel setText:[NSString stringWithFormat:@"账户余额:%@M币",[[MIAMCoinManage shareMCoinManage] mCoin]]];
+//                                                         [self updateMCoinAccountLabelLayout];
                                                          
                                                      } mCoinFailed:^(NSString *failed) {
-                                                         [self showBannerWithPrompt:failed];
+//                                                         [self showBannerWithPrompt:failed];
                                                      }];
 }
 

@@ -182,7 +182,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [JOAutoLayout autoLayoutWithHeight:profileTableHeadViewHeight selfView:_profileHeadView superView:_profileView];
     
     UIView *headBackgroundView = [UIView newAutoLayoutView];
-    [headBackgroundView setBackgroundColor:[UIColor blackColor]];
+    [headBackgroundView setBackgroundColor:JORGBCreate(0., 0., 0., 0.9)];
     [_profileView addSubview:headBackgroundView];
     
     [JOAutoLayout autoLayoutWithTopView:_profileHeadView distance:0. selfView:headBackgroundView superView:_profileView];
@@ -462,7 +462,6 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
 //    [_profileHeadView setProfileMaskAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)*2.];
-    
     [_maskImageView setAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)*2.];
     [_navBarView setAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)];
 //    if (scrollView.contentOffset.y > profileTableHeadViewHeight +10) {

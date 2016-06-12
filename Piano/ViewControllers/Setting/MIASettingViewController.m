@@ -10,6 +10,7 @@
 #import "MIASettingContentViewController.h"
 #import "HXFeedBackViewController.h"
 #import "ChangePwdViewController.h"
+#import "HXUserTermsViewController.h"
 #import "MBProgressHUDHelp.h"
 #import "HXAlertBanner.h"
 #import "MIANavBarView.h"
@@ -217,7 +218,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     }
     
     //是否存在箭头指示
-    if ((section == 0 && row == 0) || (section == 1) || (section == 2 && row == 1) || (section == 2 && row == 2)) {
+    if ((section == 0 && row == 0) || (section == 1) || (section == 2 && row == 1) || (section == 2 && row == 3)) {
         //不存在箭头指示
         [(MIASettingCell *)cell setCellAccessoryImage:nil];
     }else{
@@ -358,6 +359,11 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
             //当前版本
             
         }else if (row == 2){
+            //用户协议 许可
+            
+            [self miaTerms];
+            
+        }else if (row == 3){
             //退出登录
             [self logout];
         }
@@ -471,6 +477,12 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     
     MIASettingContentViewController *settingContentViewController = [[MIASettingContentViewController alloc] initWithContentType:SettingContentType_Feedback];
     [self.navigationController pushViewController:settingContentViewController animated:YES];
+}
+
+- (void)miaTerms{
+
+    HXUserTermsViewController *userTermsViewController = [HXUserTermsViewController instance];
+    [self presentViewController:userTermsViewController animated:YES completion:nil];
 }
 
 - (void)logout{

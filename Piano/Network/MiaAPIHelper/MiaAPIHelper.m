@@ -870,4 +870,19 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
+#pragma mark - 视频统计
+
++ (void)videoCountWithID:(NSString *)videoID
+           completeBlock:(MiaRequestCompleteBlock)completeBlock
+            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:videoID forKey:MiaAPIKey_VideoID];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_VideoCount
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 @end
