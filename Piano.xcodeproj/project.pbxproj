@@ -11,6 +11,7 @@
 		398E29321D08093A00E22956 /* UIImage+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E29311D08093A00E22956 /* UIImage+JOExtend.m */; };
 		398E29381D08097400E22956 /* MIASettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E29351D08097400E22956 /* MIASettingCell.m */; };
 		398E29391D08097400E22956 /* MIASettingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E29371D08097400E22956 /* MIASettingCellView.m */; };
+		398E293D1D08137600E22956 /* MIAReportManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E293C1D08137600E22956 /* MIAReportManage.m */; };
 		4204445A1CE56DCF00F6B303 /* MIAAlbumRewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */; };
 		4204445E1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4204445C1CE5863B00F6B303 /* MIAAlbumRewardViewModel.m */; };
 		4206FA371CFBDCBB0015249E /* MIAPlayBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4206FA361CFBDCBB0015249E /* MIAPlayBarView.m */; };
@@ -381,6 +382,8 @@
 		398E29351D08097400E22956 /* MIASettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingCell.m; sourceTree = "<group>"; };
 		398E29361D08097400E22956 /* MIASettingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIASettingCellView.h; sourceTree = "<group>"; };
 		398E29371D08097400E22956 /* MIASettingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingCellView.m; sourceTree = "<group>"; };
+		398E293B1D08137600E22956 /* MIAReportManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAReportManage.h; sourceTree = "<group>"; };
+		398E293C1D08137600E22956 /* MIAReportManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAReportManage.m; sourceTree = "<group>"; };
 		420444571CE56DCF00F6B303 /* MIAAlbumRewardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewController.h; sourceTree = "<group>"; };
 		420444581CE56DCF00F6B303 /* MIAAlbumRewardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumRewardViewController.m; sourceTree = "<group>"; };
 		4204445B1CE5863B00F6B303 /* MIAAlbumRewardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumRewardViewModel.h; sourceTree = "<group>"; };
@@ -997,6 +1000,7 @@
 		395D67021C9AB15000ED0454 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				398E293A1D08137600E22956 /* Report */,
 				420A3D5E1CF551DA0081931E /* Song */,
 				42984AD91CDAEF84004F00D5 /* JO */,
 				CD7960871CBE4BA1004CC661 /* LocationMgr */,
@@ -1115,6 +1119,15 @@
 				398E29351D08097400E22956 /* MIASettingCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		398E293A1D08137600E22956 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				398E293B1D08137600E22956 /* MIAReportManage.h */,
+				398E293C1D08137600E22956 /* MIAReportManage.m */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 		420A3D5E1CF551DA0081931E /* Song */ = {
@@ -3460,6 +3473,7 @@
 				CD7960FC1CBE594C004CC661 /* HXAlbumsCommentViewModel.m in Sources */,
 				42984B6D1CDCAFEA004F00D5 /* MIAProfileReplayCell.m in Sources */,
 				CD7961001CBE594C004CC661 /* MIALabel.m in Sources */,
+				398E293D1D08137600E22956 /* MIAReportManage.m in Sources */,
 				420BBB651CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */,
 				CD7961011CBE594C004CC661 /* AppDelegate.m in Sources */,
 				CD7961021CBE594C004CC661 /* MiaAPIHelper.m in Sources */,

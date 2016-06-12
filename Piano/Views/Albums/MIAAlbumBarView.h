@@ -13,6 +13,8 @@
  */
 typedef void(^PopActionBlock)();
 
+typedef void(^ReportActionBlock)();
+
 @interface MIAAlbumBarView : UIView
 
 /**
@@ -23,6 +25,18 @@ typedef void(^PopActionBlock)();
  */
 - (void)setAlbumName:(NSString *)albumName singerName:(NSString *)singerName;
 
+/**
+ *  pop按钮的事件回调.
+ *
+ *  @param block PopActionBlock
+ */
 - (void)popActionHandler:(PopActionBlock)block;
+
+/**
+ *  举报按钮的事件回调.
+ *
+ *  @param block ReportActionBlock.
+ */
+- (void)reportActionHandler:(ReportActionBlock)block;
 
 @end

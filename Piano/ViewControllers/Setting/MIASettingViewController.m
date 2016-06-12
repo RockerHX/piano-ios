@@ -64,7 +64,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 - (void)createCoverImageView{
     
     self.coverImageView = [UIImageView newAutoLayoutView];
-    [_coverImageView setImage:[_maskImage blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor blackColor]]];
+    [_coverImageView setImage:[_maskImage blurredImageWithRadius:6.0f iterations:5 tintColor:[UIColor blackColor]]];
     [self.view addSubview:_coverImageView];
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_coverImageView superView:self.view];

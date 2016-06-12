@@ -19,6 +19,7 @@
 #import "UIImageView+WebCache.h"
 #import "MIANavBarView.h"
 #import "JOBaseSDK.h"
+#import "MIAReportManage.h"
 
 #import "MIAProfileViewModel.h"
 
@@ -179,6 +180,15 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
     [JOAutoLayout autoLayoutWithHeight:profileTableHeadViewHeight selfView:_profileHeadView superView:_profileView];
+    
+    UIView *headBackgroundView = [UIView newAutoLayoutView];
+    [headBackgroundView setBackgroundColor:[UIColor blackColor]];
+    [_profileView addSubview:headBackgroundView];
+    
+    [JOAutoLayout autoLayoutWithTopView:_profileHeadView distance:0. selfView:headBackgroundView superView:_profileView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
 }
 
 - (void)createProfileTableView{
@@ -221,6 +231,16 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:8. selfView:popButton superView:_profileView];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:7.5 selfView:popButton superView:_profileView];
     [JOAutoLayout autoLayoutWithSize:JOSize(35., 35.) selfView:popButton superView:_profileView];
+    
+    UIButton *reportButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [reportButton setImage:[UIImage imageNamed:@"C-More"] forState:UIControlStateNormal];
+    [reportButton addTarget:self action:@selector(reportClick) forControlEvents:UIControlEventTouchUpInside];
+    [reportButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_profileView addSubview:reportButton];
+    
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-8. selfView:reportButton superView:_profileView];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:7.5 selfView:reportButton superView:_profileView];
+    [JOAutoLayout autoLayoutWithSize:JOSize(35., 35.) selfView:reportButton superView:_profileView];
 }
 
 #pragma mark - Button action
@@ -228,6 +248,23 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 - (void)popClick{
 
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)reportClick{
+
+    @weakify(self);
+    [[MIAReportManage reportManage] reportWithType:@"客态的profile" content:@"profile内容" reportHandler:^(ReportState reportState) {
+        @strongify(self);
+        if (reportState == ReportSuccess) {
+            //成功
+            [self showBannerWithPrompt:@"举报成功"];
+        }else if(reportState == ReportFaild){
+            //失败
+            [self showBannerWithPrompt:@"举报失败"];
+        }else if (reportState == ReportCancel){
+            //取消
+        }
+    }];
 }
 
 #pragma mark - view models

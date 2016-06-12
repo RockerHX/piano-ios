@@ -9,7 +9,7 @@
 #import "HXUserTermsViewController.h"
 #import "MBProgressHUD.h"
 
-static NSString *UserTermsLoadURL = @"http://www.miamusic.com/terms.html";
+static NSString *UserTermsLoadURL = @"http://www.miamusic.com/terms-live.html";
 
 @implementation HXUserTermsViewController
 

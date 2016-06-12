@@ -116,13 +116,12 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
 
 #pragma mark - tag action
 - (void)tapAction:(UIGestureRecognizer *)gesture {
-#warning Horizontal Replay Live
     HXReplayViewController *replayViewController = nil;
-//    if (horizontal) {
-//        replayViewController = [HXReplayLandscapeViewController instance];
-//    } else {
+    if (_replayModel.horizontal) {
+        replayViewController = [HXReplayLandscapeViewController instance];
+    } else {
         replayViewController = [HXReplayViewController instance];
-//    }
+    }
     replayViewController.model.uID = _uid;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:replayViewController animated:YES completion:^{
         if ([[MusicMgr standard] isPlaying]) {

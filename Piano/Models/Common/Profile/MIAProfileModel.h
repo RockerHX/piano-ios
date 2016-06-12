@@ -29,6 +29,7 @@
 @property (nonatomic, copy) NSString *liveOnlineCnt;//正在观看的人数
 @property (nonatomic, copy) NSString *liveRoomID; //直播房间的id
 @property (nonatomic, copy) NSString *liveRoomCoverUrl; //直播房间的图片
+@property (nonatomic, assign) NSInteger horizontal; //是否横屏直播
 
 @property (nonatomic, copy) NSString *mcoinApple; //ios端  我的m币
 @property (nonatomic, copy) NSString *mcoin;//安卓端 我的M币

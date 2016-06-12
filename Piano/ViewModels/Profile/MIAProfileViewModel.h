@@ -48,6 +48,7 @@ typedef NS_ENUM(NSUInteger, MIAProfileCellType) {
 @property (nonatomic, copy) NSString *liveTitle; //直播的标题
 @property (nonatomic, copy) NSString *liveCoverURL;//直播的地址
 @property (nonatomic, copy) NSString *liveDate;//直播的时间
+@property (nonatomic, assign) NSInteger horizontal;//是否横屏直播
 
 @end
 
