@@ -43,7 +43,6 @@
 - (void)sendCommentRequestWithSubscriber:(id<RACSubscriber>)subscriber {
     [MiaAPIHelper commentRoom:_roomID content:_content completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            [subscriber sendNext:@"评论成功"];
             [subscriber sendCompleted];
         } else {
             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Message] code:-1 userInfo:nil]];

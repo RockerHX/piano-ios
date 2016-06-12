@@ -64,11 +64,7 @@
     
     @weakify(self)
     RACSignal *sendSignal = [_viewModel.sendCommand execute:nil];
-    [sendSignal subscribeNext:^(NSString *message) {
-        @strongify(self)
-        [self hiddenHUD];
-        [self showBannerWithPrompt:message];
-    } error:^(NSError *error) {
+    [sendSignal subscribeNext:nil error:^(NSError *error) {
         @strongify(self)
         [self hiddenHUD];
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
