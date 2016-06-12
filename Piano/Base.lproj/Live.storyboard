@@ -48,9 +48,9 @@
                                         <rect key="frame" x="0.0" y="70" width="568" height="250"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciA-eD-hdt" userLabel="Comment Container">
-                                        <rect key="frame" x="10" y="185" width="230" height="120"/>
+                                        <rect key="frame" x="10" y="161" width="230" height="144"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="G0T-oy-9K7"/>
+                                            <constraint firstAttribute="height" constant="144" id="G0T-oy-9K7"/>
                                             <constraint firstAttribute="width" constant="230" id="wNJ-ab-9AI"/>
                                         </constraints>
                                         <connections>
@@ -78,7 +78,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdw-Fx-ku2" customClass="HXStaticGiftView">
-                                        <rect key="frame" x="10" y="75" width="230" height="100"/>
+                                        <rect key="frame" x="10" y="51" width="230" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="cq3-id-A85"/>
@@ -230,9 +230,9 @@
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuX-eh-vfZ" userLabel="Comment Container">
-                                        <rect key="frame" x="10" y="338" width="230" height="160"/>
+                                        <rect key="frame" x="10" y="354" width="230" height="144"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="Yeh-A1-kdq"/>
+                                            <constraint firstAttribute="height" constant="144" id="Yeh-A1-kdq"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="" id="O5M-18-fAC"/>
@@ -259,7 +259,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exp-Rb-Qga" customClass="HXStaticGiftView">
-                                        <rect key="frame" x="10" y="228" width="230" height="100"/>
+                                        <rect key="frame" x="10" y="244" width="230" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="fGA-Zp-5t3"/>
@@ -377,7 +377,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HXLiveBarrageContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nwe-Qp-XuQ" userLabel="HXLiveBarrageContainerViewController" customClass="HXLiveBarrageContainerViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="pPy-w9-Qgb">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="120"/>
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="144"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -885,9 +885,9 @@
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sju-kT-rek" userLabel="Comment Container">
-                                        <rect key="frame" x="10" y="308" width="230" height="160"/>
+                                        <rect key="frame" x="10" y="324" width="230" height="144"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="5Nw-lI-oYO"/>
+                                            <constraint firstAttribute="height" constant="144" id="5Nw-lI-oYO"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="" id="xaJ-1k-tkf"/>
@@ -1110,9 +1110,9 @@
                                         </constraints>
                                     </view>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE0-wM-lMe" userLabel="Comment Container">
-                                        <rect key="frame" x="10" y="338" width="230" height="160"/>
+                                        <rect key="frame" x="10" y="354" width="230" height="144"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="ghU-RT-gfi"/>
+                                            <constraint firstAttribute="height" constant="144" id="ghU-RT-gfi"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="Nwe-Qp-XuQ" kind="embed" identifier="" id="HeX-r3-laS"/>
@@ -1139,7 +1139,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKG-3H-Me0" customClass="HXStaticGiftView">
-                                        <rect key="frame" x="10" y="228" width="230" height="100"/>
+                                        <rect key="frame" x="10" y="244" width="230" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="k3u-Lx-OJ1"/>
@@ -1654,10 +1654,10 @@
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w33-pT-Jdd" userLabel="Comment Container">
-                                        <rect key="frame" x="10" y="150" width="230" height="120"/>
+                                        <rect key="frame" x="10" y="126" width="230" height="144"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="q0T-37-v77"/>
-                                            <constraint firstAttribute="height" constant="120" id="tzq-r8-WaI"/>
+                                            <constraint firstAttribute="height" constant="144" id="tzq-r8-WaI"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="Nwe-Qp-XuQ" kind="embed" id="xKo-2K-gUT"/>
@@ -1735,6 +1735,6 @@
         <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="00e-Qs-05q"/>
+        <segue reference="xKo-2K-gUT"/>
     </inferredMetricsTieBreakers>
 </document>
