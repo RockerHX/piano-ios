@@ -167,7 +167,7 @@ HXLiveAlbumViewDelegate
     
     HXLiveEndViewController *liveEndViewController = [HXLiveEndViewController instance];
     liveEndViewController.delegate = self;
-    liveEndViewController.isLive = YES;
+    liveEndViewController.isAnchor = YES;
     liveEndViewController.liveModel = _viewModel.model;
     [self presentViewController:liveEndViewController animated:YES completion:nil];
 }
