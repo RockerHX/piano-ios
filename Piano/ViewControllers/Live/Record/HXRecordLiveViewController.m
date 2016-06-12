@@ -326,6 +326,10 @@ static CGFloat AlbumViewWidth = 60.0f;
         case HXRecordBottomBarActionMute: {
             _microEnable = !_microEnable;
             [[HXZegoAVKitManager manager].zegoLiveApi enableMic:_microEnable];
+            
+            NSString *prompt = _microEnable ? @"已开启" : @"已关闭";
+            prompt = [prompt stringByAppendingString:@"麦克风"];
+            [self showBannerWithPrompt:prompt];
             break;
         }
         case HXRecordBottomBarActionGift: {
