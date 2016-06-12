@@ -317,6 +317,10 @@ static CGFloat AlbumViewWidth = 60.0f;
         case HXRecordBottomBarActionChange: {
             _frontCamera = !_frontCamera;
             [[HXZegoAVKitManager manager].zegoLiveApi setFrontCam:_frontCamera];
+            
+            NSString *prompt = _frontCamera ? @"前置" : @"后置";
+            prompt = [NSString stringWithFormat:@"已切换为%@摄像头", prompt];
+            [self showBannerWithPrompt:prompt];
             break;
         }
         case HXRecordBottomBarActionMute: {
