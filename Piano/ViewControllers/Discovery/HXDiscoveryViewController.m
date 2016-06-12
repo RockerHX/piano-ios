@@ -54,7 +54,8 @@ HXDiscoveryContainerDelegate
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    _topBar.musicButton.hidden = ![MusicMgr standard].playList.count;
+    MusicMgr *musicMgr = [MusicMgr standard];
+    _topBar.musicButton.hidden = ((!musicMgr.playList.count) && musicMgr.isPlaying);
     [_topBar.profileButton sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"D-ProfileEntryIcon"]];
     [_containerViewController reload];
 }
