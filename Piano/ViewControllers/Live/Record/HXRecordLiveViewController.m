@@ -119,11 +119,17 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
+    @weakify(self)
     HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
     if (manager.liveState == HXLiveStateLive) {
-        [_anchorView stopRecordTime];
-        [_albumView stopAlbumAnmation];
-        [self closeLive];
+        HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+        [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+            @strongify(self)
+            [manager closeLive];
+            [self.anchorView stopRecordTime];
+            [self.albumView stopAlbumAnmation];
+            [self closeLive];
+        }];
     } else {
         [self leaveRoom];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -173,12 +179,7 @@ HXLiveAlbumViewDelegate
 }
 
 - (void)leaveRoom {
-    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
-    [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
-        [manager closeLive];
-    }];
-    
-    ZegoLiveApi *zegoLiveApi = manager.zegoLiveApi;
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi stopPreview];
     [zegoLiveApi logoutChannel];
 }
