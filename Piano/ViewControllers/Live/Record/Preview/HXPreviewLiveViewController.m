@@ -43,8 +43,6 @@ HXSelectedAlbumViewControllerDelegate
     HXLiveModel *_model;
     BOOL _frontCamera;
     BOOL _beauty;
-    
-    HXAlbumModel *_album;
 }
 
 #pragma mark - Segue
@@ -213,7 +211,7 @@ HXSelectedAlbumViewControllerDelegate
      ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
          [self hiddenHUD];
          if (success) {
-             _album = album;
+             _model.album = album;
          } else {
              _editView.albumCoverView.image = nil;
          }
