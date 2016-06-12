@@ -384,4 +384,17 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
          completeBlock:(MiaRequestCompleteBlock)completeBlock
           timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
+#pragma mark - 视频统计
+
+/**
+ *  视频的统计.
+ *
+ *  @param videoID       视频的ID.
+ *  @param completeBlock MiaRequestCompleteBlock.
+ *  @param timeoutBlock  MiaRequestTimeoutBlock.
+ */
++ (void)videoCountWithID:(NSString *)videoID
+           completeBlock:(MiaRequestCompleteBlock)completeBlock
+            timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end

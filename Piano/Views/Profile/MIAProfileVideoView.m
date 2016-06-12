@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "MIAVideoPlayViewController.h"
 #import "MIAVideoModel.h"
+#import "MiaAPIHelper.h"
 
 CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
 
@@ -87,7 +88,6 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
 
 - (void)setShowData:(id)data{
     
-    
     if ([data isKindOfClass:[MIAVideoModel class]]) {
         
         self.videoModel = nil;
@@ -114,10 +114,27 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
 
 - (void)tapAction:(UIGestureRecognizer *)gesture{
     
+    //视频统计.
+    [MiaAPIHelper videoCountWithID:_videoModel.id completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        
+        if (success) {
+//            JOLog(@"视频统计成功");
+            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_videoModel.viewCnt) integerValue] +1];
+            _videoModel.viewCnt = viewCount;
+            [_numberlabel setText:viewCount];
+        }else{
+//            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
+        }
+        
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        
+    }];
+    
     MIAVideoPlayViewController *videoViewController = [MIAVideoPlayViewController new];
     [videoViewController setVideoURLString:_videoModel.videoUrl];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [(UINavigationController *)[[delegate window] rootViewController] presentViewController:videoViewController animated:YES completion:^{
+        
     }];
 }
 

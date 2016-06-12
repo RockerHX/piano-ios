@@ -215,6 +215,8 @@ static NSString *const kRewardDownloadTitle = @"打赏";
             
             [JOAutoLayout removeAutoLayoutWithHeightSelfView:_rewardView superView:self];
             [JOAutoLayout autoLayoutWithHeight:kRewardNoDataViewHeight selfView:_rewardView superView:self];
+            [_rewardView removeRewardViewLayout];
+            [_rewardView setHidden:YES];
         }
     }else{
     

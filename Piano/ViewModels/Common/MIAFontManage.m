@@ -29,6 +29,18 @@
         //cell的head中右边的tip
         return JOFontsMake([UIFont systemFontOfSize:12. weight:UIFontWeightRegular], JORGBSameCreate(160.));
     }
+    
+    //MARK: 我的Profile页面
+    if (type == MIAFontType_Host_Attention_Title) {
+        //我的profile关注人的名字
+        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(160.));
+    }else if (type == MIAFontType_Host_Attention_Live){
+        //我的profile关注人的直播提示
+        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], JORGBCreate(255,87,115,1.));
+    }else if (type == MIAFontType_Host_Album_Name){
+        //打赏的专辑名字
+        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(160.));
+    }
         
 //MARK: 主播的Proflie页面
     if (type == MIAFontType_Profile_Head_NickName){

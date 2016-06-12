@@ -18,6 +18,8 @@
 
 static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
 
+static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的按钮事件的事件
+
 @interface MIAVideoPlayViewController(){
 
     BOOL finishedState;
@@ -99,6 +101,9 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     [self.view addSubview:_playView];
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_playView superView:self.view];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playViewTap:)];
+    [_playView addGestureRecognizer:tapGesture];
     
     NSURL *url = [NSURL URLWithString:_videoURLString];
     self.playerItem = [AVPlayerItem playerItemWithURL:url];
@@ -219,6 +224,8 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
             [self hiddenLodingView];
             [_playBarView setCurrentPlayState:YES];
             [_playBarView setCurrentVideoDuration:playerItem.duration.value/playerItem.duration.timescale];
+            
+            [self performSelector:@selector(hiddenPlayEventView) withObject:nil afterDelay:kHiddenEventViewDefaultTime];
         }
         
     }else if([keyPath isEqualToString:@"loadedTimeRanges"]){
@@ -269,6 +276,29 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     }
 }
 
+#pragma mark - Tap gesture
+
+- (void)playViewTap:(UIGestureRecognizer *)gesture{
+
+    [self setPlayEventViewHiddenState:!_popButton.hidden];
+}
+
+- (void)setPlayEventViewHiddenState:(BOOL)state{
+
+    [_popButton setHidden:state];
+    [_playBarView setHidden:state];
+    
+    if(!state){
+    
+        [self performSelector:@selector(hiddenPlayEventView) withObject:nil afterDelay:kHiddenEventViewDefaultTime];
+    }
+}
+
+- (void)hiddenPlayEventView{
+
+    [self setPlayEventViewHiddenState:YES];
+}
+
 #pragma mark - play state
 
 
@@ -289,6 +319,7 @@ static CGFloat const kPopButtonWidth = 40.; //右上角退出按钮的宽度.
     NSLog(@"播放结束");
     finishedState = YES;
     [_playBarView setCurrentPlayState:NO];
+    [self popAction];
 }
 
 - (void)playError{

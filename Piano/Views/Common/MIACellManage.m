@@ -14,6 +14,14 @@
 
     MIABaseTableViewCell *cell = nil;
     
+    if (type == MIACellTypeHostAttention) {
+        return [MIACellManage createCellWithClass:[MIAHostAttentionCell class]];
+    }else if (type == MIACellTypeHostRewardAlbum){
+        return [MIACellManage createCellWithClass:[MIAHostRewardAlbumCell class]];
+    }else if (type == MIACellTypeHostNormal){
+        return [MIACellManage createCellWithClass:[MIASettingCell class]];
+    }
+    
     if (type == MIACellTypeLive) {
         return [MIACellManage createCellWithClass:[MIAProfileLiveCell class]];
     }else if(type == MIACellTypeAlbum){

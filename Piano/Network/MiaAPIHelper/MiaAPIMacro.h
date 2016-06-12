@@ -167,3 +167,8 @@ static NSString * const MiaAPICommand_LogUpload             = @"Live.Room.Post.L
 
 //Report
 static NSString * const MiaAPICommand_Report                = @"User.Post.Report";//举报
+
+//Video count
+static NSString * const MiaAPICommand_VideoCount            = @"Musician.Video.Play";//视频统计
+static NSString * const MiaAPIKey_VideoID                   = @"id"; //视频的id
+

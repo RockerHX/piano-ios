@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "MIABaseTableViewCell.h"
+#import "MIAHostAttentionCell.h"
+#import "MIAHostRewardAlbumCell.h"
 #import "MIAProfileLiveCell.h"
 #import "MIAProfileAlbumCell.h"
 #import "MIAProfileVideoCell.h"
@@ -21,6 +23,10 @@
 typedef NS_ENUM(NSUInteger, MIACellType){
 
     MIACellTypeNormal,
+    //我的Profilt
+    MIACellTypeHostAttention,//我关注的人
+    MIACellTypeHostRewardAlbum, //我打赏的专辑
+    MIACellTypeHostNormal, //我的M币 消费记录
     //主播的Profile
     MIACellTypeLive, //直播
     MIACellTypeAlbum,//专辑

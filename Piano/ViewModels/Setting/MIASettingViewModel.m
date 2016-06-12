@@ -33,7 +33,7 @@ CGFloat const kSettingHeadImageHeight = 36.;
 
 - (void)initTableCellDataArray{
 
-    _settingCellDataArray = @[@[@"头像",@"昵称",@"签名",@"性别",@"修改密码"],@[@"清除缓存",@"清除缓存的歌曲",@"在2G/3G/4G网络下播放"],@[@"意见反馈",@"当前版本",@"退出登录"]];
+    _settingCellDataArray = @[@[@"头像",@"昵称",@"签名",@"性别",@"修改密码"],@[@"清除缓存",@"清除缓存的歌曲",@"在2G/3G/4G网络下播放"],@[@"意见反馈",@"当前版本",@"服务条款及用户许可协议",@"退出登录"]];
     
     self.settingCellContentDataArray = [NSMutableArray arrayWithObjects:[NSMutableArray array],[NSMutableArray array],[NSMutableArray array],nil];
     [self loadCellContentDataArray];
@@ -78,6 +78,8 @@ CGFloat const kSettingHeadImageHeight = 36.;
     [[_settingCellContentDataArray objectAtIndex:2] addObject:@""];
     //当前版本
     [[_settingCellContentDataArray objectAtIndex:2] addObject:[self version]];
+    //服务条款及用户许可协议  占位
+    [[_settingCellContentDataArray objectAtIndex:2] addObject:@""];
     //退出 占位
     [[_settingCellContentDataArray objectAtIndex:2] addObject:@""];
 }
