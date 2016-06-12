@@ -42,7 +42,7 @@
             break;
         }
         case HXBarrageTypeReward: {
-            actionString = [NSString stringWithFormat:@"打赏了主播个人专辑%@M币", @(_rewardCoinCount).stringValue];
+            actionString = [NSString stringWithFormat:@"打赏了主播的个人专辑"];
             break;
         }
         case HXBarrageTypeBackEnd: {
