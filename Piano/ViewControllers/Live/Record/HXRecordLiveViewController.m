@@ -29,6 +29,7 @@
 #import "HXAppConstants.h"
 #import "HXDynamicGiftView.h"
 #import "HXStaticGiftView.h"
+#import "UIConstants.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -115,6 +116,12 @@ HXLiveAlbumViewDelegate
     if (_liveModel) {
         [self previewControllerHandleFinishedShouldStartLive:nil liveModel:_liveModel frontCamera:_frontCamera beauty:_beauty];
     }
+    
+    UISwipeGestureRecognizer *leftSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
+    leftSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
+    [self.view addGestureRecognizer:leftSwipeGesture];
+    [self.view addGestureRecognizer:rightSwipeGesture];
 }
 
 #pragma mark - Event Response
@@ -134,6 +141,25 @@ HXLiveAlbumViewDelegate
         [self leaveRoom];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (void)swipeGesture:(UISwipeGestureRecognizer *)gesure {
+    switch (gesure.direction) {
+        case UISwipeGestureRecognizerDirectionRight: {
+            self.containerLeftConstraint.constant = SCREEN_WIDTH;
+            break;
+        }
+        case UISwipeGestureRecognizerDirectionLeft: {
+            self.containerLeftConstraint.constant = 0.0f;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 #pragma mark - Public Methods

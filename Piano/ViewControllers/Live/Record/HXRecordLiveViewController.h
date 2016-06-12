@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet  HXStaticGiftView *staticGiftView;
 @property (weak, nonatomic) IBOutlet HXDynamicGiftView *dynamicGiftView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewWidthConstraint;
 

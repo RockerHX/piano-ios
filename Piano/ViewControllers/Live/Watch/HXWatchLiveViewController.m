@@ -30,6 +30,7 @@
 #import <UMengSocialCOM/UMSocial.h>
 #import "HXAppConstants.h"
 #import "MIAProfileViewController.h"
+#import "UIConstants.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -104,6 +105,12 @@ HXLiveAlbumViewDelegate
     
     //设置回调代理
     [zegoLiveApi setDelegate:self];
+    
+    UISwipeGestureRecognizer *leftSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
+    leftSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
+    [self.view addGestureRecognizer:leftSwipeGesture];
+    [self.view addGestureRecognizer:rightSwipeGesture];
 }
 
 - (void)signalLink {
@@ -147,6 +154,25 @@ HXLiveAlbumViewDelegate
 
 - (IBAction)closeButtonPressed {
     [self dismiss];
+}
+
+- (void)swipeGesture:(UISwipeGestureRecognizer *)gesure {
+    switch (gesure.direction) {
+        case UISwipeGestureRecognizerDirectionRight: {
+            self.containerLeftConstraint.constant = SCREEN_WIDTH;
+            break;
+        }
+        case UISwipeGestureRecognizerDirectionLeft: {
+            self.containerLeftConstraint.constant = 0.0f;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 #pragma mark - Private Methods
