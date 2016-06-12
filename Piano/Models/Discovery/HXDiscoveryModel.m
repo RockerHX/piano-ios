@@ -36,6 +36,7 @@
         discoveryModel.videoUrl     = replayModel.replayUrl;
         discoveryModel.duration     = replayModel.duration;
         discoveryModel.viewCount    = replayModel.viewCnt;
+        discoveryModel.horizontal   = replayModel.horizontal;
     }
     return discoveryModel;
 }
