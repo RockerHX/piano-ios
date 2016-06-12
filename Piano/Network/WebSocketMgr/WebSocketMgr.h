@@ -28,6 +28,7 @@ extern NSString * const WebSocketMgrNotificationPushRoomShare;
 extern NSString * const WebSocketMgrNotificationPushRoomGift;
 extern NSString * const WebSocketMgrNotificationPushRoomReward;
 extern NSString * const WebSocketMgrNotificationPushRoomComment;
+extern NSString * const WebSocketMgrNotificationPushBackend;
 
 extern NSString * const NetworkNotificationKey_Status;
 extern NSString * const NetworkNotificationReachabilityStatusChange;
