@@ -23,6 +23,7 @@
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
 #import "HXHostProfileViewController.h"
+#import "MIAHostProfileViewController.h"
 #import "UIButton+WebCache.h"
 #import "MiaAPIHelper.h"
 #import "HXLiveModel.h"
@@ -149,6 +150,9 @@ HXDiscoveryContainerDelegate
     [self hiddenNavigationBar];
     switch (action) {
         case HXDiscoveryTopBarActionProfile: {
+            
+//            MIAHostProfileViewController *hostProfileViewController = [MIAHostProfileViewController new];
+//            [self.navigationController pushViewController:hostProfileViewController animated:YES];
             [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }

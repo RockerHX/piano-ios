@@ -15,6 +15,12 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
     
     MIAFontType_Cell_Title, //cell的head中tilte
     MIAFontType_Cell_Tip,   //cell的head中右边的tip
+    
+    //MARK: 我的Profile页面
+    MIAFontType_Host_Attention_Title,//我的profile关注人的名字
+    MIAFontType_Host_Attention_Live, //我的profile关注人的直播提示
+    
+    MIAFontType_Host_Album_Name, //打赏的专辑名字
 
     //MARK: 主播的Profile页面
     MIAFontType_Profile_Head_NickName,//昵称
