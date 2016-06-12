@@ -190,7 +190,6 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 
 	if ([action isEqualToString:PushAction_WatchLive]) {
         NSLog(@"%@ with roomID: %@", action, param1);
-#warning Horizontal Watch Live
         UINavigationController *watchLiveNavigationController = nil;
         if ([param2 boolValue]) {
             watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
