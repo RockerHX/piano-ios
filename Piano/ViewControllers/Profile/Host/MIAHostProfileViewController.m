@@ -45,6 +45,7 @@
     [_profileTableView setDataSource:self];
     [_profileTableView setShowsVerticalScrollIndicator:NO];
     [_profileTableView setShowsHorizontalScrollIndicator:NO];
+    [_profileTableView setSectionFooterHeight:CGFLOAT_MIN];
     [self.view addSubview:_profileTableView];
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_profileTableView superView:self.view];
@@ -125,12 +126,16 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+    return CGFLOAT_MIN;
+}
+
 #pragma mark - table delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
 }
-
 
 @end

@@ -151,9 +151,9 @@ HXDiscoveryContainerDelegate
     switch (action) {
         case HXDiscoveryTopBarActionProfile: {
             
-//            MIAHostProfileViewController *hostProfileViewController = [MIAHostProfileViewController new];
-//            [self.navigationController pushViewController:hostProfileViewController animated:YES];
-            [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
+            MIAHostProfileViewController *hostProfileViewController = [MIAHostProfileViewController new];
+            [self.navigationController pushViewController:hostProfileViewController animated:YES];
+//            [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }
         case HXDiscoveryTopBarActionMusic: {
