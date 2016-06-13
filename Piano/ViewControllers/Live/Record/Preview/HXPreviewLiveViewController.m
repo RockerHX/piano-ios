@@ -78,6 +78,9 @@ HXSelectedAlbumViewControllerDelegate
             NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
             _model.roomID = data[@"roomID"];
             _model.shareUrl = data[@"shareUrl"];
+        } else {
+            [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         [self hiddenHUD];
     } timeoutBlock:^(MiaRequestItem *requestItem) {
