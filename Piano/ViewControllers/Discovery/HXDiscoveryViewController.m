@@ -184,6 +184,10 @@ HXDiscoveryContainerDelegate
             [self presentViewController:recordLiveController animated:YES completion:nil];
             break;
         }
+        case HXDiscoveryContainerActionChangeCover: {
+            
+            break;
+        }
         case HXDiscoveryContainerActionShowLive: {
             [self hiddenNavigationBar];
             [self pauseMusic];

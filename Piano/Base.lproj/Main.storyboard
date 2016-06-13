@@ -180,6 +180,15 @@
                                                 <action selector="startLiveButtonPressed" destination="taU-uU-gI8" eventType="touchUpInside" id="Dtr-R7-6MP"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZ4-En-wHD">
+                                            <rect key="frame" x="108" y="20" width="90" height="30"/>
+                                            <state key="normal" title="更换直播封面">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="changCoverButtonPressed" destination="taU-uU-gI8" eventType="touchUpInside" id="Ik1-TU-ca5"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -191,14 +200,17 @@
                                     <constraint firstAttribute="trailing" secondItem="fch-1c-3Tw" secondAttribute="trailing" id="Pwy-F3-P6W"/>
                                     <constraint firstAttribute="trailing" secondItem="9eG-wd-mXx" secondAttribute="trailing" id="RXQ-mM-xzp"/>
                                     <constraint firstItem="fch-1c-3Tw" firstAttribute="top" secondItem="taU-uU-gI8" secondAttribute="top" id="bR0-RH-0hl"/>
+                                    <constraint firstItem="uZ4-En-wHD" firstAttribute="top" secondItem="taU-uU-gI8" secondAttribute="top" constant="20" id="bfl-kz-Trz"/>
                                     <constraint firstItem="fch-1c-3Tw" firstAttribute="leading" secondItem="taU-uU-gI8" secondAttribute="leading" id="fRT-OA-QUq"/>
                                     <constraint firstAttribute="bottom" secondItem="Rxy-wK-F8D" secondAttribute="bottom" constant="40" id="iOC-Bu-B9i"/>
                                     <constraint firstItem="Rxy-wK-F8D" firstAttribute="leading" secondItem="taU-uU-gI8" secondAttribute="leading" constant="50" id="loZ-gq-fgZ"/>
                                     <constraint firstItem="9eG-wd-mXx" firstAttribute="top" secondItem="taU-uU-gI8" secondAttribute="top" id="tUB-2Y-PwL"/>
+                                    <constraint firstAttribute="trailing" secondItem="uZ4-En-wHD" secondAttribute="trailing" constant="20" id="wBE-hE-tvW"/>
                                     <constraint firstItem="9eG-wd-mXx" firstAttribute="leading" secondItem="taU-uU-gI8" secondAttribute="leading" id="zD3-IF-fRc"/>
                                 </constraints>
                                 <size key="customSize" width="218" height="200"/>
                                 <connections>
+                                    <outlet property="changCoverButton" destination="uZ4-En-wHD" id="rOd-4w-GuG"/>
                                     <outlet property="cover" destination="fch-1c-3Tw" id="dNh-hm-S71"/>
                                     <outlet property="delegate" destination="dI6-ag-QYF" id="Ute-1z-6OE"/>
                                     <outlet property="previewView" destination="9eG-wd-mXx" id="N6Q-dC-MCN"/>
