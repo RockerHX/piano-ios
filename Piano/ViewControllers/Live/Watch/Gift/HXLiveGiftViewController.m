@@ -91,7 +91,7 @@
     NSInteger selectedIndex = _container.selectedIndex;
     if ((_giftList.count) && (selectedIndex >= 0)) {
         HXGiftModel *gift = _giftList[selectedIndex];
-        NSInteger rewardCount = gift.mcoin;
+        NSInteger rewardCount = gift.mcoin.integerValue;
         NSInteger balanceCount = [MIAMCoinManage shareMCoinManage].mCoin.integerValue;
         if (balanceCount < rewardCount) {
             [self showBannerWithPrompt:@"余额不足，请充值！"];
