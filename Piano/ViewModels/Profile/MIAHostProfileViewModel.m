@@ -7,20 +7,39 @@
 //
 
 #import "MIAHostProfileViewModel.h"
+#import "JOBaseSDK.h"
+#import "MIAFontManage.h"
 #import "HXUserSession.h"
 
+#import "MIAHostAttentionCell.h"
+#import "MIAHostAttentionView.h"
+#import "MIAHostRewardAlbumCell.h"
+#import "MIAHostRewardAlbumView.h"
+
 CGFloat const kHostProfileViewHeadHeight = 360.; //头部的高度.
-CGFloat const kHostProfiltViewHeadImageWidth = 200.; //头部视图中图片的宽度.
+CGFloat const kHostProfileViewHeadLeftSpaceDistance = 84.;//头像与左边的间距大小
+CGFloat const kHostProfileViewHeadRightSpaceDistance = 84.;//头像与右边的间距大小
+CGFloat const kHostProfileViewHeadTopSpaceDistance = 58.;//头像与头部的间距大小.
 CGFloat const kHostProfileViewDefaultCellHeight = 58.;//默认的cell的高度
 
 @interface MIAHostProfileViewModel()
+
+@property (nonatomic, strong) id<RACSubscriber> viewUpdateSubscriber;
 
 @end
 
 @implementation MIAHostProfileViewModel
 
 - (void)initConfigure{
-
+    
+    _hostProfileDataArray = [NSMutableArray array];
+    
+    @weakify(self);
+    _viewUpdateSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    @strongify(self);
+        self.viewUpdateSubscriber = subscriber;
+        return nil;
+    }];
     [self fetchHostProfileDataCommand];
 }
 
@@ -31,7 +50,7 @@ CGFloat const kHostProfileViewDefaultCellHeight = 58.;//默认的cell的高度
     @strongify(self);
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
            
-            [self hostProfileRequestWithSubscriber:subscriber];
+            [self hostProfileRequest];
             return nil;
         }];
     }];
@@ -39,40 +58,65 @@ CGFloat const kHostProfileViewDefaultCellHeight = 58.;//默认的cell的高度
 
 #pragma mark - Data Operation
 
-- (void)hostProfileRequestWithSubscriber:(id<RACSubscriber>)subscriber{
+- (void)hostProfileRequest{
 
     [MiaAPIHelper getUserProfileWithUID:[HXUserSession session].uid
                           completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                           
                               if (success) {
                                   [self parseHostProfileWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-                                  [subscriber sendCompleted];
+                                  [_viewUpdateSubscriber sendCompleted];
                               } else {
-                                  [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+                                  [_viewUpdateSubscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
                               }
                               
                           } timeoutBlock:^(MiaRequestItem *requestItem) {
                           
-                              [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+                              [_viewUpdateSubscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
                           }];
 }
 
 
 - (void)parseHostProfileWithData:(NSDictionary *)data{
 
+    _hostProfileModel = [MIAHostProfileModel mj_objectWithKeyValues:data];
     
+    [_hostProfileDataArray removeAllObjects];
+    [_hostProfileDataArray addObject:@[@"我的M币(充值)",@"我的购买记录"]];
+    if ([_hostProfileModel.followList count]) {
+        [_hostProfileDataArray addObject:[_hostProfileModel.followList JOSeparateArrayWithNumber:4]];
+    }else{
+        [_hostProfileDataArray addObject:@"还没有关注的人"];
+    }
+    if ([_hostProfileModel.musicAlbum count]) {
+        [_hostProfileDataArray addObject:[_hostProfileModel.musicAlbum JOSeparateArrayWithNumber:3]];
+    }else{
+        [_hostProfileDataArray addObject:@"还没有打赏的专辑"];
+    }
 }
 
 #pragma mark - cell height
 
 + (CGFloat)hostProfileAttentionCellHeightWitWidth:(CGFloat)width{
 
-    return 10.;
+    CGFloat viewWidth = (width - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - 3*kAttentionViewItemSpaceDistance)/4.;
+    
+    UILabel *label1 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Host_Attention_Title]];
+    [label1 setText:@" "];
+    CGFloat height1 = [label1 sizeThatFits:JOMAXSize].height;
+    
+    return viewWidth + kAttentionImageToTitleSpaceDistance+ height1 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance;
 }
 
 + (CGFloat)hostProfileRewardAlbumCellHeightWithWidth:(CGFloat)width{
 
-    return 20.;
+    CGFloat viewWidth = (width - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - 2*kHostProfileAlbumItemSpaceDistance)/3.;
+    
+    UILabel *label1 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Host_Album_Name]];
+    [label1 setText:@" "];
+    CGFloat height1 = [label1 sizeThatFits:JOMAXSize].height;
+    
+    return viewWidth + kRewardAlbumImageToTitleDistanceSpace + height1 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance;
 }
 
 @end

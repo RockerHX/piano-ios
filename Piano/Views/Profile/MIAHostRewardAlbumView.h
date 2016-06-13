@@ -8,6 +8,8 @@
 
 #import "MIABaseShowView.h"
 
+UIKIT_EXTERN CGFloat const kRewardAlbumImageToTitleDistanceSpace; //图片与标题的间距大小
+
 @interface MIAHostRewardAlbumView : MIABaseShowView
 
 @end

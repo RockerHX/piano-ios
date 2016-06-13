@@ -95,7 +95,7 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
         
         [self createTipNumberView];
         
-        NSString *viewCount = JOConvertStringToNormalString(_videoModel.viewCnt);
+        NSString *viewCount = JOConvertStringToNormalString(_videoModel.playCnt);
         
         [self.showImageView sd_setImageWithURL:[NSURL URLWithString:_videoModel.coverUrl] placeholderImage:nil];
         [self.showTitleLabel setText:_videoModel.title];
@@ -119,8 +119,8 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
         
         if (success) {
 //            JOLog(@"视频统计成功");
-            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_videoModel.viewCnt) integerValue] +1];
-            _videoModel.viewCnt = viewCount;
+            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_videoModel.playCnt) integerValue] +1];
+            _videoModel.playCnt = viewCount;
             [_numberlabel setText:viewCount];
         }else{
 //            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);

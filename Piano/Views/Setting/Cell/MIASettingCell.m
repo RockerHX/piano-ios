@@ -40,7 +40,6 @@
 - (void)setSettingCellTitle:(NSString *)title contnet:(NSString *)content{
 
     [self createCellView];
-    
     [_cellView setTitle:title content:content];
 }
 
@@ -48,6 +47,12 @@
 
     [self createCellView];
     [_cellView setAccessoryImage:image];
+}
+
+- (void)setCellTitleAttributedText:(NSAttributedString *)attributedTitle{
+
+    [self createCellView];
+    [_cellView setTitleAttributedText:attributedTitle];
 }
 
 @end

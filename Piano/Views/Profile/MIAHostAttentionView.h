@@ -8,6 +8,8 @@
 
 #import "MIABaseShowView.h"
 
+UIKIT_EXTERN CGFloat const kAttentionImageToTitleSpaceDistance;
+
 @interface MIAHostAttentionView : MIABaseShowView
 
 - (void)setAttentionViewWidth:(CGFloat)width;
