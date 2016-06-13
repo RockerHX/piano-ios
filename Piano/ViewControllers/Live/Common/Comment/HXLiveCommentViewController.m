@@ -64,7 +64,11 @@
     
     @weakify(self)
     RACSignal *sendSignal = [_viewModel.sendCommand execute:nil];
-    [sendSignal subscribeNext:nil error:^(NSError *error) {
+    [sendSignal subscribeNext:^(NSString *message) {
+        @strongify(self)
+        [self hiddenHUD];
+        [self showBannerWithPrompt:message];
+    } error:^(NSError *error) {
         @strongify(self)
         [self hiddenHUD];
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
@@ -85,7 +89,9 @@
 }
 
 - (void)keyBoardWillHidden:(NSNotification *)notification {
-    [self hiddenKeyBoardAnimation];
+    if ([_textField isFirstResponder]) {
+        [self hiddenKeyBoardAnimation];
+    }
 }
 
 #pragma mark - Private Methods
@@ -106,7 +112,7 @@
 }
 
 - (void)hiddenKeyboard {
-    [self.textField resignFirstResponder];
+    [_textField resignFirstResponder];
 }
 
 @end
