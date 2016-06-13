@@ -62,10 +62,10 @@ CGFloat const kBaseCellHeadViewHeight = 35.;
             [_headLabel setTextColor:[UIColor blackColor]];
             [self setBackgroundColor:[UIColor blackColor]];
         }else if(colorType == BaseCellHeadColorTypeBlack){
-            [_maskView setBackgroundColor:JOConvertRGBToColor(21., 21., 21., 1.)];
-            [_backgroundView setBackgroundColor:JOConvertRGBToColor(21., 21., 21., 1.)];
+            [_maskView setBackgroundColor:[UIColor clearColor]];
+            [_backgroundView setBackgroundColor:JORGBCreate(0., 0., 0., 0.4)];
             [_headLabel setTextColor:[UIColor whiteColor]];
-            [self setBackgroundColor:[UIColor blackColor]];
+            [self setBackgroundColor:[UIColor clearColor]];
             
         }else if(colorType == BaseCellHeadColorTypeSpecial){
         

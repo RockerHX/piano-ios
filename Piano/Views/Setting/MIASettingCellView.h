@@ -25,4 +25,11 @@
  */
 - (void)setAccessoryImage:(UIImage *)image;
 
+/**
+ *  设置标题的AttributedText
+ *
+ *  @param attributedTitle 标题的AttributedText
+ */
+- (void)setTitleAttributedText:(NSAttributedString *)attributedTitle;
+
 @end

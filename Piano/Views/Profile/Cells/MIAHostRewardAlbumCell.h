@@ -8,6 +8,8 @@
 
 #import "MIABaseTableViewCell.h"
 
+UIKIT_EXTERN CGFloat const kHostProfileAlbumItemSpaceDistance;//hostProfile页面专辑之间的间距大小
+
 @interface MIAHostRewardAlbumCell : MIABaseTableViewCell
 
 @end

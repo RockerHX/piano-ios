@@ -26,7 +26,9 @@ CGFloat const kHostProfileAlbumItemSpaceDistance = 18.;
 
 - (void)setCellWidth:(CGFloat)width{
     
-    [self.cellContentView setBackgroundColor:[UIColor whiteColor]];
+    [self setBackgroundColor:JORGBCreate(0., 0., 0, 0.4)];
+    [self.contentView setBackgroundColor:[UIColor clearColor]];
+    [self.cellContentView  setBackgroundColor:[UIColor clearColor]];
     cellWidth = width;
 }
 
@@ -84,7 +86,7 @@ CGFloat const kHostProfileAlbumItemSpaceDistance = 18.;
         
     }else{
         
-        [JOFException exceptionWithName:@"MIAHostRewardAlbumCell Exception" reason:@"data 需要的格式为数组,数组里的元素为HXAlbumModel类型"];
+        [JOFException exceptionWithName:@"MIAHostRewardAlbumCell Exception" reason:@"data 需要的格式为数组,数组里的元素为HostMusicAlbumModel类型"];
     }
 }
 

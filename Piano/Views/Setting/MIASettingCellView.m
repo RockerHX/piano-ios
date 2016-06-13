@@ -66,10 +66,17 @@ static CGFloat const kSettingViewRightSpaceDistance = 14.;//右边的间距.
 
     [_titleLabel setText:title];
     [_contentLabel setText:content];
+
+    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_titleLabel superView:self];
+    [JOAutoLayout autoLayoutWithWidth:[_titleLabel sizeThatFits:JOMAXSize].width+1 selfView:_titleLabel superView:self];
+}
+
+- (void)setTitleAttributedText:(NSAttributedString *)attributedTitle{
+
+    [_titleLabel setAttributedText:attributedTitle];
     
     [JOAutoLayout removeAutoLayoutWithWidthSelfView:_titleLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_titleLabel sizeThatFits:JOMAXSize].width+1 selfView:_titleLabel superView:self];
-    
 }
 
 - (void)setAccessoryImage:(UIImage *)image{

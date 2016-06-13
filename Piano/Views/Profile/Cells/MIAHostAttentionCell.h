@@ -8,6 +8,8 @@
 
 #import "MIABaseTableViewCell.h"
 
+UIKIT_EXTERN CGFloat const kAttentionViewItemSpaceDistance;//每个关注的人之间的间距大小
+
 @interface MIAHostAttentionCell : MIABaseTableViewCell
 
 @end

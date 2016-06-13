@@ -119,20 +119,20 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
 - (void)tapAction:(UIGestureRecognizer *)gesture {
     
     //视频统计.
-//    [MiaAPIHelper videoCountWithID:_videoModel.id completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-//        
-//        if (success) {
-//            //            JOLog(@"视频统计成功");
-//            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_videoModel.viewCnt) integerValue] +1];
-//            _videoModel.viewCnt = viewCount;
-//            [_numberlabel setText:viewCount];
-//        }else{
-//            //            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
-//        }
-//        
-//    } timeoutBlock:^(MiaRequestItem *requestItem) {
-//        
-//    }];
+    [MiaAPIHelper videoCountWithID:_replayModel.roomID
+                     completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        
+                        if (success) {
+                            //            JOLog(@"视频统计成功");
+                            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_replayModel.viewCnt) integerValue] +1];
+                            _replayModel.viewCnt = viewCount;
+                            [_numberlabel setText:viewCount];
+                        }else{
+                            //            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
+                        }
+                     } timeoutBlock:^(MiaRequestItem *requestItem) {
+        
+                     }];
     
 //    HXReplayViewController *replayViewController = [HXReplayViewController instance];
 //    replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];

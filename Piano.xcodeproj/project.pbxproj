@@ -102,6 +102,7 @@
 		42B857771CF853B7004B296A /* MIAPlaySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B857761CF853B7004B296A /* MIAPlaySlider.m */; };
 		42CC372C1CED57AD00BEEBAE /* MIAMCoinManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */; };
 		42D15F941CEC2A5C00EC74E7 /* JOPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */; };
+		42D326711D0E4D0A00D3DD65 /* MIAHostProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D326701D0E4D0A00D3DD65 /* MIAHostProfileModel.m */; };
 		42D612DD1CE1FDFB00B80753 /* MIAFontManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D51CE1FDD600B80753 /* MIAFontManage.m */; };
 		42D613021CE2016300B80753 /* UILabel+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612DA1CE1FDE700B80753 /* UILabel+JOExtend.m */; };
 		42D613031CE2016900B80753 /* UIFont+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D612D81CE1FDE700B80753 /* UIFont+JOExtend.m */; };
@@ -555,6 +556,8 @@
 		42CC372A1CED57AD00BEEBAE /* MIAMCoinManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAMCoinManage.m; sourceTree = "<group>"; };
 		42D15F911CEC2A5C00EC74E7 /* JOPurchaseManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOPurchaseManage.h; sourceTree = "<group>"; };
 		42D15F921CEC2A5C00EC74E7 /* JOPurchaseManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOPurchaseManage.m; sourceTree = "<group>"; };
+		42D3266F1D0E4D0A00D3DD65 /* MIAHostProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAHostProfileModel.h; sourceTree = "<group>"; };
+		42D326701D0E4D0A00D3DD65 /* MIAHostProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAHostProfileModel.m; sourceTree = "<group>"; };
 		42D612D41CE1FDD600B80753 /* MIAFontManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAFontManage.h; sourceTree = "<group>"; };
 		42D612D51CE1FDD600B80753 /* MIAFontManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAFontManage.m; sourceTree = "<group>"; };
 		42D612D71CE1FDE700B80753 /* UIFont+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+JOExtend.h"; sourceTree = "<group>"; };
@@ -1997,6 +2000,8 @@
 				CD5F21711CAD4C3F0067A1DA /* HXProfileModel.m */,
 				429CC20A1CE08BAF004BCC0C /* MIAProfileModel.h */,
 				429CC20B1CE08BAF004BCC0C /* MIAProfileModel.m */,
+				42D3266F1D0E4D0A00D3DD65 /* MIAHostProfileModel.h */,
+				42D326701D0E4D0A00D3DD65 /* MIAHostProfileModel.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -3459,6 +3464,7 @@
 				CD4223141CFBEC200057A235 /* HXModalOverlayAnimationController.m in Sources */,
 				CDDC383A1CEB1B3500328A17 /* HXBarrageModel.m in Sources */,
 				CD7960E71CBE594C004CC661 /* HXRecordLiveViewModel.m in Sources */,
+				42D326711D0E4D0A00D3DD65 /* MIAHostProfileModel.m in Sources */,
 				429E50111CE46DDE0008CA85 /* MIAAlbumViewModel.m in Sources */,
 				CD68879F1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m in Sources */,
 				CD7960E81CBE594C004CC661 /* HXAppConstants.m in Sources */,

@@ -40,6 +40,18 @@
     }else if (type == MIAFontType_Host_Album_Name){
         //打赏的专辑名字
         return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(160.));
+    }else if (type == MIAFontType_Host_Head_Nick){
+        //昵称
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightBold], [UIColor whiteColor]);
+    }else if (type == MIAFontType_Host_Head_Summary){
+        //简介
+        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightBold], JORGBSameCreate(128.));
+    }else if (type == MIAFontType_Host_Attention_Empty){
+        //关注的人为空的提示
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightBold], JORGBSameCreate(128.));
+    }else if (type == MIAFontType_Host_Album_Empty){
+        //专辑为空的提示
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightBold], JORGBSameCreate(128.));
     }
         
 //MARK: 主播的Proflie页面
