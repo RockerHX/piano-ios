@@ -176,6 +176,10 @@ HXSelectedAlbumViewControllerDelegate
             [self presentViewController:selctedAlbumViewController animated:YES completion:nil];
             break;
         }
+        case HXPreviewLiveEidtViewActionClear: {
+            _model.album = nil;
+            break;
+        }
     }
 }
 
@@ -204,6 +208,10 @@ HXSelectedAlbumViewControllerDelegate
 
 #pragma mark - HXSelectedAlbumViewControllerDelegate Methods
 - (void)selectedAlbumViewController:(HXSelectedAlbumViewController *)viewController selectedAlbum:(HXAlbumModel *)album {
+    _editView.addAlbumButton.hidden = YES;
+    _editView.albumNameLabel.hidden = NO;
+    _editView.albumContainer.hidden = NO;
+    _editView.albumNameLabel.text = album.title;
     [_editView.albumCoverView sd_setImageWithURL:[NSURL URLWithString:album.coverUrl]];
     
     [self showHUD];

@@ -10,7 +10,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HXPreviewLiveEidtView">
             <connections>
                 <outlet property="addAlbumButton" destination="2EQ-GR-0bG" id="hZb-hh-m5J"/>
+                <outlet property="albumContainer" destination="ujv-vf-sGh" id="uge-ql-o7m"/>
                 <outlet property="albumCoverView" destination="oyG-aK-SHb" id="tyR-ec-SWb"/>
+                <outlet property="albumNameLabel" destination="E5J-Oe-CXU" id="fWS-ay-i1X"/>
                 <outlet property="container" destination="iN0-l3-epB" id="eUS-pp-E8p"/>
                 <outlet property="textField" destination="XkG-eq-l4h" id="ala-Nk-Vmy"/>
             </connections>
@@ -21,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="给直播写个标题吧" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="XkG-eq-l4h">
-                    <rect key="frame" x="0.0" y="59" width="320" height="30"/>
+                    <rect key="frame" x="0.0" y="61" width="320" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="GQ9-0u-fSM"/>
                     </constraints>
@@ -33,32 +35,63 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7E-bK-Ofk" userLabel="Center Line">
-                    <rect key="frame" x="0.0" y="97" width="320" height="1"/>
+                    <rect key="frame" x="0.0" y="99" width="320" height="1"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="rKc-en-Zh9"/>
                     </constraints>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5J-Oe-CXU" userLabel="Song Name Label">
+                    <rect key="frame" x="0.0" y="119" width="320" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2EQ-GR-0bG" userLabel="Camera Button">
-                    <rect key="frame" x="95" y="118" width="130" height="22"/>
+                    <rect key="frame" x="95" y="120" width="130" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="130" id="EPU-fS-niU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                    <state key="normal" title="本场打赏专辑" image="L-CameraIcon"/>
+                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                    <state key="normal" title="本场打赏专辑" image="LR-AddIcon"/>
                     <connections>
                         <action selector="addAlbumButtonPressed" destination="-1" eventType="touchUpInside" id="a9E-2I-gLf"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oyG-aK-SHb">
-                    <rect key="frame" x="110" y="160" width="100" height="100"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujv-vf-sGh" userLabel="Album Container">
+                    <rect key="frame" x="108" y="154" width="104" height="104"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oyG-aK-SHb">
+                            <rect key="frame" x="2" y="2" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="eu7-Fd-3RJ"/>
+                                <constraint firstAttribute="width" secondItem="oyG-aK-SHb" secondAttribute="height" multiplier="1:1" id="yxG-L5-TXM"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRh-K5-kzF">
+                            <rect key="frame" x="77" y="76" width="30" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="4LW-b8-Ewe"/>
+                                <constraint firstAttribute="width" secondItem="cRh-K5-kzF" secondAttribute="height" multiplier="10:11" id="sla-3D-3ki"/>
+                            </constraints>
+                            <state key="normal" image="LR-ClearIcon"/>
+                            <connections>
+                                <action selector="clearButtonPressed" destination="-1" eventType="touchUpInside" id="JaN-OM-S2a"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="eu7-Fd-3RJ"/>
-                        <constraint firstAttribute="width" secondItem="oyG-aK-SHb" secondAttribute="height" multiplier="1:1" id="yxG-L5-TXM"/>
+                        <constraint firstAttribute="trailing" secondItem="cRh-K5-kzF" secondAttribute="trailing" constant="-3" id="KVy-3I-YDt"/>
+                        <constraint firstAttribute="trailing" secondItem="oyG-aK-SHb" secondAttribute="trailing" constant="2" id="XNC-Oj-3M9"/>
+                        <constraint firstItem="oyG-aK-SHb" firstAttribute="leading" secondItem="ujv-vf-sGh" secondAttribute="leading" constant="2" id="ZZd-Xr-C6y"/>
+                        <constraint firstItem="oyG-aK-SHb" firstAttribute="top" secondItem="ujv-vf-sGh" secondAttribute="top" constant="2" id="e35-es-sTY"/>
+                        <constraint firstAttribute="bottom" secondItem="cRh-K5-kzF" secondAttribute="bottom" constant="-5" id="hQT-YQ-47y"/>
+                        <constraint firstAttribute="bottom" secondItem="oyG-aK-SHb" secondAttribute="bottom" constant="2" id="tNS-aA-Fci"/>
                     </constraints>
-                </imageView>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -68,17 +101,21 @@
                 <constraint firstItem="p7E-bK-Ofk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="L9M-hc-Rx9"/>
                 <constraint firstItem="2EQ-GR-0bG" firstAttribute="top" secondItem="p7E-bK-Ofk" secondAttribute="bottom" constant="20" id="Rpg-ls-iIe"/>
                 <constraint firstItem="XkG-eq-l4h" firstAttribute="trailing" secondItem="p7E-bK-Ofk" secondAttribute="trailing" id="YZC-TL-GMb"/>
-                <constraint firstItem="oyG-aK-SHb" firstAttribute="top" secondItem="2EQ-GR-0bG" secondAttribute="bottom" constant="20" id="d6B-3k-zT5"/>
-                <constraint firstItem="oyG-aK-SHb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eNX-gh-Wqq"/>
+                <constraint firstItem="ujv-vf-sGh" firstAttribute="top" secondItem="2EQ-GR-0bG" secondAttribute="bottom" constant="14" id="Zpp-9e-vRp"/>
+                <constraint firstItem="E5J-Oe-CXU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fv4-Uj-fro"/>
                 <constraint firstItem="2EQ-GR-0bG" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fwe-H3-szQ"/>
+                <constraint firstItem="E5J-Oe-CXU" firstAttribute="centerY" secondItem="2EQ-GR-0bG" secondAttribute="centerY" id="gnh-rZ-2jk"/>
                 <constraint firstItem="p7E-bK-Ofk" firstAttribute="top" secondItem="XkG-eq-l4h" secondAttribute="bottom" constant="8" id="gpO-YT-WTI"/>
+                <constraint firstAttribute="trailing" secondItem="E5J-Oe-CXU" secondAttribute="trailing" id="qYA-ml-Btf"/>
+                <constraint firstItem="ujv-vf-sGh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zPV-aU-RNE"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="445" y="258.5"/>
+            <point key="canvasLocation" x="445" y="258"/>
         </view>
     </objects>
     <resources>
-        <image name="L-CameraIcon" width="22" height="22"/>
+        <image name="LR-AddIcon" width="20" height="20"/>
+        <image name="LR-ClearIcon" width="20" height="20"/>
     </resources>
 </document>
