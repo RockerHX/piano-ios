@@ -27,11 +27,14 @@
 #import "UIButton+WebCache.h"
 #import "MiaAPIHelper.h"
 #import "HXLiveModel.h"
+#import "HXAlertBanner.h"
 
 
 @interface HXDiscoveryViewController () <
 HXDiscoveryTopBarDelegate,
-HXDiscoveryContainerDelegate
+HXDiscoveryContainerDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate
 >
 @end
 
@@ -146,6 +149,84 @@ HXDiscoveryContainerDelegate
     }
 }
 
+- (void)uploadCoverImage:(UIImage *)image {
+    [self showHUD];
+    [MiaAPIHelper getUploadAuthWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            NSString *uploadUrl = userInfo[MiaAPIKey_Values][@"data"][@"url"];
+            NSString *auth = userInfo[MiaAPIKey_Values][@"data"][@"auth"];
+            NSString *contentType = userInfo[MiaAPIKey_Values][@"data"][@"ctype"];
+            NSString *filename = userInfo[MiaAPIKey_Values][@"data"][@"fname"];
+            NSString *fileID = [NSString stringWithFormat:@"%@", userInfo[MiaAPIKey_Values][@"data"][@"fileID"]];
+            
+            [self uploadAvatarWithUrl:uploadUrl
+                                 auth:auth
+                          contentType:contentType
+                             filename:filename
+                               fileID:fileID
+                                image:image];
+        } else {
+            [self hiddenHUD];
+            id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
+            [HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
+        }
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [self hiddenHUD];
+        [HXAlertBanner showWithMessage:@"上传失败，网络请求超时" tap:nil];
+    }];
+}
+
+- (void)uploadAvatarWithUrl:(NSString *)url auth:(NSString *)auth contentType:(NSString *)contentType filename:(NSString *)filename fileID:(NSString *)fileID image:(UIImage *)image {
+    // 压缩图片，放线程中进行
+    dispatch_queue_t queue = dispatch_queue_create("RequestUploadPhoto", NULL);
+    dispatch_async(queue, ^(){
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url ]];
+        request.HTTPMethod = @"PUT";
+        [request setValue:auth forHTTPHeaderField:@"Authorization"];
+        [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+        
+        NSData *imageData;
+        
+        imageData = UIImageJPEGRepresentation(image, 0.9f);
+        [request setValue:[NSString stringWithFormat:@"%ld", (unsigned long)imageData.length] forHTTPHeaderField:@"Content-Length"];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        [[session uploadTaskWithRequest:request
+                               fromData:imageData
+                      completionHandler:
+          ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+              BOOL success = (!error && [data length] == 0);
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  if (success) {
+                      [self setCoverImage:[UIImage imageWithData:imageData] coverID:fileID coverUrl:url];
+                  } else {
+                      [self hiddenHUD];
+                      [HXAlertBanner showWithMessage:@"上传失败，网络请求超时" tap:nil];
+                  }
+              });
+          }] resume];
+    });
+}
+
+- (void)setCoverImage:(UIImage *)image coverID:(NSString *)coverID coverUrl:(NSString *)coverUrl {
+    [MiaAPIHelper setRoomCover:coverID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+        if (success) {
+            [HXAlertBanner showWithMessage:@"设置成功" tap:nil];
+            
+            [HXUserSession session].user.coverUrl = coverUrl;
+            [_viewModel.discoveryList firstObject].coverUrl = coverUrl;
+            [_containerViewController reload];
+        } else {
+            id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
+            [HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
+        }
+        [self hiddenHUD];
+    } timeoutBlock:^(MiaRequestItem *requestItem) {
+        [self hiddenHUD];
+        [HXAlertBanner showWithMessage:@"设置失败，网络请求超时" tap:nil];
+    }];
+}
+
 #pragma mark - HXDiscoveryTopBarDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     [self hiddenNavigationBar];
@@ -168,6 +249,7 @@ HXDiscoveryContainerDelegate
 #pragma mark - HXDiscoveryContainerDelegate Methods
 - (void)container:(HXDiscoveryContainerViewController *)container takeAction:(HXDiscoveryContainerAction)action model:(HXDiscoveryModel *)model {
     [container stopPreviewVideo];
+    [self hiddenNavigationBar];
     switch (action) {
         case HXDiscoveryContainerActionRefresh: {
             [self startFetchList];
@@ -178,18 +260,18 @@ HXDiscoveryContainerDelegate
             break;
         }
         case HXDiscoveryContainerActionStartLive: {
-            [self hiddenNavigationBar];
             [self pauseMusic];
             HXRecordLiveViewController *recordLiveController = [HXRecordLiveViewController instance];
             [self presentViewController:recordLiveController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionChangeCover: {
-            
+            UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+            imagePickerController.delegate = self;
+            [self presentViewController:imagePickerController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
-            [self hiddenNavigationBar];
             [self pauseMusic];
 			UINavigationController *watchLiveNavigationController = nil;
 			if (model.horizontal) {
@@ -204,13 +286,22 @@ HXDiscoveryContainerDelegate
             break;
         }
         case HXDiscoveryContainerActionShowStation: {
-            [self hiddenNavigationBar];
             MIAProfileViewController *profileViewController = [MIAProfileViewController new];
             [profileViewController setUid:model.uID];
             [self.navigationController pushViewController:profileViewController animated:YES];
             break;
         }
     }
+}
+
+#pragma mark - UIImagePickerControllerDelegate Methods
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    [self uploadCoverImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
