@@ -62,7 +62,6 @@ CGFloat const kProfileReplayItemSpaceDistance = 11.;
     }
 }
 
-
 - (void)setCellData:(id)data{
     
     if ([data isKindOfClass:[NSArray class]]) {

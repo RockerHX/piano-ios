@@ -16,6 +16,8 @@
 CGFloat kProfileReplayImageToTitleSpaceDistance = 9. ;
 CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
 
+//直播回放的  宽/高  16:9
+
 @interface MIAProfileReplayView()
 
 @property (nonatomic, strong) UIImageView *videoImageView;
@@ -56,7 +58,8 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showImageView superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithHeightWidthRatioValue:1. selfView:self.showImageView superView:self];
+//    [JOAutoLayout autoLayoutWithHeightWidthRatioValue:1. selfView:self.showImageView superView:self];
+    [JOAutoLayout autoLayoutWithWidthHeightRatioValue:16./9. selfView:self.showImageView superView:self];
     
     [JOAutoLayout autoLayoutWithTopView:self.showImageView distance:kProfileReplayImageToTitleSpaceDistance selfView:self.showTitleLabel superView:self];
     [JOAutoLayout autoLayoutWithLeftXView:self.showImageView selfView:self.showTitleLabel superView:self];
