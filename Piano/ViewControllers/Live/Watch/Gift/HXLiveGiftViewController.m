@@ -90,15 +90,9 @@
 - (IBAction)giveGiftButtonPressed {
     NSInteger selectedIndex = _container.selectedIndex;
     if ((_giftList.count) && (selectedIndex >= 0)) {
-        HXGiftModel *gift = _giftList[selectedIndex];
-        NSInteger rewardCount = gift.mcoin.integerValue;
-        NSInteger balanceCount = [MIAMCoinManage shareMCoinManage].mCoin.integerValue;
-        if (balanceCount < rewardCount) {
-            [self showBannerWithPrompt:@"余额不足，请充值！"];
-            return;
-        }
-        
         [self showHUD];
+        
+        HXGiftModel *gift = _giftList[selectedIndex];
         [[MIAMCoinManage shareMCoinManage] sendGiftWithGiftID:gift.ID giftCount:_giftCount roomID:_roomID success:^{
             [self hiddenHUD];
             [self showBannerWithPrompt:@"打赏成功！"];

@@ -70,13 +70,6 @@ HXSectorSliderDelegate
 
 #pragma mark - Event Response
 - (IBAction)rewardButtonPressed {
-    NSInteger rewardCount = _rewardCountLabel.text.integerValue;
-    NSInteger balanceCount = [MIAMCoinManage shareMCoinManage].mCoin.integerValue;
-    if (balanceCount < rewardCount) {
-        [self showBannerWithPrompt:@"余额不足，请充值！"];
-        return;
-    }
-    
     [self showHUD];
     [[MIAMCoinManage shareMCoinManage] rewardAlbumWithMCoin:_rewardCountLabel.text albumID:_album.ID roomID:_roomID success:^{
         [self hiddenHUD];
