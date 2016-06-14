@@ -32,6 +32,7 @@
 #import "MIAProfileViewController.h"
 #import "UIConstants.h"
 #import "MIAInfoLog.h"
+#import "BFRadialWaveHUD.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -48,6 +49,8 @@ HXLiveAlbumViewDelegate
 @implementation HXWatchLiveViewController {
     HXLiveBarrageContainerViewController *_barrageContainer;
     HXModalTransitionDelegate *_modalTransitionDelegate;
+    
+    BFRadialWaveHUD *_hud;
 }
 
 #pragma mark - Class Methods
@@ -91,6 +94,7 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    
     _modalTransitionDelegate = [HXModalTransitionDelegate new];
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
     [self signalLink];
@@ -118,6 +122,8 @@ HXLiveAlbumViewDelegate
     UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
     [self.view addGestureRecognizer:leftSwipeGesture];
     [self.view addGestureRecognizer:rightSwipeGesture];
+    
+    [self showLoadingHUD];
 }
 
 - (void)signalLink {
@@ -185,6 +191,29 @@ HXLiveAlbumViewDelegate
 #pragma mark - Private Methods
 - (void)shouldSteady:(BOOL)steady {
     [[UIApplication sharedApplication] setIdleTimerDisabled:steady];
+}
+
+- (void)showLoadingHUD {
+    if (!_hud) {
+        _hud = [[BFRadialWaveHUD alloc] initWithView:self.view
+                                          fullScreen:YES
+                                             circles:BFRadialWaveHUD_DefaultNumberOfCircles
+                                         circleColor:nil
+                                                mode:BFRadialWaveHUDMode_Default
+                                         strokeWidth:BFRadialWaveHUD_DefaultCircleStrokeWidth];
+        [_hud setBlurBackground:YES];
+    }
+    [_hud show];
+}
+
+- (void)showErrorLoading {
+    [_hud showErrorWithCompletion:^(BOOL finished) {
+        [_hud dismiss];
+    }];
+}
+
+- (void)hiddenLoadingHUD {
+    [_hud dismissAfterDelay:0.5f];
 }
 
 - (void)dismiss {
@@ -274,6 +303,8 @@ HXLiveAlbumViewDelegate
         bool b = [zegoLiveApi startPlayStream:_viewModel.model.streamAlias viewIndex:RemoteViewIndex_First];
         assert(b);
         NSLog(@"%s, ret: %d", __func__, ret);
+    } else {
+        [self showErrorLoading];
     }
 }
 
@@ -299,10 +330,12 @@ HXLiveAlbumViewDelegate
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, stream: %@", __func__, streamID);
+    [self hiddenLoadingHUD];
 }
 
 - (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
+    [self hiddenLoadingHUD];
 }
 
 - (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {}
