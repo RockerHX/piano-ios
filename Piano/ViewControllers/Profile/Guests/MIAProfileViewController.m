@@ -197,6 +197,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [_profileTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_profileTableView setBackgroundColor:[UIColor clearColor]];
     [_profileTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [_profileTableView setSeparatorColor:[UIColor clearColor]];
     [_profileTableView setSectionFooterHeight:CGFLOAT_MIN];
     [_profileTableView setShowsVerticalScrollIndicator:NO];
     [_profileTableView setShowsHorizontalScrollIndicator:NO];

@@ -45,8 +45,6 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
     [self addTapGesture];
     
     [self.showTipLabel setHidden:YES];
-//    [self.showImageView setBackgroundColor:[UIColor orangeColor]];
-//    [self.showTitleLabel setText:@"于文文"];
     [self.showTitleLabel setFont:[MIAFontManage getFontWithType:MIAFontType_Host_Attention_Title]->font];
     [self.showTitleLabel setTextColor:[MIAFontManage getFontWithType:MIAFontType_Host_Attention_Title]->color];
     [self.showTitleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -88,7 +86,6 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
         
         [_liveTipLabel setHidden:YES];
     }
-    
 }
 
 - (void)setAttentionViewWidth:(CGFloat )width{
@@ -103,14 +100,11 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
         self.profileFollowModel = nil;
         self.profileFollowModel = data;
         
-        
         [self.showImageView sd_setImageWithURL:[NSURL URLWithString:_profileFollowModel.userpic] placeholderImage:[UIImage imageNamed:@"C-AvatarDefaultIcon"]];
         [self.showTitleLabel setText:_profileFollowModel.nick];
         [self setLiveShowState:[_profileFollowModel.live boolValue]];
 
         [self updateViewLayout];
-//        [self setLiveShowState:YES];
-        
     }else{
     
         [JOFException exceptionWithName:@"MIAHostAttentionView exception!" reason:@"data 必须是HostProfileFollowModel类型"];

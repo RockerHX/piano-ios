@@ -62,9 +62,18 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [JOAutoLayout autoLayoutWithTopView:_songNameLabel distance:0. selfView:_nameLabel superView:self];
     [JOAutoLayout autoLayoutWithHeight:[_nameLabel sizeThatFits:JOMAXSize].height+1 selfView:_nameLabel superView:self];
     
+    UIImage *popImage = [UIImage imageNamed:@"C-BackIcon-White"];
+    UIImageView *popImageView = [UIImageView newAutoLayoutView];
+    [popImageView setImage:popImage];
+    [self addSubview:popImageView];
+    
+    [JOAutoLayout autoLayoutWithTopYView:_songNameLabel selfView:popImageView superView:self];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:5. selfView:popImageView superView:self];
+    [JOAutoLayout autoLayoutWithSize:popImage.size selfView:popImageView superView:self];
+    
     self.popButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_popButton setImage:[UIImage imageNamed:@"C-BackIcon-White"] forState:UIControlStateNormal];
+//    [_popButton setImage:[UIImage imageNamed:@"C-BackIcon-White"] forState:UIControlStateNormal];
     [_popButton addTarget:self action:@selector(popButtonClikc) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_popButton];
     

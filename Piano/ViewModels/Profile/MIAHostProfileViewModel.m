@@ -105,7 +105,7 @@ CGFloat const kHostProfileViewDefaultCellHeight = 58.;//默认的cell的高度
     [label1 setText:@" "];
     CGFloat height1 = [label1 sizeThatFits:JOMAXSize].height;
     
-    return viewWidth + kAttentionImageToTitleSpaceDistance+ height1 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance;
+    return viewWidth + kAttentionImageToTitleSpaceDistance+ height1 + kContentViewInsideTopSpaceDistance*2 + kContentViewInsideBottomSpaceDistance*2;
 }
 
 + (CGFloat)hostProfileRewardAlbumCellHeightWithWidth:(CGFloat)width{

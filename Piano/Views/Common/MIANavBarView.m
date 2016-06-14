@@ -106,6 +106,11 @@ static CGFloat const kRightButtonWidth = 50.;//right按钮的宽度.
     [_leftButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
 }
 
+- (void)setLeftButtonImageEdge:(UIEdgeInsets)edgeInsets{
+
+    [_leftButton setImageEdgeInsets:edgeInsets];
+}
+
 - (UIButton *)navBarLeftButton{
 
     return _leftButton;
@@ -120,6 +125,11 @@ static CGFloat const kRightButtonWidth = 50.;//right按钮的宽度.
 - (void)setRightButtonImageName:(NSString *)imageName{
 
     [_rightButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+
+- (void)setRightButtonImageEdge:(UIEdgeInsets)edgeInsets{
+
+    [_rightButton setImageEdgeInsets:edgeInsets];
 }
 
 - (UIButton *)navBarRightButton{

@@ -20,6 +20,7 @@ static CGFloat const kAnimationViewHeight = 2.;//动画的视图的高度
 @property (nonatomic, strong) UIView *animationView;
 
 @property (nonatomic, strong) UIColor *itemTitleColor;
+@property (nonatomic, strong) UIColor *itemSelectedTitleColor;
 @property (nonatomic, strong) UIFont *itemTitleFont;
 
 @property (nonatomic, copy) ItemClickBlock itemClickBlock;
@@ -135,6 +136,20 @@ static CGFloat const kAnimationViewHeight = 2.;//动画的视图的高度
 - (void)setAnimationColor:(UIColor *)color{
 
     [_animationView setBackgroundColor:color];
+}
+
+- (void)setItemTitleSelectedColor:(UIColor *)color{
+
+    self.itemSelectedTitleColor = nil;
+    self.itemSelectedTitleColor = color;
+}
+
+- (void)setCurrentSelectedIndex:(NSInteger)index{
+    
+    for (int i = 0; i < [_itemsarray count]; i++) {
+        [(UIButton *)[_contentView viewWithTag:i+1] setTitleColor:_itemTitleColor forState:UIControlStateNormal];
+    }
+    [(UIButton *)[_contentView viewWithTag:index+1] setTitleColor:_itemSelectedTitleColor forState:UIControlStateNormal];
 }
 
 #pragma mark - Block

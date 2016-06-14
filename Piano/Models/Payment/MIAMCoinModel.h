@@ -11,6 +11,6 @@
 @interface MIAMCoinModel : NSObject
 
 @property (nonatomic, copy) NSString *mcoin; //m币的余额
-@property (nonatomic, copy) NSString *mcoinApple; //apple的充值得到的  M币余额
+//@property (nonatomic, copy) NSString *mcoinApple; //apple的充值得到的  M币余额
 
 @end

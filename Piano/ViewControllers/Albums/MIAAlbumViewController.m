@@ -217,7 +217,6 @@
             NSArray *songModelArray = [self.albumViewModel.cellDataArray firstObject];
             NSMutableArray *songURLArray = [NSMutableArray array];
             for(HXSongModel *model in songModelArray){
-                
                 [songURLArray addObject:model.mp3Url];
             }
             
@@ -235,7 +234,6 @@
         self.playSongIndex = songIndex;
         
         [self.albumTableView reloadData];
-//        [self.albumTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     }];
     [_albumTableHeadView setFrame:CGRectMake(0., 0., View_Width(self.view), [_albumTableHeadView albumDetailViewHeight])];
     
@@ -249,11 +247,9 @@
 
     if ([self.albumViewModel.cellDataArray count] == 2 && [[self.albumViewModel.cellDataArray lastObject] count] < self.albumViewModel.commentCount) {
 
-//        [self.albumTableView.mj_footer resetNoMoreData];
         if ([self.albumTableView.mj_footer isRefreshing]) {
             [self.albumTableView.mj_footer endRefreshing];
         }
-        
     }else{
     
         [self.albumTableView.mj_footer endRefreshingWithNoMoreData];

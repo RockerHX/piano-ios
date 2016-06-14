@@ -30,6 +30,8 @@ ZEGO_EXTERN NSString *const kZegoPublishStreamIDKey;    ///< 主播流ID，值�
 ZEGO_EXTERN NSString *const kZegoPublishStreamURLKey;   ///< 当前直播流观看 url，值为 NSString
 
 
+@protocol ZegoVideoCaptureFactory;
+
 /// \brief 回调协议
 /// \note 所有回调调用都会发生在主线程
 @protocol ZegoLiveApiDelegate <NSObject>
@@ -92,13 +94,6 @@ ZEGO_EXTERN NSString *const kZegoPublishStreamURLKey;   ///< 当前直播流观�
 /// \param appSignature Zego派发的签名,用来校验对应appID的合法性
 - (instancetype)initWithAppID:(uint32)appID appSignature:(NSData*)appSignature;
 
-/// \brief 启动 SDK，准备音视频服务
-/// \note 在可能用到直播功能时才调用
-- (bool)startSDK;
-
-/// \brief 停止 SDK，停止音视频服务
-- (bool)stopSDK;
-
 /// \brief 设置用来观看直播的View
 /// \param index View的序号，目前支持一个聊天室两个主播
 /// \param view 展示视频的View
@@ -120,6 +115,11 @@ ZEGO_EXTERN NSString *const kZegoPublishStreamURLKey;   ///< 当前直播流观�
 /// \param mode 模式，详见ZegoVideoViewMode
 /// \return true:调用成功；false:调用失败
 - (bool)setLocalViewMode:(ZegoVideoViewMode)mode;
+
+/// \brief 设置手机姿势
+/// \param rotate 逆时针旋转角度
+/// \return true:调用成功；false:调用失败
+- (bool)setDisplayRotation:(CAPTURE_ROTATE)rotate;
 
 /// \brief 设置视频配置
 /// \param config 配置参数
@@ -144,10 +144,20 @@ ZEGO_EXTERN NSString *const kZegoPublishStreamURLKey;   ///< 当前直播流观�
 /// \return true:调用成功；false:调用失败
 - (bool)setCaptureRotation:(CAPTURE_ROTATE)rotate;
 
+/// \brief 开启关闭音频采集噪声抑制
+/// \param bEnable true打开，false关闭
+/// \return true:调用成功；false:调用失败
+- (bool)enableNoiseSuppress:(bool)bEnable;
+
 /// \brief 开启关闭麦克风
 /// \param bEnable true打开，false关闭
 /// \return true:调用成功；false:调用失败
 - (bool)enableMic:(bool)bEnable;
+
+/// \brief 开启关闭视频采集
+/// \param bEnable true打开，false关闭
+/// \return true:调用成功；false:调用失败
+- (bool)enableCamera:(bool)bEnable;
 
 /// \brief 截取观看直播 view 图像
 /// \param idx 视频通道
@@ -227,12 +237,8 @@ ZEGO_EXTERN NSString *const kZegoPublishStreamURLKey;   ///< 当前直播流观�
 + (void)setUseTestEnv:(bool)useTestEnv;
 
 /// \brief 设置外部采集模块
-/// \param factory 工厂对象，继承自 ZEGO::AV::VideoCaptureFactory，
+/// \param factory 工厂对象
 /// \note 必须在 InitSDK 前调用，并且不能置空
-///    Example:
-//+ (void)setVideoCaptureFactory:(void *)factory;
++ (void)setVideoCaptureFactory:(id<ZegoVideoCaptureFactory>)factory;
 
 @end
-
-
-

@@ -154,11 +154,11 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor grayColor], 10.);
     }else if (type == MIAFontType_Album_Comment_Enter){
         //评论输入框
-        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor blackColor]);
+        return JOFontsMake([UIFont systemFontOfSize:14. weight:UIFontWeightRegular], [UIColor blackColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
     }else if (type == MIAFontType_Album_Comment_Send){
         //发送评论的按钮
-        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }
     
@@ -247,11 +247,11 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
     }else if (type == MIAFontType_PayHistory_Time){
         //时间
-        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], JORGBSameCreate(210.));
+        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], JORGBSameCreate(160.));
 //        return JOFontMake(kMIAFontRegular, JORGBSameCreate(210.), 13.);
     }else if (type == MIAFontType_PayHistory_Amount){
         //余额
-        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], JORGBCreate(171., 143., 71., 1.));
+        return JOFontsMake([UIFont systemFontOfSize:23. weight:UIFontWeightRegular], JORGBCreate(159., 144., 98.,1.));
 //        return JOFontMake(kMIAFontRegular, JORGBCreate(171., 143., 71., 1.), 17.);
     }
     

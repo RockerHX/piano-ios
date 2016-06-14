@@ -59,9 +59,14 @@ CGFloat const kProfileReplayItemSpaceDistance = 11.;
         [JOAutoLayout autoLayoutWithSizeWithView:_leftReplayView selfView:_rightReplayView superView:self.cellContentView];
         [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_rightReplayView superView:self.cellContentView];
         [JOAutoLayout autoLayoutWithLeftView:_leftReplayView distance:kProfileReplayItemSpaceDistance selfView:_rightReplayView superView:self.cellContentView];
+        
+        UIView *whiteView = [UIView newAutoLayoutView];
+        [whiteView setBackgroundColor:[UIColor whiteColor]];
+        [self.contentView insertSubview:whiteView belowSubview:self.cellContentView];
+        
+        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0, kContentViewLeftSpaceDistance, 1., -kContentViewRightSpaceDistance) selfView:whiteView superView:self.contentView];
     }
 }
-
 
 - (void)setCellData:(id)data{
     

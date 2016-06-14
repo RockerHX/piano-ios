@@ -141,7 +141,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
                               completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         
                                     if (success) {
-                                        NSLog(@"^^^^^^^^^^^^^^^^:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
+//                                        NSLog(@"^^^^^^^^^^^^^^^^:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                         [self parseProfileWithData:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
                                         [subscriber sendCompleted];
                                     }else{
@@ -252,7 +252,9 @@ CGFloat const kProfileReplayCellHeight = 210.;
     [label2 setText:@" "];
     CGFloat height2 = [label2 sizeThatFits:JOMAXSize].height;
     
-    return viewWidth + kProfileReplayTitleToTipSpaceDistance + height1 + kProfileReplayImageToTitleSpaceDistance + height2 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance/2.;
+    CGFloat ratio = 16./9.;//宽高比
+    
+    return viewWidth/ratio + kProfileReplayTitleToTipSpaceDistance + height1 + kProfileReplayImageToTitleSpaceDistance + height2 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance;
 }
 
 @end

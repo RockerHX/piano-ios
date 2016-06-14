@@ -13,10 +13,10 @@
 #import "MIAFontManage.h"
 #import "MIAPlaySlider.h"
 
-#define SliderColor JORGBCreate(246., 28., 41., 1.)
+#define SliderColor JORGBCreate(252,54,54, 1.)
 
 static CGFloat const kTopSpaceDistance = 10.; //上面的间距大小
-static CGFloat const kBottomSpaceDistance = 10.; //下面的间距大小
+static CGFloat const kBottomSpaceDistance = 0.; //下面的间距大小
 
 static CGFloat const kButtonToTimeSpaceDistance = 10.;//播放按钮到开始时间的间距大小
 static CGFloat const kTimeToSliderSpaceDistance = 10.; //播放时间到slider的间距大小
