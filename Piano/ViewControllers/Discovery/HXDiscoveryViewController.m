@@ -207,9 +207,7 @@ UINavigationControllerDelegate
         [request setValue:auth forHTTPHeaderField:@"Authorization"];
         [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
         
-        NSData *imageData;
-        
-        imageData = UIImageJPEGRepresentation(image, 0.9f);
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.9f);
         [request setValue:[NSString stringWithFormat:@"%ld", (unsigned long)imageData.length] forHTTPHeaderField:@"Content-Length"];
         
         NSURLSession *session = [NSURLSession sharedSession];
