@@ -228,7 +228,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
     [label2 setText:@" "];
     CGFloat height2 = [label2 sizeThatFits:JOMAXSize].height;
     
-    return viewWidth + kAlbumImageToTitleSpaceDistance + height1 + kAlbumTitleToTipSpaceDistance + height2 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance/2.;
+    return viewWidth + kAlbumImageToTitleSpaceDistance + height1 + kAlbumTitleToTipSpaceDistance + height2 + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance;
 }
 
 + (CGFloat)profileVideoCellHeightWithWidth:(CGFloat)width{

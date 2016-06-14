@@ -154,7 +154,6 @@
     
         [JOAutoLayout removeAutoLayoutWithHeightSelfView:self.enterCommentView superView:self.view];
         [JOAutoLayout autoLayoutWithHeight:textViewHeight+20. selfView:self.enterCommentView superView:self.view];
-
     }];
     
     //发送按钮点击的Block
@@ -208,9 +207,6 @@
             
             MIAAlbumRewardViewController *rewardViewController = [MIAAlbumRewardViewController new];
             [rewardViewController setAlbumModel:self.albumViewModel.albumModel];
-            //        [self.navigationController presentViewController:rewardViewController animated:YES completion:^{
-            //
-            //        }];
             [self.navigationController pushViewController:rewardViewController animated:YES];
         }else{
         
@@ -222,7 +218,6 @@
             
             [[MIASongManage shareSongManage] startDownloadSongWithURLArray:songURLArray];
         }
-        
     }];
     
     //播放歌曲发生改变的时候Block

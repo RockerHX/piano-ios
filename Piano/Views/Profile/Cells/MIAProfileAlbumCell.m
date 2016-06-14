@@ -42,7 +42,7 @@ CGFloat const kProfileAlbumItemSpaceDistance = 18.;
         [self.cellContentView addSubview:_leftAlbumView];
         
         [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_leftAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_leftAlbumView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance-5 selfView:_leftAlbumView superView:self.cellContentView];
         [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_leftAlbumView superView:self.cellContentView];
         [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_leftAlbumView superView:self.cellContentView];
         

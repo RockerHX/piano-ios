@@ -14,7 +14,7 @@
 #import "MiaAPIHelper.h"
 
 CGFloat kProfileReplayImageToTitleSpaceDistance = 9. ;
-CGFloat kProfileReplayTitleToTipSpaceDistance =  5.;
+CGFloat kProfileReplayTitleToTipSpaceDistance =  2.;
 
 //直播回放的  宽/高  16:9
 

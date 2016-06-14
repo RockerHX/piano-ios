@@ -36,7 +36,7 @@
         return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(160.));
     }else if (type == MIAFontType_Host_Attention_Live){
         //我的profile关注人的直播提示
-        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], JORGBCreate(255,87,115,1.));
+        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightBold], JORGBCreate(255,87,115,1.));
     }else if (type == MIAFontType_Host_Album_Name){
         //打赏的专辑名字
         return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(160.));
