@@ -19,7 +19,6 @@ static NSString * const MiaAPIKey_Values					= @"v";
 static NSString * const MiaAPIKey_Return					= @"ret";
 static NSString * const MiaAPIKey_Data						= @"data";
 static NSString * const MiaAPIKey_Error						= @"err";
-static NSString * const MiaAPIKey_Message                   = @"msg";
 
 // User
 static NSString * const MiaAPICommand_User_PostGuest		= @"User.Post.Guest";

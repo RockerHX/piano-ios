@@ -45,7 +45,7 @@
         if (success) {
             [subscriber sendCompleted];
         } else {
-            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Message] code:-1 userInfo:nil]];
+            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
         }
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
