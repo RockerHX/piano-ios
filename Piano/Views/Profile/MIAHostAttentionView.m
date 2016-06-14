@@ -69,6 +69,9 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
         [[_liveTipLabel layer] setCornerRadius:kLiveTipLableHeight/2.];
         [[_liveTipLabel layer] setMasksToBounds:YES];
         [_liveTipLabel setText:@"●Live"];
+        [_liveTipLabel setAttributedText:[@"●Live" JOAttributedStringwithMarkString:@"●"
+                                                                           markFont:JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightBold], JORGBCreate(255,87,115,1.))->font
+                                                                          markColor:JORGBCreate(255,87,115,1.)]];
         [self addSubview:_liveTipLabel];
     }
     
@@ -80,7 +83,7 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
         [JOAutoLayout autoLayoutWithBottomYView:self.showImageView selfView:_liveTipLabel superView:self];
         [JOAutoLayout autoLayoutWithHeight:kLiveTipLableHeight selfView:_liveTipLabel superView:self];
         [JOAutoLayout autoLayoutWithCenterXWithView:self.showImageView selfView:_liveTipLabel superView:self];
-        [JOAutoLayout autoLayoutWithWidthWithView:self.showImageView ratioValue:2./3. selfView:_liveTipLabel superView:self];
+        [JOAutoLayout autoLayoutWithWidthWithView:self.showImageView ratioValue:3./4. selfView:_liveTipLabel superView:self];
         
     }else{
         

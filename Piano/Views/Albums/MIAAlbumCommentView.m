@@ -13,7 +13,7 @@
 #import "JOBaseSDK.h"
 #import "MIACommentModel.h"
 
-static CGFloat const kImageToLabelSpaceDistance = 15.;//图片与label之间的间距
+static CGFloat const kImageToLabelSpaceDistance = 10.;//图片与label之间的间距
 static CGFloat const kImageWidth = 36.;//图片的宽度
 
 @interface MIAAlbumCommentView(){
@@ -53,7 +53,7 @@ static CGFloat const kImageWidth = 36.;//图片的宽度
     [_headImageView setBackgroundColor:[UIColor grayColor]];
     [self addSubview:_headImageView];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_headImageView superView:self];
+    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_headImageView superView:self];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_headImageView superView:self];
     [JOAutoLayout autoLayoutWithSize:JOSize(kImageWidth, kImageWidth) selfView:_headImageView superView:self];
     
@@ -64,7 +64,7 @@ static CGFloat const kImageWidth = 36.;//图片的宽度
     [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:kImageToLabelSpaceDistance selfView:_nickNameLabel superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_nickNameLabel superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_nickNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height+4. selfView:_nickNameLabel superView:self];
+    [JOAutoLayout autoLayoutWithHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height selfView:_nickNameLabel superView:self];
     
     self.commentLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Content]];
     [_commentLabel setText:@" "];
@@ -74,7 +74,7 @@ static CGFloat const kImageWidth = 36.;//图片的宽度
     [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_commentLabel superView:self];
     [JOAutoLayout autoLayoutWithTopView:_nickNameLabel distance:0. selfView:_commentLabel superView:self];
     [JOAutoLayout autoLayoutWithRightXView:_nickNameLabel selfView:_commentLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_commentLabel sizeThatFits:JOMAXSize].height+4 selfView:_commentLabel superView:self];
+    [JOAutoLayout autoLayoutWithHeight:[_commentLabel sizeThatFits:JOMAXSize].height selfView:_commentLabel superView:self];
     
     self.timeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Time]];
     [_timeLabel setText:@" "];

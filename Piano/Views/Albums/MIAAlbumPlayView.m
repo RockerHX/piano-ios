@@ -18,7 +18,7 @@
 static CGFloat const kTopSpaceDistance = 10.; //上面的间距大小
 static CGFloat const kBottomSpaceDistance = 0.; //下面的间距大小
 
-static CGFloat const kButtonToTimeSpaceDistance = 10.;//播放按钮到开始时间的间距大小
+static CGFloat const kButtonToTimeSpaceDistance = 5.;//播放按钮到开始时间的间距大小
 static CGFloat const kTimeToSliderSpaceDistance = 10.; //播放时间到slider的间距大小
 //static CGFloat const kButtonToButtonSpaceDistance = 10.;//按钮间的间距大小
 
@@ -69,7 +69,7 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_playButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:-3. selfView:_playButton superView:self];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:-6. selfView:_playButton superView:self];
     [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_playButton superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_playButton superView:self];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_playButton superView:self];
@@ -111,7 +111,7 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [_remainTimeLabel setText:@"00:00"];
     [self addSubview:_remainTimeLabel];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-5. selfView:_remainTimeLabel superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:_remainTimeLabel superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_remainTimeLabel superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_remainTimeLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width+1 selfView:_remainTimeLabel superView:self];

@@ -56,6 +56,7 @@
 - (void)createBackImageView{
 
     self.coverImageView = [UIImageView newAutoLayoutView];
+    [_coverImageView setContentMode:UIViewContentModeScaleAspectFill];
     [self.view addSubview:_coverImageView];
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0.0, 0., 0.) selfView:_coverImageView superView:self.view];
@@ -94,7 +95,6 @@
     [JOAutoLayout autoLayoutWithTopSpaceDistance:20. selfView:popButton superView:self.view];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:popButton superView:self.view];
     [JOAutoLayout autoLayoutWithSize:JOSize(30., 30.) selfView:popButton superView:self.view];
-    
     
     UIButton *settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [settingButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -177,7 +177,7 @@
         [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl]
                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                           
-                                          [self.coverImageView setImage:[image blurredImageWithRadius:8.0f iterations:5 tintColor:[UIColor blackColor]]];
+                                          [self.coverImageView setImage:[image blurredImageWithRadius:8.0f iterations:8 tintColor:[UIColor blackColor]]];
                                       }];
     }];
     [self.navigationController pushViewController:settingViewController animated:YES];
@@ -199,7 +199,7 @@
         [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.hostProfileViewModel.hostProfileModel.userpic]
                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                       
-                                          [self.coverImageView setImage:[image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]]];
+                                          [self.coverImageView setImage:[image blurredImageWithRadius:8.0f iterations:8 tintColor:[UIColor blackColor]]];
                                       }];
         
         [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.hostProfileViewModel.hostProfileModel.userpic]];
