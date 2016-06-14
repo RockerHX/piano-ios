@@ -54,6 +54,9 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     self.sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_sendButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
+    [_sendButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [_sendButton setEnabled:NO];
+    [[_sendButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Send]->font];
     [_sendButton addTarget:self action:@selector(sendCommentAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_sendButton];
     
@@ -69,6 +72,7 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     [_commentTextView setDelegate:self];
     [_commentTextView setReturnKeyType:UIReturnKeyDone];
     [_commentTextView setMaxLine:5.];
+    [_commentTextView setPlaceholderText:@"说说你的想法"];
     [[_commentTextView layer] setCornerRadius:4.];
     [[_commentTextView layer] setMasksToBounds:YES];
     [self addSubview:_commentTextView];
@@ -77,7 +81,6 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_commentTextView superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_commentTextView superView:self];
     [JOAutoLayout autoLayoutWithRightView:_sendButton distance:0. selfView:_commentTextView superView:self];
-
 }
 
 #pragma mark - Button Action
@@ -90,7 +93,6 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
             _sendCommentBlock(_commentTextView.text);
         }
     }
-    
 }
 
 #pragma mark - HXTextView delegate
@@ -102,8 +104,15 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     }
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView{
+- (void)textViewDidChange:(UITextView *)textView{
 
+    if ([textView.text length]) {
+        [_sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_sendButton setEnabled:YES];
+    }else{
+        [_sendButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_sendButton setEnabled:NO];
+    }
 }
 
 #pragma mark - keyboard
@@ -119,7 +128,6 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
-
 
 - (void)keyBoardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];

@@ -129,6 +129,8 @@
     [_meHeadView addSubview:_summaryLabel];
     
     [JOAutoLayout autoLayoutWithTopSpaceDistance:kHostProfileViewHeadTopSpaceDistance selfView:_headImageView superView:_meHeadView];
+//    [JOAutoLayout autoLayoutWithCenterXWithView:_meHeadView selfView:_headImageView superView:_meHeadView];
+//    [JOAutoLayout autoLayoutWithSize:JOSize(headImageViewWidth, headImageViewWidth) selfView:_headImageView superView:_meHeadView];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kHostProfileViewHeadLeftSpaceDistance selfView:_headImageView superView:_meHeadView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-kHostProfileViewHeadRightSpaceDistance selfView:_headImageView superView:_meHeadView];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_headImageView superView:_meHeadView];
@@ -204,7 +206,6 @@
         [self.nickNameLabel setText:self.hostProfileViewModel.hostProfileModel.nick];
         [self.summaryLabel setText:self.hostProfileViewModel.hostProfileModel.bio];
     }];
-
 }
 
 #pragma mark - table data source
@@ -269,9 +270,7 @@
         cell = [MIACellManage getCellWithType:cellType];
         [cell setCellWidth:View_Width(self.view)];
     }
-    
-    
-    
+
     if (indexPath.section == 0) {
         
         id cellData = [[_hostProfileViewModel.hostProfileDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];

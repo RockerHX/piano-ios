@@ -148,6 +148,8 @@ static NSString * const MiaAPICommand_Gift_SendList         = @"User.Get.Gift"; 
 static NSString * const MiaAPICommand_Order_GetList         = @"User.Get.Order";    //充值记录
 static NSString * const MiaAPICommand_Verify                = @"User.Post.Order"; //服务器验证
 
+static NSString * const MiaAPICommand_PlatForm              = @"platform"; //1ios, 2android, 3pc, 4 weixin
+static NSString * const MiaAPICommand_PayType               = @"payType"; //1为应用里的微信支付 3微信扫码支付, 5为ios支付, 4支付宝
 static NSString * const MiaAPIKey_TradeType                 = @"tradeType"; // 订单号验证的渠道  Apple
 static NSString * const MiaAPIKey_RechargeID                = @"rechargeID"; // 购买产品的id
 static NSString * const MiaAPIKey_AppleOrderID              = @"appleOrderID"; //苹果生成的订单号

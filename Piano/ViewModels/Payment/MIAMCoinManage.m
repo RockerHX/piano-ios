@@ -336,7 +336,7 @@ static NSString *const kVerifyPurchaseVerifyKey = @"VerifyKey";
     MIAMCoinModel *mCoinModel = [MIAMCoinModel mj_objectWithKeyValues:dic];
     
     self.mCoinBalance = nil;
-    self.mCoinBalance = [mCoinModel.mcoinApple copy];
+    self.mCoinBalance = [mCoinModel.mcoin copy];
 }
 
 @end
