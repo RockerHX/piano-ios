@@ -27,8 +27,8 @@
 @property (weak, nonatomic) IBOutlet             UIView *barragesView;
 @property (weak, nonatomic) IBOutlet  HXRecordBottomBar *bottomBar;
 @property (weak, nonatomic) IBOutlet    HXLiveAlbumView *albumView;
-@property (weak, nonatomic) IBOutlet  HXStaticGiftView *staticGiftView;
-@property (weak, nonatomic) IBOutlet HXDynamicGiftView *dynamicGiftView;
+@property (weak, nonatomic) IBOutlet   HXStaticGiftView *staticGiftView;
+@property (weak, nonatomic) IBOutlet  HXDynamicGiftView *dynamicGiftView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumViewLeftConstraint;

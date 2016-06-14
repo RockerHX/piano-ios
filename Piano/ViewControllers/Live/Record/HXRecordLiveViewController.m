@@ -30,6 +30,7 @@
 #import "HXDynamicGiftView.h"
 #import "HXStaticGiftView.h"
 #import "UIConstants.h"
+#import "MIAInfoLog.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -104,6 +105,12 @@ HXLiveAlbumViewDelegate
     _frontCamera = YES;
 	_beauty = YES;
     _microEnable = YES;
+    
+    __weak __typeof__(self)weakSelf = self;
+    [_anchorView bk_whenTouches:1 tapped:5 handler:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [MIAInfoLog uploadInfoLogWithRoomID:strongSelf->_viewModel.roomID streamID:strongSelf->_viewModel.model.streamAlias];
+    }];
 }
 
 - (void)viewConfigure {
