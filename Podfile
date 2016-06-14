@@ -24,6 +24,7 @@ target 'Piano' do
 	# UIComponment
 	pod 'MJRefresh'
 	pod 'MBProgressHUD'
+    pod 'BFRadialWaveHUD'
 	pod 'TTTAttributedLabel'
 	pod 'BlocksKit'
 	pod 'FXBlurView'

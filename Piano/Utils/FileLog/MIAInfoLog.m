@@ -9,6 +9,7 @@
 #import "MIAInfoLog.h"
 #import "MiaAPIHelper.h"
 #import "JOBaseSDK.h"
+#import "HXAlertBanner.h"
 
 @implementation MIAInfoLog
 
@@ -26,11 +27,11 @@
                         completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                             
                             if (success) {
-//                                    NSLog(@"日志提交结果:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Data]);
                                 JOLog(@"日志提交成功");
+                                [HXAlertBanner showWithMessage:@"日志提交成功" tap:nil];
                             }else{
-                                
                                 JOLog(@"日志提交失败");
+                                [HXAlertBanner showWithMessage:@"日志提交失败" tap:nil];
                             }
                         }timeoutBlock:^(MiaRequestItem *requestItem) {
                              

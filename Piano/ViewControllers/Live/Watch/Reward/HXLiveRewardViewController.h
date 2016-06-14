@@ -16,6 +16,7 @@
 @interface HXLiveRewardViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet  UIView *tapView;
+@property (weak, nonatomic) IBOutlet  UIView *tapCoinView;
 @property (weak, nonatomic) IBOutlet  UIView *containerView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *albumCover;
@@ -30,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet HXSectorSlider *sectorSlider;
 
 @property (nonatomic, strong)     NSString *roomID;
+@property (nonatomic, strong)     NSString *streamID;
 @property (nonatomic, strong) HXAlbumModel *album;
 
 - (IBAction)rewardButtonPressed;

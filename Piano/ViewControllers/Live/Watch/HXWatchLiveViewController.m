@@ -30,6 +30,9 @@
 #import <UMengSocialCOM/UMSocial.h>
 #import "HXAppConstants.h"
 #import "MIAProfileViewController.h"
+#import "UIConstants.h"
+#import "MIAInfoLog.h"
+#import "BFRadialWaveHUD.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -46,6 +49,8 @@ HXLiveAlbumViewDelegate
 @implementation HXWatchLiveViewController {
     HXLiveBarrageContainerViewController *_barrageContainer;
     HXModalTransitionDelegate *_modalTransitionDelegate;
+    
+    BFRadialWaveHUD *_hud;
 }
 
 #pragma mark - Class Methods
@@ -89,9 +94,16 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    
     _modalTransitionDelegate = [HXModalTransitionDelegate new];
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
     [self signalLink];
+    
+    __weak __typeof__(self)weakSelf = self;
+    [_anchorView bk_whenTouches:1 tapped:5 handler:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [MIAInfoLog uploadInfoLogWithRoomID:strongSelf.roomID streamID:strongSelf->_viewModel.model.streamAlias];
+    }];
 }
 
 - (void)viewConfigure {
@@ -104,6 +116,14 @@ HXLiveAlbumViewDelegate
     
     //设置回调代理
     [zegoLiveApi setDelegate:self];
+    
+    UISwipeGestureRecognizer *leftSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
+    leftSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
+    [self.view addGestureRecognizer:leftSwipeGesture];
+    [self.view addGestureRecognizer:rightSwipeGesture];
+    
+    [self showLoadingHUD];
 }
 
 - (void)signalLink {
@@ -149,9 +169,51 @@ HXLiveAlbumViewDelegate
     [self dismiss];
 }
 
+- (void)swipeGesture:(UISwipeGestureRecognizer *)gesure {
+    switch (gesure.direction) {
+        case UISwipeGestureRecognizerDirectionRight: {
+            self.containerLeftConstraint.constant = SCREEN_WIDTH;
+            break;
+        }
+        case UISwipeGestureRecognizerDirectionLeft: {
+            self.containerLeftConstraint.constant = 0.0f;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
+
 #pragma mark - Private Methods
 - (void)shouldSteady:(BOOL)steady {
     [[UIApplication sharedApplication] setIdleTimerDisabled:steady];
+}
+
+- (void)showLoadingHUD {
+    if (!_hud) {
+        _hud = [[BFRadialWaveHUD alloc] initWithView:self.view
+                                          fullScreen:YES
+                                             circles:BFRadialWaveHUD_DefaultNumberOfCircles
+                                         circleColor:nil
+                                                mode:BFRadialWaveHUDMode_Default
+                                         strokeWidth:BFRadialWaveHUD_DefaultCircleStrokeWidth];
+        [_hud setBlurBackground:YES];
+    }
+    [_hud show];
+}
+
+- (void)showErrorLoading {
+    [_hud showErrorWithCompletion:^(BOOL finished) {
+        [_hud dismiss];
+    }];
+}
+
+- (void)hiddenLoadingHUD {
+    [_hud dismissAfterDelay:0.5f];
 }
 
 - (void)dismiss {
@@ -170,7 +232,7 @@ HXLiveAlbumViewDelegate
     
     HXLiveEndViewController *liveEndViewController = [HXLiveEndViewController instance];
     liveEndViewController.delegate = self;
-    liveEndViewController.isLive = NO;
+    liveEndViewController.isAnchor = NO;
     liveEndViewController.liveModel = _viewModel.model;
     [self presentViewController:liveEndViewController animated:YES completion:nil];
 }
@@ -241,6 +303,8 @@ HXLiveAlbumViewDelegate
         bool b = [zegoLiveApi startPlayStream:_viewModel.model.streamAlias viewIndex:RemoteViewIndex_First];
         assert(b);
         NSLog(@"%s, ret: %d", __func__, ret);
+    } else {
+        [self showErrorLoading];
     }
 }
 
@@ -266,10 +330,12 @@ HXLiveAlbumViewDelegate
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, stream: %@", __func__, streamID);
+    [self hiddenLoadingHUD];
 }
 
 - (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
+    [self hiddenLoadingHUD];
 }
 
 - (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {}
@@ -351,6 +417,7 @@ HXLiveAlbumViewDelegate
         case HXWatchBottomBarActionGift: {
             HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
             giftViewController.roomID = _roomID;
+            giftViewController.streamID = _viewModel.model.streamAlias;
             giftViewController.transitioningDelegate = _modalTransitionDelegate;
             giftViewController.modalPresentationStyle = UIModalPresentationCustom;
             [self presentViewController:giftViewController animated:YES completion:nil];
@@ -391,6 +458,7 @@ HXLiveAlbumViewDelegate
     if (album) {
         HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
         rewardViewController.roomID = _roomID;
+        rewardViewController.streamID = _viewModel.model.streamAlias;
         rewardViewController.album = album;
         rewardViewController.transitioningDelegate = _modalTransitionDelegate;
         rewardViewController.modalPresentationStyle = UIModalPresentationCustom;

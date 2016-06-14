@@ -43,8 +43,6 @@ HXSelectedAlbumViewControllerDelegate
     HXLiveModel *_model;
     BOOL _frontCamera;
     BOOL _beauty;
-    
-    HXAlbumModel *_album;
 }
 
 #pragma mark - Segue
@@ -80,6 +78,9 @@ HXSelectedAlbumViewControllerDelegate
             NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
             _model.roomID = data[@"roomID"];
             _model.shareUrl = data[@"shareUrl"];
+        } else {
+            [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         [self hiddenHUD];
     } timeoutBlock:^(MiaRequestItem *requestItem) {
@@ -178,6 +179,10 @@ HXSelectedAlbumViewControllerDelegate
             [self presentViewController:selctedAlbumViewController animated:YES completion:nil];
             break;
         }
+        case HXPreviewLiveEidtViewActionClear: {
+            _model.album = nil;
+            break;
+        }
     }
 }
 
@@ -206,6 +211,10 @@ HXSelectedAlbumViewControllerDelegate
 
 #pragma mark - HXSelectedAlbumViewControllerDelegate Methods
 - (void)selectedAlbumViewController:(HXSelectedAlbumViewController *)viewController selectedAlbum:(HXAlbumModel *)album {
+    _editView.addAlbumButton.hidden = YES;
+    _editView.albumNameLabel.hidden = NO;
+    _editView.albumContainer.hidden = NO;
+    _editView.albumNameLabel.text = album.title;
     [_editView.albumCoverView sd_setImageWithURL:[NSURL URLWithString:album.coverUrl]];
     
     [self showHUD];
@@ -213,7 +222,7 @@ HXSelectedAlbumViewControllerDelegate
      ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
          [self hiddenHUD];
          if (success) {
-             _album = album;
+             _model.album = album;
          } else {
              _editView.albumCoverView.image = nil;
          }

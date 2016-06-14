@@ -15,6 +15,7 @@
 #import "MIAMCoinManage.h"
 #import "HexColors.h"
 #import "MIAPaymentViewController.h"
+#import "MIAInfoLog.h"
 
 
 @interface HXLiveRewardViewController () <
@@ -46,6 +47,11 @@ HXSectorSliderDelegate
         [strongSelf dismiss];
     }];
     
+    [_tapCoinView bk_whenTouches:1 tapped:5 handler:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [MIAInfoLog uploadInfoLogWithRoomID:strongSelf.roomID streamID:strongSelf.streamID];
+    }];
+    
     [_rechargeContainer bk_whenTapped:^{
         __strong __typeof__(self)strongSelf = weakSelf;
         [strongSelf showRechargeSence];
@@ -64,13 +70,6 @@ HXSectorSliderDelegate
 
 #pragma mark - Event Response
 - (IBAction)rewardButtonPressed {
-    NSInteger rewardCount = _rewardCountLabel.text.integerValue;
-    NSInteger balanceCount = [MIAMCoinManage shareMCoinManage].mCoin.integerValue;
-    if (balanceCount < rewardCount) {
-        [self showBannerWithPrompt:@"余额不足，请充值！"];
-        return;
-    }
-    
     [self showHUD];
     [[MIAMCoinManage shareMCoinManage] rewardAlbumWithMCoin:_rewardCountLabel.text albumID:_album.ID roomID:_roomID success:^{
         [self hiddenHUD];

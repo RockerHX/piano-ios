@@ -46,42 +46,44 @@
 
 - (void)notificationConfigure {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    @weakify(self)
     [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomEnter object:nil] subscribeNext:^(NSNotification *notification) {
-        @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self updateOnlineCount:[data[@"onlineCnt"] integerValue]];
         [self addEnterBarrage:data];
     }];
     
     [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomAttention object:nil] subscribeNext:^(NSNotification *notification) {
-        @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addAttentionBarrage:data];
     }];
     
     [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomShare object:nil] subscribeNext:^(NSNotification *notification) {
-        @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addShareBarrage:data];
     }];
     
     [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomGift object:nil] subscribeNext:^(NSNotification *notification) {
-        @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addGiftBarrage:data];
     }];
     
     [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomReward object:nil] subscribeNext:^(NSNotification *notification) {
-        @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addRewardBarrage:data];
     }];
     
     [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushRoomComment object:nil] subscribeNext:^(NSNotification *notification) {
-        @strongify(self)
         NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
         [self addComment:data];
+    }];
+    
+    [[notificationCenter rac_addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil] subscribeNext:^(NSNotification *notification) {
+        [MiaAPIHelper livePostBackendWithRoomID:self.roomID completeBlock:nil timeoutBlock:nil];
+    }];
+    
+    [[notificationCenter rac_addObserverForName:WebSocketMgrNotificationPushBackend object:nil] subscribeNext:^(NSNotification *notification) {
+        NSDictionary *data = notification.userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
+        [self addBackEndBarrage:data];
     }];
 }
 
@@ -157,6 +159,12 @@
     
     _model.album.rewardTotal = barrage.rewardTotal;
     [_rewardSignal sendNext:nil];
+}
+
+- (void)addBackEndBarrage:(NSDictionary *)data {
+    HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
+    barrage.type = HXBarrageTypeBackEnd;
+    [self addBarrage:barrage];
 }
 
 - (void)addComment:(NSDictionary *)data {

@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSUInteger, HXPreviewLiveEidtViewAction) {
     HXPreviewLiveEidtViewActionEdit,
     HXPreviewLiveEidtViewActionAddAlbum,
+    HXPreviewLiveEidtViewActionClear,
 };
 
 
@@ -33,8 +34,11 @@ typedef NS_ENUM(NSUInteger, HXPreviewLiveEidtViewAction) {
 @property (weak, nonatomic) IBOutlet      UIView *container;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet    UIButton *addAlbumButton;
+@property (weak, nonatomic) IBOutlet     UILabel *albumNameLabel;
+@property (weak, nonatomic) IBOutlet      UIView *albumContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *albumCoverView;
 
 - (IBAction)addAlbumButtonPressed;
+- (IBAction)clearButtonPressed;
 
 @end

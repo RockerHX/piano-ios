@@ -19,7 +19,6 @@ static NSString * const MiaAPIKey_Values					= @"v";
 static NSString * const MiaAPIKey_Return					= @"ret";
 static NSString * const MiaAPIKey_Data						= @"data";
 static NSString * const MiaAPIKey_Error						= @"err";
-static NSString * const MiaAPIKey_Message                   = @"msg";
 
 // User
 static NSString * const MiaAPICommand_User_PostGuest		= @"User.Post.Guest";
@@ -110,6 +109,8 @@ static NSString * const MiaAPICommand_Live_GetGiftTopList   = @"Live.Room.Top.Gi
 static NSString * const MiaAPICommand_Live_GetAlbumTopList  = @"Live.Room.Top.Album";
 static NSString * const MiaAPICommand_Live_SharePost        = @"Live.Room.Post.Share";
 static NSString * const MiaAPICommand_Live_Close            = @"Live.Room.Post.Close";
+static NSString * const MiaAPICommand_Live_PostBackend      = @"Live.Room.Post.Backend";
+static NSString * const MiaAPICommand_Live_Backend          = @"Rooms.Push.Backend";
 static NSString * const MiaAPICommand_Live_ReFetch          = @"Live.Room.Get.Live";
 static NSString * const MiaAPIKey_RoomID					= @"roomID";
 static NSString * const MiaAPIKey_Content					= @"content";

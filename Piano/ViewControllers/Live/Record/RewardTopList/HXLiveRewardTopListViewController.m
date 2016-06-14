@@ -50,6 +50,7 @@ UITableViewDelegate
     switch (_type) {
         case HXLiveRewardTopListTypeGift: {
             _titleLabel.text = @"本场10大捧场王";
+            _promptLabel.text = @"还没有收到礼物";
             [MiaAPIHelper getGiftTopListWithRoomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                 if (success) {
                     [self parseLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
@@ -61,6 +62,7 @@ UITableViewDelegate
         }
         case HXLiveRewardTopListTypeAlbum: {
             _titleLabel.text = @"本场专辑打赏排行";
+            _promptLabel.text = @"还没有人打赏这版专辑";
             [MiaAPIHelper getAlbumTopListWithRoomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                 if (success) {
                     [self parseLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
@@ -86,7 +88,13 @@ UITableViewDelegate
         [topList addObject:top];
     }];
     _topList = [topList copy];
-    [_tableView reloadData];
+    
+    BOOL hasData = topList.count;
+    if (hasData) {
+        _promptLabel.hidden = YES;
+        _tableView.hidden = NO;
+        [_tableView reloadData];
+    }
 }
 
 - (void)timeOutPrompt {

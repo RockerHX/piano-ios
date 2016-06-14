@@ -406,11 +406,9 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 }
 
 + (void)setRoomCover:(NSString *)coverID
-			  roomID:(NSString *)roomID
 	   completeBlock:(MiaRequestCompleteBlock)completeBlock
 	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
-	[dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
 	[dictValues setValue:coverID forKey:MiaAPIKey_CoverID];
 
 	MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_PutCover
@@ -565,6 +563,19 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
     
     MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_Close
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
++ (void)livePostBackendWithRoomID:(NSString *)roomID
+                    completeBlock:(MiaRequestCompleteBlock)completeBlock
+                     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_PostBackend
                                                                parameters:dictValues
                                                             completeBlock:completeBlock
                                                              timeoutBlock:timeoutBlock];

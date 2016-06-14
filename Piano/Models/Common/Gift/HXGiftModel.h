@@ -17,7 +17,6 @@ typedef NS_ENUM(NSUInteger, HXGiftType) {
 
 @interface HXGiftModel : NSObject
 
-@property (nonatomic, assign)          float  mcoin;
 @property (nonatomic, assign)     HXGiftType  type;
 @property (nonatomic, assign) NSTimeInterval  playTime;
 
@@ -26,6 +25,7 @@ typedef NS_ENUM(NSUInteger, HXGiftType) {
 @property (nonatomic, strong)  NSString *prompt;
 @property (nonatomic, strong)  NSString *iconUrl;
 @property (nonatomic, strong)  NSString *animateUrl;
+@property (nonatomic, strong)  NSString *mcoin;
 
 @property (nonatomic, strong)  NSString *nickName;
 @property (nonatomic, strong)  NSString *avatarUrl;

@@ -35,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet     UILabel *appendFansCountLabel;
 @property (weak, nonatomic) IBOutlet     UILabel *appendMCurrencyCountLabel;
 
-@property (nonatomic, assign)        BOOL  isLive;
+@property (nonatomic, assign)        BOOL  isAnchor;
 @property (nonatomic, strong) HXLiveModel *liveModel;
 
 - (IBAction)backButtonPressed;
