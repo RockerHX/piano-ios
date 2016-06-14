@@ -418,6 +418,7 @@ HXLiveAlbumViewDelegate
     if (album) {
         HXLiveRewardViewController *rewardViewController = [HXLiveRewardViewController instance];
         rewardViewController.roomID = _roomID;
+        rewardViewController.streamID = _viewModel.model.streamAlias;
         rewardViewController.album = album;
         rewardViewController.transitioningDelegate = _modalTransitionDelegate;
         rewardViewController.modalPresentationStyle = UIModalPresentationCustom;

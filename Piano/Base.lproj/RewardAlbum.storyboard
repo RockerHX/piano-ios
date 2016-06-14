@@ -168,7 +168,7 @@
                                                     <outlet property="delegate" destination="GCe-kE-nE3" id="WFz-Fh-AfA"/>
                                                 </connections>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYe-at-Urz" customClass="HXIBButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYe-at-Urz">
                                                 <rect key="frame" x="60" y="166" width="200" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -320,6 +320,7 @@
                         <outlet property="rewardCountLabel" destination="yB7-cl-qjl" id="hrX-Cl-J9x"/>
                         <outlet property="rewardPersonCountLabel" destination="9yJ-iC-h9W" id="KIx-HQ-4zR"/>
                         <outlet property="sectorSlider" destination="6cu-Vc-AQG" id="YMF-cc-mnw"/>
+                        <outlet property="tapCoinView" destination="arJ-LQ-vXM" id="deE-ig-len"/>
                         <outlet property="tapView" destination="PIb-5j-3cO" id="Qqz-KD-SMq"/>
                     </connections>
                 </viewController>
@@ -644,6 +645,7 @@
                         <outlet property="rewardCountLabel" destination="Xhx-yk-dop" id="Udt-qC-Mwb"/>
                         <outlet property="rewardPersonCountLabel" destination="XTT-iY-hSZ" id="cQm-M6-Mgg"/>
                         <outlet property="sectorSlider" destination="NNz-6L-8D8" id="PX5-Vl-tki"/>
+                        <outlet property="tapCoinView" destination="0Uz-u9-v8G" id="njF-nb-c7g"/>
                         <outlet property="tapView" destination="sFo-oa-d6P" id="zIF-qG-ja1"/>
                     </connections>
                 </viewController>
