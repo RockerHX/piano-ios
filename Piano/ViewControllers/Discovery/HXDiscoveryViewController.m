@@ -76,6 +76,8 @@ UINavigationControllerDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
+    [self showLoadingHUD];
+    
     _itemCount = 20;
     
     _viewModel = [[HXDiscoveryViewModel alloc] init];
@@ -85,7 +87,7 @@ UINavigationControllerDelegate
 }
  
 - (void)viewConfigure {
-    [self showLoadingHUD];
+    ;
 }
 
 #pragma mark - Public Methods

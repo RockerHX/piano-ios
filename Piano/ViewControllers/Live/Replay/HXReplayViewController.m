@@ -71,8 +71,6 @@ HXReplayBottomBarDelegate
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    [self showLoadingHUD];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playTimeJumped:) name:AVPlayerItemTimeJumpedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playFinished) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playError) name:AVPlayerItemFailedToPlayToEndTimeNotification object:nil];
@@ -93,6 +91,8 @@ HXReplayBottomBarDelegate
     [self updateAnchorView];
     _anchorView.replay = YES;
     _bottomBar.duration = _model.duration;
+    
+    [self showLoadingHUD];
 }
 
 - (void)sigalLink {
@@ -160,7 +160,7 @@ HXReplayBottomBarDelegate
 #pragma mark - Private Methods
 - (void)showLoadingHUD {
     if (!_hud) {
-        _hud = [[BFRadialWaveHUD alloc] initWithView:_replayView
+        _hud = [[BFRadialWaveHUD alloc] initWithView:[UIApplication sharedApplication].keyWindow
                                           fullScreen:YES
                                              circles:BFRadialWaveHUD_DefaultNumberOfCircles
                                          circleColor:nil
