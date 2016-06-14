@@ -31,6 +31,7 @@
 #import "HXAppConstants.h"
 #import "MIAProfileViewController.h"
 #import "UIConstants.h"
+#import "MIAInfoLog.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -93,6 +94,12 @@ HXLiveAlbumViewDelegate
     _modalTransitionDelegate = [HXModalTransitionDelegate new];
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
     [self signalLink];
+    
+    __weak __typeof__(self)weakSelf = self;
+    [_anchorView bk_whenTouches:1 tapped:5 handler:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [MIAInfoLog uploadInfoLogWithRoomID:strongSelf.roomID streamID:strongSelf->_viewModel.model.streamAlias];
+    }];
 }
 
 - (void)viewConfigure {

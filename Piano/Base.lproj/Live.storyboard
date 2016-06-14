@@ -44,7 +44,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6v-2K-8cm" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="4qe-yU-yfH">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="4qe-yU-yfH">
                                         <rect key="frame" x="0.0" y="70" width="568" height="250"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciA-eD-hdt" userLabel="Comment Container">
@@ -226,7 +226,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvH-Rw-RfM" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="YcW-dJ-C8a">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="YcW-dJ-C8a">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuX-eh-vfZ" userLabel="Comment Container">
@@ -864,7 +864,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAv-at-bm5" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-Zz-ND4">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-Zz-ND4">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sju-kT-rek" userLabel="Comment Container">
@@ -1080,7 +1080,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dU-lx-FmV" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="j3f-nz-ApT">
                                         <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                     </imageView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE0-wM-lMe" userLabel="Comment Container">
@@ -1642,7 +1642,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4S1-sT-Nb3" userLabel="Content Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="xVv-tB-IDo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="L-MaskBG" translatesAutoresizingMaskIntoConstraints="NO" id="xVv-tB-IDo">
                                         <rect key="frame" x="0.0" y="70" width="568" height="250"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6Z-zd-SpT" userLabel="Top Bar">

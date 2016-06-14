@@ -148,19 +148,19 @@
                                                     <constraint firstAttribute="height" constant="0.5" id="mWd-Yt-2xm"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmU-J7-mKZ" userLabel="Balance Container">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pmU-J7-mKZ" userLabel="Balance Container">
                                                 <rect key="frame" x="16" y="30" width="83" height="17"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exa-EF-lni" userLabel="Coin Container">
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="exa-EF-lni" userLabel="Coin Container">
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="18"/>
                                                         <subviews>
-                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOC-67-aTw">
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOC-67-aTw">
                                                                 <rect key="frame" x="0.0" y="0.0" width="10" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.70980392160000005" green="0.60784313729999995" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="gjX-hH-rLs">
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="gjX-hH-rLs">
                                                                 <rect key="frame" x="15" y="0.0" width="18" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="gjX-hH-rLs" secondAttribute="height" multiplier="1:1" id="k2Q-V0-LCP"/>
@@ -178,7 +178,7 @@
                                                             <constraint firstItem="UOC-67-aTw" firstAttribute="leading" secondItem="exa-EF-lni" secondAttribute="leading" id="wGO-RY-06T"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-TP-9fF" userLabel="Recharge Container">
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G2L-TP-9fF" userLabel="Recharge Container">
                                                         <rect key="frame" x="40" y="0.0" width="43" height="17"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCX-uh-Aob">
@@ -356,7 +356,6 @@
                         <outlet property="countLabel" destination="rqJ-Fn-PZV" id="otX-zW-xAl"/>
                         <outlet property="giftConianerHeightConstraint" destination="zLQ-dR-AL2" id="sa5-09-xpn"/>
                         <outlet property="rechargeContainer" destination="G2L-TP-9fF" id="GSZ-NP-2w8"/>
-                        <outlet property="tapCoinView" destination="exa-EF-lni" id="AYx-gw-r12"/>
                         <outlet property="tapView" destination="utr-QC-jbr" id="qCE-QY-3WR"/>
                     </connections>
                 </viewController>
@@ -493,19 +492,19 @@
                                                     <action selector="giveGiftButtonPressed" destination="38S-Ad-jQf" eventType="touchUpInside" id="GWj-Kq-Kee"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PW4-gs-wsh" userLabel="Balance Container">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PW4-gs-wsh" userLabel="Balance Container">
                                                 <rect key="frame" x="34" y="70" width="76" height="15"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1z-zL-qYe" userLabel="Coin Container">
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1z-zL-qYe" userLabel="Coin Container">
                                                         <rect key="frame" x="0.0" y="0.0" width="37" height="16"/>
                                                         <subviews>
-                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oux-oF-aNw">
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oux-oF-aNw">
                                                                 <rect key="frame" x="0.0" y="0.0" width="9" height="16"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" red="0.70980392160000005" green="0.60784313729999995" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="Zkb-Fm-nwn">
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LC-CoinIcon-S" translatesAutoresizingMaskIntoConstraints="NO" id="Zkb-Fm-nwn">
                                                                 <rect key="frame" x="14" y="0.0" width="16" height="16"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Zkb-Fm-nwn" secondAttribute="height" multiplier="1:1" id="3BZ-xw-FL2"/>
@@ -523,7 +522,7 @@
                                                             <constraint firstItem="Zkb-Fm-nwn" firstAttribute="top" secondItem="I1z-zL-qYe" secondAttribute="top" id="ayA-eP-EY8"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdE-Ko-J3s" userLabel="Recharge Container">
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdE-Ko-J3s" userLabel="Recharge Container">
                                                         <rect key="frame" x="37" y="0.0" width="39" height="15"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUx-Fy-DTi">
@@ -613,7 +612,6 @@
                         <outlet property="countContainer" destination="Qw3-Lb-uUM" id="F02-yf-kIl"/>
                         <outlet property="countLabel" destination="wh2-FX-aSw" id="eSd-LT-8UH"/>
                         <outlet property="rechargeContainer" destination="xdE-Ko-J3s" id="KY6-pq-Xte"/>
-                        <outlet property="tapCoinView" destination="I1z-zL-qYe" id="Lge-nb-lmY"/>
                         <outlet property="tapView" destination="dsO-rY-zKF" id="EU8-Wb-F1U"/>
                     </connections>
                 </viewController>

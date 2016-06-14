@@ -12,7 +12,6 @@
 @interface HXLiveGiftViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet  UIView *tapView;
-@property (weak, nonatomic) IBOutlet  UIView *tapCoinView;
 @property (weak, nonatomic) IBOutlet  UIView *containerView;
 @property (weak, nonatomic) IBOutlet  UIView *countContainer;
 @property (weak, nonatomic) IBOutlet  UIView *rechargeContainer;
