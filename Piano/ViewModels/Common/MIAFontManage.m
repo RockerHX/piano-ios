@@ -247,7 +247,7 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
     }else if (type == MIAFontType_PayHistory_Time){
         //时间
-        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], JORGBSameCreate(210.));
+        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], JORGBSameCreate(160.));
 //        return JOFontMake(kMIAFontRegular, JORGBSameCreate(210.), 13.);
     }else if (type == MIAFontType_PayHistory_Amount){
         //余额

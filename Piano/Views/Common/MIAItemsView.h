@@ -54,4 +54,18 @@ typedef void(^ItemClickBlock)(NSInteger index, NSString *itemTitel);
  */
 - (void)itemClickHanlder:(ItemClickBlock)block;
 
+/**
+ *  设置Item选中的title的颜色.
+ *
+ *  @param color 选中的颜色.
+ */
+- (void)setItemTitleSelectedColor:(UIColor *)color;
+
+/**
+ *  设置当前选中的是Item.
+ *
+ *  @param index 当前的Item
+ */
+- (void)setCurrentSelectedIndex:(NSInteger)index;
+
 @end

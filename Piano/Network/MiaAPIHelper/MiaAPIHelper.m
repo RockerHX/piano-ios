@@ -741,7 +741,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
                  timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
 
     NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
-    [dictValues setValue:@"5" forKey:MiaAPICommand_PayType];
+//    [dictValues setValue:@"5" forKey:MiaAPICommand_PayType];
     [dictValues setValue:start forKey:MiaAPIKey_Start];
     [dictValues setValue:limit forKey:MiaAPIKey_Limit];
     MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Order_GetList

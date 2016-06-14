@@ -65,6 +65,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [[_navBarView navBarTitleLabel] setTextColor:[UIColor blackColor]];
     [_navBarView setTitle:@"消费记录"];
     [_navBarView setLeftButtonImageName:@"C-BackIcon-Gray"];
+    [_navBarView setLeftButtonImageEdge:UIEdgeInsetsMake(0., -15., 0., 0.)];
     [_navBarView showBottomLineView];
     
     @weakify(self);
@@ -94,7 +95,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_itemsView setItemTitleColor:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->color
                         titleFont:[MIAFontManage getFontWithType:MIAFontType_PayHistory_HeadTip]->font];
     [_itemsView setAnimationColor:JORGBCreate(1., 195., 170., 1.)];
-    
+    [_itemsView setItemTitleSelectedColor:[UIColor blackColor]];
     @weakify(self);
     [_itemsView itemClickHanlder:^(NSInteger index, NSString *itemTitel) {
     @strongify(self);
@@ -102,6 +103,8 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
         [self scrollToItemIndex:index];
     }];
     [self.view addSubview:_itemsView];
+    
+    [_itemsView setCurrentSelectedIndex:0];
     
     [JOAutoLayout autoLayoutWithTopView:_navBarView distance:0. selfView:_itemsView superView:self.view];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_itemsView superView:self.view];
@@ -339,6 +342,7 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     if ([scrollView isEqual:_payHistoryScrollView]) {
 //        [self setAnimationViewOffsetX:scrollView.contentOffset.x/2.];
         [_itemsView setAnimationOffsetX:scrollView.contentOffset.x/itemCount];
+        [_itemsView setCurrentSelectedIndex:scrollView.contentOffset.x/View_Width(self.view) + 0.5];
     }
     
 }

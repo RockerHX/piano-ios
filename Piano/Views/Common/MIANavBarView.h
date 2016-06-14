@@ -41,6 +41,7 @@ typedef void(^ButtonClickBlock)();
  */
 - (void)setLeftButtonTitle:(NSString *)buttonTitle titleColor:(UIColor *)color;
 - (void)setLeftButtonImageName:(NSString *)imageName;
+- (void)setLeftButtonImageEdge:(UIEdgeInsets)edgeInsets;
 /**
  *  左边的按钮.
  *
@@ -55,6 +56,7 @@ typedef void(^ButtonClickBlock)();
  */
 - (void)setRightButtonTitle:(NSString *)buttonTitle titleColor:(UIColor *)color;
 - (void)setRightButtonImageName:(NSString *)imageName;
+- (void)setRightButtonImageEdge:(UIEdgeInsets)edgeInsets;
 
 /**
  *  右边的按钮.

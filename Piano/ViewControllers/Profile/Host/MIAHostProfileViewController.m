@@ -177,7 +177,7 @@
         [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl]
                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                           
-                                          [self.coverImageView setImage:[image blurredImageWithRadius:8.0f iterations:5 tintColor:[UIColor whiteColor]]];
+                                          [self.coverImageView setImage:[image blurredImageWithRadius:8.0f iterations:5 tintColor:[UIColor blackColor]]];
                                       }];
     }];
     [self.navigationController pushViewController:settingViewController animated:YES];

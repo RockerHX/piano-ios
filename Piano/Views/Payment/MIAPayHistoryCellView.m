@@ -66,7 +66,7 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 11.;//礼物与名�
     [self addSubview:_mCountLabel];
     
 //    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_mCountLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_mCoinImageView distance:-6. selfView:_mCountLabel superView:self];
+    [JOAutoLayout autoLayoutWithRightView:_mCoinImageView distance:-2. selfView:_mCountLabel superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_giftImageView selfView:_mCountLabel superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_giftImageView selfView:_mCountLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:30. selfView:_mCountLabel superView:self];
