@@ -88,29 +88,6 @@ UINavigationControllerDelegate
     [self showLoadingHUD];
 }
 
-- (void)showLoadingHUD {
-    if (!_hud) {
-        _hud = [[BFRadialWaveHUD alloc] initWithView:self.view
-                                          fullScreen:YES
-                                             circles:BFRadialWaveHUD_DefaultNumberOfCircles
-                                         circleColor:nil
-                                                mode:BFRadialWaveHUDMode_Default
-                                         strokeWidth:BFRadialWaveHUD_DefaultCircleStrokeWidth];
-        [_hud setBlurBackground:YES];
-    }
-    [_hud show];
-}
-
-- (void)showErrorLoading {
-    [_hud showErrorWithCompletion:^(BOOL finished) {
-        [_hud dismiss];
-    }];
-}
-
-- (void)hiddenLoadingHUD {
-    [_hud dismiss];
-}
-
 #pragma mark - Public Methods
 - (void)startFetchList {
     @weakify(self)
@@ -141,11 +118,33 @@ UINavigationControllerDelegate
 }
 
 #pragma mark - Private Methods
+- (void)showLoadingHUD {
+    if (!_hud) {
+        _hud = [[BFRadialWaveHUD alloc] initWithView:self.view
+                                          fullScreen:YES
+                                             circles:BFRadialWaveHUD_DefaultNumberOfCircles
+                                         circleColor:nil
+                                                mode:BFRadialWaveHUDMode_Default
+                                         strokeWidth:BFRadialWaveHUD_DefaultCircleStrokeWidth];
+        [_hud setBlurBackground:YES];
+    }
+    [_hud show];
+}
+
+- (void)showErrorLoading {
+    [_hud showErrorWithCompletion:^(BOOL finished) {
+        [_hud dismiss];
+    }];
+}
+
+- (void)hiddenLoadingHUD {
+    [_hud dismissAfterDelay:0.5f];
+}
+
 - (void)fetchCompleted {
     [_containerViewController displayDiscoveryList];
-    [self hiddenLoadingHUD];
-    
     [self showCoverWithCoverUrl:[_viewModel.discoveryList firstObject].coverUrl];
+    [self hiddenLoadingHUD];
 }
 
 - (void)showCoverWithCoverUrl:(NSString *)coverUrl {
