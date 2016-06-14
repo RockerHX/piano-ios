@@ -246,7 +246,7 @@ static NSString *const kVerifyPurchaseVerifyKey = @"VerifyKey";
                               roomID:roomID
                        completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                        
-                            JOLog(@"送礼物userInfo:%@",userInfo);
+//                            JOLog(@"送礼物userInfo:%@",userInfo);
                            if (success) {
                                [self successHandler];
                                [self updateMCoin];
