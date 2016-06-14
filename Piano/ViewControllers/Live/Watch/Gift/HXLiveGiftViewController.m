@@ -16,6 +16,7 @@
 #import "KxMenu.h"
 #import "HXGiftManager.h"
 #import "MIAPaymentViewController.h"
+#import "MIAInfoLog.h"
 
 
 @interface HXLiveGiftViewController ()
@@ -67,6 +68,11 @@
     [_tapView bk_whenTapped:^{
         __strong __typeof__(self)strongSelf = weakSelf;
         [strongSelf dismiss];
+    }];
+    
+    [_tapCoinView bk_whenTouches:1 tapped:5 handler:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [MIAInfoLog uploadInfoLogWithRoomID:strongSelf.roomID streamID:strongSelf.streamID];
     }];
     
     [_rechargeContainer bk_whenTapped:^{

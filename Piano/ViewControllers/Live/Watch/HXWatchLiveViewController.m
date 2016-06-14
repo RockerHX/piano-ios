@@ -377,6 +377,7 @@ HXLiveAlbumViewDelegate
         case HXWatchBottomBarActionGift: {
             HXLiveGiftViewController *giftViewController = [HXLiveGiftViewController instance];
             giftViewController.roomID = _roomID;
+            giftViewController.streamID = _viewModel.model.streamAlias;
             giftViewController.transitioningDelegate = _modalTransitionDelegate;
             giftViewController.modalPresentationStyle = UIModalPresentationCustom;
             [self presentViewController:giftViewController animated:YES completion:nil];
