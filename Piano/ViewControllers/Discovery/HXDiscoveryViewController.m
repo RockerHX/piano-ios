@@ -17,7 +17,6 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
 #import "HXDiscoveryTopBar.h"
-#import "HXLoadingView.h"
 #import "HXDiscoveryViewModel.h"
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
@@ -27,7 +26,7 @@
 #import "UIButton+WebCache.h"
 #import "MiaAPIHelper.h"
 #import "HXLiveModel.h"
-#import "HXAlertBanner.h"
+#import "BFRadialWaveHUD.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -45,7 +44,7 @@ UINavigationControllerDelegate
     HXDiscoveryViewModel *_viewModel;
     
     NSInteger _itemCount;
-    HXLoadingView *_loadingView;
+    BFRadialWaveHUD *_hud;
 }
 
 #pragma mark - Segue Methods
@@ -86,8 +85,30 @@ UINavigationControllerDelegate
 }
  
 - (void)viewConfigure {
-    _loadingView = [HXLoadingView new];
-    [_loadingView showOnViewController:self];
+    [self showLoadingHUD];
+}
+
+- (void)showLoadingHUD {
+    if (!_hud) {
+        _hud = [[BFRadialWaveHUD alloc] initWithView:self.view
+                                          fullScreen:YES
+                                             circles:BFRadialWaveHUD_DefaultNumberOfCircles
+                                         circleColor:nil
+                                                mode:BFRadialWaveHUDMode_Default
+                                         strokeWidth:BFRadialWaveHUD_DefaultCircleStrokeWidth];
+        [_hud setBlurBackground:YES];
+    }
+    [_hud show];
+}
+
+- (void)showErrorLoading {
+    [_hud showErrorWithCompletion:^(BOOL finished) {
+        [_hud dismiss];
+    }];
+}
+
+- (void)hiddenLoadingHUD {
+    [_hud dismiss];
 }
 
 #pragma mark - Public Methods
@@ -99,7 +120,7 @@ UINavigationControllerDelegate
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
-        self->_loadingView.loadState = HXLoadStateError;
+        [self showErrorLoading];
     } completed:^{
         @strongify(self)
         [self fetchCompleted];
@@ -122,7 +143,7 @@ UINavigationControllerDelegate
 #pragma mark - Private Methods
 - (void)fetchCompleted {
     [_containerViewController displayDiscoveryList];
-    [_loadingView setLoadState:HXLoadStateSuccess];
+    [self hiddenLoadingHUD];
     
     [self showCoverWithCoverUrl:[_viewModel.discoveryList firstObject].coverUrl];
 }
@@ -168,11 +189,11 @@ UINavigationControllerDelegate
         } else {
             [self hiddenHUD];
             id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
-            [HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
+            [self showBannerWithPrompt:[NSString stringWithFormat:@"%@", error]];
         }
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [self hiddenHUD];
-        [HXAlertBanner showWithMessage:@"上传失败，网络请求超时" tap:nil];
+        [self showBannerWithPrompt:@"上传失败，网络请求超时"];
     }];
 }
 
@@ -201,7 +222,7 @@ UINavigationControllerDelegate
                       [self setCoverImage:[UIImage imageWithData:imageData] coverID:fileID coverUrl:url];
                   } else {
                       [self hiddenHUD];
-                      [HXAlertBanner showWithMessage:@"上传失败，网络请求超时" tap:nil];
+                      [self showBannerWithPrompt:@"上传失败，网络请求超时"];
                   }
               });
           }] resume];
@@ -211,19 +232,19 @@ UINavigationControllerDelegate
 - (void)setCoverImage:(UIImage *)image coverID:(NSString *)coverID coverUrl:(NSString *)coverUrl {
     [MiaAPIHelper setRoomCover:coverID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
-            [HXAlertBanner showWithMessage:@"设置成功" tap:nil];
+            [self showBannerWithPrompt:@"设置成功"];
             
             [HXUserSession session].user.coverUrl = coverUrl;
             [_viewModel.discoveryList firstObject].coverUrl = coverUrl;
             [_containerViewController reload];
         } else {
             id error = userInfo[MiaAPIKey_Values][MiaAPIKey_Error];
-            [HXAlertBanner showWithMessage:[NSString stringWithFormat:@"%@", error] tap:nil];
+            [self showBannerWithPrompt:[NSString stringWithFormat:@"%@", error]];
         }
         [self hiddenHUD];
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [self hiddenHUD];
-        [HXAlertBanner showWithMessage:@"设置失败，网络请求超时" tap:nil];
+        [self showBannerWithPrompt:@"设置失败，网络请求超时"];
     }];
 }
 
@@ -252,6 +273,7 @@ UINavigationControllerDelegate
     [self hiddenNavigationBar];
     switch (action) {
         case HXDiscoveryContainerActionRefresh: {
+            [self showLoadingHUD];
             [self startFetchList];
             break;
         }
