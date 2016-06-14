@@ -35,21 +35,13 @@
     [super layoutSubviews];
     
     NSInteger radius = self.width / 12;
-    CGPoint leftBottomPoint = CGPointMake(self.boundsLeft, self.boundsBottom);
-    CGPoint rightBottomPoint = CGPointMake(self.boundsRight, self.boundsBottom);
-    CGPoint rightTopPoint = CGPointMake(self.boundsRight, self.boundsTop);
-    CGPoint letTopPoint = CGPointMake(self.boundsLeft, self.boundsTop);
-    
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, leftBottomPoint.x, leftBottomPoint.y);
-    CGPathAddArcToPoint(path, NULL, rightBottomPoint.x, rightBottomPoint.y, rightTopPoint.x, rightTopPoint.y, radius);
-    CGPathAddArcToPoint(path, NULL, rightTopPoint.x, rightTopPoint.y, letTopPoint.x, letTopPoint.y, radius);
-    CGPathAddArcToPoint(path, NULL, letTopPoint.x, rightTopPoint.y, leftBottomPoint.x, leftBottomPoint.y, radius);
-    CGPathAddLineToPoint(path, NULL, leftBottomPoint.x, leftBottomPoint.y);
+    CGRect rect = CGRectMake(0.0f, 0.0f, self.width, self.height);
+    CGSize radii = CGSizeMake(radius, radius);
+    UIRectCorner corners = UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomRight;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corners cornerRadii:radii];
     
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.path = path;
-    CGPathRelease(path);
+    maskLayer.path = path.CGPath;
     
     self.layer.mask = maskLayer;
 }
