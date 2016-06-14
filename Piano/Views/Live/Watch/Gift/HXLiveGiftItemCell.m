@@ -15,7 +15,7 @@
 - (void)updateWithGift:(HXGiftModel *)gift {
     _bgView.image = (gift.selected ? [UIImage imageNamed:@"LG-GiftSeletedBG"] : nil);
     _giftLogo.image = [UIImage imageWithData:gift.iconData];
-    _coinCountLabel.text = @(gift.mcoin).stringValue;
+    _coinCountLabel.text = gift.mcoin;
 }
 
 @end

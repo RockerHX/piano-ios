@@ -25,7 +25,6 @@
                     <subviews>
                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BJ2-Xg-7W0">
                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                            <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                             <gestureRecognizers/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="BJ2-Xg-7W0" secondAttribute="height" multiplier="1:1" id="TjN-3S-tZ6"/>

@@ -27,7 +27,7 @@ HXSelectedAlbumContainerViewControllerDelegate
 @implementation HXSelectedAlbumViewController {
     NSInteger _start;
     NSMutableArray *_albumList;
-    BOOL _selectedIndex;
+    NSInteger _selectedIndex;
     
     HXSelectedAlbumContainerViewController *_container;
 }

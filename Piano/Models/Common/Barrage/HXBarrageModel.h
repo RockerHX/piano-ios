@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, HXBarrageType) {
     HXBarrageTypeShare,
     HXBarrageTypeGift,
     HXBarrageTypeReward,
+    HXBarrageTypeBackEnd,
     HXBarrageTypeComment,
 };
 

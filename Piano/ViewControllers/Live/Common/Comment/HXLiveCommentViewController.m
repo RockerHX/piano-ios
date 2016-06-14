@@ -89,7 +89,9 @@
 }
 
 - (void)keyBoardWillHidden:(NSNotification *)notification {
-    [self hiddenKeyBoardAnimation];
+    if ([_textField isFirstResponder]) {
+        [self hiddenKeyBoardAnimation];
+    }
 }
 
 #pragma mark - Private Methods
@@ -110,7 +112,7 @@
 }
 
 - (void)hiddenKeyboard {
-    [self.textField resignFirstResponder];
+    [_textField resignFirstResponder];
 }
 
 @end

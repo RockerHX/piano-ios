@@ -40,6 +40,16 @@ HXXibImplementation
     }
 }
 
+- (IBAction)clearButtonPressed {
+    _addAlbumButton.hidden = NO;
+    _albumNameLabel.hidden = YES;
+    _albumContainer.hidden = YES;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(editView:takeAction:)]) {
+        [_delegate editView:self takeAction:HXPreviewLiveEidtViewActionClear];
+    }
+}
+
 #pragma mark - UITextFieldDelegate Methods
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];

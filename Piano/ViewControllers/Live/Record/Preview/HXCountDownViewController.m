@@ -58,12 +58,15 @@
         if (_delegate && [_delegate respondsToSelector:@selector(countDownFinished)]) {
             [_delegate countDownFinished];
         }
-        
         return;
     }
     
     _count--;
-    _countLabel.text = @(_count).stringValue;
+    if (_count == 0) {
+        _countLabel.text = @"Live";
+    } else {
+        _countLabel.text = @(_count).stringValue;
+    }
 }
 
 @end

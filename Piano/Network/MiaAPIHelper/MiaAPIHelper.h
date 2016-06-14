@@ -142,7 +142,6 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)setRoomCover:(NSString *)coverID
-			  roomID:(NSString *)roomID
 	   completeBlock:(MiaRequestCompleteBlock)completeBlock
 	 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
@@ -192,6 +191,11 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)closeLiveWithRoomID:(NSString *)roomID
               completeBlock:(MiaRequestCompleteBlock)completeBlock
                timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+
++ (void)livePostBackendWithRoomID:(NSString *)roomID
+                    completeBlock:(MiaRequestCompleteBlock)completeBlock
+                     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)refetchLiveWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
                         timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;

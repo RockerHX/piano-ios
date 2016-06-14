@@ -12,7 +12,7 @@
 
 @interface HXLiveBarrageCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet     UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
 - (void)updateWithBarrage:(HXBarrageModel *)barrage;
 

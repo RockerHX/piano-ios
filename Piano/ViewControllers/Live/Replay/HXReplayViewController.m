@@ -17,6 +17,7 @@
 #import "HXLiveModel.h"
 #import "MiaAPIHelper.h"
 #import "BlocksKit+UIKit.h"
+#import "BFRadialWaveHUD.h"
 
 
 @interface HXReplayViewController () <
@@ -33,6 +34,7 @@ HXReplayBottomBarDelegate
     HXReplayViewModel *_viewModel;
     AVPlayer *_player;
     dispatch_source_t _timer;
+    BFRadialWaveHUD *_hud;
     
     BOOL _play;
 }
@@ -89,6 +91,8 @@ HXReplayBottomBarDelegate
     [self updateAnchorView];
     _anchorView.replay = YES;
     _bottomBar.duration = _model.duration;
+    
+    [self showLoadingHUD];
 }
 
 - (void)sigalLink {
@@ -116,7 +120,7 @@ HXReplayBottomBarDelegate
 }
 
 - (void)timerConfigure {
-    uint64_t interval = NSEC_PER_SEC;
+    uint64_t interval = NSEC_PER_MSEC * 200;
     dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0), interval, 0);
@@ -150,9 +154,33 @@ HXReplayBottomBarDelegate
 - (void)playError {
     _play = NO;
     dispatch_source_cancel(_timer);
+    [self showErrorLoading];
 }
 
 #pragma mark - Private Methods
+- (void)showLoadingHUD {
+    if (!_hud) {
+        _hud = [[BFRadialWaveHUD alloc] initWithView:[UIApplication sharedApplication].keyWindow
+                                          fullScreen:YES
+                                             circles:BFRadialWaveHUD_DefaultNumberOfCircles
+                                         circleColor:nil
+                                                mode:BFRadialWaveHUDMode_Default
+                                         strokeWidth:BFRadialWaveHUD_DefaultCircleStrokeWidth];
+        [_hud setBlurBackground:YES];
+    }
+    [_hud show];
+}
+
+- (void)showErrorLoading {
+    [_hud showErrorWithCompletion:^(BOOL finished) {
+        [_hud dismiss];
+    }];
+}
+
+- (void)hiddenLoadingHUD {
+    [_hud dismissAfterDelay:0.5f];
+}
+
 - (void)dismiss {
     dispatch_source_cancel(_timer);
     _play = NO;
@@ -166,6 +194,7 @@ HXReplayBottomBarDelegate
     CMTime time = [_player currentTime];
     CGFloat currentTime = 0.0f;
     if (time.timescale > 0.0f) {
+        [self hiddenLoadingHUD];
         currentTime = time.value / time.timescale;
     }
     _bottomBar.currentTime = currentTime;

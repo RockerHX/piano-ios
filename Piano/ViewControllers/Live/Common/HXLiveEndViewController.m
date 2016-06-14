@@ -48,6 +48,8 @@
             _appendMCurrencyCountLabel.text = @([data[@"newMcoinsCnt"] integerValue]).stringValue;
         }
     } timeoutBlock:nil];
+    
+    _countContainerView.hidden = !_isAnchor;
 }
 
 - (void)viewConfigure {
@@ -55,12 +57,6 @@
     _containerView.backgroundColor = [UIColor clearColor];
     
     [self updateUI];
-}
-
-#pragma mark - Property
-- (void)setIsLive:(BOOL)isLive {
-    _isLive = isLive;
-    _countContainerView.hidden = !isLive;
 }
 
 #pragma mark - Event Methods
@@ -74,11 +70,11 @@
 #pragma mark - Private Methods
 - (void)updateUI {
     __weak __typeof__(self)weakSelf = self;
-    [_avatar sd_setImageWithURL:[NSURL URLWithString:(_isLive ? [HXUserSession session].user.avatarUrl : _liveModel.avatarUrl)] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [_avatar sd_setImageWithURL:[NSURL URLWithString:(_isAnchor ? [HXUserSession session].user.avatarUrl : _liveModel.avatarUrl)] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         __strong __typeof__(self)strongSelf = weakSelf;
         strongSelf.blurView.image = [image blurredImageWithRadius:10.0f iterations:10 tintColor:[UIColor blackColor]];;
     }];
-    _nickNameLabel.text = (_isLive ? [HXUserSession session].nickName : _liveModel.nickName);
+    _nickNameLabel.text = (_isAnchor ? [HXUserSession session].nickName : _liveModel.nickName);
 }
 
 @end

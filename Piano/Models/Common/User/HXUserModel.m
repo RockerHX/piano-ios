@@ -17,7 +17,8 @@ MJCodingImplementation
     return @{@"nickName": @"nick",
             @"avatarUrl": @"userpic",
           @"notifyCount": @"notifyCnt",
-         @"notifyAvatar": @"notifyUserpic"};
+         @"notifyAvatar": @"notifyUserpic",
+             @"coverUrl": @"liveCoverUrl"};
 }
 
 - (void)mj_objectDidFinishConvertingToKeyValues {

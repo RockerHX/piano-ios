@@ -33,6 +33,7 @@ NSString * const WebSocketMgrNotificationPushRoomShare              = @"WebSocke
 NSString * const WebSocketMgrNotificationPushRoomGift               = @"WebSocketMgrNotificationPushRoomGift";
 NSString * const WebSocketMgrNotificationPushRoomReward             = @"WebSocketMgrNotificationPushRoomReward";
 NSString * const WebSocketMgrNotificationPushRoomComment			= @"WebSocketMgrNotificationPushRoomComment";
+NSString * const WebSocketMgrNotificationPushBackend                = @"WebSocketMgrNotificationPushBackend";
 
 
 NSString * const NetworkNotificationKey_Status						= @"status";
@@ -366,6 +367,9 @@ const static NSTimeInterval kAutoReconnectTimeout_Loop				= 30.0;
         return;
     } else if ([command isEqualToString:MiaAPICommand_Push_RoomComment]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushRoomComment object:self userInfo:userInfo];
+        return;
+    } else if ([command isEqualToString:MiaAPICommand_Live_Backend]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:WebSocketMgrNotificationPushBackend object:self userInfo:userInfo];
         return;
     }
 

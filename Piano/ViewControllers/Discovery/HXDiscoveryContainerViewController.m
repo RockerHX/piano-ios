@@ -187,9 +187,20 @@ HXDiscoveryLiveCellDelegate
 }
 
 #pragma mark - HXDiscoveryLiveCellDelegate Methods
-- (void)liveCellStartLive:(HXDiscoveryLiveCell *)cell {
+- (void)liveCell:(HXDiscoveryLiveCell *)cell takeAction:(HXDiscoveryLiveCellAction)action {
+    HXDiscoveryContainerAction conatinerAction;
+    switch (action) {
+        case HXDiscoveryLiveCellActionStartLive: {
+            conatinerAction = HXDiscoveryContainerActionStartLive;
+            break;
+        }
+        case HXDiscoveryLiveCellActionChangeCover: {
+            conatinerAction = HXDiscoveryContainerActionChangeCover;
+            break;
+        }
+    }
     if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-        [_delegate container:self takeAction:HXDiscoveryContainerActionStartLive model:nil];
+        [_delegate container:self takeAction:conatinerAction model:nil];
     }
 }
 

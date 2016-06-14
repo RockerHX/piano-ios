@@ -29,6 +29,8 @@
 #import "HXAppConstants.h"
 #import "HXDynamicGiftView.h"
 #import "HXStaticGiftView.h"
+#import "UIConstants.h"
+#import "MIAInfoLog.h"
 
 
 @interface HXRecordLiveViewController () <
@@ -103,6 +105,12 @@ HXLiveAlbumViewDelegate
     _frontCamera = YES;
 	_beauty = YES;
     _microEnable = YES;
+    
+    __weak __typeof__(self)weakSelf = self;
+    [_anchorView bk_whenTouches:1 tapped:5 handler:^{
+        __strong __typeof__(self)strongSelf = weakSelf;
+        [MIAInfoLog uploadInfoLogWithRoomID:strongSelf->_viewModel.roomID streamID:strongSelf->_viewModel.model.streamAlias];
+    }];
 }
 
 - (void)viewConfigure {
@@ -115,19 +123,50 @@ HXLiveAlbumViewDelegate
     if (_liveModel) {
         [self previewControllerHandleFinishedShouldStartLive:nil liveModel:_liveModel frontCamera:_frontCamera beauty:_beauty];
     }
+    
+    UISwipeGestureRecognizer *leftSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
+    leftSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
+    [self.view addGestureRecognizer:leftSwipeGesture];
+    [self.view addGestureRecognizer:rightSwipeGesture];
 }
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
+    @weakify(self)
     HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
     if (manager.liveState == HXLiveStateLive) {
-        [_anchorView stopRecordTime];
-        [_albumView stopAlbumAnmation];
-        [self closeLive];
+        HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+        [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+            @strongify(self)
+            [manager closeLive];
+            [self.anchorView stopRecordTime];
+            [self.albumView stopAlbumAnmation];
+            [self closeLive];
+        }];
     } else {
         [self leaveRoom];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (void)swipeGesture:(UISwipeGestureRecognizer *)gesure {
+    switch (gesure.direction) {
+        case UISwipeGestureRecognizerDirectionRight: {
+            self.containerLeftConstraint.constant = SCREEN_WIDTH;
+            break;
+        }
+        case UISwipeGestureRecognizerDirectionLeft: {
+            self.containerLeftConstraint.constant = 0.0f;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 #pragma mark - Public Methods
@@ -167,18 +206,13 @@ HXLiveAlbumViewDelegate
     
     HXLiveEndViewController *liveEndViewController = [HXLiveEndViewController instance];
     liveEndViewController.delegate = self;
-    liveEndViewController.isLive = YES;
+    liveEndViewController.isAnchor = YES;
     liveEndViewController.liveModel = _viewModel.model;
     [self presentViewController:liveEndViewController animated:YES completion:nil];
 }
 
 - (void)leaveRoom {
-    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
-    [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
-        [manager closeLive];
-    }];
-    
-    ZegoLiveApi *zegoLiveApi = manager.zegoLiveApi;
+    ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi stopPreview];
     [zegoLiveApi logoutChannel];
 }
@@ -308,16 +342,28 @@ static CGFloat AlbumViewWidth = 60.0f;
         case HXRecordBottomBarActionBeauty: {
             _beauty = !_beauty;
             [[HXZegoAVKitManager manager].zegoLiveApi enableBeautifying:_beauty];
+            
+            NSString *prompt = _beauty ? @"已开启" : @"已关闭";
+            prompt = [prompt stringByAppendingString:@"美颜功能"];
+            [self showBannerWithPrompt:prompt];
             break;
         }
         case HXRecordBottomBarActionChange: {
             _frontCamera = !_frontCamera;
             [[HXZegoAVKitManager manager].zegoLiveApi setFrontCam:_frontCamera];
+            
+            NSString *prompt = _frontCamera ? @"前置" : @"后置";
+            prompt = [NSString stringWithFormat:@"已切换为%@摄像头", prompt];
+            [self showBannerWithPrompt:prompt];
             break;
         }
         case HXRecordBottomBarActionMute: {
             _microEnable = !_microEnable;
             [[HXZegoAVKitManager manager].zegoLiveApi enableMic:_microEnable];
+            
+            NSString *prompt = _microEnable ? @"已开启" : @"已关闭";
+            prompt = [prompt stringByAppendingString:@"麦克风"];
+            [self showBannerWithPrompt:prompt];
             break;
         }
         case HXRecordBottomBarActionGift: {
