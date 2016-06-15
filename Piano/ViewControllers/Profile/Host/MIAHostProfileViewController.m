@@ -423,8 +423,8 @@
 //            [self.navigationController pushViewController:incomeViewController animated:YES];
         }else if (indexPath.row == 2){
             //我的收益
-            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
-            [self.navigationController pushViewController:incomeViewController animated:YES];
+//            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
+//            [self.navigationController pushViewController:incomeViewController animated:YES];
         }
     }
 }

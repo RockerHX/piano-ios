@@ -14,7 +14,7 @@
 static CGFloat const kIncomeNavBarHeight = 50.;//Bar的高度
 static CGFloat const kIncomeHeadViewHeight = 150.;//head的高度
 
-//static CGFloat 
+//static CGFloat const kInComeMoneyTipTopSpaceDistance = 
 
 @interface MIAIncomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -76,6 +76,7 @@ static CGFloat const kIncomeHeadViewHeight = 150.;//head的高度
     [moneyTipLabel setText:@"可提现的金额:"];
     [moneyTipLabel setTextAlignment:NSTextAlignmentCenter];
     [_headView addSubview:moneyTipLabel];
+    
     
 }
 
