@@ -406,7 +406,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWn-g9-l59" userLabel="Video Red Dot" customClass="HXIBView">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWn-g9-l59" userLabel="Video Red Dot">
                                             <rect key="frame" x="25" y="135" width="8" height="8"/>
                                             <color key="backgroundColor" red="0.95294117647058818" green="0.082352941176470587" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -431,7 +431,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iD6-c4-RJ9" userLabel="Album Red Dot" customClass="HXIBView">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iD6-c4-RJ9" userLabel="Album Red Dot">
                                             <rect key="frame" x="61" y="135" width="8" height="8"/>
                                             <color key="backgroundColor" red="0.95294117649999999" green="0.08235294118" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
