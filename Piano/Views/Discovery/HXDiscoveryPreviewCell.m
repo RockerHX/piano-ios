@@ -47,9 +47,11 @@
 #pragma mark - Public Methods
 - (void)playWithURL:(NSString *)url {
     NSURL *downLoadURL = [NSURL URLWithString:url];
-    [[HXDownLoadCache cache] downLoadWithURL:[NSURL URLWithString:url] completionHandler:^(HXDownLoadCache * _Nonnull cache, NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        [self startPlayWithURL:downLoadURL data:data];
-    }];
+    if (downLoadURL) {
+        [[HXDownLoadCache cache] downLoadWithURL:[NSURL URLWithString:url] completionHandler:^(HXDownLoadCache * _Nonnull cache, NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            [self startPlayWithURL:downLoadURL data:data];
+        }];
+    }
 }
 
 #pragma mark - Private Methods

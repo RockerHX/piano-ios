@@ -207,11 +207,9 @@ HXReplayBottomBarDelegate
 - (void)fetchBarrageData {
     @weakify(self)
     RACSignal *fetchBarrageSiganl = [_viewModel.fetchBarrageCommand execute:nil];
-    [fetchBarrageSiganl subscribeError:^(NSError *error) {
+    [fetchBarrageSiganl subscribeNext:^(NSString *message) {
         @strongify(self)
-        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
-            [self showBannerWithPrompt:error.domain];
-        }
+        [self showBannerWithPrompt:message];
     } completed:^{
         _barrageContainer.barrages = _viewModel.barrages;
     }];

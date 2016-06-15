@@ -13,7 +13,6 @@
 #import "HXWatchLiveLandscapeViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
-#import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
 #import "HXDiscoveryTopBar.h"
@@ -21,12 +20,12 @@
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
-#import "HXHostProfileViewController.h"
 #import "MIAHostProfileViewController.h"
 #import "UIButton+WebCache.h"
 #import "MiaAPIHelper.h"
 #import "HXLiveModel.h"
 #import "BFRadialWaveHUD.h"
+#import "WebSocketMgr.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -92,18 +91,20 @@ UINavigationControllerDelegate
 
 #pragma mark - Public Methods
 - (void)startFetchList {
-    @weakify(self)
-    RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
-    [requestSiganl subscribeError:^(NSError *error) {
-        @strongify(self)
-        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
-            [self showBannerWithPrompt:error.domain];
-        }
-        [self showErrorLoading];
-    } completed:^{
-        @strongify(self)
-        [self fetchCompleted];
-    }];
+    if ([[WebSocketMgr standard] isOpen]) {
+        @weakify(self)
+        RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
+        [requestSiganl subscribeNext:^(NSString *message) {
+            @strongify(self)
+            [self showBannerWithPrompt:message];
+            [self hiddenLoadingHUD];
+        } completed:^{
+            @strongify(self)
+            [self fetchCompleted];
+        }];
+    } else {
+        [self hiddenLoadingHUD];
+    }
 }
 
 - (void)recoveryLive {
@@ -131,12 +132,6 @@ UINavigationControllerDelegate
         [_hud setBlurBackground:YES];
     }
     [_hud show];
-}
-
-- (void)showErrorLoading {
-    [_hud showErrorWithCompletion:^(BOOL finished) {
-        [_hud dismiss];
-    }];
 }
 
 - (void)hiddenLoadingHUD {
@@ -255,7 +250,6 @@ UINavigationControllerDelegate
             
             MIAHostProfileViewController *hostProfileViewController = [MIAHostProfileViewController new];
             [self.navigationController pushViewController:hostProfileViewController animated:YES];
-//            [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }
         case HXDiscoveryTopBarActionMusic: {
