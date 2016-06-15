@@ -212,7 +212,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         //网络开关
         [cell.contentView addSubview:_netSwitch];
         
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-15. selfView:_netSwitch superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_netSwitch superView:cell.contentView];
         [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_netSwitch superView:cell.contentView];
         [JOAutoLayout autoLayoutWithSize:JOSize(44, 26.) selfView:_netSwitch superView:cell.contentView];
     }

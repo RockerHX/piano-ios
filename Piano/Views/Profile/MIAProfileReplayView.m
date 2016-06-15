@@ -109,7 +109,7 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  2.;
         [self.showImageView sd_setImageWithURL:[NSURL URLWithString:_replayModel.coverUrl] placeholderImage:nil];
         [self.showTitleLabel setText:_replayModel.title];
         [self.showTipLabel setText:[_replayModel.createTime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonthDay]];
-        [_numberlabel setText:_replayModel.viewCnt];
+        [_numberlabel setText:_replayModel.replayCnt];
         
         [self updateViewLayout];
     }else{
@@ -127,8 +127,8 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  2.;
         
                         if (success) {
                             //            JOLog(@"视频统计成功");
-                            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_replayModel.viewCnt) integerValue] +1];
-                            _replayModel.viewCnt = viewCount;
+                            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_replayModel.replayCnt) integerValue] +1];
+                            _replayModel.replayCnt = viewCount;
                             [_numberlabel setText:viewCount];
                         }else{
                             //            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);

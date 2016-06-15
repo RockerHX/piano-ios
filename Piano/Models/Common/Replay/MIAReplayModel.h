@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSString *roomID; //房间的id
 @property (nonatomic, copy) NSString *coverID; //封面的ID
 @property (nonatomic, copy) NSString *viewCnt; //观看的人
+@property (nonatomic, copy) NSString *replayCnt; //播放的次数
 @property (nonatomic, copy) NSString *closeTime; //关闭的时间
 @property (nonatomic, copy) NSString *title; //视频的名字
 @property (nonatomic, copy) NSString *coverUrl; //直播中主播的图片

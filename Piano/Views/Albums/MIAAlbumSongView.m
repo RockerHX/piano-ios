@@ -66,7 +66,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [self addSubview:_downloadStateImageView];
     
     //初始化宽度为0
-    [JOAutoLayout autoLayoutWithLeftView:_indexLabel distance:0. selfView:_downloadStateImageView superView:self];
+    [JOAutoLayout autoLayoutWithLeftView:_indexLabel distance:-1. selfView:_downloadStateImageView superView:self];
     [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_downloadStateImageView superView:self];
     [JOAutoLayout autoLayoutWithSize:JOSize(CGFLOAT_MIN, kDownloadTipImageWidth) selfView:_downloadStateImageView superView:self];
     
@@ -74,7 +74,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [_timeLabel setHidden:YES];
     [self addSubview:_timeLabel];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-15. selfView:_timeLabel superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-11. selfView:_timeLabel superView:self];
     [JOAutoLayout autoLayoutWithTopYView:_indexLabel selfView:_timeLabel superView:self];
     [JOAutoLayout autoLayoutWithBottomYView:_indexLabel selfView:_timeLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_timeLabel superView:self];
@@ -92,7 +92,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [separateLineView setBackgroundColor:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]->color];
     [self addSubview:separateLineView];
     
-    [JOAutoLayout autoLayoutWithLeftXView:_downloadStateImageView selfView:separateLineView superView:self];
+    [JOAutoLayout autoLayoutWithLeftXView:_downloadStateImageView distance:0.5 selfView:separateLineView superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:separateLineView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:separateLineView superView:self];
     [JOAutoLayout autoLayoutWithHeight:0.5 selfView:separateLineView superView:self];

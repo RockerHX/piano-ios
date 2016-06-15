@@ -10,6 +10,7 @@
 #import "MiaAPIHelper.h"
 #import "JOBaseSDK.h"
 #import "HXAlertBanner.h"
+#import "HXUserSession.h"
 
 @implementation MIAInfoLog
 
@@ -18,8 +19,9 @@
     NSString *versionString = [NSString stringWithFormat:@"V%@.%@",[JOFAppInfo appVersion],[JOFAppInfo appBuildVersion]];
     NSString *deviceString = [JOFDeviceInfo deviceName];
     NSString *systemVersion = [NSString stringWithFormat:@"%.2f",[JOFDeviceInfo currentSystemVersion]];
+    NSString *userName = [[[HXUserSession session] user] nickName];
     
-    NSString *contentString = [NSString stringWithFormat:@"设备:%@  系统版本:%@ app版本号:%@ StreamID:%@",deviceString,systemVersion,versionString,JOConvertStringToNormalString(streamID)];
+    NSString *contentString = [NSString stringWithFormat:@"昵称:%@ 设备:%@ 系统版本:%@ app版本号:%@ StreamID:%@",userName,deviceString,systemVersion,versionString,JOConvertStringToNormalString(streamID)];
     
     [MiaAPIHelper uploadLogWithRoomID:JOConvertStringToNormalString(roomID)
                               content:contentString
