@@ -13,7 +13,6 @@
 #import "HXWatchLiveLandscapeViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
-#import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
 #import "HXDiscoveryTopBar.h"
@@ -21,7 +20,6 @@
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
-#import "HXHostProfileViewController.h"
 #import "MIAHostProfileViewController.h"
 #import "UIButton+WebCache.h"
 #import "MiaAPIHelper.h"
@@ -252,7 +250,6 @@ UINavigationControllerDelegate
             
             MIAHostProfileViewController *hostProfileViewController = [MIAHostProfileViewController new];
             [self.navigationController pushViewController:hostProfileViewController animated:YES];
-//            [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }
         case HXDiscoveryTopBarActionMusic: {
