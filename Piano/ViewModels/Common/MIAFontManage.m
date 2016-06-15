@@ -134,7 +134,7 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor blackColor], 12.);
     }else if (type == MIAFontType_Album_Song_Title){
         //音乐的标题
-        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], JORGBSameCreate(190.));
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor grayColor]);
 //        return JOFontMake(kMIAFontRegular,JORGBSameCreate(180.), 17.);
     }else if (type == MIAFontType_Album_Song_Time){
         //音乐的时长
@@ -169,7 +169,7 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }else if (type == MIAFontType_AlbumReward_Singer){
         //演唱者
-        return JOFontsMake([UIFont systemFontOfSize:12. weight:UIFontWeightRegular], JORGBSameCreate(220.));
+        return JOFontsMake([UIFont systemFontOfSize:14. weight:UIFontWeightRegular], JORGBSameCreate(220.));
 //        return JOFontMake(kMIAFontRegular, JORGBSameCreate(220.), 13.);
     }else if (type == MIAFontType_AlbumReward_Tip){
         //提示
@@ -211,12 +211,12 @@
         return JOFontsMake([UIFont systemFontOfSize:32. weight:UIFontWeightRegular], [UIColor whiteColor]);
 //        return JOFontMake(kMIAFontBold, [UIColor whiteColor], 32.);
     }else if (type == MIAFontType_Payment_Pay_M){
-        //充值的M币
-        return JOFontsMake([UIFont systemFontOfSize:16. weight:UIFontWeightBold], [UIColor blackColor]);
+        //充值的M币 #9F9062
+        return JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightBold], JOConvertHexRGBStringToColor(@"#9F9062"));
 //        return JOFontMake(kMIAFontBold, [UIColor blackColor], 16.);
     }else if (type == MIAFontType_Payment_Pay_Money){
-        //充值的金额
-        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightBold], JORGBCreate(153., 100., 0., 1.));
+        //充值的金额  JORGBCreate(153., 100., 0., 1.)
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightBold], [UIColor blackColor]);
 //        return JOFontMake(kMIAFontBold, JORGBCreate(153., 100., 0., 1.), 15.);
     }else if (type == MIAFontType_Payment_Pay_Head){
         //充值的head提示

@@ -95,8 +95,9 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     self.coverImageView = [UIImageView newAutoLayoutView];
     [_coverImageView sd_setImageWithURL:[NSURL URLWithString:_albumModel.coverUrl]
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [_coverImageView setImage:[image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]]];
+        [_coverImageView setImage:[image blurredImageWithRadius:23.0f iterations:23. tintColor:[UIColor blackColor]]];
     }];
+//    [_coverImageView setContentMode:UIViewContentModeScaleAspectFit];
     [_baseView addSubview:_coverImageView];
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_coverImageView superView:_baseView];
@@ -130,7 +131,7 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     
     CGFloat singerNameLabelHeight = [_singerNameLabel sizeThatFits:JOMAXSize].height+1;
     
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_singerNameLabel superView:_albumInfoView];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:5. selfView:_singerNameLabel superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_singerNameLabel superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_singerNameLabel superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithHeight:singerNameLabelHeight selfView:_singerNameLabel superView:_albumInfoView];
@@ -149,15 +150,14 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
 
     self.albumCoverImageView = [UIImageView newAutoLayoutView];
     [_albumCoverImageView sd_setImageWithURL:[NSURL URLWithString:_albumModel.coverUrl] placeholderImage:nil];
-    [[_albumCoverImageView layer] setCornerRadius:4.];
-    [[_albumCoverImageView layer] setMasksToBounds:YES];
+    [[_albumCoverImageView layer] setBorderWidth:1.];
+    [[_albumCoverImageView layer] setBorderColor:JORGBCreate(159., 144., 98.,1.).CGColor];
     [_albumInfoView addSubview:_albumCoverImageView];
     
     [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_albumCoverImageView superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithCenterXWithView:_albumInfoView selfView:_albumCoverImageView superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithWidth:kAlbumInfoImageViewWidth selfView:_albumCoverImageView superView:_albumInfoView];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_albumCoverImageView superView:_albumInfoView];
-    
     
     CGFloat albumInfoHeight =singerNameLabelHeight+albumNameLabelHeight+kAlbumInfoImageViewWidth + kAlbumInfoImageToAlbumNameSpaceDistance + kAlbumInfoAlbumNameToSingerNameSpaceDistance;
     
@@ -225,6 +225,7 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     [_rewardButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_rewardButton setTitle:@"打赏" forState:UIControlStateNormal];
     [_rewardButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_AlbumReward_RewardButtonTitle]->color forState:UIControlStateNormal];
+    [[_rewardButton titleLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_AlbumReward_RewardButtonTitle]->font];
     [[_rewardButton layer] setCornerRadius:kRewardButtonHeight/2.];
     [[_rewardButton layer] setMasksToBounds:YES];
     [[_rewardButton layer] setBorderWidth:1.];
@@ -237,7 +238,7 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     [JOAutoLayout autoLayoutWithCenterXWithView:_baseView selfView:_rewardButton superView:_baseView];
     
     //rewardMCoin
-    [JOAutoLayout autoLayoutWithBottomView:_rewardSlider distance:-10. selfView:_rewardMCoinLabel superView:_baseView];
+    [JOAutoLayout autoLayoutWithBottomView:_rewardSlider distance:-3. selfView:_rewardMCoinLabel superView:_baseView];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kAlbumRewardLeftSpaceDistance selfView:_rewardMCoinLabel superView:_baseView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-kAlbumRewardRightSpaceDistance selfView:_rewardMCoinLabel superView:_baseView];
     [JOAutoLayout autoLayoutWithHeight:[_rewardMCoinLabel sizeThatFits:JOMAXSize].height+2 selfView:_rewardMCoinLabel superView:_baseView];

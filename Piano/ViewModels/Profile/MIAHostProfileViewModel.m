@@ -16,7 +16,6 @@
 #import "MIAHostRewardAlbumCell.h"
 #import "MIAHostRewardAlbumView.h"
 
-CGFloat const kHostProfileViewHeadHeight = 360.; //头部的高度.
 CGFloat const kHostProfileViewHeadLeftSpaceDistance = 84.;//头像与左边的间距大小
 CGFloat const kHostProfileViewHeadRightSpaceDistance = 84.;//头像与右边的间距大小
 CGFloat const kHostProfileViewHeadTopSpaceDistance = 58.;//头像与头部的间距大小.

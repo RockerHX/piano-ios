@@ -12,7 +12,7 @@
 #import "JOBaseSDK.h"
 
 static CGFloat const kImageWidth = 30.;//图片的宽度
-static CGFloat const kImageToMSpaceDistance = 15.;//M币的图片与M币的间距
+static CGFloat const kImageToMSpaceDistance = 5.;//M币的图片与M币的间距
 static CGFloat const kMoneyInsideLeftSpaceDistance = 5.;//金额label左边的间距大小
 static CGFloat const kMoneyInsideTopSpaceDistance = 4.;//金额label头部的间距大小
 static CGFloat const kPaymentMoneyLabelWidth = 60.;

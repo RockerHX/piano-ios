@@ -22,7 +22,10 @@
 #import "UIImageView+WebCache.h"
 #import "MIAHostProfileViewModel.h"
 
-@interface MIAHostProfileViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface MIAHostProfileViewController ()<UITableViewDataSource, UITableViewDelegate>{
+
+    CGFloat headHeight;
+}
 
 @property (nonatomic, strong) UIImageView *coverImageView;
 @property (nonatomic, strong) UIImageView *maskImageView;
@@ -57,6 +60,7 @@
 
     self.coverImageView = [UIImageView newAutoLayoutView];
     [_coverImageView setContentMode:UIViewContentModeScaleAspectFill];
+    [[_coverImageView layer] setMasksToBounds:YES];
     [self.view addSubview:_coverImageView];
     
     [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0.0, 0., 0.) selfView:_coverImageView superView:self.view];
@@ -107,9 +111,24 @@
     [JOAutoLayout autoLayoutWithSize:JOSize(30., 30.) selfView:settingButton superView:self.view];
 }
 
+- (CGFloat)getHeadHeight{
+
+    CGFloat headImageViewHeight = View_Width(self.view) - kHostProfileViewHeadLeftSpaceDistance - kHostProfileViewHeadRightSpaceDistance;
+    
+    UILabel *label1 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Host_Head_Nick]];
+    [label1 setText:@" "];
+    CGFloat height1 = [label1 sizeThatFits:JOMAXSize].height;
+    
+    UILabel *label2 = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Host_Head_Summary]];
+    [label2 setText:@" "];
+    CGFloat height2 = [label2 sizeThatFits:JOMAXSize].height;
+    
+    return kHostProfileViewHeadTopSpaceDistance + headImageViewHeight + 28. + height1 + 7. + height2 + 28.;
+}
+
 - (void)createHeadView{
     
-    self.meHeadView = [[UIView alloc] initWithFrame:CGRectMake(0., 0., self.view.frame.size.width, kHostProfileViewHeadHeight)];
+    self.meHeadView = [[UIView alloc] initWithFrame:CGRectMake(0., 0., self.view.frame.size.width, [self getHeadHeight])];
     [_meHeadView setBackgroundColor:[UIColor clearColor]];
     
     CGFloat headImageViewWidth = View_Width(self.view) - kHostProfileViewHeadLeftSpaceDistance - kHostProfileViewHeadRightSpaceDistance;
@@ -140,7 +159,7 @@
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_nickNameLabel superView:_meHeadView];
     [JOAutoLayout autoLayoutWithHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height selfView:_nickNameLabel superView:_meHeadView];
     
-    [JOAutoLayout autoLayoutWithTopView:_nickNameLabel distance:10. selfView:_summaryLabel superView:_meHeadView];
+    [JOAutoLayout autoLayoutWithTopView:_nickNameLabel distance:7. selfView:_summaryLabel superView:_meHeadView];
     [JOAutoLayout autoLayoutWithHeight:[_summaryLabel sizeThatFits:JOMAXSize].height selfView:_summaryLabel superView:_meHeadView];
     [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_summaryLabel superView:_meHeadView];
     [JOAutoLayout autoLayoutWithRightXView:_nickNameLabel selfView:_summaryLabel superView:_meHeadView];
@@ -173,8 +192,9 @@
         @strongify(self);
         [self.summaryLabel setText:[HXUserSession session].user.bio];
         [self.nickNameLabel setText:[HXUserSession session].user.nickName];
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] placeholderImage:[UIImage imageNamed:@"PH-DefaultAvatar"]];
         [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl]
+                               placeholderImage:[UIImage imageNamed:@"PH-DefaultAvatar"]
                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                           
                                           [self.coverImageView setImage:[image blurredImageWithRadius:8.0f iterations:8 tintColor:[UIColor blackColor]]];
@@ -197,12 +217,13 @@
         [self hiddenHUD];
         [self.profileTableView reloadData];
         [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.hostProfileViewModel.hostProfileModel.userpic]
+                               placeholderImage:[UIImage imageNamed:@"PH-DefaultAvatar"]
                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                       
                                           [self.coverImageView setImage:[image blurredImageWithRadius:8.0f iterations:8 tintColor:[UIColor blackColor]]];
                                       }];
         
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.hostProfileViewModel.hostProfileModel.userpic]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.hostProfileViewModel.hostProfileModel.userpic] placeholderImage:[UIImage imageNamed:@"PH-DefaultAvatar"]];
         [self.nickNameLabel setText:self.hostProfileViewModel.hostProfileModel.nick];
         [self.summaryLabel setText:self.hostProfileViewModel.hostProfileModel.bio];
     }];
@@ -331,6 +352,7 @@
                                                     title:[NSString stringWithFormat:@"关注 %@",self.hostProfileViewModel.hostProfileModel.followCnt]
                                                  tipTitle:nil
                                                     frame:CGRectMake(0., 0., View_Width(self.view), kBaseCellHeadViewHeight)
+                                             imageOffsetX:-3
                                             cellColorType:BaseCellHeadColorTypeBlack];
         
     }else if (section == 2){
@@ -347,7 +369,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
     if (section == 0) {
-        return kHostProfileViewHeadHeight;
+        return [self getHeadHeight];
     }else if (section == 1){
     
         return kBaseCellHeadViewHeight;

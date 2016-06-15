@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+UIKIT_EXTERN CGFloat const kImageToLabelSpaceDistance;//图片与label之间的间距
+UIKIT_EXTERN CGFloat const kImageWidth;//图片的宽度
+UIKIT_EXTERN CGFloat const kCommentContentRightSpaceDistance;//右间距大小.
+
 @interface MIAAlbumCommentView : UIView
 
 /**
