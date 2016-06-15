@@ -36,7 +36,7 @@
         return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(160.));
     }else if (type == MIAFontType_Host_Attention_Live){
         //我的profile关注人的直播提示
-        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightBold], JORGBCreate(255,87,115,1.));
+        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightBold], JORGBCreate(240.,0.,51.,1.));
     }else if (type == MIAFontType_Host_Album_Name){
         //打赏的专辑名字
         return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], JORGBSameCreate(160.));
@@ -285,6 +285,28 @@
         return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], JORGBSameCreate(230.));
 //        return JOFontMake(kMIAFontRegular, JORGBSameCreate(230.), 15.);
     }
+    
+    //MARK: 我的收益
+    if (type == MIAFontType_Income_MoneyTip) {
+        //可提现的金额提示
+        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], [UIColor whiteColor]);
+    }else if (type == MIAFontType_Income_Money){
+        //金额
+         return JOFontsMake([UIFont systemFontOfSize:22. weight:UIFontWeightBold], [UIColor whiteColor]);
+    }else if (type == MIAFontType_Income_MoneyUnit){
+        //元
+        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], [UIColor whiteColor]);
+    }else if (type == MIAFontType_Income_Tip){
+        //提示
+        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], [UIColor whiteColor]);
+    }else if (type == MIAFontType_Income_Cell_Title){
+        //标题
+        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor blackColor]);
+    }else if (type == MIAFontType_Income_Cell_Content){
+        //cell的内容
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor blackColor]);
+    }
+    
     return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor blackColor]);
 //    return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
 }

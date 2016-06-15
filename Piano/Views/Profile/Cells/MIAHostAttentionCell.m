@@ -173,4 +173,25 @@ CGFloat const kAttentionViewItemVerticalSpaceDistance = 20.;//竖直方向 元�
     }
 }
 
+- (void)setHostAttentionTopState:(BOOL)state{
+
+    [JOAutoLayout removeAutoLayoutWithTopSelfView:_leftAttentionView superView:self.cellContentView];
+    [JOAutoLayout removeAutoLayoutWithTopSelfView:_leftMidAttentionView superView:self.cellContentView];
+    [JOAutoLayout removeAutoLayoutWithTopSelfView:_rightMidAttentionView superView:self.cellContentView];
+    [JOAutoLayout removeAutoLayoutWithTopSelfView:_rightAttentionView superView:self.cellContentView];
+    if (state) {
+        
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_leftAttentionView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_leftMidAttentionView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_rightMidAttentionView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_rightAttentionView superView:self.cellContentView];
+    }else{
+    
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_leftAttentionView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_leftMidAttentionView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_rightMidAttentionView superView:self.cellContentView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_rightAttentionView superView:self.cellContentView];
+    }
+}
+
 @end
