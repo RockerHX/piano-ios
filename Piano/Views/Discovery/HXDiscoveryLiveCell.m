@@ -22,10 +22,12 @@
 
 #pragma mark - Configure Methods
 - (void)loadConfigure {
-    ;
+    [super loadConfigure];
 }
 
 - (void)viewConfigure {
+    [super viewConfigure];
+    
     _changCoverButton.layer.shadowColor = [UIColor blackColor].CGColor;
     _changCoverButton.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
     _changCoverButton.layer.shadowOpacity = 1.0f;
