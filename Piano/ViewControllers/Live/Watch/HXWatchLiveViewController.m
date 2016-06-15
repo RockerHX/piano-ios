@@ -102,6 +102,7 @@ HXLiveAlbumViewDelegate
     __weak __typeof__(self)weakSelf = self;
     [_anchorView bk_whenTouches:1 tapped:5 handler:^{
         __strong __typeof__(self)strongSelf = weakSelf;
+        [[HXZegoAVKitManager manager].zegoLiveApi uploadLog];
         [MIAInfoLog uploadInfoLogWithRoomID:strongSelf.roomID streamID:strongSelf->_viewModel.model.streamAlias];
     }];
 }
