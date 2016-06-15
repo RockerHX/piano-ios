@@ -602,7 +602,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muf-ce-SGh" userLabel="Avatar Container">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="120"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x3G-e8-AmB" customClass="HXIBImageView">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x3G-e8-AmB">
                                                         <rect key="frame" x="87" y="0.0" width="66" height="66"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -785,7 +785,7 @@
                                             <constraint firstAttribute="bottom" secondItem="n9j-fj-edH" secondAttribute="bottom" id="vQB-eW-fNR"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tI-B0-tJP" customClass="HXIBButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tI-B0-tJP">
                                         <rect key="frame" x="45" y="430" width="230" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1053,6 +1053,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="controlContainerView" destination="an9-wJ-Woj" id="de5-m1-nEy"/>
+                        <outlet property="controlView" destination="GLU-Bt-fMA" id="RVb-sq-5k0"/>
                         <outlet property="countDownContainerView" destination="4xH-8K-Dnn" id="jjC-62-Tvh"/>
                         <outlet property="editView" destination="MXs-zs-zya" id="U4b-zx-6V8"/>
                     </connections>

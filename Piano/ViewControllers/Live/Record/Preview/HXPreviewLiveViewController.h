@@ -32,8 +32,10 @@
 
 @property (weak, nonatomic) IBOutlet                       id  <HXPreviewLiveViewControllerDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet                   UIView *controlContainerView;
+@property (weak, nonatomic) IBOutlet UIView *controlContainerView;
+@property (weak, nonatomic) IBOutlet UIView *countDownContainerView;
+
 @property (weak, nonatomic) IBOutlet    HXPreviewLiveEidtView *editView;
-@property (weak, nonatomic) IBOutlet HXPreviewLiveControlView *countDownContainerView;
+@property (weak, nonatomic) IBOutlet HXPreviewLiveControlView *controlView;
 
 @end

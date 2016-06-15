@@ -32,7 +32,8 @@ typedef NS_ENUM(NSUInteger, HXPreviewLiveControlViewAction) {
 
 @property (weak, nonatomic) IBOutlet     id  <HXPreviewLiveControlViewDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet UIView *container;
+@property (weak, nonatomic) IBOutlet   UIView *container;
+@property (weak, nonatomic) IBOutlet UIButton *startLiveButton;
 
 - (IBAction)friendsCycleButtonPressed;
 - (IBAction)wechatButtonPressed;

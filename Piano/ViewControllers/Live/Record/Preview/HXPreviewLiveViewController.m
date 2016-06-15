@@ -80,7 +80,7 @@ HXSelectedAlbumViewControllerDelegate
             _model.shareUrl = data[@"shareUrl"];
         } else {
             [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            _controlView.startLiveButton.enabled = NO;
         }
         [self hiddenHUD];
     } timeoutBlock:^(MiaRequestItem *requestItem) {
