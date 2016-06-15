@@ -63,7 +63,7 @@
     
     _count--;
     if (_count == 0) {
-        _countLabel.text = @"Live";
+        _countLabel.text = @"LIVE";
     } else {
         _countLabel.text = @(_count).stringValue;
     }
