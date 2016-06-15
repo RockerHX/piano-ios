@@ -13,4 +13,11 @@ UIKIT_EXTERN CGFloat const kAttentionViewItemVerticalSpaceDistance;//竖直方�
 
 @interface MIAHostAttentionCell : MIABaseTableViewCell
 
+/**
+ *  针对大于1的row的cell的头部不需要那么高的情况.
+ *
+ *  @param state 状态
+ */
+- (void)setHostAttentionTopState:(BOOL)state;
+
 @end

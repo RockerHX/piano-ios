@@ -10,7 +10,7 @@
 
 
 static CGFloat        ArcLineWidth      = 4.0f;
-static CGFloat        SliderRadius      = 17.0f;
+static CGFloat        SliderRadius      = 15.0f;
 static CGFloat        OffsetY           = -20.0f;
 static NSTimeInterval AnimationDuration = 0.2f;
 
@@ -92,8 +92,8 @@ static NSTimeInterval AnimationDuration = 0.2f;
     _sliderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _sliderRadius*2, _sliderRadius*2)];
     _sliderView.backgroundColor = _sliderColor;
     _sliderView.layer.cornerRadius = _sliderRadius;
-    _sliderView.layer.borderWidth = 2.;
-    _sliderView.layer.borderColor = [UIColor clearColor].CGColor;
+//    _sliderView.layer.borderWidth = 2.;
+//    _sliderView.layer.borderColor = [UIColor clearColor].CGColor;
     _sliderView.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
     _sliderView.layer.shadowColor = [UIColor grayColor].CGColor;
     _sliderView.layer.shadowOpacity = 0.5f;

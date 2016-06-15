@@ -99,6 +99,14 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
     
     //MARK: 视频播放
     MIAFontType_PlayVideo_Time,//视频播放页面的时间
+    
+    //MARK: 我的收益
+    MIAFontType_Income_MoneyTip,//可提现的金额提示
+    MIAFontType_Income_Money,//金额
+    MIAFontType_Income_MoneyUnit,//元
+    MIAFontType_Income_Tip,//提示
+    MIAFontType_Income_Cell_Title,//标题
+    MIAFontType_Income_Cell_Content,//cell的内容
 };
 
 

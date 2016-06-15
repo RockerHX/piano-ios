@@ -36,6 +36,7 @@
 @property (nonatomic, strong) UITableView *albumTableView;
 @property (nonatomic, strong) MIAAlbumDetailView *albumTableHeadView;
 @property (nonatomic, strong) MIAAlbumEnterCommentView *enterCommentView;
+@property (nonatomic, strong) UIView *hiddenKeyboardView;
 
 @property (nonatomic, strong) MIAAlbumViewModel *albumViewModel;
 
@@ -73,6 +74,7 @@
     [self createAlbumEnterCommentView];
     [self createAlbumTableHeadView];
     [self createAlbumTableView];
+    [self createHiddenKeyBoardView];
     
     if (_rewardType == MIAAlbumRewardTypeMyReward) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSongSection) name:kMIASongDownloadFinishedNoticeKey object:nil];
@@ -136,7 +138,7 @@
     @weakify(self);
     
     //键盘出现的Block
-    [_enterCommentView keyBoardShowHandler:^(CGFloat height) {
+    [_enterCommentView keyBoardShowHandler:^(CGFloat height, BOOL showState){
     @strongify(self);
         
         [JOAutoLayout removeAutoLayoutWithBottomSelfView:self.enterCommentView superView:self.view];
@@ -146,6 +148,13 @@
             [self.albumTableView layoutIfNeeded];
             [self.enterCommentView layoutIfNeeded];
         }];
+        
+        if (showState) {
+            [self.hiddenKeyboardView setHidden:NO];
+        }else{
+            [self.hiddenKeyboardView setHidden:YES];
+        }
+        
     }];
     
     //输入框高度发生变化
@@ -160,7 +169,6 @@
     [_enterCommentView sendAlbumCommentHanlder:^(NSString *commentConent) {
     @strongify(self);
         [self sendAlbumCommentWithContent:commentConent];
-        
     }];
     [self.view addSubview:_enterCommentView];
     
@@ -194,6 +202,23 @@
         [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_albumTableView superView:self.view];
         [_enterCommentView setHidden:YES];
     }
+
+}
+
+- (void)createHiddenKeyBoardView{
+
+    self.hiddenKeyboardView = [UIView newAutoLayoutView];
+    [_hiddenKeyboardView setBackgroundColor:[UIColor clearColor]];
+    [_hiddenKeyboardView setHidden:YES];
+    [self.view addSubview:_hiddenKeyboardView];
+    
+    [JOAutoLayout autoLayoutWithSameView:_albumTableView selfView:_hiddenKeyboardView superView:self.view];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenCommentKeyboard)];
+    [_hiddenKeyboardView addGestureRecognizer:tapGesture];
+    
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenCommentKeyboard)];
+    [_hiddenKeyboardView addGestureRecognizer:panGesture];
 }
 
 - (void)createAlbumTableHeadView{
@@ -250,6 +275,13 @@
         [self.albumTableView.mj_footer endRefreshingWithNoMoreData];
         [self.albumTableView.mj_footer setHidden:YES];
     }
+}
+
+#pragma mark - tap gesture
+
+- (void)hiddenCommentKeyboard{
+    
+    [self.enterCommentView resignTextViewFirstResponder];
 }
 
 #pragma mark - song section update

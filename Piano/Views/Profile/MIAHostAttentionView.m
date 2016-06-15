@@ -14,10 +14,12 @@
 #import "MIAProfileViewController.h"
 
 static CGFloat const kLiveTipLableHeight = 18.; //直播状态提示label的高度
+static CGFloat const kLiveImageHeight = 8.;//直播的image的高度
 CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间距大小.
 
 @interface MIAHostAttentionView()
 
+@property (nonatomic, strong) UIView *liveView;
 @property (nonatomic, strong) UILabel *liveTipLabel;
 
 @property (nonatomic, strong) HostProfileFollowModel *profileFollowModel;
@@ -62,32 +64,57 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
 
 - (void)setLiveShowState:(BOOL)state{
     
-    if (!self.liveTipLabel) {
+    if (!self.liveView) {
+        
+        self.liveView = [UIView newAutoLayoutView];
+        [_liveView setBackgroundColor:[UIColor whiteColor]];
+        [[_liveView layer] setCornerRadius:kLiveTipLableHeight/2.];
+        [[_liveView layer] setMasksToBounds:YES];
+        [self addSubview:_liveView];
+        
+        UIImage *liveImage = [UIImage imageNamed:@"PR-Live"];
+        UIImageView *liveImageView = [UIImageView newAutoLayoutView];
+        [liveImageView setImage:liveImage];
+        [_liveView addSubview:liveImageView];
+        
+        CGFloat leftSpace = (kLiveTipLableHeight - kLiveImageHeight)/2.;
+        
+        [JOAutoLayout autoLayoutWithLeftSpaceDistance:leftSpace selfView:liveImageView superView:_liveView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:leftSpace selfView:liveImageView superView:_liveView];
+        [JOAutoLayout autoLayoutWithSize:JOSize(kLiveImageHeight, kLiveImageHeight) selfView:liveImageView superView:_liveView];
+        
         self.liveTipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Host_Attention_Live]];
         [_liveTipLabel setBackgroundColor:[UIColor whiteColor]];
         [_liveTipLabel setTextAlignment:NSTextAlignmentCenter];
         [[_liveTipLabel layer] setCornerRadius:kLiveTipLableHeight/2.];
         [[_liveTipLabel layer] setMasksToBounds:YES];
-        [_liveTipLabel setText:@"●Live"];
-        [_liveTipLabel setAttributedText:[@"●Live" JOAttributedStringwithMarkString:@"●"
-                                                                           markFont:JOFontsMake([UIFont systemFontOfSize:18. weight:UIFontWeightBold], JORGBCreate(255,87,115,1.))->font
-                                                                          markColor:JORGBCreate(255,87,115,1.)]];
-        [self addSubview:_liveTipLabel];
+        [_liveTipLabel setText:@"Live"];
+        [_liveView addSubview:_liveTipLabel];
+        
+        [JOAutoLayout autoLayoutWithLeftView:liveImageView distance:leftSpace selfView:_liveTipLabel superView:_liveView];
+        [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_liveTipLabel superView:_liveView];
+        [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_liveTipLabel superView:_liveView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-leftSpace selfView:_liveTipLabel superView:_liveView];
     }
     
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_liveTipLabel superView:self];
     
     if (state) {
-        [_liveTipLabel setHidden:NO];
+        [_liveView setHidden:NO];
         
-        [JOAutoLayout autoLayoutWithBottomYView:self.showImageView selfView:_liveTipLabel superView:self];
-        [JOAutoLayout autoLayoutWithHeight:kLiveTipLableHeight selfView:_liveTipLabel superView:self];
-        [JOAutoLayout autoLayoutWithCenterXWithView:self.showImageView selfView:_liveTipLabel superView:self];
-        [JOAutoLayout autoLayoutWithWidthWithView:self.showImageView ratioValue:3./4. selfView:_liveTipLabel superView:self];
+        CGFloat leftSpace = (kLiveTipLableHeight - kLiveImageHeight)/2.;
+        
+        CGFloat liveViewWidth = leftSpace + kLiveImageHeight + leftSpace + [_liveTipLabel sizeThatFits:JOMAXSize].width + leftSpace;
+        
+        [JOAutoLayout autoLayoutWithBottomYView:self.showImageView distance:2. selfView:_liveView superView:self];
+        [JOAutoLayout autoLayoutWithHeight:kLiveTipLableHeight selfView:_liveView superView:self];
+        [JOAutoLayout autoLayoutWithCenterXWithView:self.showImageView selfView:_liveView superView:self];
+//        [JOAutoLayout autoLayoutWithWidthWithView:self.showImageView ratioValue:3./4. selfView:_liveView superView:self];
+        [JOAutoLayout autoLayoutWithWidth:liveViewWidth selfView:_liveView superView:self];
         
     }else{
         
-        [_liveTipLabel setHidden:YES];
+        [_liveView setHidden:YES];
     }
 }
 
