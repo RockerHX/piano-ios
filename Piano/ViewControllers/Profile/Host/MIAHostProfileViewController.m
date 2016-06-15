@@ -10,6 +10,8 @@
 #import "MIASettingViewController.h"
 #import "MIAPayHistoryViewController.h"
 #import "MIAPaymentViewController.h"
+#import "MIAIncomeViewController.h"
+
 #import "UIViewController+HXClass.h"
 #import "MIABaseTableViewCell.h"
 #import "MIABaseCellHeadView.h"
@@ -17,7 +19,6 @@
 #import "FXBlurView.h"
 #import "MIACellManage.h"
 #import "JOBaseSDK.h"
-#import "MIAFontManage.h"
 #import "MIAFontManage.h"
 #import "UIImageView+WebCache.h"
 #import "MIAHostProfileViewModel.h"
@@ -318,6 +319,7 @@
         }else{
             id cellData = [[_hostProfileViewModel.hostProfileDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
             [cell setCellData:cellData];
+            [(MIAHostAttentionCell *)cell setHostAttentionTopState:indexPath.row];
         }
         
     }else if (indexPath.section == 2){
@@ -387,7 +389,7 @@
         return kHostProfileViewDefaultCellHeight;
     }else if(indexPath.section == 1){
         
-        return [MIAHostProfileViewModel hostProfileAttentionCellHeightWitWidth:View_Width(self.view)];
+        return [MIAHostProfileViewModel hostProfileAttentionCellHeightWitWidth:View_Width(self.view) topState:indexPath.row];
     }else if (indexPath.section == 2){
         
         return [MIAHostProfileViewModel hostProfileRewardAlbumCellHeightWithWidth:View_Width(self.view)];
@@ -416,6 +418,13 @@
             //购买记录
             MIAPayHistoryViewController *payHistoryViewController = [MIAPayHistoryViewController new];
             [self.navigationController pushViewController:payHistoryViewController animated:YES];
+            
+//            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
+//            [self.navigationController pushViewController:incomeViewController animated:YES];
+        }else if (indexPath.row == 2){
+            //我的收益
+            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
+            [self.navigationController pushViewController:incomeViewController animated:YES];
         }
     }
 }

@@ -119,7 +119,7 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
         
         if (success) {
 //            JOLog(@"视频统计成功");
-            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_videoModel.playCnt) integerValue] +1];
+            NSString *viewCount = [NSString stringWithFormat:@"%ld",(long)[JOConvertStringToNormalString(_videoModel.playCnt) integerValue] +1];
             _videoModel.playCnt = viewCount;
             [_numberlabel setText:viewCount];
         }else{

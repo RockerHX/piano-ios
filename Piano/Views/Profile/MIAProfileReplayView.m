@@ -127,7 +127,7 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  2.;
         
                         if (success) {
                             //            JOLog(@"视频统计成功");
-                            NSString *viewCount = [NSString stringWithFormat:@"%ld",[JOConvertStringToNormalString(_replayModel.replayCnt) integerValue] +1];
+                            NSString *viewCount = [NSString stringWithFormat:@"%ld",(long)[JOConvertStringToNormalString(_replayModel.replayCnt) integerValue] +1];
                             _replayModel.replayCnt = viewCount;
                             [_numberlabel setText:viewCount];
                         }else{

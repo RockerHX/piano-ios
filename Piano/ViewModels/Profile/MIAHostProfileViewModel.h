@@ -25,7 +25,7 @@ UIKIT_EXTERN CGFloat const kHostProfileViewDefaultCellHeight;//cell默认的高�
  *
  *  @param width view的宽度.
  */
-+ (CGFloat)hostProfileAttentionCellHeightWitWidth:(CGFloat)width;
++ (CGFloat)hostProfileAttentionCellHeightWitWidth:(CGFloat)width topState:(BOOL)state;
 
 /**
  *  获取打赏专辑的cell高度.

@@ -135,14 +135,14 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size;
     
     if (_keyBoardShowBlock) {
-        _keyBoardShowBlock(keyboardSize.height);
+        _keyBoardShowBlock(keyboardSize.height, YES);
     }
 }
 
 - (void)keyBoardWillHidden:(NSNotification *)notification {
 
     if (_keyBoardShowBlock) {
-        _keyBoardShowBlock(0.);
+        _keyBoardShowBlock(0., NO);
     }
 }
 
