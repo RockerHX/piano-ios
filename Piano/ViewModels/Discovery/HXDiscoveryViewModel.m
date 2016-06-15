@@ -52,7 +52,7 @@
         }
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         NSLog(@"getRoomList timeout");
-        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+        [subscriber sendNext:TimtOutPrompt];
     }];
 }
 

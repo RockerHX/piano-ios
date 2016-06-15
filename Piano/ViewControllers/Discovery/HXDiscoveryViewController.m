@@ -27,6 +27,7 @@
 #import "MiaAPIHelper.h"
 #import "HXLiveModel.h"
 #import "BFRadialWaveHUD.h"
+#import "WebSocketMgr.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -92,18 +93,20 @@ UINavigationControllerDelegate
 
 #pragma mark - Public Methods
 - (void)startFetchList {
-    @weakify(self)
-    RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
-    [requestSiganl subscribeError:^(NSError *error) {
-        @strongify(self)
-        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
-            [self showBannerWithPrompt:error.domain];
-        }
-        [self showErrorLoading];
-    } completed:^{
-        @strongify(self)
-        [self fetchCompleted];
-    }];
+    if ([[WebSocketMgr standard] isOpen]) {
+        @weakify(self)
+        RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
+        [requestSiganl subscribeNext:^(NSString *message) {
+            @strongify(self)
+            [self showBannerWithPrompt:message];
+            [self hiddenLoadingHUD];
+        } completed:^{
+            @strongify(self)
+            [self fetchCompleted];
+        }];
+    } else {
+        [self hiddenLoadingHUD];
+    }
 }
 
 - (void)recoveryLive {
@@ -131,12 +134,6 @@ UINavigationControllerDelegate
         [_hud setBlurBackground:YES];
     }
     [_hud show];
-}
-
-- (void)showErrorLoading {
-    [_hud showErrorWithCompletion:^(BOOL finished) {
-        [_hud dismiss];
-    }];
 }
 
 - (void)hiddenLoadingHUD {
