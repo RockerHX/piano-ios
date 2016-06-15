@@ -28,7 +28,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pha-yU-ZYl" userLabel="Gift Contianer">
-                                            <rect key="frame" x="25" y="13" width="70" height="94"/>
+                                            <rect key="frame" x="25" y="14" width="70" height="92"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="elr-Bz-eLs" userLabel="Gift Logo">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -38,7 +38,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pI-pJ-6Ug" userLabel="Coin Count Container">
-                                                    <rect key="frame" x="22" y="78" width="27" height="16"/>
+                                                    <rect key="frame" x="22" y="76" width="27" height="16"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yux-n0-NlK">
                                                             <rect key="frame" x="0.0" y="0.0" width="7" height="16"/>
@@ -69,7 +69,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="elr-Bz-eLs" firstAttribute="leading" secondItem="Pha-yU-ZYl" secondAttribute="leading" id="G4w-Q6-N8G"/>
-                                                <constraint firstItem="5pI-pJ-6Ug" firstAttribute="top" secondItem="elr-Bz-eLs" secondAttribute="bottom" constant="8" id="M0c-Fa-hff"/>
+                                                <constraint firstItem="5pI-pJ-6Ug" firstAttribute="top" secondItem="elr-Bz-eLs" secondAttribute="bottom" constant="6" id="M0c-Fa-hff"/>
                                                 <constraint firstItem="5pI-pJ-6Ug" firstAttribute="centerX" secondItem="Pha-yU-ZYl" secondAttribute="centerX" id="RyQ-Ic-wyi"/>
                                                 <constraint firstAttribute="bottom" secondItem="5pI-pJ-6Ug" secondAttribute="bottom" id="Zo5-gy-IPs"/>
                                                 <constraint firstAttribute="trailing" secondItem="elr-Bz-eLs" secondAttribute="trailing" id="iin-dc-AFF"/>
@@ -642,7 +642,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Zg-l8-91l" userLabel="Gift Contianer">
-                                            <rect key="frame" x="25" y="13" width="70" height="94"/>
+                                            <rect key="frame" x="25" y="14" width="70" height="92"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YgN-qP-VNU" userLabel="Gift Logo">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -652,7 +652,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQH-Zi-qdC" userLabel="Coin Count Container">
-                                                    <rect key="frame" x="22" y="78" width="27" height="16"/>
+                                                    <rect key="frame" x="22" y="76" width="27" height="16"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2X-Fr-xrn">
                                                             <rect key="frame" x="0.0" y="0.0" width="7" height="16"/>
@@ -683,7 +683,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="YgN-qP-VNU" secondAttribute="trailing" id="9Ex-Si-FRC"/>
-                                                <constraint firstItem="oQH-Zi-qdC" firstAttribute="top" secondItem="YgN-qP-VNU" secondAttribute="bottom" constant="8" id="Zff-Ug-mZ2"/>
+                                                <constraint firstItem="oQH-Zi-qdC" firstAttribute="top" secondItem="YgN-qP-VNU" secondAttribute="bottom" constant="6" id="Zff-Ug-mZ2"/>
                                                 <constraint firstItem="oQH-Zi-qdC" firstAttribute="centerX" secondItem="0Zg-l8-91l" secondAttribute="centerX" id="a3m-8o-7ox"/>
                                                 <constraint firstItem="YgN-qP-VNU" firstAttribute="leading" secondItem="0Zg-l8-91l" secondAttribute="leading" id="bQJ-JZ-Btt"/>
                                                 <constraint firstAttribute="bottom" secondItem="oQH-Zi-qdC" secondAttribute="bottom" id="kTk-jj-g9u"/>
