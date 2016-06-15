@@ -154,7 +154,7 @@ UINavigationControllerDelegate
     [_coverView sd_setImageWithURL:[NSURL URLWithString:coverUrl] completed:
      ^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
          __strong __typeof__(self)strongSelf = weakSelf;
-         strongSelf.coverView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
+         strongSelf.coverView.image = [image blurredImageWithRadius:20.0f iterations:10 tintColor:[UIColor blackColor]];
      }];
 }
 
