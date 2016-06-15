@@ -114,6 +114,7 @@
 		CD160F9A1CD05CD700DF4164 /* HXDiscoveryLiveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F951CD05CD700DF4164 /* HXDiscoveryLiveBar.m */; };
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
+		CD23A1CA1D1104BE0061E825 /* D-MusicEntry.gif in Resources */ = {isa = PBXBuildFile; fileRef = CD23A1C91D1104BE0061E825 /* D-MusicEntry.gif */; };
 		CD2EC4E61D016BDA0065CD4A /* HXLiveCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2EC4E51D016BDA0065CD4A /* HXLiveCommentViewController.m */; };
 		CD3D1C071D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3D1C061D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m */; };
 		CD3D1C0A1D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3D1C091D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m */; };
@@ -618,6 +619,7 @@
 		CD2367AB1CA93D19002C8233 /* HXMeAttentionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeAttentionCell.m; sourceTree = "<group>"; };
 		CD2367AD1CA93D51002C8233 /* HXMeAttentionContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeAttentionContainerCell.h; sourceTree = "<group>"; };
 		CD2367AE1CA93D51002C8233 /* HXMeAttentionContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeAttentionContainerCell.m; sourceTree = "<group>"; };
+		CD23A1C91D1104BE0061E825 /* D-MusicEntry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "D-MusicEntry.gif"; sourceTree = "<group>"; };
 		CD2949C21CA28A3500CA3C3F /* UIButton+HXIBnspectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+HXIBnspectable.h"; sourceTree = "<group>"; };
 		CD2949C31CA28A3500CA3C3F /* UIButton+HXIBnspectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+HXIBnspectable.m"; sourceTree = "<group>"; };
 		CD2949C41CA28A3500CA3C3F /* UILabel+HXIBnsepectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HXIBnsepectable.h"; sourceTree = "<group>"; };
@@ -1590,6 +1592,15 @@
 			path = Attention;
 			sourceTree = "<group>";
 		};
+		CD23A1C81D1104B20061E825 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				CD23A1C91D1104BE0061E825 /* D-MusicEntry.gif */,
+			);
+			name = Animation;
+			path = Resource/Animation;
+			sourceTree = "<group>";
+		};
 		CD2949C01CA28A3500CA3C3F /* HXIBKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -2216,6 +2227,7 @@
 		CD74089E1C99506C00950A50 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				CD23A1C81D1104B20061E825 /* Animation */,
 				CD74089F1C99508B00950A50 /* UI */,
 				CD8A9A781C9906CA00698DE9 /* Main.storyboard */,
 				CD8A9A7D1C9906CA00698DE9 /* LaunchScreen.storyboard */,
@@ -3186,6 +3198,7 @@
 				CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */,
 				CD79612C1CBE594C004CC661 /* HXAlbumsBottomBar.xib in Resources */,
 				CD79612D1CBE594C004CC661 /* HXPlayBottomBar.xib in Resources */,
+				CD23A1CA1D1104BE0061E825 /* D-MusicEntry.gif in Resources */,
 				CD79612E1CBE594C004CC661 /* Profile.storyboard in Resources */,
 				CD79612F1CBE594C004CC661 /* HXWatchLiveBottomBar.xib in Resources */,
 				CDA394A51CFEEB2600F56A41 /* HXNoNetworkView.xib in Resources */,

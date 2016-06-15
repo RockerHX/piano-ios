@@ -30,10 +30,9 @@ typedef NS_ENUM(NSUInteger, HXDiscoveryTopBarAction) {
 
 @property (weak, nonatomic) IBOutlet       id  <HXDiscoveryTopBarDelegate>delegate;
 
-@property (weak, nonatomic) IBOutlet UIButton *profileButton;
-@property (weak, nonatomic) IBOutlet UIButton *musicButton;
+@property (weak, nonatomic) IBOutlet    UIButton *profileButton;
+@property (weak, nonatomic) IBOutlet UIImageView *playerEntry;
 
 - (IBAction)profileButtonPressed;
-- (IBAction)musicButtonPressed;
 
 @end
