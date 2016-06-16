@@ -197,7 +197,7 @@ HXLiveAlbumViewDelegate
 
 - (void)showLoadingHUD {
     if (!_hud) {
-        _hud = [[BFRadialWaveHUD alloc] initWithView:self.view
+        _hud = [[BFRadialWaveHUD alloc] initWithView:_liveView
                                           fullScreen:YES
                                              circles:BFRadialWaveHUD_DefaultNumberOfCircles
                                          circleColor:nil
