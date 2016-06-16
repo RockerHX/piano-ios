@@ -25,6 +25,8 @@
 #import "HXLiveModel.h"
 #import "BFRadialWaveHUD.h"
 #import "WebSocketMgr.h"
+#import "UserSetting.h"
+#import "BlocksKit+UIKit.h"
 
 
 @interface HXDiscoveryViewController () <
@@ -242,6 +244,21 @@ UINavigationControllerDelegate
     }];
 }
 
+- (void)showLiveWithMode:(HXDiscoveryModel *)model {
+    [self pauseMusic];
+    UINavigationController *watchLiveNavigationController = nil;
+    if (model.horizontal) {
+        watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+    } else {
+        watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    }
+    
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+    watchLiveViewController.delegate = self;
+    watchLiveViewController.roomID = model.roomID;
+    [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+}
+
 #pragma mark - HXDiscoveryTopBarDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     [self hiddenNavigationBar];
@@ -287,18 +304,17 @@ UINavigationControllerDelegate
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
-            [self pauseMusic];
-			UINavigationController *watchLiveNavigationController = nil;
-			if (model.horizontal) {
-				watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
-			} else {
-				watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-			}
-
-            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
-            watchLiveViewController.delegate = self;
-            watchLiveViewController.roomID = model.roomID;
-            [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+            if (![[WebSocketMgr standard] isWifiNetwork]) {
+                if ([UserSetting playWith3G]) {
+                    [self showLiveWithMode:model];
+                } else {
+                    [UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:@"当前非WIFI状态，是否使用流量继续观看？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"我是土豪"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                        if (buttonIndex != alertView.cancelButtonIndex) {
+                            [self showLiveWithMode:model];
+                        }
+                    }];
+                }
+            }
             break;
         }
         case HXDiscoveryContainerActionShowStation: {
