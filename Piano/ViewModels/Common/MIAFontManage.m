@@ -307,6 +307,18 @@
         return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor blackColor]);
     }
     
+    //MARK: 红包
+    if (type == MIAFontType_RedEnvelope_Title) {
+        //红包的标题
+        return JOFontsMake([UIFont systemFontOfSize:34. weight:UIFontWeightBold], JORGBCreate(255., 236., 161., 1.));
+    }else if (type == MIAFontType_RedEnvelope_Tip){
+        //红包的提示
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightBold], JORGBCreate(255., 236., 161., 1.));
+    }else if (type == MIAFontType_RedEnveLope_ButtonTitle){
+        //按钮的标题
+        return JOFontsMake([UIFont systemFontOfSize:20. weight:UIFontWeightRegular], JORGBCreate(235. ,58. ,87. , 1.)); //235,58,87
+    }
+    
     return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor blackColor]);
 //    return JOFontMake(kMIAFontRegular, [UIColor blackColor], 17.);
 }

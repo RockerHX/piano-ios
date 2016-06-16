@@ -107,6 +107,11 @@ typedef NS_ENUM(NSUInteger, MIAFontType) {
     MIAFontType_Income_Tip,//提示
     MIAFontType_Income_Cell_Title,//标题
     MIAFontType_Income_Cell_Content,//cell的内容
+    
+    //MARK: 红包
+    MIAFontType_RedEnvelope_Title,//红包的标题
+    MIAFontType_RedEnvelope_Tip,//红包的提示
+    MIAFontType_RedEnveLope_ButtonTitle,//按钮的标题
 };
 
 

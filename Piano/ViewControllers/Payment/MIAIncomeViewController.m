@@ -14,7 +14,13 @@
 static CGFloat const kIncomeNavBarHeight = 50.;//Bar的高度
 static CGFloat const kIncomeHeadViewHeight = 150.;//head的高度
 
-//static CGFloat const kInComeMoneyTipTopSpaceDistance = 
+static CGFloat const kIncomeMoneyTipTopSpaceDistance = 20.;//头部的间距大小.
+static CGFloat const kIncomeMoneyTipToMoneySpaceDistance = 20.;//提示与金额之间的间距大小
+static CGFloat const kIncomeMoneyToTipSpaceDistance = 20.;//金额与底部的提示之间的间距大小
+static CGFloat const kIncomeTipBottomSpaceDistance = 10.;  //提示与底部之间的间距大小
+
+static NSString *const kMoneyTipString = @"可提现的金额:";
+static NSString *const kIncomeTipString = @"温馨提示:可使用电脑端登录www.miamusic.com提现";
 
 @interface MIAIncomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -73,11 +79,34 @@ static CGFloat const kIncomeHeadViewHeight = 150.;//head的高度
     [JOAutoLayout autoLayoutWithHeight:kIncomeHeadViewHeight selfView:_headView superView:self.view];
     
     UILabel *moneyTipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Income_MoneyTip]];
-    [moneyTipLabel setText:@"可提现的金额:"];
+    [moneyTipLabel setText:kMoneyTipString];
     [moneyTipLabel setTextAlignment:NSTextAlignmentCenter];
     [_headView addSubview:moneyTipLabel];
     
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:kIncomeMoneyTipTopSpaceDistance selfView:moneyTipLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:moneyTipLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:moneyTipLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithHeight:[moneyTipLabel sizeThatFits:JOMAXSize].height selfView:moneyTipLabel superView:_headView];
     
+    self.moneyLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Income_Money]];
+    [_moneyLabel setText:@" "];
+    [_moneyLabel setTextAlignment:NSTextAlignmentCenter];
+    [_headView addSubview:_moneyLabel];
+    
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_moneyLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_moneyLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithTopView:moneyTipLabel distance:kIncomeMoneyTipToMoneySpaceDistance selfView:_moneyLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithHeight:[_moneyLabel sizeThatFits:JOMAXSize].height selfView:_moneyLabel superView:_headView];
+    
+    UILabel *tipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Income_Tip]];
+    [tipLabel setText:kIncomeTipString];
+    [tipLabel setTextAlignment:NSTextAlignmentCenter];
+    [_headView addSubview:tipLabel];
+    
+    [JOAutoLayout autoLayoutWithTopView:_moneyLabel distance:kIncomeMoneyToTipSpaceDistance selfView:tipLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:tipLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:tipLabel superView:_headView];
+    [JOAutoLayout autoLayoutWithHeight:[tipLabel sizeThatFits:JOMAXSize].height selfView:tipLabel superView:_headView];
 }
 
 - (void)createIncomeTableView{

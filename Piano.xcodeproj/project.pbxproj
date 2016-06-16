@@ -47,6 +47,7 @@
 		42529E031CF6E1A3001F594B /* MIASettingContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529E021CF6E1A3001F594B /* MIASettingContentViewController.m */; };
 		42529E061CF6E56E001F594B /* MIASettingContentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529E051CF6E56E001F594B /* MIASettingContentViewModel.m */; };
 		42529E091CF70C27001F594B /* MIANavBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42529E081CF70C27001F594B /* MIANavBarView.m */; };
+		42812EF31D1244C10055FC2B /* MIARedEnvelopeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42812EF21D1244C10055FC2B /* MIARedEnvelopeView.m */; };
 		42984AFC1CDAEF84004F00D5 /* NSObject+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */; };
 		42984AFE1CDAEF84004F00D5 /* NSString+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984ADE1CDAEF84004F00D5 /* NSString+JOExtend.m */; };
 		42984B001CDAEF84004F00D5 /* UIColor+JOExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 42984AE01CDAEF84004F00D5 /* UIColor+JOExtend.m */; };
@@ -462,6 +463,8 @@
 		42529E051CF6E56E001F594B /* MIASettingContentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIASettingContentViewModel.m; sourceTree = "<group>"; };
 		42529E071CF70C27001F594B /* MIANavBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIANavBarView.h; sourceTree = "<group>"; };
 		42529E081CF70C27001F594B /* MIANavBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIANavBarView.m; sourceTree = "<group>"; };
+		42812EF11D1244C10055FC2B /* MIARedEnvelopeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIARedEnvelopeView.h; sourceTree = "<group>"; };
+		42812EF21D1244C10055FC2B /* MIARedEnvelopeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIARedEnvelopeView.m; sourceTree = "<group>"; };
 		42984ADB1CDAEF84004F00D5 /* NSObject+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JOExtend.h"; sourceTree = "<group>"; };
 		42984ADC1CDAEF84004F00D5 /* NSObject+JOExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JOExtend.m"; sourceTree = "<group>"; };
 		42984ADD1CDAEF84004F00D5 /* NSString+JOExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JOExtend.h"; sourceTree = "<group>"; };
@@ -1281,6 +1284,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		42812EF01D12449D0055FC2B /* RedEnvelope */ = {
+			isa = PBXGroup;
+			children = (
+				42812EF11D1244C10055FC2B /* MIARedEnvelopeView.h */,
+				42812EF21D1244C10055FC2B /* MIARedEnvelopeView.m */,
+			);
+			path = RedEnvelope;
+			sourceTree = "<group>";
+		};
 		42984AD91CDAEF84004F00D5 /* JO */ = {
 			isa = PBXGroup;
 			children = (
@@ -1403,6 +1415,7 @@
 		429CC1E01CE03CD2004BCC0C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				42812EF01D12449D0055FC2B /* RedEnvelope */,
 				CDCB8CED1CFC316800F78CE3 /* StaticGift */,
 				CD572DD31CF69A8B00CCEC30 /* DynamicGift */,
 				CDE016E11CE309C6005645D5 /* SectorSlider */,
@@ -3489,6 +3502,7 @@
 				CDDC383A1CEB1B3500328A17 /* HXBarrageModel.m in Sources */,
 				CD7960E71CBE594C004CC661 /* HXRecordLiveViewModel.m in Sources */,
 				42D326711D0E4D0A00D3DD65 /* MIAHostProfileModel.m in Sources */,
+				42812EF31D1244C10055FC2B /* MIARedEnvelopeView.m in Sources */,
 				429E50111CE46DDE0008CA85 /* MIAAlbumViewModel.m in Sources */,
 				CD68879F1CF54FCE0081B2BD /* HXLiveCommentBarrageCell.m in Sources */,
 				CD7960E81CBE594C004CC661 /* HXAppConstants.m in Sources */,
