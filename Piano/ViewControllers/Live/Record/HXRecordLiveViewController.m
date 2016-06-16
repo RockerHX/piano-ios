@@ -31,7 +31,7 @@
 #import "HXStaticGiftView.h"
 #import "UIConstants.h"
 #import "MIAInfoLog.h"
-
+#import "NSString+IsNull.h"
 
 @interface HXRecordLiveViewController () <
 ZegoLiveApiDelegate,
@@ -298,6 +298,10 @@ static CGFloat AlbumViewWidth = 60.0f;
 
 - (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
     NSLog(@"%s, stream: %@", __func__, streamID);
+	if ([NSString isNull:_viewModel.model.streamAlias]) {
+		_viewModel.model.streamAlias = streamID;
+	}
+
     [_anchorView startRecordTime];
     [[HXZegoAVKitManager manager] startLive];
 }
