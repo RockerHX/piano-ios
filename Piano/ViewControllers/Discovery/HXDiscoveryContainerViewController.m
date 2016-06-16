@@ -67,7 +67,7 @@ HXDiscoveryLiveCellDelegate
 #pragma mark - Private Methods
 - (void)endLoad {
     [self.collectionView reloadData];
-    [self performSelector:@selector(previewFirstCell) withObject:nil afterDelay:1.0f];
+    [self performSelector:@selector(previewFirstCell) withObject:nil afterDelay:0.2f];
 }
 
 - (void)previewFirstCell {
@@ -91,8 +91,6 @@ HXDiscoveryLiveCellDelegate
 #pragma mark - Scroll View Delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     HXCollectionViewLayout *layout = (HXCollectionViewLayout *)self.collectionView.collectionViewLayout;
-//    NSLog(@"%@", @(layout.indexPath.row));
-    
     NSIndexPath *indexPath = layout.indexPath;
     [self previewAtIndexPath:indexPath];
     
@@ -100,9 +98,9 @@ HXDiscoveryLiveCellDelegate
     if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
         [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[index]];
     }
-
-#warning andy
-	if (_viewModel.discoveryList[indexPath.row].type == HXDiscoveryModelTypeProfile) {
+    
+    HXCollectionViewLayoutStyle style = [self collectionView:self.collectionView layout:layout styleForItemAtIndexPath:indexPath];
+    if (style == HXCollectionViewLayoutStylePetty) {
 		if (scrollView.contentOffset.x == 20.0f) {
 			if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
 				[_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[index]];

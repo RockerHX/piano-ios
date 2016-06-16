@@ -18,6 +18,8 @@
 
 // MusicMgr
 #import "UserSetting.h"
+#import "WebSocketMgr.h"
+#import "BlocksKit+UIKit.h"
 #import "MusicMgr.h"
 #import "JPUSHService.h"
 #import "NSString+IsNull.h"
@@ -60,7 +62,7 @@
     [UMSocialData setAppKey:UMengAPPKEY];
     //设置微信AppId、appSecret，分享url
     [UMSocialWechatHandler setWXAppId:WeiXinKEY appSecret:WeiXinSecret url:@"http://www.baidu.com"];
-    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 #import "UMSocialSinaSSOHandler.h"
+    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 UMSocialSinaSSOHandler.h
     [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:WeiBoKEY
                                               secret:WeiBoSecret
                                          RedirectURL:WeiBoRedirectUri];
@@ -183,18 +185,34 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 		return;
 	}
 
-	if ([action isEqualToString:PushAction_WatchLive]) {
+    if ([action isEqualToString:PushAction_WatchLive]) {
         NSLog(@"%@ with roomID: %@", action, param1);
-        UINavigationController *watchLiveNavigationController = nil;
-        if ([param2 boolValue]) {
-            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
-        } else {
-            watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+        BOOL horizontal = [param2 boolValue];
+        NSString *roomID = param1;
+        if (![[WebSocketMgr standard] isWifiNetwork]) {
+            if ([UserSetting playWith3G]) {
+                [self showLive:horizontal roomID:roomID];
+            } else {
+                [UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:@"当前非WIFI状态，是否使用流量继续观看？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"我是土豪"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                    if (buttonIndex != alertView.cancelButtonIndex) {
+                        [self showLive:horizontal roomID:roomID];
+                    }
+                }];
+            }
         }
-        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
-        watchLiveViewController.roomID = param1;
-        [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
 	}
+}
+
+- (void)showLive:(BOOL)horizontal roomID:(NSString *)roomID {
+    UINavigationController *watchLiveNavigationController = nil;
+    if (horizontal) {
+        watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+    } else {
+        watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    }
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+    watchLiveViewController.roomID = roomID;
+    [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
 }
 
 @end

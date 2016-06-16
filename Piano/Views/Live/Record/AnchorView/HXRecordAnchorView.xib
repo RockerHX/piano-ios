@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,11 +15,11 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="vdp-PC-K3H" userLabel="Anchor Container" customClass="HXIBView">
+        <view contentMode="scaleToFill" id="vdp-PC-K3H" userLabel="Anchor Container">
             <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuj-VO-Lk7" customClass="HXIBButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuj-VO-Lk7">
                     <rect key="frame" x="3" y="3" width="34" height="34"/>
                     <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -36,12 +36,12 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkY-KR-sXU">
-                    <rect key="frame" x="45" y="5" width="63" height="31"/>
+                    <rect key="frame" x="45" y="5" width="65" height="31"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7d-ZL-oRp" userLabel="Duration Label">
-                            <rect key="frame" x="0.0" y="0.0" width="63" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="65" height="17"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="63" id="ZV7-oS-Zls"/>
+                                <constraint firstAttribute="width" constant="65" id="623-As-Rhm"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,7 +57,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcQ-qJ-VZU" userLabel="Person Count Label">
-                            <rect key="frame" x="45" y="19" width="18" height="12"/>
+                            <rect key="frame" x="45" y="19" width="20" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -76,9 +76,9 @@
                         <constraint firstItem="T0B-6I-Ucv" firstAttribute="leading" secondItem="gkY-KR-sXU" secondAttribute="leading" id="odd-86-1Gc"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isA-Nb-OqM" customClass="HXIBView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isA-Nb-OqM">
                     <rect key="frame" x="114" y="12" width="8" height="8"/>
-                    <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="isA-Nb-OqM" secondAttribute="height" multiplier="1:1" id="Tbb-Hj-ojD"/>
                         <constraint firstAttribute="width" constant="8" id="WzG-yl-wSG"/>
@@ -90,12 +90,12 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="gkY-KR-sXU" firstAttribute="centerY" secondItem="vdp-PC-K3H" secondAttribute="centerY" id="IT7-0l-8w8"/>
                 <constraint firstAttribute="trailing" secondItem="isA-Nb-OqM" secondAttribute="trailing" constant="16" id="J2y-ah-1Vb"/>
                 <constraint firstItem="Iuj-VO-Lk7" firstAttribute="centerY" secondItem="vdp-PC-K3H" secondAttribute="centerY" id="MkP-zR-JMd"/>
-                <constraint firstItem="isA-Nb-OqM" firstAttribute="leading" secondItem="gkY-KR-sXU" secondAttribute="trailing" constant="6" id="P2h-yF-akm"/>
+                <constraint firstItem="isA-Nb-OqM" firstAttribute="leading" secondItem="gkY-KR-sXU" secondAttribute="trailing" constant="4" id="P2h-yF-akm"/>
                 <constraint firstItem="Iuj-VO-Lk7" firstAttribute="leading" secondItem="vdp-PC-K3H" secondAttribute="leading" constant="3" id="ZVb-6n-lww"/>
                 <constraint firstItem="isA-Nb-OqM" firstAttribute="bottom" secondItem="vdp-PC-K3H" secondAttribute="centerY" id="obM-ff-bRz"/>
                 <constraint firstItem="gkY-KR-sXU" firstAttribute="leading" secondItem="Iuj-VO-Lk7" secondAttribute="trailing" constant="8" id="wVS-CH-O8f"/>
@@ -107,7 +107,7 @@
                     <real key="value" value="20"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="124.5" y="322"/>
+            <point key="canvasLocation" x="141" y="322"/>
         </view>
     </objects>
 </document>
