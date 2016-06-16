@@ -11,6 +11,9 @@
 #import "AppDelegate.h"
 #import "MusicMgr.h"
 #import "MIAProfileViewModel.h"
+#import "WebSocketMgr.h"
+#import "UserSetting.h"
+#import "BlocksKit+UIKit.h"
 
 static CGFloat const kShowImageToTitleDistanceSpace = 9.;
 static CGFloat const kTitleTopDistanceSpace = 10.;
@@ -86,15 +89,17 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
 }
 
 #pragma mark - tag action
-- (void)tapAction:(UIGestureRecognizer *)gesture {
-	UINavigationController *watchLiveNavigationController = nil;
-	if (_liveModel.horizontal) {
-		watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
-	} else {
-		watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-	}
 
-	HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+- (void)enterLiveViewController{
+
+    UINavigationController *watchLiveNavigationController = nil;
+    if (_liveModel.horizontal) {
+        watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+    } else {
+        watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    }
+    
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
     watchLiveViewController.roomID = _liveModel.liveRoomID;
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [(UINavigationController *)[[delegate window] rootViewController] presentViewController:watchLiveNavigationController animated:YES completion:^{
@@ -102,6 +107,21 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
             [[MusicMgr standard] pause];
         }
     }];
+}
+
+- (void)tapAction:(UIGestureRecognizer *)gesture {
+	
+    if (![[WebSocketMgr standard] isWifiNetwork]) {
+        if ([UserSetting playWith3G]) {
+            [self enterLiveViewController];
+        } else {
+            [UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:@"当前非WIFI状态，是否使用流量继续观看？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"我是土豪"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex != alertView.cancelButtonIndex) {
+                    [self enterLiveViewController];
+                }
+            }];
+        }
+    }
 }
 
 @end
