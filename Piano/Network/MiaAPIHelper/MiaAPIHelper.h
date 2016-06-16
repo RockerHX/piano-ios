@@ -396,4 +396,15 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
            completeBlock:(MiaRequestCompleteBlock)completeBlock
             timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
+#pragma mark - 我的收益
+
+/**
+ *  我的收益.
+ *
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)getIncomeWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                      timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 @end

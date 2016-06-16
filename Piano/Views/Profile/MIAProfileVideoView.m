@@ -11,6 +11,9 @@
 #import "MIAVideoPlayViewController.h"
 #import "MIAVideoModel.h"
 #import "MiaAPIHelper.h"
+#import "WebSocketMgr.h"
+#import "UserSetting.h"
+#import "BlocksKit+UIKit.h"
 
 CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
 
@@ -112,18 +115,18 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
 
 #pragma mark - tag action
 
-- (void)tapAction:(UIGestureRecognizer *)gesture{
-    
+- (void)enterVideoViewController{
+
     //视频统计.
     [MiaAPIHelper videoCountWithID:_videoModel.id completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         
         if (success) {
-//            JOLog(@"视频统计成功");
+            //            JOLog(@"视频统计成功");
             NSString *viewCount = [NSString stringWithFormat:@"%ld",(long)[JOConvertStringToNormalString(_videoModel.playCnt) integerValue] +1];
             _videoModel.playCnt = viewCount;
             [_numberlabel setText:viewCount];
         }else{
-//            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
+            //            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
         }
         
     } timeoutBlock:^(MiaRequestItem *requestItem) {
@@ -136,6 +139,21 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
     [(UINavigationController *)[[delegate window] rootViewController] presentViewController:videoViewController animated:YES completion:^{
         
     }];
+}
+
+- (void)tapAction:(UIGestureRecognizer *)gesture{
+    
+    if (![[WebSocketMgr standard] isWifiNetwork]) {
+        if ([UserSetting playWith3G]) {
+            [self enterVideoViewController];
+        } else {
+            [UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:@"当前非WIFI状态，是否使用流量继续观看？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"我是土豪"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex != alertView.cancelButtonIndex) {
+                    [self enterVideoViewController];
+                }
+            }];
+        }
+    }
 }
 
 @end

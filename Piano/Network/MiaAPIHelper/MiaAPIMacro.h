@@ -173,3 +173,6 @@ static NSString * const MiaAPICommand_Report                = @"User.Post.Report
 static NSString * const MiaAPICommand_VideoCount            = @"Musician.Video.Play";//视频统计
 static NSString * const MiaAPIKey_VideoID                   = @"id"; //视频的id
 
+//Income
+static NSString * const MiaAPICommand_Income                = @"Musician.Get.Income";//我的收益
+

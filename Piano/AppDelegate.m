@@ -111,11 +111,6 @@
 	// 切换回前台主动取消被打断状态
 	[MusicMgr standard].isInterruption = NO;
 
-	// 设置后台播放模式
-	AVAudioSession *audioSession=[AVAudioSession sharedInstance];
-	[audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-	[audioSession setActive:YES error:nil];
-
 	[JPUSHService resetBadge];
 	[application setApplicationIconBadgeNumber:0];
 }

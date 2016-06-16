@@ -84,7 +84,7 @@ CGFloat const kHostProfileViewDefaultCellHeight = 58.;//默认的cell的高度
     
     if([[HXUserSession session] role] == HXUserRoleAnchor){
     
-        [_hostProfileDataArray addObject:@[@"我的M币(充值)",@"我的购买记录"]];//,@"我的收益"
+        [_hostProfileDataArray addObject:@[@"我的M币(充值)",@"我的购买记录",@"我的收益"]];//
     }else{
         [_hostProfileDataArray addObject:@[@"我的M币(充值)",@"我的购买记录"]];
     }

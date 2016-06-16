@@ -23,6 +23,8 @@
 #import "UIImageView+WebCache.h"
 #import "MIAHostProfileViewModel.h"
 
+#import "MIARedEnvelopeView.h"
+
 @interface MIAHostProfileViewController ()<UITableViewDataSource, UITableViewDelegate>{
 
     CGFloat headHeight;
@@ -397,7 +399,6 @@
         
         return kHostProfileViewDefaultCellHeight;
     }
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -419,12 +420,16 @@
             MIAPayHistoryViewController *payHistoryViewController = [MIAPayHistoryViewController new];
             [self.navigationController pushViewController:payHistoryViewController animated:YES];
             
-//            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
-//            [self.navigationController pushViewController:incomeViewController animated:YES];
+//            MIARedEnvelopeView *redEvenlopeView = [MIARedEnvelopeView newAutoLayoutView];
+//            [redEvenlopeView showInView:nil receiveHandler:^{
+//                
+//                [redEvenlopeView hidden];
+//            }];
+            
         }else if (indexPath.row == 2){
             //我的收益
-//            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
-//            [self.navigationController pushViewController:incomeViewController animated:YES];
+            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
+            [self.navigationController pushViewController:incomeViewController animated:YES];
         }
     }
 }

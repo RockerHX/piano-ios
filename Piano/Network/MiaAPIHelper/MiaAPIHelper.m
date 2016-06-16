@@ -896,4 +896,17 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
+#pragma mark - 我的收益
+
++ (void)getIncomeWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                      timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock{
+
+    NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Income
+                                                               parameters:dictValues
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 @end
