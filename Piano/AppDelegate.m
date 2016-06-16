@@ -193,7 +193,7 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
             if ([UserSetting playWith3G]) {
                 [self showLive:horizontal roomID:roomID];
             } else {
-                [UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:@"当前非WIFI状态，是否使用流量继续观看？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"我是土豪"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+				[UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                     if (buttonIndex != alertView.cancelButtonIndex) {
                         [self showLive:horizontal roomID:roomID];
                     }

@@ -16,6 +16,11 @@ NSString * const UserDefaultsKey_PlayWith3G			= @"PlayWith3G";
 NSString * const UserDefaultsKey_AutoPlay			= @"AutoPlay";
 NSString * const kLocalFilePrefix 					= @"file://";
 
+NSString * const k3GPlayTitle	 					= @"网络连接提醒";
+NSString * const k3GPlayMessage	 					= @"您现在使用的是运营商网络，继续播放会产生流量费用。是否允许在2G/3G/4G网络下播放？";
+NSString * const k3GPlayAllow		 				= @"允许播放";
+NSString * const k3GPlayCancel		 				= @"取消";
+
 @interface UserSetting()
 
 @end
