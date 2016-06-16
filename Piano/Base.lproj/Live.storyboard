@@ -1513,7 +1513,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GXe-Mp-O3K" userLabel="Avatar Icon" customClass="HXIBImageView">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GXe-Mp-O3K" userLabel="Avatar Icon">
                                                             <rect key="frame" x="51" y="18" width="36" height="36"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -1750,6 +1750,6 @@
         <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O5M-18-fAC"/>
+        <segue reference="HeX-r3-laS"/>
     </inferredMetricsTieBreakers>
 </document>
