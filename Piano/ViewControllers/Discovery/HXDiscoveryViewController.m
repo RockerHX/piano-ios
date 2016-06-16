@@ -10,7 +10,6 @@
 #import "HXDiscoveryContainerViewController.h"
 #import "HXRecordLiveViewController.h"
 #import "HXWatchLiveLandscapeViewController.h"
-#import "HXWatchLiveLandscapeViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
 #import <MediaPlayer/MediaPlayer.h>
@@ -31,6 +30,7 @@
 @interface HXDiscoveryViewController () <
 HXDiscoveryTopBarDelegate,
 HXDiscoveryContainerDelegate,
+HXWatchLiveViewControllerDelegate,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate
 >
@@ -296,6 +296,7 @@ UINavigationControllerDelegate
 			}
 
             HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+            watchLiveViewController.delegate = self;
             watchLiveViewController.roomID = model.roomID;
             [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
             break;
@@ -307,6 +308,11 @@ UINavigationControllerDelegate
             break;
         }
     }
+}
+
+#pragma mark - HXWatchLiveViewControllerDelegate Methods
+- (void)watchLiveViewControllerLiveEnded:(HXWatchLiveViewController *)viewController {
+    [self startFetchList];
 }
 
 #pragma mark - UIImagePickerControllerDelegate Methods

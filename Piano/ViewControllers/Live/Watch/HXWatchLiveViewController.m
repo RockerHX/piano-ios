@@ -155,6 +155,7 @@ HXLiveAlbumViewDelegate
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
+        [self hiddenLoadingHUD];
     } completed:^{
         @strongify(self)
         [self fetchDataFinfished];
@@ -236,6 +237,10 @@ HXLiveAlbumViewDelegate
     liveEndViewController.isAnchor = NO;
     liveEndViewController.liveModel = _viewModel.model;
     [self presentViewController:liveEndViewController animated:YES completion:nil];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(watchLiveViewControllerLiveEnded:)]) {
+        [_delegate watchLiveViewControllerLiveEnded:self];
+    }
 }
 
 - (void)fetchDataFinfished {
@@ -305,7 +310,7 @@ HXLiveAlbumViewDelegate
         assert(b);
         NSLog(@"%s, ret: %d", __func__, ret);
     } else {
-        [self showErrorLoading];
+        [self hiddenLoadingHUD];
     }
 }
 
@@ -323,10 +328,12 @@ HXLiveAlbumViewDelegate
 
 - (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
     NSLog(@"%s, stream: %@", __func__, streamID);
+    [self hiddenLoadingHUD];
 }
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, stream: %@, err: %u", __func__, streamID, err);
+    [self hiddenLoadingHUD];
 }
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
