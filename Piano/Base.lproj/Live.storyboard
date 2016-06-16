@@ -597,7 +597,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zry-WZ-1Kc" userLabel="Summary Container">
-                                        <rect key="frame" x="40" y="109" width="240" height="251"/>
+                                        <rect key="frame" x="40" y="108" width="240" height="252"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muf-ce-SGh" userLabel="Avatar Container">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="120"/>
@@ -637,20 +637,20 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKZ-Y9-PNJ" userLabel="Top Line">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="1"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Mwo-1h-wty"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直播结束" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrz-jO-6uL">
-                                                        <rect key="frame" x="86" y="21" width="68" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="74" y="17" width="92" height="28"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfH-vf-k01" userLabel="Bottom Line">
                                                         <rect key="frame" x="0.0" y="61" width="240" height="1"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="aSs-JR-xpf"/>
                                                         </constraints>
@@ -670,19 +670,19 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9j-fj-edH" userLabel="Count Container">
-                                                <rect key="frame" x="0.0" y="210" width="240" height="41"/>
+                                                <rect key="frame" x="0.0" y="210" width="240" height="42"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZj-2x-OOT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="41"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwf-D9-Wi4">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="26"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="27"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总观看人数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywf-If-ngo">
-                                                                <rect key="frame" x="0.0" y="26" width="80" height="15"/>
+                                                                <rect key="frame" x="0.0" y="27" width="80" height="15"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -700,16 +700,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERf-LU-YZc">
-                                                        <rect key="frame" x="80" y="0.0" width="80" height="41"/>
+                                                        <rect key="frame" x="80" y="0.0" width="80" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txE-Oi-F8q">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="26"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="27"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增粉丝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGr-gd-lhN">
-                                                                <rect key="frame" x="0.0" y="26" width="80" height="15"/>
+                                                                <rect key="frame" x="0.0" y="27" width="80" height="15"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -727,16 +727,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2Y-2Y-cBS">
-                                                        <rect key="frame" x="160" y="0.0" width="80" height="41"/>
+                                                        <rect key="frame" x="160" y="0.0" width="80" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gW6-ly-FlD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="26"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="27"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增M币" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lg3-XD-yNH">
-                                                                <rect key="frame" x="0.0" y="26" width="80" height="15"/>
+                                                                <rect key="frame" x="0.0" y="27" width="80" height="15"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
