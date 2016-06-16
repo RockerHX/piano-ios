@@ -40,7 +40,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>48</string>
+	<string>49</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weibosdk2.5</string>
