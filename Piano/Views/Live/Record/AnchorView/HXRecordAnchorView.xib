@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuj-VO-Lk7" customClass="HXIBButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuj-VO-Lk7">
                     <rect key="frame" x="3" y="3" width="34" height="34"/>
                     <color key="backgroundColor" red="0.043137254899999998" green="0.81568627449999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -39,9 +39,9 @@
                     <rect key="frame" x="45" y="5" width="65" height="31"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7d-ZL-oRp" userLabel="Duration Label">
-                            <rect key="frame" x="0.0" y="0.0" width="63" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="65" height="17"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="63" id="ZV7-oS-Zls"/>
+                                <constraint firstAttribute="width" constant="65" id="623-As-Rhm"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -107,7 +107,7 @@
                     <real key="value" value="20"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="124.5" y="322"/>
+            <point key="canvasLocation" x="141" y="322"/>
         </view>
     </objects>
 </document>
