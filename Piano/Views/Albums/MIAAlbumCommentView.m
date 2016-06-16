@@ -13,8 +13,9 @@
 #import "JOBaseSDK.h"
 #import "MIACommentModel.h"
 
-static CGFloat const kImageToLabelSpaceDistance = 10.;//图片与label之间的间距
-static CGFloat const kImageWidth = 36.;//图片的宽度
+CGFloat const kImageToLabelSpaceDistance = 10.;//图片与label之间的间距
+CGFloat const kImageWidth = 42.;//图片的宽度
+CGFloat const kCommentContentRightSpaceDistance = 10.;//评论内容右间距大小.
 
 @interface MIAAlbumCommentView(){
 
@@ -53,7 +54,7 @@ static CGFloat const kImageWidth = 36.;//图片的宽度
     [_headImageView setBackgroundColor:[UIColor grayColor]];
     [self addSubview:_headImageView];
     
-    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_headImageView superView:self];
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_headImageView superView:self];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_headImageView superView:self];
     [JOAutoLayout autoLayoutWithSize:JOSize(kImageWidth, kImageWidth) selfView:_headImageView superView:self];
     
@@ -62,8 +63,9 @@ static CGFloat const kImageWidth = 36.;//图片的宽度
     [self addSubview:_nickNameLabel];
     
     [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:kImageToLabelSpaceDistance selfView:_nickNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_nickNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_nickNameLabel superView:self];
+//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_nickNameLabel superView:self];
+    [JOAutoLayout autoLayoutWithTopYView:_headImageView distance:3. selfView:_nickNameLabel superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kCommentContentRightSpaceDistance selfView:_nickNameLabel superView:self];
     [JOAutoLayout autoLayoutWithHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height selfView:_nickNameLabel superView:self];
     
     self.commentLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Content]];
@@ -108,7 +110,7 @@ static CGFloat const kImageWidth = 36.;//图片的宽度
         [_timeLabel setText:[_commentModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonthDay]];
         
         [JOAutoLayout removeAutoLayoutWithHeightSelfView:_commentLabel superView:self];
-        [JOAutoLayout autoLayoutWithHeight:[_commentLabel sizeThatFits:JOSize(viewWidth, CGFLOAT_MAX)].height+4 selfView:_commentLabel superView:self];
+        [JOAutoLayout autoLayoutWithHeight:[_commentLabel sizeThatFits:JOSize(viewWidth, CGFLOAT_MAX)].height selfView:_commentLabel superView:self];
         
     }else{
     

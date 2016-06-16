@@ -31,4 +31,18 @@ UIKIT_EXTERN CGFloat const kBaseCellHeadViewHeight;
                                          frame:(CGRect)frame
                                  cellColorType:(BaseCellHeadColorType)type;
 
++ (MIABaseCellHeadView *)cellHeadViewWithImage:(UIImage *)image
+                                         title:(NSString *)title
+                                      tipTitle:(NSString *)tipTitle
+                                         frame:(CGRect)frame
+                                  imageAddSize:(CGFloat)size
+                                 cellColorType:(BaseCellHeadColorType)type;
+
++ (MIABaseCellHeadView *)cellHeadViewWithImage:(UIImage *)image
+                                         title:(NSString *)title
+                                      tipTitle:(NSString *)tipTitle
+                                         frame:(CGRect)frame
+                                  imageOffsetX:(CGFloat)offsetX
+                                 cellColorType:(BaseCellHeadColorType)type;
+
 @end

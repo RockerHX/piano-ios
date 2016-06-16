@@ -16,7 +16,6 @@
 #import "MIAHostRewardAlbumCell.h"
 #import "MIAHostRewardAlbumView.h"
 
-CGFloat const kHostProfileViewHeadHeight = 360.; //头部的高度.
 CGFloat const kHostProfileViewHeadLeftSpaceDistance = 84.;//头像与左边的间距大小
 CGFloat const kHostProfileViewHeadRightSpaceDistance = 84.;//头像与右边的间距大小
 CGFloat const kHostProfileViewHeadTopSpaceDistance = 58.;//头像与头部的间距大小.
@@ -82,7 +81,14 @@ CGFloat const kHostProfileViewDefaultCellHeight = 58.;//默认的cell的高度
     _hostProfileModel = [MIAHostProfileModel mj_objectWithKeyValues:data];
     
     [_hostProfileDataArray removeAllObjects];
-    [_hostProfileDataArray addObject:@[@"我的M币(充值)",@"我的购买记录"]];
+    
+    if([[HXUserSession session] role] == HXUserRoleAnchor){
+    
+        [_hostProfileDataArray addObject:@[@"我的M币(充值)",@"我的购买记录"]];//,@"我的收益"
+    }else{
+        [_hostProfileDataArray addObject:@[@"我的M币(充值)",@"我的购买记录"]];
+    }
+    
     if ([_hostProfileModel.followList count]) {
         [_hostProfileDataArray addObject:[_hostProfileModel.followList JOSeparateArrayWithNumber:4]];
     }else{
@@ -97,7 +103,7 @@ CGFloat const kHostProfileViewDefaultCellHeight = 58.;//默认的cell的高度
 
 #pragma mark - cell height
 
-+ (CGFloat)hostProfileAttentionCellHeightWitWidth:(CGFloat)width{
++ (CGFloat)hostProfileAttentionCellHeightWitWidth:(CGFloat)width topState:(BOOL)state{
 
     CGFloat viewWidth = (width - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - 3*kAttentionViewItemSpaceDistance)/4.;
     
@@ -105,6 +111,9 @@ CGFloat const kHostProfileViewDefaultCellHeight = 58.;//默认的cell的高度
     [label1 setText:@" "];
     CGFloat height1 = [label1 sizeThatFits:JOMAXSize].height;
     
+    if (state) {
+        return viewWidth + kAttentionImageToTitleSpaceDistance+ height1 + 5. + kContentViewInsideBottomSpaceDistance*2;
+    }
     return viewWidth + kAttentionImageToTitleSpaceDistance+ height1 + kContentViewInsideTopSpaceDistance*2 + kContentViewInsideBottomSpaceDistance*2;
 }
 

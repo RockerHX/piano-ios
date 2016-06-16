@@ -123,6 +123,19 @@ CGFloat const kBaseCellHeadViewHeight = 40.;
     [JOAutoLayout autoLayoutWithRightView:_headTipLabel distance:0. selfView:_headLabel superView:_maskView];
 }
 
+- (void)setImageSize:(CGSize)size{
+
+    [JOAutoLayout removeAutoLayoutWithSizeSelfView:_headImageView superView:_maskView];
+    
+    [JOAutoLayout autoLayoutWithSize:size selfView:_headImageView superView:_maskView];
+}
+
+- (void)setImageOffsetX:(CGFloat)offsetX{
+
+    [JOAutoLayout removeAutoLayoutWithLeftSelfView:_headImageView superView:_maskView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10+offsetX selfView:_headImageView superView:_maskView];
+}
+
 //- (nullable UIView *)hitTest:(CGPoint)point withEvent:(nullable UIEvent *)event{
 //
 //    return
@@ -136,7 +149,39 @@ CGFloat const kBaseCellHeadViewHeight = 40.;
 
     MIABaseCellHeadView *headView = [[MIABaseCellHeadView alloc] initWithFrame:frame];
     [headView setHeadImage:image headTitle:title headTipTitle:tipTitle baseCellColorType:type];
+    return headView;
+}
+
++ (MIABaseCellHeadView *)cellHeadViewWithImage:(UIImage *)image
+                                         title:(NSString *)title
+                                      tipTitle:(NSString *)tipTitle
+                                         frame:(CGRect)frame
+                                  imageAddSize:(CGFloat)size
+                                 cellColorType:(BaseCellHeadColorType)type{
+
+    MIABaseCellHeadView *headView = [[MIABaseCellHeadView alloc] initWithFrame:frame];
+    [headView setHeadImage:image headTitle:title headTipTitle:tipTitle baseCellColorType:type];
     
+    if (image) {
+        CGSize imageSize = [image size];
+        [headView setImageSize:JOSize(imageSize.width+size, imageSize.height+size)];
+    }
+    return headView;
+}
+
++ (MIABaseCellHeadView *)cellHeadViewWithImage:(UIImage *)image
+                                         title:(NSString *)title
+                                      tipTitle:(NSString *)tipTitle
+                                         frame:(CGRect)frame
+                                  imageOffsetX:(CGFloat)offsetX
+                                 cellColorType:(BaseCellHeadColorType)type{
+
+    MIABaseCellHeadView *headView = [[MIABaseCellHeadView alloc] initWithFrame:frame];
+    [headView setHeadImage:image headTitle:title headTipTitle:tipTitle baseCellColorType:type];
+    
+    if (image) {
+        [headView setImageOffsetX:offsetX];
+    }
     return headView;
 }
 

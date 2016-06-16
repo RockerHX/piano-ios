@@ -11,6 +11,8 @@
 #import "MIAAlbumDetailModel.h"
 #import "MIAFontManage.h"
 #import "NSString+JOExtend.h"
+#import "MIAAlbumCommentCell.h"
+#import "MIAAlbumCommentView.h"
 
 CGFloat const kAlbumSongCellHeight = 45.;//歌曲的cell的高度
 CGFloat const kAlbumBarViewHeight = 50.;//头部Bar的高度
@@ -243,22 +245,32 @@ NSInteger const kAlbumCommentLimitCount = 10;
         MIACommentModel *commentModel = [[_cellDataArray lastObject] objectAtIndex:index];
         
         CGFloat nickHeight,commentHeight,dateHeight;  //名字 评论 时间的高度
-        CGFloat commentWidth = width - 2*10 - 2*10 - 40. - 15.;
+        CGFloat commentWidth = width -kContentViewLeftSpaceDistance - kContentViewInsideLeftSpaceDistance - kImageWidth - kImageToLabelSpaceDistance - kCommentContentRightSpaceDistance - kContentViewRightSpaceDistance;
         
+        NSString *nickName = @" ";
+        if ([JOConvertStringToNormalString(commentModel.nick) length]) {
+            nickName =JOConvertStringToNormalString(commentModel.nick);
+        }
         UILabel *nickNameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Name]];
-        [nickNameLabel setText:commentModel.nick];
-        nickHeight = [nickNameLabel sizeThatFits:JOMAXSize].height+4.;
+        [nickNameLabel setText:nickName];
+        nickHeight = [nickNameLabel sizeThatFits:JOMAXSize].height;
         
+        NSString *comment = @" ";
+        if ([JOConvertStringToNormalString(commentModel.content) length]) {
+            comment =JOConvertStringToNormalString(commentModel.content);
+        }
         UILabel *commentLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Content]];
         [commentLabel setNumberOfLines:0];
-        [commentLabel setText:commentModel.content];
-        commentHeight = [commentLabel sizeThatFits:JOSize(commentWidth, CGFLOAT_MAX)].height+4.;
+        [commentLabel setText:comment];
+        commentHeight = [commentLabel sizeThatFits:JOSize(commentWidth, CGFLOAT_MAX)].height;
         
         UILabel *dateLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Time]];
         [dateLabel setText:@" "];
         dateHeight = [dateLabel sizeThatFits:JOMAXSize].height;
         
-        return nickHeight + commentHeight + dateHeight + 20.;
+        CGFloat labelHeight = nickHeight + commentHeight + dateHeight;
+        
+        return MAX(labelHeight, kImageWidth) + kContentViewInsideTopSpaceDistance + kContentViewInsideBottomSpaceDistance;
     }
     
     return 0.;

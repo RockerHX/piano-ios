@@ -9,7 +9,6 @@
 #import "MIAViewModel.h"
 #import "MIAHostProfileModel.h"
 
-UIKIT_EXTERN CGFloat const kHostProfileViewHeadHeight;// 头部的高度.
 UIKIT_EXTERN CGFloat const kHostProfileViewHeadLeftSpaceDistance;//头像与左边的间距大小
 UIKIT_EXTERN CGFloat const kHostProfileViewHeadRightSpaceDistance;//头像与右边的间距大小
 UIKIT_EXTERN CGFloat const kHostProfileViewHeadTopSpaceDistance;//头像与头部的间距大小.
@@ -26,7 +25,7 @@ UIKIT_EXTERN CGFloat const kHostProfileViewDefaultCellHeight;//cell默认的高�
  *
  *  @param width view的宽度.
  */
-+ (CGFloat)hostProfileAttentionCellHeightWitWidth:(CGFloat)width;
++ (CGFloat)hostProfileAttentionCellHeightWitWidth:(CGFloat)width topState:(BOOL)state;
 
 /**
  *  获取打赏专辑的cell高度.

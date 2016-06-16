@@ -25,6 +25,8 @@
 #import "CacheHelper.h"
 #import "FXBlurView.h"
 #import "MIACellManage.h"
+#import "AFNetworking.h"
+#import "FileLog.h"
 
 static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 
@@ -43,6 +45,8 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 @property (nonatomic, strong) UIImage *uploadingImage;
 @property (nonatomic, strong) MBProgressHUD *uploadAvatarProgressHUD;
 
+@property (nonatomic, strong) UITapGestureRecognizer *uploadTapGesture;
+
 @property (nonatomic, copy) SettingDataChangeBlock settingDataChangeBlock;
 
 @end
@@ -54,6 +58,9 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [super loadView];
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self loadViewModel];
+    
+    self.uploadTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(uploadLog)];
+    [_uploadTapGesture setNumberOfTapsRequired:3];
     
     [self createCoverImageView];
     [self createNavBarView];
@@ -144,6 +151,42 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     }];
 }
 
+#pragma mark - tap gesture
+
+- (void)uploadLog{
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    [manager POST:@"http://applog.miamusic.com" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSData *act = [@"save" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *key = [@"meweoids1122123**&" dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *platform = [@"iOS" dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSString *logTitle = [NSString stringWithFormat:@"%@\n%@ %@\n",
+                              [UIDevice currentDevice].name,
+                              [UIDevice currentDevice].systemName,
+                              [UIDevice currentDevice].systemVersion];
+        
+        NSMutableData *content = [[NSMutableData alloc] init];
+        [content appendData:[logTitle dataUsingEncoding:NSUTF8StringEncoding]];
+        [content appendData:[[FileLog standard] latestLogs]];
+        
+        [formData appendPartWithFormData:act name:@"act"];
+        [formData appendPartWithFormData:key name:@"key"];
+        [formData appendPartWithFormData:platform name:@"platform"];
+        [formData appendPartWithFormData:[content base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength] name:@"content"];
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [HXAlertBanner showWithMessage:@"喵~" tap:nil];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [HXAlertBanner showWithMessage:@"喵喵喵~" tap:nil];
+    }];
+
+}
+
 #pragma mark - action
 
 - (void)changeNetSwitchState:(id)sender{
@@ -212,7 +255,7 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         //网络开关
         [cell.contentView addSubview:_netSwitch];
         
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-15. selfView:_netSwitch superView:cell.contentView];
+        [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_netSwitch superView:cell.contentView];
         [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_netSwitch superView:cell.contentView];
         [JOAutoLayout autoLayoutWithSize:JOSize(44, 26.) selfView:_netSwitch superView:cell.contentView];
     }
@@ -224,6 +267,10 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     }else{
         [(MIASettingCell *)cell setCellAccessoryImage:[UIImage imageNamed:@"C-ArrowIcon-Right-Gray"]];
 //        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
+    
+    if (section == 2 && row == 1) {
+        [cell addGestureRecognizer:_uploadTapGesture];
     }
     
     /*

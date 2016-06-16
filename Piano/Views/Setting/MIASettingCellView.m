@@ -10,7 +10,7 @@
 #import "JOBaseSDK.h"
 #import "MIAFontManage.h"
 
-static CGFloat const kSettingViewLeftSpaceDistance = 15.;//左边的间距
+static CGFloat const kSettingViewLeftSpaceDistance = 18.;//左边的间距
 static CGFloat const kSettingViewRightSpaceDistance = 14.;//右边的间距.
 
 @interface MIASettingCellView()

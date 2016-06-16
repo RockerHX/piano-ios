@@ -13,7 +13,7 @@
  *
  *  @param height 键盘的高度
  */
-typedef void(^KeyBoardShowBlcok) (CGFloat height);
+typedef void(^KeyBoardShowBlcok) (CGFloat height , BOOL showState);
 
 /**
  *  当输入框的高度需要发生变化的blcok

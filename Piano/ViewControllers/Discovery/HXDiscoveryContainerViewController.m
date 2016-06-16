@@ -100,11 +100,21 @@ HXDiscoveryLiveCellDelegate
     if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
         [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[index]];
     }
-    if (scrollView.contentOffset.x == 0.0f) {
-        if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-            [_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[index]];
-        }
-    }
+
+#warning andy
+	if (_viewModel.discoveryList[indexPath.row].type == HXDiscoveryModelTypeProfile) {
+		if (scrollView.contentOffset.x == 20.0f) {
+			if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+				[_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[index]];
+			}
+		}
+	} else {
+		if (scrollView.contentOffset.x == 0.0f) {
+			if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+				[_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[index]];
+			}
+		}
+	}
 }
 
 #pragma mark - Collection View Data Source Methods
