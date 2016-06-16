@@ -14,9 +14,12 @@
 @class HXLiveAlbumView;
 @class HXStaticGiftView;
 @class HXDynamicGiftView;
+@protocol HXWatchLiveViewControllerDelegate;
 
 
 @interface HXWatchLiveViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet     id  <HXWatchLiveViewControllerDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UIView *liveView;
 
@@ -32,5 +35,13 @@
 
 - (IBAction)reportButtonPressed;
 - (IBAction)closeButtonPressed;
+
+@end
+
+
+@protocol HXWatchLiveViewControllerDelegate <NSObject>
+
+@required
+- (void)watchLiveViewControllerLiveEnded:(HXWatchLiveViewController *)viewController;
 
 @end

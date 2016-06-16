@@ -31,7 +31,7 @@
 #import "HXStaticGiftView.h"
 #import "UIConstants.h"
 #import "MIAInfoLog.h"
-
+#import "NSString+IsNull.h"
 
 @interface HXRecordLiveViewController () <
 ZegoLiveApiDelegate,
@@ -136,19 +136,25 @@ HXLiveAlbumViewDelegate
 - (IBAction)closeButtonPressed {
     @weakify(self)
     HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
-    if (manager.liveState == HXLiveStateLive) {
-        HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
-        [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
-            @strongify(self)
-            [manager closeLive];
-            [self.anchorView stopRecordTime];
-            [self.albumView stopAlbumAnmation];
-            [self closeLive];
-        }];
-    } else {
-        [self leaveRoom];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [[_viewModel.closeRoomCommand execute:nil] subscribeNext:^(NSString *message) {
+        @strongify(self)
+        [self showBannerWithPrompt:message];
+    } completed:^{
+        @strongify(self)
+        [manager closeLive];
+        [self.albumView stopAlbumAnmation];
+        if (manager.liveState == HXLiveStateLive) {
+            [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+                [self.anchorView stopRecordTime];
+                [self closeLive];
+            }];
+        } else {
+            [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+                [self leaveRoom];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+        }
+    }];
 }
 
 - (void)swipeGesture:(UISwipeGestureRecognizer *)gesure {
@@ -298,12 +304,17 @@ static CGFloat AlbumViewWidth = 60.0f;
 
 - (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
     NSLog(@"%s, stream: %@", __func__, streamID);
+	if ([NSString isNull:_viewModel.model.streamAlias]) {
+		_viewModel.model.streamAlias = streamID;
+	}
+
     [_anchorView startRecordTime];
     [[HXZegoAVKitManager manager] startLive];
 }
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
     NSLog(@"%s, stream: %@, err: %u", __func__, streamID, err);
+    [self showBannerWithPrompt:@"直播发布失败！"];
 }
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {

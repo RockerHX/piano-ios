@@ -10,10 +10,8 @@
 #import "HXDiscoveryContainerViewController.h"
 #import "HXRecordLiveViewController.h"
 #import "HXWatchLiveLandscapeViewController.h"
-#import "HXWatchLiveLandscapeViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
-#import "HXAlbumsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "MusicMgr.h"
 #import "HXDiscoveryTopBar.h"
@@ -21,17 +19,20 @@
 #import "UIImageView+WebCache.h"
 #import "FXBlurView.h"
 #import "MIAProfileViewController.h"
-#import "HXHostProfileViewController.h"
 #import "MIAHostProfileViewController.h"
 #import "UIButton+WebCache.h"
 #import "MiaAPIHelper.h"
 #import "HXLiveModel.h"
 #import "BFRadialWaveHUD.h"
+#import "WebSocketMgr.h"
+#import "UserSetting.h"
+#import "BlocksKit+UIKit.h"
 
 
 @interface HXDiscoveryViewController () <
 HXDiscoveryTopBarDelegate,
 HXDiscoveryContainerDelegate,
+HXWatchLiveViewControllerDelegate,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate
 >
@@ -60,7 +61,7 @@ UINavigationControllerDelegate
     MusicMgr *musicMgr = [MusicMgr standard];
     _topBar.playerEntry.hidden = !(musicMgr.playList.count && musicMgr.isPlaying);
     [_topBar.profileButton sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"D-ProfileEntryIcon"]];
-    [_containerViewController reload];
+    [self startFetchList];
 }
 
 - (void)viewDidLoad {
@@ -92,18 +93,20 @@ UINavigationControllerDelegate
 
 #pragma mark - Public Methods
 - (void)startFetchList {
-    @weakify(self)
-    RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
-    [requestSiganl subscribeError:^(NSError *error) {
-        @strongify(self)
-        if (![error.domain isEqualToString:RACCommandErrorDomain]) {
-            [self showBannerWithPrompt:error.domain];
-        }
-        [self showErrorLoading];
-    } completed:^{
-        @strongify(self)
-        [self fetchCompleted];
-    }];
+    if ([[WebSocketMgr standard] isOpen]) {
+        @weakify(self)
+        RACSignal *requestSiganl = [_viewModel.fetchCommand execute:nil];
+        [requestSiganl subscribeNext:^(NSString *message) {
+            @strongify(self)
+            [self showBannerWithPrompt:message];
+            [self hiddenLoadingHUD];
+        } completed:^{
+            @strongify(self)
+            [self fetchCompleted];
+        }];
+    } else {
+        [self hiddenLoadingHUD];
+    }
 }
 
 - (void)recoveryLive {
@@ -131,12 +134,6 @@ UINavigationControllerDelegate
         [_hud setBlurBackground:YES];
     }
     [_hud show];
-}
-
-- (void)showErrorLoading {
-    [_hud showErrorWithCompletion:^(BOOL finished) {
-        [_hud dismiss];
-    }];
 }
 
 - (void)hiddenLoadingHUD {
@@ -247,6 +244,21 @@ UINavigationControllerDelegate
     }];
 }
 
+- (void)showLiveWithMode:(HXDiscoveryModel *)model {
+    [self pauseMusic];
+    UINavigationController *watchLiveNavigationController = nil;
+    if (model.horizontal) {
+        watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+    } else {
+        watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    }
+    
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+    watchLiveViewController.delegate = self;
+    watchLiveViewController.roomID = model.roomID;
+    [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+}
+
 #pragma mark - HXDiscoveryTopBarDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     [self hiddenNavigationBar];
@@ -255,7 +267,6 @@ UINavigationControllerDelegate
             
             MIAHostProfileViewController *hostProfileViewController = [MIAHostProfileViewController new];
             [self.navigationController pushViewController:hostProfileViewController animated:YES];
-//            [self.navigationController pushViewController:[HXHostProfileViewController instance] animated:YES];
             break;
         }
         case HXDiscoveryTopBarActionMusic: {
@@ -293,17 +304,17 @@ UINavigationControllerDelegate
             break;
         }
         case HXDiscoveryContainerActionShowLive: {
-            [self pauseMusic];
-			UINavigationController *watchLiveNavigationController = nil;
-			if (model.horizontal) {
-				watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
-			} else {
-				watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-			}
-
-            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
-            watchLiveViewController.roomID = model.roomID;
-            [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+            if (![[WebSocketMgr standard] isWifiNetwork]) {
+                if ([UserSetting playWith3G]) {
+                    [self showLiveWithMode:model];
+                } else {
+                    [UIAlertView bk_showAlertViewWithTitle:@"温馨提示" message:@"当前非WIFI状态，是否使用流量继续观看？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"我是土豪"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                        if (buttonIndex != alertView.cancelButtonIndex) {
+                            [self showLiveWithMode:model];
+                        }
+                    }];
+                }
+            }
             break;
         }
         case HXDiscoveryContainerActionShowStation: {
@@ -313,6 +324,11 @@ UINavigationControllerDelegate
             break;
         }
     }
+}
+
+#pragma mark - HXWatchLiveViewControllerDelegate Methods
+- (void)watchLiveViewControllerLiveEnded:(HXWatchLiveViewController *)viewController {
+    [self startFetchList];
 }
 
 #pragma mark - UIImagePickerControllerDelegate Methods
