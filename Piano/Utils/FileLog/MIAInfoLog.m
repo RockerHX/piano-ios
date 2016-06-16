@@ -20,12 +20,14 @@
     NSString *deviceString = [JOFDeviceInfo deviceName];
     NSString *systemVersion = [NSString stringWithFormat:@"%.2f",[JOFDeviceInfo currentSystemVersion]];
     NSString *userName = [[[HXUserSession session] user] nickName];
+	NSString *userID = [HXUserSession session].uid;
     
-    NSString *contentString = [NSString stringWithFormat:@"iOS 昵称:%@ 设备:%@ 系统版本:%@ APP版本:%@ RoomID:%@ StreamID:%@",
+    NSString *contentString = [NSString stringWithFormat:@"iOS 昵称:%@ 设备:%@ 系统版本:%@ APP版本:%@ userID:%@ roomID:%@ streamID:%@",
 							   userName,
 							   deviceString,
 							   systemVersion,
 							   versionString,
+							   userID,
 							   JOConvertStringToNormalString(roomID),
 							   JOConvertStringToNormalString(streamID)];
     
