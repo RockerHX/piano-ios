@@ -110,18 +110,16 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
 }
 
 - (void)tapAction:(UIGestureRecognizer *)gesture {
-	
-    if (![[WebSocketMgr standard] isWifiNetwork]) {
-        if ([UserSetting playWith3G]) {
-            [self enterLiveViewController];
-        } else {
-            [UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                if (buttonIndex != alertView.cancelButtonIndex) {
-                    [self enterLiveViewController];
-                }
-            }];
-        }
-    }
+
+	if ([[WebSocketMgr standard] isWifiNetwork] || [UserSetting playWith3G]) {
+		[self enterLiveViewController];
+	} else {
+		[UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+			if (buttonIndex != alertView.cancelButtonIndex) {
+				[self enterLiveViewController];
+			}
+		}];
+	}
 }
 
 @end

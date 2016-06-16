@@ -142,18 +142,16 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
 }
 
 - (void)tapAction:(UIGestureRecognizer *)gesture{
-    
-    if (![[WebSocketMgr standard] isWifiNetwork]) {
-        if ([UserSetting playWith3G]) {
-            [self enterVideoViewController];
-        } else {
-            [UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                if (buttonIndex != alertView.cancelButtonIndex) {
-                    [self enterVideoViewController];
-                }
-            }];
-        }
-    }
+
+	if ([[WebSocketMgr standard] isWifiNetwork] || [UserSetting playWith3G]) {
+		[self enterVideoViewController];
+	} else {
+		[UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+			if (buttonIndex != alertView.cancelButtonIndex) {
+				[self enterVideoViewController];
+			}
+		}];
+	}
 }
 
 @end
