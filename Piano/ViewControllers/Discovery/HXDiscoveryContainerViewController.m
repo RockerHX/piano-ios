@@ -67,7 +67,7 @@ HXDiscoveryLiveCellDelegate
 #pragma mark - Private Methods
 - (void)endLoad {
     [self.collectionView reloadData];
-    [self performSelector:@selector(previewFirstCell) withObject:nil afterDelay:1.0f];
+    [self performSelector:@selector(previewFirstCell) withObject:nil afterDelay:0.2f];
 }
 
 - (void)previewFirstCell {
