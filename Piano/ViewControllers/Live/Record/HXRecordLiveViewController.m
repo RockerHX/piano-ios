@@ -142,8 +142,6 @@ HXLiveAlbumViewDelegate
         [self showBannerWithPrompt:message];
     } completed:^{
         @strongify(self)
-        [manager closeLive];
-        [self.albumView stopAlbumAnmation];
         if (manager.liveState == HXLiveStateLive) {
             [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
                 [self.anchorView stopRecordTime];
@@ -155,6 +153,8 @@ HXLiveAlbumViewDelegate
                 [self dismissViewControllerAnimated:YES completion:nil];
             }];
         }
+        [self.albumView stopAlbumAnmation];
+        [manager closeLive];
     }];
 }
 
