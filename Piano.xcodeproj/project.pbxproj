@@ -28,6 +28,10 @@
 		420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
 		420FCD0B1CEC0DD600BE5217 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */; };
 		421591AD1D13EA0200512B25 /* MIAProfileNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421591AC1D13EA0200512B25 /* MIAProfileNavigationController.m */; };
+		421591B01D13F87F00512B25 /* JOLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 421591AF1D13F87F00512B25 /* JOLayout.m */; };
+		421591B31D13F8EA00512B25 /* JOLayout+Equal.m in Sources */ = {isa = PBXBuildFile; fileRef = 421591B21D13F8EA00512B25 /* JOLayout+Equal.m */; };
+		421591B61D13F90000512B25 /* JOLayout+Than.m in Sources */ = {isa = PBXBuildFile; fileRef = 421591B51D13F90000512B25 /* JOLayout+Than.m */; };
+		421591B91D13F91400512B25 /* JOLayout+Less.m in Sources */ = {isa = PBXBuildFile; fileRef = 421591B81D13F91400512B25 /* JOLayout+Less.m */; };
 		42175FEE1D1131A4003BD0E3 /* MIAIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42175FED1D1131A4003BD0E3 /* MIAIncomeViewController.m */; };
 		422213E31D0D52ED00F4E27D /* MIAHostProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422213E21D0D52ED00F4E27D /* MIAHostProfileViewController.m */; };
 		422213E61D0D538900F4E27D /* MIAHostProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 422213E51D0D538900F4E27D /* MIAHostProfileViewModel.m */; };
@@ -428,6 +432,14 @@
 		420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		421591AB1D13EA0200512B25 /* MIAProfileNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAProfileNavigationController.h; sourceTree = "<group>"; };
 		421591AC1D13EA0200512B25 /* MIAProfileNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAProfileNavigationController.m; sourceTree = "<group>"; };
+		421591AE1D13F87F00512B25 /* JOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOLayout.h; sourceTree = "<group>"; };
+		421591AF1D13F87F00512B25 /* JOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOLayout.m; sourceTree = "<group>"; };
+		421591B11D13F8EA00512B25 /* JOLayout+Equal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JOLayout+Equal.h"; sourceTree = "<group>"; };
+		421591B21D13F8EA00512B25 /* JOLayout+Equal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JOLayout+Equal.m"; sourceTree = "<group>"; };
+		421591B41D13F90000512B25 /* JOLayout+Than.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JOLayout+Than.h"; sourceTree = "<group>"; };
+		421591B51D13F90000512B25 /* JOLayout+Than.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JOLayout+Than.m"; sourceTree = "<group>"; };
+		421591B71D13F91400512B25 /* JOLayout+Less.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JOLayout+Less.h"; sourceTree = "<group>"; };
+		421591B81D13F91400512B25 /* JOLayout+Less.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JOLayout+Less.m"; sourceTree = "<group>"; };
 		42175FEC1D1131A4003BD0E3 /* MIAIncomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAIncomeViewController.h; sourceTree = "<group>"; };
 		42175FED1D1131A4003BD0E3 /* MIAIncomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAIncomeViewController.m; sourceTree = "<group>"; };
 		422213E11D0D52ED00F4E27D /* MIAHostProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAHostProfileViewController.h; sourceTree = "<group>"; };
@@ -1377,6 +1389,14 @@
 			children = (
 				42984AE61CDAEF84004F00D5 /* JOAutoLayout.h */,
 				42984AE71CDAEF84004F00D5 /* JOAutoLayout.m */,
+				421591AE1D13F87F00512B25 /* JOLayout.h */,
+				421591AF1D13F87F00512B25 /* JOLayout.m */,
+				421591B11D13F8EA00512B25 /* JOLayout+Equal.h */,
+				421591B21D13F8EA00512B25 /* JOLayout+Equal.m */,
+				421591B41D13F90000512B25 /* JOLayout+Than.h */,
+				421591B51D13F90000512B25 /* JOLayout+Than.m */,
+				421591B71D13F91400512B25 /* JOLayout+Less.h */,
+				421591B81D13F91400512B25 /* JOLayout+Less.m */,
 			);
 			path = AutoLayout;
 			sourceTree = "<group>";
@@ -3453,6 +3473,7 @@
 				420BBB5D1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */,
 				CDA3949F1CFEC10700F56A41 /* HXHostProfileViewModel.m in Sources */,
 				CD01F1C91CCF0611006BF4BF /* HXDiscoveryCell.m in Sources */,
+				421591B31D13F8EA00512B25 /* JOLayout+Equal.m in Sources */,
 				CD7960C31CBE594C004CC661 /* HXAlbumsNavigationBar.m in Sources */,
 				CD7960C41CBE594C004CC661 /* ChangePwdViewController.m in Sources */,
 				CD7960C51CBE594C004CC661 /* UIImage+Extrude.m in Sources */,
@@ -3550,6 +3571,7 @@
 				CD7960F11CBE594C004CC661 /* HXFeedBackViewController.m in Sources */,
 				CD7960F31CBE594C004CC661 /* HXIBnsepectableManager.m in Sources */,
 				CD6887A51CF551380081B2BD /* HXLiveBarrageContainerViewController.m in Sources */,
+				421591B91D13F91400512B25 /* JOLayout+Less.m in Sources */,
 				CD7960F51CBE594C004CC661 /* HXUserTermsViewController.m in Sources */,
 				42984B5D1CDC8040004F00D5 /* MIAProfileReplayView.m in Sources */,
 				CD7960F61CBE594C004CC661 /* HXAttentionModel.m in Sources */,
@@ -3587,6 +3609,7 @@
 				42984B101CDAEF84004F00D5 /* JOFLog.m in Sources */,
 				CD7961061CBE594C004CC661 /* HXDiscoveryLiveCell.m in Sources */,
 				CD7961071CBE594C004CC661 /* HXAlbumModel.m in Sources */,
+				421591B01D13F87F00512B25 /* JOLayout.m in Sources */,
 				CD7961081CBE594C004CC661 /* HXProfileHeaderCell.m in Sources */,
 				CD7961091CBE594C004CC661 /* HXPlayBottomBar.m in Sources */,
 				42D612DD1CE1FDFB00B80753 /* MIAFontManage.m in Sources */,
@@ -3596,6 +3619,7 @@
 				CD79610E1CBE594C004CC661 /* HXLoginViewModel.m in Sources */,
 				429CC1DF1CE034D4004BCC0C /* MIAProfileViewModel.m in Sources */,
 				CD79610F1CBE594C004CC661 /* HXMeAttentionPromptCell.m in Sources */,
+				421591B61D13F90000512B25 /* JOLayout+Than.m in Sources */,
 				CD7961101CBE594C004CC661 /* HXPreviewLiveViewController.m in Sources */,
 				429CC2111CE08EC3004BCC0C /* MIAReplayModel.m in Sources */,
 				CD3EDEA71D0FDB2F00273872 /* MIAInfoLog.m in Sources */,

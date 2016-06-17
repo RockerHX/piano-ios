@@ -177,7 +177,7 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }else if (type == MIAFontType_AlbumReward_RewardMCoin){
         //打赏的M币数量
-        return JOFontsMake([UIFont systemFontOfSize:30. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:55. weight:UIFontWeightRegular], JORGBCreate(159., 144., 98.,1.));
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 22.);
     }else if (type == MIAFontType_AlbumReward_RewardButtonTitle){
         //打赏的按钮的标题

@@ -17,6 +17,7 @@
 #import "JOBaseSDK.h"
 #import "MIAMCoinManage.h"
 #import "HXSectorSlider.h"
+#import "HXVersion.h"
 
 static NSString *const kRewardTipString = @" ";//@"打赏,下载该专辑的无损音质版";
 static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
@@ -37,7 +38,9 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
 
 @property (nonatomic, strong) UILabel *rewardTipLabel;
 
+@property (nonatomic, strong) UIView *rewardMCoinView;
 @property (nonatomic, strong) UILabel *rewardMCoinLabel;
+
 @property (nonatomic, strong) HXSectorSlider *rewardSlider;
 
 @property (nonatomic, strong) UIButton *rewardButton;
@@ -161,7 +164,12 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     
     CGFloat albumInfoHeight =singerNameLabelHeight+albumNameLabelHeight+kAlbumInfoImageViewWidth + kAlbumInfoImageToAlbumNameSpaceDistance + kAlbumInfoAlbumNameToSingerNameSpaceDistance;
     
-    [JOAutoLayout autoLayoutWithTopView:_popButton distance:kButtonToAlbumInfoViewSpaceDistance selfView:_albumInfoView superView:_baseView];
+    CGFloat topSpaceDistance = kButtonToAlbumInfoViewSpaceDistance;
+    if ([HXVersion isIPhone5SPrior]) {
+        topSpaceDistance = kButtonToAlbumInfoViewSpaceDistance - 30.;
+    }
+    
+    [JOAutoLayout autoLayoutWithTopView:_popButton distance:topSpaceDistance selfView:_albumInfoView superView:_baseView];
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kAlbumRewardLeftSpaceDistance selfView:_albumInfoView superView:_baseView];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-kAlbumRewardRightSpaceDistance selfView:_albumInfoView superView:_baseView];
     [JOAutoLayout autoLayoutWithHeight:albumInfoHeight selfView:_albumInfoView superView:_baseView];
@@ -212,10 +220,30 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     [JOAutoLayout autoLayoutWithCenterXWithView:_baseView selfView:_accountView superView:_baseView];
     [JOAutoLayout autoLayoutWithHeight:accountLabelHeight selfView:_accountView superView:_baseView];
     
+    self.rewardMCoinView = [UIView newAutoLayoutView];
+    [_baseView addSubview:_rewardMCoinView];
+    
     self.rewardMCoinLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_AlbumReward_RewardMCoin]];
-    [_rewardMCoinLabel setText:[NSString stringWithFormat:@"%@M币",_rewardMCoin]];
+    [_rewardMCoinLabel setText:[NSString stringWithFormat:@"%@",_rewardMCoin]];
     [_rewardMCoinLabel setTextAlignment:NSTextAlignmentCenter];
-    [_baseView addSubview:_rewardMCoinLabel];
+    [_rewardMCoinView addSubview:_rewardMCoinLabel];
+    
+    CGFloat rewardMCoinLabelWidth = [_rewardMCoinLabel sizeThatFits:JOMAXSize].width;
+    CGFloat rewardMCoinLabelHeight = [_rewardMCoinLabel sizeThatFits:JOMAXSize].height;
+    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_rewardMCoinLabel superView:_rewardMCoinView];
+    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_rewardMCoinLabel superView:_rewardMCoinView];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_rewardMCoinLabel superView:_rewardMCoinView];
+    [JOAutoLayout autoLayoutWithWidth:[_rewardMCoinLabel sizeThatFits:JOMAXSize].width selfView:_rewardMCoinLabel superView:_rewardMCoinView];
+    
+    UIImage *mCoinImage = [UIImage imageNamed:@"LC-CoinIcon-L"];
+    UIImageView *mCoinImageView = [UIImageView newAutoLayoutView];
+    [mCoinImageView setImage:mCoinImage];
+    [_rewardMCoinView addSubview:mCoinImageView];
+    
+    [JOAutoLayout autoLayoutWithLeftView:_rewardMCoinLabel distance:5. selfView:mCoinImageView superView:_rewardMCoinView];
+    [JOAutoLayout autoLayoutWithSize:mCoinImage.size selfView:mCoinImageView superView:_rewardMCoinView];
+    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-10. selfView:mCoinImageView superView:_rewardMCoinView];
+//    [JOAutoLayout autoLayoutWithCenterYWithView:_rewardMCoinView selfView:mCoinImageView superView:_rewardMCoinView];
     
     self.rewardSlider = [HXSectorSlider newAutoLayoutView];
     [_rewardSlider setDelegate:self];
@@ -237,11 +265,11 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     [JOAutoLayout autoLayoutWithSize:JOSize(kRewardButtonWidth, kRewardButtonHeight) selfView:_rewardButton superView:_baseView];
     [JOAutoLayout autoLayoutWithCenterXWithView:_baseView selfView:_rewardButton superView:_baseView];
     
-    //rewardMCoin
-    [JOAutoLayout autoLayoutWithBottomView:_rewardSlider distance:-3. selfView:_rewardMCoinLabel superView:_baseView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kAlbumRewardLeftSpaceDistance selfView:_rewardMCoinLabel superView:_baseView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kAlbumRewardRightSpaceDistance selfView:_rewardMCoinLabel superView:_baseView];
-    [JOAutoLayout autoLayoutWithHeight:[_rewardMCoinLabel sizeThatFits:JOMAXSize].height+2 selfView:_rewardMCoinLabel superView:_baseView];
+    //rewardMCoinView
+    [JOAutoLayout autoLayoutWithBottomView:_rewardSlider distance:-3. selfView:_rewardMCoinView superView:_baseView];
+    [JOAutoLayout autoLayoutWithWidth:rewardMCoinLabelWidth+5+mCoinImage.size.width selfView:_rewardMCoinView superView:_baseView];
+    [JOAutoLayout autoLayoutWithCenterXWithView:_baseView selfView:_rewardMCoinView superView:_baseView];
+    [JOAutoLayout autoLayoutWithHeight:rewardMCoinLabelHeight selfView:_rewardMCoinView superView:_baseView];
     
     //rewardSlider
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_rewardSlider superView:_baseView];
@@ -327,7 +355,16 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
         self.rewardMCoin = @"100";
     }
     
-    [_rewardMCoinLabel setText:[NSString stringWithFormat:@"%@M币",_rewardMCoin]];
+    [_rewardMCoinLabel setText:[NSString stringWithFormat:@"%@",_rewardMCoin]];
+    
+    CGFloat rewardMCoinLabelWidth = [_rewardMCoinLabel sizeThatFits:JOMAXSize].width;
+    UIImage *mCoinImage = [UIImage imageNamed:@"LC-CoinIcon-L"];
+    
+    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_rewardMCoinLabel superView:_rewardMCoinView];
+    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_rewardMCoinView superView:_baseView];
+    
+    [JOAutoLayout autoLayoutWithWidth:rewardMCoinLabelWidth selfView:_rewardMCoinLabel superView:_rewardMCoinView];
+    [JOAutoLayout autoLayoutWithWidth:rewardMCoinLabelWidth+5+mCoinImage.size.width selfView:_rewardMCoinView superView:_baseView];
 }
 
 @end
