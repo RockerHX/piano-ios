@@ -77,7 +77,7 @@ HXSectorSliderDelegate
         [self dismiss];
     } failed:^(NSString *failed) {
         [self hiddenHUD];
-        [self showBannerWithPrompt:@"打赏失败，请检查网络！"];
+        [self showBannerWithPrompt:failed];
     } mCoinSuccess:nil mCoinFailed:nil];
 }
 

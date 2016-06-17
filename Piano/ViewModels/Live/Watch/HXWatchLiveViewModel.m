@@ -192,6 +192,7 @@
     _model.album.rewardTotal = barrage.rewardTotal;
     
     HXGiftModel *gift = [HXGiftManager manager].albumAnimation;
+    gift.type = HXGiftTypeDynamic;
     gift.nickName = barrage.nickName;
     gift.avatarUrl = barrage.avatarUrl;
     gift.count = barrage.giftCount;
