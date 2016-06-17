@@ -29,12 +29,12 @@
 #import "UIImage+Extrude.h"
 #import <UMengSocialCOM/UMSocial.h>
 #import "HXAppConstants.h"
-#import "MIAProfileViewController.h"
 #import "UIConstants.h"
 #import "MIAInfoLog.h"
 #import "BFRadialWaveHUD.h"
 #import "FileLog.h"
 #import "MIARedEnvelopeView.h"
+#import "MIAProfileNavigationController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -365,9 +365,8 @@ HXLiveAlbumViewDelegate
         case HXLiveAnchorViewActionShowAnchor: {
             HXWatcherModel *watcher = [HXWatcherModel instanceWithLiveModel:_viewModel.model];
             [HXLiveUserBoard showWithWatcher:watcher showProfile:^(HXWatcherModel *watcher) {
-                MIAProfileViewController *profileViewController = [MIAProfileViewController new];
-                [profileViewController setUid:watcher.ID];
-                [self.navigationController pushViewController:profileViewController animated:YES];
+                MIAProfileNavigationController *profileNavigationController = [MIAProfileNavigationController profileNavigationInstanceWithUID:watcher.ID];
+                [self presentViewController:profileNavigationController animated:YES completion:nil];
             } report:^(HXWatcherModel *watcher) {
                 [self reportAnchorWithID:watcher.ID];
             } gaged:nil closed:nil];

@@ -19,6 +19,9 @@
     _gifts = gifts;
     
     _selectedIndex = -1;
+    if ([self.collectionView.collectionViewLayout isKindOfClass:[HXRewardGiftListLayout class]]) {
+        ((HXRewardGiftListLayout *)self.collectionView.collectionViewLayout).lineSpace = 0.0f;
+    }
     [self.collectionView reloadData];
 }
 
