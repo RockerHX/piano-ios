@@ -152,6 +152,7 @@ HXLiveAlbumViewDelegate
         }
     }];
     
+    [[FileLog standard] log:@"Enter Room"];
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
         @strongify(self)
@@ -159,9 +160,11 @@ HXLiveAlbumViewDelegate
             [self showBannerWithPrompt:error.domain];
         }
         [self hiddenLoadingHUD];
+        [[FileLog standard] log:@"Enter Room Error:%@", error.domain];
     } completed:^{
         @strongify(self)
         [self fetchDataFinfished];
+        [[FileLog standard] log:@"Enter Room Success"];
     }];
 }
 
@@ -171,6 +174,7 @@ HXLiveAlbumViewDelegate
 }
 
 - (IBAction)closeButtonPressed {
+    [[FileLog standard] log:@"Close Room"];
     [self dismiss];
 }
 
@@ -271,7 +275,7 @@ HXLiveAlbumViewDelegate
     user.userName = [HXUserSession session].nickName;
     
     bool ret = [zegoLiveApi loginChannel:_viewModel.model.channelID user:user];
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, ret: %d", __func__, ret]];
+    [[FileLog standard] log:@"%s, ret: %d", __func__, ret];
 }
 
 - (void)updateAnchorView {
@@ -311,42 +315,42 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - ZegoLiveApiDelegate
 - (void)onLoginChannel:(NSString *)channel error:(uint32)error {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, err: %u", __func__, error]];
+    [[FileLog standard] log:@"%s, err: %u", __func__, error];
     if (error == 0) {
         ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
         int ret = [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
         [zegoLiveApi startPlayStream:_viewModel.model.streamAlias viewIndex:RemoteViewIndex_First];
-        [[FileLog standard] log:[NSString stringWithFormat:@"%s, ret: %d", __func__, ret]];
+        [[FileLog standard] log:@"%s, ret: %d", __func__, ret];
     } else {
         [self hiddenLoadingHUD];
     }
 }
 
 - (void)onDisconnected:(uint32)err channel:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"Channel %@ Connection Broken, ERROR: %u.", channel, err]];
+    [[FileLog standard] log:@"Channel %@ Connection Broken, ERROR: %u.", channel, err];
 }
 
 - (void)onReconnected:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"Channel %@ Reconnected.", channel]];
+    [[FileLog standard] log:@"Channel %@ Reconnected.", channel];
 }
 
 - (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@", __func__, streamID]];
+    [[FileLog standard] log:@"%s, stream: %@", __func__, streamID];
     [self hiddenLoadingHUD];
 }
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@, err: %u", __func__, streamID, err]];
+    [[FileLog standard] log:@"%s, stream: %@, err: %u", __func__, streamID, err];
     [self hiddenLoadingHUD];
 }
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@", __func__, streamID]];
+    [[FileLog standard] log:@"%s, stream: %@", __func__, streamID];
     [self hiddenLoadingHUD];
 }
 
 - (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, err: %u, stream: %@", __func__, err, streamID]];
+    [[FileLog standard] log:@"%s, err: %u, stream: %@", __func__, err, streamID];
     [self hiddenLoadingHUD];
 }
 
