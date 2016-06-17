@@ -16,7 +16,10 @@
 
 
 + (instancetype)showWithMessage:(NSString *)message tap:(void(^)(void))tap;
++ (instancetype)showWithMessage:(NSString *)message duration:(NSTimeInterval)duration tap:(void(^)(void))tap;
+
 - (void)showWithMessage:(NSString *)message tap:(void(^)(void))tap;
+- (void)showWithMessage:(NSString *)message duration:(NSTimeInterval)duration tap:(void(^)(void))tap;
 
 - (void)hidden;
 
