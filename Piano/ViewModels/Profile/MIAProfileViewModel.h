@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, MIAProfileCellType) {
 @property (nonatomic, copy) NSString *fansCount;//粉丝数
 @property (nonatomic, copy) NSString *followCount;//关注数
 @property (nonatomic, copy) NSString *userpic; //用户的图片
+@property (nonatomic, copy) NSString *coverColor;//昵称跟简介的背景色
 
 @end
 

@@ -27,6 +27,13 @@ typedef void(^AttentionActionBlock)(BOOL state);
 - (void)setProfileHeadImageURL:(NSString *)imageURL name:(NSString *)name summary:(NSString *)summary;
 
 /**
+ *  设置昵称跟简介的背景色
+ *
+ *  @param colorString 十六进制的颜色的字符串
+ */
+- (void)setProfileNickBackgroundColorString:(NSString *)colorString;
+
+/**
  *  设置数据
  *
  *  @param fans      粉丝

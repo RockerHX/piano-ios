@@ -84,7 +84,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
 
     self.nameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_NickName]];
     [_nameLabel setTextAlignment:NSTextAlignmentCenter];
-    [_nameLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
+//    [_nameLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
     [_nameLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_nameLabel];
     
@@ -95,7 +95,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     
     self.summayLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_Summary]];
     [_summayLabel setTextAlignment:NSTextAlignmentCenter];
-    [_summayLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
+//    [_summayLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
     [_summayLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_summayLabel];
     
@@ -250,6 +250,19 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
 
 //    [JOAutoLayout autoLayoutWithWidth:nameWidth selfView:_nameLabel superView:self];
 //    [JOAutoLayout autoLayoutWithWidth:summaryWidth selfView:_summayLabel superView:self];
+}
+
+- (void)setProfileNickBackgroundColorString:(NSString *)colorString{
+
+    if ([JOConvertStringToNormalString(colorString) length]) {
+        [_nameLabel setBackgroundColor:JOConvertHexRGBStringToColor(colorString)];
+        [_summayLabel setBackgroundColor:JOConvertHexRGBStringToColor(colorString)];
+    }else{
+        [_nameLabel setBackgroundColor:[UIColor clearColor]];
+        [_summayLabel setBackgroundColor:[UIColor clearColor]];
+    }
+    
+//    JOConvertHexRGBStringToColor(@"#9F9062")
 }
 
 - (void)setProfileFans:(NSString *)fans attention:(NSString *)attention{

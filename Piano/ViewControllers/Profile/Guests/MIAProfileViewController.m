@@ -319,6 +319,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
                               }];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
+    [_profileHeadView setProfileNickBackgroundColorString:headModel.coverColor];
     
     [_profileHeadView setAttentionButtonState:[headModel.followState boolValue]];
     

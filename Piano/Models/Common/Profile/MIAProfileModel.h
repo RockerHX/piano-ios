@@ -21,6 +21,7 @@
 @property (nonatomic, copy) NSString *follow; //关注的状态
 @property (nonatomic, copy) NSString *coverUrl; //主播的图片
 @property (nonatomic, copy) NSString *userpic; //用户的图片
+@property (nonatomic, copy) NSString *coverColor;//昵称跟签名的背景色
 
 @property (nonatomic, copy) NSString *live; //是否在直播的状态
 @property (nonatomic, copy) NSString *liveDate;//直播的时间
