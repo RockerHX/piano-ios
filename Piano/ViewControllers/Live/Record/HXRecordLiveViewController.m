@@ -135,27 +135,33 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
-    @weakify(self)
-    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
-    [[_viewModel.closeRoomCommand execute:nil] subscribeNext:^(NSString *message) {
-        @strongify(self)
-        [self showBannerWithPrompt:message];
-    } completed:^{
-        @strongify(self)
-        if (manager.liveState == HXLiveStateLive) {
-            [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
-                [self.anchorView stopRecordTime];
-                [self closeLive];
-            }];
-        } else {
-            [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
-                [self leaveRoom];
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }];
-        }
-        [self.albumView stopAlbumAnmation];
-        [manager closeLive];
-    }];
+    if (_viewModel) {
+        @weakify(self)
+        HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+        [[_viewModel.closeRoomCommand execute:nil] subscribeNext:^(NSString *message) {
+            @strongify(self)
+            [self showBannerWithPrompt:message];
+            [[FileLog standard] log:@"Close Room Error:%@", message];
+        } completed:^{
+            @strongify(self)
+            if (manager.liveState == HXLiveStateLive) {
+                [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+                    [self.anchorView stopRecordTime];
+                    [self closeLive];
+                }];
+            } else {
+                [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+                    [self leaveRoom];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            }
+            [self.albumView stopAlbumAnmation];
+            [manager closeLive];
+        }];
+    } else {
+        [self leaveRoom];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)swipeGesture:(UISwipeGestureRecognizer *)gesure {
@@ -219,6 +225,7 @@ HXLiveAlbumViewDelegate
 }
 
 - (void)leaveRoom {
+    [[FileLog standard] log:@"Close Live"];
     ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     [zegoLiveApi stopPreview];
     [zegoLiveApi logoutChannel];
@@ -269,7 +276,7 @@ static CGFloat AlbumViewWidth = 60.0f;
 
 #pragma mark - ZegoLiveApiDelegate
 - (void)onLoginChannel:(NSString *)channel error:(uint32)error {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, err: %u", __func__, error]];
+    [[FileLog standard] log:@"%s, err: %u", __func__, error];
     if (error == 0) {
         ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
         int ret = [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
@@ -277,20 +284,20 @@ static CGFloat AlbumViewWidth = 60.0f;
         b = [zegoLiveApi enableBeautifying:_beauty ? ZEGO_BEAUTIFY_POLISH : ZEGO_BEAUTIFY_NONE];
         b = [zegoLiveApi setFilter:ZEGO_FILTER_NONE];
         b = [zegoLiveApi startPublishingWithTitle:_roomTitle streamID:_viewModel.model.streamAlias];
-        [[FileLog standard] log:[NSString stringWithFormat:@"%s, ret: %d", __func__, ret]];
+        [[FileLog standard] log:@"%s, ret: %d", __func__, ret];
     }
 }
 
 - (void)onDisconnected:(uint32)err channel:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"Channel %@ Connection Broken, ERROR: %u.", channel, err]];
+    [[FileLog standard] log:@"Channel %@ Connection Broken, ERROR: %u.", channel, err];
 }
 
 - (void)onReconnected:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"Channel %@ Reconnected.", channel]];
+    [[FileLog standard] log:@"Channel %@ Reconnected.", channel];
 }
 
 - (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@", __func__, streamID]];
+    [[FileLog standard] log:@"%s, stream: %@", __func__, streamID];
 	if ([NSString isNull:_viewModel.model.streamAlias]) {
 		_viewModel.model.streamAlias = streamID;
 	}
@@ -300,16 +307,16 @@ static CGFloat AlbumViewWidth = 60.0f;
 }
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@, err: %u", __func__, streamID, err]];
+    [[FileLog standard] log:@"%s, stream: %@, err: %u", __func__, streamID, err];
     [self showBannerWithPrompt:@"直播已关闭"];
 }
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@", __func__, streamID]];
+    [[FileLog standard] log:@"%s, stream: %@", __func__, streamID];
 }
 
 - (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel {
-    [[FileLog standard] log:[NSString stringWithFormat:@"%s, err: %u, stream: %@", __func__, err, streamID]];
+    [[FileLog standard] log:@"%s, err: %u, stream: %@", __func__, err, streamID];
 }
 
 - (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {}

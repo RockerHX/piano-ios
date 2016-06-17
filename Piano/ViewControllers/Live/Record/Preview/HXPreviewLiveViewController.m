@@ -80,12 +80,15 @@ HXSelectedAlbumViewControllerDelegate
             _model.shareUrl = data[@"shareUrl"];
         } else {
             [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
+            _editView.addAlbumButton.enabled = NO;
             _controlView.startLiveButton.enabled = NO;
         }
         [self hiddenHUD];
     } timeoutBlock:^(MiaRequestItem *requestItem) {
         [self hiddenHUD];
         [self showBannerWithPrompt:TimtOutPrompt];
+        _editView.addAlbumButton.enabled = NO;
+        _controlView.startLiveButton.enabled = NO;
     }];
 }
 
@@ -123,7 +126,7 @@ HXSelectedAlbumViewControllerDelegate
          }];
     } else {
         [self hiddenHUD];
-        [self showBannerWithPrompt:@"请先填写直播标题！"];
+        [self showBannerWithPrompt:@"请先填写直播标题"];
     }
 }
 

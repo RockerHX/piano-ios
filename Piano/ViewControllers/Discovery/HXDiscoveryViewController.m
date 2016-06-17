@@ -248,6 +248,11 @@ UINavigationControllerDelegate
 }
 
 - (void)showLiveWithMode:(HXDiscoveryModel *)model {
+    if ([[HXUserSession session].uid isEqualToString:model.uID]) {
+        [self showBannerWithPrompt:@"不可以进自己的直播"];
+        return;
+    }
+    
     [self pauseMusic];
     UINavigationController *watchLiveNavigationController = nil;
     if (model.horizontal) {
