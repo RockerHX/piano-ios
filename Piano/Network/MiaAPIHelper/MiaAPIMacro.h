@@ -105,6 +105,7 @@ static NSString * const MiaAPICommand_User_PostFollow		= @"User.Post.Follow";
 static NSString * const MiaAPICommand_User_GetFollow		= @"User.Get.Follow";
 static NSString * const MiaAPICommand_Live_GetStat			= @"Live.Room.Get.Stat";
 static NSString * const MiaAPICommand_Live_GetGiftList      = @"Live.Room.Get.Gift";
+static NSString * const MiaAPICommand_Live_AlbumAnimation   = @"Live.Room.Album.Animate";
 static NSString * const MiaAPICommand_Live_GetGiftTopList   = @"Live.Room.Top.Gift";
 static NSString * const MiaAPICommand_Live_GetAlbumTopList  = @"Live.Room.Top.Album";
 static NSString * const MiaAPICommand_Live_SharePost        = @"Live.Room.Post.Share";

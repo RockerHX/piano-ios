@@ -176,6 +176,9 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)getGiftListCompleteBlock:(MiaRequestCompleteBlock)completeBlock
                     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
++ (void)getAlbumAnimationCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
 + (void)getGiftTopListWithRoomID:(NSString *)roomID
                    completeBlock:(MiaRequestCompleteBlock)completeBlock
                     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;

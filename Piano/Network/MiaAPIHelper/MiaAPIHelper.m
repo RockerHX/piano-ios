@@ -517,6 +517,16 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
     [[WebSocketMgr standard] sendWitRequestItem:requestItem];
 }
 
++ (void)getAlbumAnimationCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
+    
+    MiaRequestItem *requestItem = [[MiaRequestItem alloc] initWithCommand:MiaAPICommand_Live_AlbumAnimation
+                                                               parameters:nil
+                                                            completeBlock:completeBlock
+                                                             timeoutBlock:timeoutBlock];
+    [[WebSocketMgr standard] sendWitRequestItem:requestItem];
+}
+
 + (void)getGiftTopListWithRoomID:(NSString *)roomID
                    completeBlock:(MiaRequestCompleteBlock)completeBlock
                     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
