@@ -8,6 +8,15 @@
 
 #import "MIABaseTableViewCell.h"
 
+typedef void(^LiveCellClickBlock)();
+
 @interface MIAProfileLiveCell : MIABaseTableViewCell
+
+/**
+ *  LiveCell 的点击回调.
+ *
+ *  @param block LiveCellClickBlock
+ */
+- (void)liveCellClickBlock:(LiveCellClickBlock)block;
 
 @end
