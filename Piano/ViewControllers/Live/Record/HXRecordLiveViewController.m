@@ -301,7 +301,7 @@ static CGFloat AlbumViewWidth = 60.0f;
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
     [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@, err: %u", __func__, streamID, err]];
-    [self showBannerWithPrompt:@"直播发布失败！"];
+    [self showBannerWithPrompt:@"直播已关闭"];
 }
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {

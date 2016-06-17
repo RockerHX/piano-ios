@@ -17,7 +17,7 @@
 #import "NSObject+BlockSupport.h"
 #import "PathHelper.h"
 #import "HXUserSession.h"
-
+#import "UserSetting.h"
 
 NSString * const MusicMgrNotificationKey_RemoteControlEvent	= @"RemoteControlEvent";
 NSString * const MusicMgrNotificationKey_PlayerEvent		= @"PlayerEvent";
@@ -244,13 +244,10 @@ const NSInteger kInvalidateCurrentIndex = -1;
 		return;
 	}
 
-	static NSString *kAlertTitleError = @"网络连接提醒";
-	static NSString *kAlertMsgNotAllowToPlayWith3G = @"您现在使用的是运营商网络，继续播放会产生流量费用。是否允许在2G/3G/4G网络下播放？";
-
-	_playWith3GAlertView = [UIAlertView bk_showAlertViewWithTitle:kAlertTitleError
-														  message:kAlertMsgNotAllowToPlayWith3G
-												cancelButtonTitle:@"取消"
-												otherButtonTitles:@[@"允许播放"]
+	_playWith3GAlertView = [UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle
+														  message:k3GPlayMessage
+												cancelButtonTitle:k3GPlayCancel
+												otherButtonTitles:@[k3GPlayAllow]
 														  handler:
 							^(UIAlertView *alertView, NSInteger buttonIndex) {
 								if (alertView.cancelButtonIndex == buttonIndex) {
