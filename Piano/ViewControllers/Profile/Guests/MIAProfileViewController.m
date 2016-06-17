@@ -248,7 +248,13 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 
 - (void)popClick{
 
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([[self.navigationController viewControllers] count] == 1) {
+        //根视图
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)reportClick{
