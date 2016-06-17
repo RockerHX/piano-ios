@@ -79,7 +79,7 @@ HXSelectedAlbumViewControllerDelegate
             _model.roomID = data[@"roomID"];
             _model.shareUrl = data[@"shareUrl"];
         } else {
-            [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
+            [self showBannerWithPrompt:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] duration:3.0f];
             _editView.addAlbumButton.enabled = NO;
             _controlView.startLiveButton.enabled = NO;
         }

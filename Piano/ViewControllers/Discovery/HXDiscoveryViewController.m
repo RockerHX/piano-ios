@@ -249,7 +249,7 @@ UINavigationControllerDelegate
 
 - (void)showLiveWithMode:(HXDiscoveryModel *)model {
     if ([[HXUserSession session].uid isEqualToString:model.uID]) {
-        [self showBannerWithPrompt:@"不可以进自己的直播"];
+        [self showBannerWithPrompt:@"不可以进自己的直播" duration:2.0f];
         return;
     }
     
