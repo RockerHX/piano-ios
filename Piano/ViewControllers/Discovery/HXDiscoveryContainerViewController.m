@@ -96,23 +96,16 @@ HXDiscoveryLiveCellDelegate
     
     NSInteger index = indexPath.row;
     if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-        [_delegate container:self takeAction:HXDiscoveryContainerActionScroll model:_viewModel.discoveryList[index]];
+        [_delegate container:self takeAction:HXDiscoveryContainerActionScrolled model:_viewModel.discoveryList[index]];
     }
-    
-    HXCollectionViewLayoutStyle style = [self collectionView:self.collectionView layout:layout styleForItemAtIndexPath:indexPath];
-    if (style == HXCollectionViewLayoutStylePetty) {
-		if (scrollView.contentOffset.x == 20.0f) {
-			if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-				[_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[index]];
-			}
-		}
-	} else {
-		if (scrollView.contentOffset.x == 0.0f) {
-			if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
-				[_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:_viewModel.discoveryList[index]];
-			}
-		}
-	}
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (scrollView.contentOffset.x <= -80.0f) {
+        if (_delegate && [_delegate respondsToSelector:@selector(container:takeAction:model:)]) {
+            [_delegate container:self takeAction:HXDiscoveryContainerActionRefresh model:nil];
+        }
+    }
 }
 
 #pragma mark - Collection View Data Source Methods

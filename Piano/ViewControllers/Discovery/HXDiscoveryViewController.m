@@ -295,7 +295,7 @@ UINavigationControllerDelegate
             [self startFetchList];
             break;
         }
-        case HXDiscoveryContainerActionScroll: {
+        case HXDiscoveryContainerActionScrolled: {
             [self showCoverWithCoverUrl:model.coverUrl];
             break;
         }
