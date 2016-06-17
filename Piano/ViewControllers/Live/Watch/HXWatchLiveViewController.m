@@ -137,9 +137,10 @@ HXLiveAlbumViewDelegate
         @strongify(self)
         [self endLive];
     }];
-    [_viewModel.rewardSignal subscribeNext:^(id x) {
+    [_viewModel.rewardSignal subscribeNext:^(HXGiftModel *gift) {
         @strongify(self)
         [self updateAlbumView];
+        [self.dynamicGiftView animationWithGift:gift];
     }];
     [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
         @strongify(self)

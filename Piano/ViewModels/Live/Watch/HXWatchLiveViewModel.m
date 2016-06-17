@@ -190,7 +190,12 @@
     [self addBarrage:barrage];
     
     _model.album.rewardTotal = barrage.rewardTotal;
-    [_rewardSignal sendNext:barrage];
+    
+    HXGiftModel *gift = [HXGiftManager manager].albumAnimation;
+    gift.nickName = barrage.nickName;
+    gift.avatarUrl = barrage.avatarUrl;
+    gift.count = barrage.giftCount;
+    [_rewardSignal sendNext:gift];
 }
 
 - (void)addComment:(NSDictionary *)data {
