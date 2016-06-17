@@ -468,7 +468,7 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
             timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
     NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
     [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
-	[dictValues setValue:uID forKey:MiaAPIKey_UID];
+    [dictValues setValue:uID forKey:MiaAPIKey_UID];
 	// "type": "1 关注， 2取消关注"
 	[dictValues setValue:[NSNumber numberWithLong:1] forKey:MiaAPIKey_Type];
 
@@ -480,10 +480,12 @@ NSString *const MobileErrorPrompt       = @"手机号码不符合规范，请重
 }
 
 + (void)unfollowWithUID:(NSString *)uID
+                 roomID:(NSString *)roomID
 		completeBlock:(MiaRequestCompleteBlock)completeBlock
 		 timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock {
 	NSMutableDictionary *dictValues = [[NSMutableDictionary alloc] init];
-	[dictValues setValue:uID forKey:MiaAPIKey_UID];
+    [dictValues setValue:uID forKey:MiaAPIKey_UID];
+    [dictValues setValue:roomID forKey:MiaAPIKey_RoomID];
 	// "type": "1 关注， 2取消关注"
 	[dictValues setValue:[NSNumber numberWithLong:2] forKey:MiaAPIKey_Type];
 

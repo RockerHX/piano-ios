@@ -279,7 +279,7 @@
 }
 
 - (void)unFollowRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper unfollowWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper unfollowWithUID:_model.uID roomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             _anchorAttented = NO;
             [subscriber sendNext:@(_anchorAttented)];
