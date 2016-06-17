@@ -32,6 +32,7 @@
 #import "UIConstants.h"
 #import "MIAInfoLog.h"
 #import "NSString+IsNull.h"
+#import "FileLog.h"
 
 @interface HXRecordLiveViewController () <
 ZegoLiveApiDelegate,
@@ -204,8 +205,7 @@ HXLiveAlbumViewDelegate
     user.userName = [HXUserSession session].nickName;
     
     bool ret = [zegoLiveApi loginChannel:user.userID user:user];
-    assert(ret);
-    NSLog(@"%s, ret: %d", __func__, ret);
+    [[FileLog standard] log:@"%s, ret: %d", __func__, ret];
 }
 
 - (void)closeLive {
@@ -268,42 +268,28 @@ static CGFloat AlbumViewWidth = 60.0f;
 
 #pragma mark - ZegoLiveApiDelegate
 - (void)onLoginChannel:(NSString *)channel error:(uint32)error {
-    NSLog(@"%s, err: %u", __func__, error);
+    [[FileLog standard] log:[NSString stringWithFormat:@"%s, err: %u", __func__, error]];
     if (error == 0) {
         ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
-        
         int ret = [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
-        assert(ret == 0);
-        
         bool b = [zegoLiveApi enableMic:_microEnable];
-        assert(b);
-        
         b = [zegoLiveApi enableBeautifying:_beauty ? ZEGO_BEAUTIFY_POLISH : ZEGO_BEAUTIFY_NONE];
-        assert(b);
-        
         b = [zegoLiveApi setFilter:ZEGO_FILTER_NONE];
-        assert(b);
-        
         b = [zegoLiveApi startPublishingWithTitle:_roomTitle streamID:_viewModel.model.streamAlias];
-        assert(b);
-        NSLog(@"%s, ret: %d", __func__, ret);
+        [[FileLog standard] log:[NSString stringWithFormat:@"%s, ret: %d", __func__, ret]];
     }
 }
 
 - (void)onDisconnected:(uint32)err channel:(NSString *)channel {
-    NSString *msg = [NSString stringWithFormat:@"Channel %@ Connection Broken, ERROR: %u.", channel, err];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Disconnected!" message:msg delegate:nil cancelButtonTitle:@"YES" otherButtonTitles:nil];
-    [alert show];
+    [[FileLog standard] log:[NSString stringWithFormat:@"Channel %@ Connection Broken, ERROR: %u.", channel, err]];
 }
 
 - (void)onReconnected:(NSString *)channel {
-    NSString *msg = [NSString stringWithFormat:@"Channel %@ Reconnected.", channel];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reconnected!" message:msg delegate:nil cancelButtonTitle:@"YES" otherButtonTitles:nil];
-    [alert show];
+    [[FileLog standard] log:[NSString stringWithFormat:@"Channel %@ Reconnected.", channel]];
 }
 
 - (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
-    NSLog(@"%s, stream: %@", __func__, streamID);
+    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@", __func__, streamID]];
 	if ([NSString isNull:_viewModel.model.streamAlias]) {
 		_viewModel.model.streamAlias = streamID;
 	}
@@ -313,16 +299,16 @@ static CGFloat AlbumViewWidth = 60.0f;
 }
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
-    NSLog(@"%s, stream: %@, err: %u", __func__, streamID, err);
+    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@, err: %u", __func__, streamID, err]];
     [self showBannerWithPrompt:@"直播发布失败！"];
 }
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
-    NSLog(@"%s, stream: %@", __func__, streamID);
+    [[FileLog standard] log:[NSString stringWithFormat:@"%s, stream: %@", __func__, streamID]];
 }
 
 - (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel {
-    NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
+    [[FileLog standard] log:[NSString stringWithFormat:@"%s, err: %u, stream: %@", __func__, err, streamID]];
 }
 
 - (void)onVideoSizeChanged:(NSString *)streamID width:(uint32)width height:(uint32)height {}
