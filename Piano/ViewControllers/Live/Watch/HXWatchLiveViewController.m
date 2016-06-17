@@ -34,6 +34,7 @@
 #import "MIAInfoLog.h"
 #import "BFRadialWaveHUD.h"
 #import "FileLog.h"
+#import "MIARedEnvelopeView.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -249,6 +250,16 @@ HXLiveAlbumViewDelegate
     [self roomConfigure];
     [self updateAnchorView];
     [self updateAlbumView];
+    
+    HXCouponModel *coupon = _viewModel.model.coupon;
+    if (coupon) {
+        MIARedEnvelopeView *redEvenlopeView = [MIARedEnvelopeView new];
+        [redEvenlopeView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [redEvenlopeView setTitle:coupon.title tip:coupon.content];
+        [redEvenlopeView showInView:self.view receiveHandler:^{
+            [redEvenlopeView hidden];
+        }];
+    }
 }
 
 - (void)roomConfigure {

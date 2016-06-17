@@ -119,6 +119,7 @@
 		CD160F9B1CD05CD700DF4164 /* HXDiscoveryTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD160F981CD05CD700DF4164 /* HXDiscoveryTopBar.m */; };
 		CD160F9C1CD05CD700DF4164 /* HXDiscoveryTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD160F991CD05CD700DF4164 /* HXDiscoveryTopBar.xib */; };
 		CD23A1CA1D1104BE0061E825 /* D-MusicEntry.gif in Resources */ = {isa = PBXBuildFile; fileRef = CD23A1C91D1104BE0061E825 /* D-MusicEntry.gif */; };
+		CD23A1CE1D13A2600061E825 /* HXCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD23A1CD1D13A2600061E825 /* HXCouponModel.m */; };
 		CD2EC4E61D016BDA0065CD4A /* HXLiveCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2EC4E51D016BDA0065CD4A /* HXLiveCommentViewController.m */; };
 		CD3D1C071D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3D1C061D06B4470043ABBE /* HXLiveGiftLandscapeViewController.m */; };
 		CD3D1C0A1D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3D1C091D06B4790043ABBE /* HXLiveRewardLandscapeViewController.m */; };
@@ -632,6 +633,8 @@
 		CD2367AD1CA93D51002C8233 /* HXMeAttentionContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMeAttentionContainerCell.h; sourceTree = "<group>"; };
 		CD2367AE1CA93D51002C8233 /* HXMeAttentionContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMeAttentionContainerCell.m; sourceTree = "<group>"; };
 		CD23A1C91D1104BE0061E825 /* D-MusicEntry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "D-MusicEntry.gif"; sourceTree = "<group>"; };
+		CD23A1CC1D13A2600061E825 /* HXCouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCouponModel.h; sourceTree = "<group>"; };
+		CD23A1CD1D13A2600061E825 /* HXCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCouponModel.m; sourceTree = "<group>"; };
 		CD2949C21CA28A3500CA3C3F /* UIButton+HXIBnspectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+HXIBnspectable.h"; sourceTree = "<group>"; };
 		CD2949C31CA28A3500CA3C3F /* UIButton+HXIBnspectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+HXIBnspectable.m"; sourceTree = "<group>"; };
 		CD2949C41CA28A3500CA3C3F /* UILabel+HXIBnsepectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HXIBnsepectable.h"; sourceTree = "<group>"; };
@@ -1629,6 +1632,15 @@
 			path = Resource/Animation;
 			sourceTree = "<group>";
 		};
+		CD23A1CB1D13A2550061E825 /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				CD23A1CC1D13A2600061E825 /* HXCouponModel.h */,
+				CD23A1CD1D13A2600061E825 /* HXCouponModel.m */,
+			);
+			path = Coupon;
+			sourceTree = "<group>";
+		};
 		CD2949C01CA28A3500CA3C3F /* HXIBKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1807,6 +1819,7 @@
 		CD2E72961CA11E02003CDB77 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				CD23A1CB1D13A2550061E825 /* Coupon */,
 				CD07B2C91CEEF50D00B5AB87 /* Record */,
 				CD2E72971CA11E02003CDB77 /* HXLiveModel.h */,
 				CD2E72981CA11E02003CDB77 /* HXLiveModel.m */,
@@ -3374,6 +3387,7 @@
 				CD79609F1CBE594C004CC661 /* HXRecordBottomBar.m in Sources */,
 				CD07B2D01CEF021B00B5AB87 /* HXLiveRewardTopListViewController.m in Sources */,
 				42A0DB031CE2E08200F1FCEF /* MIAAlbumSongCell.m in Sources */,
+				CD23A1CE1D13A2600061E825 /* HXCouponModel.m in Sources */,
 				CD7960A01CBE594C004CC661 /* UIButton+HXIBnspectable.m in Sources */,
 				CD7960A11CBE594C004CC661 /* HXLiveCommentViewModel.m in Sources */,
 				CD7960A21CBE594C004CC661 /* WebSocketMgr.m in Sources */,
