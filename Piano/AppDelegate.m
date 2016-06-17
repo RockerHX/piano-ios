@@ -25,6 +25,7 @@
 #import "NSString+IsNull.h"
 
 #import "HXWatchLiveLandscapeViewController.h"
+#import "FileLog.h"
 
 @interface AppDelegate ()
 @end
@@ -97,7 +98,7 @@
 	if (remoteNotification) {
 		[self handleNotification:remoteNotification];
 	}
-    
+
 	return YES;
 }
 
@@ -182,16 +183,19 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 	if ([NSString isNull:action]
 		|| [NSString isNull:param1]
 		|| [NSString isNull:param2]) {
+		[[FileLog standard] log:@"error push param, action:%@, param1:%@, param2:%@", action, param1, param2];
 		return;
 	}
 
     if ([action isEqualToString:PushAction_WatchLive]) {
-        NSLog(@"%@ with roomID: %@", action, param1);
+		[[FileLog standard] log:@"push action:%@, param1:%@, param2:%@", action, param1, param2];
         BOOL horizontal = [param2 boolValue];
         NSString *roomID = param1;
 		if ([[WebSocketMgr standard] isWifiNetwork] || [UserSetting playWith3G]) {
+			[[FileLog standard] log:@"watch live from push without 3G alert"];
 			[self showLive:horizontal roomID:roomID];
 		} else {
+			[[FileLog standard] log:@"watch live from push with 3G alert"];
 			[UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
 				if (buttonIndex != alertView.cancelButtonIndex) {
 					[self showLive:horizontal roomID:roomID];
