@@ -40,7 +40,7 @@ HXXibImplementation
 
 #pragma mark - Public Methods
 - (void)showGift:(HXGiftModel *)gift completed:(void(^)(void))completed {
-    [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl]];
+    [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl] placeholderImage:[UIImage imageNamed:@"C-DefaultAvatar"]];
     _nickNameLabel.text = gift.nickName;
     _promptLabel.text = gift.prompt;
     _giftView.image = [UIImage imageWithData:gift.animationData];
