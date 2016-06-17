@@ -419,13 +419,6 @@
             //购买记录
             MIAPayHistoryViewController *payHistoryViewController = [MIAPayHistoryViewController new];
             [self.navigationController pushViewController:payHistoryViewController animated:YES];
-            
-//            MIARedEnvelopeView *redEvenlopeView = [MIARedEnvelopeView newAutoLayoutView];
-//            [redEvenlopeView showInView:nil receiveHandler:^{
-//                
-//                [redEvenlopeView hidden];
-//            }];
-            
         }else if (indexPath.row == 2){
             //我的收益
             MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
