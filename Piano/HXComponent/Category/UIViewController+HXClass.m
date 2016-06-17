@@ -103,5 +103,10 @@
         [HXAlertBanner showWithMessage:prompt tap:nil];
     }
 }
+- (void)showBannerWithPrompt:(NSString *)prompt duration:(NSTimeInterval)duration {
+    if (prompt.length) {
+        [HXAlertBanner showWithMessage:prompt duration:duration tap:nil];
+    }
+}
 
 @end
