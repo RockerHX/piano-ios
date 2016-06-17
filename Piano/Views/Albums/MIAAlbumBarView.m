@@ -87,7 +87,7 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [reportImageView setImage:reportImage];
     [self addSubview:reportImageView];
     
-    [JOAutoLayout autoLayoutWithTopYView:_songNameLabel distance:3. selfView:reportImageView superView:self];
+    [JOAutoLayout autoLayoutWithTopYView:_songNameLabel distance:-3. selfView:reportImageView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:reportImageView superView:self];
     [JOAutoLayout autoLayoutWithSize:reportImage.size selfView:reportImageView superView:self];
     
