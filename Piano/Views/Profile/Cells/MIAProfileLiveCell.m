@@ -13,6 +13,7 @@
 @interface MIAProfileLiveCell()
 
 @property (nonatomic, strong) MIAProfileLiveView *liveView;
+@property (nonatomic, copy) LiveCellClickBlock liveCellClickBlock;
 
 @end
 
@@ -28,6 +29,13 @@
     if (!self.liveView) {
 
         self.liveView = [MIAProfileLiveView newAutoLayoutView];
+        @weakify(self);
+        [_liveView profileLiveViewClickHandler:^{
+        @strongify(self);
+            if (self.liveCellClickBlock) {
+                self.liveCellClickBlock();
+            }
+        }];
         [self.cellContentView addSubview:_liveView];
         
         [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_liveView superView:self.cellContentView];
@@ -48,7 +56,12 @@
     
         [JOFException exceptionWithName:@"MIAProfileLiveCell exception!" reason:@"data需要是MIAProfileLiveModel类型"];
     }
-    
+}
+
+- (void)liveCellClickBlock:(LiveCellClickBlock)block{
+
+    self.liveCellClickBlock = nil;
+    self.liveCellClickBlock = block;
 }
 
 @end

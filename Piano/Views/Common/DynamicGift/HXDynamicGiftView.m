@@ -40,7 +40,7 @@ HXXibImplementation
 #pragma mark - Public Methods
 - (void)animationWithGift:(HXGiftModel *)gift {
     if (gift.type == HXGiftTypeDynamic) {
-        [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl]];
+        [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl] placeholderImage:[UIImage imageNamed:@"C-DefaultAvatar"]];
         _nickNameLabel.text = gift.nickName;
         _promptLabel.text = gift.prompt;
         
