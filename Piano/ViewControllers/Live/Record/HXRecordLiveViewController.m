@@ -135,27 +135,33 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - Event Response
 - (IBAction)closeButtonPressed {
-    @weakify(self)
-    HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
-    [[_viewModel.closeRoomCommand execute:nil] subscribeNext:^(NSString *message) {
-        @strongify(self)
-        [self showBannerWithPrompt:message];
-    } completed:^{
-        @strongify(self)
-        if (manager.liveState == HXLiveStateLive) {
-            [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
-                [self.anchorView stopRecordTime];
-                [self closeLive];
-            }];
-        } else {
-            [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
-                [self leaveRoom];
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }];
-        }
-        [self.albumView stopAlbumAnmation];
-        [manager closeLive];
-    }];
+    if (_viewModel) {
+        @weakify(self)
+        HXZegoAVKitManager *manager = [HXZegoAVKitManager manager];
+        [[_viewModel.closeRoomCommand execute:nil] subscribeNext:^(NSString *message) {
+            @strongify(self)
+            [self showBannerWithPrompt:message];
+            [[FileLog standard] log:@"Close Room Error:%@", message];
+        } completed:^{
+            @strongify(self)
+            if (manager.liveState == HXLiveStateLive) {
+                [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+                    [self.anchorView stopRecordTime];
+                    [self closeLive];
+                }];
+            } else {
+                [[_viewModel.closeRoomCommand execute:nil] subscribeCompleted:^{
+                    [self leaveRoom];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            }
+            [self.albumView stopAlbumAnmation];
+            [manager closeLive];
+        }];
+    } else {
+        [self leaveRoom];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)swipeGesture:(UISwipeGestureRecognizer *)gesure {
