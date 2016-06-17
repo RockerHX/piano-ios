@@ -134,10 +134,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIa-ca-bHB" userLabel="Resport Button">
-                                <rect key="frame" x="468" y="10" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="JcC-lz-oxW"/>
-                                </constraints>
+                                <rect key="frame" x="487" y="20" width="31" height="31"/>
                                 <state key="normal" image="LC-ReportIcon-Gray"/>
                                 <connections>
                                     <action selector="reportButtonPressed" destination="Dyc-be-gjQ" eventType="touchUpInside" id="ALr-IF-ZVp"/>
@@ -162,7 +159,6 @@
                             <constraint firstItem="WE7-qj-rlW" firstAttribute="centerY" secondItem="Ng3-bd-ypl" secondAttribute="centerY" id="ANB-Uv-HXT"/>
                             <constraint firstItem="Ng3-bd-ypl" firstAttribute="top" secondItem="mO5-HS-sqh" secondAttribute="bottom" constant="15" id="GWq-vh-WKL"/>
                             <constraint firstItem="gi9-YG-ZfP" firstAttribute="top" secondItem="6LA-y0-bo0" secondAttribute="bottom" id="Hxo-Yd-uSC"/>
-                            <constraint firstItem="pIa-ca-bHB" firstAttribute="width" secondItem="pIa-ca-bHB" secondAttribute="height" multiplier="1:1" id="IkV-eh-qAg"/>
                             <constraint firstItem="Ng3-bd-ypl" firstAttribute="leading" secondItem="aBX-Fw-0Sh" secondAttribute="leading" constant="10" id="JsU-0Q-hY5"/>
                             <constraint firstItem="D6v-2K-8cm" firstAttribute="leading" secondItem="aBX-Fw-0Sh" secondAttribute="leading" id="KRS-fg-7MT"/>
                             <constraint firstItem="6LA-y0-bo0" firstAttribute="leading" secondItem="aBX-Fw-0Sh" secondAttribute="leading" id="PDL-mC-M3K"/>
@@ -180,7 +176,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="albumRightConstraint" destination="eKj-es-EgQ" id="Srq-b4-pHh"/>
                         <outlet property="albumView" destination="Fpd-Fw-TPr" id="vHA-vC-YpT"/>
+                        <outlet property="albumWidthConstraint" destination="gqw-Q9-SZG" id="cwE-H0-Ci6"/>
                         <outlet property="anchorView" destination="ckr-OS-Sm9" id="174-Bx-bq7"/>
                         <outlet property="containerLeftConstraint" destination="KRS-fg-7MT" id="g6a-rX-fYw"/>
                         <outlet property="dynamicGiftView" destination="Dnz-GS-1EO" id="psB-LC-G11"/>
@@ -317,10 +315,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYF-Hl-bNW" userLabel="Resport Button">
-                                <rect key="frame" x="220" y="10" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="u27-of-DRJ"/>
-                                </constraints>
+                                <rect key="frame" x="239" y="20" width="31" height="31"/>
                                 <state key="normal" image="LC-ReportIcon-Gray"/>
                                 <connections>
                                     <action selector="reportButtonPressed" destination="k8B-Y3-ojo" eventType="touchUpInside" id="yPW-J1-sBA"/>
@@ -342,7 +337,6 @@
                         <constraints>
                             <constraint firstItem="R38-Wu-TSw" firstAttribute="centerY" secondItem="WGF-DP-Xhn" secondAttribute="centerY" id="1Kl-BS-S8Y"/>
                             <constraint firstItem="R38-Wu-TSw" firstAttribute="leading" secondItem="UYF-Hl-bNW" secondAttribute="trailing" id="50E-Pv-6et"/>
-                            <constraint firstItem="UYF-Hl-bNW" firstAttribute="width" secondItem="UYF-Hl-bNW" secondAttribute="height" multiplier="1:1" id="MEy-M0-oAw"/>
                             <constraint firstItem="Weh-Ip-WpZ" firstAttribute="top" secondItem="43w-fr-l6Q" secondAttribute="top" id="Oxb-ql-frS"/>
                             <constraint firstItem="VvH-Rw-RfM" firstAttribute="top" secondItem="HZd-BB-htj" secondAttribute="bottom" id="VFN-ku-RoB"/>
                             <constraint firstAttribute="trailing" secondItem="R38-Wu-TSw" secondAttribute="trailing" id="Ycx-b8-XbC"/>
@@ -1751,6 +1745,6 @@
         <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xKo-2K-gUT"/>
+        <segue reference="O5M-18-fAC"/>
     </inferredMetricsTieBreakers>
 </document>
