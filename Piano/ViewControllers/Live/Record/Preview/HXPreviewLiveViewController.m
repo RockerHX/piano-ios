@@ -123,7 +123,7 @@ HXSelectedAlbumViewControllerDelegate
          }];
     } else {
         [self hiddenHUD];
-        [self showBannerWithPrompt:@"请先填写直播标题！"];
+        [self showBannerWithPrompt:@"请先填写直播标题"];
     }
 }
 
