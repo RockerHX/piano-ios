@@ -301,8 +301,14 @@ HXLiveAlbumViewDelegate
 
 - (void)updateAlbumView {
     HXAlbumModel *album = _viewModel.model.album;
-    _albumView.hidden = album ? NO : YES;
-    [_albumView updateWithAlbum:album];
+    if (album) {
+        _albumView.hidden = NO;
+        [_albumView updateWithAlbum:album];
+    } else {
+        _albumView.hidden = YES;
+        _albumWidthConstraint.constant = 0.0f;
+        _albumRightConstraint.constant = 0.0f;
+    }
 }
 
 - (void)reportAnchorWithID:(NSString *)uid {

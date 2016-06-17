@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet HXDynamicGiftView *dynamicGiftView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerLeftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumRightConstraint;
 
 @property (nonatomic, strong) NSString *roomID;
 @property (nonatomic, strong, readonly) HXWatchLiveViewModel *viewModel;
