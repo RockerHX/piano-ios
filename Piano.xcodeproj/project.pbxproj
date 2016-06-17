@@ -27,6 +27,7 @@
 		420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */; };
 		420BBB711CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */; };
 		420FCD0B1CEC0DD600BE5217 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */; };
+		421591AD1D13EA0200512B25 /* MIAProfileNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421591AC1D13EA0200512B25 /* MIAProfileNavigationController.m */; };
 		42175FEE1D1131A4003BD0E3 /* MIAIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42175FED1D1131A4003BD0E3 /* MIAIncomeViewController.m */; };
 		422213E31D0D52ED00F4E27D /* MIAHostProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422213E21D0D52ED00F4E27D /* MIAHostProfileViewController.m */; };
 		422213E61D0D538900F4E27D /* MIAHostProfileViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 422213E51D0D538900F4E27D /* MIAHostProfileViewModel.m */; };
@@ -425,6 +426,8 @@
 		420BBB6E1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryViewModel.h; sourceTree = "<group>"; };
 		420BBB6F1CE9CD6200F52AB2 /* MIAPayHistoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryViewModel.m; sourceTree = "<group>"; };
 		420FCD0A1CEC0DD600BE5217 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		421591AB1D13EA0200512B25 /* MIAProfileNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAProfileNavigationController.h; sourceTree = "<group>"; };
+		421591AC1D13EA0200512B25 /* MIAProfileNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAProfileNavigationController.m; sourceTree = "<group>"; };
 		42175FEC1D1131A4003BD0E3 /* MIAIncomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAIncomeViewController.h; sourceTree = "<group>"; };
 		42175FED1D1131A4003BD0E3 /* MIAIncomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAIncomeViewController.m; sourceTree = "<group>"; };
 		422213E11D0D52ED00F4E27D /* MIAHostProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAHostProfileViewController.h; sourceTree = "<group>"; };
@@ -2396,6 +2399,8 @@
 		CD8322C41CF5974000D7A254 /* Guests */ = {
 			isa = PBXGroup;
 			children = (
+				421591AB1D13EA0200512B25 /* MIAProfileNavigationController.h */,
+				421591AC1D13EA0200512B25 /* MIAProfileNavigationController.m */,
 				CD8322C91CF5974000D7A254 /* MIAProfileViewController.h */,
 				CD8322CA1CF5974000D7A254 /* MIAProfileViewController.m */,
 				42B857721CF844DA004B296A /* MIAVideoPlayViewController.h */,
@@ -3485,6 +3490,7 @@
 				CD7960D31CBE594C004CC661 /* UIView+Frame.m in Sources */,
 				429CC2151CE08F22004BCC0C /* MIAVideoModel.m in Sources */,
 				CD7960D41CBE594C004CC661 /* HXUserModel.m in Sources */,
+				421591AD1D13EA0200512B25 /* MIAProfileNavigationController.m in Sources */,
 				422497D31CF4664A008F8A55 /* JODataRequestConfig.m in Sources */,
 				422497C61CF4663C008F8A55 /* JOMission.m in Sources */,
 				429CC2011CE0689C004BCC0C /* NSArray+JOExtend.m in Sources */,

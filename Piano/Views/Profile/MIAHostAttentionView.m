@@ -11,7 +11,7 @@
 #import "MIAFontManage.h"
 #import "AppDelegate.h"
 #import "UIImageView+WebCache.h"
-#import "MIAProfileViewController.h"
+#import "MIAProfileNavigationController.h"
 
 static CGFloat const kLiveTipLableHeight = 18.; //直播状态提示label的高度
 static CGFloat const kLiveImageHeight = 8.;//直播的image的高度
@@ -145,10 +145,8 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
 
 - (void)tapAction:(UIGestureRecognizer *)gesture{
     
-    MIAProfileViewController *profileViewController = [MIAProfileViewController new];
-    [profileViewController setUid:_profileFollowModel.fuID];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [(UINavigationController *)[[delegate window] rootViewController] pushViewController:profileViewController animated:YES];
+    [(UINavigationController *)[[delegate window] rootViewController] pushViewController:[MIAProfileNavigationController profileViewControllerInstanceWithUID:_profileFollowModel.fuID] animated:YES];
 }
 
 @end
