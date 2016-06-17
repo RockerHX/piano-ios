@@ -161,7 +161,6 @@
                             <constraint firstItem="Dnz-GS-1EO" firstAttribute="height" secondItem="aBX-Fw-0Sh" secondAttribute="height" multiplier="0.6" id="50T-Hp-RI7"/>
                             <constraint firstItem="WE7-qj-rlW" firstAttribute="centerY" secondItem="Ng3-bd-ypl" secondAttribute="centerY" id="ANB-Uv-HXT"/>
                             <constraint firstItem="Ng3-bd-ypl" firstAttribute="top" secondItem="mO5-HS-sqh" secondAttribute="bottom" constant="15" id="GWq-vh-WKL"/>
-                            <constraint firstAttribute="trailing" secondItem="D6v-2K-8cm" secondAttribute="trailing" id="Gu8-5S-4SB"/>
                             <constraint firstItem="gi9-YG-ZfP" firstAttribute="top" secondItem="6LA-y0-bo0" secondAttribute="bottom" id="Hxo-Yd-uSC"/>
                             <constraint firstItem="pIa-ca-bHB" firstAttribute="width" secondItem="pIa-ca-bHB" secondAttribute="height" multiplier="1:1" id="IkV-eh-qAg"/>
                             <constraint firstItem="Ng3-bd-ypl" firstAttribute="leading" secondItem="aBX-Fw-0Sh" secondAttribute="leading" constant="10" id="JsU-0Q-hY5"/>
@@ -170,6 +169,7 @@
                             <constraint firstAttribute="trailing" secondItem="6LA-y0-bo0" secondAttribute="trailing" id="a6O-OD-CGc"/>
                             <constraint firstAttribute="bottom" secondItem="D6v-2K-8cm" secondAttribute="bottom" id="irU-kD-29Q"/>
                             <constraint firstAttribute="trailing" secondItem="WE7-qj-rlW" secondAttribute="trailing" id="jzy-pK-aKk"/>
+                            <constraint firstItem="D6v-2K-8cm" firstAttribute="width" secondItem="aBX-Fw-0Sh" secondAttribute="width" id="lMn-Cp-I7c"/>
                             <constraint firstItem="D6v-2K-8cm" firstAttribute="top" secondItem="aBX-Fw-0Sh" secondAttribute="top" id="paP-8l-bFi"/>
                             <constraint firstItem="WE7-qj-rlW" firstAttribute="leading" secondItem="pIa-ca-bHB" secondAttribute="trailing" id="vpV-Sy-Sgh"/>
                             <constraint firstItem="6LA-y0-bo0" firstAttribute="top" secondItem="mO5-HS-sqh" secondAttribute="bottom" id="xIB-sH-bxi"/>
@@ -182,6 +182,7 @@
                     <connections>
                         <outlet property="albumView" destination="Fpd-Fw-TPr" id="vHA-vC-YpT"/>
                         <outlet property="anchorView" destination="ckr-OS-Sm9" id="174-Bx-bq7"/>
+                        <outlet property="containerLeftConstraint" destination="KRS-fg-7MT" id="g6a-rX-fYw"/>
                         <outlet property="dynamicGiftView" destination="Dnz-GS-1EO" id="psB-LC-G11"/>
                         <outlet property="liveView" destination="6LA-y0-bo0" id="NaV-pO-Qfk"/>
                         <outlet property="staticGiftView" destination="zdw-Fx-ku2" id="bs2-nR-D6e"/>
@@ -1750,6 +1751,6 @@
         <image name="LC-ReportIcon-Gray" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HeX-r3-laS"/>
+        <segue reference="xKo-2K-gUT"/>
     </inferredMetricsTieBreakers>
 </document>
