@@ -8,6 +8,10 @@
 
 #import "MIABaseShowView.h"
 
+typedef void(^ProfileViewClickBlock)();
+
 @interface MIAProfileLiveView : MIABaseShowView
+
+- (void)profileLiveViewClickHandler:(ProfileViewClickBlock)block;
 
 @end

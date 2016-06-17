@@ -316,7 +316,7 @@
         [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.albumViewModel.albumModel.coverUrl]
                                placeholderImage:nil
                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                          self.coverImageView.image = [image blurredImageWithRadius:5.0f iterations:5 tintColor:[UIColor whiteColor]];
+                                          self.coverImageView.image = [image blurredImageWithRadius:15.0f iterations:15 tintColor:[UIColor blackColor]];
                                       }];
         [self.albumBarView setAlbumName:self.albumViewModel.albumModel.title singerName:self.albumViewModel.albumModel.nick];
         [self.albumTableHeadView setAlbumHeadDetailData:self.albumViewModel.albumModel];
