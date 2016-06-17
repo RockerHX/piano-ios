@@ -61,7 +61,10 @@ UINavigationControllerDelegate
     MusicMgr *musicMgr = [MusicMgr standard];
     _topBar.playerEntry.hidden = !(musicMgr.playList.count && musicMgr.isPlaying);
     [_topBar.profileButton sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"D-ProfileEntryIcon"]];
-    [self startFetchList];
+    
+    if ([[WebSocketMgr standard] isOpen]) {
+        [self startFetchList];
+    }
 }
 
 - (void)viewDidLoad {
