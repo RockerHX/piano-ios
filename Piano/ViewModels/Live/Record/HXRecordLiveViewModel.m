@@ -116,11 +116,6 @@
     return @(_model.viewCount).stringValue;
 }
 
-#pragma mark - Public Methods
-- (void)closeLive {
-    [MiaAPIHelper closeLiveWithRoomID:self.roomID completeBlock:nil timeoutBlock:nil];
-}
-
 #pragma mark - Private Methods
 - (void)addEnterBarrage:(NSDictionary *)data {
     HXBarrageModel *barrage = [HXBarrageModel mj_objectWithKeyValues:data];
@@ -193,10 +188,10 @@
         if (success) {
             [subscriber sendCompleted];
         } else {
-            [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+            [subscriber sendNext:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
         }
     } timeoutBlock:^(MiaRequestItem *requestItem) {
-        [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+        [subscriber sendNext:TimtOutPrompt];
     }];
 }
 

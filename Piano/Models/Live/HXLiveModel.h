@@ -8,6 +8,7 @@
 
 #import "MJExtension.h"
 #import "HXAlbumModel.h"
+#import "HXCouponModel.h"
 
 
 @interface HXLiveModel : NSObject
@@ -36,6 +37,7 @@
 @property (nonatomic, assign) NSInteger  viewCount;
 @property (nonatomic, assign)      BOOL  horizontal;
 
-@property (nonatomic, strong) HXAlbumModel *album;
+@property (nonatomic, strong)  HXAlbumModel *album;
+@property (nonatomic, strong) HXCouponModel *coupon;
 
 @end

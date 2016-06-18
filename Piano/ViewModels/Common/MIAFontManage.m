@@ -177,7 +177,7 @@
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 17.);
     }else if (type == MIAFontType_AlbumReward_RewardMCoin){
         //打赏的M币数量
-        return JOFontsMake([UIFont systemFontOfSize:30. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:55. weight:UIFontWeightRegular], JORGBCreate(159., 144., 98.,1.));
 //        return JOFontMake(kMIAFontRegular, [UIColor whiteColor], 22.);
     }else if (type == MIAFontType_AlbumReward_RewardButtonTitle){
         //打赏的按钮的标题
@@ -289,22 +289,34 @@
     //MARK: 我的收益
     if (type == MIAFontType_Income_MoneyTip) {
         //可提现的金额提示
-        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor whiteColor]);
     }else if (type == MIAFontType_Income_Money){
         //金额
-         return JOFontsMake([UIFont systemFontOfSize:22. weight:UIFontWeightBold], [UIColor whiteColor]);
+         return JOFontsMake([UIFont systemFontOfSize:30. weight:UIFontWeightBold], [UIColor whiteColor]);
     }else if (type == MIAFontType_Income_MoneyUnit){
         //元
-        return JOFontsMake([UIFont systemFontOfSize:13. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor whiteColor]);
     }else if (type == MIAFontType_Income_Tip){
         //提示
-        return JOFontsMake([UIFont systemFontOfSize:11. weight:UIFontWeightRegular], [UIColor whiteColor]);
+        return JOFontsMake([UIFont systemFontOfSize:12. weight:UIFontWeightRegular], [UIColor whiteColor]);
     }else if (type == MIAFontType_Income_Cell_Title){
         //标题
-        return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor blackColor]);
+        return JOFontsMake([UIFont systemFontOfSize:16. weight:UIFontWeightRegular], [UIColor blackColor]);
     }else if (type == MIAFontType_Income_Cell_Content){
         //cell的内容
         return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightRegular], [UIColor blackColor]);
+    }
+    
+    //MARK: 红包
+    if (type == MIAFontType_RedEnvelope_Title) {
+        //红包的标题
+        return JOFontsMake([UIFont systemFontOfSize:34. weight:UIFontWeightBold], JORGBCreate(255., 236., 161., 1.));
+    }else if (type == MIAFontType_RedEnvelope_Tip){
+        //红包的提示
+        return JOFontsMake([UIFont systemFontOfSize:15. weight:UIFontWeightBold], JORGBCreate(255., 236., 161., 1.));
+    }else if (type == MIAFontType_RedEnveLope_ButtonTitle){
+        //按钮的标题
+        return JOFontsMake([UIFont systemFontOfSize:20. weight:UIFontWeightRegular], JORGBCreate(235. ,58. ,87. , 1.)); //235,58,87
     }
     
     return JOFontsMake([UIFont systemFontOfSize:17. weight:UIFontWeightRegular], [UIColor blackColor]);

@@ -18,4 +18,8 @@
             @"viewCount": @"viewCnt"};
 }
 
+- (void)mj_keyValuesDidFinishConvertingToObject {
+    _album.nickName = _nickName;
+}
+
 @end

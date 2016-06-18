@@ -119,6 +119,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
 - (void)unAttentionRequestWithSubscriber:(id<RACSubscriber>)subscriber{
 
     [MiaAPIHelper unfollowWithUID:_uid
+                           roomID:nil
                     completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                         
                         if (success) {
@@ -171,6 +172,7 @@ CGFloat const kProfileReplayCellHeight = 210.;
     _profileHeadModel.fansCount = _profileModel.fansCnt;
     _profileHeadModel.followCount = _profileModel.followCnt;
     _profileHeadModel.userpic = _profileModel.userpic;
+    _profileHeadModel.coverColor = _profileModel.coverColor;
 }
 
 - (void)updateLiveModelData{

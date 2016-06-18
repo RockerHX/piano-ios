@@ -18,11 +18,14 @@
 
 // MusicMgr
 #import "UserSetting.h"
+#import "WebSocketMgr.h"
+#import "BlocksKit+UIKit.h"
 #import "MusicMgr.h"
 #import "JPUSHService.h"
 #import "NSString+IsNull.h"
 
 #import "HXWatchLiveLandscapeViewController.h"
+#import "FileLog.h"
 
 @interface AppDelegate ()
 @end
@@ -60,7 +63,7 @@
     [UMSocialData setAppKey:UMengAPPKEY];
     //设置微信AppId、appSecret，分享url
     [UMSocialWechatHandler setWXAppId:WeiXinKEY appSecret:WeiXinSecret url:@"http://www.baidu.com"];
-    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 #import "UMSocialSinaSSOHandler.h"
+    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 UMSocialSinaSSOHandler.h
     [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:WeiBoKEY
                                               secret:WeiBoSecret
                                          RedirectURL:WeiBoRedirectUri];
@@ -95,7 +98,7 @@
 	if (remoteNotification) {
 		[self handleNotification:remoteNotification];
 	}
-    
+
 	return YES;
 }
 
@@ -108,11 +111,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	// 切换回前台主动取消被打断状态
 	[MusicMgr standard].isInterruption = NO;
-
-	// 设置后台播放模式
-	AVAudioSession *audioSession=[AVAudioSession sharedInstance];
-	[audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-	[audioSession setActive:YES error:nil];
 
 	[JPUSHService resetBadge];
 	[application setApplicationIconBadgeNumber:0];
@@ -185,21 +183,38 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
 	if ([NSString isNull:action]
 		|| [NSString isNull:param1]
 		|| [NSString isNull:param2]) {
+		[[FileLog standard] log:@"error push param, action:%@, param1:%@, param2:%@", action, param1, param2];
 		return;
 	}
 
-	if ([action isEqualToString:PushAction_WatchLive]) {
-        NSLog(@"%@ with roomID: %@", action, param1);
-        UINavigationController *watchLiveNavigationController = nil;
-        if ([param2 boolValue]) {
-            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
-        } else {
-            watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-        }
-        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
-        watchLiveViewController.roomID = param1;
-        [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
+    if ([action isEqualToString:PushAction_WatchLive]) {
+		[[FileLog standard] log:@"push action:%@, param1:%@, param2:%@", action, param1, param2];
+        BOOL horizontal = [param2 boolValue];
+        NSString *roomID = param1;
+		if ([[WebSocketMgr standard] isWifiNetwork] || [UserSetting playWith3G]) {
+			[[FileLog standard] log:@"watch live from push without 3G alert"];
+			[self showLive:horizontal roomID:roomID];
+		} else {
+			[[FileLog standard] log:@"watch live from push with 3G alert"];
+			[UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+				if (buttonIndex != alertView.cancelButtonIndex) {
+					[self showLive:horizontal roomID:roomID];
+				}
+			}];
+		}
 	}
+}
+
+- (void)showLive:(BOOL)horizontal roomID:(NSString *)roomID {
+    UINavigationController *watchLiveNavigationController = nil;
+    if (horizontal) {
+        watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+    } else {
+        watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    }
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+    watchLiveViewController.roomID = roomID;
+    [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
 }
 
 @end

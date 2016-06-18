@@ -8,7 +8,6 @@
 
 #import "MIASettingViewController.h"
 #import "MIASettingContentViewController.h"
-#import "HXFeedBackViewController.h"
 #import "ChangePwdViewController.h"
 #import "HXUserTermsViewController.h"
 #import "MBProgressHUDHelp.h"
@@ -518,9 +517,6 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
 }
 
 - (void)feedback{
-
-//    HXFeedBackViewController *feedBackViewController = [HXFeedBackViewController instance];
-//    [self.navigationController pushViewController:feedBackViewController animated:YES];
     
     MIASettingContentViewController *settingContentViewController = [[MIASettingContentViewController alloc] initWithContentType:SettingContentType_Feedback];
     [self.navigationController pushViewController:settingContentViewController animated:YES];

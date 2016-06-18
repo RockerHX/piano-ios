@@ -82,9 +82,18 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_popButton superView:self];
     [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_popButton superView:self];
     
+    UIImage *reportImage = [UIImage imageNamed:@"C-More"];
+    UIImageView *reportImageView = [UIImageView newAutoLayoutView];
+    [reportImageView setImage:reportImage];
+    [self addSubview:reportImageView];
+    
+    [JOAutoLayout autoLayoutWithTopYView:_songNameLabel distance:-3. selfView:reportImageView superView:self];
+    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:reportImageView superView:self];
+    [JOAutoLayout autoLayoutWithSize:reportImage.size selfView:reportImageView superView:self];
+    
     self.reportButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_reportButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_reportButton setImage:[UIImage imageNamed:@"C-More"] forState:UIControlStateNormal];
+//    [_reportButton setImage:[UIImage imageNamed:@"C-More"] forState:UIControlStateNormal];
     [_reportButton addTarget:self action:@selector(reportButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_reportButton];
     

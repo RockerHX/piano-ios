@@ -35,7 +35,6 @@
 @property (nonatomic, strong) NSArray<HXCommentModel *> *comments;
 @property (nonatomic, strong) NSArray<HXBarrageModel *> *barrages;
 
-
 - (instancetype)initWithRoomID:(NSString *)roomID;
 
 @end

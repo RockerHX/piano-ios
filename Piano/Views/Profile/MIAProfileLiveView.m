@@ -7,8 +7,6 @@
 //
 
 #import "MIAProfileLiveView.h"
-#import "HXWatchLiveLandscapeViewController.h"
-#import "AppDelegate.h"
 #import "MusicMgr.h"
 #import "MIAProfileViewModel.h"
 
@@ -19,6 +17,7 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
 @interface MIAProfileLiveView()
 
 @property (nonatomic, strong) MIAProfileLiveModel *liveModel;
+@property (nonatomic, copy) ProfileViewClickBlock profileViewClickBlock;
 
 @end
 
@@ -85,23 +84,19 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
     }
 }
 
-#pragma mark - tag action
-- (void)tapAction:(UIGestureRecognizer *)gesture {
-	UINavigationController *watchLiveNavigationController = nil;
-	if (_liveModel.horizontal) {
-		watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
-	} else {
-		watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
-	}
+- (void)profileLiveViewClickHandler:(ProfileViewClickBlock)block{
 
-	HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
-    watchLiveViewController.roomID = _liveModel.liveRoomID;
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [(UINavigationController *)[[delegate window] rootViewController] presentViewController:watchLiveNavigationController animated:YES completion:^{
-        if ([[MusicMgr standard] isPlaying]) {
-            [[MusicMgr standard] pause];
-        }
-    }];
+    self.profileViewClickBlock = nil;
+    self.profileViewClickBlock = block;
+}
+
+#pragma mark - tag action
+
+- (void)tapAction:(UIGestureRecognizer *)gesture {
+    
+    if (_profileViewClickBlock) {
+        _profileViewClickBlock();
+    }
 }
 
 @end

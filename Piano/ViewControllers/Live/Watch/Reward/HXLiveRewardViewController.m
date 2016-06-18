@@ -73,11 +73,11 @@ HXSectorSliderDelegate
     [self showHUD];
     [[MIAMCoinManage shareMCoinManage] rewardAlbumWithMCoin:_rewardCountLabel.text albumID:_album.ID roomID:_roomID success:^{
         [self hiddenHUD];
-        [self showBannerWithPrompt:@"打赏成功！"];
+        [self showBannerWithPrompt:@"打赏成功"];
         [self dismiss];
     } failed:^(NSString *failed) {
         [self hiddenHUD];
-        [self showBannerWithPrompt:@"打赏失败，请检查网络！"];
+        [self showBannerWithPrompt:failed];
     } mCoinSuccess:nil mCoinFailed:nil];
 }
 

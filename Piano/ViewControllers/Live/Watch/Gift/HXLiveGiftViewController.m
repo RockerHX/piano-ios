@@ -95,14 +95,14 @@
         HXGiftModel *gift = _giftList[selectedIndex];
         [[MIAMCoinManage shareMCoinManage] sendGiftWithGiftID:gift.ID giftCount:_giftCount roomID:_roomID success:^{
             [self hiddenHUD];
-            [self showBannerWithPrompt:@"打赏成功！"];
+            [self showBannerWithPrompt:@"打赏成功"];
             [self dismiss];
         } failed:^(NSString *failed) {
             [self hiddenHUD];
             [self showBannerWithPrompt:failed];
         } mCoinSuccess:nil mCoinFailed:nil];
     } else {
-        [self showBannerWithPrompt:@"请先选择要打赏的礼物！"];
+        [self showBannerWithPrompt:@"请先选择要打赏的礼物"];
     }
 }
 

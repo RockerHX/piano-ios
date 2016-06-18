@@ -11,6 +11,10 @@
 extern NSString * const UserDefaultsKey_PlayWith3G;
 extern NSString * const UserDefaultsKey_AutoPlay;
 
+extern NSString * const k3GPlayTitle;
+extern NSString * const k3GPlayMessage;
+extern NSString * const k3GPlayAllow;
+extern NSString * const k3GPlayCancel;
 
 @interface UserSetting : NSObject
 

@@ -91,13 +91,11 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 40.;
     
     self.playSlider = [MIAPlaySlider newAutoLayoutView];
     [_playSlider setMinimumTrackTintColor:JORGBSameCreate(220.)];
-    //    [_playSlider setThumbTintColor:JORGBSameCreate(200.)];
-//    [_playSlider setSliderThumbHeight:20. color:JORGBSameCreate(200.)];
     [_playSlider setThumbImage:[UIImage imageNamed:@"VP-SliderThumb"] forState:UIControlStateNormal];
     [_playSlider setMaximumTrackTintColor:JORGBCreate(200., 200., 200., 0.7)];
     [_playSlider setMinimumValue:0.];
     [_playSlider setMaximumValue:1.];
-    [_playSlider addTarget:self action:@selector(sliderValueChange) forControlEvents:UIControlEventTouchUpInside];
+    [_playSlider addTarget:self action:@selector(sliderValueChange) forControlEvents:UIControlEventValueChanged];
     [self addSubview:_playSlider];
     
     [JOAutoLayout autoLayoutWithLeftView:_currentTimeLabel distance:kPlayBarViewSliderToTimeLabelSpaceDistance selfView:_playSlider superView:self];

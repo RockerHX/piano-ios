@@ -10,7 +10,6 @@
 #import "HXDiscoveryContainerViewController.h"
 #import "HXRecordLiveViewController.h"
 #import "HXWatchLiveLandscapeViewController.h"
-#import "HXWatchLiveLandscapeViewController.h"
 #import "HXPlayViewController.h"
 #import "HXUserSession.h"
 #import <MediaPlayer/MediaPlayer.h>
@@ -26,11 +25,14 @@
 #import "HXLiveModel.h"
 #import "BFRadialWaveHUD.h"
 #import "WebSocketMgr.h"
+#import "UserSetting.h"
+#import "BlocksKit+UIKit.h"
 
 
 @interface HXDiscoveryViewController () <
 HXDiscoveryTopBarDelegate,
 HXDiscoveryContainerDelegate,
+HXWatchLiveViewControllerDelegate,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate
 >
@@ -59,7 +61,10 @@ UINavigationControllerDelegate
     MusicMgr *musicMgr = [MusicMgr standard];
     _topBar.playerEntry.hidden = !(musicMgr.playList.count && musicMgr.isPlaying);
     [_topBar.profileButton sd_setImageWithURL:[NSURL URLWithString:[HXUserSession session].user.avatarUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"D-ProfileEntryIcon"]];
-    [_containerViewController reload];
+    
+    if ([[WebSocketMgr standard] isOpen]) {
+        [self startFetchList];
+    }
 }
 
 - (void)viewDidLoad {
@@ -242,6 +247,26 @@ UINavigationControllerDelegate
     }];
 }
 
+- (void)showLiveWithMode:(HXDiscoveryModel *)model {
+    if ([[HXUserSession session].uid isEqualToString:model.uID]) {
+        [self showBannerWithPrompt:@"不可以进自己的直播" duration:2.0f];
+        return;
+    }
+    
+    [self pauseMusic];
+    UINavigationController *watchLiveNavigationController = nil;
+    if (model.horizontal) {
+        watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+    } else {
+        watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+    }
+    
+    HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+    watchLiveViewController.delegate = self;
+    watchLiveViewController.roomID = model.roomID;
+    [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
+}
+
 #pragma mark - HXDiscoveryTopBarDelegate
 - (void)topBar:(HXDiscoveryTopBar *)bar takeAction:(HXDiscoveryTopBarAction)action {
     [self hiddenNavigationBar];
@@ -270,7 +295,7 @@ UINavigationControllerDelegate
             [self startFetchList];
             break;
         }
-        case HXDiscoveryContainerActionScroll: {
+        case HXDiscoveryContainerActionScrolled: {
             [self showCoverWithCoverUrl:model.coverUrl];
             break;
         }
@@ -286,18 +311,16 @@ UINavigationControllerDelegate
             [self presentViewController:imagePickerController animated:YES completion:nil];
             break;
         }
-        case HXDiscoveryContainerActionShowLive: {
-            [self pauseMusic];
-			UINavigationController *watchLiveNavigationController = nil;
-			if (model.horizontal) {
-				watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+		case HXDiscoveryContainerActionShowLive: {
+			if ([[WebSocketMgr standard] isWifiNetwork] || [UserSetting playWith3G]) {
+				[self showLiveWithMode:model];
 			} else {
-				watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+				[UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+					if (buttonIndex != alertView.cancelButtonIndex) {
+						[self showLiveWithMode:model];
+					}
+				}];
 			}
-
-            HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
-            watchLiveViewController.roomID = model.roomID;
-            [self presentViewController:watchLiveNavigationController animated:YES completion:nil];
             break;
         }
         case HXDiscoveryContainerActionShowStation: {
@@ -307,6 +330,11 @@ UINavigationControllerDelegate
             break;
         }
     }
+}
+
+#pragma mark - HXWatchLiveViewControllerDelegate Methods
+- (void)watchLiveViewControllerLiveEnded:(HXWatchLiveViewController *)viewController {
+    [self startFetchList];
 }
 
 #pragma mark - UIImagePickerControllerDelegate Methods

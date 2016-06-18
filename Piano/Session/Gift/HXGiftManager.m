@@ -43,23 +43,38 @@
 
 #pragma mark - Public Methods
 - (void)fetchGiftList:(void(^)(HXGiftManager *manager))completed failure:(void(^)(NSString *prompt))failure {
-    if (_giftList.count && _giftMap.allKeys.count) {
+    if (_giftList.count && _giftMap.allKeys.count && _albumAnimation) {
         if (completed) {
             completed(self);
         }
     } else {
-        [MiaAPIHelper getGiftListCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-            if (success) {
-                [self parseGiftListWithLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
-                if (completed) {
-                    completed(self);
+        if (_albumAnimation) {
+            [MiaAPIHelper getGiftListCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                if (success) {
+                    [self parseGiftListWithLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+                    if (completed) {
+                        completed(self);
+                    }
                 }
-            }
-        } timeoutBlock:^(MiaRequestItem *requestItem) {
-            if (failure) {
-                failure(TimtOutPrompt);
-            }
-        }];
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                if (failure) {
+                    failure(TimtOutPrompt);
+                }
+            }];
+        } else {
+            [MiaAPIHelper getAlbumAnimationCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+                if (success) {
+                    _albumAnimation = [HXGiftModel mj_objectWithKeyValues:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+                    if (completed) {
+                        completed(self);
+                    }
+                }
+            } timeoutBlock:^(MiaRequestItem *requestItem) {
+                if (failure) {
+                    failure(TimtOutPrompt);
+                }
+            }];
+        }
     }
 }
 

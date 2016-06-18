@@ -39,6 +39,8 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
 @property (nonatomic, strong) UIView *videoLoadingView;
 @property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 
+@property (nonatomic, strong) NSTimer *hiddenPlayBarTimer;
+
 @end
 
 @implementation MIAVideoPlayViewController
@@ -51,7 +53,7 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
     if ([[MusicMgr standard] isPlaying]) {
         [[MusicMgr standard] pause];
     }
-    
+
     finishedState = NO;
     playState = NO;
     [self createPlayView];
@@ -62,6 +64,22 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
     [self createLodingView];
     [_player play];
     [self showLodingView];
+}
+
+- (void)resetHiddenPlayBarViewTimer{
+
+    [self setPlayEventViewHiddenState:NO];
+    
+    if (_hiddenPlayBarTimer && [_hiddenPlayBarTimer isValid]) {
+        [_hiddenPlayBarTimer invalidate];
+    }
+    self.hiddenPlayBarTimer = [NSTimer scheduledTimerWithTimeInterval:kHiddenEventViewDefaultTime target:self selector:@selector(hiddenEventView) userInfo:nil repeats:NO];
+}
+
+- (void)hiddenEventView{
+
+//    JOLog(@"隐藏事件按钮");
+    [self setPlayEventViewHiddenState:YES];
 }
 
 - (void)createLodingView{
@@ -175,6 +193,8 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
                                
                            }];
         }
+        
+        [self resetHiddenPlayBarViewTimer];
     }];
     [_playView addSubview:_playBarView];
     
@@ -225,7 +245,7 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
             [_playBarView setCurrentPlayState:YES];
             [_playBarView setCurrentVideoDuration:playerItem.duration.value/playerItem.duration.timescale];
             
-            [self performSelector:@selector(hiddenPlayEventView) withObject:nil afterDelay:kHiddenEventViewDefaultTime];
+            [self resetHiddenPlayBarViewTimer];
         }
         
     }else if([keyPath isEqualToString:@"loadedTimeRanges"]){
@@ -240,7 +260,6 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
 //        NSLog(@"startSecond:%.2f",startSeconds);
 //        NSLog(@"DurationSeconds:%.2f",durationSeconds);
 //        NSLog(@"共缓冲：%.2f",loadTime);
-        
     }else if ([keyPath isEqualToString:@"playbackBufferEmpty"]){
     
 //        NSLog(@"缓冲数据为空");
@@ -280,7 +299,8 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
 
 - (void)playViewTap:(UIGestureRecognizer *)gesture{
 
-    [self setPlayEventViewHiddenState:!_popButton.hidden];
+//    [self setPlayEventViewHiddenState:!_popButton.hidden];
+    [self resetHiddenPlayBarViewTimer];
 }
 
 - (void)setPlayEventViewHiddenState:(BOOL)state{
@@ -288,10 +308,10 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
     [_popButton setHidden:state];
     [_playBarView setHidden:state];
     
-    if(!state){
-    
-        [self performSelector:@selector(hiddenPlayEventView) withObject:nil afterDelay:kHiddenEventViewDefaultTime];
-    }
+//    if(!state){
+//    
+//        [self performSelector:@selector(hiddenPlayEventView) withObject:nil afterDelay:kHiddenEventViewDefaultTime];
+//    }
 }
 
 - (void)hiddenPlayEventView{

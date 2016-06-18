@@ -14,9 +14,12 @@
 @class HXLiveAlbumView;
 @class HXStaticGiftView;
 @class HXDynamicGiftView;
+@protocol HXWatchLiveViewControllerDelegate;
 
 
 @interface HXWatchLiveViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet     id  <HXWatchLiveViewControllerDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UIView *liveView;
 
@@ -26,11 +29,21 @@
 @property (weak, nonatomic) IBOutlet HXDynamicGiftView *dynamicGiftView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerLeftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *albumRightConstraint;
 
 @property (nonatomic, strong) NSString *roomID;
 @property (nonatomic, strong, readonly) HXWatchLiveViewModel *viewModel;
 
 - (IBAction)reportButtonPressed;
 - (IBAction)closeButtonPressed;
+
+@end
+
+
+@protocol HXWatchLiveViewControllerDelegate <NSObject>
+
+@required
+- (void)watchLiveViewControllerLiveEnded:(HXWatchLiveViewController *)viewController;
 
 @end

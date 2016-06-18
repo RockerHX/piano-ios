@@ -15,12 +15,20 @@ static CGFloat BannerHeight = 67.0f;
 
 @implementation HXAlertBanner {
     BLOCK _tapBlock;
+    
+    NSTimeInterval  _duration;
 }
 
 #pragma mark - Class Methods
 + (instancetype)showWithMessage:(NSString *)message tap:(void(^)(void))tap {
     HXAlertBanner *banner = [[[NSBundle mainBundle] loadNibNamed:@"HXAlertBanner" owner:self options:nil] firstObject];
     [banner showWithMessage:message tap:tap];
+    return banner;
+}
+
++ (instancetype)showWithMessage:(NSString *)message duration:(NSTimeInterval)duration tap:(void(^)(void))tap {
+    HXAlertBanner *banner = [self showWithMessage:message tap:tap];
+    banner->_duration = duration/2;
     return banner;
 }
 
@@ -34,6 +42,7 @@ static CGFloat BannerHeight = 67.0f;
 
 #pragma mark - Config Methods
 - (void)initConfig {
+    _duration = 0.5f;
     _height = BannerHeight;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
     [self addGestureRecognizer:tap];
@@ -52,6 +61,11 @@ static CGFloat BannerHeight = 67.0f;
 
 #pragma mark - Public Methods
 - (void)showWithMessage:(NSString *)message tap:(void(^)(void))tap {
+    [self showWithMessage:message duration:_duration tap:tap];
+}
+
+- (void)showWithMessage:(NSString *)message duration:(NSTimeInterval)duration tap:(void(^)(void))tap {
+    _duration = duration;
     _tapBlock = tap;
     _messageLabel.text = message;
     [self show];
@@ -59,7 +73,7 @@ static CGFloat BannerHeight = 67.0f;
 
 - (void)hidden {
     __weak __typeof__(self)weakSelf = self;
-    [UIView animateWithDuration:0.6f animations:^{
+    [UIView animateWithDuration:_duration animations:^{
         __strong __typeof__(self)strongSelf = weakSelf;
         strongSelf.frame = (CGRect){
             0.0f, -strongSelf.height,
@@ -83,7 +97,7 @@ static CGFloat BannerHeight = 67.0f;
     };
     [mainWindow addSubview:self];
     __weak __typeof__(self)weakSelf = self;
-    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:_duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         __strong __typeof__(self)strongSelf = weakSelf;
         strongSelf.frame = (CGRect){
             0.0f, 0.0f,

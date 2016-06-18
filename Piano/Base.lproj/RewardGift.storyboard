@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iqt-tu-RUg" userLabel="BG">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <rect key="frame" x="1" y="1" width="118" height="118"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pha-yU-ZYl" userLabel="Gift Contianer">
                                             <rect key="frame" x="25" y="14" width="70" height="92"/>
@@ -79,16 +79,24 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="0.1176470588" green="0.16862745100000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Iqt-tu-RUg" secondAttribute="bottom" id="80Y-ae-WXq"/>
-                                    <constraint firstAttribute="trailing" secondItem="Iqt-tu-RUg" secondAttribute="trailing" id="Shq-sm-Yr3"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iqt-tu-RUg" secondAttribute="bottom" constant="1" id="80Y-ae-WXq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iqt-tu-RUg" secondAttribute="trailing" constant="1" id="Shq-sm-Yr3"/>
                                     <constraint firstItem="Pha-yU-ZYl" firstAttribute="centerX" secondItem="J20-RH-ghm" secondAttribute="centerX" id="Xhq-v7-H1a"/>
                                     <constraint firstItem="Pha-yU-ZYl" firstAttribute="centerY" secondItem="J20-RH-ghm" secondAttribute="centerY" id="lqa-Qq-e90"/>
-                                    <constraint firstItem="Iqt-tu-RUg" firstAttribute="leading" secondItem="J20-RH-ghm" secondAttribute="leading" id="qfy-ZL-ISY"/>
-                                    <constraint firstItem="Iqt-tu-RUg" firstAttribute="top" secondItem="J20-RH-ghm" secondAttribute="top" id="r15-5R-aMP"/>
+                                    <constraint firstItem="Iqt-tu-RUg" firstAttribute="leading" secondItem="J20-RH-ghm" secondAttribute="leading" constant="1" id="qfy-ZL-ISY"/>
+                                    <constraint firstItem="Iqt-tu-RUg" firstAttribute="top" secondItem="J20-RH-ghm" secondAttribute="top" constant="1" id="r15-5R-aMP"/>
                                 </constraints>
                                 <size key="customSize" width="120" height="120"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="bgView" destination="Iqt-tu-RUg" id="Ysv-sk-EJ5"/>
                                     <outlet property="coinCountLabel" destination="yux-n0-NlK" id="5rr-2q-Pa8"/>
@@ -96,6 +104,14 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="BAJ-Ts-JEV" id="xIQ-J1-eKU"/>
                             <outlet property="delegate" destination="BAJ-Ts-JEV" id="FTl-3H-SAw"/>
@@ -126,7 +142,7 @@
                                 <rect key="frame" x="0.0" y="292" width="320" height="276"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LG-BG" translatesAutoresizingMaskIntoConstraints="NO" id="PMu-Vb-acE">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-5r-gAK">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
@@ -308,7 +324,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="wv7-wp-IQp" firstAttribute="centerY" secondItem="bud-cS-6Cv" secondAttribute="centerY" id="0El-oS-f1S"/>
                                             <constraint firstItem="pmU-J7-mKZ" firstAttribute="leading" secondItem="bud-cS-6Cv" secondAttribute="leading" constant="16" id="3Vg-Db-rKW"/>
@@ -326,10 +342,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bud-cS-6Cv" secondAttribute="trailing" id="1JW-rS-pfl"/>
-                                    <constraint firstAttribute="bottom" secondItem="PMu-Vb-acE" secondAttribute="bottom" id="43L-gu-e2h"/>
                                     <constraint firstAttribute="trailing" secondItem="PMu-Vb-acE" secondAttribute="trailing" id="5tn-OL-7Zf"/>
                                     <constraint firstItem="PMu-Vb-acE" firstAttribute="leading" secondItem="9o9-MH-ERk" secondAttribute="leading" id="NCL-hK-bS3"/>
                                     <constraint firstAttribute="bottom" secondItem="bud-cS-6Cv" secondAttribute="bottom" id="SRt-2a-mN4"/>
+                                    <constraint firstItem="bud-cS-6Cv" firstAttribute="top" secondItem="PMu-Vb-acE" secondAttribute="bottom" id="Uic-tD-RBi"/>
                                     <constraint firstAttribute="trailing" secondItem="Rix-5r-gAK" secondAttribute="trailing" id="VLJ-JD-ogs"/>
                                     <constraint firstItem="Rix-5r-gAK" firstAttribute="top" secondItem="9o9-MH-ERk" secondAttribute="top" id="brZ-JU-NiF"/>
                                     <constraint firstItem="bud-cS-6Cv" firstAttribute="leading" secondItem="9o9-MH-ERk" secondAttribute="leading" id="i9l-dC-fy1"/>
@@ -384,7 +400,7 @@
                                 <rect key="frame" x="277" y="0.0" width="291" height="320"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LG-BG" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-uI-TAF">
-                                        <rect key="frame" x="0.0" y="0.0" width="291" height="320"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="291" height="220"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVX-MD-xZL">
                                         <rect key="frame" x="0.0" y="0.0" width="291" height="220"/>
@@ -562,7 +578,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="jD0-cn-bCN" firstAttribute="top" secondItem="DpA-Nn-6Ui" secondAttribute="top" constant="30" id="9Nt-1g-Gnu"/>
                                             <constraint firstItem="Qw3-Lb-uUM" firstAttribute="trailing" secondItem="DpA-Nn-6Ui" secondAttribute="centerX" constant="-10" id="KGy-Wl-Yh5"/>
@@ -582,7 +598,6 @@
                                 <constraints>
                                     <constraint firstItem="dDt-uI-TAF" firstAttribute="top" secondItem="UVJ-Vk-e4i" secondAttribute="top" id="6V4-gB-9Vx"/>
                                     <constraint firstAttribute="bottom" secondItem="DpA-Nn-6Ui" secondAttribute="bottom" id="CSC-Az-eOk"/>
-                                    <constraint firstAttribute="bottom" secondItem="dDt-uI-TAF" secondAttribute="bottom" id="Cm1-Zo-cfL"/>
                                     <constraint firstAttribute="trailing" secondItem="uVX-MD-xZL" secondAttribute="trailing" id="DBO-fS-GoC"/>
                                     <constraint firstAttribute="trailing" secondItem="dDt-uI-TAF" secondAttribute="trailing" id="FP2-49-0sQ"/>
                                     <constraint firstItem="uVX-MD-xZL" firstAttribute="leading" secondItem="UVJ-Vk-e4i" secondAttribute="leading" id="UT8-JS-6wC"/>
@@ -591,6 +606,7 @@
                                     <constraint firstItem="uVX-MD-xZL" firstAttribute="top" secondItem="UVJ-Vk-e4i" secondAttribute="top" id="hcD-Ta-WFL"/>
                                     <constraint firstItem="dDt-uI-TAF" firstAttribute="leading" secondItem="UVJ-Vk-e4i" secondAttribute="leading" id="meP-TI-ayV"/>
                                     <constraint firstItem="DpA-Nn-6Ui" firstAttribute="leading" secondItem="UVJ-Vk-e4i" secondAttribute="leading" id="qG7-54-5Pb"/>
+                                    <constraint firstItem="DpA-Nn-6Ui" firstAttribute="top" secondItem="dDt-uI-TAF" secondAttribute="bottom" id="uVr-uM-xkT"/>
                                     <constraint firstAttribute="trailing" secondItem="DpA-Nn-6Ui" secondAttribute="trailing" id="wsj-3Q-1jO"/>
                                 </constraints>
                             </view>
@@ -693,7 +709,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="0.1176470588" green="0.16862745100000001" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="0Zg-l8-91l" firstAttribute="centerY" secondItem="Fqb-Jb-6RX" secondAttribute="centerY" id="0zw-2v-fps"/>
                                     <constraint firstItem="0Zg-l8-91l" firstAttribute="centerX" secondItem="Fqb-Jb-6RX" secondAttribute="centerX" id="2NP-EZ-Vvc"/>

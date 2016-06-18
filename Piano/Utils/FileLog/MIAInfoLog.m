@@ -16,12 +16,20 @@
 
 + (void)uploadInfoLogWithRoomID:(NSString *)roomID streamID:(NSString *)streamID{
 
-    NSString *versionString = [NSString stringWithFormat:@"V%@.%@",[JOFAppInfo appVersion],[JOFAppInfo appBuildVersion]];
+    NSString *versionString = [NSString stringWithFormat:@"%@.%@",[JOFAppInfo appVersion],[JOFAppInfo appBuildVersion]];
     NSString *deviceString = [JOFDeviceInfo deviceName];
     NSString *systemVersion = [NSString stringWithFormat:@"%.2f",[JOFDeviceInfo currentSystemVersion]];
     NSString *userName = [[[HXUserSession session] user] nickName];
+	NSString *userID = [HXUserSession session].uid;
     
-    NSString *contentString = [NSString stringWithFormat:@"昵称:%@ 设备:%@ 系统版本:%@ app版本号:%@ StreamID:%@",userName,deviceString,systemVersion,versionString,JOConvertStringToNormalString(streamID)];
+    NSString *contentString = [NSString stringWithFormat:@"iOS 昵称:%@ 设备:%@ 系统版本:%@ APP版本:%@ userID:%@ roomID:%@ streamID:%@",
+							   userName,
+							   deviceString,
+							   systemVersion,
+							   versionString,
+							   userID,
+							   JOConvertStringToNormalString(roomID),
+							   JOConvertStringToNormalString(streamID)];
     
     [MiaAPIHelper uploadLogWithRoomID:JOConvertStringToNormalString(roomID)
                               content:contentString
@@ -29,11 +37,11 @@
                         completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                             
                             if (success) {
-                                JOLog(@"日志提交成功");
-                                [HXAlertBanner showWithMessage:@"日志提交成功" tap:nil];
+                                JOLog(@"上报直播卡顿成功");
+                                [HXAlertBanner showWithMessage:@"上报直播卡顿成功" tap:nil];
                             }else{
-                                JOLog(@"日志提交失败");
-                                [HXAlertBanner showWithMessage:@"日志提交失败" tap:nil];
+                                JOLog(@"上报直播卡顿失败");
+                                [HXAlertBanner showWithMessage:@"上报直播卡顿失败" tap:nil];
                             }
                         }timeoutBlock:^(MiaRequestItem *requestItem) {
                              

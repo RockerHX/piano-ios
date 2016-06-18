@@ -32,5 +32,6 @@
 - (void)hiddenHUDWithView:(UIView *)view;
 
 - (void)showBannerWithPrompt:(NSString *)prompt;
+- (void)showBannerWithPrompt:(NSString *)prompt duration:(NSTimeInterval)duration;
 
 @end

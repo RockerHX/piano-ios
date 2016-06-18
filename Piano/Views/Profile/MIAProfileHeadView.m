@@ -84,7 +84,8 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
 
     self.nameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_NickName]];
     [_nameLabel setTextAlignment:NSTextAlignmentCenter];
-    [_nameLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
+//    [_nameLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
+    [_nameLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_nameLabel];
     
     [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_nameLabel superView:self];
@@ -94,7 +95,8 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     
     self.summayLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_Summary]];
     [_summayLabel setTextAlignment:NSTextAlignmentCenter];
-    [_summayLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
+//    [_summayLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
+    [_summayLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_summayLabel];
     
     [JOAutoLayout autoLayoutWithLeftXView:_nameLabel selfView:_summayLabel superView:self];
@@ -205,9 +207,62 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     
     [JOAutoLayout removeAutoLayoutWithWidthSelfView:_nameLabel superView:self];
     [JOAutoLayout removeAutoLayoutWithWidthSelfView:_summayLabel superView:self];
+    [JOAutoLayout removeAutoLayoutWithRightSelfView:_nameLabel superView:self];
+    [JOAutoLayout removeAutoLayoutWithRightSelfView:_summayLabel superView:self];
+    
+    NSLayoutConstraint *layoutConstraint = [NSLayoutConstraint constraintWithItem:_nameLabel
+                                                                        attribute:NSLayoutAttributeWidth
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute:NSLayoutAttributeNotAnAttribute
+                                                                       multiplier:1
+                                                                         constant:nameWidth];
+    [layoutConstraint setPriority:UILayoutPriorityDefaultHigh];
+    [_nameLabel addConstraint:layoutConstraint];
+    
+    [self addConstraint:[NSLayoutConstraint
+                              constraintWithItem:_nameLabel
+                              attribute:NSLayoutAttributeRight
+                              relatedBy:NSLayoutRelationLessThanOrEqual
+                              toItem:self
+                              attribute:NSLayoutAttributeRight
+                              multiplier:1
+                              constant:-kRightSpaceDistance]];
+    
+    NSLayoutConstraint *layoutConstraint1 = [NSLayoutConstraint constraintWithItem:_summayLabel
+                                                                        attribute:NSLayoutAttributeWidth
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute:NSLayoutAttributeNotAnAttribute
+                                                                       multiplier:1
+                                                                         constant:summaryWidth];
+    [layoutConstraint1 setPriority:UILayoutPriorityDefaultHigh];
+    [_summayLabel addConstraint:layoutConstraint1];
+    
+    [self addConstraint:[NSLayoutConstraint
+                         constraintWithItem:_summayLabel
+                         attribute:NSLayoutAttributeRight
+                         relatedBy:NSLayoutRelationLessThanOrEqual
+                         toItem:self
+                         attribute:NSLayoutAttributeRight
+                         multiplier:1
+                         constant:-kRightSpaceDistance]];
 
-    [JOAutoLayout autoLayoutWithWidth:nameWidth selfView:_nameLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:summaryWidth selfView:_summayLabel superView:self];
+//    [JOAutoLayout autoLayoutWithWidth:nameWidth selfView:_nameLabel superView:self];
+//    [JOAutoLayout autoLayoutWithWidth:summaryWidth selfView:_summayLabel superView:self];
+}
+
+- (void)setProfileNickBackgroundColorString:(NSString *)colorString{
+
+    if ([JOConvertStringToNormalString(colorString) length]) {
+        [_nameLabel setBackgroundColor:JOConvertHexRGBStringToColor(colorString)];
+        [_summayLabel setBackgroundColor:JOConvertHexRGBStringToColor(colorString)];
+    }else{
+        [_nameLabel setBackgroundColor:[UIColor clearColor]];
+        [_summayLabel setBackgroundColor:[UIColor clearColor]];
+    }
+    
+//    JOConvertHexRGBStringToColor(@"#9F9062")
 }
 
 - (void)setProfileFans:(NSString *)fans attention:(NSString *)attention{

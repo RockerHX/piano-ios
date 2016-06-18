@@ -7,6 +7,7 @@
 //
 
 #import "MIAProfileViewController.h"
+#import "HXWatchLiveLandscapeViewController.h"
 #import "UIViewController+HXClass.h"
 #import "MIACellManage.h"
 #import "MIAProfileLiveCell.h"
@@ -20,6 +21,10 @@
 #import "MIANavBarView.h"
 #import "JOBaseSDK.h"
 #import "MIAReportManage.h"
+#import "WebSocketMgr.h"
+#import "UserSetting.h"
+#import "BlocksKit+UIKit.h"
+#import "MusicMgr.h"
 
 #import "MIAProfileViewModel.h"
 
@@ -248,7 +253,13 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 
 - (void)popClick{
 
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([[self.navigationController viewControllers] count] == 1) {
+        //根视图
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)reportClick{
@@ -308,6 +319,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
                               }];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
     [_profileHeadView setProfileFans:headModel.fansCount attention:headModel.followCount];
+    [_profileHeadView setProfileNickBackgroundColorString:headModel.coverColor];
     
     [_profileHeadView setAttentionButtonState:[headModel.followState boolValue]];
     
@@ -361,6 +373,14 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     if (!cell) {
         
         cell = [MIACellManage getCellWithType:cellType];
+        
+        if ([cell isKindOfClass:[MIAProfileLiveCell class]]) {
+            @weakify(self);
+            [(MIAProfileLiveCell *)cell liveCellClickBlock:^{
+            @strongify(self);
+                [self enterLiveViewControllerOperation];
+            }];
+        }
         [cell setCellWidth:View_Width(self.view)];
     }
     
@@ -472,6 +492,46 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 //        [_profileTableView setBackgroundColor:[UIColor clearColor]];
 //    }
 //    NSLog(@"Scoffset.y:%f",scrollView.contentOffset.y);
+}
+
+#pragma mark - Enter Live action
+
+- (void)enterLiveViewControllerOperation{
+
+    if ([[WebSocketMgr standard] isWifiNetwork] || [UserSetting playWith3G]) {
+        [self enterLiveViewController];
+    } else {
+        [UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex != alertView.cancelButtonIndex) {
+                [self enterLiveViewController];
+            }
+        }];
+    }
+}
+
+- (void)enterLiveViewController{
+    
+    if ([[self.navigationController viewControllers] count] == 1) {
+        //根视图
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+        
+    }else{
+        UINavigationController *watchLiveNavigationController = nil;
+        if (_profileViewModel.profileLiveModel.horizontal) {
+            watchLiveNavigationController = [HXWatchLiveLandscapeViewController navigationControllerInstance];
+        } else {
+            watchLiveNavigationController = [HXWatchLiveViewController navigationControllerInstance];
+        }
+        HXWatchLiveViewController *watchLiveViewController = [watchLiveNavigationController.viewControllers firstObject];;
+        watchLiveViewController.roomID = _profileViewModel.profileLiveModel.liveRoomID;
+        [self.navigationController presentViewController:watchLiveNavigationController animated:YES completion:^{
+            if ([[MusicMgr standard] isPlaying]) {
+                [[MusicMgr standard] pause];
+            }
+        }];
+    }
+    
 }
 
 @end

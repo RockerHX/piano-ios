@@ -12,6 +12,9 @@
 #import "HXReplayLandscapeViewController.h"
 #import "MusicMgr.h"
 #import "MiaAPIHelper.h"
+#import "WebSocketMgr.h"
+#import "UserSetting.h"
+#import "BlocksKit+UIKit.h"
 
 CGFloat kProfileReplayImageToTitleSpaceDistance = 9. ;
 CGFloat kProfileReplayTitleToTipSpaceDistance =  2.;
@@ -119,26 +122,25 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  2.;
 }
 
 #pragma mark - tag action
-- (void)tapAction:(UIGestureRecognizer *)gesture {
-    
+
+- (void)enterReplayViewController{
+
     //视频统计.
     [MiaAPIHelper videoCountWithID:_replayModel.roomID
                      completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        
-                        if (success) {
-                            //            JOLog(@"视频统计成功");
-                            NSString *viewCount = [NSString stringWithFormat:@"%ld",(long)[JOConvertStringToNormalString(_replayModel.replayCnt) integerValue] +1];
-                            _replayModel.replayCnt = viewCount;
-                            [_numberlabel setText:viewCount];
-                        }else{
-                            //            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
-                        }
+                         
+                         if (success) {
+                             //            JOLog(@"视频统计成功");
+                             NSString *viewCount = [NSString stringWithFormat:@"%ld",(long)[JOConvertStringToNormalString(_replayModel.replayCnt) integerValue] +1];
+                             _replayModel.replayCnt = viewCount;
+                             [_numberlabel setText:viewCount];
+                         }else{
+                             //            JOLog(@"error:%@",userInfo[MiaAPIKey_Values][MiaAPIKey_Error]);
+                         }
                      } timeoutBlock:^(MiaRequestItem *requestItem) {
-        
+                         
                      }];
     
-//    HXReplayViewController *replayViewController = [HXReplayViewController instance];
-//    replayViewController.model = [HXDiscoveryModel createWithReplayModel:_replayModel];
     HXReplayViewController *replayViewController = nil;
     if (_replayModel.horizontal) {
         replayViewController = [HXReplayLandscapeViewController instance];
@@ -152,6 +154,19 @@ CGFloat kProfileReplayTitleToTipSpaceDistance =  2.;
             [[MusicMgr standard] pause];
         }
     }];
+}
+
+- (void)tapAction:(UIGestureRecognizer *)gesture {
+
+	if ([[WebSocketMgr standard] isWifiNetwork] || [UserSetting playWith3G]) {
+		[self enterReplayViewController];
+	} else {
+		[UIAlertView bk_showAlertViewWithTitle:k3GPlayTitle message:k3GPlayMessage cancelButtonTitle:k3GPlayCancel otherButtonTitles:@[k3GPlayAllow] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+			if (buttonIndex != alertView.cancelButtonIndex) {
+				[self enterReplayViewController];
+			}
+		}];
+	}
 }
 
 @end

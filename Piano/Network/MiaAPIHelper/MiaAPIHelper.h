@@ -166,6 +166,7 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
             timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)unfollowWithUID:(NSString *)uID
+                 roomID:(NSString *)roomID
 		  completeBlock:(MiaRequestCompleteBlock)completeBlock
 		   timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
@@ -175,6 +176,9 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 
 + (void)getGiftListCompleteBlock:(MiaRequestCompleteBlock)completeBlock
                     timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
++ (void)getAlbumAnimationCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                          timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 + (void)getGiftTopListWithRoomID:(NSString *)roomID
                    completeBlock:(MiaRequestCompleteBlock)completeBlock
@@ -395,5 +399,16 @@ FOUNDATION_EXPORT NSString *const MobileErrorPrompt;        // 手机号码错�
 + (void)videoCountWithID:(NSString *)videoID
            completeBlock:(MiaRequestCompleteBlock)completeBlock
             timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
+
+#pragma mark - 我的收益
+
+/**
+ *  我的收益.
+ *
+ *  @param completeBlock MiaRequestCompleteBlock
+ *  @param timeoutBlock  MiaRequestTimeoutBlock
+ */
++ (void)getIncomeWithCompleteBlock:(MiaRequestCompleteBlock)completeBlock
+                      timeoutBlock:(MiaRequestTimeoutBlock)timeoutBlock;
 
 @end

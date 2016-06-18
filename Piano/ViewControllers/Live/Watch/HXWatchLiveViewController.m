@@ -29,10 +29,12 @@
 #import "UIImage+Extrude.h"
 #import <UMengSocialCOM/UMSocial.h>
 #import "HXAppConstants.h"
-#import "MIAProfileViewController.h"
 #import "UIConstants.h"
 #import "MIAInfoLog.h"
 #import "BFRadialWaveHUD.h"
+#import "FileLog.h"
+#import "MIARedEnvelopeView.h"
+#import "MIAProfileNavigationController.h"
 
 
 @interface HXWatchLiveViewController () <
@@ -136,9 +138,10 @@ HXLiveAlbumViewDelegate
         @strongify(self)
         [self endLive];
     }];
-    [_viewModel.rewardSignal subscribeNext:^(id x) {
+    [_viewModel.rewardSignal subscribeNext:^(HXGiftModel *gift) {
         @strongify(self)
         [self updateAlbumView];
+        [self.dynamicGiftView animationWithGift:gift];
     }];
     [_viewModel.giftSignal subscribeNext:^(HXGiftModel *gift) {
         @strongify(self)
@@ -149,15 +152,19 @@ HXLiveAlbumViewDelegate
         }
     }];
     
+    [[FileLog standard] log:@"Enter Room"];
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
         @strongify(self)
         if (![error.domain isEqualToString:RACCommandErrorDomain]) {
             [self showBannerWithPrompt:error.domain];
         }
+        [self hiddenLoadingHUD];
+        [[FileLog standard] log:@"Enter Room Error:%@", error.domain];
     } completed:^{
         @strongify(self)
         [self fetchDataFinfished];
+        [[FileLog standard] log:@"Enter Room Success"];
     }];
 }
 
@@ -167,6 +174,7 @@ HXLiveAlbumViewDelegate
 }
 
 - (IBAction)closeButtonPressed {
+    [[FileLog standard] log:@"Close Room"];
     [self dismiss];
 }
 
@@ -196,7 +204,7 @@ HXLiveAlbumViewDelegate
 
 - (void)showLoadingHUD {
     if (!_hud) {
-        _hud = [[BFRadialWaveHUD alloc] initWithView:self.view
+        _hud = [[BFRadialWaveHUD alloc] initWithView:_liveView
                                           fullScreen:YES
                                              circles:BFRadialWaveHUD_DefaultNumberOfCircles
                                          circleColor:nil
@@ -236,12 +244,26 @@ HXLiveAlbumViewDelegate
     liveEndViewController.isAnchor = NO;
     liveEndViewController.liveModel = _viewModel.model;
     [self presentViewController:liveEndViewController animated:YES completion:nil];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(watchLiveViewControllerLiveEnded:)]) {
+        [_delegate watchLiveViewControllerLiveEnded:self];
+    }
 }
 
 - (void)fetchDataFinfished {
     [self roomConfigure];
     [self updateAnchorView];
     [self updateAlbumView];
+    
+    HXCouponModel *coupon = _viewModel.model.coupon;
+    if (coupon) {
+        MIARedEnvelopeView *redEvenlopeView = [MIARedEnvelopeView new];
+        [redEvenlopeView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [redEvenlopeView setTitle:coupon.title tip:coupon.content];
+        [redEvenlopeView showInView:self.view receiveHandler:^{
+            [redEvenlopeView hidden];
+        }];
+    }
 }
 
 - (void)roomConfigure {
@@ -253,8 +275,7 @@ HXLiveAlbumViewDelegate
     user.userName = [HXUserSession session].nickName;
     
     bool ret = [zegoLiveApi loginChannel:_viewModel.model.channelID user:user];
-    assert(ret);
-    NSLog(@"%s, ret: %d", __func__, ret);
+    [[FileLog standard] log:@"%s, ret: %d", __func__, ret];
 }
 
 - (void)updateAnchorView {
@@ -280,8 +301,14 @@ HXLiveAlbumViewDelegate
 
 - (void)updateAlbumView {
     HXAlbumModel *album = _viewModel.model.album;
-    _albumView.hidden = album ? NO : YES;
-    [_albumView updateWithAlbum:album];
+    if (album) {
+        _albumView.hidden = NO;
+        [_albumView updateWithAlbum:album];
+    } else {
+        _albumView.hidden = YES;
+        _albumWidthConstraint.constant = 0.0f;
+        _albumRightConstraint.constant = 0.0f;
+    }
 }
 
 - (void)reportAnchorWithID:(NSString *)uid {
@@ -294,48 +321,42 @@ HXLiveAlbumViewDelegate
 
 #pragma mark - ZegoLiveApiDelegate
 - (void)onLoginChannel:(NSString *)channel error:(uint32)error {
-    NSLog(@"%s, err: %u", __func__, error);
+    [[FileLog standard] log:@"%s, err: %u", __func__, error];
     if (error == 0) {
         ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
-        
         int ret = [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
-        assert(ret == 0);
-        
-        bool b = [zegoLiveApi startPlayStream:_viewModel.model.streamAlias viewIndex:RemoteViewIndex_First];
-        assert(b);
-        NSLog(@"%s, ret: %d", __func__, ret);
+        [zegoLiveApi startPlayStream:_viewModel.model.streamAlias viewIndex:RemoteViewIndex_First];
+        [[FileLog standard] log:@"%s, ret: %d", __func__, ret];
     } else {
-        [self showErrorLoading];
+        [self hiddenLoadingHUD];
     }
 }
 
 - (void)onDisconnected:(uint32)err channel:(NSString *)channel {
-    NSString *msg = [NSString stringWithFormat:@"Channel %@ Connection Broken, ERROR: %u.", channel, err];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Disconnected!" message:msg delegate:nil cancelButtonTitle:@"YES" otherButtonTitles:nil];
-    [alert show];
+    [[FileLog standard] log:@"Channel %@ Connection Broken, ERROR: %u.", channel, err];
 }
 
 - (void)onReconnected:(NSString *)channel {
-    NSString *msg = [NSString stringWithFormat:@"Channel %@ Reconnected.", channel];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reconnected!" message:msg delegate:nil cancelButtonTitle:@"YES" otherButtonTitles:nil];
-    [alert show];
+    [[FileLog standard] log:@"Channel %@ Reconnected.", channel];
 }
 
 - (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
-    NSLog(@"%s, stream: %@", __func__, streamID);
+    [[FileLog standard] log:@"%s, stream: %@", __func__, streamID];
+    [self hiddenLoadingHUD];
 }
 
 - (void)onPublishStop:(uint32)err stream:(NSString *)streamID channel:(NSString *)channel {
-    NSLog(@"%s, stream: %@, err: %u", __func__, streamID, err);
+    [[FileLog standard] log:@"%s, stream: %@, err: %u", __func__, streamID, err];
+    [self hiddenLoadingHUD];
 }
 
 - (void)onPlaySucc:(NSString *)streamID channel:(NSString *)channel {
-    NSLog(@"%s, stream: %@", __func__, streamID);
+    [[FileLog standard] log:@"%s, stream: %@", __func__, streamID];
     [self hiddenLoadingHUD];
 }
 
 - (void)onPlayStop:(uint32)err streamID:(NSString *)streamID channel:(NSString *)channel {
-    NSLog(@"%s, err: %u, stream: %@", __func__, err, streamID);
+    [[FileLog standard] log:@"%s, err: %u, stream: %@", __func__, err, streamID];
     [self hiddenLoadingHUD];
 }
 
@@ -350,9 +371,8 @@ HXLiveAlbumViewDelegate
         case HXLiveAnchorViewActionShowAnchor: {
             HXWatcherModel *watcher = [HXWatcherModel instanceWithLiveModel:_viewModel.model];
             [HXLiveUserBoard showWithWatcher:watcher showProfile:^(HXWatcherModel *watcher) {
-                MIAProfileViewController *profileViewController = [MIAProfileViewController new];
-                [profileViewController setUid:watcher.ID];
-                [self.navigationController pushViewController:profileViewController animated:YES];
+                MIAProfileNavigationController *profileNavigationController = [MIAProfileNavigationController profileNavigationInstanceWithUID:watcher.ID];
+                [self presentViewController:profileNavigationController animated:YES completion:nil];
             } report:^(HXWatcherModel *watcher) {
                 [self reportAnchorWithID:watcher.ID];
             } gaged:nil closed:nil];

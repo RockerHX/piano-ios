@@ -41,7 +41,7 @@
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     [MiaAPIHelper getRoomStat:_liveModel.roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
-        if (success) {
+        if (success && _isAnchor) {
             NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
             _totalViewCountLabel.text = @([data[@"viewCnt"] integerValue]).stringValue;
             _appendFansCountLabel.text = @([data[@"newFansCnt"] integerValue]).stringValue;

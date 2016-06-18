@@ -11,7 +11,8 @@
 
 @interface HXGiftManager : NSObject
 
-@property (nonatomic, strong, readonly) NSArray <HXGiftModel *>*giftList;
+@property (nonatomic, strong, readonly)            HXGiftModel *albumAnimation;
+@property (nonatomic, strong, readonly) NSArray<HXGiftModel *> *giftList;
 
 + (instancetype)manager;
 

@@ -120,7 +120,6 @@ HXLoginViewControllerDelegate
 
 #pragma mark - Socket
 - (void)notificationWebSocketDidOpen:(NSNotification *)notification {
-    [HXGiftManager manager];
 	[MiaAPIHelper guestLoginWithCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
 		if (success) {
             HXUserSession *userSession = [HXUserSession session];
@@ -162,6 +161,7 @@ HXLoginViewControllerDelegate
                      completeBlock:
      ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
          if (success) {
+             [HXGiftManager manager];
              NSDictionary *data = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
              HXUserModel *user = [HXUserModel mj_objectWithKeyValues:data];
              [userSession updateUser:user];

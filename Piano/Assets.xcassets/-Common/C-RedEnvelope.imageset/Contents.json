@@ -6,13 +6,13 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "LG-GiftIcon-4@2x.png",
+      "filename" : "C-RedEnvelope@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "LG-GiftIcon-4@3x.png"
+      "filename" : "C-RedEnvelope@3x.png"
     }
   ],
   "info" : {

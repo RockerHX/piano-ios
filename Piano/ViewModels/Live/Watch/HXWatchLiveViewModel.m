@@ -190,7 +190,13 @@
     [self addBarrage:barrage];
     
     _model.album.rewardTotal = barrage.rewardTotal;
-    [_rewardSignal sendNext:barrage];
+    
+    HXGiftModel *gift = [HXGiftManager manager].albumAnimation;
+    gift.type = HXGiftTypeDynamic;
+    gift.nickName = barrage.nickName;
+    gift.avatarUrl = barrage.avatarUrl;
+    gift.count = barrage.giftCount;
+    [_rewardSignal sendNext:gift];
 }
 
 - (void)addComment:(NSDictionary *)data {
@@ -273,7 +279,7 @@
 }
 
 - (void)unFollowRequestWithSubscriber:(id<RACSubscriber>)subscriber {
-    [MiaAPIHelper unfollowWithUID:_model.uID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
+    [MiaAPIHelper unfollowWithUID:_model.uID roomID:_roomID completeBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
         if (success) {
             _anchorAttented = NO;
             [subscriber sendNext:@(_anchorAttented)];
