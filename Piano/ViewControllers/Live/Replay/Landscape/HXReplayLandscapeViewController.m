@@ -7,6 +7,7 @@
 //
 
 #import "HXReplayLandscapeViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 
 @interface HXReplayLandscapeViewController ()
@@ -14,6 +15,18 @@
 
 
 @implementation HXReplayLandscapeViewController
+
+#pragma mark - View Controller Life Cycle
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    for (CALayer *layer in self.replayView.layer.sublayers) {
+        if ([layer isKindOfClass:[AVPlayerLayer class]]) {
+            layer.frame = self.view.bounds;
+            break;
+        }
+    }
+}
 
 #pragma mark - Orientations Methods
 - (BOOL)shouldAutorotate {

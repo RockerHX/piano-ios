@@ -132,6 +132,7 @@ HXLiveAlbumViewDelegate
 - (void)signalLink {
     @weakify(self)
     [_viewModel.barragesSignal subscribeNext:^(NSArray *barrages) {
+        _anchorView.countLabel.text = _viewModel.onlineCount;
         _barrageContainer.barrages = barrages;
     }];
     [_viewModel.exitSignal subscribeNext:^(id x) {

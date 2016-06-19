@@ -40,15 +40,15 @@ HXXibImplementation
 #pragma mark - Public Methods
 - (void)animationWithGift:(HXGiftModel *)gift {
     if (gift.type == HXGiftTypeDynamic) {
-        [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl] placeholderImage:[UIImage imageNamed:@"C-DefaultAvatar"]];
-        _nickNameLabel.text = gift.nickName;
-        _promptLabel.text = gift.prompt;
-        
         dispatch_async(_queue, ^{
             dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
             dispatch_sync(dispatch_get_main_queue(), ^{
                 self.alpha = 1.0f;
                 self.hidden = NO;
+                
+                [_avatarView sd_setImageWithURL:[NSURL URLWithString:gift.avatarUrl] placeholderImage:[UIImage imageNamed:@"C-DefaultAvatar"]];
+                _nickNameLabel.text = gift.nickName;
+                _promptLabel.text = gift.prompt;
                 
                 YYImage *image = [YYImage imageWithData:gift.animationData];
                 _animationView.image = image;
