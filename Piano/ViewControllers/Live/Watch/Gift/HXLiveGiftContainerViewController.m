@@ -57,6 +57,10 @@
     
     _selectedIndex = indexPath.row;
     [collectionView reloadData];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(container:selectedGift:)]) {
+        [_delegate container:self selectedGift:selectGift];
+    }
 }
 
 @end
