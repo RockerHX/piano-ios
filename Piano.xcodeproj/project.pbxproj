@@ -3236,7 +3236,7 @@
 				ORGANIZATIONNAME = "Mia Music";
 				TargetAttributes = {
 					CD79608B1CBE594C004CC661 = {
-						DevelopmentTeam = H2JE2CWJS7;
+						DevelopmentTeam = PQE2NCR38L;
 					};
 				};
 			};
