@@ -48,7 +48,7 @@
             completed(self);
         }
     } else {
-        if (_albumAnimation) {
+        if (!_giftList.count) {
             [MiaAPIHelper getGiftListCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                 if (success) {
                     [self parseGiftListWithLists:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
@@ -61,7 +61,8 @@
                     failure(TimtOutPrompt);
                 }
             }];
-        } else {
+        }
+        if (!_albumAnimation) {
             [MiaAPIHelper getAlbumAnimationCompleteBlock:^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
                 if (success) {
                     _albumAnimation = [HXGiftModel mj_objectWithKeyValues:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
