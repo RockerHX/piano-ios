@@ -213,6 +213,9 @@
 - (void)addBarrage:(HXBarrageModel *)barrage {
     NSMutableArray *barrages = _barrages.mutableCopy;
     [barrages addObject:barrage];
+    if (barrages.count >= 100) {
+        [barrages removeObjectsInRange:NSMakeRange(0, 50)];
+    }
     self.barrages = [barrages copy];
 }
 
