@@ -119,7 +119,7 @@ HXMobileLoginViewControllerDelegate
             [self loginSuccessHandleWithData:self->_viewModel.useInfo];
         }];
     } else {
-        [self showBannerWithPrompt:@"您没有安装微信，请使用手机号登陆"];
+        [self showBannerWithPrompt:@"您没有安装微信，请使用手机号登录"];
     }
 }
 
