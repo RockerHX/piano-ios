@@ -67,20 +67,18 @@
     
     @weakify(self)
     RACSignal *normalLoginSignal = [_viewModel.normalLoginCommand execute:nil];
-    [normalLoginSignal subscribeNext:^(NSDictionary *data) {
-        @strongify(self)
-        if (self.delegate && [self.delegate respondsToSelector:@selector(loginSuccessHandleWithData:)]) {
-            [self.delegate loginSuccessHandleWithData:data];
-        }
-        [self hiddenHUD];
-    } error:^(NSError *error) {
+    [normalLoginSignal subscribeNext:^(NSString *message) {
         @strongify(self)
         if (self.delegate && [self.delegate respondsToSelector:@selector(loginFailureHanleWithPrompt:)]) {
-            [self.delegate loginFailureHanleWithPrompt:error.domain];
+            [self.delegate loginFailureHanleWithPrompt:message];
         }
         [self hiddenHUD];
     } completed:^{
-        ;
+        @strongify(self)
+        if (self.delegate && [self.delegate respondsToSelector:@selector(loginSuccessHandleWithData:)]) {
+            [self.delegate loginSuccessHandleWithData:self->_viewModel.useInfo];
+        }
+        [self hiddenHUD];
     }];
 }
 

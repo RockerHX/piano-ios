@@ -18,4 +18,6 @@
 @property (nonatomic, strong, readonly) RACCommand *normalLoginCommand;
 @property (nonatomic, strong, readonly) RACCommand *weixinLoginCommand;
 
+@property (nonatomic, strong, readonly) NSDictionary *useInfo;
+
 @end

@@ -65,9 +65,9 @@
             _account.sdkUser = snsAccount;
             [self startWeiXinLoginRequestWithSubscriber:subscriber];
         } else {
-            [subscriber sendError:[NSError errorWithDomain:response.message code:response.responseCode userInfo:nil]];
+            [subscriber sendNext:response.message];
+            [subscriber sendCompleted];
         }
-        
     });
 }
 
@@ -90,13 +90,13 @@
                          completeBlock:
      ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
          if (success) {
-             [subscriber sendNext:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+             _useInfo = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
              [subscriber sendCompleted];
          } else {
-             [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+             [subscriber sendNext:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
          }
      } timeoutBlock:^(MiaRequestItem *requestItem) {
-         [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+         [subscriber sendNext:TimtOutPrompt];
      }];
 }
 
@@ -107,16 +107,16 @@
                           completeBlock:
          ^(MiaRequestItem *requestItem, BOOL success, NSDictionary *userInfo) {
              if (success) {
-                 [subscriber sendNext:userInfo[MiaAPIKey_Values][MiaAPIKey_Data]];
+                 _useInfo = userInfo[MiaAPIKey_Values][MiaAPIKey_Data];
                  [subscriber sendCompleted];
              } else {
-                 [subscriber sendError:[NSError errorWithDomain:userInfo[MiaAPIKey_Values][MiaAPIKey_Error] code:-1 userInfo:nil]];
+                 [subscriber sendNext:userInfo[MiaAPIKey_Values][MiaAPIKey_Error]];
              }
          } timeoutBlock:^(MiaRequestItem *requestItem) {
-             [subscriber sendError:[NSError errorWithDomain:TimtOutPrompt code:-1 userInfo:nil]];
+             [subscriber sendNext:TimtOutPrompt];
          }];
     } else {
-        [subscriber sendError:[NSError errorWithDomain:MobileErrorPrompt code:-1 userInfo:nil]];
+        [subscriber sendNext:MobileErrorPrompt];
     }
 }
 
