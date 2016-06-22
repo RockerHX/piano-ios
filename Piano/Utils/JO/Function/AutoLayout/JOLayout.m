@@ -10,7 +10,7 @@
 
 @implementation JOLayout
 
-+ (void)removeAllLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeAllLayoutWithView:(UIView *)view{
 
     //    [NSLayoutConstraint deactivateConstraints:selfView.constraints];
     
@@ -18,12 +18,12 @@
     //
     //    [selfView setNeedsUpdateConstraints];
     
-    for(NSLayoutConstraint *layoutConstraint in relateView.constraints){
+    for(NSLayoutConstraint *layoutConstraint in view.superview.constraints){
         
         //        [view removeConstraint:layoutConstraint];
         
         if(layoutConstraint.firstItem == view){
-            [relateView removeConstraint:layoutConstraint];
+            [view.superview removeConstraint:layoutConstraint];
         }
         
         //        switch (layoutConstraint.firstAttribute) {
@@ -44,136 +44,90 @@
     }
 }
 
-+ (void)removeWidthLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeWidthLayoutWithView:(UIView *)view{
 
-    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeWidth view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeWidth view:view];
 }
 
-+ (void)removeHeightLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeHeightLayoutWithView:(UIView *)view{
 
-    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeHeight view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeHeight view:view];
 }
 
-+ (void)removeLeftLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeLeftLayoutWithView:(UIView *)view{
 
-    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeLeft view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeLeft view:view];
 }
 
-+ (void)removeRightLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeRightLayoutWithView:(UIView *)view{
 
-    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeRight view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeRight view:view];
 }
 
-+ (void)removeTopLayoutWithWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeTopLayoutWithWithView:(UIView *)view{
 
-    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeTop view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeTop view:view];
 }
 
-+ (void)removeBottomLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeBottomLayoutWithView:(UIView *)view{
 
-    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeBottom view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeBottom view:view];
 }
 
-+ (void)removeEdgeLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeEdgeLayoutWithView:(UIView *)view{
 
-    [JOLayout removeLeftLayoutWithView:view relateView:relateView];
-    [JOLayout removeRightLayoutWithView:view relateView:relateView];
-    [JOLayout removeTopLayoutWithWithView:view relateView:relateView];
-    [JOLayout removeBottomLayoutWithView:view relateView:relateView];
+    [JOLayout removeLeftLayoutWithView:view];
+    [JOLayout removeRightLayoutWithView:view];
+    [JOLayout removeTopLayoutWithWithView:view];
+    [JOLayout removeBottomLayoutWithView:view];
 }
 
-+ (void)removeSizeLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeSizeLayoutWithView:(UIView *)view{
 
-    [JOLayout removeWidthLayoutWithView:view relateView:relateView];
-    [JOLayout removeHeightLayoutWithView:view relateView:relateView];
+    [JOLayout removeWidthLayoutWithView:view];
+    [JOLayout removeHeightLayoutWithView:view];
 }
 
-+ (void)removeCenterXLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeCenterXLayoutWithView:(UIView *)view{
 
-    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeCenterX view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeCenterX view:view];
 }
 
-+ (void)removeCenterYLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeCenterYLayoutWithView:(UIView *)view{
 
-    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeCenterY view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:NSLayoutAttributeCenterY view:view];
 }
 
-+ (void)removeCenterLayoutWithView:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeCenterLayoutWithView:(UIView *)view{
 
-    [JOLayout removeCenterXLayoutWithView:view relateView:relateView];
-    [JOLayout removeCenterYLayoutWithView:view relateView:relateView];
+    [JOLayout removeCenterXLayoutWithView:view];
+    [JOLayout removeCenterYLayoutWithView:view];
 }
 
-+ (void)removeLayoutWithLayoutAttribute:(NSLayoutAttribute )layoutAttribute view:(UIView *)view relateView:(UIView*)relateView{
++ (void)removeLayoutWithLayoutAttribute:(NSLayoutAttribute )layoutAttribute view:(UIView *)view{
     
-    for(NSLayoutConstraint *layoutConstraint in relateView.constraints){
+    for(NSLayoutConstraint *layoutConstraint in view.superview.constraints){
         
         if((layoutConstraint.firstItem == view) && (layoutConstraint.firstAttribute == layoutAttribute)){
             
-            [relateView removeConstraint:layoutConstraint];
+            [view.superview removeConstraint:layoutConstraint];
         }
     }
 }
 
 #pragma mark - Private layout
 
-+ (void)layoutConstraintWithView:(UIView *)view
-                       attribute:(NSLayoutAttribute)attribute
-                        relateBy:(NSLayoutRelation)relation
-                      realteView:(UIView *)relateView
-                 relateAttribute:(NSLayoutAttribute)relateAttribute
-                         addView:(UIView *)addView
-                           ratio:(CGFloat)ratio
-                        distance:(CGFloat)distance{
++ (void)layoutWithItem:(JOLayoutItem *)item{
 
-    [JOLayout layoutConstraintWithView:view
-                             attribute:attribute
-                              relateBy:relation
-                            realteView:relateView
-                       relateAttribute:relateAttribute
-                               addView:relateView
-                                 ratio:ratio
-                              distance:distance
-                              priority:UILayoutPriorityRequired];
-}
-
-+ (void)layoutConstraintWithView:(UIView *)view
-                       attribute:(NSLayoutAttribute)attribute
-                        relateBy:(NSLayoutRelation)relation
-                      realteView:(UIView *)relateView
-                 relateAttribute:(NSLayoutAttribute)relateAttribute
-                           ratio:(CGFloat)ratio
-                        distance:(CGFloat)distance{
-
-    [JOLayout layoutConstraintWithView:view
-                             attribute:attribute
-                              relateBy:relation
-                            realteView:relateView
-                       relateAttribute:relateAttribute
-                               addView:relateView
-                                 ratio:ratio
-                              distance:distance];
-    
-}
-
-+ (void)layoutConstraintWithView:(UIView *)view
-                       attribute:(NSLayoutAttribute)attribute
-                        relateBy:(NSLayoutRelation)relation
-                      realteView:(UIView *)relateView
-                 relateAttribute:(NSLayoutAttribute)relateAttribute
-                           ratio:(CGFloat)ratio
-                        distance:(CGFloat)distance
-                        priority:(UILayoutPriority)priority{
-
-    [JOLayout layoutConstraintWithView:view
-                             attribute:attribute
-                              relateBy:relation
-                            realteView:relateView
-                       relateAttribute:relateAttribute
-                               addView:relateView
-                                 ratio:ratio
-                              distance:distance
-                              priority:priority];
+    [JOLayout layoutConstraintWithView:item.view
+                             attribute:item.viewAttribute
+                              relateBy:item.relation
+                            realteView:item.realteView
+                       relateAttribute:item.realteViewAttribute
+                               addView:item.view.superview
+                                 ratio:item.ratio
+                              distance:item.distance
+                              priority:item.priority];
 }
 
 + (void)layoutConstraintWithView:(UIView *)view
@@ -186,7 +140,7 @@
                         distance:(CGFloat)distance
                         priority:(UILayoutPriority)priority{
     
-    [JOLayout removeLayoutWithLayoutAttribute:attribute view:view relateView:relateView];
+    [JOLayout removeLayoutWithLayoutAttribute:attribute view:view];
     NSLayoutConstraint *layoutConstraint = [NSLayoutConstraint constraintWithItem:view
                                                                        attribute:attribute
                                                                        relatedBy:relation
@@ -198,12 +152,5 @@
     [addView addConstraint:layoutConstraint];
     
 }
-
-+ (void)layoutWithContent:(NSString *)content view:(UIView *)view referView:(UIView *)referView relateView:(UIView *)relateView{
-
-    
-}
-
-//+ (NSDictionary *)
 
 @end

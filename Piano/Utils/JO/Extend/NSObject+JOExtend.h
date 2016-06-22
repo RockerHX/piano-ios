@@ -100,7 +100,6 @@
  */
 + (NSArray *)JOGetAllProtocol;
 
-
 @end
 
 
