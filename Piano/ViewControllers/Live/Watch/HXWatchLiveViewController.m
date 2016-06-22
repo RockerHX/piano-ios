@@ -341,7 +341,7 @@ HXLiveAlbumViewDelegate
     [[FileLog standard] log:@"Channel %@ Reconnected.", channel];
 }
 
-- (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel playUrl:(NSString *)playUrl {
+- (void)onPublishSucc:(NSString *)streamID channel:(NSString *)channel streamInfo:(NSDictionary *)info {
     [[FileLog standard] log:@"%s, stream: %@", __func__, streamID];
     [self hiddenLoadingHUD];
 }

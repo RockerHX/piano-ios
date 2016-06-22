@@ -11,6 +11,7 @@
 #import "HXMobileLoginViewController.h"
 #import "BlocksKit+UIKit.h"
 #import "HXUserTermsViewController.h"
+#import "WXApi.h"
 
 
 @interface HXLoginViewController () <
@@ -103,19 +104,23 @@ HXMobileLoginViewControllerDelegate
 
 #pragma mark - Private Methods
 - (void)startWeiXinLoginRequest {
-    [self showHUD];
-    
-    @weakify(self)
-    RACSignal *weixinLoginSignal = [_viewModel.weixinLoginCommand execute:nil];
-    [weixinLoginSignal subscribeNext:^(NSDictionary *data) {
-        @strongify(self)
-        [self loginSuccessHandleWithData:data];
-    } error:^(NSError *error) {
-        @strongify(self)
-        [self loginFailureHanleWithPrompt:error.domain];
-    } completed:^{
-        ;
-    }];
+    if ([WXApi isWXAppInstalled]) {
+        [self showHUD];
+        
+        @weakify(self)
+        RACSignal *weixinLoginSignal = [_viewModel.weixinLoginCommand execute:nil];
+        [weixinLoginSignal subscribeNext:^(NSString *message) {
+            @strongify(self)
+            [self hiddenHUD];
+            [self showBannerWithPrompt:message];
+        } completed:^{
+            @strongify(self)
+            [self hiddenHUD];
+            [self loginSuccessHandleWithData:self->_viewModel.useInfo];
+        }];
+    } else {
+        [self showBannerWithPrompt:@"您没有安装微信，请使用手机号登录"];
+    }
 }
 
 - (void)showUserTerms {
@@ -126,19 +131,21 @@ HXMobileLoginViewControllerDelegate
 
 #pragma mark - HXMobileLoginViewControllerDelegate Methods
 - (void)loginSuccessHandleWithData:(NSDictionary *)data {
-    [[HXUserSession session] updateUserWithData:data];
-    
-    if (_delegate && [_delegate respondsToSelector:@selector(loginViewController:takeAction:)]) {
-        [_delegate loginViewController:self takeAction:HXLoginViewControllerActionLoginSuccess];
+    if (data) {
+        [[HXUserSession session] updateUserWithData:data];
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(loginViewController:takeAction:)]) {
+            [_delegate loginViewController:self takeAction:HXLoginViewControllerActionLoginSuccess];
+        }
+        [self hiddenHUD];
+        [self showBannerWithPrompt:@"登录成功"];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
-    [self hiddenHUD];
-    [self showBannerWithPrompt:@"登录成功"];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)loginFailureHanleWithPrompt:(NSString *)prompt {
-    [self showBannerWithPrompt:prompt];
     [self hiddenHUD];
+    [self showBannerWithPrompt:prompt];
 }
 
 @end
