@@ -62,7 +62,7 @@
     //设置友盟社会化组件appkey
     [UMSocialData setAppKey:UMengAPPKEY];
     //设置微信AppId、appSecret，分享url
-    [UMSocialWechatHandler setWXAppId:WeiXinKEY appSecret:WeiXinSecret url:@"http://www.baidu.com"];
+    [UMSocialWechatHandler setWXAppId:WeiXinKEY appSecret:WeiXinSecret url:@"http://www.miamusic.com"];
     //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 UMSocialSinaSSOHandler.h
     [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:WeiBoKEY
                                               secret:WeiBoSecret
