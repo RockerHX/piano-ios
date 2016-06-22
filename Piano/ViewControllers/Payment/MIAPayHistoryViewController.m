@@ -75,10 +75,15 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     } rightClickHandler:nil];
     [self.view addSubview:_navBarView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kPayHistoryNavbarHeight selfView:_navBarView superView:self.view];
+//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
+//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
+//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
+//    [JOAutoLayout autoLayoutWithHeight:kPayHistoryNavbarHeight selfView:_navBarView superView:self.view];
+    
+    [_navBarView layoutLeft:0. layoutItemHandler:nil];
+    [_navBarView layoutRight:0. layoutItemHandler:nil];
+    [_navBarView layoutTop:0. layoutItemHandler:nil];
+    [_navBarView layoutHeight:kPayHistoryNavbarHeight layoutItemHandler:nil];
 }
 
 - (void)createItemView{
@@ -106,10 +111,15 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     
     [_itemsView setCurrentSelectedIndex:0];
     
-    [JOAutoLayout autoLayoutWithTopView:_navBarView distance:0. selfView:_itemsView superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_itemsView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_itemsView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kPayHistoryItemViewHeight selfView:_itemsView superView:self.view];
+//    [JOAutoLayout autoLayoutWithTopView:_navBarView distance:0. selfView:_itemsView superView:self.view];
+//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_itemsView superView:self.view];
+//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_itemsView superView:self.view];
+//    [JOAutoLayout autoLayoutWithHeight:kPayHistoryItemViewHeight selfView:_itemsView superView:self.view];
+    
+    [_itemsView layoutTopView:_navBarView distance:0. layoutItemHandler:nil];
+    [_itemsView layoutLeft:0. layoutItemHandler:nil];
+    [_itemsView layoutRight:0. layoutItemHandler:nil];
+    [_itemsView layoutHeight:kPayHistoryItemViewHeight layoutItemHandler:nil];
 }
 
 - (void)createTableView{
@@ -123,10 +133,15 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     
     [_payHistoryScrollView setContentSize:JOSize(View_Width(self.view)*itemCount, View_Height(self.view)-kPayHistoryItemViewHeight-kPayHistoryNavbarHeight)];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopView:_itemsView distance:0. selfView:_payHistoryScrollView superView:self.view];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
+//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
+//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
+//    [JOAutoLayout autoLayoutWithTopView:_itemsView distance:0. selfView:_payHistoryScrollView superView:self.view];
+//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
+    
+    [_payHistoryScrollView layoutLeft:0. layoutItemHandler:nil];
+    [_payHistoryScrollView layoutRight:0. layoutItemHandler:nil];
+    [_payHistoryScrollView layoutTopView:_itemsView distance:0. layoutItemHandler:nil];
+    [_payHistoryScrollView layoutBottom:0. layoutItemHandler:nil];
     
     self.sendGiftTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [_sendGiftTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -154,8 +169,11 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
 //        
 //    }else if ([[HXUserSession session] role] == HXUserRoleNormal){
         //客人状态
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_sendGiftTableView superView:_payHistoryScrollView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
+//        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_sendGiftTableView superView:_payHistoryScrollView];
+//        [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_sendGiftTableView superView:_payHistoryScrollView];
+    
+    [_sendGiftTableView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
+    [_sendGiftTableView layoutSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) layoutItemHandler:nil];
 //    }
     
     self.paymentHistoryTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -166,9 +184,13 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_paymentHistoryTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreOrderList)]];
     [_payHistoryScrollView addSubview:_paymentHistoryTableView];
     
-    [JOAutoLayout autoLayoutWithLeftView:_sendGiftTableView distance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
-    [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
+//    [JOAutoLayout autoLayoutWithLeftView:_sendGiftTableView distance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
+//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
+//    [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
+    
+    [_paymentHistoryTableView layoutLeftView:_sendGiftTableView distance:0. layoutItemHandler:nil];
+    [_paymentHistoryTableView layoutTop:0. layoutItemHandler:nil];
+    [_paymentHistoryTableView layoutSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) layoutItemHandler:nil];
 }
 
 - (void)viewWillLayoutSubviews{

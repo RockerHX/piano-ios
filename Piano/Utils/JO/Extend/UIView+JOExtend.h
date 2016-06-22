@@ -61,16 +61,19 @@ typedef void(^JOViewLayoutBlock) (JOLayoutItem *layoutItem);
 
 //宽高的约束相关.
 - (void)layoutWidthHeightRatio:(CGFloat)ratio layoutItemHandler:(JOViewLayoutBlock)block;
+- (void)layoutHeightWidthRatio:(CGFloat)ratio layoutItemHandler:(JOViewLayoutBlock)block;
 - (void)layoutWidthHeightView:(UIView *)heightView ratio:(CGFloat)ratio layoutItemHandler:(JOViewLayoutBlock)block;
 - (void)layoutHeightWidthView:(UIView *)widthView ratio:(CGFloat)ratio layoutItemHandler:(JOViewLayoutBlock)block;
+
 
 //四周的约束相关.
 - (void)layoutEdge:(UIEdgeInsets)edge layoutItemHandler:(JOViewLayoutBlock)block;
 
 //size的约束相关.
 - (void)layoutSize:(CGSize)size layoutItemHandler:(JOViewLayoutBlock)block;
+- (void)layoutSizeView:(UIView *)sizeView layoutItemHandler:(JOViewLayoutBlock)block;
 
 //same的约束相关.
-- (void)layouSameView:(UIView *)sameView layoutItemHandler:(JOViewLayoutBlock)block;
+- (void)layoutSameView:(UIView *)sameView layoutItemHandler:(JOViewLayoutBlock)block;
 
 @end

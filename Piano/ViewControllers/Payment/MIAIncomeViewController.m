@@ -97,10 +97,10 @@ static NSString *const kIncomeTipString = @"温馨提示:可使用电脑端登�
     } rightClickHandler:nil];
     [self.view addSubview:_navBarView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kIncomeNavBarHeight selfView:_navBarView superView:self.view];
+    [_navBarView layoutLeft:0. layoutItemHandler:nil];
+    [_navBarView layoutRight:0. layoutItemHandler:nil];
+    [_navBarView layoutTop:0. layoutItemHandler:nil];
+    [_navBarView layoutHeight:kIncomeNavBarHeight layoutItemHandler:nil];
 }
 
 - (void)createHeadView{
@@ -115,10 +115,11 @@ static NSString *const kIncomeTipString = @"温馨提示:可使用电脑端登�
     [_headView addSubview:moneyTipLabel];
     
     CGFloat moneyTipLabelHeight = [moneyTipLabel sizeThatFits:JOMAXSize].height;
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kIncomeMoneyTipTopSpaceDistance selfView:moneyTipLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:moneyTipLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:moneyTipLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithHeight:moneyTipLabelHeight selfView:moneyTipLabel superView:_headView];
+    
+    [moneyTipLabel layoutTop:kIncomeMoneyTipTopSpaceDistance layoutItemHandler:nil];
+    [moneyTipLabel layoutLeft:10. layoutItemHandler:nil];
+    [moneyTipLabel layoutRight:-10. layoutItemHandler:nil];
+    [moneyTipLabel layoutHeight:moneyTipLabelHeight layoutItemHandler:nil];
     
     self.moneyLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Income_Money]];
     [_moneyLabel setText:@"  "];
@@ -126,10 +127,11 @@ static NSString *const kIncomeTipString = @"温馨提示:可使用电脑端登�
     [_headView addSubview:_moneyLabel];
     
     CGFloat moneyLabelHeight = [_moneyLabel sizeThatFits:JOMAXSize].height;
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_moneyLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_moneyLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithTopView:moneyTipLabel distance:kIncomeMoneyTipToMoneySpaceDistance selfView:_moneyLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithHeight:moneyLabelHeight selfView:_moneyLabel superView:_headView];
+    
+    [_moneyLabel layoutLeft:10. layoutItemHandler:nil];
+    [_moneyLabel layoutRight:-10. layoutItemHandler:nil];
+    [_moneyLabel layoutTopView:moneyTipLabel distance:kIncomeMoneyTipToMoneySpaceDistance layoutItemHandler:nil];
+    [_moneyLabel layoutHeight:moneyLabelHeight layoutItemHandler:nil];
     
     UILabel *tipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Income_Tip]];
     [tipLabel setText:kIncomeTipString];
@@ -137,17 +139,18 @@ static NSString *const kIncomeTipString = @"温馨提示:可使用电脑端登�
     [_headView addSubview:tipLabel];
     
     CGFloat tipLabelHeight = [tipLabel sizeThatFits:JOMAXSize].height;
-    [JOAutoLayout autoLayoutWithTopView:_moneyLabel distance:kIncomeMoneyToTipSpaceDistance selfView:tipLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:tipLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:tipLabel superView:_headView];
-    [JOAutoLayout autoLayoutWithHeight:tipLabelHeight selfView:tipLabel superView:_headView];
+    
+    [tipLabel layoutTopView:_moneyLabel distance:kIncomeMoneyToTipSpaceDistance layoutItemHandler:nil];
+    [tipLabel layoutLeft:10. layoutItemHandler:nil];
+    [tipLabel layoutRight:-10. layoutItemHandler:nil];
+    [tipLabel layoutHeight:tipLabelHeight layoutItemHandler:nil];
     
     CGFloat headHeight = moneyTipLabelHeight + kIncomeMoneyTipTopSpaceDistance + moneyLabelHeight + kIncomeMoneyTipToMoneySpaceDistance + tipLabelHeight + kIncomeMoneyToTipSpaceDistance + kIncomeTipBottomSpaceDistance;
     
-    [JOAutoLayout autoLayoutWithTopView:_navBarView distance:0. selfView:_headView superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_headView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_headView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:headHeight selfView:_headView superView:self.view];
+    [_headView layoutTopView:_navBarView distance:0. layoutItemHandler:nil];
+    [_headView layoutLeft:0. layoutItemHandler:nil];
+    [_headView layoutRight:0. layoutItemHandler:nil];
+    [_headView layoutHeight:headHeight layoutItemHandler:nil];
 }
 
 - (void)createIncomeTableView{
@@ -161,10 +164,10 @@ static NSString *const kIncomeTipString = @"温馨提示:可使用电脑端登�
     [_incomeTableView setSectionHeaderHeight:CGFLOAT_MIN];
     [self.view addSubview:_incomeTableView];
     
-    [JOAutoLayout autoLayoutWithTopView:_headView distance:0. selfView:_incomeTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_incomeTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_incomeTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_incomeTableView superView:self.view];
+    [_incomeTableView layoutTopView:_headView distance:0. layoutItemHandler:nil];
+    [_incomeTableView layoutLeft:0. layoutItemHandler:nil];
+    [_incomeTableView layoutRight:0. layoutItemHandler:nil];
+    [_incomeTableView layoutBottom:0. layoutItemHandler:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -51,15 +51,6 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_indexLabel superView:self];
     [JOAutoLayout autoLayoutWithWidth:kIndexLabelWidth selfView:_indexLabel superView:self];
     
-//    self.playStateImageView = [UIImageView newAutoLayoutView];
-//    [_playStateImageView setContentMode:UIViewContentModeScaleAspectFit];
-//    [_playStateImageView setImage:[UIImage imageNamed:@"AD-PauseIcon-S"]];
-//    [_playStateImageView setHidden:YES];
-//    [self addSubview:_playStateImageView];
-//    
-//    [JOAutoLayout autoLayoutWithSize:JOSize(kIndexLabelWidth-15., kIndexLabelWidth-15.) selfView:_playStateImageView superView:self];
-//    [JOAutoLayout autoLayoutWithCenterWithView:_indexLabel selfView:_playStateImageView superView:self];
-    
     self.downloadStateImageView = [UIImageView newAutoLayoutView];
     [_downloadStateImageView setImage:[UIImage imageNamed:@"AD-NoDownload"]];
     [_downloadStateImageView setHidden:YES];
@@ -91,8 +82,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     UIView *separateLineView = [UIView newAutoLayoutView];
     [separateLineView setBackgroundColor:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]->color];
     [self addSubview:separateLineView];
-    
-//    [JOAutoLayout autoLayoutWithLeftXView:_downloadStateImageView distance:1. selfView:separateLineView superView:self];
+
     [JOAutoLayout autoLayoutWithLeftView:_indexLabel distance:0. selfView:separateLineView superView:self];
     [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:separateLineView superView:self];
     [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:separateLineView superView:self];

@@ -47,24 +47,24 @@ CGFloat const kProfileReplayItemSpaceDistance = 11.;
         [_leftReplayView setTag:1];
         [self.cellContentView addSubview:_leftReplayView];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_leftReplayView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_leftReplayView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_leftReplayView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_leftReplayView superView:self.cellContentView];
+        [_leftReplayView layoutTop:kContentViewInsideTopSpaceDistance layoutItemHandler:nil];
+        [_leftReplayView layoutBottom:-kContentViewInsideBottomSpaceDistance layoutItemHandler:nil];
+        [_leftReplayView layoutWidth:viewWidth layoutItemHandler:nil];
+        [_leftReplayView layoutLeft:kContentViewInsideLeftSpaceDistance layoutItemHandler:nil];
         
         self.rightReplayView = [MIAProfileReplayView newAutoLayoutView];
         [_rightReplayView setTag:2];
         [self.cellContentView addSubview:_rightReplayView];
         
-        [JOAutoLayout autoLayoutWithSizeWithView:_leftReplayView selfView:_rightReplayView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_rightReplayView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftView:_leftReplayView distance:kProfileReplayItemSpaceDistance selfView:_rightReplayView superView:self.cellContentView];
+        [_rightReplayView layoutSizeView:_leftReplayView layoutItemHandler:nil];
+        [_rightReplayView layoutTop:kContentViewInsideTopSpaceDistance layoutItemHandler:nil];
+        [_rightReplayView layoutLeftView:_leftReplayView distance:kProfileReplayItemSpaceDistance layoutItemHandler:nil];
         
         UIView *whiteView = [UIView newAutoLayoutView];
         [whiteView setBackgroundColor:[UIColor whiteColor]];
         [self.contentView insertSubview:whiteView belowSubview:self.cellContentView];
         
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0, kContentViewLeftSpaceDistance, 1., -kContentViewRightSpaceDistance) selfView:whiteView superView:self.contentView];
+        [whiteView layoutEdge:UIEdgeInsetsMake(0, kContentViewLeftSpaceDistance, 1., -kContentViewRightSpaceDistance) layoutItemHandler:nil];
     }
 }
 

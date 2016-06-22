@@ -44,10 +44,10 @@ static CGFloat const kRightButtonWidth = 50.;//right按钮的宽度.
     [_leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_leftButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_leftButton superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_leftButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_leftButton superView:self];
-    [JOAutoLayout autoLayoutWithWidth:kLeftButtonWidth selfView:_leftButton superView:self];
+    [_leftButton layoutLeft:0. layoutItemHandler:nil];
+    [_leftButton layoutTop:0. layoutItemHandler:nil];
+    [_leftButton layoutBottom:0. layoutItemHandler:nil];
+    [_leftButton layoutWidth:kLeftButtonWidth layoutItemHandler:nil];
     
     self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_rightButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -55,19 +55,19 @@ static CGFloat const kRightButtonWidth = 50.;//right按钮的宽度.
     [_rightButton addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_rightButton];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_rightButton superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_rightButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_rightButton superView:self];
-    [JOAutoLayout autoLayoutWithWidth:kRightButtonWidth selfView:_rightButton superView:self];
+    [_rightButton layoutTop:0. layoutItemHandler:nil];
+    [_rightButton layoutRight:0. layoutItemHandler:nil];
+    [_rightButton layoutBottom:0. layoutItemHandler:nil];
+    [_rightButton layoutWidth:kRightButtonWidth layoutItemHandler:nil];
     
     self.titleLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_NavBar_Title]];
     [_titleLabel setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:_titleLabel];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_titleLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_titleLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftView:_leftButton distance:0. selfView:_titleLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_rightButton distance:0. selfView:_titleLabel superView:self];
+    [_titleLabel layoutTop:0. layoutItemHandler:nil];
+    [_titleLabel layoutBottom:0. layoutItemHandler:nil];
+    [_titleLabel layoutLeftView:_leftButton distance:0. layoutItemHandler:nil];
+    [_titleLabel layoutRightView:_rightButton distance:0. layoutItemHandler:nil];
     
 }
 
@@ -79,10 +79,10 @@ static CGFloat const kRightButtonWidth = 50.;//right按钮的宽度.
     [bottomLineView setBackgroundColor:JORGBSameCreate(235.)];
     [self addSubview:bottomLineView];
     
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-0.5 selfView:bottomLineView superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:bottomLineView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:bottomLineView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:0.5 selfView:bottomLineView superView:self];
+    [bottomLineView layoutBottom:-0.5 layoutItemHandler:nil];
+    [bottomLineView layoutLeft:0. layoutItemHandler:nil];
+    [bottomLineView layoutRight:0. layoutItemHandler:nil];
+    [bottomLineView layoutHeight:0.5 layoutItemHandler:nil];
 }
 
 - (void)setTitle:(NSString *)title{

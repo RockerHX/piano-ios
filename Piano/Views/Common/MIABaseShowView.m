@@ -46,9 +46,13 @@
 
 - (void)updateViewLayout{
 
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showImageView superView:self];
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showTitleLabel superView:self];
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showTipLabel superView:self];
+    [JOLayout removeAllLayoutWithView:self.showImageView];
+    [JOLayout removeAllLayoutWithView:self.showTitleLabel];
+    [JOLayout removeAllLayoutWithView:self.showTipLabel];
+    
+//    [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showImageView superView:self];
+//    [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showTitleLabel superView:self];
+//    [JOAutoLayout removeAllAutoLayoutWithSelfView:self.showTipLabel superView:self];
 }
 
 - (void)setShowData:(id)data{}

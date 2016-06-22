@@ -156,6 +156,12 @@
     [self layoutWithItem:item itemBlock:block];
 };
 
+- (void)layoutHeightWidthRatio:(CGFloat)ratio layoutItemHandler:(JOViewLayoutBlock)block{
+
+    JOLayoutItem *item = [JOLayoutItem layoutHeightWidthRatio:ratio view:self];
+    [self layoutWithItem:item itemBlock:block];
+}
+
 - (void)layoutWidthHeightView:(UIView *)heightView ratio:(CGFloat)ratio layoutItemHandler:(JOViewLayoutBlock)block{
 
     JOLayoutItem *item = [JOLayoutItem layoutWidthHeightView:heightView ratio:ratio view:self];
@@ -182,7 +188,13 @@
     [self layoutHeight:size.height layoutItemHandler:block];
 }
 
-- (void)layouSameView:(UIView *)sameView layoutItemHandler:(JOViewLayoutBlock)block{
+- (void)layoutSizeView:(UIView *)sizeView layoutItemHandler:(JOViewLayoutBlock)block{
+
+    [self layoutWidthView:sizeView ratio:1. layoutItemHandler:block];
+    [self layoutHeightView:sizeView ratio:1. layoutItemHandler:block];
+}
+
+- (void)layoutSameView:(UIView *)sameView layoutItemHandler:(JOViewLayoutBlock)block{
 
     [self layoutTopYView:sameView distance:0. layoutItemHandler:block];
     [self layoutBottomYView:sameView distance:0. layoutItemHandler:block];

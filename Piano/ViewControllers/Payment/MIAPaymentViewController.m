@@ -115,10 +115,15 @@
     }];
     [self.view addSubview:_paymentBarView];
  
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_paymentBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_paymentBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_paymentBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kPaymentBarViewHeight selfView:_paymentBarView superView:self.view];
+//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_paymentBarView superView:self.view];
+//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_paymentBarView superView:self.view];
+//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_paymentBarView superView:self.view];
+//    [JOAutoLayout autoLayoutWithHeight:kPaymentBarViewHeight selfView:_paymentBarView superView:self.view];
+    
+    [_paymentBarView layoutTop:0. layoutItemHandler:nil];
+    [_paymentBarView layoutLeft:0. layoutItemHandler:nil];
+    [_paymentBarView layoutRight:0. layoutItemHandler:nil];
+    [_paymentBarView layoutHeight:kPaymentBarViewHeight layoutItemHandler:nil];
 }
 
 - (void)createTableView{
@@ -131,10 +136,15 @@
 //    [_paymentTableView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:_paymentTableView];
     
-    [JOAutoLayout autoLayoutWithTopView:_paymentBarView distance:0. selfView:_paymentTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_paymentTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_paymentTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_paymentTableView superView:self.view];
+//    [JOAutoLayout autoLayoutWithTopView:_paymentBarView distance:0. selfView:_paymentTableView superView:self.view];
+//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_paymentTableView superView:self.view];
+//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_paymentTableView superView:self.view];
+//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_paymentTableView superView:self.view];
+    
+    [_paymentTableView layoutTopView:_paymentBarView distance:0. layoutItemHandler:nil];
+    [_paymentTableView layoutLeft:0. layoutItemHandler:nil];
+    [_paymentTableView layoutRight:0. layoutItemHandler:nil];
+    [_paymentTableView layoutBottom:0. layoutItemHandler:nil];
 }
 
 #pragma mark - table data source
@@ -177,7 +187,9 @@
     [headLabel setText:@"请选择充值金额"];
     [headView addSubview:headLabel];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 10., 0., -10.) selfView:headLabel superView:headView];
+//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 10., 0., -10.) selfView:headLabel superView:headView];
+    
+    [headLabel layoutEdge:UIEdgeInsetsMake(0., 10., 0., -10.) layoutItemHandler:nil];
     
     return headView;
 }

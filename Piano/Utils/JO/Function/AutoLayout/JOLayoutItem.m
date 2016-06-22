@@ -15,7 +15,8 @@
                      viewAttribute:(NSLayoutAttribute)viewAttribute
                         realteView:(UIView *)realteView
                realteViewAttribute:(NSLayoutAttribute)realteViewAttribute
-                          distance:(CGFloat)distance ratio:(CGFloat)ratio
+                          distance:(CGFloat)distance
+                             ratio:(CGFloat)ratio
                           relation:(NSLayoutRelation)relation
                           priority:(UILayoutPriority)priority
                           property:(JOLayoutItemProperty)property{
@@ -515,12 +516,12 @@
 
 + (instancetype)layoutHeightWidthRatio:(CGFloat)ratio priority:(UILayoutPriority)priority view:(UIView *)view{
     
-    return [JOLayoutItem layoutWidthHeightRatio:ratio relation:NSLayoutRelationEqual priority:priority view:view];
+    return [JOLayoutItem layoutHeightWidthRatio:ratio relation:NSLayoutRelationEqual priority:priority view:view];
 }
 
 + (instancetype)layoutHeightWidthRatio:(CGFloat)ratio view:(UIView *)view{
     
-    return [JOLayoutItem layoutWidthHeightRatio:ratio relation:NSLayoutRelationEqual priority:UILayoutPriorityRequired view:view];
+    return [JOLayoutItem layoutHeightWidthRatio:ratio relation:NSLayoutRelationEqual priority:UILayoutPriorityRequired view:view];
 }
 
 + (instancetype)layoutHeightWidthRatio:(CGFloat)ratio relation:(NSLayoutRelation)relation priority:(UILayoutPriority)priority view:(UIView *)view{

@@ -78,7 +78,6 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
 
 - (void)hiddenEventView{
 
-//    JOLog(@"隐藏事件按钮");
     [self setPlayEventViewHiddenState:YES];
 }
 
@@ -91,15 +90,15 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
     [_videoLoadingView setHidden:YES];
     [self.view addSubview:_videoLoadingView];
     
-    [JOAutoLayout autoLayoutWithCenterWithView:self.view selfView:_videoLoadingView superView:self.view];
-    [JOAutoLayout autoLayoutWithSize:JOSize(70., 70.) selfView:_videoLoadingView superView:self.view];
+    [_videoLoadingView layoutCenterView:self.view layoutItemHandler:nil];
+    [_videoLoadingView layoutSize:JOSize(70., 70.) layoutItemHandler:nil];
     
     self.indicatorView = [UIActivityIndicatorView newAutoLayoutView];
     [_indicatorView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [_indicatorView startAnimating];
     [_videoLoadingView addSubview:_indicatorView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0, .0, 0., 0.) selfView:_indicatorView superView:_videoLoadingView];
+    [_indicatorView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
 }
 
 - (void)showLodingView{
@@ -118,7 +117,7 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
     [_playView setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:_playView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_playView superView:self.view];
+    [_playView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playViewTap:)];
     [_playView addGestureRecognizer:tapGesture];
@@ -140,9 +139,9 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
     [_popButton addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_popButton];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_popButton superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:10. selfView:_popButton superView:self.view];
-    [JOAutoLayout autoLayoutWithSize:JOSize(kPopButtonWidth, kPopButtonWidth) selfView:_popButton superView:self.view];
+    [_popButton layoutRight:-10. layoutItemHandler:nil];
+    [_popButton layoutTop:10. layoutItemHandler:nil];
+    [_popButton layoutSize:JOSize(kPopButtonWidth, kPopButtonWidth) layoutItemHandler:nil];
 }
 
 - (void)createPlayBarView{
@@ -198,10 +197,10 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
     }];
     [_playView addSubview:_playBarView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_playBarView superView:_playView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_playBarView superView:_playView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_playBarView superView:_playView];
-    [JOAutoLayout autoLayoutWithHeight:40. selfView:_playBarView superView:_playView];
+    [_playBarView layoutLeft:0. layoutItemHandler:nil];
+    [_playBarView layoutRight:0. layoutItemHandler:nil];
+    [_playBarView layoutBottom:0. layoutItemHandler:nil];
+    [_playBarView layoutHeight:40. layoutItemHandler:nil];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -256,10 +255,6 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
         float startSeconds = CMTimeGetSeconds(timeRange.start);
         float durationSeconds = CMTimeGetSeconds(timeRange.duration);
         loadTime = startSeconds + durationSeconds;//缓冲总长度
-//        [self checkPlayState];
-//        NSLog(@"startSecond:%.2f",startSeconds);
-//        NSLog(@"DurationSeconds:%.2f",durationSeconds);
-//        NSLog(@"共缓冲：%.2f",loadTime);
     }else if ([keyPath isEqualToString:@"playbackBufferEmpty"]){
     
 //        NSLog(@"缓冲数据为空");
@@ -286,7 +281,6 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
     }else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]){
         
         if(playerItem.playbackLikelyToKeepUp){
-//            NSLog(@"正常播放");
             if (playState) {
                 [_player play];
                 [self hiddenLodingView];
@@ -299,7 +293,6 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
 
 - (void)playViewTap:(UIGestureRecognizer *)gesture{
 
-//    [self setPlayEventViewHiddenState:!_popButton.hidden];
     [self resetHiddenPlayBarViewTimer];
 }
 
@@ -307,11 +300,6 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
 
     [_popButton setHidden:state];
     [_playBarView setHidden:state];
-    
-//    if(!state){
-//    
-//        [self performSelector:@selector(hiddenPlayEventView) withObject:nil afterDelay:kHiddenEventViewDefaultTime];
-//    }
 }
 
 - (void)hiddenPlayEventView{
@@ -321,22 +309,8 @@ static NSTimeInterval const kHiddenEventViewDefaultTime = 5.;//默认隐藏的�
 
 #pragma mark - play state
 
-
-//- (void)playTimeJumped:(NSNotification *)notice{
-//
-//    AVPlayerItem *playItem = notice.object;
-//    NSLog(@"时间的跳转value:%lld",playItem.duration.value);
-//    
-//    if ((playItem.duration.value > 0) && !finishedState) {
-//        
-//        [_playBarView setCurrentPlayState:YES];
-//        [_playBarView setCurrentVideoDuration:playItem.duration.value/playItem.duration.timescale];
-//    }
-//}
-
 - (void)playFinished{
-
-    NSLog(@"播放结束");
+    
     finishedState = YES;
     [_playBarView setCurrentPlayState:NO];
     [self popAction];

@@ -24,10 +24,10 @@ CGFloat const kBaseCellHeadViewHeight = 40.;
     [_backgroundView setBackgroundColor:[UIColor blackColor]];
     [self addSubview:_backgroundView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_backgroundView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_backgroundView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_backgroundView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:kBaseCellHeadViewHeight-10. selfView:_backgroundView superView:self];
+    [_backgroundView layoutLeft:0. layoutItemHandler:nil];
+    [_backgroundView layoutRight:0. layoutItemHandler:nil];
+    [_backgroundView layoutBottom:0. layoutItemHandler:nil];
+    [_backgroundView layoutHeight:kBaseCellHeadViewHeight-10. layoutItemHandler:nil];
     
     self.maskView = [UIView newAutoLayoutView];
     [self addSubview:_maskView];
@@ -71,8 +71,7 @@ CGFloat const kBaseCellHeadViewHeight = 40.;
             [_maskView setBackgroundColor:[UIColor whiteColor]];
             [_headLabel setTextColor:[UIColor blackColor]];
             
-            [JOAutoLayout removeAutoLayoutWithHeightSelfView:_backgroundView superView:self];
-            [JOAutoLayout autoLayoutWithHeight:kBaseCellHeadViewHeight selfView:_backgroundView superView:self];
+            [_backgroundView layoutHeight:kBaseCellHeadViewHeight layoutItemHandler:nil];
         }
         
         objc_setAssociatedObject(self, _cmd, @"only", OBJC_ASSOCIATION_RETAIN);
@@ -83,57 +82,60 @@ CGFloat const kBaseCellHeadViewHeight = 40.;
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_headLabel superView:_maskView];
     [JOAutoLayout removeAllAutoLayoutWithSelfView:_headTipLabel superView:_maskView];
     
-//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(10., 0., 0., 0.) selfView:_maskView superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_maskView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_maskView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_maskView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:kBaseCellHeadViewHeight-10 selfView:_maskView superView:self];
+    [_maskView layoutLeft:10. layoutItemHandler:nil];
+    [_maskView layoutRight:-10. layoutItemHandler:nil];
+    [_maskView layoutBottom:0. layoutItemHandler:nil];
+    [_maskView layoutHeight:kBaseCellHeadViewHeight-10 layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_headImageView superView:_maskView];
-    [JOAutoLayout autoLayoutWithCenterYWithView:_headLabel selfView:_headImageView superView:_maskView];
+    [_headImageView layoutLeft:10. layoutItemHandler:nil];
+    [_headImageView layoutCenterYView:_headLabel layoutItemHandler:nil];
     if (image) {
         [_headImageView setImage:image];
-        [JOAutoLayout autoLayoutWithSize:image.size selfView:_headImageView superView:_maskView];
+        [_headImageView layoutSize:image.size layoutItemHandler:nil];
         [_headImageView setHidden:NO];
-        [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:5. selfView:_headLabel superView:_maskView];
+        [_headLabel layoutLeftView:_headImageView distance:5. layoutItemHandler:nil];
     }else{
         
-        [JOAutoLayout autoLayoutWithSize:JOSize(CGFLOAT_MIN, CGFLOAT_MIN) selfView:_headImageView superView:_maskView];
+        [_headImageView layoutSize:JOSize(CGFLOAT_MIN, CGFLOAT_MIN) layoutItemHandler:nil];
         [_headImageView setHidden:YES];
-        [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:0. selfView:_headLabel superView:_maskView];
+        [_headLabel layoutLeftView:_headImageView distance:0. layoutItemHandler:nil];
     }
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_headTipLabel superView:_maskView];
-    [JOAutoLayout autoLayoutWithTopYView:_headLabel selfView:_headTipLabel superView:_maskView];
+    [_headTipLabel layoutRight:-10. layoutItemHandler:nil];
+    [_headTipLabel layoutTopYView:_headLabel distance:0. layoutItemHandler:nil];
+    
     if (headTipTitle && [headTipTitle length]) {
         [_headTipLabel setText:headTipTitle];
         CGFloat width = [_headTipLabel sizeThatFits:JOMAXSize].width;
-        [JOAutoLayout autoLayoutWithWidth:width selfView:_headTipLabel superView:_maskView];
-        [JOAutoLayout autoLayoutWithHeight:[_headTipLabel sizeThatFits:JOMAXSize].height selfView:_headTipLabel superView:_maskView];
+        
+        [_headTipLabel layoutWidth:width layoutItemHandler:nil];
+        [_headTipLabel layoutHeight:[_headTipLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
+        
         [_headTipLabel setHidden:NO];
     }else{
-        [JOAutoLayout autoLayoutWithSize:JOSize(CGFLOAT_MIN, CGFLOAT_MIN) selfView:_headTipLabel superView:_maskView];
+        
+        [_headTipLabel layoutSize:JOSize(CGFLOAT_MIN, CGFLOAT_MIN) layoutItemHandler:nil];
         [_headTipLabel setHidden:YES];
     }
     
     [_headLabel setText:JOConvertStringToNormalString(headTitle)];
     
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_headLabel superView:_maskView];
-    [JOAutoLayout autoLayoutWithHeight:[_headLabel sizeThatFits:JOMAXSize].height selfView:_headLabel superView:_maskView];
-    [JOAutoLayout autoLayoutWithRightView:_headTipLabel distance:0. selfView:_headLabel superView:_maskView];
+    [_headLabel layoutBottom:0. layoutItemHandler:nil];
+    [_headLabel layoutHeight:[_headLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
+    [_headLabel layoutRightView:_headTipLabel distance:0. layoutItemHandler:nil];
 }
 
 - (void)setImageSize:(CGSize)size{
 
-    [JOAutoLayout removeAutoLayoutWithSizeSelfView:_headImageView superView:_maskView];
+    [_headImageView layoutSize:size layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithSize:size selfView:_headImageView superView:_maskView];
 }
 
 - (void)setImageOffsetX:(CGFloat)offsetX{
-
-    [JOAutoLayout removeAutoLayoutWithLeftSelfView:_headImageView superView:_maskView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10+offsetX selfView:_headImageView superView:_maskView];
+    
+    [_headImageView layoutLeft:10+offsetX layoutItemHandler:nil];
+    
+    
 }
 
 //- (nullable UIView *)hitTest:(CGPoint)point withEvent:(nullable UIEvent *)event{

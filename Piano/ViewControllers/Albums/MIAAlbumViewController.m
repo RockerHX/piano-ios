@@ -86,13 +86,13 @@
     self.coverImageView = [UIImageView newAutoLayoutView];
     [self.view addSubview:_coverImageView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_coverImageView superView:self.view];
+    [_coverImageView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
 
     self.maskImageView = [UIImageView newAutoLayoutView];
     [_maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
     [self.view addSubview:_maskImageView];
     
-    [JOAutoLayout autoLayoutWithSameView:_coverImageView selfView:_maskImageView superView:self.view];
+    [_maskImageView layoutSameView:_coverImageView layoutItemHandler:nil];
 }
 
 - (void)loadViewModel{
@@ -126,10 +126,10 @@
     }];
     [self.view addSubview:_albumBarView];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:10. selfView:_albumBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kAlbumBarViewHeight selfView:_albumBarView superView:self.view];
+    [_albumBarView layoutTop:10. layoutItemHandler:nil];
+    [_albumBarView layoutLeft:0. layoutItemHandler:nil];
+    [_albumBarView layoutRight:0. layoutItemHandler:nil];
+    [_albumBarView layoutHeight:kAlbumBarViewHeight layoutItemHandler:nil];
 }
 
 - (void)createAlbumEnterCommentView{
@@ -141,8 +141,7 @@
     [_enterCommentView keyBoardShowHandler:^(CGFloat height, BOOL showState){
     @strongify(self);
         
-        [JOAutoLayout removeAutoLayoutWithBottomSelfView:self.enterCommentView superView:self.view];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-height selfView:self.enterCommentView superView:self.view];
+        [self.enterCommentView layoutBottom:-height layoutItemHandler:nil];
         
         [UIView animateWithDuration:0.5 animations:^{
             [self.albumTableView layoutIfNeeded];
@@ -160,9 +159,8 @@
     //输入框高度发生变化
     [_enterCommentView textViewHeightChangeHandler:^(CGFloat textViewHeight) {
     @strongify(self);
-    
-        [JOAutoLayout removeAutoLayoutWithHeightSelfView:self.enterCommentView superView:self.view];
-        [JOAutoLayout autoLayoutWithHeight:textViewHeight+20. selfView:self.enterCommentView superView:self.view];
+        
+        [self.enterCommentView layoutHeight:textViewHeight+20. layoutItemHandler:nil];
     }];
     
     //发送按钮点击的Block
@@ -172,10 +170,10 @@
     }];
     [self.view addSubview:_enterCommentView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_enterCommentView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_enterCommentView superView:self.view];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_enterCommentView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kAlbumEnterCommentViewHeight selfView:_enterCommentView superView:self.view];
+    [_enterCommentView layoutLeft:0. layoutItemHandler:nil];
+    [_enterCommentView layoutRight:0. layoutItemHandler:nil];
+    [_enterCommentView layoutBottom:0. layoutItemHandler:nil];
+    [_enterCommentView layoutHeight:kAlbumEnterCommentViewHeight layoutItemHandler:nil];
 }
 
 - (void)createAlbumTableView{
@@ -192,14 +190,14 @@
     }
     [self.view addSubview:_albumTableView];
     
-    [JOAutoLayout autoLayoutWithTopView:_albumBarView distance:0. selfView:_albumTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumTableView superView:self.view];
+    [_albumTableView layoutTopView:_albumBarView distance:0. layoutItemHandler:nil];
+    [_albumTableView layoutLeft:0. layoutItemHandler:nil];
+    [_albumTableView layoutRight:0. layoutItemHandler:nil];
     
     if (_rewardType == MIAAlbumRewardTypeNormal) {
-        [JOAutoLayout autoLayoutWithBottomView:_enterCommentView distance:0. selfView:_albumTableView superView:self.view];
+        [_albumTableView layoutBottomView:_enterCommentView distance:0. layoutItemHandler:nil];
     }else{
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_albumTableView superView:self.view];
+        [_albumTableView layoutBottom:0. layoutItemHandler:nil];
         [_enterCommentView setHidden:YES];
     }
 
@@ -212,7 +210,7 @@
     [_hiddenKeyboardView setHidden:YES];
     [self.view addSubview:_hiddenKeyboardView];
     
-    [JOAutoLayout autoLayoutWithSameView:_albumTableView selfView:_hiddenKeyboardView superView:self.view];
+    [_hiddenKeyboardView layoutSameView:_albumTableView layoutItemHandler:nil];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenCommentKeyboard)];
     [_hiddenKeyboardView addGestureRecognizer:tapGesture];
@@ -405,7 +403,6 @@
     if ([_albumViewModel.cellDataArray count]) {
         return [[_albumViewModel.cellDataArray objectAtIndex:section] count];
     }else{
-    
         return 0;
     }
 }
@@ -446,7 +443,6 @@
             //打开下载的状态提示
             [(MIAAlbumSongCell *)cell openSongDownloadState];
         }
-        
     }
     return cell;
 }

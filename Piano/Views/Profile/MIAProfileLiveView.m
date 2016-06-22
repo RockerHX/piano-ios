@@ -49,21 +49,20 @@ static CGFloat const kTitleToTipDistanceSpace = 5.;
     [self.showTipLabel setTextAlignment:NSTextAlignmentLeft];
     [self.showTipLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Live_Summary]];
     
+    [self.showImageView layoutLeft:0. layoutItemHandler:nil];
+    [self.showImageView layoutBottom:0. layoutItemHandler:nil];
+    [self.showImageView layoutTop:0. layoutItemHandler:nil];
+    [self.showImageView layoutWidthHeightRatio:1. layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithHeightWidthRatioValue:1. selfView:self.showImageView superView:self];
+    [self.showTitleLabel layoutTopYView:self.showImageView distance:kTitleTopDistanceSpace layoutItemHandler:nil];
+    [self.showTitleLabel layoutLeftView:self.showImageView distance:kShowImageToTitleDistanceSpace layoutItemHandler:nil];
+    [self.showTitleLabel layoutRight:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithTopYView:self.showImageView distance:kTitleTopDistanceSpace selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftView:self.showImageView distance:kShowImageToTitleDistanceSpace selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height selfView:self.showTitleLabel superView:self];
-    
-    [JOAutoLayout autoLayoutWithTopView:self.showTitleLabel distance:kTitleToTipDistanceSpace selfView:self.showTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftXView:self.showTitleLabel selfView:self.showTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightXView:self.showTitleLabel selfView:self.showTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[self.showTipLabel sizeThatFits:JOMAXSize].height selfView:self.showTipLabel superView:self];
+    [self.showTipLabel layoutTopView:self.showTitleLabel distance:kTitleToTipDistanceSpace layoutItemHandler:nil];
+    [self.showTipLabel layoutLeftXView:self.showTitleLabel distance:0. layoutItemHandler:nil];
+    [self.showTipLabel layoutRightXView:self.showTitleLabel distance:0. layoutItemHandler:nil];
+    [self.showTipLabel layoutHeight:[self.showTipLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
 }
 
 - (void)setShowData:(id)data{
