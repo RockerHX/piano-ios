@@ -32,7 +32,13 @@ typedef void(^ReportStateBlock)(ReportState reportState);
  */
 + (instancetype)reportManage;
 
-
+/**
+ *  举报
+ *
+ *  @param type    举报的类型.
+ *  @param content 举报的类容
+ *  @param block   ReportStateBlock
+ */
 - (void)reportWithType:(NSString *)type content:(NSString *)content reportHandler:(ReportStateBlock)block;
 
 @end
