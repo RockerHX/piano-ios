@@ -21,7 +21,6 @@
 		420BBB551CE9A85F00F52AB2 /* MIAPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB531CE9A85F00F52AB2 /* MIAPaymentCell.m */; };
 		420BBB591CE9A88D00F52AB2 /* MIAPaymentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB571CE9A88D00F52AB2 /* MIAPaymentCellView.m */; };
 		420BBB5D1CE9A8AD00F52AB2 /* MIAPaymentBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */; };
-		420BBB611CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */; };
 		420BBB651CE9A94B00F52AB2 /* MIAPayHistoryCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */; };
 		420BBB691CE9B63400F52AB2 /* MIAPayHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB671CE9B63400F52AB2 /* MIAPayHistoryCell.m */; };
 		420BBB6D1CE9CD4200F52AB2 /* MIAPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 420BBB6B1CE9CD4200F52AB2 /* MIAPaymentViewModel.m */; };
@@ -417,8 +416,6 @@
 		420BBB571CE9A88D00F52AB2 /* MIAPaymentCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentCellView.m; sourceTree = "<group>"; };
 		420BBB5A1CE9A8AD00F52AB2 /* MIAPaymentBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentBarView.h; sourceTree = "<group>"; };
 		420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentBarView.m; sourceTree = "<group>"; };
-		420BBB5E1CE9A90800F52AB2 /* MIAPaymentAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPaymentAlertView.h; sourceTree = "<group>"; };
-		420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPaymentAlertView.m; sourceTree = "<group>"; };
 		420BBB621CE9A94B00F52AB2 /* MIAPayHistoryCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryCellView.h; sourceTree = "<group>"; };
 		420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPayHistoryCellView.m; sourceTree = "<group>"; };
 		420BBB661CE9B63400F52AB2 /* MIAPayHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPayHistoryCell.h; sourceTree = "<group>"; };
@@ -1208,8 +1205,6 @@
 				420BBB631CE9A94B00F52AB2 /* MIAPayHistoryCellView.m */,
 				420BBB5A1CE9A8AD00F52AB2 /* MIAPaymentBarView.h */,
 				420BBB5B1CE9A8AD00F52AB2 /* MIAPaymentBarView.m */,
-				420BBB5E1CE9A90800F52AB2 /* MIAPaymentAlertView.h */,
-				420BBB5F1CE9A90800F52AB2 /* MIAPaymentAlertView.m */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -3370,7 +3365,6 @@
 				42984B151CDB0542004F00D5 /* UIView+JOExtend.m in Sources */,
 				42A0DB011CE2E07900F1FCEF /* MIAAlbumCommentView.m in Sources */,
 				CD7960921CBE594C004CC661 /* HXUserSession.m in Sources */,
-				420BBB611CE9A90800F52AB2 /* MIAPaymentAlertView.m in Sources */,
 				CD7960931CBE594C004CC661 /* HXIBImageView.m in Sources */,
 				CDCB8CF51CFC333300F78CE3 /* HXStaticGiftItemView.m in Sources */,
 				422497C41CF4663C008F8A55 /* JOConfig.m in Sources */,

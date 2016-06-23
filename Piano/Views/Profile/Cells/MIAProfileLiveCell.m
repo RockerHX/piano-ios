@@ -38,11 +38,6 @@
         }];
         [self.cellContentView addSubview:_liveView];
         
-//        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_liveView superView:self.cellContentView];
-//        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_liveView superView:self.cellContentView];
-//        [JOAutoLayout autoLayoutWithRightSpaceDistance:-kContentViewInsideRightSpaceDistance selfView:_liveView superView:self.cellContentView];
-//        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_liveView superView:self.cellContentView];
-        
         [_liveView layoutEdge:UIEdgeInsetsMake(kContentViewInsideTopSpaceDistance, kContentViewInsideLeftSpaceDistance, -kContentViewInsideBottomSpaceDistance, -kContentViewInsideRightSpaceDistance) layoutItemHandler:nil];
 
         }

@@ -114,11 +114,6 @@
         }
     }];
     [self.view addSubview:_paymentBarView];
- 
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_paymentBarView superView:self.view];
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_paymentBarView superView:self.view];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_paymentBarView superView:self.view];
-//    [JOAutoLayout autoLayoutWithHeight:kPaymentBarViewHeight selfView:_paymentBarView superView:self.view];
     
     [_paymentBarView layoutTop:0. layoutItemHandler:nil];
     [_paymentBarView layoutLeft:0. layoutItemHandler:nil];
@@ -135,11 +130,6 @@
     [_paymentTableView setDataSource:self];
 //    [_paymentTableView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:_paymentTableView];
-    
-//    [JOAutoLayout autoLayoutWithTopView:_paymentBarView distance:0. selfView:_paymentTableView superView:self.view];
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_paymentTableView superView:self.view];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_paymentTableView superView:self.view];
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_paymentTableView superView:self.view];
     
     [_paymentTableView layoutTopView:_paymentBarView distance:0. layoutItemHandler:nil];
     [_paymentTableView layoutLeft:0. layoutItemHandler:nil];
@@ -186,8 +176,6 @@
     UILabel *headLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Payment_Pay_Head]];
     [headLabel setText:@"请选择充值金额"];
     [headView addSubview:headLabel];
-    
-//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 10., 0., -10.) selfView:headLabel superView:headView];
     
     [headLabel layoutEdge:UIEdgeInsetsMake(0., 10., 0., -10.) layoutItemHandler:nil];
     

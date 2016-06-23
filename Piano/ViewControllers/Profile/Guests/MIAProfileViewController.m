@@ -313,8 +313,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                   
                                   if (image) {
-                                      [JOAutoLayout removeAutoLayoutWithHeightSelfView:_coverImageView superView:self.view];
-                                      [JOAutoLayout autoLayoutWithHeight:View_Width(self.view)/(image.size.width/image.size.height) selfView:_coverImageView superView:self.view];
+                                      [_coverImageView layoutHeight:View_Width(self.view)/(image.size.width/image.size.height) layoutItemHandler:nil];
                                   }
                               }];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];

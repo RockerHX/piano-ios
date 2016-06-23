@@ -53,11 +53,6 @@ static CGFloat const kAlbumUserItemSpaceDistance = 6.;//每个元素之间的间
     [_tipLabel setText:@" "];
     [self addSubview:_tipLabel];
     
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_tipLabel superView:self];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_tipLabel superView:self];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_tipLabel superView:self];
-//    [JOAutoLayout autoLayoutWithHeight:[_tipLabel sizeThatFits:JOMAXSize].height selfView:_tipLabel superView:self];
-    
     [_tipLabel layoutLeft:0. layoutItemHandler:nil];
     [_tipLabel layoutRight:0. layoutItemHandler:nil];
     [_tipLabel layoutTop:0. layoutItemHandler:nil];
@@ -69,11 +64,6 @@ static CGFloat const kAlbumUserItemSpaceDistance = 6.;//每个元素之间的间
     [_rewardScrollView setShowsVerticalScrollIndicator:NO];
     [self addSubview:_rewardScrollView];
     
-//    [JOAutoLayout autoLayoutWithTopView:_tipLabel distance:kTipLabelToUserItemSpaceDistance selfView:_rewardScrollView superView:self];
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_rewardScrollView superView:self];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_rewardScrollView superView:self];
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kScrollViewToBottomSpaceDistance selfView:_rewardScrollView superView:self];
-    
     [_rewardScrollView layoutTopView:_tipLabel distance:kTipLabelToUserItemSpaceDistance layoutItemHandler:nil];
     [_rewardScrollView layoutLeft:0. layoutItemHandler:nil];
     [_rewardScrollView layoutRight:0. layoutItemHandler:nil];
@@ -81,8 +71,6 @@ static CGFloat const kAlbumUserItemSpaceDistance = 6.;//每个元素之间的间
     
     self.rewardContentView = [UIView newAutoLayoutView];
     [_rewardScrollView addSubview:_rewardContentView];
-    
-//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_rewardContentView superView:_rewardScrollView];
     
     [_rewardContentView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
    
@@ -97,9 +85,6 @@ static CGFloat const kAlbumUserItemSpaceDistance = 6.;//每个元素之间的间
         [_tipLabel setText:[NSString stringWithFormat:@"已打赏:%lu人",(unsigned long)[rewardData count]]];
         
         if([rewardData count] == 0){
-        
-//            [JOAutoLayout removeAutoLayoutWithBottomSelfView:_rewardScrollView superView:self];
-//            [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_rewardScrollView superView:self];
             
             [_rewardScrollView layoutBottom:0. layoutItemHandler:nil];
         }
@@ -118,31 +103,22 @@ static CGFloat const kAlbumUserItemSpaceDistance = 6.;//每个元素之间的间
                 [userImageView setTag:i+1];
                 [userImageView sd_setImageWithURL:[NSURL URLWithString:rewardAlbumModel.userpic] placeholderImage:[UIImage imageNamed:@"C-DefaultAvatar"]];
                 [_rewardContentView addSubview:userImageView];
-                
-//                [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
-//                [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
-//                [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:userImageView superView:_rewardContentView];
+
                 
                 [userImageView layoutTop:0. layoutItemHandler:nil];
                 [userImageView layoutBottom:0. layoutItemHandler:nil];
                 [userImageView layoutWidthHeightRatio:1. layoutItemHandler:nil];
                 
                 if (i == 0) {
-//                    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:userImageView superView:_rewardContentView];
                     [userImageView layoutLeft:0. layoutItemHandler:nil];
                 }else{
                     UIView *lastView = [_rewardContentView viewWithTag:i];
-//                    [JOAutoLayout autoLayoutWithLeftView:lastView distance:kAlbumUserItemSpaceDistance selfView:userImageView superView:_rewardContentView];
                     [userImageView layoutLeftView:lastView distance:kAlbumUserItemSpaceDistance layoutItemHandler:nil];
                 }
                 
                 rewardContentWidth += rewardSrcollHeight;
                 rewardContentWidth += kAlbumUserItemSpaceDistance;
                 [_rewardScrollView setContentSize:JOSize(rewardContentWidth, rewardSrcollHeight)];
-                
-                
-//                [JOAutoLayout removeAutoLayoutWithSizeSelfView:_rewardContentView superView:_rewardScrollView];
-//                [JOAutoLayout autoLayoutWithSize:JOSize(rewardContentWidth, rewardSrcollHeight) selfView:_rewardContentView superView:_rewardScrollView];
                 
                 [_rewardContentView layoutSize:JOSize(rewardContentWidth, rewardSrcollHeight) layoutItemHandler:nil];
                 
@@ -164,7 +140,9 @@ static CGFloat const kAlbumUserItemSpaceDistance = 6.;//每个元素之间的间
 
 - (void)removeRewardViewLayout{
 
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:_tipLabel superView:self];
+//    [JOAutoLayout removeAllAutoLayoutWithSelfView:_tipLabel superView:self];
+    
+    [JOLayout removeAllLayoutWithView:_tipLabel];
 }
 
 @end

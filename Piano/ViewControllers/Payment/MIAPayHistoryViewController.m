@@ -75,11 +75,6 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     } rightClickHandler:nil];
     [self.view addSubview:_navBarView];
     
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-//    [JOAutoLayout autoLayoutWithHeight:kPayHistoryNavbarHeight selfView:_navBarView superView:self.view];
-    
     [_navBarView layoutLeft:0. layoutItemHandler:nil];
     [_navBarView layoutRight:0. layoutItemHandler:nil];
     [_navBarView layoutTop:0. layoutItemHandler:nil];
@@ -111,11 +106,6 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     
     [_itemsView setCurrentSelectedIndex:0];
     
-//    [JOAutoLayout autoLayoutWithTopView:_navBarView distance:0. selfView:_itemsView superView:self.view];
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_itemsView superView:self.view];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_itemsView superView:self.view];
-//    [JOAutoLayout autoLayoutWithHeight:kPayHistoryItemViewHeight selfView:_itemsView superView:self.view];
-    
     [_itemsView layoutTopView:_navBarView distance:0. layoutItemHandler:nil];
     [_itemsView layoutLeft:0. layoutItemHandler:nil];
     [_itemsView layoutRight:0. layoutItemHandler:nil];
@@ -132,11 +122,6 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [self.view addSubview:_payHistoryScrollView];
     
     [_payHistoryScrollView setContentSize:JOSize(View_Width(self.view)*itemCount, View_Height(self.view)-kPayHistoryItemViewHeight-kPayHistoryNavbarHeight)];
-    
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
-//    [JOAutoLayout autoLayoutWithTopView:_itemsView distance:0. selfView:_payHistoryScrollView superView:self.view];
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_payHistoryScrollView superView:self.view];
     
     [_payHistoryScrollView layoutLeft:0. layoutItemHandler:nil];
     [_payHistoryScrollView layoutRight:0. layoutItemHandler:nil];
@@ -183,10 +168,6 @@ static CGFloat const kPayHistoryNavbarHeight = 50.;
     [_paymentHistoryTableView setBackgroundColor:JORGBSameCreate(247.)];
     [_paymentHistoryTableView setMj_footer:[MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(fetchMoreOrderList)]];
     [_payHistoryScrollView addSubview:_paymentHistoryTableView];
-    
-//    [JOAutoLayout autoLayoutWithLeftView:_sendGiftTableView distance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
-//    [JOAutoLayout autoLayoutWithSize:JOSize(_payHistoryScrollView.contentSize.width/itemCount, _payHistoryScrollView.contentSize.height) selfView:_paymentHistoryTableView superView:_payHistoryScrollView];
     
     [_paymentHistoryTableView layoutLeftView:_sendGiftTableView distance:0. layoutItemHandler:nil];
     [_paymentHistoryTableView layoutTop:0. layoutItemHandler:nil];

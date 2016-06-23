@@ -81,10 +81,10 @@
     } rightClickHandler:nil];
     [self.view addSubview:_navBarView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:50. selfView:_navBarView superView:self.view];
+    [_navBarView layoutLeft:0. layoutItemHandler:nil];
+    [_navBarView layoutRight:0. layoutItemHandler:nil];
+    [_navBarView layoutTop:0. layoutItemHandler:nil];
+    [_navBarView layoutHeight:50. layoutItemHandler:nil];
 }
 
 - (void)initInputView {

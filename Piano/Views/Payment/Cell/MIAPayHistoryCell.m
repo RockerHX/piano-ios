@@ -31,7 +31,7 @@
         self.payHistoryCellView = [MIAPayHistoryCellView newAutoLayoutView];
         [self.cellContentView addSubview:_payHistoryCellView];
         
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(kContentViewInsideLeftSpaceDistance, 0., -kContentViewInsideRightSpaceDistance, 0.) selfView:_payHistoryCellView superView:self.cellContentView];
+        [_payHistoryCellView layoutEdge:UIEdgeInsetsMake(kContentViewInsideLeftSpaceDistance, 0., -kContentViewInsideRightSpaceDistance, 0.) layoutItemHandler:nil];
     }
 }
 

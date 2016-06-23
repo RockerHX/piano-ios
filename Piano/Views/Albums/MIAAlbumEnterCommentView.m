@@ -31,12 +31,6 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
 
 @implementation MIAAlbumEnterCommentView
 
-//- (void)dealloc{
-//
-//    NSLog(@"MIAAlbumEnterCommentView release");
-//    [self removeKeyBoardShowObbserve];
-//}
-
 - (instancetype)init{
 
     self = [super init];
@@ -60,10 +54,10 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     [_sendButton addTarget:self action:@selector(sendCommentAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_sendButton];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kRightSpaceDitance selfView:_sendButton superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kLeftSpaceDistance selfView:_sendButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_sendButton superView:self];
-    [JOAutoLayout autoLayoutWithWidth:kSendButtonWidth selfView:_sendButton superView:self];
+    [_sendButton layoutRight:-kRightSpaceDitance layoutItemHandler:nil];
+    [_sendButton layoutTop:kTopSpaceDistance layoutItemHandler:nil];
+    [_sendButton layoutBottom:-kBottomSpaceDistance layoutItemHandler:nil];
+    [_sendButton layoutWidth:kSendButtonWidth layoutItemHandler:nil];
 
     self.commentTextView = [HXTextView newAutoLayoutView];
     [_commentTextView  setTextColor:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Enter]->color];
@@ -77,10 +71,10 @@ static CGFloat const kSendButtonWidth = 60.;//发送按钮的宽度
     [[_commentTextView layer] setMasksToBounds:YES];
     [self addSubview:_commentTextView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_commentTextView superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_commentTextView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_commentTextView superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_sendButton distance:0. selfView:_commentTextView superView:self];
+    [_commentTextView layoutLeft:kLeftSpaceDistance layoutItemHandler:nil];
+    [_commentTextView layoutTop:kTopSpaceDistance layoutItemHandler:nil];
+    [_commentTextView layoutBottom:-kBottomSpaceDistance layoutItemHandler:nil];
+    [_commentTextView layoutRightView:_sendButton distance:0. layoutItemHandler:nil];
 }
 
 #pragma mark - Button Action

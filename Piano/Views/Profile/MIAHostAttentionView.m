@@ -96,14 +96,13 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
         [_liveTipLabel layoutBottom:0. layoutItemHandler:nil];
         [_liveTipLabel layoutRight:-leftSpace layoutItemHandler:nil];
     }
-    
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:_liveTipLabel superView:self];
+
+    [JOLayout removeAllLayoutWithView:_liveView];
     
     if (state) {
         [_liveView setHidden:NO];
         
         CGFloat leftSpace = (kLiveTipLableHeight - kLiveImageHeight)/2.;
-        
         CGFloat liveViewWidth = leftSpace + kLiveImageHeight + leftSpace + [_liveTipLabel sizeThatFits:JOMAXSize].width + leftSpace;
         
         [_liveView layoutBottomYView:self.showImageView distance:2. layoutItemHandler:nil];

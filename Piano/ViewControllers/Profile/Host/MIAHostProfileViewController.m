@@ -66,13 +66,13 @@
     [[_coverImageView layer] setMasksToBounds:YES];
     [self.view addSubview:_coverImageView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0.0, 0., 0.) selfView:_coverImageView superView:self.view];
+    [_coverImageView layoutEdge:UIEdgeInsetsMake(0., 0.0, 0., 0.) layoutItemHandler:nil];
     
     self.maskImageView = [UIImageView newAutoLayoutView];
     [_maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
     [self.view addSubview:_maskImageView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self.view];
+    [_maskImageView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
 }
 
 - (void)createProfileTableView{

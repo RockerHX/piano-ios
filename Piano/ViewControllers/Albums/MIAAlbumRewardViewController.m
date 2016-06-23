@@ -83,8 +83,6 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     self.baseView = [UIView newAutoLayoutView];
     [self.view addSubview:_baseView];
     
-//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_baseView superView:self.view];
-    
     [_baseView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
     [self createCoverMaskView];
@@ -104,15 +102,11 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     }];
     [_baseView addSubview:_coverImageView];
     
-//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_coverImageView superView:_baseView];
-    
     [_coverImageView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
     self.maskImageView = [UIImageView newAutoLayoutView];
     [_maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
     [_baseView addSubview:_maskImageView];
-    
-//    [JOAutoLayout autoLayoutWithSameView:_coverImageView selfView:_maskImageView superView:_baseView];
     
     [_maskImageView layoutSameView:_coverImageView layoutItemHandler:nil];
 }
@@ -124,10 +118,6 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     [_popButton setImage:[UIImage imageNamed:@"VP-Close"] forState:UIControlStateNormal];
     [_popButton addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
     [_baseView addSubview:_popButton];
-    
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:kAlbumRewardTopSpaceDistance selfView:_popButton superView:_baseView];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kAlbumRewardRightSpaceDistance selfView:_popButton superView:_baseView];
-//    [JOAutoLayout autoLayoutWithSize:JOSize(kAlbumRewardPopButtonHeight, kAlbumRewardPopButtonHeight) selfView:_popButton superView:_baseView];
     
     [_popButton layoutTop:kAlbumRewardTopSpaceDistance layoutItemHandler:nil];
     [_popButton layoutRight:-kAlbumRewardRightSpaceDistance layoutItemHandler:nil];
@@ -143,11 +133,6 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     
     CGFloat singerNameLabelHeight = [_singerNameLabel sizeThatFits:JOMAXSize].height+1;
     
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:5. selfView:_singerNameLabel superView:_albumInfoView];
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_singerNameLabel superView:_albumInfoView];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_singerNameLabel superView:_albumInfoView];
-//    [JOAutoLayout autoLayoutWithHeight:singerNameLabelHeight selfView:_singerNameLabel superView:_albumInfoView];
-    
     [_singerNameLabel layoutBottom:5. layoutItemHandler:nil];
     [_singerNameLabel layoutLeft:0. layoutItemHandler:nil];
     [_singerNameLabel layoutRight:0. layoutItemHandler:nil];
@@ -159,11 +144,6 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     [_albumInfoView addSubview:_albumNameLabel];
     
     CGFloat albumNameLabelHeight = [_albumNameLabel sizeThatFits:JOMAXSize].height;
-    
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_albumNameLabel superView:_albumInfoView];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_albumNameLabel superView:_albumInfoView];
-//    [JOAutoLayout autoLayoutWithBottomView:_singerNameLabel distance:-kAlbumInfoAlbumNameToSingerNameSpaceDistance selfView:_albumNameLabel superView:_albumInfoView];
-//    [JOAutoLayout autoLayoutWithHeight:albumNameLabelHeight selfView:_albumNameLabel superView:_albumInfoView];
     
     [_albumNameLabel layoutLeft:0. layoutItemHandler:nil];
     [_albumNameLabel layoutRight:0. layoutItemHandler:nil];
@@ -376,7 +356,7 @@ static CGFloat const kRewardSliderViewHeight = 75.;//打赏的Slider的高度
     UIImage *mCoinImage = [UIImage imageNamed:@"LC-CoinIcon-L"];
 
     [_rewardMCoinLabel layoutWidth:rewardMCoinLabelWidth layoutItemHandler:nil];
-    [_rewardMCoinLabel layoutWidth:rewardMCoinLabelWidth+5+mCoinImage.size.width layoutItemHandler:nil];
+    [_rewardMCoinView layoutWidth:rewardMCoinLabelWidth+5+mCoinImage.size.width layoutItemHandler:nil];
 }
 
 @end

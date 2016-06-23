@@ -45,9 +45,9 @@ static CGFloat const kPaymentMoneyLabelWidth = 60.;
     [_paymentImageView setImage:[UIImage imageNamed:@"LC-CoinIcon-L"]];
     [self addSubview:_paymentImageView];
     
-    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_paymentImageView superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_paymentImageView superView:self];
-    [JOAutoLayout autoLayoutWithSize:JOSize(kImageWidth, kImageWidth) selfView:_paymentImageView superView:self];
+    [_paymentImageView layoutCenterYView:self layoutItemHandler:nil];
+    [_paymentImageView layoutLeft:0. layoutItemHandler:nil];
+    [_paymentImageView layoutSize:JOSize(kImageWidth, kImageWidth) layoutItemHandler:nil];
     
     self.moneyAmountLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Payment_Pay_Money]];
     [_moneyAmountLabel setTextAlignment:NSTextAlignmentCenter];
@@ -57,20 +57,19 @@ static CGFloat const kPaymentMoneyLabelWidth = 60.;
     [[_moneyAmountLabel layer] setBorderColor:[MIAFontManage getFontWithType:MIAFontType_Payment_Pay_Money]->color.CGColor];
     [self addSubview:_moneyAmountLabel];
     
-    
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_moneyAmountLabel superView:self];
-    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_moneyAmountLabel superView:self];
-    [JOAutoLayout autoLayoutWithSize:JOSize(CGFLOAT_MIN, CGFLOAT_MIN) selfView:_moneyAmountLabel superView:self];
+    [_moneyAmountLabel layoutRight:0. layoutItemHandler:nil];
+    [_moneyAmountLabel layoutCenterYView:self layoutItemHandler:nil];
+    [_moneyAmountLabel layoutSize:JOSize(CGFLOAT_MIN, CGFLOAT_MIN) layoutItemHandler:nil];
     
     
     self.mAmountLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Payment_Pay_M]];
     
     [self addSubview:_mAmountLabel];
     
-    [JOAutoLayout autoLayoutWithLeftView:_paymentImageView distance:kImageToMSpaceDistance selfView:_mAmountLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_mAmountLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_mAmountLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_moneyAmountLabel distance:0. selfView:_mAmountLabel superView:self];
+    [_mAmountLabel layoutLeftView:_paymentImageView distance:kImageToMSpaceDistance layoutItemHandler:nil];
+    [_mAmountLabel layoutTop:0. layoutItemHandler:nil];
+    [_mAmountLabel layoutBottom:0. layoutItemHandler:nil];
+    [_mAmountLabel layoutRightView:_moneyAmountLabel distance:0. layoutItemHandler:nil];
 }
 
 - (void)setPaymentData:(id)data{
@@ -84,8 +83,7 @@ static CGFloat const kPaymentMoneyLabelWidth = 60.;
         CGFloat labelWidth = MAX([_moneyAmountLabel sizeThatFits:JOMAXSize].width + 2*kMoneyInsideLeftSpaceDistance, kPaymentMoneyLabelWidth);
         CGFloat labelHeight = [_moneyAmountLabel sizeThatFits:JOMAXSize].height + 2*kMoneyInsideTopSpaceDistance;
         
-        [JOAutoLayout removeAutoLayoutWithSizeSelfView:_moneyAmountLabel superView:self];
-        [JOAutoLayout autoLayoutWithSize:JOSize(labelWidth, labelHeight) selfView:_moneyAmountLabel superView:self];
+        [_moneyAmountLabel layoutSize:JOSize(labelWidth, labelHeight) layoutItemHandler:nil];
         
         [_mAmountLabel setText:_rechargeModel.name];
         

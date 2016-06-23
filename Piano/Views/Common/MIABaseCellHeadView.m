@@ -77,10 +77,10 @@ CGFloat const kBaseCellHeadViewHeight = 40.;
         objc_setAssociatedObject(self, _cmd, @"only", OBJC_ASSOCIATION_RETAIN);
     }
     
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:_maskView superView:self];
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:_headImageView superView:_maskView];
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:_headLabel superView:_maskView];
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:_headTipLabel superView:_maskView];
+    [JOLayout removeAllLayoutWithView:_maskView];
+    [JOLayout removeAllLayoutWithView:_headImageView];
+    [JOLayout removeAllLayoutWithView:_headLabel];
+    [JOLayout removeAllLayoutWithView:_headTipLabel];
     
     [_maskView layoutLeft:10. layoutItemHandler:nil];
     [_maskView layoutRight:-10. layoutItemHandler:nil];

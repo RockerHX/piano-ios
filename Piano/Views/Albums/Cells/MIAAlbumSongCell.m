@@ -32,8 +32,6 @@
         self.albumSongView = [MIAAlbumSongView newAutoLayoutView];
         [self.cellContentView addSubview:_albumSongView];
         
-//        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_albumSongView superView:self.cellContentView];
-        
         [_albumSongView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     }
 }

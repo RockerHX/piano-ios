@@ -31,8 +31,6 @@
         self.commmentView = [MIAAlbumCommentView newAutoLayoutView];
         [self.cellContentView addSubview:_commmentView];
         
-//        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(kContentViewInsideTopSpaceDistance, kContentViewInsideLeftSpaceDistance, -kContentViewInsideRightSpaceDistance, 0.) selfView:_commmentView superView:self.cellContentView];
-        
         [_commmentView layoutEdge:UIEdgeInsetsMake(kContentViewInsideTopSpaceDistance, kContentViewInsideLeftSpaceDistance, -kContentViewInsideRightSpaceDistance, 0.) layoutItemHandler:nil];
     }
 }

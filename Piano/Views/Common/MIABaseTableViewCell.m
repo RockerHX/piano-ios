@@ -37,11 +37,6 @@ CGFloat const kContentViewInsideBottomSpaceDistance = 10.;
     self.cellContentView = [UIView newAutoLayoutView];
     [self.contentView addSubview:_cellContentView];
     
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewLeftSpaceDistance selfView:_cellContentView superView:self.contentView];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kContentViewRightSpaceDistance selfView:_cellContentView superView:self.contentView];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewTopSpaceDistance selfView:_cellContentView superView:self.contentView];
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewBottomSpaceDistance selfView:_cellContentView superView:self.contentView];
-    
     [_cellContentView layoutLeft:kContentViewLeftSpaceDistance layoutItemHandler:nil];
     [_cellContentView layoutRight:-kContentViewRightSpaceDistance layoutItemHandler:nil];
     [_cellContentView layoutTop:kContentViewTopSpaceDistance layoutItemHandler:nil];

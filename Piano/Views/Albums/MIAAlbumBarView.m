@@ -47,11 +47,6 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [_songNameLabel setText:@" "];
     [self addSubview:_songNameLabel];
     
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_songNameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kRightSpaceDistance selfView:_songNameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_songNameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithHeight:[_songNameLabel sizeThatFits:JOMAXSize].height+1 selfView:_songNameLabel superView:self];
-    
     [_songNameLabel layoutLeft:kLeftSpaceDistance layoutItemHandler:nil];
     [_songNameLabel layoutRight:-kRightSpaceDistance layoutItemHandler:nil];
     [_songNameLabel layoutTop:kTopSpaceDistance layoutItemHandler:nil];
@@ -61,11 +56,6 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [_nameLabel setTextAlignment:NSTextAlignmentCenter];
     [_nameLabel setText:@" "];
     [self addSubview:_nameLabel];
-    
-//    [JOAutoLayout autoLayoutWithLeftXView:_songNameLabel selfView:_nameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithRightXView:_songNameLabel selfView:_nameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithTopView:_songNameLabel distance:0. selfView:_nameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithHeight:[_nameLabel sizeThatFits:JOMAXSize].height+1 selfView:_nameLabel superView:self];
     
     [_nameLabel layoutLeftXView:_songNameLabel distance:0. layoutItemHandler:nil];
     [_nameLabel layoutRightXView:_songNameLabel distance:0. layoutItemHandler:nil];
@@ -77,10 +67,6 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [popImageView setImage:popImage];
     [self addSubview:popImageView];
     
-//    [JOAutoLayout autoLayoutWithTopYView:_songNameLabel selfView:popImageView superView:self];
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:5. selfView:popImageView superView:self];
-//    [JOAutoLayout autoLayoutWithSize:popImage.size selfView:popImageView superView:self];
-    
     [popImageView layoutTopYView:_songNameLabel distance:0. layoutItemHandler:nil];
     [popImageView layoutLeft:5. layoutItemHandler:nil];
     [popImageView layoutSize:popImage.size layoutItemHandler:nil];
@@ -89,11 +75,6 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [_popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_popButton addTarget:self action:@selector(popButtonClikc) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_popButton];
-    
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_popButton superView:self];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_popButton superView:self];
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_popButton superView:self];
-//    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_popButton superView:self];
     
     [_popButton layoutLeft:0. layoutItemHandler:nil];
     [_popButton layoutTop:0. layoutItemHandler:nil];
@@ -105,10 +86,6 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [reportImageView setImage:reportImage];
     [self addSubview:reportImageView];
     
-//    [JOAutoLayout autoLayoutWithTopYView:_songNameLabel distance:-3. selfView:reportImageView superView:self];
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:reportImageView superView:self];
-//    [JOAutoLayout autoLayoutWithSize:reportImage.size selfView:reportImageView superView:self];
-    
     [reportImageView layoutTopYView:_songNameLabel distance:-3. layoutItemHandler:nil];
     [reportImageView layoutRight:-10. layoutItemHandler:nil];
     [reportImageView layoutSize:reportImage.size layoutItemHandler:nil];
@@ -117,11 +94,6 @@ static CGFloat const kRightSpaceDistance = 10.;//右边的间距大小
     [_reportButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_reportButton addTarget:self action:@selector(reportButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_reportButton];
-    
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_reportButton superView:self];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_reportButton superView:self];
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_reportButton superView:self];
-//    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_reportButton superView:self];
     
     [_reportButton layoutRight:0. layoutItemHandler:nil];
     [_reportButton layoutTop:0. layoutItemHandler:nil];

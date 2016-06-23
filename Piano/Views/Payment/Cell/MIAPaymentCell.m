@@ -35,7 +35,7 @@ static CGFloat const kPaymentCellBottomSpaceDistance = 15.; //底部的间距大
         self.paymentCellView = [MIAPaymentCellView newAutoLayoutView];
         [self.cellContentView addSubview:_paymentCellView];
         
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(kPaymentCellTopSpaceDistance, 0., -kPaymentCellBottomSpaceDistance, 0.) selfView:_paymentCellView superView:self.cellContentView];
+        [_paymentCellView layoutEdge:UIEdgeInsetsMake(kPaymentCellTopSpaceDistance, 0., -kPaymentCellBottomSpaceDistance, 0.) layoutItemHandler:nil];
     }
 }
 

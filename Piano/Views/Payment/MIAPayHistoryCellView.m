@@ -48,28 +48,26 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 11.;//礼物与名�
     [_giftImageView setContentMode:UIViewContentModeScaleAspectFit];
     [self addSubview:_giftImageView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_giftImageView superView:self];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_giftImageView superView:self];
-    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_giftImageView superView:self];
-    [JOAutoLayout autoLayoutWithSize:JOSize(kGiftImageViewWidth, kGiftImageViewWidth) selfView:_giftImageView superView:self];
+    [_giftImageView layoutLeft:0. layoutItemHandler:nil];
+    [_giftImageView layoutCenterYView:self layoutItemHandler:nil];
+    [_giftImageView layoutSize:JOSize(kGiftImageViewWidth, kGiftImageViewWidth) layoutItemHandler:nil];
     
     UIImage *mCoinImage = [UIImage imageNamed:@"LC-CoinIcon-L"];
     self.mCoinImageView = [UIImageView newAutoLayoutView];
     [_mCoinImageView setImage:[UIImage imageNamed:@"LC-CoinIcon-L"]];
     [self addSubview:_mCoinImageView];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-6. selfView:_mCoinImageView superView:self];
-    [JOAutoLayout autoLayoutWithSize:mCoinImage.size selfView:_mCoinImageView superView:self];
-    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_mCoinImageView superView:self];
+    [_mCoinImageView layoutRight:-6. layoutItemHandler:nil];
+    [_mCoinImageView layoutSize:mCoinImage.size layoutItemHandler:nil];
+    [_mCoinImageView layoutCenterYView:self layoutItemHandler:nil];
     
     self.mCountLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_PayHistory_Amount]];
     [self addSubview:_mCountLabel];
     
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_mCountLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_mCoinImageView distance:-2. selfView:_mCountLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_giftImageView selfView:_mCountLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_giftImageView selfView:_mCountLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:30. selfView:_mCountLabel superView:self];
+    [_mCountLabel layoutRightView:_mCoinImageView distance:-2. layoutItemHandler:nil];
+    [_mCountLabel layoutTopYView:_giftImageView distance:0. layoutItemHandler:nil];
+    [_mCountLabel layoutBottomYView:_giftImageView distance:0. layoutItemHandler:nil];
+    [_mCountLabel layoutWidth:30. layoutItemHandler:nil];
     
     self.nameView = [UIView newAutoLayoutView];
     [self addSubview:_nameView];
@@ -78,37 +76,27 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 11.;//礼物与名�
     [_nameLabel setText:@" "];
     [_nameView addSubview:_nameLabel];
     
-//    [JOAutoLayout autoLayoutWithLeftView:_giftImageView distance:kPayHistoryImageToLabelSpaceDistance selfView:_nameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithTopYView:_giftImageView selfView:_nameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithRightView:_mCountLabel distance:0. selfView:_nameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithHeight:[_nameLabel sizeThatFits:JOMAXSize].height selfView:_nameLabel superView:self];
     CGFloat nameLabeHeight = [_nameLabel sizeThatFits:JOMAXSize].height;
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_nameLabel superView:_nameView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_nameLabel superView:_nameView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_nameLabel superView:_nameView];
-    [JOAutoLayout autoLayoutWithHeight:nameLabeHeight selfView:_nameLabel superView:_nameView];
+    [_nameLabel layoutTop:0. layoutItemHandler:nil];
+    [_nameLabel layoutLeft:0. layoutItemHandler:nil];
+    [_nameLabel layoutRight:0. layoutItemHandler:nil];
+    [_nameLabel layoutHeight:nameLabeHeight layoutItemHandler:nil];
     
     self.dateLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_PayHistory_Time]];
     [_dateLabel setText:@" "];
     [_nameView addSubview:_dateLabel];
     
-//    [JOAutoLayout autoLayoutWithLeftXView:_nameLabel selfView:_dateLabel superView:self];
-//    [JOAutoLayout autoLayoutWithTopView:_nameLabel distance:4. selfView:_dateLabel superView:self];
-//    [JOAutoLayout autoLayoutWithRightXView:_nameLabel selfView:_dateLabel superView:self];
-//    [JOAutoLayout autoLayoutWithHeight:[_dateLabel sizeThatFits:JOMAXSize].height selfView:_dateLabel superView:self];
     CGFloat dateLabelHeight = [_dateLabel sizeThatFits:JOMAXSize].height;
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_dateLabel superView:_nameView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_dateLabel superView:_nameView];
-    [JOAutoLayout autoLayoutWithTopView:_nameLabel distance:4. selfView:_dateLabel superView:_nameView];
-    [JOAutoLayout autoLayoutWithHeight:dateLabelHeight selfView:_dateLabel superView:_nameView];
+    [_dateLabel layoutLeft:0. layoutItemHandler:nil];
+    [_dateLabel layoutRight:0. layoutItemHandler:nil];
+    [_dateLabel layoutTopView:_nameLabel distance:4. layoutItemHandler:nil];
+    [_dateLabel layoutHeight:dateLabelHeight layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithLeftView:_giftImageView distance:kPayHistoryImageToLabelSpaceDistance selfView:_nameView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:nameLabeHeight+dateLabelHeight+4. selfView:_nameView superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_mCountLabel distance:0. selfView:_nameView superView:self];
-    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_nameView superView:self];
-    
+    [_nameView layoutLeftView:_giftImageView distance:kPayHistoryImageToLabelSpaceDistance layoutItemHandler:nil];
+    [_nameView layoutHeight:nameLabeHeight+dateLabelHeight+4. layoutItemHandler:nil];
+    [_nameView layoutRightView:_mCountLabel distance:0. layoutItemHandler:nil];
+    [_nameView layoutCenterYView:self layoutItemHandler:nil];
 }
-
 
 - (void)setPayHistoryData:(id)data{
 
@@ -125,8 +113,7 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 11.;//礼物与名�
         NSString *day = [_sendGiftModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterDay];
         [_dateLabel setText:[NSString stringWithFormat:@"%@月%@日",month,day]];
         
-        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_mCountLabel superView:self];
-        [JOAutoLayout autoLayoutWithWidth:[_mCountLabel sizeThatFits:JOMAXSize].width+1 selfView:_mCountLabel superView:self];
+        [_mCountLabel layoutWidth:[_mCountLabel sizeThatFits:JOMAXSize].width+1 layoutItemHandler:nil];
         
     }else if([data isKindOfClass:[MIAOrderModel class]]){
         //充值记录
@@ -139,19 +126,13 @@ static CGFloat const kPayHistoryImageToLabelSpaceDistance = 11.;//礼物与名�
         NSString *month = [_orderModel.createdTime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonth];
         NSString *day = [_orderModel.createdTime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterDay];
         [_dateLabel setText:[NSString stringWithFormat:@"%@月%@日",month,day]];
-    
-        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_giftImageView superView:self];
-        [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_giftImageView superView:self];
-        
+        [_giftImageView layoutWidth:CGFLOAT_MIN layoutItemHandler:nil];
         [_mCoinImageView setHidden:YES];
         
-        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_mCountLabel superView:self];
-        [JOAutoLayout removeAutoLayoutWithRightSelfView:_mCountLabel superView:self];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-6. selfView:_mCountLabel superView:self];
-        [JOAutoLayout autoLayoutWithWidth:[_mCountLabel sizeThatFits:JOMAXSize].width+1 selfView:_mCountLabel superView:self];
+        [_mCountLabel layoutRight:-6. layoutItemHandler:nil];
+        [_mCountLabel layoutWidth:[_mCountLabel sizeThatFits:JOMAXSize].width+1 layoutItemHandler:nil];
         
-        [JOAutoLayout removeAutoLayoutWithLeftSelfView:_nameView superView:self];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_nameView superView:self];
+        [_nameView layoutLeft:0. layoutItemHandler:nil];
         
     }else{
     

@@ -65,11 +65,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_playButton];
     
-//    [JOAutoLayout autoLayoutWithLeftSpaceDistance:-6. selfView:_playButton superView:self];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_playButton superView:self];
-//    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_playButton superView:self];
-//    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_playButton superView:self];
-    
     [_playButton layoutLeft:-6. layoutItemHandler:nil];
     [_playButton layoutTop:kTopSpaceDistance layoutItemHandler:nil];
     [_playButton layoutBottom:-kBottomSpaceDistance layoutItemHandler:nil];
@@ -79,11 +74,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [_startTimeLabel setText:@"00:00"];
     [self addSubview:_startTimeLabel];
     
-//    [JOAutoLayout autoLayoutWithLeftView:_playButton distance:kButtonToTimeSpaceDistance selfView:_startTimeLabel superView:self];
-//    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_startTimeLabel superView:self];
-//    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_startTimeLabel superView:self];
-//    [JOAutoLayout autoLayoutWithWidth:[_startTimeLabel sizeThatFits:JOMAXSize].width+1 selfView:_startTimeLabel superView:self];
-    
     [_startTimeLabel layoutLeftView:_playButton distance:kButtonToTimeSpaceDistance layoutItemHandler:nil];
     [_startTimeLabel layoutTopYView:_playButton distance:0. layoutItemHandler:nil];
     [_startTimeLabel layoutBottomYView:_playButton distance:0. layoutItemHandler:nil];
@@ -92,11 +82,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     self.remainTimeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Play_Time]];
     [_remainTimeLabel setText:@"00:00"];
     [self addSubview:_remainTimeLabel];
-    
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:_remainTimeLabel superView:self];
-//    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_remainTimeLabel superView:self];
-//    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_remainTimeLabel superView:self];
-//    [JOAutoLayout autoLayoutWithWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width selfView:_remainTimeLabel superView:self];
     
     [_remainTimeLabel layoutRight:0. layoutItemHandler:nil];
     [_remainTimeLabel layoutTopYView:_playButton distance:0. layoutItemHandler:nil];
@@ -112,11 +97,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [_sliderView addTarget:self action:@selector(sliderAction) forControlEvents:UIControlEventValueChanged];
     [_sliderView setThumbImage:[UIImage imageNamed:@"AD-SliderThumb"] forState:UIControlStateNormal];
     [self addSubview:_sliderView];
-    
-//    [JOAutoLayout autoLayoutWithTopYView:_playButton distance:5. selfView:_sliderView superView:self];
-//    [JOAutoLayout autoLayoutWithBottomYView:_playButton distance:-5. selfView:_sliderView superView:self];
-//    [JOAutoLayout autoLayoutWithLeftView:_startTimeLabel distance:kTimeToSliderSpaceDistance selfView:_sliderView superView:self];
-//    [JOAutoLayout autoLayoutWithRightView:_remainTimeLabel distance:-kTimeToSliderSpaceDistance selfView:_sliderView superView:self];
     
     [_sliderView layoutTopYView:_playButton distance:5. layoutItemHandler:nil];
     [_sliderView layoutBottomYView:_playButton distance:-5. layoutItemHandler:nil];
@@ -237,9 +217,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     self.startTimeLabel.text = [NSString stringWithFormat:@"%02zd:%02zd", musicPlayMinute, (musicPlaySecond % 60)];
     self.sliderView.value = musicMgr.currentPlayedPostion;
     self.remainTimeLabel.text = [NSString stringWithFormat:@"%02zd:%02zd", musicDurationMinute, (musicDurationSecond % 60)];
-    
-//    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_remainTimeLabel superView:self];
-//    [JOAutoLayout autoLayoutWithWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width selfView:_remainTimeLabel superView:self];
     
     [_remainTimeLabel layoutWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width layoutItemHandler:nil];
 }
