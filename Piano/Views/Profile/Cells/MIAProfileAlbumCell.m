@@ -41,26 +41,26 @@ CGFloat const kProfileAlbumItemSpaceDistance = 18.;
         [_leftAlbumView setTag:1];
         [self.cellContentView addSubview:_leftAlbumView];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_leftAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance-5 selfView:_leftAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_leftAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_leftAlbumView superView:self.cellContentView];
+        [_leftAlbumView layoutTop:kContentViewInsideTopSpaceDistance layoutItemHandler:nil];
+        [_leftAlbumView layoutBottom:-kContentViewInsideBottomSpaceDistance-5 layoutItemHandler:nil];
+        [_leftAlbumView layoutWidth:viewWidth layoutItemHandler:nil];
+        [_leftAlbumView layoutLeft:kContentViewInsideLeftSpaceDistance layoutItemHandler:nil];
         
         self.midAlbumView = [MIAProfileAlbumView newAutoLayoutView];
         [_midAlbumView setTag:2];
         [self.cellContentView addSubview:_midAlbumView];
         
-        [JOAutoLayout autoLayoutWithSizeWithView:_leftAlbumView selfView:_midAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftView:_leftAlbumView distance:kProfileAlbumItemSpaceDistance selfView:_midAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_midAlbumView superView:self.cellContentView];
+        [_midAlbumView layoutSizeView:_leftAlbumView layoutItemHandler:nil];
+        [_midAlbumView layoutLeftView:_leftAlbumView distance:kProfileAlbumItemSpaceDistance layoutItemHandler:nil];
+        [_midAlbumView layoutTop:kContentViewInsideTopSpaceDistance layoutItemHandler:nil];
         
         self.rightAlbumView = [MIAProfileAlbumView newAutoLayoutView];
         [_rightAlbumView setTag:3];
         [self.cellContentView addSubview:_rightAlbumView];
         
-        [JOAutoLayout autoLayoutWithSizeWithView:_leftAlbumView selfView:_rightAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftView:_midAlbumView distance:kProfileAlbumItemSpaceDistance selfView:_rightAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_rightAlbumView superView:self.cellContentView];
+        [_rightAlbumView layoutSizeView:_leftAlbumView layoutItemHandler:nil];
+        [_rightAlbumView layoutLeftView:_midAlbumView distance:kProfileAlbumItemSpaceDistance layoutItemHandler:nil];
+        [_rightAlbumView layoutTop:kContentViewInsideTopSpaceDistance layoutItemHandler:nil];
     
     }
 }

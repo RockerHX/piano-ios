@@ -112,10 +112,10 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
     }];
     [self.view addSubview:_navBarView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kContentNavBarHeight selfView:_navBarView superView:self.view];
+    [_navBarView layoutLeft:0. layoutItemHandler:nil];
+    [_navBarView layoutRight:0. layoutItemHandler:nil];
+    [_navBarView layoutTop:0. layoutItemHandler:nil];
+    [_navBarView layoutHeight:kContentNavBarHeight layoutItemHandler:nil];
 }
 
 - (void)createContentView{
@@ -133,10 +133,10 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [[_contentView layer] setBorderWidth:1.];
         [self.view addSubview:_contentView];
         
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:-1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentNavBarHeight + kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithHeight:kSettingContentTextFieldHeight selfView:_contentView superView:self.view];
+        [_contentView layoutLeft:-1. layoutItemHandler:nil];
+        [_contentView layoutRight:1. layoutItemHandler:nil];
+        [_contentView layoutTop:kContentNavBarHeight + kSettingContentTopSpaceDistance layoutItemHandler:nil];
+        [_contentView layoutHeight:kSettingContentTextFieldHeight layoutItemHandler:nil];
         
         self.contentTextField = [UITextField newAutoLayoutView];
         [_contentTextField setTextColor:[MIAFontManage getFontWithType:MIAFontType_SettingContent_Content]->color];
@@ -147,10 +147,10 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [_contentTextField setText:_content];
         [_contentView addSubview:_contentTextField];
         
-        [JOAutoLayout autoLayoutWithLeftXView:_contentView distance:20. selfView:_contentTextField superView:_contentView];
-        [JOAutoLayout autoLayoutWithRightXView:_contentView distance:-20. selfView:_contentTextField superView:_contentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_contentTextField superView:_contentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_contentTextField superView:_contentView];
+        [_contentTextField layoutLeftXView:_contentView distance:20. layoutItemHandler:nil];
+        [_contentTextField layoutRightXView:_contentView distance:-20. layoutItemHandler:nil];
+        [_contentTextField layoutTop:0. layoutItemHandler:nil];
+        [_contentTextField layoutBottom:0. layoutItemHandler:nil];
         
     }else if(_contentType == SettingContentType_Summary ){
         //简介
@@ -160,10 +160,10 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [_contentView setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:_contentView];
         
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:-1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentNavBarHeight + kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithHeight:kSettingContentTextViewHeight selfView:_contentView superView:self.view];
+        [_contentView layoutLeft:-1. layoutItemHandler:nil];
+        [_contentView layoutRight:1. layoutItemHandler:nil];
+        [_contentView layoutTop:kContentNavBarHeight + kSettingContentTopSpaceDistance layoutItemHandler:nil];
+        [_contentView layoutHeight:kSettingContentTextViewHeight layoutItemHandler:nil];
         
         self.contentTextView = [HXTextView newAutoLayoutView];
         [_contentTextView setTextColor:[MIAFontManage getFontWithType:MIAFontType_SettingContent_Content]->color];
@@ -177,7 +177,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [_contentTextView becomeFirstResponder];
         [_contentView addSubview:_contentTextView];
         
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 10., 0., -10.) selfView:_contentTextView superView:_contentView];
+        [_contentTextView layoutEdge:UIEdgeInsetsMake(0., 10., 0., -10.) layoutItemHandler:nil];
         
     }else if (_contentType == SettingContentType_Feedback){
         //意见
@@ -193,10 +193,10 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         
         CGFloat feedbackLaelHeight = [feedBackLabel sizeThatFits:JOMAXSize].height+4.;
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:feedBackLabel superView:_contentView];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:feedBackLabel superView:_contentView];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:feedBackLabel superView:_contentView];
-        [JOAutoLayout autoLayoutWithHeight:feedbackLaelHeight selfView:feedBackLabel superView:_contentView];
+        [feedBackLabel layoutTop:0. layoutItemHandler:nil];
+        [feedBackLabel layoutLeft:10. layoutItemHandler:nil];
+        [feedBackLabel layoutRight:-10. layoutItemHandler:nil];
+        [feedBackLabel layoutHeight:feedbackLaelHeight layoutItemHandler:nil];
         
         self.contentTextView = [HXTextView newAutoLayoutView];
         [_contentTextView setTextColor:[MIAFontManage getFontWithType:MIAFontType_SettingContent_Content]->color];
@@ -210,10 +210,10 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [_contentTextView becomeFirstResponder];
         [_contentView addSubview:_contentTextView];
         
-        [JOAutoLayout autoLayoutWithTopView:feedBackLabel distance:0. selfView:_contentTextView superView:_contentView];
-        [JOAutoLayout autoLayoutWithLeftXView:feedBackLabel selfView:_contentTextView superView:_contentView];
-        [JOAutoLayout autoLayoutWithRightXView:feedBackLabel selfView:_contentTextView superView:_contentView];
-        [JOAutoLayout autoLayoutWithHeight:kSettingContentTextViewHeight selfView:_contentTextView superView:_contentView];
+        [_contentTextView layoutTopView:feedBackLabel distance:0. layoutItemHandler:nil];
+        [_contentTextView layoutLeftXView:feedBackLabel distance:0. layoutItemHandler:nil];
+        [_contentTextView layoutRightXView:feedBackLabel distance:0. layoutItemHandler:nil];
+        [_contentTextView layoutHeight:kSettingContentTextViewHeight layoutItemHandler:nil];
         
         UILabel *contactLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_SettingContent_Feedback_Tip]];
         [contactLabel setText:@"联系方式:"];
@@ -221,10 +221,10 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         
         CGFloat contactLabelHeight = [contactLabel sizeThatFits:JOMAXSize].height+4.;
         
-        [JOAutoLayout autoLayoutWithTopView:_contentTextView distance:10. selfView:contactLabel superView:_contentView];
-        [JOAutoLayout autoLayoutWithLeftXView:_contentTextView selfView:contactLabel superView:_contentView];
-        [JOAutoLayout autoLayoutWithRightXView:_contentTextView selfView:contactLabel superView:_contentView];
-        [JOAutoLayout autoLayoutWithHeight:contactLabelHeight selfView:contactLabel superView:_contentView];
+        [contactLabel layoutTopView:_contentTextView distance:10. layoutItemHandler:nil];
+        [contactLabel layoutLeftXView:_contentTextView distance:0. layoutItemHandler:nil];
+        [contactLabel layoutRightXView:_contentTextView distance:0. layoutItemHandler:nil];
+        [contactLabel layoutHeight:contactLabelHeight layoutItemHandler:nil];
         
         self.contentTextField = [UITextField newAutoLayoutView];
         [_contentTextField setTextColor:[MIAFontManage getFontWithType:MIAFontType_SettingContent_Content]->color];
@@ -236,15 +236,15 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [_contentTextField setPlaceholder:@"QQ或手机号码(可选)"];
         [_contentView addSubview:_contentTextField];
         
-        [JOAutoLayout autoLayoutWithLeftXView:contactLabel selfView:_contentTextField superView:_contentView];
-        [JOAutoLayout autoLayoutWithRightXView:contactLabel selfView:_contentTextField superView:_contentView];
-        [JOAutoLayout autoLayoutWithTopView:contactLabel distance:0. selfView:_contentTextField superView:_contentView];
-        [JOAutoLayout autoLayoutWithHeight:kSettingContentTextFieldHeight selfView:_contentTextField superView:_contentView];
+        [_contentTextField layoutLeftXView:contactLabel distance:0. layoutItemHandler:nil];
+        [_contentTextField layoutRightXView:contactLabel distance:0. layoutItemHandler:nil];
+        [_contentTextField layoutTopView:contactLabel distance:0. layoutItemHandler:nil];
+        [_contentTextField layoutHeight:kSettingContentTextFieldHeight layoutItemHandler:nil];
         
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:-1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:1. selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentNavBarHeight + kSettingContentTopSpaceDistance selfView:_contentView superView:self.view];
-        [JOAutoLayout autoLayoutWithHeight:kSettingContentTextViewHeight + feedbackLaelHeight + kSettingContentTextFieldHeight + contactLabelHeight+10  selfView:_contentView superView:self.view];
+        [_contentView layoutLeft:-1. layoutItemHandler:nil];
+        [_contentView layoutRight:1. layoutItemHandler:nil];
+        [_contentView layoutTop:kContentNavBarHeight + kSettingContentTopSpaceDistance layoutItemHandler:nil];
+        [_contentView layoutHeight:kSettingContentTextViewHeight + feedbackLaelHeight + kSettingContentTextFieldHeight + contactLabelHeight+10 layoutItemHandler:nil];
         
     }else if (_contentType == SettingContentType_Gender){
         //性别
@@ -259,7 +259,7 @@ static CGFloat const kContentNavBarHeight = 50.;//NavBar的高度
         [_contentTableView setSectionHeaderHeight:kSettingContentTopSpaceDistance];
         [self.view addSubview:_contentTableView];
         
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(kContentNavBarHeight, 0., 0., 0.) selfView:_contentTableView superView:self.view];
+        [_contentTableView layoutEdge:UIEdgeInsetsMake(kContentNavBarHeight, 0., 0., 0.) layoutItemHandler:nil];
     }
 }
 

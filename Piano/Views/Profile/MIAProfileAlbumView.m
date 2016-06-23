@@ -56,26 +56,24 @@ CGFloat const kAlbumTitleToTipSpaceDistance = 5.;
 //    [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_Name]];
     [self.showTipLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Album_BackTotal]];
+    
+    [self.showImageView layoutLeft:0. layoutItemHandler:nil];
+    [self.showImageView layoutRight:0. layoutItemHandler:nil];
+    [self.showImageView layoutTop:0. layoutItemHandler:nil];
+    [self.showImageView layoutHeightWidthRatio:1. layoutItemHandler:nil];
+    
+    [self.showTitleLabel layoutTopView:self.showImageView distance:kAlbumImageToTitleSpaceDistance layoutItemHandler:nil];
+    [self.showTitleLabel layoutLeftXView:self.showImageView distance:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutRightXView:self.showImageView distance:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
 
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithHeightWidthRatioValue:1. selfView:self.showImageView superView:self];
-    
-    [JOAutoLayout autoLayoutWithTopView:self.showImageView distance:kAlbumImageToTitleSpaceDistance selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftXView:self.showImageView selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightXView:self.showImageView selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height selfView:self.showTitleLabel superView:self];
-    
-    [JOAutoLayout autoLayoutWithTopView:self.showTitleLabel distance:kAlbumTitleToTipSpaceDistance selfView:self.showTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftXView:self.showImageView selfView:self.showTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightXView:self.showImageView selfView:self.showTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:self.showTipLabel superView:self];
-//    [JOAutoLayout autoLayoutWithHeight:[self.showTipLabel sizeThatFits:JOMAXSize].height selfView:self.showTipLabel superView:self];
+    [self.showTipLabel layoutTopView:self.showTitleLabel distance:kAlbumTitleToTipSpaceDistance layoutItemHandler:nil];
+    [self.showTipLabel layoutLeftXView:self.showImageView distance:0. layoutItemHandler:nil];
+    [self.showTipLabel layoutRightXView:self.showImageView distance:0. layoutItemHandler:nil];
+    [self.showTipLabel layoutBottom:0. layoutItemHandler:nil];
 }
 
 - (void)setShowData:(id)data{
-    
     
     if ([data isKindOfClass:[MIAAlbumModel class]]) {
         self.albumModel = nil;
@@ -89,8 +87,6 @@ CGFloat const kAlbumTitleToTipSpaceDistance = 5.;
     
         [JOFException exceptionWithName:@"MIAProfileAlbumView exception" reason:@"data不是MIAAlbumModel类型的"];
     }
-    
-    
 }
 
 @end

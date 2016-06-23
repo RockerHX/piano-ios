@@ -71,38 +71,36 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [_maskImageView setImage:maskImage];
     [self addSubview:_maskImageView];
     
+    [_headImageView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_headImageView superView:self];
-//    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_maskImageView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_maskImageView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_maskImageView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:maskImage.size.height selfView:_maskImageView superView:self];
+    [_maskImageView layoutLeft:0. layoutItemHandler:nil];
+    [_maskImageView layoutRight:0. layoutItemHandler:nil];
+    [_maskImageView layoutBottom:0. layoutItemHandler:nil];
+    [_maskImageView layoutHeight:maskImage.size.height layoutItemHandler:nil];
+    
 }
 
 - (void)createHeadLabel{
 
     self.nameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_NickName]];
     [_nameLabel setTextAlignment:NSTextAlignmentCenter];
-//    [_nameLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
     [_nameLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_nameLabel];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_nameLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kNameToBottomSpaceDistance selfView:_nameLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:37. selfView:_nameLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_nameLabel superView:self];
+    [_nameLabel layoutLeft:kLeftSpaceDistance layoutItemHandler:nil];
+    [_nameLabel layoutBottom:-kNameToBottomSpaceDistance layoutItemHandler:nil];
+    [_nameLabel layoutHeight:37. layoutItemHandler:nil];
+    [_nameLabel layoutWidth:CGFLOAT_MIN layoutItemHandler:nil];
     
     self.summayLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_Summary]];
     [_summayLabel setTextAlignment:NSTextAlignmentCenter];
-//    [_summayLabel setBackgroundColor:JOConvertRGBToColor(80., 32., 152., 1.)];
     [_summayLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_summayLabel];
     
-    [JOAutoLayout autoLayoutWithLeftXView:_nameLabel selfView:_summayLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopView:_nameLabel distance:kNameToSummaySpaceDistance selfView:_summayLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:36. selfView:_summayLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_summayLabel superView:self];
+    [_summayLabel layoutLeftXView:_nameLabel distance:0. layoutItemHandler:nil];
+    [_summayLabel layoutTopView:_nameLabel distance:kNameToSummaySpaceDistance layoutItemHandler:nil];
+    [_summayLabel layoutHeight:36. layoutItemHandler:nil];
+    [_summayLabel layoutWidth:CGFLOAT_MIN layoutItemHandler:nil];
     
 }
 
@@ -112,55 +110,55 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [_fansView setBackgroundColor:[UIColor clearColor]];
     [self addSubview:_fansView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kLeftSpaceDistance selfView:_fansView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kFansToBottomSpaceDistance selfView:_fansView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kRightSpaceDistance selfView:_fansView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:kFansViewHeight selfView:_fansView superView:self];
+    [_fansView layoutLeft:kLeftSpaceDistance layoutItemHandler:nil];
+    [_fansView layoutBottom:-kFansToBottomSpaceDistance layoutItemHandler:nil];
+    [_fansView layoutRight:-kRightSpaceDistance layoutItemHandler:nil];
+    [_fansView layoutHeight:kFansViewHeight layoutItemHandler:nil];
     
     self.fansLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_Fans]];
     [_fansLabel setText:@"0"];
     [_fansView addSubview:_fansLabel];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_fansLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_fansLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithHeightWithView:_fansView ratioValue:2./3. selfView:_fansLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithWidth:50. selfView:_fansLabel superView:_fansView];
+    [_fansLabel layoutLeft:0. layoutItemHandler:nil];
+    [_fansLabel layoutTop:0. layoutItemHandler:nil];
+    [_fansLabel layoutHeightView:_fansView ratio:2./3. layoutItemHandler:nil];
+    [_fansLabel layoutWidth:50. layoutItemHandler:nil];
     
     self.fansTipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_FansTip]];
     [_fansTipLabel setText:@"粉丝"];
     [_fansView addSubview:_fansTipLabel];
     
-    [JOAutoLayout autoLayoutWithLeftXView:_fansLabel selfView:_fansTipLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithTopView:_fansLabel distance:0. selfView:_fansTipLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithWidthWithView:_fansLabel selfView:_fansTipLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_fansTipLabel superView:_fansView];
+    [_fansTipLabel layoutLeftXView:_fansLabel distance:0. layoutItemHandler:nil];
+    [_fansTipLabel layoutTopView:_fansLabel distance:0. layoutItemHandler:nil];
+    [_fansTipLabel layoutWidthView:_fansLabel ratio:1. layoutItemHandler:nil];
+    [_fansTipLabel layoutBottom:0. layoutItemHandler:nil];
     
     UIView *separateLineView = [UIView newAutoLayoutView];
     [separateLineView setBackgroundColor:[UIColor grayColor]];
     [_fansView addSubview:separateLineView];
     
-    [JOAutoLayout autoLayoutWithLeftView:_fansLabel distance:kFansToSeparateLineSpaceDistance selfView:separateLineView superView:_fansView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:separateLineView superView:_fansView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-0. selfView:separateLineView superView:_fansView];
-    [JOAutoLayout autoLayoutWithWidth:1. selfView:separateLineView superView:_fansView];
+    [separateLineView layoutLeftView:_fansLabel distance:kFansToSeparateLineSpaceDistance layoutItemHandler:nil];
+    [separateLineView layoutTop:0. layoutItemHandler:nil];
+    [separateLineView layoutBottom:0. layoutItemHandler:nil];
+    [separateLineView layoutWidth:1. layoutItemHandler:nil];
     
     self.attentionLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_Fans]];
     [_attentionLabel setText:@"0"];
     [_fansView addSubview:_attentionLabel];
     
-    [JOAutoLayout autoLayoutWithLeftView:separateLineView distance:kFansToSeparateLineSpaceDistance selfView:_attentionLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithTopYView:_fansLabel selfView:_attentionLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithBottomYView:_fansLabel selfView:_attentionLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithWidth:50. selfView:_attentionLabel superView:_fansView];
+    [_attentionLabel layoutLeftView:separateLineView distance:kFansToSeparateLineSpaceDistance layoutItemHandler:nil];
+    [_attentionLabel layoutTopYView:_fansLabel distance:0. layoutItemHandler:nil];
+    [_attentionLabel layoutBottomYView:_fansLabel distance:0. layoutItemHandler:nil];
+    [_attentionLabel layoutWidth:50. layoutItemHandler:nil];
     
     self.attentionTipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_FansTip]];
     [_attentionTipLabel setText:@"关注"];
     [_fansView addSubview:_attentionTipLabel];
     
-    [JOAutoLayout autoLayoutWithTopYView:_fansTipLabel selfView:_attentionTipLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithLeftXView:_attentionLabel selfView:_attentionTipLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithBottomYView:_fansTipLabel selfView:_attentionTipLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithWidthWithView:_attentionLabel selfView:_attentionTipLabel superView:_fansView];
+    [_attentionTipLabel layoutTopYView:_fansTipLabel distance:0. layoutItemHandler:nil];
+    [_attentionTipLabel layoutLeftXView:_attentionLabel distance:0. layoutItemHandler:nil];
+    [_attentionTipLabel layoutBottomYView:_fansTipLabel distance:0. layoutItemHandler:nil];
+    [_attentionTipLabel layoutWidthView:_attentionLabel ratio:1. layoutItemHandler:nil];
     
     self.attentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_attentionButton setTitleColor:[MIAFontManage getFontWithType:MIAFontType_Profile_Head_AttentionButtonTitle]->color forState:UIControlStateNormal];
@@ -170,10 +168,9 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [_attentionButton setTag:kAttentionButtonTag];
     [self addSubview:_attentionButton];
     
-    [JOAutoLayout autoLayoutWithRightXView:_fansView selfView:_attentionButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_fansView selfView:_attentionButton superView:self];
-//    [JOAutoLayout autoLayoutWithWidth:50. selfView:_attentionButton superView:_fansView];
-    [JOAutoLayout autoLayoutWithSize:JOSize(50, 30.) selfView:_attentionButton superView:self];
+    [_attentionButton layoutRightXView:_fansView distance:0. layoutItemHandler:nil];
+    [_attentionButton layoutBottomYView:_fansView distance:0. layoutItemHandler:nil];
+    [_attentionButton layoutSize:JOSize(50, 30.) layoutItemHandler:nil];
     
 }
 
@@ -205,51 +202,26 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     CGFloat nameWidth = [nameString length]?([_nameLabel sizeThatFits:JOMAXSize].width + 12.):CGFLOAT_MIN;
     CGFloat summaryWidth = [summaryString length]?([_summayLabel sizeThatFits:JOMAXSize].width +10.):CGFLOAT_MIN;
     
-    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_nameLabel superView:self];
-    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_summayLabel superView:self];
-    [JOAutoLayout removeAutoLayoutWithRightSelfView:_nameLabel superView:self];
-    [JOAutoLayout removeAutoLayoutWithRightSelfView:_summayLabel superView:self];
+    [_nameLabel layoutWidth:nameWidth
+          layoutItemHandler:^(JOLayoutItem *layoutItem) {
+              layoutItem.priority = UILayoutPriorityDefaultHigh;
+          }];
+    [_nameLabel layoutRightXView:self
+                        distance:-kRightSpaceDistance
+               layoutItemHandler:^(JOLayoutItem *layoutItem) {
+                            layoutItem.relation = NSLayoutRelationLessThanOrEqual;
+                        }];
     
-    NSLayoutConstraint *layoutConstraint = [NSLayoutConstraint constraintWithItem:_nameLabel
-                                                                        attribute:NSLayoutAttributeWidth
-                                                                        relatedBy:NSLayoutRelationEqual
-                                                                           toItem:nil
-                                                                        attribute:NSLayoutAttributeNotAnAttribute
-                                                                       multiplier:1
-                                                                         constant:nameWidth];
-    [layoutConstraint setPriority:UILayoutPriorityDefaultHigh];
-    [_nameLabel addConstraint:layoutConstraint];
+    [_summayLabel layoutWidth:summaryWidth
+            layoutItemHandler:^(JOLayoutItem *layoutItem) {
+            
+                layoutItem.priority = UILayoutPriorityDefaultHigh;
+            }];
+    [_summayLabel layoutRightXView:self
+                        distance:-kRightSpaceDistance layoutItemHandler:^(JOLayoutItem *layoutItem) {
+                            layoutItem.relation = NSLayoutRelationLessThanOrEqual;
+                        }];
     
-    [self addConstraint:[NSLayoutConstraint
-                              constraintWithItem:_nameLabel
-                              attribute:NSLayoutAttributeRight
-                              relatedBy:NSLayoutRelationLessThanOrEqual
-                              toItem:self
-                              attribute:NSLayoutAttributeRight
-                              multiplier:1
-                              constant:-kRightSpaceDistance]];
-    
-    NSLayoutConstraint *layoutConstraint1 = [NSLayoutConstraint constraintWithItem:_summayLabel
-                                                                        attribute:NSLayoutAttributeWidth
-                                                                        relatedBy:NSLayoutRelationEqual
-                                                                           toItem:nil
-                                                                        attribute:NSLayoutAttributeNotAnAttribute
-                                                                       multiplier:1
-                                                                         constant:summaryWidth];
-    [layoutConstraint1 setPriority:UILayoutPriorityDefaultHigh];
-    [_summayLabel addConstraint:layoutConstraint1];
-    
-    [self addConstraint:[NSLayoutConstraint
-                         constraintWithItem:_summayLabel
-                         attribute:NSLayoutAttributeRight
-                         relatedBy:NSLayoutRelationLessThanOrEqual
-                         toItem:self
-                         attribute:NSLayoutAttributeRight
-                         multiplier:1
-                         constant:-kRightSpaceDistance]];
-
-//    [JOAutoLayout autoLayoutWithWidth:nameWidth selfView:_nameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithWidth:summaryWidth selfView:_summayLabel superView:self];
 }
 
 - (void)setProfileNickBackgroundColorString:(NSString *)colorString{
@@ -273,14 +245,11 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
     [_fansLabel setText:[fanString length]?fanString:@"0"];
     [_attentionLabel setText:[attentionString length]?attentionString:@"0"];
     
-    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_fansLabel superView:_fansView];
-    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_attentionLabel superView:_fansView];
-    
     CGFloat fansWidth = MAX([_fansLabel sizeThatFits:JOMAXSize].width, [_fansTipLabel sizeThatFits:JOMAXSize].width);
     CGFloat attentionWidth = MAX([_attentionLabel sizeThatFits:JOMAXSize].width, [_attentionTipLabel sizeThatFits:JOMAXSize].width);
     
-    [JOAutoLayout autoLayoutWithWidth:fansWidth selfView:_fansLabel superView:_fansView];
-    [JOAutoLayout autoLayoutWithWidth:attentionWidth selfView:_attentionLabel superView:_fansView];
+    [_fansLabel layoutWidth:fansWidth layoutItemHandler:nil];
+    [_attentionLabel layoutWidth:attentionWidth layoutItemHandler:nil];
 }
 
 - (void)setAttentionButtonState:(BOOL)state{
@@ -293,8 +262,7 @@ static CGFloat const kFansViewHeight = 40.;//粉丝的部分占的高度
         [_attentionButton setTitle:kUNnAttentiontipTitle forState:UIControlStateNormal];
     }
     
-    [JOAutoLayout removeAutoLayoutWithSizeSelfView:_attentionButton superView:self];
-    [JOAutoLayout autoLayoutWithSize:JOSize([[_attentionButton titleLabel] sizeThatFits:JOMAXSize].width+6, [[_attentionButton titleLabel] sizeThatFits:JOMAXSize].height+4) selfView:_attentionButton superView:self];
+    [_attentionButton layoutSize:JOSize([[_attentionButton titleLabel] sizeThatFits:JOMAXSize].width+6, [[_attentionButton titleLabel] sizeThatFits:JOMAXSize].height+4) layoutItemHandler:nil];
 }
 
 - (void)setProfileMaskAlpha:(CGFloat)alpha{

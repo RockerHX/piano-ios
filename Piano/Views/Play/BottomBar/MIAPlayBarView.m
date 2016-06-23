@@ -54,40 +54,39 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 40.;
     [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_playButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kPlayBarViewLeftSpaceDistance selfView:_playButton superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_playButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_playButton superView:self];
-    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_playButton superView:self];
+    [_playButton layoutLeft:kPlayBarViewLeftSpaceDistance layoutItemHandler:nil];
+    [_playButton layoutTop:0. layoutItemHandler:nil];
+    [_playButton layoutBottom:0. layoutItemHandler:nil];
+    [_playButton layoutWidthHeightRatio:1. layoutItemHandler:nil];
     
     self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_shareButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_shareButton setImage:[UIImage imageNamed:@"C-More"] forState:UIControlStateNormal];
     [_shareButton addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_shareButton];
-    
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kPlayBarViewRightSpaceDistance selfView:_shareButton superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_shareButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_shareButton superView:self];
-    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_shareButton superView:self];
-//    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_shareButton superView:self];
+
+    [_shareButton layoutRight:-kPlayBarViewRightSpaceDistance layoutItemHandler:nil];
+    [_shareButton layoutTop:0. layoutItemHandler:nil];
+    [_shareButton layoutBottom:0. layoutItemHandler:nil];
+    [_shareButton layoutWidthHeightRatio:1. layoutItemHandler:nil];
     
     self.currentTimeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_PlayVideo_Time]];
     [_currentTimeLabel setText:@"00:00"];
     [self addSubview:_currentTimeLabel];
     
-    [JOAutoLayout autoLayoutWithLeftView:_playButton distance:0. selfView:_currentTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_currentTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_currentTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:kPlayBarViewTimeLabelWidth selfView:_currentTimeLabel superView:self];
+    [_currentTimeLabel layoutLeftView:_playButton distance:0. layoutItemHandler:nil];
+    [_currentTimeLabel layoutTop:0. layoutItemHandler:nil];
+    [_currentTimeLabel layoutBottom:0. layoutItemHandler:nil];
+    [_currentTimeLabel layoutWidth:kPlayBarViewTimeLabelWidth layoutItemHandler:nil];
     
     self.timeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_PlayVideo_Time]];
     [_timeLabel setText:@"00:00"];
     [self addSubview:_timeLabel];
     
-    [JOAutoLayout autoLayoutWithRightView:_shareButton distance:-0 selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:kPlayBarViewTimeLabelWidth selfView:_timeLabel superView:self];
+    [_timeLabel layoutRightView:_shareButton distance:-0. layoutItemHandler:nil];
+    [_timeLabel layoutTop:0. layoutItemHandler:nil];
+    [_timeLabel layoutBottom:0. layoutItemHandler:nil];
+    [_timeLabel layoutWidth:kPlayBarViewTimeLabelWidth layoutItemHandler:nil];
     
     self.playSlider = [MIAPlaySlider newAutoLayoutView];
     [_playSlider setMinimumTrackTintColor:JORGBSameCreate(220.)];
@@ -98,10 +97,10 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 40.;
     [_playSlider addTarget:self action:@selector(sliderValueChange) forControlEvents:UIControlEventValueChanged];
     [self addSubview:_playSlider];
     
-    [JOAutoLayout autoLayoutWithLeftView:_currentTimeLabel distance:kPlayBarViewSliderToTimeLabelSpaceDistance selfView:_playSlider superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_playSlider superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_playSlider superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_timeLabel distance:-kPlayBarViewSliderToTimeLabelSpaceDistance selfView:_playSlider superView:self];
+    [_playSlider layoutLeftView:_currentTimeLabel distance:kPlayBarViewSliderToTimeLabelSpaceDistance layoutItemHandler:nil];
+    [_playSlider layoutTop:0. layoutItemHandler:nil];
+    [_playSlider layoutBottom:0. layoutItemHandler:nil];
+    [_playSlider layoutRightView:_timeLabel distance:-kPlayBarViewSliderToTimeLabelSpaceDistance layoutItemHandler:nil];
 }
 
 - (void)setCurrentVideoDuration:(CGFloat)duration{
@@ -170,19 +169,16 @@ static CGFloat const kPlayBarViewTimeLabelWidth = 40.;
 - (void)playAction{
 
     playState?(playState = NO):(playState = YES);
-    
     [self updatePlayButtonState];
     
     if (_playBarActionBlock) {
         
         PlayBarActionType type;
-        
         if (playState) {
             type = PlayBarActionPlay;
         }else{
             type = PlayBarActionPause;
         }
-        
         _playBarActionBlock(type);
     }
 }

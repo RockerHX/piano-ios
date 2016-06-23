@@ -27,8 +27,6 @@ static CGFloat const kSettingViewRightSpaceDistance = 14.;//右边的间距.
 
     self = [super initWithFrame:frame];
     if (self) {
-        
-//        [self setBackgroundColor:[UIColor clearColor]]
         [self createCellView];
     }
     return self;
@@ -39,44 +37,40 @@ static CGFloat const kSettingViewRightSpaceDistance = 14.;//右边的间距.
     self.titleLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Setting_CellTitle]];
     [self addSubview:_titleLabel];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kSettingViewLeftSpaceDistance selfView:_titleLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_titleLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_titleLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_titleLabel superView:self];
+    [_titleLabel layoutLeft:kSettingViewLeftSpaceDistance layoutItemHandler:nil];
+    [_titleLabel layoutTop:0. layoutItemHandler:nil];
+    [_titleLabel layoutBottom:0. layoutItemHandler:nil];
+    [_titleLabel layoutWidth:CGFLOAT_MIN layoutItemHandler:nil];
     
     self.accessoryImageView = [UIImageView newAutoLayoutView];
     [self addSubview:_accessoryImageView];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kSettingViewRightSpaceDistance selfView:_accessoryImageView superView:self];
-    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_accessoryImageView superView:self];
-    [JOAutoLayout autoLayoutWithSize:CGSizeMake(CGFLOAT_MIN, CGFLOAT_MIN) selfView:_accessoryImageView superView:self];
+    [_accessoryImageView layoutRight:-kSettingViewRightSpaceDistance layoutItemHandler:nil];
+    [_accessoryImageView layoutCenterYView:self layoutItemHandler:nil];
+    [_accessoryImageView layoutSize:CGSizeMake(CGFLOAT_MIN, CGFLOAT_MIN) layoutItemHandler:nil];
     
     self.contentLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Setting_CellContent]];
     [_contentLabel setTextAlignment:NSTextAlignmentRight];
     [_contentLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_contentLabel];
     
-    [JOAutoLayout autoLayoutWithRightView:_accessoryImageView distance:-5. selfView:_contentLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_contentLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_contentLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftView:_titleLabel distance:10. selfView:_contentLabel superView:self];
+    [_contentLabel layoutRightView:_accessoryImageView distance:-5. layoutItemHandler:nil];
+    [_contentLabel layoutTop:0. layoutItemHandler:nil];
+    [_contentLabel layoutBottom:0. layoutItemHandler:nil];
+    [_contentLabel layoutLeftView:_titleLabel distance:10. layoutItemHandler:nil];
 }
 
 - (void)setTitle:(NSString *)title content:(NSString *)content{
 
     [_titleLabel setText:title];
     [_contentLabel setText:content];
-
-    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_titleLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:[_titleLabel sizeThatFits:JOMAXSize].width+1 selfView:_titleLabel superView:self];
+    [_titleLabel layoutWidth:[_titleLabel sizeThatFits:JOMAXSize].width+1 layoutItemHandler:nil];
 }
 
 - (void)setTitleAttributedText:(NSAttributedString *)attributedTitle{
 
     [_titleLabel setAttributedText:attributedTitle];
-    
-    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_titleLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:[_titleLabel sizeThatFits:JOMAXSize].width+1 selfView:_titleLabel superView:self];
+    [_titleLabel layoutWidth:[_titleLabel sizeThatFits:JOMAXSize].width+1 layoutItemHandler:nil];
 }
 
 - (void)setAccessoryImage:(UIImage *)image{
@@ -84,23 +78,16 @@ static CGFloat const kSettingViewRightSpaceDistance = 14.;//右边的间距.
     if (image) {
         //图片存在的情况下
         [_accessoryImageView setImage:image];
-        
-        [JOAutoLayout removeAutoLayoutWithSizeSelfView:_accessoryImageView superView:self];
-        [JOAutoLayout removeAutoLayoutWithRightSelfView:_contentLabel superView:self];
-        
+
         CGSize imageSize = image.size;
-        [JOAutoLayout autoLayoutWithSize:imageSize selfView:_accessoryImageView superView:self];
+        [_accessoryImageView layoutSize:imageSize layoutItemHandler:nil];
+        [_contentLabel layoutRightView:_accessoryImageView distance:-5. layoutItemHandler:nil];
         
-        [JOAutoLayout autoLayoutWithRightView:_accessoryImageView distance:-5. selfView:_contentLabel superView:self];
     }else{
-    
-        [JOAutoLayout removeAutoLayoutWithSizeSelfView:_accessoryImageView superView:self];
-        [JOAutoLayout removeAutoLayoutWithRightSelfView:_contentLabel superView:self];
         
         CGSize imageSize = JOSize(CGFLOAT_MIN, CGFLOAT_MIN);
-        [JOAutoLayout autoLayoutWithSize:imageSize selfView:_accessoryImageView superView:self];
-        
-        [JOAutoLayout autoLayoutWithRightView:_accessoryImageView distance:-0. selfView:_contentLabel superView:self];
+        [_accessoryImageView layoutSize:imageSize layoutItemHandler:nil];
+        [_contentLabel layoutRightView:_accessoryImageView distance:-0. layoutItemHandler:nil];
     }
 }
 

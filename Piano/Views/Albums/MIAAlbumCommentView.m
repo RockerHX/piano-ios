@@ -54,47 +54,46 @@ CGFloat const kCommentContentRightSpaceDistance = 10.;//评论内容右间距大
     [_headImageView setBackgroundColor:[UIColor grayColor]];
     [self addSubview:_headImageView];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_headImageView superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_headImageView superView:self];
-    [JOAutoLayout autoLayoutWithSize:JOSize(kImageWidth, kImageWidth) selfView:_headImageView superView:self];
+    [_headImageView layoutTop:0. layoutItemHandler:nil];
+    [_headImageView layoutLeft:0. layoutItemHandler:nil];
+    [_headImageView layoutSize:JOSize(kImageWidth, kImageWidth) layoutItemHandler:nil];
     
     self.nickNameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Name]];
     [_nickNameLabel setText:@" "];
     [self addSubview:_nickNameLabel];
     
-    [JOAutoLayout autoLayoutWithLeftView:_headImageView distance:kImageToLabelSpaceDistance selfView:_nickNameLabel superView:self];
-//    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_nickNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_headImageView distance:3. selfView:_nickNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kCommentContentRightSpaceDistance selfView:_nickNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height selfView:_nickNameLabel superView:self];
+    [_nickNameLabel layoutLeftView:_headImageView distance:kImageToLabelSpaceDistance layoutItemHandler:nil];
+    [_nickNameLabel layoutTopYView:_headImageView distance:3. layoutItemHandler:nil];
+    [_nickNameLabel layoutRight:-kCommentContentRightSpaceDistance layoutItemHandler:nil];
+    [_nickNameLabel layoutHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
     
     self.commentLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Content]];
     [_commentLabel setText:@" "];
     [_commentLabel setNumberOfLines:0];
     [self addSubview:_commentLabel];
     
-    [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_commentLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopView:_nickNameLabel distance:0. selfView:_commentLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightXView:_nickNameLabel selfView:_commentLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_commentLabel sizeThatFits:JOMAXSize].height selfView:_commentLabel superView:self];
+    [_commentLabel layoutLeftXView:_nickNameLabel distance:0. layoutItemHandler:nil];
+    [_commentLabel layoutTopView:_nickNameLabel distance:0. layoutItemHandler:nil];
+    [_commentLabel layoutRightXView:_nickNameLabel distance:0. layoutItemHandler:nil];
+    [_commentLabel layoutHeight:[_commentLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
     
     self.timeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Comment_Time]];
     [_timeLabel setText:@" "];
     [self addSubview:_timeLabel];
     
-    [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightXView:_nickNameLabel selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopView:_commentLabel distance:0. selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_timeLabel sizeThatFits:JOMAXSize].height selfView:_timeLabel superView:self];
+    [_timeLabel layoutLeftXView:_nickNameLabel distance:0. layoutItemHandler:nil];
+    [_timeLabel layoutRightXView:_nickNameLabel distance:0. layoutItemHandler:nil];
+    [_timeLabel layoutTopView:_commentLabel distance:0. layoutItemHandler:nil];
+    [_timeLabel layoutHeight:[_timeLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
     
     self.separateLineView = [UIView newAutoLayoutView];
     [_separateLineView setBackgroundColor:JORGBSameCreate(220.)];
     [self addSubview:_separateLineView];
     
-    [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:9.5 selfView:_separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:0.5 selfView:_separateLineView superView:self];
+    [_separateLineView layoutLeftXView:_nickNameLabel distance:0. layoutItemHandler:nil];
+    [_separateLineView layoutRight:0. layoutItemHandler:nil];
+    [_separateLineView layoutBottom:9.5 layoutItemHandler:nil];
+    [_separateLineView layoutHeight:0.5 layoutItemHandler:nil];
 }
 
 - (void)setAlbumCommentData:(id)data{
@@ -109,8 +108,7 @@ CGFloat const kCommentContentRightSpaceDistance = 10.;//评论内容右间距大
         [_commentLabel setText:_commentModel.content];
         [_timeLabel setText:[_commentModel.addtime JOConvertTimelineToDateStringWithFormatterType:JODateFormatterMonthDay]];
         
-        [JOAutoLayout removeAutoLayoutWithHeightSelfView:_commentLabel superView:self];
-        [JOAutoLayout autoLayoutWithHeight:[_commentLabel sizeThatFits:JOSize(viewWidth, CGFLOAT_MAX)].height selfView:_commentLabel superView:self];
+        [_commentLabel layoutHeight:[_commentLabel sizeThatFits:JOSize(viewWidth, CGFLOAT_MAX)].height layoutItemHandler:nil];
         
     }else{
     

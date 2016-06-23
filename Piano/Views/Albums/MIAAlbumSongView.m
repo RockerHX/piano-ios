@@ -46,64 +46,51 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
     [_indexLabel setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:_indexLabel];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_indexLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_indexLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_indexLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:kIndexLabelWidth selfView:_indexLabel superView:self];
-    
-//    self.playStateImageView = [UIImageView newAutoLayoutView];
-//    [_playStateImageView setContentMode:UIViewContentModeScaleAspectFit];
-//    [_playStateImageView setImage:[UIImage imageNamed:@"AD-PauseIcon-S"]];
-//    [_playStateImageView setHidden:YES];
-//    [self addSubview:_playStateImageView];
-//    
-//    [JOAutoLayout autoLayoutWithSize:JOSize(kIndexLabelWidth-15., kIndexLabelWidth-15.) selfView:_playStateImageView superView:self];
-//    [JOAutoLayout autoLayoutWithCenterWithView:_indexLabel selfView:_playStateImageView superView:self];
+    [_indexLabel layoutLeft:0. layoutItemHandler:nil];
+    [_indexLabel layoutTop:0. layoutItemHandler:nil];
+    [_indexLabel layoutBottom:0. layoutItemHandler:nil];
+    [_indexLabel layoutWidth:kIndexLabelWidth layoutItemHandler:nil];
     
     self.downloadStateImageView = [UIImageView newAutoLayoutView];
     [_downloadStateImageView setImage:[UIImage imageNamed:@"AD-NoDownload"]];
     [_downloadStateImageView setHidden:YES];
     [self addSubview:_downloadStateImageView];
     
-    //初始化宽度为0
-    [JOAutoLayout autoLayoutWithLeftView:_indexLabel distance:-2. selfView:_downloadStateImageView superView:self];
-    [JOAutoLayout autoLayoutWithCenterYWithView:self selfView:_downloadStateImageView superView:self];
-    [JOAutoLayout autoLayoutWithSize:JOSize(CGFLOAT_MIN, kDownloadTipImageWidth) selfView:_downloadStateImageView superView:self];
+    [_downloadStateImageView layoutLeftView:_indexLabel distance:-2 layoutItemHandler:nil];
+    [_downloadStateImageView layoutCenterYView:self layoutItemHandler:nil];
+    [_downloadStateImageView layoutSize:JOSize(CGFLOAT_MIN, kDownloadTipImageWidth) layoutItemHandler:nil];
     
     self.timeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Time]];
     [_timeLabel setHidden:YES];
     [self addSubview:_timeLabel];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_indexLabel selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_indexLabel selfView:_timeLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:CGFLOAT_MIN selfView:_timeLabel superView:self];
+    [_timeLabel layoutRight:-10. layoutItemHandler:nil];
+    [_timeLabel layoutTopYView:_indexLabel distance:0. layoutItemHandler:nil];
+    [_timeLabel layoutBottomYView:_indexLabel distance:0. layoutItemHandler:nil];
+    [_timeLabel layoutWidth:CGFLOAT_MIN layoutItemHandler:nil];
     
     self.songNameLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]];
     [_songNameLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self addSubview:_songNameLabel];
     
-    [JOAutoLayout autoLayoutWithLeftView:_downloadStateImageView distance:0. selfView:_songNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_indexLabel selfView:_songNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_indexLabel selfView:_songNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_timeLabel distance:-5. selfView:_songNameLabel superView:self];
+    [_songNameLabel layoutLeftView:_downloadStateImageView distance:0. layoutItemHandler:nil];
+    [_songNameLabel layoutTopYView:_indexLabel distance:0. layoutItemHandler:nil];
+    [_songNameLabel layoutBottomYView:_indexLabel distance:0. layoutItemHandler:nil];
+    [_songNameLabel layoutRightView:_timeLabel distance:-5. layoutItemHandler:nil];
     
     UIView *separateLineView = [UIView newAutoLayoutView];
     [separateLineView setBackgroundColor:[MIAFontManage getFontWithType:MIAFontType_Album_Song_Title]->color];
     [self addSubview:separateLineView];
     
-//    [JOAutoLayout autoLayoutWithLeftXView:_downloadStateImageView distance:1. selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithLeftView:_indexLabel distance:0. selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:0.5 selfView:separateLineView superView:self];
+    [separateLineView layoutLeftView:_indexLabel distance:0. layoutItemHandler:nil];
+    [separateLineView layoutBottom:0. layoutItemHandler:nil];
+    [separateLineView layoutRight:0. layoutItemHandler:nil];
+    [separateLineView layoutHeight:0.5 layoutItemHandler:nil];
 }
 
 - (void)changeSongPlayState:(BOOL)state{
     
     [_timeLabel setHidden:!state];
-//    [_indexLabel setHidden:state];
-//    [_playStateImageView setHidden:!state];
     
     UIColor *textColor = [UIColor whiteColor];
     if (state) {
@@ -118,11 +105,8 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
 - (void)openAlbumSongDownloadState{
 
     [_downloadStateImageView setHidden:NO];
-    [JOAutoLayout removeAutoLayoutWithSizeSelfView:_downloadStateImageView superView:self];
-    [JOAutoLayout autoLayoutWithSize:JOSize(kDownloadTipImageWidth, kDownloadTipImageWidth) selfView:_downloadStateImageView superView:self];
-    
-    [JOAutoLayout removeAutoLayoutWithLeftSelfView:_songNameLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftView:_downloadStateImageView distance:5. selfView:_songNameLabel superView:self];
+    [_downloadStateImageView layoutSize:JOSize(kDownloadTipImageWidth, kDownloadTipImageWidth) layoutItemHandler:nil];
+    [_songNameLabel layoutLeftView:_downloadStateImageView distance:5. layoutItemHandler:nil];
 }
 
 - (void)setSongData:(id)data{
@@ -135,8 +119,7 @@ static CGFloat const kDownloadTipImageWidth = 20.;//下载按钮的提示图片�
         [_timeLabel setText:_songModel.durationPrompt];
         [_songNameLabel setText:_songModel.title];
         
-        [JOAutoLayout removeAutoLayoutWithWidthSelfView:_timeLabel superView:self];
-        [JOAutoLayout autoLayoutWithWidth:[_timeLabel sizeThatFits:JOMAXSize].width selfView:_timeLabel superView:self];
+        [_timeLabel layoutWidth:[_timeLabel sizeThatFits:JOMAXSize].width layoutItemHandler:nil];
         
         //更改歌曲存在状态标记的图片
         if ([[MIASongManage shareSongManage] songIsExistWithURLString:_songModel.mp3Url]) {

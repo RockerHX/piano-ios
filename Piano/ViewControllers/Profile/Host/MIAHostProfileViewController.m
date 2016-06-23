@@ -66,13 +66,13 @@
     [[_coverImageView layer] setMasksToBounds:YES];
     [self.view addSubview:_coverImageView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0.0, 0., 0.) selfView:_coverImageView superView:self.view];
+    [_coverImageView layoutEdge:UIEdgeInsetsMake(0., 0.0, 0., 0.) layoutItemHandler:nil];
     
     self.maskImageView = [UIImageView newAutoLayoutView];
     [_maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
     [self.view addSubview:_maskImageView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self.view];
+    [_maskImageView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
 }
 
 - (void)createProfileTableView{
@@ -88,7 +88,7 @@
     [_profileTableView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_profileTableView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_profileTableView superView:self.view];
+    [_profileTableView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
 }
 
 - (void)createHeadButtonView{
@@ -99,9 +99,9 @@
     [popButton addTarget:self action:@selector(popClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:popButton];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:20. selfView:popButton superView:self.view];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:popButton superView:self.view];
-    [JOAutoLayout autoLayoutWithSize:JOSize(30., 30.) selfView:popButton superView:self.view];
+    [popButton layoutTop:20. layoutItemHandler:nil];
+    [popButton layoutLeft:10. layoutItemHandler:nil];
+    [popButton layoutSize:JOSize(30., 30.) layoutItemHandler:nil];
     
     UIButton *settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [settingButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -109,9 +109,10 @@
     [settingButton addTarget:self action:@selector(settingButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:settingButton];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:20. selfView:settingButton superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:settingButton superView:self.view];
-    [JOAutoLayout autoLayoutWithSize:JOSize(30., 30.) selfView:settingButton superView:self.view];
+    
+    [settingButton layoutTop:20. layoutItemHandler:nil];
+    [settingButton layoutRight:-10. layoutItemHandler:nil];
+    [settingButton layoutSize:JOSize(30., 30.) layoutItemHandler:nil];
 }
 
 - (CGFloat)getHeadHeight{
@@ -150,22 +151,20 @@
     [_summaryLabel setTextAlignment:NSTextAlignmentCenter];
     [_meHeadView addSubview:_summaryLabel];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kHostProfileViewHeadTopSpaceDistance selfView:_headImageView superView:_meHeadView];
-//    [JOAutoLayout autoLayoutWithCenterXWithView:_meHeadView selfView:_headImageView superView:_meHeadView];
-//    [JOAutoLayout autoLayoutWithSize:JOSize(headImageViewWidth, headImageViewWidth) selfView:_headImageView superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kHostProfileViewHeadLeftSpaceDistance selfView:_headImageView superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-kHostProfileViewHeadRightSpaceDistance selfView:_headImageView superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_headImageView superView:_meHeadView];
+    [_headImageView layoutTop:kHostProfileViewHeadTopSpaceDistance layoutItemHandler:nil];
+    [_headImageView layoutLeft:kHostProfileViewHeadLeftSpaceDistance layoutItemHandler:nil];
+    [_headImageView layoutRight:-kHostProfileViewHeadRightSpaceDistance layoutItemHandler:nil];
+    [_headImageView layoutWidthHeightRatio:1. layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithTopView:_headImageView distance:28. selfView:_nickNameLabel superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:20. selfView:_nickNameLabel superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_nickNameLabel superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height selfView:_nickNameLabel superView:_meHeadView];
+    [_nickNameLabel layoutTopView:_headImageView distance:28. layoutItemHandler:nil];
+    [_nickNameLabel layoutLeft:20. layoutItemHandler:nil];
+    [_nickNameLabel layoutRight:-20. layoutItemHandler:nil];
+    [_nickNameLabel layoutHeight:[_nickNameLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithTopView:_nickNameLabel distance:7. selfView:_summaryLabel superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithHeight:[_summaryLabel sizeThatFits:JOMAXSize].height selfView:_summaryLabel superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithLeftXView:_nickNameLabel selfView:_summaryLabel superView:_meHeadView];
-    [JOAutoLayout autoLayoutWithRightXView:_nickNameLabel selfView:_summaryLabel superView:_meHeadView];
+    [_summaryLabel layoutTopView:_nickNameLabel distance:7. layoutItemHandler:nil];
+    [_summaryLabel layoutHeight:[_summaryLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
+    [_summaryLabel layoutLeftXView:_nickNameLabel distance:0. layoutItemHandler:nil];
+    [_summaryLabel layoutRightXView:_nickNameLabel distance:0. layoutItemHandler:nil];
     
 }
 
@@ -419,10 +418,11 @@
             //购买记录
             MIAPayHistoryViewController *payHistoryViewController = [MIAPayHistoryViewController new];
             [self.navigationController pushViewController:payHistoryViewController animated:YES];
+            
         }else if (indexPath.row == 2){
             //我的收益
-            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
-            [self.navigationController pushViewController:incomeViewController animated:YES];
+//            MIAIncomeViewController *incomeViewController = [MIAIncomeViewController new];
+//            [self.navigationController pushViewController:incomeViewController animated:YES];
         }
     }
 }

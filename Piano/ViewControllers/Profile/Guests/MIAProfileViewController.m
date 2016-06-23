@@ -101,29 +101,29 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     self.coverImageView = [UIImageView newAutoLayoutView];
     [self.view addSubview:_coverImageView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_coverImageView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_coverImageView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_coverImageView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:coverImageHeight selfView:_coverImageView superView:self.view];
+    [_coverImageView layoutLeft:0. layoutItemHandler:nil];
+    [_coverImageView layoutRight:0. layoutItemHandler:nil];
+    [_coverImageView layoutTop:0. layoutItemHandler:nil];
+    [_coverImageView layoutHeight:coverImageHeight layoutItemHandler:nil];
     
     UIImageView *maskView = [UIImageView newAutoLayoutView];
     [maskView setImage:[UIImage imageNamed:@"PR-Mask"]];
     [self.view addSubview:maskView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:maskView superView:self.view];
+    [maskView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
     self.maskImageView = [UIImageView newAutoLayoutView];
     [_maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
     [_maskImageView setAlpha:0.];
     [self.view addSubview:_maskImageView];
 
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_maskImageView superView:self.view];
+    [_maskImageView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
     self.profileView = [MIAProfileView newAutoLayoutView];
     [_profileView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_profileView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_profileView superView:self.view];
+    [_profileView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
     [self createProfileHeadView];
     [self createProfileTableView];
@@ -181,19 +181,19 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [_profileHeadView setTag:kHeadViewTag];
     [_profileView addSubview:_profileHeadView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_profileHeadView superView:_profileView];
-    [JOAutoLayout autoLayoutWithHeight:profileTableHeadViewHeight selfView:_profileHeadView superView:_profileView];
+    [_profileHeadView layoutLeft:0. layoutItemHandler:nil];
+    [_profileHeadView layoutRight:0. layoutItemHandler:nil];
+    [_profileHeadView layoutTop:0. layoutItemHandler:nil];
+    [_profileHeadView layoutHeight:profileTableHeadViewHeight layoutItemHandler:nil];
     
     UIView *headBackgroundView = [UIView newAutoLayoutView];
     [headBackgroundView setBackgroundColor:JORGBCreate(0., 0., 0., 0.9)];
     [_profileView addSubview:headBackgroundView];
     
-    [JOAutoLayout autoLayoutWithTopView:_profileHeadView distance:0. selfView:headBackgroundView superView:_profileView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:headBackgroundView superView:_profileView];
+    [headBackgroundView layoutTopView:_profileHeadView distance:0. layoutItemHandler:nil];
+    [headBackgroundView layoutLeft:0. layoutItemHandler:nil];
+    [headBackgroundView layoutRight:0. layoutItemHandler:nil];
+    [headBackgroundView layoutBottom:0. layoutItemHandler:nil];
 }
 
 - (void)createProfileTableView{
@@ -211,7 +211,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [_profileTableView setTag:kTableViewTag];
     [_profileView addSubview:_profileTableView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_profileTableView superView:_profileView];
+    [_profileTableView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
 }
 
 - (void)createPopButton{
@@ -223,10 +223,10 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [_navBarView setAlpha:0.];
     [_profileView addSubview:_navBarView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:_profileView];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:_profileView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:_profileView];
-    [JOAutoLayout autoLayoutWithHeight:50. selfView:_navBarView superView:_profileView];
+    [_navBarView layoutLeft:0. layoutItemHandler:nil];
+    [_navBarView layoutRight:0. layoutItemHandler:nil];
+    [_navBarView layoutTop:0. layoutItemHandler:nil];
+    [_navBarView layoutHeight:50. layoutItemHandler:nil];
 
     UIButton *popButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [popButton setImage:[UIImage imageNamed:@"PR-Back"] forState:UIControlStateNormal];
@@ -234,9 +234,9 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_profileView addSubview:popButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:8. selfView:popButton superView:_profileView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:7.5 selfView:popButton superView:_profileView];
-    [JOAutoLayout autoLayoutWithSize:JOSize(35., 35.) selfView:popButton superView:_profileView];
+    [popButton layoutLeft:8. layoutItemHandler:nil];
+    [popButton layoutTop:7.5 layoutItemHandler:nil];
+    [popButton layoutSize:JOSize(35., 35.) layoutItemHandler:nil];
     
     UIButton *reportButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [reportButton setImage:[UIImage imageNamed:@"C-More"] forState:UIControlStateNormal];
@@ -244,9 +244,9 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
     [reportButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_profileView addSubview:reportButton];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-8. selfView:reportButton superView:_profileView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:7.5 selfView:reportButton superView:_profileView];
-    [JOAutoLayout autoLayoutWithSize:JOSize(35., 35.) selfView:reportButton superView:_profileView];
+    [reportButton layoutRight:-8. layoutItemHandler:nil];
+    [reportButton layoutTop:7.5 layoutItemHandler:nil];
+    [reportButton layoutSize:JOSize(35., 35.) layoutItemHandler:nil];
 }
 
 #pragma mark - Button action
@@ -313,8 +313,7 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                   
                                   if (image) {
-                                      [JOAutoLayout removeAutoLayoutWithHeightSelfView:_coverImageView superView:self.view];
-                                      [JOAutoLayout autoLayoutWithHeight:View_Width(self.view)/(image.size.width/image.size.height) selfView:_coverImageView superView:self.view];
+                                      [_coverImageView layoutHeight:View_Width(self.view)/(image.size.width/image.size.height) layoutItemHandler:nil];
                                   }
                               }];
     [_profileHeadView setProfileHeadImageURL:headModel.avatarURL name:headModel.nickName summary:headModel.summary];
@@ -475,23 +474,14 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
 }
 
 #pragma mark - UIScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-//    [_profileHeadView setProfileMaskAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)*2.];
     [_maskImageView setAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)*2.];
     [_navBarView setAlpha:(scrollView.contentOffset.y/profileTableHeadViewHeight)];
-//    if (scrollView.contentOffset.y > profileTableHeadViewHeight +10) {
-//        [_profileTableView setBackgroundColor:[UIColor blackColor]];
-//    }else{
-//    
-//        [_profileTableView setBackgroundColor:[UIColor clearColor]];
-//    }
-//    NSLog(@"Scoffset.y:%f",scrollView.contentOffset.y);
 }
 
 #pragma mark - Enter Live action
@@ -531,7 +521,6 @@ static CGFloat const kCoverImageWidthHeightRaito = 9./16.;//图片的宽高比.
             }
         }];
     }
-    
 }
 
 @end

@@ -42,27 +42,26 @@ CGFloat const kHostProfileAlbumItemSpaceDistance = 18.;
         [_leftHostRewardAlbumView setTag:1];
         [self.cellContentView addSubview:_leftHostRewardAlbumView];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_leftHostRewardAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance selfView:_leftHostRewardAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_leftHostRewardAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:_leftHostRewardAlbumView superView:self.cellContentView];
+        [_leftHostRewardAlbumView layoutTop:kContentViewInsideTopSpaceDistance layoutItemHandler:nil];
+        [_leftHostRewardAlbumView layoutBottom:-kContentViewInsideBottomSpaceDistance layoutItemHandler:nil];
+        [_leftHostRewardAlbumView layoutWidth:viewWidth layoutItemHandler:nil];
+        [_leftHostRewardAlbumView layoutLeft:kContentViewInsideLeftSpaceDistance layoutItemHandler:nil];
         
         self.midHostRewardAlbumView = [MIAHostRewardAlbumView newAutoLayoutView];
         [_midHostRewardAlbumView setTag:2];
         [self.cellContentView addSubview:_midHostRewardAlbumView];
         
-        [JOAutoLayout autoLayoutWithSizeWithView:_leftHostRewardAlbumView selfView:_midHostRewardAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftView:_leftHostRewardAlbumView distance:kHostProfileAlbumItemSpaceDistance selfView:_midHostRewardAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_midHostRewardAlbumView superView:self.cellContentView];
+        [_midHostRewardAlbumView layoutSizeView:_leftHostRewardAlbumView layoutItemHandler:nil];
+        [_midHostRewardAlbumView layoutLeftView:_leftHostRewardAlbumView distance:kHostProfileAlbumItemSpaceDistance layoutItemHandler:nil];
+        [_midHostRewardAlbumView layoutTop:kContentViewInsideTopSpaceDistance layoutItemHandler:nil];
         
         self.rightHostRewardAlbumView = [MIAHostRewardAlbumView newAutoLayoutView];
         [_rightHostRewardAlbumView setTag:3];
         [self.cellContentView addSubview:_rightHostRewardAlbumView];
         
-        [JOAutoLayout autoLayoutWithSizeWithView:_leftHostRewardAlbumView selfView:_rightHostRewardAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftView:_midHostRewardAlbumView distance:kHostProfileAlbumItemSpaceDistance selfView:_rightHostRewardAlbumView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:_rightHostRewardAlbumView superView:self.cellContentView];
-        
+        [_rightHostRewardAlbumView layoutSizeView:_leftHostRewardAlbumView layoutItemHandler:nil];
+        [_rightHostRewardAlbumView layoutLeftView:_midHostRewardAlbumView distance:kHostProfileAlbumItemSpaceDistance layoutItemHandler:nil];
+        [_rightHostRewardAlbumView layoutTop:kContentViewInsideTopSpaceDistance layoutItemHandler:nil];
     }
 }
 
@@ -83,7 +82,6 @@ CGFloat const kHostProfileAlbumItemSpaceDistance = 18.;
             [albumView setShowData:[data objectAtIndex:i]];
             [albumView setHidden:NO];
         }
-        
     }else{
         
         [JOFException exceptionWithName:@"MIAHostRewardAlbumCell Exception" reason:@"data 需要的格式为数组,数组里的元素为HostMusicAlbumModel类型"];

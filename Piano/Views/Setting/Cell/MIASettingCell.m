@@ -26,14 +26,13 @@
         [self.contentView setBackgroundColor:[UIColor clearColor]];
         [self.cellContentView  setBackgroundColor:[UIColor clearColor]];
         
-        [JOAutoLayout removeAllAutoLayoutWithSelfView:self.cellContentView superView:self.contentView];
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:self.cellContentView superView:self.contentView];
+        [self.cellContentView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
         
         self.cellView = [MIASettingCellView newAutoLayoutView];
         [_cellView setBackgroundColor:JORGBCreate(0., 0., 0., 0.4)];
         [self.cellContentView addSubview:_cellView];
         
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., -0.5, 0.) selfView:_cellView superView:self.cellContentView];
+        [_cellView layoutEdge:UIEdgeInsetsMake(0., 0., -0.5, 0.) layoutItemHandler:nil];
     }
 }
 

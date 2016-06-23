@@ -74,13 +74,14 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [_coverImageView setImage:[_maskImage blurredImageWithRadius:8.0f iterations:8. tintColor:[UIColor blackColor]]];
     [self.view addSubview:_coverImageView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:_coverImageView superView:self.view];
+    [_coverImageView layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
     UIImageView *maskImageView = [UIImageView newAutoLayoutView];
     [maskImageView setImage:[UIImage imageNamed:@"PR-MaskBG"]];
     [self.view addSubview:maskImageView];
     
-    [JOAutoLayout autoLayoutWithSameView:_coverImageView selfView:maskImageView superView:self.view];
+    [maskImageView layoutSameView:_coverImageView layoutItemHandler:nil];
+
 }
 
 - (void)createNavBarView{
@@ -99,10 +100,10 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     } rightClickHandler:nil];
     [self.view addSubview:_navBarView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_navBarView superView:self.view];
-    [JOAutoLayout autoLayoutWithHeight:kSettingNavBarHeight selfView:_navBarView superView:self.view];
+    [_navBarView layoutLeft:0. layoutItemHandler:nil];
+    [_navBarView layoutRight:0. layoutItemHandler:nil];
+    [_navBarView layoutTop:0. layoutItemHandler:nil];
+    [_navBarView layoutHeight:kSettingNavBarHeight layoutItemHandler:nil];
 }
 
 - (void)createSettingTableView{
@@ -113,14 +114,10 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
     [_settingTableView setDelegate:self];
     [_settingTableView setBackgroundColor:[UIColor clearColor]];
     [_settingTableView setSectionHeaderHeight:CGFLOAT_MIN];
-//    [_settingTableView setSeparatorColor:JORGBCreate(80., 80., 80., 0.0)];
     [_settingTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:_settingTableView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_settingTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kSettingNavBarHeight selfView:_settingTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_settingTableView superView:self.view];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_settingTableView superView:self.view];
+    [_settingTableView layoutEdge:UIEdgeInsetsMake(kSettingNavBarHeight, 0., 0., 0.) layoutItemHandler:nil];
 }
 
 - (void)createHeadImageView{
@@ -232,7 +229,6 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         }else{
             
             contentString = [[_settingViewModel.settingCellContentDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-//            [[cell detailTextLabel] setText:[[_settingViewModel.settingCellContentDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
         }
     }
     
@@ -245,18 +241,18 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         //头像
         [cell.contentView addSubview:_headImageView];
         
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-17. selfView:_headImageView superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(kSettingHeadImageHeight, kSettingHeadImageHeight) selfView:_headImageView superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_headImageView superView:cell.contentView];
+        [_headImageView layoutRight:-17. layoutItemHandler:nil];
+        [_headImageView layoutSize:JOSize(kSettingHeadImageHeight, kSettingHeadImageHeight) layoutItemHandler:nil];
+        [_headImageView layoutCenterYView:cell.contentView layoutItemHandler:nil];
     }
     
     if (section == 1 && row == 2) {
         //网络开关
         [cell.contentView addSubview:_netSwitch];
         
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-20. selfView:_netSwitch superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_netSwitch superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(44, 26.) selfView:_netSwitch superView:cell.contentView];
+        [_netSwitch layoutRight:-20. layoutItemHandler:nil];
+        [_netSwitch layoutCenterYView:cell.contentView layoutItemHandler:nil];
+        [_netSwitch layoutSize:JOSize(44, 26.) layoutItemHandler:nil];
     }
     
     //是否存在箭头指示
@@ -265,74 +261,11 @@ static CGFloat const kSettingNavBarHeight = 50.;//Bar的高度
         [(MIASettingCell *)cell setCellAccessoryImage:nil];
     }else{
         [(MIASettingCell *)cell setCellAccessoryImage:[UIImage imageNamed:@"C-ArrowIcon-Right-Gray"]];
-//        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
     if (section == 2 && row == 1) {
         [cell addGestureRecognizer:_uploadTapGesture];
     }
-    
-    /*
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"0_cell"];
-    
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-    }
-//    [cell setBackgroundColor:JORGBCreate(0., 0., 0., 0.4)];
-//    [[cell contentView] setBackgroundColor:JORGBCreate(0., 0., 0., 0.4)];
-    [[cell textLabel] setTextColor:[MIAFontManage getFontWithType:MIAFontType_Setting_CellTitle]->color];
-    [[cell textLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Setting_CellTitle]->font];
-//    NSLog(@"fontName:%@",[[cell textLabel] font]);
-    [[cell textLabel] setText:[[_settingViewModel.settingCellDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
-    [[cell detailTextLabel] setTextColor:[MIAFontManage getFontWithType:MIAFontType_Setting_CellContent]->color];
-    [[cell detailTextLabel] setFont:[MIAFontManage getFontWithType:MIAFontType_Setting_CellContent]->font];
-    if (indexPath.section == 0 && indexPath.row == 0) {
-    }else{
-        
-        if (indexPath.section == 0 && indexPath.row == 3) {
-            
-            NSString *genderString = [[_settingViewModel.settingCellContentDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-            if ([genderString isEqualToString:@"1"]) {
-                [[cell detailTextLabel] setText:@"男"];
-            }else if ([genderString isEqualToString:@"2"]){
-                [[cell detailTextLabel] setText:@"女"];
-            }
-            
-        }else{
-            [[cell detailTextLabel] setText:[[_settingViewModel.settingCellContentDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
-        }
-    }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-    
-    if (section == 0 && row == 0) {
-        //头像
-        [cell.contentView addSubview:_headImageView];
-        
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-17. selfView:_headImageView superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(kSettingHeadImageHeight, kSettingHeadImageHeight) selfView:_headImageView superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_headImageView superView:cell.contentView];
-    }
-    
-    if (section == 1 && row == 2) {
-        //网络开关
-        [cell.contentView addSubview:_netSwitch];
-        
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-15. selfView:_netSwitch superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithCenterYWithView:cell.contentView selfView:_netSwitch superView:cell.contentView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(44, 26.) selfView:_netSwitch superView:cell.contentView];
-    }
-    
-    //是否存在箭头指示
-    if ((section == 0 && row == 0) || (section == 1) || (section == 2 && row == 1) || (section == 2 && row == 2)) {
-        //不存在箭头指示
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-    }else{
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    }
-    */
     
     return cell;
 }

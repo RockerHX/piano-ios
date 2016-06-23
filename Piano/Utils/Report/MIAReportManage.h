@@ -32,8 +32,7 @@ typedef void(^ReportStateBlock)(ReportState reportState);
  */
 + (instancetype)reportManage;
 
-- (void)reportWithType:(NSString *)type content:(NSString *)content reportHandler:(ReportStateBlock)block;
 
-//- (void)reportWithType:(NSString *)type content:(NSString *)content viewController:(UIViewController *)controller reportHandler:(ReportStateBlock)block;
+- (void)reportWithType:(NSString *)type content:(NSString *)content reportHandler:(ReportStateBlock)block;
 
 @end

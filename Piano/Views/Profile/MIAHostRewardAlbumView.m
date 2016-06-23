@@ -46,15 +46,15 @@ CGFloat const kRewardAlbumImageToTitleDistanceSpace = 6.;
     [self.showTipLabel setHidden:YES];
     [self.showTitleLabel setTextAlignment:NSTextAlignmentLeft];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithHeightWidthRatioValue:1. selfView:self.showImageView superView:self];
+    [self.showImageView layoutLeft:0. layoutItemHandler:nil];
+    [self.showImageView layoutRight:0. layoutItemHandler:nil];
+    [self.showImageView layoutTop:0. layoutItemHandler:nil];
+    [self.showImageView layoutHeightWidthRatio:1. layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithTopView:self.showImageView distance:kRewardAlbumImageToTitleDistanceSpace selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftXView:self.showImageView selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightXView:self.showImageView selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height selfView:self.showTitleLabel superView:self];
+    [self.showTitleLabel layoutTopView:self.showImageView distance:kRewardAlbumImageToTitleDistanceSpace layoutItemHandler:nil];
+    [self.showTitleLabel layoutLeftXView:self.showImageView distance:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutRightXView:self.showImageView distance:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
 }
 
 - (void)setShowData:(id)data{

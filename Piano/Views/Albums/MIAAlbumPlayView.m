@@ -37,10 +37,6 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
 @property (nonatomic, strong) UILabel *startTimeLabel;
 @property (nonatomic, strong) MIAPlaySlider *sliderView;
 @property (nonatomic, strong) UILabel *remainTimeLabel;
-//@property (nonatomic, strong) UIButton *nextButton;
-//@property (nonatomic, strong) UIButton *preButton;
-
-//@property (nonatomic, strong) NSTimer * timer;
 
 @property (nonatomic, copy) PlaySongBlock songBlock;
 
@@ -69,52 +65,28 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [_playButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_playButton];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:-6. selfView:_playButton superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kTopSpaceDistance selfView:_playButton superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kBottomSpaceDistance selfView:_playButton superView:self];
-    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_playButton superView:self];
+    [_playButton layoutLeft:-6. layoutItemHandler:nil];
+    [_playButton layoutTop:kTopSpaceDistance layoutItemHandler:nil];
+    [_playButton layoutBottom:-kBottomSpaceDistance layoutItemHandler:nil];
+    [_playButton layoutWidthHeightRatio:1. layoutItemHandler:nil];
     
     self.startTimeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Play_Time]];
     [_startTimeLabel setText:@"00:00"];
     [self addSubview:_startTimeLabel];
     
-    [JOAutoLayout autoLayoutWithLeftView:_playButton distance:kButtonToTimeSpaceDistance selfView:_startTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_startTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_startTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:[_startTimeLabel sizeThatFits:JOMAXSize].width+1 selfView:_startTimeLabel superView:self];
-    
-//    self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [_nextButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-//    [_nextButton addTarget:self action:@selector(nextSongAction) forControlEvents:UIControlEventTouchUpInside];
-//    [_nextButton setImage:[UIImage imageNamed:@"AD-NextIcon-E"] forState:UIControlStateNormal];
-//    [_nextButton setImage:[UIImage imageNamed:@"AD-NextIcon-U"] forState:UIControlStateDisabled];
-//    [self addSubview:_nextButton];
-//    
-//    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_nextButton superView:self];
-//    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_nextButton superView:self];
-//    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_nextButton superView:self];
-//    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_nextButton superView:self];
-    
-//    self.preButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [_preButton addTarget:self action:@selector(preSongAction) forControlEvents:UIControlEventTouchUpInside];
-//    [_preButton setImage:[UIImage imageNamed:@"AD-PreviousIcon-E"] forState:UIControlStateNormal];
-//    [_preButton setImage:[UIImage imageNamed:@"AD-PreviousIcon-U"] forState:UIControlStateDisabled];
-//    [_preButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-//    [self addSubview:_preButton];
-//    
-//    [JOAutoLayout autoLayoutWithRightView:_nextButton distance:-kButtonToButtonSpaceDistance selfView:_preButton superView:self];
-//    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_preButton superView:self];
-//    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_preButton superView:self];
-//    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:_preButton superView:self];
+    [_startTimeLabel layoutLeftView:_playButton distance:kButtonToTimeSpaceDistance layoutItemHandler:nil];
+    [_startTimeLabel layoutTopYView:_playButton distance:0. layoutItemHandler:nil];
+    [_startTimeLabel layoutBottomYView:_playButton distance:0. layoutItemHandler:nil];
+    [_startTimeLabel layoutWidth:[_startTimeLabel sizeThatFits:JOMAXSize].width+1 layoutItemHandler:nil];
     
     self.remainTimeLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Album_Play_Time]];
     [_remainTimeLabel setText:@"00:00"];
     [self addSubview:_remainTimeLabel];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-0. selfView:_remainTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_playButton selfView:_remainTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_playButton selfView:_remainTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width selfView:_remainTimeLabel superView:self];
+    [_remainTimeLabel layoutRight:0. layoutItemHandler:nil];
+    [_remainTimeLabel layoutTopYView:_playButton distance:0. layoutItemHandler:nil];
+    [_remainTimeLabel layoutBottomYView:_playButton distance:0. layoutItemHandler:nil];
+    [_remainTimeLabel layoutWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width layoutItemHandler:nil];
     
     self.sliderView = [MIAPlaySlider newAutoLayoutView];
     [_sliderView setMinimumTrackTintColor:SliderColor];
@@ -126,10 +98,10 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     [_sliderView setThumbImage:[UIImage imageNamed:@"AD-SliderThumb"] forState:UIControlStateNormal];
     [self addSubview:_sliderView];
     
-    [JOAutoLayout autoLayoutWithTopYView:_playButton distance:5. selfView:_sliderView superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_playButton distance:-5. selfView:_sliderView superView:self];
-    [JOAutoLayout autoLayoutWithLeftView:_startTimeLabel distance:kTimeToSliderSpaceDistance selfView:_sliderView superView:self];
-    [JOAutoLayout autoLayoutWithRightView:_remainTimeLabel distance:-kTimeToSliderSpaceDistance selfView:_sliderView superView:self];
+    [_sliderView layoutTopYView:_playButton distance:5. layoutItemHandler:nil];
+    [_sliderView layoutBottomYView:_playButton distance:-5. layoutItemHandler:nil];
+    [_sliderView layoutLeftView:_startTimeLabel distance:kTimeToSliderSpaceDistance layoutItemHandler:nil];
+    [_sliderView layoutRightView:_remainTimeLabel distance:-kTimeToSliderSpaceDistance layoutItemHandler:nil];
 }
 
 - (void)dealloc{
@@ -246,8 +218,7 @@ static NSString const * kAlbumPlayHostKey = @"kAlbumPlayHostKey";
     self.sliderView.value = musicMgr.currentPlayedPostion;
     self.remainTimeLabel.text = [NSString stringWithFormat:@"%02zd:%02zd", musicDurationMinute, (musicDurationSecond % 60)];
     
-    [JOAutoLayout removeAutoLayoutWithWidthSelfView:_remainTimeLabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width selfView:_remainTimeLabel superView:self];
+    [_remainTimeLabel layoutWidth:[_remainTimeLabel sizeThatFits:JOMAXSize].width layoutItemHandler:nil];
 }
 
 #pragma mark - Button Action

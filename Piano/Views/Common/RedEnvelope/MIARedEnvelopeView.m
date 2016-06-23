@@ -51,8 +51,8 @@ static CGFloat const kReceiveButtonHeight = 41.;//按钮的高度
         [_redImageView setUserInteractionEnabled:YES];
         [self addSubview:_redImageView];
         
-        [JOAutoLayout autoLayoutWithSize:JOSize(kRedImageViewWidth, kRedImageViewHeight) selfView:_redImageView superView:self];
-        [JOAutoLayout autoLayoutWithCenterWithView:self selfView:_redImageView superView:self];
+        [_redImageView layoutSize:JOSize(kRedImageViewWidth, kRedImageViewHeight) layoutItemHandler:nil];
+        [_redImageView layoutCenterView:self layoutItemHandler:nil];
         
         self.titleLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_RedEnvelope_Title]];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -60,10 +60,10 @@ static CGFloat const kReceiveButtonHeight = 41.;//按钮的高度
         [_titleLabel setText:@" "];
         [_redImageView addSubview:_titleLabel];
         
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:_titleLabel superView:_redImageView];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:_titleLabel superView:_redImageView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kTitleTopSpaceDistance selfView:_titleLabel superView:_redImageView];
-        [JOAutoLayout autoLayoutWithHeight:[_titleLabel sizeThatFits:JOMAXSize].height selfView:_titleLabel superView:_redImageView];
+        [_titleLabel layoutLeft:10. layoutItemHandler:nil];
+        [_titleLabel layoutRight:-10. layoutItemHandler:nil];
+        [_titleLabel layoutTop:kTitleTopSpaceDistance layoutItemHandler:nil];
+        [_titleLabel layoutHeight:[_titleLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
         
         self.tipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_RedEnvelope_Tip]];
         [_tipLabel setTextAlignment:NSTextAlignmentCenter];
@@ -71,10 +71,10 @@ static CGFloat const kReceiveButtonHeight = 41.;//按钮的高度
         [_tipLabel setText:@" "];
         [_redImageView addSubview:_tipLabel];
         
-        [JOAutoLayout autoLayoutWithLeftXView:_titleLabel selfView:_tipLabel superView:_redImageView];
-        [JOAutoLayout autoLayoutWithRightXView:_titleLabel selfView:_tipLabel superView:_redImageView];
-        [JOAutoLayout autoLayoutWithTopView:_titleLabel distance:kTitleToTipSpaceDistance selfView:_tipLabel superView:_redImageView];
-        [JOAutoLayout autoLayoutWithHeight:[_tipLabel sizeThatFits:JOMAXSize].height selfView:_tipLabel superView:_redImageView];
+        [_tipLabel layoutLeftXView:_titleLabel distance:0. layoutItemHandler:nil];
+        [_tipLabel layoutRightXView:_titleLabel distance:0. layoutItemHandler:nil];
+        [_tipLabel layoutTopView:_titleLabel distance:kTitleToTipSpaceDistance layoutItemHandler:nil];
+        [_tipLabel layoutHeight:[_tipLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
         
         self.receiveButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_receiveButton setUserInteractionEnabled:YES];
@@ -88,9 +88,9 @@ static CGFloat const kReceiveButtonHeight = 41.;//按钮的高度
         [_receiveButton addTarget:self action:@selector(receiveAction) forControlEvents:UIControlEventTouchUpInside];
         [_redImageView addSubview:_receiveButton];
         
-        [JOAutoLayout autoLayoutWithSize:JOSize(kReceiveButtonWidth, kReceiveButtonHeight) selfView:_receiveButton superView:_redImageView];
-        [JOAutoLayout autoLayoutWithTopView:_tipLabel distance:kTipToButtonSpaceDistance selfView:_receiveButton superView:_redImageView];
-        [JOAutoLayout autoLayoutWithCenterXWithView:_redImageView selfView:_receiveButton superView:_redImageView];
+        [_receiveButton layoutSize:JOSize(kReceiveButtonWidth, kReceiveButtonHeight) layoutItemHandler:nil];
+        [_receiveButton layoutTopView:_tipLabel distance:kTipToButtonSpaceDistance layoutItemHandler:nil];
+        [_receiveButton layoutCenterXView:_redImageView layoutItemHandler:nil];
     }
 }
 
@@ -107,14 +107,12 @@ static CGFloat const kReceiveButtonHeight = 41.;//按钮的高度
     self.receiveBlock = handler;
     if (view) {
         [view addSubview:self];
-        [JOAutoLayout removeAllAutoLayoutWithSelfView:self superView:view];
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:self superView:view];
+        [self layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     }else{
     
         UIView *rootView = [[UIApplication sharedApplication].delegate.window rootViewController].view;
         [rootView addSubview:self];
-        [JOAutoLayout removeAllAutoLayoutWithSelfView:self superView:rootView];
-        [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:self superView:rootView];
+        [self layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     }
 }
 

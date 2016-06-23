@@ -49,63 +49,19 @@ CGFloat const kAttentionViewItemVerticalSpaceDistance = 20.;//竖直方向 元�
 - (void)createAttentionPromptCellContentView{
     
     CGFloat viewWidth = (cellWidth - kContentViewRightSpaceDistance -kContentViewLeftSpaceDistance -kContentViewInsideLeftSpaceDistance - kContentViewInsideRightSpaceDistance - 3*kAttentionViewItemSpaceDistance)/4.;
-    
-//    for (UIView *subView in self.cellContentView.subviews) {
-//        [subView setHidden:YES];
-//        [subView removeFromSuperview];
-//    }
+
     
     if (!self.leftAttentionView) {
-//
-//        for (int i = 0; i < [_attentionArray count]; i++) {
-//            
-//            MIAHostAttentionView *hostAttentionView = [MIAHostAttentionView newAutoLayoutView];
-//            [hostAttentionView setAttentionViewWidth:viewWidth];
-//            [hostAttentionView setTag:i+1];
-//            [self.cellContentView addSubview:hostAttentionView];
-//            
-//            [JOAutoLayout autoLayoutWithSize:JOSize(viewWidth, viewWidth+[self getAttentionViewHeight]) selfView:hostAttentionView superView:self.cellContentView];
-//            
-//            if (i < 4 ) {
-//                //第一排的
-//                if(i){
-//                    //非第一个
-//                    UIView *lastView = [self.cellContentView viewWithTag:i];
-//                    [JOAutoLayout autoLayoutWithLeftView:lastView distance:kAttentionViewItemSpaceDistance selfView:hostAttentionView superView:self.cellContentView];
-//                    
-//                }else{
-//                    //第一个
-//                    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:hostAttentionView superView:self.cellContentView];
-//                }
-//                
-//                [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance selfView:hostAttentionView superView:self.cellContentView];
-//                
-//            }else{
-//                //第二排的
-//                UIView *topView = [self.cellContentView viewWithTag:i-3];
-//                [JOAutoLayout autoLayoutWithTopView:topView distance:kAttentionViewItemVerticalSpaceDistance selfView:hostAttentionView superView:self.cellContentView];
-//                if (i == 4) {
-//                    //第二排第一个
-//                    [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewInsideLeftSpaceDistance selfView:hostAttentionView superView:self.cellContentView];
-//                }else{
-//                    //非第一个
-//                    UIView *lastView = [self.cellContentView viewWithTag:i];
-//                    [JOAutoLayout autoLayoutWithLeftView:lastView distance:kAttentionViewItemSpaceDistance selfView:hostAttentionView superView:self.cellContentView];
-//                }
-//            }
-//            
-//        }
-    
         //左一
         self.leftAttentionView = [MIAHostAttentionView newAutoLayoutView];
         [_leftAttentionView setAttentionViewWidth:viewWidth];
         [_leftAttentionView setTag:1];
         [self.cellContentView addSubview:_leftAttentionView];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_leftAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance*2 selfView:_leftAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_leftAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:kContentViewLeftSpaceDistance selfView:_leftAttentionView superView:self.cellContentView];
+        [_leftAttentionView layoutTop:kContentViewInsideTopSpaceDistance*2 layoutItemHandler:nil];
+        [_leftAttentionView layoutBottom:-kContentViewInsideBottomSpaceDistance*2 layoutItemHandler:nil];
+        [_leftAttentionView layoutWidth:viewWidth layoutItemHandler:nil];
+        [_leftAttentionView layoutLeft:kContentViewLeftSpaceDistance layoutItemHandler:nil];
         
         //左二
         self.leftMidAttentionView = [MIAHostAttentionView newAutoLayoutView];
@@ -113,10 +69,10 @@ CGFloat const kAttentionViewItemVerticalSpaceDistance = 20.;//竖直方向 元�
         [_leftMidAttentionView setTag:2];
         [self.cellContentView addSubview:_leftMidAttentionView];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_leftMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance*2 selfView:_leftMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_leftMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftView:_leftAttentionView distance:kAttentionViewItemSpaceDistance selfView:_leftMidAttentionView superView:self.cellContentView];
+        [_leftMidAttentionView layoutTop:kContentViewInsideTopSpaceDistance*2 layoutItemHandler:nil];
+        [_leftMidAttentionView layoutBottom:-kContentViewInsideBottomSpaceDistance*2 layoutItemHandler:nil];
+        [_leftMidAttentionView layoutWidth:viewWidth layoutItemHandler:nil];
+        [_leftMidAttentionView layoutLeftView:_leftAttentionView distance:kAttentionViewItemSpaceDistance layoutItemHandler:nil];
         
         //左三
         self.rightMidAttentionView = [MIAHostAttentionView newAutoLayoutView];
@@ -124,10 +80,10 @@ CGFloat const kAttentionViewItemVerticalSpaceDistance = 20.;//竖直方向 元�
         [_rightMidAttentionView setTag:3];
         [self.cellContentView addSubview:_rightMidAttentionView];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_rightMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance*2 selfView:_rightMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_rightMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftView:_leftMidAttentionView distance:kAttentionViewItemSpaceDistance selfView:_rightMidAttentionView superView:self.cellContentView];
+        [_rightMidAttentionView layoutTop:kContentViewInsideTopSpaceDistance*2 layoutItemHandler:nil];
+        [_rightMidAttentionView layoutBottom:-kContentViewInsideBottomSpaceDistance*2 layoutItemHandler:nil];
+        [_rightMidAttentionView layoutWidth:viewWidth layoutItemHandler:nil];
+        [_rightMidAttentionView layoutLeftView:_leftMidAttentionView distance:kAttentionViewItemSpaceDistance layoutItemHandler:nil];
         
         //左四
         self.rightAttentionView = [MIAHostAttentionView newAutoLayoutView];
@@ -135,10 +91,10 @@ CGFloat const kAttentionViewItemVerticalSpaceDistance = 20.;//竖直方向 元�
         [_rightAttentionView setTag:4];
         [self.cellContentView addSubview:_rightAttentionView];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_rightAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:-kContentViewInsideBottomSpaceDistance*2 selfView:_rightAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithWidth:viewWidth selfView:_rightAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithLeftView:_rightMidAttentionView distance:kAttentionViewItemSpaceDistance selfView:_rightAttentionView superView:self.cellContentView];
+        [_rightAttentionView layoutTop:kContentViewInsideTopSpaceDistance*2 layoutItemHandler:nil];
+        [_rightAttentionView layoutBottom:-kContentViewInsideBottomSpaceDistance*2 layoutItemHandler:nil];
+        [_rightAttentionView layoutWidth:viewWidth layoutItemHandler:nil];
+        [_rightAttentionView layoutLeftView:_rightMidAttentionView distance:kAttentionViewItemSpaceDistance layoutItemHandler:nil];
     }
 }
 
@@ -175,22 +131,19 @@ CGFloat const kAttentionViewItemVerticalSpaceDistance = 20.;//竖直方向 元�
 
 - (void)setHostAttentionTopState:(BOOL)state{
 
-    [JOAutoLayout removeAutoLayoutWithTopSelfView:_leftAttentionView superView:self.cellContentView];
-    [JOAutoLayout removeAutoLayoutWithTopSelfView:_leftMidAttentionView superView:self.cellContentView];
-    [JOAutoLayout removeAutoLayoutWithTopSelfView:_rightMidAttentionView superView:self.cellContentView];
-    [JOAutoLayout removeAutoLayoutWithTopSelfView:_rightAttentionView superView:self.cellContentView];
     if (state) {
+
+        [_leftAttentionView layoutTop:5. layoutItemHandler:nil];
+        [_leftMidAttentionView layoutTop:5. layoutItemHandler:nil];
+        [_rightMidAttentionView layoutTop:5. layoutItemHandler:nil];
+        [_rightAttentionView layoutTop:5. layoutItemHandler:nil];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_leftAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_leftMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_rightMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:5. selfView:_rightAttentionView superView:self.cellContentView];
     }else{
-    
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_leftAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_leftMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_rightMidAttentionView superView:self.cellContentView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:kContentViewInsideTopSpaceDistance*2 selfView:_rightAttentionView superView:self.cellContentView];
+        
+        [_leftAttentionView layoutTop:kContentViewInsideTopSpaceDistance*2 layoutItemHandler:nil];
+        [_leftMidAttentionView layoutTop:kContentViewInsideTopSpaceDistance*2 layoutItemHandler:nil];
+        [_rightMidAttentionView layoutTop:kContentViewInsideTopSpaceDistance*2 layoutItemHandler:nil];
+        [_rightAttentionView layoutTop:kContentViewInsideTopSpaceDistance*2 layoutItemHandler:nil];
     }
 }
 

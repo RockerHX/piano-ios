@@ -46,18 +46,17 @@ static CGFloat const kPaymentTipToMSpacedistance = 10.; //tip到M的间距大小
     [_barView setBackgroundColor:[UIColor clearColor]];
     [self addSubview:_barView];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:kPaymentBarTopSpaceDistance selfView:_barView superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_barView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_barView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:kPaymentBarHeight selfView:_barView superView:self];
+    [_barView layoutTop:kPaymentBarTopSpaceDistance layoutItemHandler:nil];
+    [_barView layoutLeft:0. layoutItemHandler:nil];
+    [_barView layoutRight:0. layoutItemHandler:nil];
+    [_barView layoutHeight:kPaymentBarHeight layoutItemHandler:nil];
     
     UILabel *barTitleLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType: MIAFontType_Payment_Bar_Title]];
     [barTitleLabel setTextAlignment:NSTextAlignmentCenter];
     [barTitleLabel setText:@"充值"];
     [_barView addSubview:barTitleLabel];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., 0., 0.) selfView:barTitleLabel superView:_barView];
-    
+    [barTitleLabel layoutEdge:UIEdgeInsetsMake(0., 0., 0., 0.) layoutItemHandler:nil];
     
     UIButton *popButton  = [UIButton buttonWithType:UIButtonTypeCustom];
     [popButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -65,10 +64,10 @@ static CGFloat const kPaymentTipToMSpacedistance = 10.; //tip到M的间距大小
     [popButton addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
     [_barView addSubview:popButton];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:popButton superView:_barView];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:10. selfView:popButton superView:_barView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:popButton superView:_barView];
-    [JOAutoLayout autoLayoutWithWidthEqualHeightWithselfView:popButton superView:_barView];
+    [popButton layoutTop:0. layoutItemHandler:nil];
+    [popButton layoutLeft:0. layoutItemHandler:nil];
+    [popButton layoutBottom:0. layoutItemHandler:nil];
+    [popButton layoutWidthHeightRatio:1. layoutItemHandler:nil];
     
     UIButton *payHistoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [payHistoryButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -78,10 +77,10 @@ static CGFloat const kPaymentTipToMSpacedistance = 10.; //tip到M的间距大小
     [payHistoryButton addTarget:self action:@selector(payHistoryAction) forControlEvents:UIControlEventTouchUpInside];
     [_barView addSubview:payHistoryButton];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:-10. selfView:payHistoryButton superView:_barView];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:payHistoryButton superView:_barView];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:payHistoryButton superView:_barView];
-    [JOAutoLayout autoLayoutWithWidth:[[payHistoryButton titleLabel] sizeThatFits:JOMAXSize].width+2 selfView:payHistoryButton superView:_barView];
+    [payHistoryButton layoutRight:-10. layoutItemHandler:nil];
+    [payHistoryButton layoutTop:0. layoutItemHandler:nil];
+    [payHistoryButton layoutBottom:0. layoutItemHandler:nil];
+    [payHistoryButton layoutWidth:[[payHistoryButton titleLabel] sizeThatFits:JOMAXSize].width+2 layoutItemHandler:nil];
     
     
     self.mTipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Payment_Bar_M_Tip]];
@@ -89,20 +88,20 @@ static CGFloat const kPaymentTipToMSpacedistance = 10.; //tip到M的间距大小
     [_mTipLabel setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:_mTipLabel];
     
-    [JOAutoLayout autoLayoutWithTopView:_barView distance:kPaymentBarToTipSpaceDistance selfView:_mTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_mTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_mTipLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_mTipLabel sizeThatFits:JOMAXSize].height+1 selfView:_mTipLabel superView:self];
+    [_mTipLabel layoutTopView:_barView distance:kPaymentBarToTipSpaceDistance layoutItemHandler:nil];
+    [_mTipLabel layoutLeft:0. layoutItemHandler:nil];
+    [_mTipLabel layoutRight:0. layoutItemHandler:nil];
+    [_mTipLabel layoutHeight:[_mTipLabel sizeThatFits:JOMAXSize].height+1 layoutItemHandler:nil];
     
     self.mLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Payment_Bar_M]];
     [_mLabel setText:@" "];
     [_mLabel setTextAlignment:NSTextAlignmentCenter];
     [self addSubview:_mLabel];
     
-    [JOAutoLayout autoLayoutWithTopView:_mTipLabel distance:kPaymentTipToMSpacedistance selfView:_mLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:_mLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_mLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_mLabel sizeThatFits:JOMAXSize].height+1 selfView:_mLabel superView:self];
+    [_mLabel layoutTopView:_mTipLabel distance:kPaymentTipToMSpacedistance layoutItemHandler:nil];
+    [_mLabel layoutLeft:0. layoutItemHandler:nil];
+    [_mLabel layoutRight:0. layoutItemHandler:nil];
+    [_mLabel layoutHeight:[_mLabel sizeThatFits:JOMAXSize].height+1 layoutItemHandler:nil];
     
 }
 

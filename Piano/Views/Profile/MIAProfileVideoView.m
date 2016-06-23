@@ -46,32 +46,31 @@ CGFloat const kProfileVideoToTitleSpaceDistance = 7.;
     [self addTapGesture];
     
     [self.showImageView setBackgroundColor:JORGBSameCreate(230.)];
-//    [[self.showImageView layer] setCornerRadius:3.];
     [self.showTitleLabel setJOFont:[MIAFontManage getFontWithType:MIAFontType_Profile_Video_Name]];
    
     [self.showTipLabel setHidden:YES];
     
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0 selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height selfView:self.showTitleLabel superView:self];
+    [self.showTitleLabel layoutBottom:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutLeft:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutRight:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithBottomView:self.showTitleLabel distance:-kProfileVideoToTitleSpaceDistance selfView:self.showImageView superView:self];
+    [self.showImageView layoutLeft:0. layoutItemHandler:nil];
+    [self.showImageView layoutRight:0. layoutItemHandler:nil];
+    [self.showImageView layoutTop:0. layoutItemHandler:nil];
+    [self.showImageView layoutBottomView:self.showTitleLabel distance:-kProfileVideoToTitleSpaceDistance layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:_numberlabel superView:self];
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:7. selfView:_numberlabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[_numberlabel sizeThatFits:JOMAXSize].height selfView:_numberlabel superView:self];
-    [JOAutoLayout autoLayoutWithWidth:[_numberlabel sizeThatFits:JOMAXSize].width + 8. selfView:_numberlabel superView:self];
+    [_numberlabel layoutRight:0. layoutItemHandler:nil];
+    [_numberlabel layoutTop:7. layoutItemHandler:nil];
+    [_numberlabel layoutHeight:[_numberlabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
+    [_numberlabel layoutWidth:[_numberlabel sizeThatFits:JOMAXSize].width + 8. layoutItemHandler:nil];
     
     UIImage *videoImage = [UIImage imageNamed:@"PR-Video"];
     
-    [JOAutoLayout autoLayoutWithRightView:_numberlabel distance:-5. selfView:_videoImageView superView:self];
-    [JOAutoLayout autoLayoutWithTopYView:_numberlabel selfView:_videoImageView superView:self];
-    [JOAutoLayout autoLayoutWithBottomYView:_numberlabel selfView:_videoImageView superView:self];
-    [JOAutoLayout autoLayoutWithWidth:videoImage.size.width selfView:_videoImageView superView:self];
+    [_videoImageView layoutRightView:_numberlabel distance:-5. layoutItemHandler:nil];
+    [_videoImageView layoutTopYView:_numberlabel distance:0. layoutItemHandler:nil];
+    [_videoImageView layoutBottomYView:_numberlabel distance:0. layoutItemHandler:nil];
+    [_videoImageView layoutWidth:videoImage.size.width layoutItemHandler:nil];
     
 }
 

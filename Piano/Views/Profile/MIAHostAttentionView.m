@@ -51,15 +51,15 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
     [self.showTitleLabel setTextColor:[MIAFontManage getFontWithType:MIAFontType_Host_Attention_Title]->color];
     [self.showTitleLabel setTextAlignment:NSTextAlignmentCenter];
     
-    [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:self.showImageView superView:self];
-    [JOAutoLayout autoLayoutWithHeightWidthRatioValue:1. selfView:self.showImageView superView:self];
+    [self.showImageView layoutTop:0. layoutItemHandler:nil];
+    [self.showImageView layoutLeft:0. layoutItemHandler:nil];
+    [self.showImageView layoutRight:0. layoutItemHandler:nil];
+    [self.showImageView layoutHeightWidthRatio:1. layoutItemHandler:nil];
     
-    [JOAutoLayout autoLayoutWithTopView:self.showImageView distance:kAttentionImageToTitleSpaceDistance selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithLeftXView:self.showImageView selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithRightXView:self.showImageView selfView:self.showTitleLabel superView:self];
-    [JOAutoLayout autoLayoutWithHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height selfView:self.showTitleLabel superView:self];
+    [self.showTitleLabel layoutTopView:self.showImageView distance:kAttentionImageToTitleSpaceDistance layoutItemHandler:nil];
+    [self.showTitleLabel layoutLeftXView:self.showImageView distance:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutRightXView:self.showImageView distance:0. layoutItemHandler:nil];
+    [self.showTitleLabel layoutHeight:[self.showTitleLabel sizeThatFits:JOMAXSize].height layoutItemHandler:nil];
 }
 
 - (void)setLiveShowState:(BOOL)state{
@@ -79,9 +79,9 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
         
         CGFloat leftSpace = (kLiveTipLableHeight - kLiveImageHeight)/2.;
         
-        [JOAutoLayout autoLayoutWithLeftSpaceDistance:leftSpace selfView:liveImageView superView:_liveView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:leftSpace selfView:liveImageView superView:_liveView];
-        [JOAutoLayout autoLayoutWithSize:JOSize(kLiveImageHeight, kLiveImageHeight) selfView:liveImageView superView:_liveView];
+        [liveImageView layoutLeft:leftSpace layoutItemHandler:nil];
+        [liveImageView layoutTop:leftSpace layoutItemHandler:nil];
+        [liveImageView layoutSize:JOSize(kLiveImageHeight, kLiveImageHeight) layoutItemHandler:nil];
         
         self.liveTipLabel = [JOUIManage createLabelWithJOFont:[MIAFontManage getFontWithType:MIAFontType_Host_Attention_Live]];
         [_liveTipLabel setBackgroundColor:[UIColor whiteColor]];
@@ -91,26 +91,24 @@ CGFloat const kAttentionImageToTitleSpaceDistance = 10.;//图片与标题的间�
         [_liveTipLabel setText:@"Live"];
         [_liveView addSubview:_liveTipLabel];
         
-        [JOAutoLayout autoLayoutWithLeftView:liveImageView distance:leftSpace selfView:_liveTipLabel superView:_liveView];
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:_liveTipLabel superView:_liveView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:_liveTipLabel superView:_liveView];
-        [JOAutoLayout autoLayoutWithRightSpaceDistance:-leftSpace selfView:_liveTipLabel superView:_liveView];
+        [_liveTipLabel layoutLeftView:liveImageView distance:leftSpace layoutItemHandler:nil];
+        [_liveTipLabel layoutTop:0. layoutItemHandler:nil];
+        [_liveTipLabel layoutBottom:0. layoutItemHandler:nil];
+        [_liveTipLabel layoutRight:-leftSpace layoutItemHandler:nil];
     }
-    
-    [JOAutoLayout removeAllAutoLayoutWithSelfView:_liveTipLabel superView:self];
+
+    [JOLayout removeAllLayoutWithView:_liveView];
     
     if (state) {
         [_liveView setHidden:NO];
         
         CGFloat leftSpace = (kLiveTipLableHeight - kLiveImageHeight)/2.;
-        
         CGFloat liveViewWidth = leftSpace + kLiveImageHeight + leftSpace + [_liveTipLabel sizeThatFits:JOMAXSize].width + leftSpace;
         
-        [JOAutoLayout autoLayoutWithBottomYView:self.showImageView distance:2. selfView:_liveView superView:self];
-        [JOAutoLayout autoLayoutWithHeight:kLiveTipLableHeight selfView:_liveView superView:self];
-        [JOAutoLayout autoLayoutWithCenterXWithView:self.showImageView selfView:_liveView superView:self];
-//        [JOAutoLayout autoLayoutWithWidthWithView:self.showImageView ratioValue:3./4. selfView:_liveView superView:self];
-        [JOAutoLayout autoLayoutWithWidth:liveViewWidth selfView:_liveView superView:self];
+        [_liveView layoutBottomYView:self.showImageView distance:2. layoutItemHandler:nil];
+        [_liveView layoutHeight:kLiveTipLableHeight layoutItemHandler:nil];
+        [_liveView layoutCenterXView:self.showImageView layoutItemHandler:nil];
+        [_liveView layoutWidth:liveViewWidth layoutItemHandler:nil];
         
     }else{
         

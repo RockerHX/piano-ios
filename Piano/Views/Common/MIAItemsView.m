@@ -48,21 +48,21 @@ static CGFloat const kAnimationViewHeight = 2.;//动画的视图的高度
     self.contentView = [UIView newAutoLayoutView];
     [self addSubview:_contentView];
     
-    [JOAutoLayout autoLayoutWithEdgeInsets:UIEdgeInsetsMake(0., 0., -kAnimationViewHeight, 0.) selfView:_contentView superView:self];
+    [_contentView layoutEdge:UIEdgeInsetsMake(0., 0., -kAnimationViewHeight, 0.) layoutItemHandler:nil];
     
     UIView *separateLineView = [UIView newAutoLayoutView];
     [separateLineView setBackgroundColor:JORGBSameCreate(230.)];
     [self addSubview:separateLineView];
     
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithRightSpaceDistance:0. selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:separateLineView superView:self];
-    [JOAutoLayout autoLayoutWithHeight:kAnimationViewHeight selfView:separateLineView superView:self];
+    [separateLineView layoutLeft:0. layoutItemHandler:nil];
+    [separateLineView layoutRight:0. layoutItemHandler:nil];
+    [separateLineView layoutBottom:0. layoutItemHandler:nil];
+    [separateLineView layoutHeight:kAnimationViewHeight layoutItemHandler:nil];
     
     self.animationView = [UIView newAutoLayoutView];
     [self addSubview:_animationView];
     
-    [JOAutoLayout autoLayoutWithSameView:separateLineView selfView:_animationView superView:self];
+    [_animationView layoutSameView:separateLineView layoutItemHandler:nil];
 }
 
 - (void)setItemArray:(NSArray *)itemArray{
@@ -71,8 +71,9 @@ static CGFloat const kAnimationViewHeight = 2.;//动画的视图的高度
     self.itemsarray = itemArray;
     
     if ([itemArray count]) {
-        [JOAutoLayout removeAutoLayoutWithRightSelfView:_animationView superView:self];
-        [JOAutoLayout autoLayoutWithWidthWithView:self ratioValue:1./[itemArray count] selfView:_animationView superView:self];
+        
+        [JOLayout removeRightLayoutWithView:_animationView];
+        [_animationView layoutWidthView:self ratio:1./[itemArray count] layoutItemHandler:nil];
     }
     
     [self updateItemButtonView];
@@ -112,25 +113,24 @@ static CGFloat const kAnimationViewHeight = 2.;//动画的视图的高度
         [itemButton addTarget:self action:@selector(itemButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:itemButton];
         
-        [JOAutoLayout autoLayoutWithTopSpaceDistance:0. selfView:itemButton superView:_contentView];
-        [JOAutoLayout autoLayoutWithBottomSpaceDistance:0. selfView:itemButton superView:_contentView];
-        [JOAutoLayout autoLayoutWithWidthWithView:_contentView ratioValue:1./[_itemsarray count] selfView:itemButton superView:_contentView];
+        [itemButton layoutTop:0. layoutItemHandler:nil];
+        [itemButton layoutBottom:0. layoutItemHandler:nil];
+        [itemButton layoutWidthView:_contentView ratio:1./[_itemsarray count] layoutItemHandler:nil];
         
         if (i) {
             //非第一个
             UIView *lastView = [_contentView viewWithTag:i];
-            [JOAutoLayout autoLayoutWithLeftView:lastView distance:0. selfView:itemButton superView:_contentView];
+            [itemButton layoutLeftView:lastView distance:0. layoutItemHandler:nil];
         }else{
             //第一个
-            [JOAutoLayout autoLayoutWithLeftSpaceDistance:0. selfView:itemButton superView:_contentView];
+            [itemButton layoutLeft:0. layoutItemHandler:nil];
         }
     }
 }
 
 - (void)setAnimationOffsetX:(CGFloat)offsetX{
 
-    [JOAutoLayout removeAutoLayoutWithLeftSelfView:_animationView superView:self];
-    [JOAutoLayout autoLayoutWithLeftSpaceDistance:offsetX selfView:_animationView superView:self];
+    [_animationView layoutLeft:offsetX layoutItemHandler:nil];
 }
 
 - (void)setAnimationColor:(UIColor *)color{
