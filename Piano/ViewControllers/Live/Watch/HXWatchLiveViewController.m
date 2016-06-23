@@ -274,7 +274,10 @@ HXLiveAlbumViewDelegate
     ZegoUser *user = [ZegoUser new];
     user.userID = [HXUserSession session].uid;
     user.userName = [HXUserSession session].nickName;
-    
+
+//  硬解码的开关@eden
+//	[zegoLiveApi requireHardwareAccelerated:_viewModel.model.hardwareAccelerate];
+
     bool ret = [zegoLiveApi loginChannel:_viewModel.model.channelID user:user];
     [[FileLog standard] log:@"%s, ret: %d", __func__, ret];
 }

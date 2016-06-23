@@ -410,7 +410,11 @@ static CGFloat AlbumViewWidth = 60.0f;
     _frontCamera = frontCamera;
     _beauty      = beauty;
     _bottomBar.beautyButton.selected = !beauty;
-    
+
+//  硬编码的开关@eden
+//	ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+//	[zegoLiveApi requireHardwareAccelerated:model.hardwareAccelerate];
+
     [self startPublish];
     
     _viewModel       = [HXRecordLiveViewModel new];

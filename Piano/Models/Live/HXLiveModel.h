@@ -36,6 +36,7 @@
 @property (nonatomic, assign) NSInteger  onlineCount;
 @property (nonatomic, assign) NSInteger  viewCount;
 @property (nonatomic, assign)      BOOL  horizontal;
+@property (nonatomic, assign)      BOOL  hardwareAccelerate;
 
 @property (nonatomic, strong)  HXAlbumModel *album;
 @property (nonatomic, strong) HXCouponModel *coupon;
