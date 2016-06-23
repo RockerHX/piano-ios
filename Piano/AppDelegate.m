@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "HXAppConstants.h"
+#import <CoreTelephony/CTCall.h>
+#import <CoreTelephony/CTCallCenter.h>
+#import "HXZegoAVKitManager.h"
 
 // UMeng SDK
 #import <UMMobClick/MobClick.h>
@@ -99,10 +102,19 @@
 		[self handleNotification:remoteNotification];
 	}
 
+    
+    [self callAction];
+    
 	return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {}
+- (void)applicationWillResignActive:(UIApplication *)application {
+    
+    if ([HXZegoAVKitManager manager].isFormLiveLeavn &&  [HXZegoAVKitManager manager].userIsEnterLive){
+        NSLog(@"applicationWillResignActive");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"CallLeaveRoomNotification" object:self userInfo:nil];
+    }
+}
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {}
 
@@ -114,6 +126,12 @@
 
 	[JPUSHService resetBadge];
 	[application setApplicationIconBadgeNumber:0];
+    
+    if ([HXZegoAVKitManager manager].isFormLiveLeavn && ![HXZegoAVKitManager manager].userIsEnterLive){
+        NSLog(@"applicationDidBecomeActive");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"CallEnterRoomNotification" object:self userInfo:nil];
+    }
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {}
@@ -217,4 +235,32 @@ static NSString * const PushAction_WatchLive				= @"watchlive";
     [self.window.rootViewController presentViewController:watchLiveNavigationController animated:YES completion:nil];
 }
 
+
+- (void)callAction{
+    
+    CTCallCenter *callCenter = [[CTCallCenter alloc] init];
+    callCenter.callEventHandler = ^(CTCall* call) {
+        if ([call.callState isEqualToString:CTCallStateDisconnected])
+        {
+            NSLog(@"Call has been disconnected");
+        }
+        else if ([call.callState isEqualToString:CTCallStateConnected])
+        {
+            NSLog(@"Call has just been connected");
+        }
+        else if([call.callState isEqualToString:CTCallStateIncoming])
+        {
+            NSLog(@"Call is incoming");
+        }
+        else if ([call.callState isEqualToString:CTCallStateDialing])
+        {
+            NSLog(@"call is dialing");
+        }
+        else
+        {
+            NSLog(@"Nothing is done");
+        }
+    };
+
+}
 @end
