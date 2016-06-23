@@ -610,7 +610,6 @@
 		42D612F11CE1FF0900B80753 /* MIAAlbumCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumCommentCell.m; sourceTree = "<group>"; };
 		42D612FA1CE1FF0900B80753 /* MIAAlbumSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAAlbumSongCell.h; sourceTree = "<group>"; };
 		42D612FB1CE1FF0900B80753 /* MIAAlbumSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAAlbumSongCell.m; sourceTree = "<group>"; };
-		57BC6D5C1D05B8F6C2BCD2CA /* Pods-Piano-Beta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Piano-Beta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta.release.xcconfig"; sourceTree = "<group>"; };
 		CD01F1C11CCE2007006BF4BF /* HXCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCollectionViewLayout.h; sourceTree = "<group>"; };
 		CD01F1C21CCE2007006BF4BF /* HXCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCollectionViewLayout.m; sourceTree = "<group>"; };
 		CD01F1C71CCF0611006BF4BF /* HXDiscoveryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDiscoveryCell.h; sourceTree = "<group>"; };
@@ -996,8 +995,6 @@
 		CDF3010B1CA8D74700C19C32 /* HXAlbumsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumsViewModel.h; sourceTree = "<group>"; };
 		CDF3010C1CA8D74700C19C32 /* HXAlbumsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumsViewModel.m; sourceTree = "<group>"; };
 		CDF9504B1CA558E300BDB586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Albums.storyboard; sourceTree = "<group>"; };
-		F0545AA33DD4F8C0CFAB1AEA /* libPods-Piano-Beta.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Piano-Beta.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F353692882059D8A0E37DCFF /* Pods-Piano-Beta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Piano-Beta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Piano-Beta/Pods-Piano-Beta.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2E70ABB0C246D442D00635 /* libPods-Piano.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Piano.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1525,7 +1522,6 @@
 				CD92AF831CBB9F1000106A89 /* AVFoundation.framework */,
 				CDE416FB1CB7D672005F8901 /* MediaPlayer.framework */,
 				FF2E70ABB0C246D442D00635 /* libPods-Piano.a */,
-				F0545AA33DD4F8C0CFAB1AEA /* libPods-Piano-Beta.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3195,8 +3191,6 @@
 			children = (
 				334A62F0F6B5D0E23BE07896 /* Pods-Piano.debug.xcconfig */,
 				02E1795951E578F7F615A6B3 /* Pods-Piano.release.xcconfig */,
-				F353692882059D8A0E37DCFF /* Pods-Piano-Beta.debug.xcconfig */,
-				57BC6D5C1D05B8F6C2BCD2CA /* Pods-Piano-Beta.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
