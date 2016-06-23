@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <ZegoAVKit2/ZegoLiveApi.h>
 
-
 typedef NS_ENUM(NSUInteger, HXLiveState) {
     HXLiveStatePreview,
     HXLiveStateLive,
@@ -25,6 +24,9 @@ typedef NS_ENUM(NSUInteger, HXLiveState) {
 @property (nonatomic, strong, readonly) NSString *server;
 @property (nonatomic, strong, readonly) NSString *port;
 @property (nonatomic, strong, readonly) NSString *url;
+
+@property (nonatomic, assign) BOOL  isFormLiveLeavn;
+@property (nonatomic, assign) BOOL  userIsEnterLive;
 
 @property (nonatomic, assign, readonly) HXLiveState  liveState;
 @property (nonatomic, strong, readonly) ZegoLiveApi *zegoLiveApi;

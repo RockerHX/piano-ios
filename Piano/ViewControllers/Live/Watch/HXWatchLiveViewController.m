@@ -92,13 +92,34 @@ HXLiveAlbumViewDelegate
     
     [self loadConfigure];
     [self viewConfigure];
+    [self callTeleConfigure];
 }
 
+#pragma mark - 观看直播用户接电话操作
+- (void)callTeleConfigure{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    @weakify(self)
+    [[notificationCenter rac_addObserverForName:@"CallLeaveRoomNotification" object:nil] subscribeNext:^(NSNotification *notification) {
+        @strongify(self)
+        ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+        [zegoLiveApi stopPlayStream:_viewModel.model.streamAlias];
+        [self leaveRoom];
+    }];
+    
+    [[notificationCenter rac_addObserverForName:@"CallEnterRoomNotification" object:nil] subscribeNext:^(NSNotification *notification) {
+        @strongify(self)
+        [self EnterRoom];
+    
+    }];
+
+}
 #pragma mark - Configure Methods
 - (void)loadConfigure {
     
     _modalTransitionDelegate = [HXModalTransitionDelegate new];
     _viewModel = [[HXWatchLiveViewModel alloc] initWithRoomID:_roomID];
+    
+
     [self signalLink];
     
     __weak __typeof__(self)weakSelf = self;
@@ -153,6 +174,13 @@ HXLiveAlbumViewDelegate
         }
     }];
     
+    [self EnterRoom];
+    
+}
+
+#pragma mark -
+- (void)EnterRoom{
+    @weakify(self)
     [[FileLog standard] log:@"Enter Room"];
     RACSignal *enterRoomSiganl = [_viewModel.enterRoomCommand execute:nil];
     [enterRoomSiganl subscribeError:^(NSError *error) {
@@ -176,6 +204,7 @@ HXLiveAlbumViewDelegate
 
 - (IBAction)closeButtonPressed {
     [[FileLog standard] log:@"Close Room"];
+    [HXZegoAVKitManager manager].isFormLiveLeavn = NO;// 退出直播间
     [self dismiss];
 }
 
@@ -235,6 +264,7 @@ HXLiveAlbumViewDelegate
 - (void)leaveRoom {
     [_viewModel.leaveRoomCommand execute:nil];
     [[HXZegoAVKitManager manager].zegoLiveApi logoutChannel];
+    [HXZegoAVKitManager manager].userIsEnterLive = NO;// 用户退出直播间成功
 }
 
 - (void)endLive {
@@ -267,6 +297,7 @@ HXLiveAlbumViewDelegate
     }
 }
 
+#pragma mark - 进入直播间
 - (void)roomConfigure {
     ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
     
@@ -325,6 +356,8 @@ HXLiveAlbumViewDelegate
     [[FileLog standard] log:@"%s, err: %u", __func__, error];
     if (error == 0) {
         ZegoLiveApi *zegoLiveApi = [HXZegoAVKitManager manager].zegoLiveApi;
+        [HXZegoAVKitManager manager].isFormLiveLeavn = YES;
+        [HXZegoAVKitManager manager].userIsEnterLive = YES;// 用户已进入直播间成功
         int ret = [zegoLiveApi setAVConfig:[HXSettingSession session].configure];
         [zegoLiveApi startPlayStream:_viewModel.model.streamAlias viewIndex:RemoteViewIndex_First];
         [[FileLog standard] log:@"%s, ret: %d", __func__, ret];
@@ -487,5 +520,6 @@ HXLiveAlbumViewDelegate
         [self presentViewController:rewardViewController animated:YES completion:nil];
     }
 }
+
 
 @end
